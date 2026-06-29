@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>AI Agent Loop</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">NexaHR Agent</div>
+        </nav>
+    </header>
+    <main class="agent-container">
+        <section class="agent-status">
+            <h2>Current Agent Loop</h2>
+            <div id="loop-state">
+                <p>Initializing...</p>
+            </div>
+        </section>
+        <section class="agent-output">
+            <h3>Agent Output</h3>
+            <pre id="output" class="output-box">Waiting for agent...</pre>
+        </section>
+        <section class="agent-controls">
+            <button id="startBtn" class="cta">Start Loop</button>
+            <button id="stopBtn" class="cta" style="display:none;">Stop Loop</button>
+        </section>
+    </main>
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const output = document.getElementById('output');
+        const loopState = document.getElementById('loop-state');
+        let intervalId;
+        startBtn.onclick = () => {
+            startBtn.style.display = 'none';
+            stopBtn.style.display = 'inline-block';
+            loopState.innerHTML = '<p>Running agent loop…</p>';
+            output.textContent = '';
+            // Simulated loop – replace with real API calls
+            intervalId = setInterval(() => {
+                const now = new Date().toLocaleTimeString();
+                output.textContent += `\n[${now}] Agent tick – processing…`;
+                output.scrollTop = output.scrollHeight;
+            }, 2000);
+        };
+        stopBtn.onclick = () => {
+            clearInterval(intervalId);
+            startBtn.style.display = 'inline-block';
+            stopBtn.style.display = 'none';
+            loopState.innerHTML = '<p>Loop stopped.</p>';
+        };
+    </script>
+</body>
+</html>
