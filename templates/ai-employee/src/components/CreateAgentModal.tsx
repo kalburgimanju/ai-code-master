@@ -20,7 +20,13 @@ const promptSuggestions = [
   'You are a data analyst. Answer business questions from company data, provide insights with supporting numbers.',
 ];
 
-const CreateAgentModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+interface CreateAgentModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onCreated?: () => void;
+}
+
+const CreateAgentModal: React.FC<CreateAgentModalProps> = ({ isOpen, onClose, onCreated }) => {
   const {
     step, formData, isCreating, createdAgent, error,
     updateForm, canProceed, nextStep, prevStep, launchAgent, reset,
@@ -33,6 +39,11 @@ const CreateAgentModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ 
   const handleClose = () => {
     onClose();
     setTimeout(() => reset(), 300);
+  };
+
+  const handleDone = () => {
+    onCreated?.();
+    handleClose();
   };
 
   const handleCopy = () => {
@@ -372,7 +383,7 @@ const CreateAgentModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ 
               </div>
             ) : (
               <div className="flex justify-center p-6 pt-0">
-                <button onClick={handleClose} className="btn-primary cursor-pointer">
+                <button onClick={handleDone} className="btn-primary cursor-pointer">
                   Done — Go to Dashboard
                 </button>
               </div>
