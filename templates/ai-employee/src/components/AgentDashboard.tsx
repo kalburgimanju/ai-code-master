@@ -1,15 +1,30 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, CheckCircle2, Clock, Copy, Check, Settings, TrendingUp, Users } from 'lucide-react';
+import { MessageSquare, CheckCircle2, Clock, Copy, Check, Settings, TrendingUp, Users, Sparkles } from 'lucide-react';
 import { demoConversations } from '../data';
 
-const AgentDashboard: React.FC = () => {
+interface AgentDashboardProps {
+  showCreated: boolean;
+}
+
+const AgentDashboard: React.FC<AgentDashboardProps> = ({ showCreated }) => {
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'conversations' | 'settings'>('overview');
 
+  const agents = showCreated
+    ? [
+        { name: 'Support Bot', role: 'Customer Support', convs: 1247, rate: 94, status: 'active' },
+        { name: 'Sales Genie', role: 'Sales', convs: 832, rate: 89, status: 'active' },
+        { name: 'New Agent', role: 'Custom Role', convs: 0, rate: 100, status: 'active', isNew: true },
+      ]
+    : [
+        { name: 'Support Bot', role: 'Customer Support', convs: 1247, rate: 94, status: 'active' },
+        { name: 'Sales Genie', role: 'Sales', convs: 832, rate: 89, status: 'active' },
+      ];
+
   const embedCode = `<script src="https://cdn.myaiemployee.com/widget.js"></script>
 <div id="myaiemployee-widget"
-  data-agent-id="agent-demo"
+  data-agent-id="${showCreated ? 'agent-new' : 'agent-demo'}"
   data-theme="dark">
 </div>`;
 
@@ -92,16 +107,18 @@ const AgentDashboard: React.FC = () => {
                 <div>
                   <h3 className="text-sm font-medium text-dark-300 mb-3">Active AI Employees</h3>
                   <div className="grid md:grid-cols-2 gap-4">
-                    {[
-                      { name: 'Support Bot', role: 'Customer Support', convs: 1247, rate: 94, status: 'active' },
-                      { name: 'Sales Genie', role: 'Sales', convs: 832, rate: 89, status: 'active' },
-                    ].map((agent) => (
-                      <div key={agent.name} className="bg-dark-800 rounded-xl p-4 border border-white/5 flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-400 to-emerald-300 flex items-center justify-center text-dark-900 font-bold text-sm">
-                          <Users size={18} />
+                    {agents.map((agent) => (
+                      <div key={agent.name} className={`bg-dark-800 rounded-xl p-4 border flex items-center gap-4 ${'isNew' in agent && agent.isNew ? 'border-brand-500/50 shadow-lg shadow-brand-500/10' : 'border-white/5'}`}>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm ${'isNew' in agent && agent.isNew ? 'bg-gradient-to-br from-brand-400 to-emerald-300' : 'bg-gradient-to-br from-brand-400 to-emerald-300'}`}>
+                          {'isNew' in agent && agent.isNew ? <Sparkles size={18} /> : <Users size={18} />}
                         </div>
                         <div className="flex-1">
-                          <p className="font-semibold text-white text-sm">{agent.name}</p>
+                          <p className="font-semibold text-white text-sm">
+                            {agent.name}
+                            {'isNew' in agent && agent.isNew && (
+                              <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full bg-brand-500/20 text-brand-400">Just Created</span>
+                            )}
+                          </p>
                           <p className="text-xs text-dark-400">{agent.role}</p>
                         </div>
                         <div className="text-right">

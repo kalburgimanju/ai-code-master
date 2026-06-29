@@ -1,39 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import HowItWorks from './components/HowItWorks';
-import EmployeeShowcase from './components/EmployeeShowcase';
-import Features from './components/Features';
-import Pricing from './components/Pricing';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
-import AgentDashboard from './components/AgentDashboard';
-import EmbedPreview from './components/EmbedPreview';
-import CTA from './components/CTA';
 import Footer from './components/Footer';
-import CreateAgentModal from './components/CreateAgentModal';
+import LandingPage from './pages/LandingPage';
+import DashboardLayout from './pages/DashboardLayout';
+import DashboardPage from './pages/DashboardPage';
+import AgentsPage from './pages/AgentsPage';
+import ActivityPage from './pages/ActivityPage';
+import SettingsPage from './pages/SettingsPage';
 
 const App: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-
   return (
-    <div className="min-h-screen">
-      <Navbar onCreateAgent={() => setModalOpen(true)} />
-      <main>
-        <Hero onCreateAgent={() => setModalOpen(true)} />
-        <HowItWorks />
-        <EmployeeShowcase />
-        <Features />
-        <Pricing />
-        <Testimonials />
-        <AgentDashboard />
-        <EmbedPreview />
-        <FAQ />
-        <CTA />
-      </main>
-      <Footer />
-      <CreateAgentModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Landing page route */}
+        <Route
+          path="/"
+          element={
+            <div className="min-h-screen">
+              <Navbar />
+              <main>
+                <LandingPage />
+              </main>
+              <Footer />
+            </div>
+          }
+        />
+
+        {/* Dashboard routes */}
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<DashboardPage />} />
+          <Route path="agents" element={<AgentsPage />} />
+          <Route path="activity" element={<ActivityPage />} />
+          <Route path="settings" element={<SettingsPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

@@ -62,3 +62,34 @@ export interface Conversation {
 }
 
 export type WizardStep = 'role' | 'prompt' | 'knowledge' | 'launch';
+
+export interface ActivityEvent {
+  id: string;
+  agentId: string;
+  agentName: string;
+  user: string;
+  message: string;
+  response: string;
+  timestamp: number;
+  resolved: boolean;
+  duration: number;
+}
+
+export interface DashboardStats {
+  totalConversations: number;
+  messagesToday: number;
+  activeAgents: number;
+  avgResolutionRate: number;
+  avgResponseTime: number;
+  conversationsPerHour: number;
+  messagesTrend: number[];
+  resolutionTrend: number[];
+  responseTimeTrend: number[];
+}
+
+export interface AgentSettings {
+  model: string;
+  temperature: number;
+  maxTokens: number;
+  humanHandoff: boolean;
+}
