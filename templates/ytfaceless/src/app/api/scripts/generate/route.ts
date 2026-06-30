@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     }
 
     const script = await generateScript(topic, niche, duration || 600);
-    trackCost('openai', COSTS.OPENAI_SCRIPT, `Script: ${topic}`);
+    trackCost('openrouter', COSTS.OPENROUTER_SCRIPT, `Script: ${topic}`);
 
     return NextResponse.json({ script });
   } catch (error) {

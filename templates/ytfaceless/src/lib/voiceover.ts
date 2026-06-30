@@ -1,68 +1,68 @@
 import { uploadBuffer } from './storage';
 
-const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
-const DEFAULT_VOICE_ID = process.env.ELEVENLABS_VOICE_ID || '21m00Tcm4TlvDq8ikWAM';
+// Free TTS using OpenRouter free models for text processing
+// Then use browser Web Speech API or free TTS services
+
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+
+// Free TTS alternatives:
+// 1. Browser Web Speech API (client-side only)
+// 2. Free TTS APIs with limitations
+// 3. Generate SSML for future use
 
 export async function generateVoiceover(
   text: string,
   voiceId?: string
 ): Promise<string> {
-  if (!ELEVENLABS_API_KEY) {
-    throw new Error('ELEVENLABS_API_KEY not configured');
-  }
+  // For free tier, we generate a text file with the script
+  // In production, integrate with ElevenLabs or use Web Speech API
 
-  const usedVoiceId = voiceId || DEFAULT_VOICE_ID;
+  const scriptContent = `# Voiceover Script
 
-  const response = await fetch(
-    `https://api.elevenlabs.io/v1/text-to-speech/${usedVoiceId}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'xi-api-key': ELEVENLABS_API_KEY,
-      },
-      body: JSON.stringify({
-        text,
-        model_id: 'eleven_turbo_v2',
-        voice_settings: {
-          stability: 0.5,
-          similarity_boost: 0.75,
-          style: 0.5,
-          use_speaker_boost: true,
-        },
-      }),
-    }
-  );
+## Instructions
+- Read this script at a natural pace (~130 words/minute)
+- Use emphasis on key points
+- Pause briefly between sections
 
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`ElevenLabs API error: ${error}`);
-  }
+---
 
-  const audioBuffer = Buffer.from(await response.arrayBuffer());
-  const audioUrl = await uploadBuffer(audioBuffer, `voiceover-${Date.now()}.mp3`, 'audio/mpeg');
+${text}
 
-  return audioUrl;
+---
+
+## Metadata
+- Generated: ${new Date().toISOString()}
+- Word Count: ${text.split(/\s+/).length}
+- Estimated Duration: ${Math.round(text.split(/\s+/).length / 130)} minutes
+`;
+
+  const buffer = Buffer.from(scriptContent, 'utf-8');
+  const url = await uploadBuffer(buffer, `voiceover-script-${Date.now()}.md`, 'text/markdown');
+
+  return url;
 }
 
-export async function getVoices(): Promise<{ voiceId: string; name: string }[]> {
-  if (!ELEVENLABS_API_KEY) {
-    throw new Error('ELEVENLABS_API_KEY not configured');
-  }
+// Alternative: Generate SSML for TTS engines
+export function generateSSML(text: string): string {
+  const sentences = text.split(/[.!?]+/).filter(s => s.trim());
 
-  const response = await fetch('https://api.elevenlabs.io/v1/voices', {
-    headers: {
-      'xi-api-key': ELEVENLABS_API_KEY,
-    },
+  let ssml = '<speak>';
+  sentences.forEach((sentence, i) => {
+    ssml += `<p>${sentence.trim()}.</p>`;
+    if (i < sentences.length - 1) {
+      ssml += '<break time="500ms"/>';
+    }
   });
+  ssml += '</speak>';
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch voices');
-  }
+  return ssml;
+}
 
-  const data = await response.json();
-  return data.voices.map((v: { voice_id: string; name: string }) => ({
-    voiceId: v.voice_id,
-    name: v.name,
-  }));
+// Get available free TTS options
+export function getFreeTTSOptions(): { name: string; description: string }[] {
+  return [
+    { name: 'Web Speech API', description: 'Browser-based TTS (client-side only)' },
+    { name: 'OpenRouter Script', description: 'Generate script file for manual recording' },
+    { name: 'SSML Export', description: 'Export as SSML for any TTS engine' },
+  ];
 }

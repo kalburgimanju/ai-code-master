@@ -104,7 +104,7 @@ export async function runDailyPipeline(channelId: string): Promise<PipelineResul
     const script = await retryWithBackoff(() =>
       generateScript(bestTopic.title, bestTopic.niche)
     );
-    trackCost('openai', COSTS.OPENAI_SCRIPT, 'Script generation');
+    trackCost('openrouter', COSTS.OPENROUTER_SCRIPT, 'Script generation');
     await updateStatus(video.id, 'script_generated', {
       title: script.title,
       script: script.fullText,
@@ -119,7 +119,7 @@ export async function runDailyPipeline(channelId: string): Promise<PipelineResul
     const voiceoverUrl = await retryWithBackoff(() =>
       generateVoiceover(script.fullText)
     );
-    trackCost('elevenlabs', COSTS.ELEVENLABS_VOICEOVER, 'Voiceover generation');
+    trackCost('voiceover', COSTS.VOICEOVER_SCRIPT, 'Voiceover script');
     await updateStatus(video.id, 'voiceover_generated', {
       voiceoverUrl,
       statusDetail: 'Voiceover complete',
@@ -134,7 +134,7 @@ export async function runDailyPipeline(channelId: string): Promise<PipelineResul
         style: 'cinematic',
       })
     );
-    trackCost('runway', COSTS.RUNWAY_VIDEO, 'Video generation');
+    trackCost('video', COSTS.HTML_VIDEO, 'HTML video generation');
     await updateStatus(video.id, 'video_generated', {
       videoUrl,
       statusDetail: 'Video clips generated',
@@ -145,7 +145,7 @@ export async function runDailyPipeline(channelId: string): Promise<PipelineResul
     const thumbnailUrl = await retryWithBackoff(() =>
       generateThumbnail(script.title, video.niche || 'tech')
     );
-    trackCost('openai', COSTS.OPENAI_THUMBNAIL, 'Thumbnail generation');
+    trackCost('pollinations', COSTS.POLLINATIONS_THUMBNAIL, 'Thumbnail generation');
     await updateStatus(video.id, 'thumbnail_generated', {
       thumbnailUrl,
       statusDetail: 'Thumbnail generated',
@@ -178,7 +178,7 @@ export async function runDailyPipeline(channelId: string): Promise<PipelineResul
       youtubeUrl,
       youtubeUploadDate: new Date().toISOString(),
       completedAt: new Date().toISOString(),
-      estimatedCostCents: COSTS.OPENAI_SCRIPT + COSTS.ELEVENLABS_VOICEOVER + COSTS.RUNWAY_VIDEO + COSTS.OPENAI_THUMBNAIL,
+      estimatedCostCents: COSTS.OPENROUTER_SCRIPT + COSTS.VOICEOVER_SCRIPT + COSTS.HTML_VIDEO + COSTS.POLLINATIONS_THUMBNAIL,
     });
 
     // Update idea status

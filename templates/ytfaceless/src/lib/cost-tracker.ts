@@ -1,4 +1,5 @@
 // Cost tracking for API usage
+// Most APIs are free on OpenRouter with free models
 
 interface CostEntry {
   service: string;
@@ -9,12 +10,12 @@ interface CostEntry {
 
 const costs: CostEntry[] = [];
 
-// Cost per service (in cents)
+// Cost per service (in cents) - Free tier pricing
 export const COSTS = {
-  OPENAI_SCRIPT: 2,        // ~$0.02 per script
-  OPENAI_THUMBNAIL: 4,     // ~$0.04 per thumbnail
-  ELEVENLABS_VOICEOVER: 30, // ~$0.30 per voiceover (10min)
-  RUNWAY_VIDEO: 150,        // ~$1.50 per video clip
+  OPENROUTER_SCRIPT: 0,        // Free with OpenRouter free models
+  POLLINATIONS_THUMBNAIL: 0,   // Free image generation
+  VOICEOVER_SCRIPT: 0,         // Free script generation
+  HTML_VIDEO: 0,               // Free HTML-based video
 } as const;
 
 export function trackCost(
@@ -48,4 +49,15 @@ export function getRecentCosts(limit: number = 10): CostEntry[] {
 
 export function resetCosts(): void {
   costs.length = 0;
+}
+
+// Free tier limits info
+export function getFreeTierLimits(): Record<string, string> {
+  return {
+    'OpenRouter Free Models': 'Unlimited (rate-limited)',
+    'Pollinations.ai': 'Unlimited (free image generation)',
+    'YouTube Data API': '10,000 units/day free',
+    'Vercel KV': '30,000 commands/day free',
+    'Vercel Blob': '500MB storage free',
+  };
 }
