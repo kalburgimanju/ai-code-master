@@ -1,0 +1,108 @@
+export const products = [
+  {
+    id: 'video-generator',
+    name: 'AI Video Generator',
+    tagline: 'Record and upload videos to YouTube in one click',
+    description: 'A browser-based video recording tool with webcam capture and direct YouTube upload via OAuth. Record, preview, and publish — all from one dashboard.',
+    url: 'https://ai-videogenerator-758.netlify.app',
+    color: 'from-brand-500 to-fire-500',
+    icon: 'Video',
+  },
+  {
+    id: 'ai-employee',
+    name: 'AI Employee',
+    tagline: 'Your intelligent virtual workforce',
+    description: 'An AI-powered employee dashboard that manages tasks, schedules, and workflows. Automate repetitive work and let AI handle the rest.',
+    url: '#',
+    color: 'from-sky-500 to-brand-500',
+    icon: 'Bot',
+  },
+  {
+    id: 'travel-agency',
+    name: 'AI Travel Agency',
+    tagline: 'Plan trips with AI-powered recommendations',
+    description: 'An intelligent travel platform that generates personalized itineraries, suggests destinations, and handles bookings — all powered by AI.',
+    url: '#',
+    color: 'from-neon-500 to-sky-500',
+    icon: 'Plane',
+  },
+  {
+    id: 'yt-faceless',
+    name: 'YT Faceless',
+    tagline: 'Automate faceless YouTube channels',
+    description: 'A complete YouTube automation tool that generates scripts, voiceovers, thumbnails, and publishes videos — no face required.',
+    url: '#',
+    color: 'from-fire-500 to-accent-500',
+    icon: 'Youtube',
+  },
+  {
+    id: 'bootcamp',
+    name: 'Bootcamp Platform',
+    tagline: 'Launch and manage coding bootcamps',
+    description: 'A full-stack platform for hosting AI-powered coding bootcamps. Includes course management, student dashboards, and progress tracking.',
+    url: '#',
+    color: 'from-accent-500 to-brand-500',
+    icon: 'GraduationCap',
+  },
+  {
+    id: 'portfolio',
+    name: 'Portfolio Builder',
+    tagline: 'Build stunning developer portfolios',
+    description: 'A customizable developer portfolio template with project showcases, skills visualization, and contact forms. Clean, modern, and responsive.',
+    url: '#',
+    color: 'from-dark-700 to-brand-500',
+    icon: 'Code',
+  },
+];
+
+export const services = [
+  {
+    id: 'ai-solutions',
+    icon: 'Brain',
+    title: 'AI Solutions',
+    description: 'Custom AI tools, automation, and intelligent systems tailored to your business needs.',
+    items: ['Custom AI Development', 'Workflow Automation', 'AI Integration', 'Machine Learning Models'],
+  },
+  {
+    id: 'content-marketing',
+    icon: 'PenTool',
+    title: 'Content Marketing',
+    description: 'Strategic content creation and distribution to grow your audience and brand.',
+    items: ['Blog & Article Writing', 'SEO Content Strategy', 'Brand Voice Development', 'Content Calendars'],
+  },
+  {
+    id: 'film-making',
+    icon: 'Film',
+    title: 'Film & Video',
+    description: 'Professional video production, editing, and post-production for brands and creators.',
+    items: ['Video Production', 'Film Ads', 'YouTube Content', 'Motion Graphics'],
+  },
+  {
+    id: 'social-media',
+    icon: 'Share2',
+    title: 'Social Media Strategy',
+    description: 'Data-driven social media management to boost engagement and grow followers.',
+    items: ['Platform Strategy', 'Content Scheduling', 'Community Management', 'Analytics & Reporting'],
+  },
+  {
+    id: 'newsletter',
+    icon: 'Mail',
+    title: 'Newsletter Writing',
+    description: 'Compelling newsletter content that keeps your subscribers engaged and informed.',
+    items: ['Newsletter Creation', 'Email Campaigns', 'Subscriber Growth', 'A/B Testing'],
+  },
+  {
+    id: 'startup-advisory',
+    icon: 'Rocket',
+    title: 'Startup Advisory',
+    description: 'Expert guidance for startups from ideation to scaling and fundraising.',
+    items: ['Product Strategy', 'Go-to-Market Planning', 'Fundraising Support', 'Tech Architecture'],
+  },
+];
+
+export const stats = [
+  { value: '6+', label: 'AI Products' },
+  { value: '50+', label: 'Happy Clients' },
+  { value: '100+', label: 'Projects Delivered' },
+  { value: '24/7', label: 'Support' },
+];
