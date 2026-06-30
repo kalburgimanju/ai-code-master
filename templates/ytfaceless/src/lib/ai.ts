@@ -4,11 +4,11 @@ const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
 // Free models on OpenRouter (no cost)
 const FREE_MODELS = [
+  'openrouter/free',
   'nvidia/nemotron-3-ultra-550b-a55b:free',
   'nvidia/nemotron-3-super-120b-a12b:free',
   'google/gemma-4-31b-it:free',
   'openai/gpt-oss-120b:free',
-  'openai/gpt-oss-20b:free',
 ];
 
 export async function generateScript(
