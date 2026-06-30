@@ -1,28 +1,28 @@
 import Link from 'next/link';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, ExternalLink } from 'lucide-react';
 
 const footerLinks = {
   Products: [
-    { href: '/products#video-generator', label: 'AI Video Generator' },
-    { href: '/products#ai-employee', label: 'AI Employee' },
-    { href: '/products#travel-agency', label: 'AI Travel Agency' },
-    { href: '/products#yt-faceless', label: 'YT Faceless' },
-    { href: '/products#bootcamp', label: 'Bootcamp Platform' },
-    { href: '/products#portfolio', label: 'Portfolio Builder' },
+    { href: 'https://ai-videogenerator.netlify.app', label: 'AI Video Generator', external: true },
+    { href: '/products#ai-employee', label: 'AI Employee', external: false },
+    { href: 'https://ai-travelagency.netlify.app', label: 'AI Travel Agency', external: true },
+    { href: 'https://ai-youtube-channel.netlify.app', label: 'YT Faceless', external: true },
+    { href: '/products#bootcamp', label: 'Bootcamp Platform', external: false },
+    { href: '/products#portfolio', label: 'Portfolio Builder', external: false },
   ],
   Services: [
-    { href: '/services#ai-solutions', label: 'AI Solutions' },
-    { href: '/services#content-marketing', label: 'Content Marketing' },
-    { href: '/services#film-making', label: 'Film & Ads' },
-    { href: '/services#social-media', label: 'Social Media Strategy' },
-    { href: '/services#newsletter', label: 'Newsletter Writing' },
-    { href: '/services#startup-advisory', label: 'Startup Advisory' },
+    { href: '/services#ai-solutions', label: 'AI Solutions', external: false },
+    { href: '/services#content-marketing', label: 'Content Marketing', external: false },
+    { href: '/services#film-making', label: 'Film & Ads', external: false },
+    { href: '/services#social-media', label: 'Social Media Strategy', external: false },
+    { href: '/services#newsletter', label: 'Newsletter Writing', external: false },
+    { href: '/services#startup-advisory', label: 'Startup Advisory', external: false },
   ],
   Company: [
-    { href: '/about', label: 'About Us' },
-    { href: '/contact', label: 'Contact' },
-    { href: '/policy', label: 'Privacy Policy' },
-    { href: '/terms', label: 'Terms of Service' },
+    { href: '/about', label: 'About Us', external: false },
+    { href: '/contact', label: 'Contact', external: false },
+    { href: '/policy', label: 'Privacy Policy', external: false },
+    { href: '/terms', label: 'Terms of Service', external: false },
   ],
 };
 
@@ -49,9 +49,16 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {links.map((l) => (
                   <li key={l.label}>
-                    <Link href={l.href} className="text-sm text-dark-400 hover:text-brand-400 transition-colors">
-                      {l.label}
-                    </Link>
+                    {l.external ? (
+                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-sm text-dark-400 hover:text-brand-400 transition-colors inline-flex items-center gap-1">
+                        {l.label}
+                        <ExternalLink size={10} />
+                      </a>
+                    ) : (
+                      <Link href={l.href} className="text-sm text-dark-400 hover:text-brand-400 transition-colors">
+                        {l.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
