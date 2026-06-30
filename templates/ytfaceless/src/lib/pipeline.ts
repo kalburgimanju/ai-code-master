@@ -1,11 +1,11 @@
-import type { Video, PipelineStage } from '@/types';
+import type { Video, PipelineStage, TrendingTopic } from '@/types';
 import * as db from './db';
 import { generateScript } from './ai';
 import { generateVoiceover } from './voiceover';
 import { generateVideo } from './video';
 import { generateThumbnail } from './thumbnail';
 import { uploadToYouTube } from './youtube';
-import { discoverTrendingTopics, selectBestTopic } from './trends';
+import { generateAllIdeas, selectBestTopic } from './trends';
 import { trackCost, COSTS } from './cost-tracker';
 
 export interface PipelineResult {
@@ -88,7 +88,16 @@ export async function runDailyPipeline(channelId: string): Promise<PipelineResul
   try {
     // Step 1: Fetch trending topics
     await updateStatus(video.id, 'trending_fetched', { statusDetail: 'Discovering trending topics...' });
-    const topics = await discoverTrendingTopics([channel.niche]);
+    const ideas = await generateAllIdeas([channel.niche]);
+    const topics: TrendingTopic[] = ideas.map(i => ({
+      title: i.title,
+      niche: i.niche,
+      trendScore: i.trendScore,
+      competition: i.competition,
+      estimatedViews: i.estimatedViews,
+      keywords: i.keywords,
+      source: i.source,
+    }));
 
     // Step 2: Select best topic
     const bestTopic = await selectBestTopic(topics);
@@ -182,8 +191,8 @@ export async function runDailyPipeline(channelId: string): Promise<PipelineResul
     });
 
     // Update idea status
-    const ideas = await db.getIdeas('discovered');
-    const usedIdea = ideas.find((i) => i.title === bestTopic.title);
+    const allIdeas = await db.getIdeas('discovered');
+    const usedIdea = allIdeas.find((i) => i.title === bestTopic.title);
     if (usedIdea) {
       await db.updateIdea(usedIdea.id, {
         status: 'used',
