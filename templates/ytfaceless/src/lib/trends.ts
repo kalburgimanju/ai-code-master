@@ -37,6 +37,10 @@ export interface GeneratedIdea {
   keywords: string[];
   source: string;
   createdAt: string;
+  description: string;
+  targetAudience: string;
+  videoLength: string;
+  difficulty: 'Easy' | 'Medium' | 'Hard';
 }
 
 // Generate ideas across all niches
@@ -76,11 +80,15 @@ async function generateWithModel(model: string, niches: string[]): Promise<Gener
           role: 'system',
           content: `You are a YouTube trend analyst. Generate exactly 30 trending video ideas across these niches: ${nicheList}.
 Assign ${countPerNiche} ideas per niche (30 total).
-Return JSON with: ideas (array of {title, niche, estimatedViews, competition, keywords}).
+Return JSON with: ideas (array of {title, niche, estimatedViews, competition, keywords, description, targetAudience, videoLength, difficulty}).
 Each idea should be a viral YouTube video title (click-worthy but not clickbait).
 competition must be "Low", "Medium", or "High".
 estimatedViews should be realistic (e.g. "100K-500K").
 keywords should be 3-5 relevant tags.
+description should be a 2-3 sentence summary of what the video covers, why it would perform well, and the key angle.
+targetAudience should describe who would watch this (e.g. "tech enthusiasts", "small business owners").
+videoLength should be a realistic duration (e.g. "10:00", "15:00", "8:00").
+difficulty should be "Easy", "Medium", or "Hard" based on production complexity.
 The niche field must exactly match one of: ${nicheList}`,
         },
         {
@@ -106,7 +114,7 @@ The niche field must exactly match one of: ${nicheList}`,
   }
 
   return rawIdeas.map(
-    (idea: { title: string; niche: string; estimatedViews: string; competition: string; keywords: string[] }) => ({
+    (idea: { title: string; niche: string; estimatedViews: string; competition: string; keywords: string[]; description: string; targetAudience: string; videoLength: string; difficulty: string }) => ({
       id: crypto.randomUUID(),
       title: idea.title,
       niche: idea.niche || niches[0],
@@ -116,76 +124,84 @@ The niche field must exactly match one of: ${nicheList}`,
       keywords: idea.keywords || [],
       source: 'ai_generated',
       createdAt: new Date().toISOString(),
+      description: idea.description || 'No description available',
+      targetAudience: idea.targetAudience || 'General audience',
+      videoLength: idea.videoLength || '10:00',
+      difficulty: (['Easy', 'Medium', 'Hard'].includes(idea.difficulty) ? idea.difficulty : 'Medium') as 'Easy' | 'Medium' | 'Hard',
     })
   );
 }
 
 function getFallbackTopics(niche: string): GeneratedIdea[] {
-  const topicsByNiche: Record<string, string[]> = {
+  const fallbackData: Record<string, { title: string; description: string; targetAudience: string; videoLength: string; difficulty: 'Easy' | 'Medium' | 'Hard' }[]> = {
     AI: [
-      '10 AI Agents That Run Your Entire Business',
-      'Why AI Will Replace 50% of Jobs by 2027',
-      'The AI Tool That Writes Code Better Than Senior Devs',
+      { title: '10 AI Agents That Run Your Entire Business', description: 'Explore the top AI agents that are revolutionizing business operations in 2026. From customer service bots to autonomous decision-makers, these tools are changing how companies operate at scale.', targetAudience: 'Tech entrepreneurs', videoLength: '12:00', difficulty: 'Easy' },
+      { title: 'Why AI Will Replace 50% of Jobs by 2027', description: 'A deep dive into which industries are most vulnerable to AI automation and how workers can prepare. Includes statistics, expert predictions, and actionable career pivot strategies.', targetAudience: 'Working professionals', videoLength: '15:00', difficulty: 'Medium' },
+      { title: 'The AI Tool That Writes Code Better Than Senior Devs', description: 'We benchmarked the latest AI coding assistants against senior developers in real-world projects. The results are shocking — find out which tools came out on top.', targetAudience: 'Software developers', videoLength: '18:00', difficulty: 'Hard' },
     ],
     startups: [
-      'How I Built a $1M Startup in 6 Months',
-      '5 Startup Mistakes That Kill 90% of Companies',
-      'The Lean Startup Method Nobody Talks About',
+      { title: 'How I Built a $1M Startup in 6 Months', description: 'A transparent breakdown of how I took an idea to $1M ARR in just 6 months. Covers product-market fit, pricing strategy, and the exact playbook I followed.', targetAudience: 'Aspiring founders', videoLength: '20:00', difficulty: 'Medium' },
+      { title: '5 Startup Mistakes That Kill 90% of Companies', description: 'After analyzing 500+ failed startups, these are the most common fatal errors. Learn from others mistakes before they cost you everything.', targetAudience: 'Early-stage founders', videoLength: '14:00', difficulty: 'Easy' },
+      { title: 'The Lean Startup Method Nobody Talks About', description: 'Beyond the basics of lean methodology — uncover the advanced techniques that successful founders use to validate ideas in days, not months.', targetAudience: 'Product managers', videoLength: '16:00', difficulty: 'Medium' },
     ],
     realestate: [
-      'How to Start in Real Estate with No Money',
-      'The Real Estate Strategy That Made Me $500K',
-      'Why Real Estate Is the Best Investment in 2026',
+      { title: 'How to Start in Real Estate with No Money', description: 'Creative financing strategies that let you break into real estate without a large down payment. Includes seller financing, house hacking, and partnership models.', targetAudience: 'First-time investors', videoLength: '22:00', difficulty: 'Medium' },
+      { title: 'The Real Estate Strategy That Made Me $500K', description: 'My exact strategy for building wealth through rental properties. I share every detail — from finding deals to managing tenants and scaling your portfolio.', targetAudience: 'Real estate investors', videoLength: '25:00', difficulty: 'Hard' },
+      { title: 'Why Real Estate Is the Best Investment in 2026', description: 'With inflation rising and markets volatile, real estate stands out as the most reliable wealth builder. Data-backed analysis of why now is the time to invest.', targetAudience: 'General investors', videoLength: '18:00', difficulty: 'Easy' },
     ],
     automation: [
-      'How to Automate Your Entire Business with AI',
-      '5 Automations That Save 20 Hours Per Week',
-      'No-Code Automation Tools You Need Right Now',
+      { title: 'How to Automate Your Entire Business with AI', description: 'A step-by-step guide to automating every aspect of your business using free and low-cost AI tools. Save 40+ hours per week with these proven systems.', targetAudience: 'Small business owners', videoLength: '20:00', difficulty: 'Medium' },
+      { title: '5 Automations That Save 20 Hours Per Week', description: 'These five automations have transformed how I work. Each one saves hours every week and they work together to create a fully automated workflow.', targetAudience: 'Freelancers', videoLength: '12:00', difficulty: 'Easy' },
+      { title: 'No-Code Automation Tools You Need Right Now', description: 'The best no-code tools for building powerful automations without writing a single line of code. Includes setup tutorials and workflow templates.', targetAudience: 'Non-technical users', videoLength: '15:00', difficulty: 'Easy' },
     ],
     productivity: [
-      'The Morning Routine That Changed My Life',
-      'How to 10x Your Productivity in 30 Days',
-      'Why Most Productivity Advice Is Wrong',
+      { title: 'The Morning Routine That Changed My Life', description: 'After testing hundreds of morning routines, I found the one that actually works. This 60-minute routine has 10x my output and energy levels.', targetAudience: 'High performers', videoLength: '10:00', difficulty: 'Easy' },
+      { title: 'How to 10x Your Productivity in 30 Days', description: 'A proven 30-day challenge that systematically eliminates distractions, builds focus habits, and creates systems that compound over time.', targetAudience: 'Students and professionals', videoLength: '16:00', difficulty: 'Medium' },
+      { title: 'Why Most Productivity Advice Is Wrong', description: 'The productivity industry is built on myths. This video debunks the most popular advice and replaces it with what actually works based on neuroscience.', targetAudience: 'Self-improvement enthusiasts', videoLength: '14:00', difficulty: 'Easy' },
     ],
     finance: [
-      '5 Passive Income Ideas for 2026',
-      'How to Build Wealth from Scratch',
-      'The Truth About Cryptocurrency Nobody Tells You',
+      { title: '5 Passive Income Ideas for 2026', description: 'Realistic passive income streams you can build this year. No get-rich-quick schemes — just proven methods that require upfront work but pay dividends.', targetAudience: 'Side hustlers', videoLength: '18:00', difficulty: 'Medium' },
+      { title: 'How to Build Wealth from Scratch', description: 'Starting with zero savings? This step-by-step wealth-building framework covers budgeting, investing, and compound growth strategies that actually work.', targetAudience: 'Young adults', videoLength: '22:00', difficulty: 'Easy' },
+      { title: 'The Truth About Cryptocurrency Nobody Tells You', description: 'Beyond the hype — a realistic look at crypto investing in 2026. What works, what doesnt, and how to protect yourself from common traps.', targetAudience: 'Investors', videoLength: '16:00', difficulty: 'Medium' },
     ],
     tech: [
-      '10 Hidden Features on Your Phone You Never Knew',
-      'The Tech Startup That Will Change Everything',
-      'Why Everyone Is Switching to This New Browser',
+      { title: '10 Hidden Features on Your Phone You Never Knew', description: 'Your smartphone has powerful features hiding in plain sight. From developer options to automation shortcuts, these tips will change how you use your device.', targetAudience: 'General tech users', videoLength: '10:00', difficulty: 'Easy' },
+      { title: 'The Tech Startup That Will Change Everything', description: 'Inside the stealth startup that VCs are calling the next unicorn. Exclusive look at their product, team, and the massive market they are targeting.', targetAudience: 'Tech enthusiasts', videoLength: '14:00', difficulty: 'Medium' },
+      { title: 'Why Everyone Is Switching to This New Browser', description: 'A privacy-focused browser has taken the tech world by storm. We explore why millions are switching and whether it lives up to the hype.', targetAudience: 'Privacy-conscious users', videoLength: '12:00', difficulty: 'Easy' },
     ],
     psychology: [
-      'Dark Psychology Tricks That Actually Work',
-      'Why Your Brain Lies to You Every Day',
-      'The Science Behind Procrastination',
+      { title: 'Dark Psychology Tricks That Actually Work', description: 'Uncover the psychological techniques used by top negotiators, salespeople, and influencers. Understanding these gives you a massive social advantage.', targetAudience: 'Self-improvement enthusiasts', videoLength: '15:00', difficulty: 'Medium' },
+      { title: 'Why Your Brain Lies to You Every Day', description: 'Cognitive biases shape every decision you make. This video reveals the most common biases and how to override them for better decision-making.', targetAudience: 'General audience', videoLength: '12:00', difficulty: 'Easy' },
+      { title: 'The Science Behind Procrastination', description: 'Procrastination is not laziness — its a complex psychological phenomenon. Neuroscience reveals why we procrastinate and the proven methods to stop.', targetAudience: 'Students and professionals', videoLength: '14:00', difficulty: 'Easy' },
     ],
     motivation: [
-      'Why Successful People Wake Up at 5 AM',
-      'The 5-Second Rule That Changes Everything',
-      'How to Build Unbreakable Discipline',
+      { title: 'Why Successful People Wake Up at 5 AM', description: 'The science behind early rising and how it correlates with success. Includes practical tips for becoming a morning person without burning out.', targetAudience: 'Aspiring achievers', videoLength: '10:00', difficulty: 'Easy' },
+      { title: 'The 5-Second Rule That Changes Everything', description: 'A simple psychological trick that can transform your confidence, productivity, and courage. Backed by research and real-world success stories.', targetAudience: 'General audience', videoLength: '12:00', difficulty: 'Easy' },
+      { title: 'How to Build Unbreakable Discipline', description: 'Discipline is not about willpower — its about systems. Learn the framework that helps you stay consistent even when motivation fades.', targetAudience: 'Goal-oriented individuals', videoLength: '16:00', difficulty: 'Medium' },
     ],
     entertainment: [
-      'Scary Facts That Sound Fake But Are 100% True',
-      'The Most Bizarre Things Found on Google Maps',
-      'Movies That Predicted the Future',
+      { title: 'Scary Facts That Sound Fake But Are 100% True', description: 'A collection of mind-blowing facts that will make you question reality. From deep ocean mysteries to space anomalies — each one is verified and terrifying.', targetAudience: 'Curious minds', videoLength: '14:00', difficulty: 'Easy' },
+      { title: 'The Most Bizarre Things Found on Google Maps', description: 'Google Maps has revealed some truly strange discoveries. From mysterious structures to unexplained phenomena, these finds will leave you speechless.', targetAudience: 'Mystery enthusiasts', videoLength: '12:00', difficulty: 'Easy' },
+      { title: 'Movies That Predicted the Future', description: 'Filmmakers predicted technology and events decades before they happened. A fascinating look at cinema that saw the future before anyone else.', targetAudience: 'Movie fans', videoLength: '18:00', difficulty: 'Medium' },
     ],
   };
 
-  const titles = topicsByNiche[niche] || topicsByNiche.tech;
+  const topics = fallbackData[niche] || fallbackData.tech;
 
-  return titles.map((title, i) => ({
+  return topics.map((topic, i) => ({
     id: crypto.randomUUID(),
-    title,
+    title: topic.title,
     niche,
     trendScore: Math.round(70 + Math.random() * 30),
     competition: (['Low', 'Medium', 'High'] as const)[i % 3],
     estimatedViews: `${Math.floor(Math.random() * 500 + 100)}K`,
-    keywords: title.toLowerCase().split(' ').filter((w) => w.length > 3).slice(0, 4),
+    keywords: topic.title.toLowerCase().split(' ').filter((w) => w.length > 3).slice(0, 4),
     source: 'fallback',
     createdAt: new Date().toISOString(),
+    description: topic.description,
+    targetAudience: topic.targetAudience,
+    videoLength: topic.videoLength,
+    difficulty: topic.difficulty,
   }));
 }
 
