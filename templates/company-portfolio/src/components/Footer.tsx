@@ -4,11 +4,11 @@ import { Sparkles, ExternalLink } from 'lucide-react';
 const footerLinks = {
   Products: [
     { href: 'https://ai-videogenerator.netlify.app', label: 'AI Video Generator', external: true },
-    { href: '/products#ai-employee', label: 'AI Employee', external: false },
+    { href: 'https://myaiemployee-578.netlify.app', label: 'AI Employee', external: true },
     { href: 'https://ai-travelagency.netlify.app', label: 'AI Travel Agency', external: true },
     { href: 'https://ai-youtube-channel.netlify.app', label: 'YT Faceless', external: true },
-    { href: '/products#bootcamp', label: 'Bootcamp Platform', external: false },
-    { href: '/products#portfolio', label: 'Portfolio Builder', external: false },
+    { href: 'https://bootcamp-landing-page-698.netlify.app', label: 'Bootcamp Platform', external: true },
+    { href: 'https://developer-portfolio-456.netlify.app', label: 'Portfolio Builder', external: true },
   ],
   Services: [
     { href: '/services#ai-solutions', label: 'AI Solutions', external: false },
