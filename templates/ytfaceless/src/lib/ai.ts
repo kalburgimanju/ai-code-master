@@ -1,27 +1,59 @@
 import type { GeneratedScript } from '@/types';
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+
+// Free models on OpenRouter (no cost, no API key needed for some)
+const FREE_MODELS = [
+  'meta-llama/llama-4-maverick:free',
+  'google/gemini-2.0-flash-exp:free',
+  'deepseek/deepseek-r1-0528:free',
+  'qwen/qwen3-235b-a22b:free',
+];
 
 export async function generateScript(
   topic: string,
   niche: string,
   targetDurationSeconds: number = 600
 ): Promise<GeneratedScript> {
-  if (!OPENAI_API_KEY) {
-    throw new Error('OPENAI_API_KEY not configured');
+  if (!OPENROUTER_API_KEY) {
+    throw new Error('OPENROUTER_API_KEY not configured');
   }
 
-  // Calculate target word count (avg 130 words/minute for narration)
   const targetWords = Math.round((targetDurationSeconds / 60) * 130);
 
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+  // Try free models in order, fall back to next if one fails
+  let lastError: string = '';
+
+  for (const model of FREE_MODELS) {
+    try {
+      const result = await tryGenerateScript(model, topic, niche, targetWords, targetDurationSeconds);
+      return result;
+    } catch (err) {
+      lastError = (err as Error).message;
+      console.warn(`Model ${model} failed: ${lastError}, trying next...`);
+    }
+  }
+
+  throw new Error(`All free models failed. Last error: ${lastError}`);
+}
+
+async function tryGenerateScript(
+  model: string,
+  topic: string,
+  niche: string,
+  targetWords: number,
+  targetDurationSeconds: number
+): Promise<GeneratedScript> {
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${OPENAI_API_KEY}`,
+      Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+      'HTTP-Referer': 'https://ytfaceless.vercel.app',
+      'X-Title': 'FaceFlow YouTube Automation',
     },
     body: JSON.stringify({
-      model: 'gpt-4o',
+      model,
       response_format: { type: 'json_object' },
       messages: [
         {
@@ -50,14 +82,13 @@ The title should be click-worthy but not clickbait.`,
   });
 
   if (!response.ok) {
-    const error = await response.json();
-    throw new Error(`OpenAI API error: ${error.error?.message || response.statusText}`);
+    const error = await response.json().catch(() => ({ error: { message: response.statusText } }));
+    throw new Error(`OpenRouter API error (${model}): ${error.error?.message || response.statusText}`);
   }
 
   const data = await response.json();
   const content = JSON.parse(data.choices[0].message.content);
 
-  // Build full text for voiceover
   const fullText = [
     content.hook,
     ...content.sections.flatMap((s: { heading: string; content: string }) => [
@@ -78,4 +109,9 @@ The title should be click-worthy but not clickbait.`,
     fullText,
     wordCount: fullText.split(/\s+/).length,
   };
+}
+
+// Get available free models
+export async function getFreeModels(): Promise<string[]> {
+  return FREE_MODELS;
 }
