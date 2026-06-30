@@ -1,5 +1,4 @@
 // Idea storage — client-side localStorage + file download helpers
-// Ideas persist in browser localStorage and can be exported as JSON/CSV files
 
 export interface StoredIdea {
   id: string;
@@ -11,12 +10,13 @@ export interface StoredIdea {
   keywords: string[];
   source: string;
   createdAt: string;
+  description: string;
+  targetAudience: string;
+  videoLength: string;
+  difficulty: 'Easy' | 'Medium' | 'Hard';
 }
 
 const STORAGE_KEY = 'faceflow_ideas';
-const AUTO_SAVE_KEY = 'faceflow_auto_save';
-
-// ===== localStorage operations =====
 
 export function loadFromStorage(): StoredIdea[] {
   if (typeof window === 'undefined') return [];
@@ -46,8 +46,6 @@ export function clearStorage() {
   localStorage.removeItem(STORAGE_KEY);
 }
 
-// ===== File download helpers =====
-
 function downloadFile(content: string, filename: string, mimeType: string) {
   if (typeof window === 'undefined') return;
   const blob = new Blob([content], { type: mimeType });
@@ -63,27 +61,14 @@ function downloadFile(content: string, filename: string, mimeType: string) {
 
 export function downloadJSON(ideas: StoredIdea[]) {
   const date = new Date().toISOString().split('T')[0];
-  const json = JSON.stringify(ideas, null, 2);
-  downloadFile(json, `faceflow-ideas-${date}.json`, 'application/json');
+  downloadFile(JSON.stringify(ideas, null, 2), `faceflow-ideas-${date}.json`, 'application/json');
 }
 
 export function downloadCSV(ideas: StoredIdea[]) {
   const date = new Date().toISOString().split('T')[0];
-  const header = 'ID,Title,Niche,Trend Score,Competition,Estimated Views,Keywords,Source,Created At\n';
+  const header = 'ID,Title,Niche,Description,Trend Score,Competition,Estimated Views,Keywords,Target Audience,Video Length,Difficulty,Source,Created At\n';
   const rows = ideas.map((i) =>
-    `"${i.id}","${i.title}","${i.niche}",${i.trendScore},"${i.competition}","${i.estimatedViews}","${i.keywords.join('; ')}","${i.source}","${i.createdAt}"`
+    `"${i.id}","${i.title}","${i.niche}","${i.description.replace(/"/g, '""')}",${i.trendScore},"${i.competition}","${i.estimatedViews}","${i.keywords.join('; ')}","${i.targetAudience}","${i.videoLength}","${i.difficulty}","${i.source}","${i.createdAt}"`
   ).join('\n');
   downloadFile(header + rows, `faceflow-ideas-${date}.csv`, 'text/csv');
-}
-
-// ===== Auto-save settings =====
-
-export function getAutoSaveEnabled(): boolean {
-  if (typeof window === 'undefined') return false;
-  return localStorage.getItem(AUTO_SAVE_KEY) === 'true';
-}
-
-export function setAutoSaveEnabled(enabled: boolean) {
-  if (typeof window === 'undefined') return;
-  localStorage.setItem(AUTO_SAVE_KEY, String(enabled));
 }
