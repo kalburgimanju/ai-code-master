@@ -6,7 +6,7 @@ const YOUTUBE_CLIENT_SECRET = process.env.YOUTUBE_CLIENT_SECRET;
 const YOUTUBE_REDIRECT_URI = process.env.YOUTUBE_REDIRECT_URI || 'http://localhost:3000/api/youtube/callback';
 
 export interface UploadParams {
-  videoBuffer: Uint8Array | ArrayBuffer;
+  videoBlob: Blob;
   videoFilename: string;
   title: string;
   description: string;
@@ -138,8 +138,6 @@ export async function uploadToYouTube(params: UploadParams): Promise<UploadResul
 
   const accessToken = await getValidAccessToken(channel);
 
-  const videoBlob = new Blob([params.videoBuffer], { type: 'video/webm' });
-
   const metadata = {
     snippet: {
       title: params.title,
@@ -155,7 +153,7 @@ export async function uploadToYouTube(params: UploadParams): Promise<UploadResul
 
   const formData = new FormData();
   formData.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
-  formData.append('video', videoBlob, params.videoFilename);
+  formData.append('video', params.videoBlob, params.videoFilename);
 
   const uploadResponse = await fetch(
     'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=multipart&part=snippet,status',

@@ -39,11 +39,8 @@ export async function POST(request: NextRequest) {
     });
 
     try {
-      // Convert File to ArrayBuffer
-      const arrayBuffer = await videoFile.arrayBuffer();
-
       const result = await uploadToYouTube({
-        videoBuffer: arrayBuffer,
+        videoBlob: videoFile,
         videoFilename: videoFile.name || 'recording.webm',
         title,
         description: description || '',
