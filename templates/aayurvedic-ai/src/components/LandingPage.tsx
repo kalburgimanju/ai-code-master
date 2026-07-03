@@ -1,0 +1,1 @@
+[{'react";\nimport Button from "@dusk-ui/button': 'interface Props {\n  onNavigateToChat: () => void;\n  onNavigateToResources: () => void;'}, {'className=': 'x-8 py-3 bg-white border border-ayurvedic-600 font-semibold hover:bg-amber-50', 'border-amber-600': 'Learn from Ancient Texts\n            </button>\n          </div>\n        </div>\n      </section>\n    </main>\n  );'}]
