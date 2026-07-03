@@ -16,3 +16,37 @@ llama_cache
 .smoke-results
 .vscode
 .vercel
+
+# All large compiled binaries and cached build artifacts
+**/*.darwin-arm64.node
+**/@next/swc-darwin-arm64/*.node
+**/@tailwindcss/oxide-darwin-arm64/*.node
+**/@img/sharp-darwin-arm64/**/*.node
+
+# Next.js build cache
+**/.next/cache/webpack/**/*.bundle
+**/.next/cache/webpack/**/*.pack
+
+# GitHub LFS excluded files (exceed GH limits)
+**/*.next/cache/webpack/client-production/*.pack
+**/*/.next/cache/webpack/*.pack
+**/node_modules/**/*
+**/.*next*
+**/.*node*
+
+# Large package files in book projects
+books/*/webapp/.next/cache/webpack/client-production/*.pack
+books/*/webapp/node_modules/@next/swc-darwin-arm64/*.node
+books/*/webapp/node_modules/@img/sharp-darwin-arm64/*.node
+
+# Additional exclusion for large webpack chunks
+**/.next/cache/webpack/*.chunk
+**/.next/cache/webpack/*.webpack
+
+# Exclude all large binary files in book projects from git tracking
+books/*/webapp/node_modules/**/*.node
+books/*/webapp/.next/cache/**/*.pack
+
+# Exclude specific large files that exceeded GitHub limits
+books/AI-Safety-Experts/webapp/.next/cache/webpack/client-production/0.pack
+books/AI-Safety-Experts/webapp/node_modules/@next/swc-darwin-arm64/next-swc.darwin-arm64.node
