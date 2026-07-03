@@ -17,36 +17,39 @@ llama_cache
 .vscode
 .vercel
 
-# All large compiled binaries and cached build artifacts
+# Exclude all large binary files (.node) from git tracking
 **/*.darwin-arm64.node
 **/@next/swc-darwin-arm64/*.node
+**/@img/sharp-darwin-arm64/*.node
 **/@tailwindcss/oxide-darwin-arm64/*.node
-**/@img/sharp-darwin-arm64/**/*.node
+**/@unrs/resolver-binding-darwin-arm64/*.node
+**/*lightningcss.darwin-arm64.node
 
-# Next.js build cache
-**/.next/cache/webpack/**/*.bundle
+# Next.js build artifacts (pack and bundle files)
 **/.next/cache/webpack/**/*.pack
-
-# GitHub LFS excluded files (exceed GH limits)
-**/*.next/cache/webpack/client-production/*.pack
-**/*/.next/cache/webpack/*.pack
-**/node_modules/**/*
-**/.*next*
-**/.*node*
-
-# Large package files in book projects
-books/*/webapp/.next/cache/webpack/client-production/*.pack
-books/*/webapp/node_modules/@next/swc-darwin-arm64/*.node
-books/*/webapp/node_modules/@img/sharp-darwin-arm64/*.node
-
-# Additional exclusion for large webpack chunks
+**/.next/cache/webpack/**/*.bundle
 **/.next/cache/webpack/*.chunk
-**/.next/cache/webpack/*.webpack
 
-# Exclude all large binary files in book projects from git tracking
-books/*/webapp/node_modules/**/*.node
-books/*/webapp/.next/cache/**/*.pack
+# Exclude all .next/cache directories (compiled build artifacts)
+**/.next/cache/**/*
 
-# Exclude specific large files that exceeded GitHub limits
-books/AI-Safety-Experts/webapp/.next/cache/webpack/client-production/0.pack
-books/AI-Safety-Experts/webapp/node_modules/@next/swc-darwin-arm64/next-swc.darwin-arm64.node
+# Exclude package directories that contain large binaries
+**/node_modules/@next/swc-darwin-arm64/
+**/node_modules/@img/sharp-darwin-arm64/
+**/node_modules/@tailwindcss/oxide-darwin-arm64/
+**/node_modules/@unrs/resolver-binding-darwin-arm64/
+**/node_modules/lightningcss-darwin-arm64/
+
+# Exclude large webpack cache files in book projects
+books/*/webapp/.next/cache/webpack/*.pack
+books/*/webapp/.next/cache/webpack/client-production/*.pack
+
+# Exclude .next directories in all book project webapps
+books/*/webapp/.next/
+
+# Exclude all node_modules directories at book webapp level
+books/*/webapp/node_modules/
+
+# Exclude all large compiled binary files that exceed GitHub limits
+*.pack
+*.node
