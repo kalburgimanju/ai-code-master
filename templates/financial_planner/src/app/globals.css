@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950 text-dark-200 font-sans antialiased min-h-screen;
+  }
+  * { @apply border-dark-800; }
+}
+
+@layer components {
+  .card { @apply bg-dark-900/80 backdrop-blur-sm border border-dark-800 rounded-2xl p-5; }
+  .card-hover { @apply card hover:border-finance-500/30 hover:shadow-lg hover:shadow-finance-500/5 transition-all duration-300; }
+  .btn-primary { @apply bg-finance-600 hover:bg-finance-500 text-white px-5 py-2.5 rounded-xl font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2; }
+  .btn-secondary { @apply bg-dark-800 hover:bg-dark-700 text-dark-200 px-5 py-2.5 rounded-xl font-medium transition-all duration-200 border border-dark-700 inline-flex items-center gap-2; }
+  .btn-ghost { @apply hover:bg-dark-800 text-dark-400 hover:text-dark-200 px-3 py-1.5 rounded-xl transition-all duration-200 inline-flex items-center gap-1.5; }
+  .btn-success { @apply bg-prop-600 hover:bg-prop-500 text-white px-5 py-2.5 rounded-xl font-medium transition-all duration-200 inline-flex items-center gap-2; }
+  .input { @apply w-full bg-dark-800 border border-dark-700 rounded-xl px-4 py-2.5 text-dark-200 placeholder-dark-500 focus:outline-none focus:ring-2 focus:ring-finance-500/40 focus:border-finance-500/60 transition-all; }
+  .select { @apply input appearance-none cursor-pointer; }
+  .badge { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium; }
+  .badge-green { @apply badge bg-prop-500/20 text-prop-400; }
+  .badge-blue { @apply badge bg-finance-500/20 text-finance-400; }
+  .badge-yellow { @apply badge bg-yellow-500/20 text-yellow-400; }
+  .badge-red { @apply badge bg-red-500/20 text-red-400; }
+  .badge-gray { @apply badge bg-dark-700 text-dark-400; }
+  .label { @apply block text-sm font-medium text-dark-400 mb-1.5; }
+  .gradient-text { @apply bg-gradient-to-r from-finance-400 to-prop-400 bg-clip-text text-transparent; }
+  .section-title { @apply text-2xl font-bold text-white; }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { @apply bg-transparent; }
+::-webkit-scrollbar-thumb { @apply bg-dark-700 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-dark-600; }
+
+.animate-fade-in { animation: fadeIn 0.5s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.progress-bar { @apply h-2 rounded-full bg-dark-800 overflow-hidden; }
+.progress-fill { @apply h-full rounded-full bg-gradient-to-r from-finance-500 to-prop-500 transition-all duration-500; }

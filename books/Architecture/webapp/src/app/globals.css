@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-background: var(--bg);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border-color);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --primary: #0891b2;
+  --primary-light: #06b6d4;
+  --primary-dark: #0e7490;
+  --bg: #ffffff;
+  --bg-alt: #f0fdfa;
+  --surface: #ffffff;
+  --surface-hover: #f0fdfa;
+  --border-color: #e2e8f0;
+  --foreground: #0f172a;
+  --foreground-muted: #64748b;
+  --code-bg: #f1f5f9;
+}
+
+.dark {
+  --primary: #22d3ee;
+  --primary-light: #67e8f9;
+  --primary-dark: #06b6d4;
+  --bg: #0c1222;
+  --bg-alt: #0f1a2e;
+  --surface: #131b2e;
+  --surface-hover: #1a2540;
+  --border-color: #1e2d4a;
+  --foreground: #e2e8f0;
+  --foreground-muted: #94a3b8;
+  --code-bg: #1a2540;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Reading progress bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  z-index: 100;
+  transition: width 0.1s ease-out;
+}
+
+/* Sidebar active state */
+.sidebar-active {
+  background: var(--primary);
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.15), rgba(6, 182, 212, 0.1));
+  color: var(--primary);
+  border-left: 3px solid var(--primary);
+}
+
+/* Prose overrides for book content */
+.prose-book {
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.prose-book h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+  letter-spacing: -0.025em;
+}
+
+.prose-book h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--foreground);
+  letter-spacing: -0.02em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.prose-book h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.prose-book h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+}
+
+.prose-book p {
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.prose-book ul,
+.prose-book ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose-book li {
+  margin-bottom: 0.35rem;
+}
+
+.prose-book code {
+  background: var(--code-bg);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: "Fira Code", "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", monospace;
+  color: var(--primary-dark);
+}
+
+.dark .prose-book code {
+  color: var(--primary-light);
+}
+
+.prose-book pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.prose-book pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.prose-book blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+  margin: 1.25rem 0;
+  color: var(--foreground-muted);
+  font-style: italic;
+  background: rgba(8, 145, 178, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.prose-book a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-book a:hover {
+  color: var(--primary-dark);
+}
+
+.prose-book strong {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.prose-book em {
+  font-style: italic;
+}
+
+.prose-book hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+.prose-book table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.prose-book th,
+.prose-book td {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.prose-book th {
+  background: var(--surface);
+  font-weight: 600;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-muted);
+}

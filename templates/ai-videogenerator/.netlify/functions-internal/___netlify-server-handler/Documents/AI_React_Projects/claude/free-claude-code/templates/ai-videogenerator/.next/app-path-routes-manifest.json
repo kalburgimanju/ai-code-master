@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/api/youtube/callback/route": "/api/youtube/callback",
+  "/api/youtube/auth/route": "/api/youtube/auth",
+  "/api/youtube/disconnect/route": "/api/youtube/disconnect",
+  "/api/youtube/channel/route": "/api/youtube/channel",
+  "/api/youtube/upload/route": "/api/youtube/upload",
+  "/page": "/",
+  "/policy/page": "/policy",
+  "/terms/page": "/terms"
+}

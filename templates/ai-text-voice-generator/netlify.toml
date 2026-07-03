@@ -1,0 +1,14 @@
+[build]
+  command = "npx next build"
+  publish = "out"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/api/:splat"
+  status = 200

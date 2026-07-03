@@ -1,0 +1,28 @@
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/Users/manjunathkalburgi/Documents/AI_React_Projects/claude/free-claude-code/templates/portfolio/dist"
+publishOrigin = "config"
+commandOrigin = "config"
+base = "/Users/manjunathkalburgi/Documents/AI_React_Projects/claude/free-claude-code/templates/portfolio"
+command = "npm install && npx vite build"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]

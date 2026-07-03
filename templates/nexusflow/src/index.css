@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-surface-950 text-surface-200 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-nexus-600 hover:bg-nexus-500 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-surface-800 hover:bg-surface-700 text-surface-200 px-4 py-2 rounded-lg font-medium transition-colors duration-150 border border-surface-700;
+  }
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-150;
+  }
+  .btn-ghost {
+    @apply hover:bg-surface-800 text-surface-400 hover:text-surface-200 px-3 py-1.5 rounded-lg transition-colors duration-150;
+  }
+  .card {
+    @apply bg-surface-900 border border-surface-800 rounded-xl p-6;
+  }
+  .input {
+    @apply bg-surface-800 border border-surface-700 rounded-lg px-3 py-2 text-surface-200 placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-nexus-500/50 focus:border-nexus-500 transition-all w-full;
+  }
+  .select {
+    @apply bg-surface-800 border border-surface-700 rounded-lg px-3 py-2 text-surface-200 focus:outline-none focus:ring-2 focus:ring-nexus-500/50 focus:border-nexus-500 transition-all w-full appearance-none;
+  }
+  .label {
+    @apply block text-sm font-medium text-surface-400 mb-1;
+  }
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-success {
+    @apply badge bg-emerald-500/20 text-emerald-400;
+  }
+  .badge-error {
+    @apply badge bg-red-500/20 text-red-400;
+  }
+  .badge-warning {
+    @apply badge bg-amber-500/20 text-amber-400;
+  }
+  .badge-info {
+    @apply badge bg-blue-500/20 text-blue-400;
+  }
+  .badge-draft {
+    @apply badge bg-surface-700 text-surface-400;
+  }
+}
+
+/* ReactFlow overrides */
+.react-flow__node {
+  @apply rounded-xl border border-surface-700 overflow-hidden;
+}
+
+.react-flow__node.selected {
+  @apply border-nexus-500 shadow-lg shadow-nexus-500/20;
+}
+
+.react-flow__controls {
+  @apply !bg-surface-900 !border-surface-800 rounded-lg overflow-hidden;
+}
+
+.react-flow__controls-button {
+  @apply !bg-surface-900 !border-surface-800 !text-surface-400 hover:!bg-surface-800;
+}
+
+.react-flow__background {
+  @apply !bg-surface-950;
+}
+
+.react-flow__attribution {
+  @apply !hidden;
+}
+
+.react-flow__handle {
+  @apply !w-3 !h-3 !border-2 !border-surface-900;
+}
+
+.react-flow__handle-connecting {
+  @apply !bg-nexus-500;
+}
+
+.react-flow__edge-path {
+  @apply !stroke-surface-500;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  @apply !stroke-nexus-500;
+}
+
+.react-flow__minimap {
+  @apply !bg-surface-900 !border-surface-800 rounded-lg overflow-hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-700 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-surface-600;
+}
+
+/* Animations */
+@keyframes node-entrance {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.node-entrance {
+  animation: node-entrance 0.2s ease-out;
+}
