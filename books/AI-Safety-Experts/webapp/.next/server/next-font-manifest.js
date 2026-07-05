@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/Users/manjunathkalburgi/Documents/AI_React_Projects/claude/free-claude-code/books/AI-Safety-Experts/webapp/src/app/layout":["static/media/22a5144ee8d83bca-s.p.woff2","static/media/7d4881bb7e1bf84d-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';
