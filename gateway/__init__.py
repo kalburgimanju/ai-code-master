@@ -1,16 +1,16 @@
 """API Gateway for NexusAI Marketplace"""
 
-from .main import app
-from .auth import authenticate_api_key, require_auth
-from .services import ServiceRegistry
-from .billing import SubscriptionManager
 from .analytics import AnalyticsCollector
+from .auth import authenticate_api_key, require_auth
+from .billing import SubscriptionManager
+from .main import app
+from .services import ServiceRegistry
 
 __all__ = [
-    'app',
-    'authenticate_api_key',
-    'require_auth',
-    'ServiceRegistry',
-    'SubscriptionManager',
-    'AnalyticsCollector'
+    "AnalyticsCollector",
+    "ServiceRegistry",
+    "SubscriptionManager",
+    "app",
+    "authenticate_api_key",
+    "require_auth",
 ]
