@@ -16,3 +16,40 @@ llama_cache
 .smoke-results
 .vscode
 .vercel
+
+# Exclude all large binary files (.node) from git tracking
+**/*.darwin-arm64.node
+**/@next/swc-darwin-arm64/*.node
+**/@img/sharp-darwin-arm64/*.node
+**/@tailwindcss/oxide-darwin-arm64/*.node
+**/@unrs/resolver-binding-darwin-arm64/*.node
+**/*lightningcss.darwin-arm64.node
+
+# Next.js build artifacts (pack and bundle files)
+**/.next/cache/webpack/**/*.pack
+**/.next/cache/webpack/**/*.bundle
+**/.next/cache/webpack/*.chunk
+
+# Exclude all .next/cache directories (compiled build artifacts)
+**/.next/cache/**/*
+
+# Exclude package directories that contain large binaries
+**/node_modules/@next/swc-darwin-arm64/
+**/node_modules/@img/sharp-darwin-arm64/
+**/node_modules/@tailwindcss/oxide-darwin-arm64/
+**/node_modules/@unrs/resolver-binding-darwin-arm64/
+**/node_modules/lightningcss-darwin-arm64/
+
+# Exclude large webpack cache files in book projects
+books/*/webapp/.next/cache/webpack/*.pack
+books/*/webapp/.next/cache/webpack/client-production/*.pack
+
+# Exclude .next directories in all book project webapps
+books/*/webapp/.next/
+
+# Exclude all node_modules directories at book webapp level
+books/*/webapp/node_modules/
+
+# Exclude all large compiled binary files that exceed GitHub limits
+*.pack
+*.node

@@ -1,8 +1,8 @@
-export type City = 'Hubli' | 'Bangalore' | 'Mysore';
+export type City = 'Hubli' | 'Bangalore' | 'Mysore' | 'Dharwad' | 'Mandya' | 'Chikkaballapura' | 'Bangalore Rural' | 'Bengaluru Urban';
 
-export type PropertyType = 'Apartment' | 'Villa' | 'Plot' | 'Penthouse' | 'Commercial';
+export type PropertyType = 'Apartment' | 'Villa' | 'Plot' | 'Penthouse' | 'Commercial' | 'Farmland' | 'Agricultural Land' | 'Residential Plot';
 
-export type PropertyStatus = 'Ready to Move' | 'Under Construction' | 'Pre-Launch';
+export type PropertyStatus = 'Ready to Move' | 'Under Construction' | 'Pre-Launch' | 'Featured' | 'Verified' | 'Ready for Registration' | 'Ready for Construction';
 
 export interface ProjectContact {
   salesPhone: string;

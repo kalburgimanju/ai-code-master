@@ -26,8 +26,8 @@ from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
-from reportlab.lib.units import cm, mm
-from reportlab.platypus import (  # type: ignore[import-untyped]
+from reportlab.lib.units import cm
+from reportlab.platypus import (
     BaseDocTemplate,
     Frame,
     NextPageTemplate,
@@ -38,7 +38,7 @@ from reportlab.platypus import (  # type: ignore[import-untyped]
     Table,
     TableStyle,
 )
-from reportlab.platypus.flowables import HRFlowable, Flowable
+from reportlab.platypus.flowables import Flowable, HRFlowable
 
 # ── Paths ────────────────────────────────────────────────────────────────────
 BOOK_DIR = Path(__file__).resolve().parent
@@ -56,8 +56,9 @@ CHAPTER_FILES = sorted(glob.glob(str(BOOK_DIR / "chapter-*.md")))
 
 def _init_styles() -> None:
     """Initialize the global STYLES dict."""
-    global STYLES  # noqa: PLW0603
+    global STYLES
     STYLES = _build_styles()
+
 
 # ── Color palette (indigo theme) ────────────────────────────────────────────
 PRIMARY = colors.HexColor("#6366f1")
@@ -354,9 +355,13 @@ def _make_table_flowable(rows: list[list[str]]) -> Table:
         ("RIGHTPADDING", (0, 0), (-1, -1), 6),
     ]
     # Alternate row colors
-    for row_idx in range(1, len(table_data)):
-        if row_idx % 2 == 0:
-            style_cmds.append(("BACKGROUND", (0, row_idx), (-1, row_idx), BG_LIGHT))
+    style_cmds.extend(
+        [
+            ("BACKGROUND", (0, row_idx), (-1, row_idx), BG_LIGHT)
+            for row_idx in range(1, len(table_data))
+            if row_idx % 2 == 0
+        ]
+    )
     t.setStyle(TableStyle(style_cmds))
     return t
 
@@ -381,7 +386,11 @@ def _md_to_flowables(md_text: str) -> list[Any]:
             flowables.append(Spacer(1, 4))
             flowables.append(
                 HRFlowable(
-                    width="100%", thickness=1, color=BORDER_COLOR, spaceAfter=8, spaceBefore=4
+                    width="100%",
+                    thickness=1,
+                    color=BORDER_COLOR,
+                    spaceAfter=8,
+                    spaceBefore=4,
                 )
             )
             i += 1
@@ -389,7 +398,6 @@ def _md_to_flowables(md_text: str) -> list[Any]:
 
         # Code block (fenced)
         if stripped.startswith("```"):
-            lang = stripped[3:].strip()
             code_lines: list[str] = []
             i += 1
             while i < len(lines) and not lines[i].strip().startswith("```"):
@@ -418,7 +426,7 @@ def _md_to_flowables(md_text: str) -> list[Any]:
                 spaceBefore=0,
                 spaceAfter=0,
             )
-            for ci, chunk in enumerate(chunks):
+            for _ci, chunk in enumerate(chunks):
                 chunk_html = _esc(chunk).replace("\n", "<br/>")
                 code_para = Paragraph(chunk_html, code_style)
                 code_table = Table([[code_para]], colWidths=[PAGE_W - 4 * cm])
@@ -461,16 +469,12 @@ def _md_to_flowables(md_text: str) -> list[Any]:
                 ch_match = re.match(r"Chapter\s+(\d+):", heading_text)
                 if ch_match:
                     flowables.append(
-                        Paragraph(
-                            f"Chapter {ch_match.group(1)}", STYLES["chapter_num"]
-                        )
+                        Paragraph(f"Chapter {ch_match.group(1)}", STYLES["chapter_num"])
                     )
                     heading_text = re.sub(r"Chapter\s+\d+:\s*", "", heading_text)
                 flowables.append(Paragraph(heading_text, STYLES["h1"]))
                 flowables.append(
-                    HRFlowable(
-                        width="100%", thickness=2, color=PRIMARY, spaceAfter=10
-                    )
+                    HRFlowable(width="100%", thickness=2, color=PRIMARY, spaceAfter=10)
                 )
             elif level == 2:
                 flowables.append(Paragraph(heading_text, STYLES["h2"]))
@@ -485,9 +489,7 @@ def _md_to_flowables(md_text: str) -> list[Any]:
         if stripped.startswith(">"):
             quote_lines: list[str] = []
             while i < len(lines) and lines[i].strip().startswith(">"):
-                quote_lines.append(
-                    lines[i].strip().lstrip(">").strip()
-                )
+                quote_lines.append(lines[i].strip().lstrip(">").strip())
                 i += 1
             quote_text = " ".join(quote_lines)
             quote_text = _inline_md(_esc(quote_text))
@@ -512,16 +514,13 @@ def _md_to_flowables(md_text: str) -> list[Any]:
                     i += 1
                 elif lines[i].strip() == "":
                     # Empty line might end the list; peek ahead
-                    if i + 1 < len(lines) and re.match(
-                        r"^\s*[-*+]\s+", lines[i + 1]
-                    ):
+                    if i + 1 < len(lines) and re.match(r"^\s*[-*+]\s+", lines[i + 1]):
                         i += 1
                         continue
                     break
                 else:
                     break
-            for item in list_items:
-                flowables.append(Paragraph(item, STYLES["li"]))
+            flowables.extend([Paragraph(item, STYLES["li"]) for item in list_items])
             flowables.append(Spacer(1, 3))
             continue
 
@@ -535,15 +534,11 @@ def _md_to_flowables(md_text: str) -> list[Any]:
                     counter += 1
                     text = _inline_md(_esc(ol_m.group(2).strip()))
                     flowables.append(
-                        Paragraph(
-                            f"{counter}.&nbsp;&nbsp;{text}", STYLES["li"]
-                        )
+                        Paragraph(f"{counter}.&nbsp;&nbsp;{text}", STYLES["li"])
                     )
                     i += 1
                 elif lines[i].strip() == "":
-                    if i + 1 < len(lines) and re.match(
-                        r"^\s*\d+[.)]\s+", lines[i + 1]
-                    ):
+                    if i + 1 < len(lines) and re.match(r"^\s*\d+[.)]\s+", lines[i + 1]):
                         i += 1
                         continue
                     break
@@ -603,7 +598,11 @@ class TitlePage(Flowable):
         # Title
         canvas.setFillColor(WHITE)
         canvas.setFont("Helvetica-Bold", 34)
-        title_lines = ["AGI:", "The Complete Guide to", "Artificial General Intelligence"]
+        title_lines = [
+            "AGI:",
+            "The Complete Guide to",
+            "Artificial General Intelligence",
+        ]
         y_pos = PAGE_H * 0.7
         for line in title_lines:
             tw = canvas.stringWidth(line, "Helvetica-Bold", 34)
@@ -754,7 +753,7 @@ def _build_pdf(chapter_files: list[str]) -> None:
             if ch_num in chapter_nums:
                 entry = (
                     f'<font color="#6366f1"><b>Chapter {ch_num}</b></font>'
-                    f'&nbsp;&nbsp;&nbsp;{ch_title}'
+                    f"&nbsp;&nbsp;&nbsp;{ch_title}"
                 )
                 story.append(Paragraph(entry, STYLES["toc_chapter"]))
         story.append(Spacer(1, 4))
