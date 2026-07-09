@@ -5,6 +5,7 @@ on:
     branches: [master, main]
     paths:
       - "templates/sleeppost-ai/**"
+      - ".github/workflows/deploy-sleeppost-ai.yml"
   workflow_dispatch:
 
 permissions:
