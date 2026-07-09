@@ -1,0 +1,63 @@
+name: Deploy SleepPost AI to GitHub Pages
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "templates/sleeppost-ai/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: templates/sleeppost-ai/package-lock.json
+
+      - name: Install dependencies
+        working-directory: templates/sleeppost-ai
+        run: npm ci
+
+      - name: Build Vite app
+        working-directory: templates/sleeppost-ai
+        run: npx vite build --base=/ai-code-master/templates/sleeppost-ai/
+
+      - name: Add SPA 404 redirect
+        working-directory: templates/sleeppost-ai
+        run: |
+          cp dist/index.html dist/404.html
+          sed -i 's|<head>|<head>\n    <script>\n      // SPA redirect for GitHub Pages\n      const path = window.location.pathname;\n      if (path !== \"/\" && !path.includes(\".\")) {\n        window.location.replace(\"/ai-code-master/templates/sleeppost-ai/?p=\" + encodeURIComponent(path));\n      }\n    </script>|' dist/404.html
+
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p _site
+          cp -r templates/sleeppost-ai/dist/* _site/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
