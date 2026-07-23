@@ -236,42 +236,29 @@ export default function MarketplacePage() {
 
       const systemPrompt = `You are an expert web developer. Generate a complete, professional multi-page website.
 
-You MUST return ONLY valid JSON — no markdown, no code fences, no explanations.
+Return a JSON object with a "pages" key containing an object with keys "Home", "About", "Services", "Contact". Each value is a full HTML document as a string.
 
-The JSON must have this exact structure:
-{
-  "pages": {
-    "Home": "<!DOCTYPE html>...full HTML...",
-    "About": "<!DOCTYPE html>...full HTML...",
-    "Services": "<!DOCTYPE html>...full HTML...",
-    "Contact": "<!DOCTYPE html>...full HTML..."
-  }
-}
+Structure:
+{"pages":{"Home":"<!DOCTYPE html>...","About":"<!DOCTYPE html>...","Services":"<!DOCTYPE html>...","Contact":"<!DOCTYPE html>..."}}
 
-RULES FOR EACH PAGE:
-1. Each page is a standalone complete HTML file (DOCTYPE, html, head, body)
-2. Include Inter font from Google Fonts in every page
-3. Dark theme: backgrounds #0a0a0a to #1e293b range
-4. Use FREE Unsplash images: https://images.unsplash.com/photo-XXXXX?w=800
+Rules:
+1. Each page must be a complete HTML file with DOCTYPE, html, head, body tags
+2. Include Inter font from Google Fonts in each page
+3. Dark theme: backgrounds #0a0a0a to #1e293b
+4. Use FREE images from Unsplash (direct URLs)
 5. Responsive and mobile-friendly
-6. Modern CSS: flexbox, grid, gradients, animations, border-radius, backdrop-filter
-7. Realistic content based on the project title
-8. Visually stunning with smooth transitions and hover effects
-9. CRITICAL: The navigation bar is injected automatically — do NOT add your own nav. Just include the <body> content.
+6. Modern CSS: flexbox, grid, gradients, animations, border-radius
+7. Realistic content relevant to the project
+8. CRITICAL: Do NOT add a navigation bar. It will be injected automatically.
+9. Make it visually stunning with smooth transitions and hover effects
 
-NAVIGATION RULES:
-- Use semantic sections, not <nav> tags — nav is injected
-- Every page links to the others via anchor tags using hash routing
-- Links in body content should use onclick="window.__switchPage('pagename');return false;" with href="#pagename"
-- Pages: Home, About, Services, Contact
+Content for each page:
+- Home: hero with title, subtitle, CTA button, then a features grid (3 cards)
+- About: company mission, team info, values with icons
+- Services: service cards with descriptions and tags
+- Contact: contact form, office address, email, phone info
 
-PAGE CONTENT GUIDELINES:
-- Home: hero section + key features grid (3 items)
-- About: mission, team, values sections
-- Services: detailed service cards with tags
-- Contact: contact form + office info + map placeholder
-
-Return ONLY the JSON object. No other text.`;
+Return ONLY the JSON. No markdown fences, no explanations.`;
 
       const res = await fetch('/api/openrouter', {
         method: 'POST',
@@ -294,21 +281,105 @@ Return ONLY the JSON object. No other text.`;
       const data = await res.json();
       let raw = data.choices?.[0]?.message?.content || '';
 
-      // Strip markdown fences
-      raw = raw.replace(/^```json\n?/i, '').replace(/^```\n?/i, '').replace(/\n?```$/i, '').trim();
+      // Strip markdown code fences (```json ... ``` or ``` ... ```) — handles nested or multiple
+      raw = raw.replace(/```(?:json|html|javascript)?\s*\n?/gi, '').replace(/\n?```\s*$/g, '').trim();
+      // Also strip any leading/trailing non-JSON text
+      const firstBrace = raw.indexOf('{');
+      const lastBrace = raw.lastIndexOf('}');
+      if (firstBrace !== -1 && lastBrace > firstBrace) {
+        raw = raw.substring(firstBrace, lastBrace + 1);
+      }
 
-      let parsed: any;
-      try { parsed = JSON.parse(raw); } catch { throw new Error('AI returned invalid JSON. Please try again.'); }
+      // Strategy 1: Try parsing as JSON directly
+      let parsed: any = null;
+      try {
+        parsed = JSON.parse(raw);
+      } catch {
+        // Strategy 2: Try to extract JSON object from the response
+        const jsonMatch = raw.match(/\{[\s\S]*"pages"\s*:\s*\{[\s\S]*\}\s*\}/);
+        if (jsonMatch) {
+          try { parsed = JSON.parse(jsonMatch[0]); } catch {}
+        }
+      }
 
-      const rawPages: Record<string, string> = parsed.pages || parsed;
-      if (!rawPages || typeof rawPages !== 'object') throw new Error('Missing pages object in AI response.');
+      let pages: Record<string, string> = {};
 
-      const pageNames = Object.keys(rawPages);
-      const pages: Record<string, string> = {};
-      for (const [name, html] of Object.entries(rawPages)) {
-        if (typeof html !== 'string') continue;
-        const slug = name.toLowerCase().replace(/\s+/g, '-');
-        pages[name] = injectNav(html, pageNames, slug);
+      if (parsed && typeof parsed === 'object') {
+        const rawPages: Record<string, string> = parsed.pages || parsed;
+        if (rawPages && typeof rawPages === 'object') {
+          const pageNames = Object.keys(rawPages);
+          for (const [name, html] of Object.entries(rawPages)) {
+            if (typeof html !== 'string') continue;
+            const slug = name.toLowerCase().replace(/\s+/g, '-');
+            pages[name] = injectNav(html, pageNames, slug);
+          }
+        }
+      }
+
+      // Strategy 3: If no pages extracted, look for standalone HTML blocks
+      if (Object.keys(pages).length === 0) {
+        // Extract all HTML documents from the response
+        const htmlBlocks: string[] = [];
+        const doctypeRegex = /<!DOCTYPE[^>]*>[\s\S]*?<\/html>/gi;
+        let match;
+        while ((match = doctypeRegex.exec(raw)) !== null) {
+          htmlBlocks.push(match[0]);
+        }
+
+        if (htmlBlocks.length === 0) {
+          // Try finding any <html> ... </html>
+          const htmlTagRegex = /<html[\s\S]*?<\/html>/gi;
+          while ((match = htmlTagRegex.exec(raw)) !== null) {
+            htmlBlocks.push(match[0]);
+          }
+        }
+
+        if (htmlBlocks.length > 0) {
+          // If only one HTML block, split it into pages by sections
+          if (htmlBlocks.length === 1) {
+            const html = htmlBlocks[0];
+            const sectionRegex = /<section[^>]*id="([^"]*)"[^>]*>([\s\S]*?)<\/section>/gi;
+            const sections: Record<string, string> = {};
+            let secMatch;
+            while ((secMatch = sectionRegex.exec(html)) !== null) {
+              sections[secMatch[1]] = secMatch[2];
+            }
+
+            if (Object.keys(sections).length >= 2) {
+              // Build pages from sections
+              const navPageNames = ['Home', 'About', 'Services', 'Contact'];
+              const mapping: Record<string, string> = { home: 'Home', about: 'About', services: 'Services', contact: 'Contact' };
+              for (const [id, content] of Object.entries(sections)) {
+                const pageName = mapping[id.toLowerCase()] || id.charAt(0).toUpperCase() + id.slice(1);
+                pages[pageName] = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${pageName}</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;padding-top:3.5rem}</style></head><body>${content}</body></html>`;
+              }
+              // Patch nav into each page
+              const patchedPages: Record<string, string> = {};
+              for (const [name, html] of Object.entries(pages)) {
+                const slug = name.toLowerCase().replace(/\s+/g, '-');
+                patchedPages[name] = injectNav(html, navPageNames, slug);
+              }
+              pages = patchedPages;
+            } else {
+              // Single HTML block, just use it as Home
+              const navPageNames = ['Home'];
+              pages['Home'] = injectNav(html, navPageNames, 'home');
+            }
+          } else {
+            // Multiple HTML blocks — use them as separate pages
+            const defaultNames = ['Home', 'About', 'Services', 'Contact'];
+            const navPageNames = htmlBlocks.map((_, i) => defaultNames[i] || `Page ${i + 1}`);
+            htmlBlocks.forEach((html, i) => {
+              const name = navPageNames[i];
+              const slug = name.toLowerCase().replace(/\s+/g, '-');
+              pages[name] = injectNav(html, navPageNames, slug);
+            });
+          }
+        }
+      }
+
+      if (Object.keys(pages).length === 0) {
+        throw new Error('AI did not return usable HTML. Please try again with a different title.');
       }
 
       const project: PortfolioProject = {
