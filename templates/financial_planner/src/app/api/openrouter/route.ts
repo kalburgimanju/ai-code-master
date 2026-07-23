@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     const data = await res.json();
     const content = data.choices?.[0]?.message?.content || '';
 
-    return NextResponse.json({ content });
+    return NextResponse.json({ content, choices: data.choices });
   } catch (error: any) {
     return NextResponse.json(
       { error: `Proxy error: ${error.message}` },
