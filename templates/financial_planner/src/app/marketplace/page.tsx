@@ -266,6 +266,7 @@ Return ONLY the JSON. No markdown fences, no explanations.`;
         body: JSON.stringify({
           apiKey,
           model: 'openai/gpt-4o-mini',
+          max_tokens: 16000,
           messages: [
             { role: 'system', content: systemPrompt },
             { role: 'user', content: `Create a professional multi-page website for: "${title}". Return ONLY JSON with a "pages" object containing keys: Home, About, Services, Contact — each with a full HTML string value.` },
@@ -280,25 +281,44 @@ Return ONLY the JSON. No markdown fences, no explanations.`;
 
       const data = await res.json();
       let raw = data.choices?.[0]?.message?.content || '';
+      const finishReason = data.choices?.[0]?.finish_reason;
 
-      // Strip markdown code fences (```json ... ``` or ``` ... ```) — handles nested or multiple
+      if (!raw || raw.trim().length === 0) {
+        throw new Error('AI returned an empty response. Please try again.');
+      }
+
+      // Detect truncation
+      if (finishReason === 'length') {
+        throw new Error('Response was cut off (token limit). The AI generated too much content. Please try with a simpler project name.');
+      }
+
+      console.log('[Marketplace] Raw AI response length:', raw.length, 'finish_reason:', finishReason);
+
+      // Strip markdown code fences
       raw = raw.replace(/```(?:json|html|javascript)?\s*\n?/gi, '').replace(/\n?```\s*$/g, '').trim();
-      // Also strip any leading/trailing non-JSON text
+      // Extract JSON from surrounding text
       const firstBrace = raw.indexOf('{');
       const lastBrace = raw.lastIndexOf('}');
       if (firstBrace !== -1 && lastBrace > firstBrace) {
         raw = raw.substring(firstBrace, lastBrace + 1);
       }
 
-      // Strategy 1: Try parsing as JSON directly
+      // Strategy 1: Parse JSON directly
       let parsed: any = null;
       try {
         parsed = JSON.parse(raw);
       } catch {
-        // Strategy 2: Try to extract JSON object from the response
-        const jsonMatch = raw.match(/\{[\s\S]*"pages"\s*:\s*\{[\s\S]*\}\s*\}/);
-        if (jsonMatch) {
-          try { parsed = JSON.parse(jsonMatch[0]); } catch {}
+        // Strategy 2: Try extracting the pages object specifically
+        const pagesMatch = raw.match(/"pages"\s*:\s*\{([\s\S]*)\}\s*\}/);
+        if (pagesMatch) {
+          try { parsed = JSON.parse(`{${pagesMatch[0]}}`); } catch {}
+        }
+        // Strategy 3: Try finding any JSON-like block
+        if (!parsed) {
+          const jsonMatch = raw.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            try { parsed = JSON.parse(jsonMatch[0]); } catch {}
+          }
         }
       }
 
@@ -316,18 +336,15 @@ Return ONLY the JSON. No markdown fences, no explanations.`;
         }
       }
 
-      // Strategy 3: If no pages extracted, look for standalone HTML blocks
+      // Strategy 4: If no pages, extract standalone HTML blocks
       if (Object.keys(pages).length === 0) {
-        // Extract all HTML documents from the response
         const htmlBlocks: string[] = [];
         const doctypeRegex = /<!DOCTYPE[^>]*>[\s\S]*?<\/html>/gi;
         let match;
         while ((match = doctypeRegex.exec(raw)) !== null) {
           htmlBlocks.push(match[0]);
         }
-
         if (htmlBlocks.length === 0) {
-          // Try finding any <html> ... </html>
           const htmlTagRegex = /<html[\s\S]*?<\/html>/gi;
           while ((match = htmlTagRegex.exec(raw)) !== null) {
             htmlBlocks.push(match[0]);
@@ -335,7 +352,6 @@ Return ONLY the JSON. No markdown fences, no explanations.`;
         }
 
         if (htmlBlocks.length > 0) {
-          // If only one HTML block, split it into pages by sections
           if (htmlBlocks.length === 1) {
             const html = htmlBlocks[0];
             const sectionRegex = /<section[^>]*id="([^"]*)"[^>]*>([\s\S]*?)<\/section>/gi;
@@ -346,40 +362,35 @@ Return ONLY the JSON. No markdown fences, no explanations.`;
             }
 
             if (Object.keys(sections).length >= 2) {
-              // Build pages from sections
               const navPageNames = ['Home', 'About', 'Services', 'Contact'];
               const mapping: Record<string, string> = { home: 'Home', about: 'About', services: 'Services', contact: 'Contact' };
+              const patchedPages: Record<string, string> = {};
               for (const [id, content] of Object.entries(sections)) {
                 const pageName = mapping[id.toLowerCase()] || id.charAt(0).toUpperCase() + id.slice(1);
-                pages[pageName] = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${pageName}</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;padding-top:3.5rem}</style></head><body>${content}</body></html>`;
-              }
-              // Patch nav into each page
-              const patchedPages: Record<string, string> = {};
-              for (const [name, html] of Object.entries(pages)) {
-                const slug = name.toLowerCase().replace(/\s+/g, '-');
-                patchedPages[name] = injectNav(html, navPageNames, slug);
+                patchedPages[pageName] = injectNav(
+                  `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${pageName}</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;padding-top:3.5rem}</style></head><body>${content}</body></html>`,
+                  navPageNames, pageName.toLowerCase()
+                );
               }
               pages = patchedPages;
             } else {
-              // Single HTML block, just use it as Home
-              const navPageNames = ['Home'];
-              pages['Home'] = injectNav(html, navPageNames, 'home');
+              pages['Home'] = injectNav(html, ['Home'], 'home');
             }
           } else {
-            // Multiple HTML blocks — use them as separate pages
             const defaultNames = ['Home', 'About', 'Services', 'Contact'];
             const navPageNames = htmlBlocks.map((_, i) => defaultNames[i] || `Page ${i + 1}`);
             htmlBlocks.forEach((html, i) => {
               const name = navPageNames[i];
-              const slug = name.toLowerCase().replace(/\s+/g, '-');
-              pages[name] = injectNav(html, navPageNames, slug);
+              pages[name] = injectNav(html, navPageNames, name.toLowerCase().replace(/\s+/g, '-'));
             });
           }
         }
       }
 
       if (Object.keys(pages).length === 0) {
-        throw new Error('AI did not return usable HTML. Please try again with a different title.');
+        // Last resort: dump raw response for debugging
+        console.error('[Marketplace] Failed to parse response:', raw.substring(0, 500));
+        throw new Error(`AI returned unparseable content (${raw.length} chars). Please try again.`);
       }
 
       const project: PortfolioProject = {
