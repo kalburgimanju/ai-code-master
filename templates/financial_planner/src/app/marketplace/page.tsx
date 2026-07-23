@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   Store, Eye, Code, Edit3, Trash2, X, Copy, Check, Download,
   Loader2, Plus, Search, LayoutGrid, Globe, Smartphone,
-  ShoppingCart, Palette, BarChart3, Briefcase, FileCode,
+  ShoppingCart, Palette, BarChart3, Briefcase, FileCode, RefreshCw,
 } from 'lucide-react';
 import { getItem, setItem, generateId } from '@/lib/storage';
 
@@ -246,9 +246,14 @@ export default function MarketplacePage() {
   };
 
   // ---- Generate multi-page site ----
-  const generate = async () => {
-    if (!title.trim() || loading) return;
+  const [regeneratingId, setRegeneratingId] = useState<string | null>(null);
+
+  const generate = async (regenerateProject?: PortfolioProject) => {
+    const projectName = regenerateProject ? regenerateProject.name : title.trim();
+    const projectCategory = regenerateProject ? regenerateProject.category : category;
+    if (!projectName || loading) return;
     setLoading(true);
+    setRegeneratingId(regenerateProject?.id || null);
 
     try {
       const settings = getItem('settings', { openRouterKey: '' });
@@ -290,7 +295,10 @@ Return ONLY the JSON. No markdown fences, no explanations.`;
           max_tokens: 16000,
           messages: [
             { role: 'system', content: systemPrompt },
-            { role: 'user', content: `Create a professional multi-page website for: "${title}". Return ONLY JSON with a "pages" object containing keys: Home, About, Services, Contact — each with a full HTML string value.` },
+            { role: 'user', content: regenerateProject
+              ? `Regenerate a professional multi-page website for: "${projectName}". Make it fresh and different from the previous version. Return ONLY JSON with a "pages" object containing keys: Home, About, Services, Contact — each with a full HTML string value.`
+              : `Create a professional multi-page website for: "${projectName}". Return ONLY JSON with a "pages" object containing keys: Home, About, Services, Contact — each with a full HTML string value.`
+            },
           ],
         }),
       });
@@ -415,22 +423,30 @@ Return ONLY the JSON. No markdown fences, no explanations.`;
       }
 
       const project: PortfolioProject = {
-        id: generateId(),
-        name: title.trim(),
-        category,
+        id: regenerateProject?.id || generateId(),
+        name: projectName,
+        category: projectCategory,
         pages,
-        createdAt: new Date().toISOString(),
+        createdAt: regenerateProject?.createdAt || new Date().toISOString(),
       };
 
-      save(prev => [project, ...prev]);
+      if (regenerateProject) {
+        // Update existing project
+        save(prev => prev.map(p => p.id === project.id ? project : p));
+      } else {
+        // Add new project
+        save(prev => [project, ...prev]);
+      }
       saveToDisk(project);
       setTitle('');
       setCategory('other');
+      setRegeneratingId(null);
       setView('grid');
     } catch (err: any) {
       alert(err.message);
     } finally {
       setLoading(false);
+      setRegeneratingId(null);
     }
   };
 
@@ -619,6 +635,10 @@ window.onhashchange=function(){var s=location.hash.slice(1);if(s&&s!==window.__c
                       <div className="flex items-center gap-2">
                         <button onClick={() => startPreview(p)} className="flex-1 px-3 py-1.5 bg-dark-800 hover:bg-dark-700 rounded-lg text-[11px] text-dark-300 flex items-center justify-center gap-1 border border-dark-700"><Eye className="w-3 h-3" /> Preview</button>
                         <button onClick={() => handleDownload(p)} className="flex-1 px-3 py-1.5 bg-dark-800 hover:bg-dark-700 rounded-lg text-[11px] text-dark-300 flex items-center justify-center gap-1 border border-dark-700"><Download className="w-3 h-3" /> Download</button>
+                        <button onClick={() => generate(p)} disabled={loading}
+                          className={`flex-1 px-3 py-1.5 rounded-lg text-[11px] flex items-center justify-center gap-1 border transition-all ${loading && regeneratingId === p.id ? 'bg-finance-600 border-finance-500 text-white' : 'bg-dark-800 hover:bg-dark-700 text-dark-300 border-dark-700'}`}>
+                          {loading && regeneratingId === p.id ? <><Loader2 className="w-3 h-3 animate-spin" /> Gen...</> : <><RefreshCw className="w-3 h-3" /> Re-gen</>}
+                        </button>
                         <button onClick={() => handleDelete(p.id)} className="px-3 py-1.5 bg-dark-800 hover:bg-red-500/10 rounded-lg text-[11px] text-dark-400 hover:text-red-400 border border-dark-700 hover:border-red-500/30"><Trash2 className="w-3 h-3" /></button>
                       </div>
                     </div>
@@ -660,7 +680,7 @@ window.onhashchange=function(){var s=location.hash.slice(1);if(s&&s!==window.__c
                     })}
                   </div>
                 </div>
-                <button onClick={generate} disabled={!title.trim() || loading}
+                <button onClick={() => generate()} disabled={!title.trim() || loading}
                   className="w-full btn-primary justify-center text-sm py-3 disabled:opacity-50 disabled:cursor-not-allowed">
                   {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Generating multi-page site...</> : <><Plus className="w-4 h-4" /> Generate Website</>}
                 </button>
@@ -736,7 +756,7 @@ window.onhashchange=function(){var s=location.hash.slice(1);if(s&&s!==window.__c
                   ))}
                 </div>
                 <div className="h-[500px]">
-                  <textarea value={editPage && editProject.pages[editPage] ? editProject.pages[editPage] : ''}
+                  <textarea key={`${editProject.id}-${editPage}`} value={editProject.pages[editPage] || ''}
                     onChange={e => {
                       if (!editPage) return;
                       const updated = { ...editProject, pages: { ...editProject.pages, [editPage]: e.target.value } };
