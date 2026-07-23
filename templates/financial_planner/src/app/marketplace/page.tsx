@@ -208,26 +208,30 @@ export default function MarketplacePage() {
     }
   }, []);
 
-  const save = (updated: PortfolioProject[]) => {
-    setProjects(updated);
-    setItem(STORAGE_KEY, updated);
+  const save = (updated: PortfolioProject[] | ((prev: PortfolioProject[]) => PortfolioProject[])) => {
+    if (typeof updated === 'function') {
+      setProjects(prev => {
+        const next = updated(prev);
+        setItem(STORAGE_KEY, next);
+        return next;
+      });
+    } else {
+      setProjects(updated);
+      setItem(STORAGE_KEY, updated);
+    }
   };
 
-  // Save project to web-templates/ folder on disk
-  const saveToDisk = async (project: PortfolioProject, action: 'save' | 'delete' = 'save') => {
-    try {
-      await fetch('/api/save-template', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          projectName: project.name,
-          pages: project.pages,
-          action,
-        }),
-      });
-    } catch (err) {
-      console.warn('[Marketplace] Failed to save to disk:', err);
-    }
+  // Save project to web-templates/ folder on disk (fire-and-forget)
+  const saveToDisk = (project: PortfolioProject, action: 'save' | 'delete' = 'save') => {
+    fetch('/api/save-template', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        projectName: project.name,
+        pages: project.pages,
+        action,
+      }),
+    }).catch(err => console.warn('[Marketplace] Failed to save to disk:', err));
   };
 
   const filteredProjects = projects.filter(p => {
@@ -418,7 +422,7 @@ Return ONLY the JSON. No markdown fences, no explanations.`;
         createdAt: new Date().toISOString(),
       };
 
-      save([project, ...projects]);
+      save(prev => [project, ...prev]);
       saveToDisk(project);
       setTitle('');
       setCategory('other');
