@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Megaphone, Plus, TrendingUp, Users, DollarSign, Target, BarChart3, Calendar, Play, Pause, CheckCircle, Phone, Mail, MessageSquare, ArrowRight, X, Share2, Facebook, Instagram, Send, ExternalLink, Zap, Globe, Repeat, Eye, MousePointer, Clock, AlertCircle } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Megaphone, Plus, TrendingUp, Users, DollarSign, Target, BarChart3, Calendar, Play, Pause, CheckCircle, Phone, Mail, MessageSquare, ArrowRight, X, Share2, Facebook, Instagram, Send, ExternalLink, Zap, Globe, Repeat, Eye, MousePointer, Clock, AlertCircle, Workflow } from 'lucide-react';
 import { sampleCampaigns, projects } from '@/lib/data';
 import { getItem, setItem, CAMPAIGNS_KEY, generateId } from '@/lib/storage';
 import type { MarketingCampaign } from '@/lib/types';
@@ -18,7 +19,8 @@ const socialPlatforms = [
 ];
 
 export default function MarketingPage() {
-  const [activeTab, setActiveTab] = useState<'campaigns' | 'budget' | 'strategy' | 'social'>('campaigns');
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState<'campaigns' | 'budget' | 'strategy' | 'social' | 'workflow'>('campaigns');
   const [campaigns, setCampaigns] = useState<MarketingCampaign[]>([]);
   const [showNewCampaign, setShowNewCampaign] = useState(false);
   const [showShareModal, setShowShareModal] = useState<string | null>(null);
@@ -156,6 +158,12 @@ export default function MarketingPage() {
         {(['campaigns', 'budget', 'strategy', 'social'] as const).map(t => (
           <button key={t} onClick={() => setActiveTab(t)} className={`px-4 py-2 rounded-lg text-sm font-medium capitalize transition-all ${activeTab === t ? 'bg-finance-600 text-white' : 'text-dark-400 hover:text-dark-200'}`}>{t === 'social' ? 'Social Media' : t}</button>
         ))}
+        <button
+          onClick={() => router.push('/marketing/flow')}
+          className="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-prop-600 text-white hover:bg-prop-500 flex items-center gap-2"
+        >
+          <Workflow className="w-4 h-4" /> Workflow Builder
+        </button>
       </div>
 
       {/* Campaigns Tab */}
