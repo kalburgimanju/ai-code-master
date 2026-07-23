@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Building2, Wallet, Bot, Users, Megaphone, Scale, MessageSquare, LogIn, LogOut, Menu, X, Phone, User, Settings, Key } from 'lucide-react';
+import { LayoutDashboard, Building2, Wallet, Bot, Users, Megaphone, Scale, MessageSquare, LogIn, LogOut, Menu, X, Phone, User, Settings, Key, Store } from 'lucide-react';
 import { getItem, setItem, USER_KEY } from '@/lib/storage';
 import type { User as UserType } from '@/lib/types';
 
@@ -13,6 +13,7 @@ const navItems = [
   { href: '/agents', icon: Bot, label: 'AI Agents' },
   { href: '/leads', icon: Users, label: 'Leads' },
   { href: '/marketing', icon: Megaphone, label: 'Marketing' },
+  { href: '/marketplace', icon: Store, label: 'Marketplace' },
   { href: '/legal', icon: Scale, label: 'Legal' },
   { href: '/chat', icon: MessageSquare, label: 'Community' },
 ];
