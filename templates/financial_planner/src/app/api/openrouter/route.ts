@@ -5,7 +5,7 @@ const OPENROUTER_API = 'https://openrouter.ai/api/v1/chat/completions';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { messages, model = 'openai/gpt-4o-mini', apiKey: userKey } = body;
+    const { messages, model = 'openai/gpt-4o-mini', apiKey: userKey, max_tokens = 1024 } = body;
 
     const apiKey = process.env.OPENROUTER_API_KEY || userKey;
 
@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
           content: m.content,
         })),
         temperature: 0.7,
-        max_tokens: 1024,
+        max_tokens,
       }),
     });
 

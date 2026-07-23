@@ -276,28 +276,24 @@ RESPONSE FORMAT - return JSON with these fields:
   "html": "the complete HTML code here"
 }`;
 
-    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const res = await fetch('/api/openrouter', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-        'HTTP-Referer': 'https://financial-planner.app',
-        'X-Title': 'FinPlanner Marketplace',
       },
       body: JSON.stringify({
+        apiKey,
         model: 'openai/gpt-4o-mini',
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: prompt },
         ],
-        temperature: 0.7,
-        max_tokens: 4096,
       }),
     });
 
     if (!res.ok) {
-      const err = await res.text();
-      throw new Error(`API error: ${res.status} - ${err}`);
+      const err = await res.json().catch(() => ({ error: 'Unknown error' }));
+      throw new Error(err.error || `API error: ${res.status}`);
     }
 
     const data = await res.json();
