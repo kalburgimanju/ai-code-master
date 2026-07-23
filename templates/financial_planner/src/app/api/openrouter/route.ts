@@ -9,9 +9,9 @@ export async function POST(request: NextRequest) {
 
     const apiKey = process.env.OPENROUTER_API_KEY || userKey;
 
-    if (!apiKey) {
+    if (!apiKey || apiKey === 'sk-or-v1-your-key-here' || !apiKey.startsWith('sk-or-v1-')) {
       return NextResponse.json(
-        { error: 'No OpenRouter API key configured. Set OPENROUTER_API_KEY in environment or provide one in Settings.' },
+        { error: 'Invalid or missing OpenRouter API key. Click the ⚙️ Settings icon in the top-right corner to add your API key from openrouter.ai/keys' },
         { status: 401 }
       );
     }

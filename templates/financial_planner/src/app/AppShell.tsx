@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Building2, Wallet, Bot, Users, Megaphone, Scale, MessageSquare, LogIn, LogOut, Menu, X, Phone, User } from 'lucide-react';
+import { LayoutDashboard, Building2, Wallet, Bot, Users, Megaphone, Scale, MessageSquare, LogIn, LogOut, Menu, X, Phone, User, Settings, Key } from 'lucide-react';
 import { getItem, setItem, USER_KEY } from '@/lib/storage';
 import type { User as UserType } from '@/lib/types';
 
@@ -21,10 +21,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [user, setUser] = useState<UserType | null>(null);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [apiKey, setApiKey] = useState('');
 
   useEffect(() => {
     setUser(getItem(USER_KEY, null));
+    const settings = getItem('settings', { openRouterKey: '' });
+    if (settings.openRouterKey) setApiKey(settings.openRouterKey);
   }, []);
+
+  const handleSaveSettings = () => {
+    const settings = getItem('settings', { openRouterKey: '' });
+    settings.openRouterKey = apiKey;
+    setItem('settings', settings);
+    setSettingsOpen(false);
+  };
 
   const isLoginPage = pathname === '/login';
 
@@ -97,6 +108,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             <span className="text-sm text-dark-400">Welcome{user ? `, ${user.name}` : ''} 👋</span>
           </div>
           <div className="flex items-center gap-2">
+            <button onClick={() => setSettingsOpen(true)} className="p-2 text-dark-400 hover:text-white hover:bg-dark-800 rounded-lg transition-all" title="Settings">
+              <Settings className="w-4 h-4" />
+            </button>
             <span className="text-[10px] text-dark-600 bg-dark-800 px-2 py-1 rounded-full">Hubli • Bangalore • Mysore</span>
           </div>
         </header>
@@ -104,6 +118,47 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           {children}
         </main>
       </div>
+
+      {/* Settings Modal */}
+      {settingsOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="bg-dark-900 border border-dark-700 rounded-2xl p-6 w-full max-w-md mx-4 animate-fade-in">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+                <Settings className="w-5 h-5 text-finance-400" /> Settings
+              </h2>
+              <button onClick={() => setSettingsOpen(false)} className="p-1 text-dark-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="text-sm text-dark-300 flex items-center gap-2 mb-2">
+                  <Key className="w-4 h-4 text-finance-400" /> OpenRouter API Key
+                </label>
+                <input
+                  type="password"
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                  placeholder="sk-or-v1-..."
+                  className="w-full px-4 py-2.5 bg-dark-800 border border-dark-700 rounded-xl text-sm text-white placeholder-dark-500 focus:outline-none focus:border-finance-500 transition-all"
+                />
+                <p className="text-[10px] text-dark-500 mt-2">
+                  Get your API key from <a href="https://openrouter.ai/keys" target="_blank" rel="noopener noreferrer" className="text-finance-400 hover:underline">openrouter.ai/keys</a>
+                </p>
+              </div>
+              <div className="flex gap-2 pt-2">
+                <button onClick={() => setSettingsOpen(false)} className="flex-1 px-4 py-2.5 bg-dark-800 hover:bg-dark-700 border border-dark-700 rounded-xl text-sm text-dark-300 transition-all">
+                  Cancel
+                </button>
+                <button onClick={handleSaveSettings} className="flex-1 px-4 py-2.5 bg-finance-600 hover:bg-finance-500 rounded-xl text-sm text-white font-medium transition-all">
+                  Save Settings
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

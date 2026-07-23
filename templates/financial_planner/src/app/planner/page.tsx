@@ -65,7 +65,7 @@ export default function PlannerPage() {
       ]);
       setChat(prev => [...prev, { role: 'assistant', content: response }]);
     } catch (e: any) {
-      setChat(prev => [...prev, { role: 'assistant', content: `⚠️ Error: ${e.message}. Add your OpenRouter API key in Settings (click the gear icon).` }]);
+      setChat(prev => [...prev, { role: 'assistant', content: `⚠️ Error: ${e.message}. Add your OpenRouter API key in Settings (click the ⚙️ gear icon in the top-right corner).` }]);
     } finally { setLoading(false); }
   };
 
@@ -205,7 +205,7 @@ export default function PlannerPage() {
             ))}
             <div className="pt-2 text-xs text-dark-500">
               <p>💡 Your financial profile data is included in the AI context for personalized advice.</p>
-              <p className="mt-1">🔑 Optionally set your own API key in Settings (gear icon) to use your personal OpenRouter account.</p>
+              <p className="mt-1">🔑 Set your OpenRouter API key in Settings (⚙️ gear icon top-right) to use AI features.</p>
             </div>
           </div>
         </div>
