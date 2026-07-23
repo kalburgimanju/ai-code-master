@@ -213,6 +213,23 @@ export default function MarketplacePage() {
     setItem(STORAGE_KEY, updated);
   };
 
+  // Save project to web-templates/ folder on disk
+  const saveToDisk = async (project: PortfolioProject, action: 'save' | 'delete' = 'save') => {
+    try {
+      await fetch('/api/save-template', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          projectName: project.name,
+          pages: project.pages,
+          action,
+        }),
+      });
+    } catch (err) {
+      console.warn('[Marketplace] Failed to save to disk:', err);
+    }
+  };
+
   const filteredProjects = projects.filter(p => {
     const matchCategory = activeCategory === 'all' || p.category === activeCategory;
     const matchSearch = !search || p.name.toLowerCase().includes(search.toLowerCase());
@@ -402,6 +419,7 @@ Return ONLY the JSON. No markdown fences, no explanations.`;
       };
 
       save([project, ...projects]);
+      saveToDisk(project);
       setTitle('');
       setCategory('other');
       setView('grid');
@@ -413,6 +431,8 @@ Return ONLY the JSON. No markdown fences, no explanations.`;
   };
 
   const handleDelete = (id: string) => {
+    const project = projects.find(p => p.id === id);
+    if (project) saveToDisk(project, 'delete');
     save(projects.filter(p => p.id !== id));
     if (selectedProject?.id === id) setSelectedProject(null);
     if (editProject?.id === id) setEditProject(null);
@@ -718,7 +738,14 @@ window.onhashchange=function(){var s=location.hash.slice(1);if(s&&s!==window.__c
                       const updated = { ...editProject, pages: { ...editProject.pages, [editPage]: e.target.value } };
                       setEditProject(updated);
                       const idx = projects.findIndex(p => p.id === editProject.id);
-                      if (idx >= 0) { const arr = [...projects]; arr[idx] = updated; save(arr); }
+                      if (idx >= 0) {
+                        const arr = [...projects];
+                        arr[idx] = updated;
+                        save(arr);
+                        // Debounce disk save
+                        clearTimeout((window as any).__saveToDiskTimer);
+                        (window as any).__saveToDiskTimer = setTimeout(() => saveToDisk(updated), 1000);
+                      }
                     }}
                     className="w-full h-full p-4 bg-dark-950 text-dark-200 font-mono text-xs resize-none focus:outline-none" spellCheck={false} />
                 </div>
