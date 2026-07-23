@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   Store, Eye, Code, Edit3, Trash2, X, Copy, Check, Download,
   Loader2, Plus, Search, LayoutGrid, Globe, Smartphone,
-  ShoppingCart, Palette, BarChart3, Briefcase, FileCode, RefreshCw,
+  ShoppingCart, Palette, BarChart3, Briefcase, FileCode, RefreshCw, Sparkles,
 } from 'lucide-react';
 import { getItem, setItem, generateId } from '@/lib/storage';
 
@@ -194,6 +194,8 @@ export default function MarketplacePage() {
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
   const [editProject, setEditProject] = useState<PortfolioProject | null>(null);
   const [editPage, setEditPage] = useState('');
+  const [editPrompt, setEditPrompt] = useState('');
+  const [editingPage, setEditingPage] = useState(false);
   const [previewProject, setPreviewProject] = useState<PortfolioProject | null>(null);
   const [previewPage, setPreviewPage] = useState('home');
   const [copied, setCopied] = useState(false);
@@ -555,6 +557,72 @@ window.onhashchange=function(){var s=location.hash.slice(1);if(s&&s!==window.__c
     setView('create');
   };
 
+  // Apply AI edit to current page
+  const applyEdit = async () => {
+    if (!editProject || !editPage || !editPrompt.trim() || editingPage) return;
+    const currentHtml = editProject.pages[editPage] || '';
+    const changeRequest = editPrompt.trim();
+    setEditingPage(true);
+
+    try {
+      const settings = getItem('settings', { openRouterKey: '' });
+      const apiKey = settings.openRouterKey;
+      if (!apiKey) throw new Error('Please set your OpenRouter API key in Settings first.');
+
+      const systemPrompt = `You are an expert web developer. You will receive an existing HTML page and a request to modify it.
+
+Return ONLY the modified HTML. Do not add any explanations, markdown fences, or JSON wrapping.
+Keep the same overall structure and style. Only apply the requested change.
+Return a complete HTML document starting with <!DOCTYPE html>.`;
+
+      const res = await fetch('/api/openrouter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          apiKey,
+          model: 'openai/gpt-4o-mini',
+          max_tokens: 16000,
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: `Here is the current HTML page:\n\n${currentHtml}\n\n---\n\nApply this change: ${changeRequest}\n\nReturn ONLY the complete modified HTML.` },
+          ],
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: 'Unknown error' }));
+        throw new Error(err.error || `API error: ${res.status}`);
+      }
+
+      const data = await res.json();
+      let newHtml = data.choices?.[0]?.message?.content || '';
+
+      // Strip markdown fences
+      newHtml = newHtml.replace(/```(?:html)?\s*\n?/gi, '').replace(/\n?```\s*$/g, '').trim();
+
+      if (!newHtml.includes('<!DOCTYPE') && !newHtml.includes('<html')) {
+        throw new Error('AI did not return valid HTML. Please try again.');
+      }
+
+      // Update the page
+      const updated = { ...editProject, pages: { ...editProject.pages, [editPage]: newHtml } };
+      setEditProject(updated);
+      const idx = projects.findIndex(p => p.id === editProject.id);
+      if (idx >= 0) {
+        const arr = [...projects];
+        arr[idx] = updated;
+        save(arr);
+        saveToDisk(updated);
+      }
+
+      setEditPrompt('');
+    } catch (err: any) {
+      alert(err.message);
+    } finally {
+      setEditingPage(false);
+    }
+  };
+
   // ---- Render ----
   return (
     <div className="min-h-[calc(100vh-8rem)] animate-fade-in">
@@ -754,6 +822,20 @@ window.onhashchange=function(){var s=location.hash.slice(1);if(s&&s!==window.__c
                       {name}
                     </button>
                   ))}
+                </div>
+                {/* AI Edit Prompt Bar */}
+                <div className="px-4 py-3 border-b border-dark-800 bg-dark-900/50">
+                  <div className="flex gap-2">
+                    <input type="text" value={editPrompt} onChange={e => setEditPrompt(e.target.value)}
+                      onKeyDown={e => e.key === 'Enter' && applyEdit()}
+                      placeholder={`Describe changes to the ${editPage} page... e.g. "change the hero color to blue" or "add a testimonials section"`}
+                      className="flex-1 px-3 py-2 bg-dark-800 border border-dark-700 rounded-lg text-xs text-white placeholder-dark-500 focus:outline-none focus:border-finance-500 transition-all"
+                      disabled={editingPage} />
+                    <button onClick={applyEdit} disabled={!editPrompt.trim() || editingPage}
+                      className="px-4 py-2 bg-finance-600 hover:bg-finance-500 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg text-xs text-white font-medium flex items-center gap-1.5 transition-all shrink-0">
+                      {editingPage ? <><Loader2 className="w-3 h-3 animate-spin" /> Applying...</> : <><Sparkles className="w-3 h-3" /> Apply</>}
+                    </button>
+                  </div>
                 </div>
                 <div className="h-[500px]">
                   <textarea key={`${editProject.id}-${editPage}`} value={editProject.pages[editPage] || ''}
