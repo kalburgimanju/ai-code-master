@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 2 - What is an AI automation workflow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1a1a2e 100%);
+            color: #FAF9F5;
+            overflow: hidden;
+            width: 1080px;
+            height: 1080px;
+            position: relative;
+        }
+        .clip {
+            position: absolute;
+            width: 1080px;
+            height: 1080px;
+            clip-path: inset(0);
+        }
+        .flow-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 400px;
+        }
+        .flow-step {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #00D4FF;
+            border-radius: 8px;
+            padding: 15px;
+            color: #FAF9F5;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .flow-step:hover {
+            background: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+        .step-arrow {
+            position: absolute;
+            stroke: #00FF94;
+            stroke-width: 3;
+            fill: none;
+            vector-effect: non-scaling-stroke;
+            stroke-dasharray: 5, 5;
+        }
+        .step-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #00D4FF;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .step-desc {
+            font-size: 16px;
+            color: #FAF9F5;
+            opacity: 0.9;
+        }
+        .connection-line {
+            stroke: #FF00FF;
+            stroke-width: 2;
+            fill: none;
+            opacity: 0.7;
+            stroke-dasharray: 8, 4;
+        }
+        .data-flow {
+            stroke: #FFFF00;
+            stroke-width: 2.5;
+            fill: none;
+            opacity: 0.8;
+        }
+        @media (prefers-color-scheme: light) {
+            body {
+                background: linear-gradient(135deg, #FFFF00 0%, #FFEB3B 100%);
+                color: #141413;
+            }
+            .flow-step {
+                background: rgba(20, 20, 19, 0.8);
+                border-color: #00D4FF;
+                color: #141413;
+            }
+            .step-title { color: #00D4FF; }
+            .step-desc { color: #141413; }
+        }
+    </style>
+</head>
+<body>
+    <div class="clip">
+        <div class="flow-container">
+            <!-- Data Input -->
+            <div class="flow-step" style="top: 50%; left: 10%; transform: translateY(-50%);">
+                <span class="step-title">Data Input</span>
+                <div class="step-desc">Raw business data, APIs, databases</div>
+            </div>
+
+            <!-- Arrow to Processing -->
+            <svg class="step-arrow" width="1080" height="1080" style="position: absolute; top: 0; left: 0;">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#00FF94"/>
+                    </marker>
+                </defs>
+                <line x1="108" y1="540" x2="350" y2="540" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+            </svg>
+
+            <!-- AI Processing -->
+            <div class="flow-step" style="top: 20%; left: 45%;">
+                <span class="step-title">AI Processing</span>
+                <div class="step-desc">AI reasoning, pattern recognition</div>
+            </div>
+
+            <!-- Arrow to Connection -->
+            <svg class="step-arrow" width="1080" height="1080" style="position: absolute; top: 0; left: 0;">
+                <line x1="350" y1="540" x2="350" y2="200" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+            </svg>
+
+            <!-- Business Logic -->
+            <div class="flow-step" style="top: 20%; left: 80%;">
+                <span class="step-title">Business Logic</span>
+                <div class="step-desc">Rules, conditions, outcomes</div>
+            </div>
+
+            <!-- Arrow from Business Logic -->
+            <svg class="step-arrow" width="1080" height="1080" style="position: absolute; top: 0; left: 0;">
+                <line x1="830" y1="240" x2="830" y2="380" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+            </svg>
+
+            <!-- Execution -->
+            <div class="flow-step" style="top: 70%; left: 80%;">
+                <span class="step-title">Execution</span>
+                <div class="step-desc">Automated actions, decisions</div>
+            </div>
+
+            <!-- Result arrow -->
+            <svg class="step-arrow" width="1080" height="1080" style="position: absolute; top: 0; left: 0;">
+                <line x1="830" y1="560" x2="500" y2="560" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+            </svg>
+
+            <!-- Result -->
+            <div class="flow-step" style="top: 70%; left: 45%; transform: translateX(-50%);">
+                <span class="step-title">Result</span>
+                <div class="step-desc">Intelligent actions, automated decisions</div>
+            </div>
+
+            <!-- Connection line between steps -->
+            <svg class="connection-line" width="1080" height="1080" style="position: absolute; top: 0; left: 0;">
+                <line x1="350" y1="300" x2="550" y2="300"/>
+            </svg>
+
+            <!-- Data flow line -->
+            <svg class="data-flow" width="1080" height="1080" style="position: absolute; top: 0; left: 0;">
+                <line x1="500" y1="300" x2="500" y2="600"/>
+                <circle cx="500" cy="600" r="5" fill="#FFFF00" opacity="0.8"/>
+            </svg>
+
+            <!-- Title -->
+            <div style="position: absolute; top: 100px; left: 0; right: 0; text-align: center;">
+                <h1 style="font-size: 48px; font-weight: 700; color: #00D4FF; text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);">
+                    AI Automation Workflow
+                </h1>
+                <p style="font-size: 24px; color: #FAF9F5; margin-top: 10px; opacity: 0.9;">System Architecture</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import gsap from 'https://esm.run/gsap';
+
+        window.__timelines = {};
+        window.__timelines["composition-02"] = gsap.timeline({ paused: true });
+
+        const tl = window.__timelines["composition-02"];
+
+        // Flow container appears
+        tl.fromTo(
+            ".flow-step",
+            { opacity: 0, scale: 0.9, y: 30 },
+            {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                stagger: 0.15
+            }
+        );
+
+        // Arrows animate with dash reveal
+        tl.fromTo(
+            ".step-arrow",
+            { strokeDashoffset: 30 },
+            {
+                strokeDashoffset: 0,
+                duration: 1.5,
+                ease: "power2.inOut"
+            },
+            "-=0.8"
+        );
+
+        // Connection line reveal
+        tl.fromTo(
+            ".connection-line",
+            { strokeDashoffset: 20 },
+            {
+                strokeDashoffset: 0,
+                duration: 1,
+                ease: "power2.inOut"
+            },
+            "-=0.5"
+        );
+
+        // Data flow animation
+        tl.fromTo(
+            ".data-flow",
+            { strokeDashoffset: 30 },
+            {
+                strokeDashoffset: 0,
+                duration: 1,
+                ease: "power2.inOut"
+            },
+            "-=0.3"
+        );
+
+        // Title fade in
+        tl.fromTo(
+            "h1, p",
+            { opacity: 0, y: 20 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            },
+            "-=1.2"
+        );
+
+        // Flow steps pulse on hover
+        gsap.utils.toArray(".flow-step").forEach(step => {
+            step.addEventListener("mouseenter", () => {
+                gsap.to(step, {
+                    duration: 0.3,
+                    scale: 1.05,
+                    backgroundColor: "rgba(0, 212, 255, 0.3)",
+                    boxShadow: "0 0 20px rgba(0, 212, 255, 0.8)"
+                });
+            });
+
+            step.addEventListener("mouseleave", () => {
+                gsap.to(step, {
+                    duration: 0.3,
+                    scale: 1,
+                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    clearProps: "boxShadow"
+                });
+            });
+        });
+    </script>
+</body>
+</html>

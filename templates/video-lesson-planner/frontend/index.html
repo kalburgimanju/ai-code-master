@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Lesson Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-mono: 'DM Mono', ui-monospace, monospace;
+      --color-background: #0f1117;
+      --color-foreground: #f2f2f2;
+      --color-card: #181b23;
+      --color-card-foreground: #f2f2f2;
+      --color-primary: #3b82f6;
+      --color-primary-foreground: #ffffff;
+      --color-secondary: #262a35;
+      --color-secondary-foreground: #f2f2f2;
+      --color-muted: #262a35;
+      --color-muted-foreground: #94a3b8;
+      --color-accent: #9333ea;
+      --color-accent-foreground: #ffffff;
+      --color-destructive: #ef4444;
+      --color-destructive-foreground: #ffffff;
+      --color-border: #262a35;
+      --color-input: #262a35;
+      --color-ring: #3b82f6;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="min-h-screen bg-background text-foreground font-sans antialiased">
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

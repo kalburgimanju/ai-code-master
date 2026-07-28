@@ -1,0 +1,10 @@
+{
+  "project": "heygen-prompt-guide",
+  "version": "1.0.0",
+  "duration": 38,
+  "fps": 30,
+  "resolution": "1920x1080",
+  "voice": "macOS TTS (Samantha)",
+  "heygenAvatarId": "ef75c18fca604ac6b359d6b6cb785a7f",
+  "heygenVoiceId": "20d6d57246ef46fd8ae44c6dba108f7e"
+}

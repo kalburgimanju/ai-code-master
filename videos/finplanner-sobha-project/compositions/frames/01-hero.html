@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #0F172A;
+      font-family: "Inter", sans-serif;
+    }
+    .clip { visibility: hidden; }
+    .hero-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 80%;
+      max-width: 1800px;
+    }
+    .main-title {
+      font-size: 80px;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-bottom: 30px;
+      opacity: 0;
+    }
+    .subtitle {
+      font-size: 32px;
+      font-weight: 400;
+      color: #E2E8F0;
+      margin-bottom: 40px;
+      opacity: 0;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 20px 50px;
+      background: #10B981;
+      color: #0F172A;
+      font-size: 28px;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    .cta-button:hover {
+      background: #34D399;
+      transform: scale(1.05);
+    }
+    .accent {
+      color: #4F46E5;
+    }
+    .green {
+      color: #10B981;
+    }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" id="root" data-composition-id="main" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+    <div class="hero-container clip" data-start="0" data-duration="8" data-track-index="1">
+      <div id="main-title" class="main-title">
+        <span class="accent">Discover</span> premium properties like <span class="green">Sobha City</span> in<br/>
+        Hubli, Bangalore, and Mysore
+      </div>
+      <div id="subtitle" class="subtitle">
+        Every listing is RERA verified and ready for move-in
+      </div>
+      <div id="cta-button" class="cta-button">
+        Start Exploring Today
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // Hero content animation
+    tl.fromTo("#main-title",
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "back.out(1.7)" },
+      0.5
+    );
+
+    tl.fromTo("#subtitle",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
+      1.0
+    );
+
+    tl.fromTo("#cta-button",
+      { opacity: 0, y: 20, scale: 0.9 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.out" },
+      1.5
+    );
+
+    // Button hover effect
+    tl.to("#cta-button",
+      { scale: 1.05, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 1 },
+      2.5
+    );
+
+    window.__timelines["main"] = tl;
+  </script>
+</body>\n</html>

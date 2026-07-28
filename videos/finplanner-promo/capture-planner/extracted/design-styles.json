@@ -1,0 +1,200 @@
+{
+  "typography": [
+    {
+      "role": "display",
+      "fontFamily": "Inter",
+      "fontSize": "24px",
+      "fontWeight": "700",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Financial Planner"
+    },
+    {
+      "role": "heading",
+      "fontFamily": "Inter",
+      "fontSize": "18px",
+      "fontWeight": "600",
+      "lineHeight": "28px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Your Profile"
+    },
+    {
+      "role": "body",
+      "fontFamily": "Inter",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "#94A3B8",
+      "sampleText": "Plan your finances, calculate affordability, and get AI-powe"
+    },
+    {
+      "role": "link",
+      "fontFamily": "Inter",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "#94A3B8",
+      "sampleText": "Dashboard"
+    }
+  ],
+  "spacing": {
+    "observed": [
+      4,
+      6,
+      8,
+      10,
+      12,
+      16,
+      20,
+      24
+    ],
+    "baseUnit": 4
+  },
+  "radius": [
+    "8px",
+    "12px",
+    "16px"
+  ],
+  "shadows": [],
+  "buttons": [
+    {
+      "label": "Sign In",
+      "background": "#4F46E5",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "10px 20px",
+      "borderRadius": "12px",
+      "border": "0px solid rgb(30, 41, 59)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "40px"
+    },
+    {
+      "label": "button",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#94A3B8",
+      "padding": "8px",
+      "borderRadius": "8px",
+      "border": "0px solid rgb(30, 41, 59)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "32px"
+    },
+    {
+      "label": "Profile",
+      "background": "#4F46E5",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "8px 16px",
+      "borderRadius": "8px",
+      "border": "0px solid rgb(30, 41, 59)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "36px"
+    },
+    {
+      "label": "AI Advisor",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#818CF8",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px solid rgb(30, 41, 59)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "height": "20px"
+    }
+  ],
+  "cards": [
+    {
+      "label": "card",
+      "background": "#0F172A",
+      "backgroundImage": "",
+      "backdropFilter": "blur(4px)",
+      "color": "#E2E8F0",
+      "padding": "20px",
+      "borderRadius": "16px",
+      "border": "1px solid rgb(30, 41, 59)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "1079px"
+    },
+    {
+      "label": "card",
+      "background": "#6366F1",
+      "backgroundImage": "",
+      "backdropFilter": "blur(4px)",
+      "color": "#E2E8F0",
+      "padding": "20px",
+      "borderRadius": "16px",
+      "border": "1px solid rgba(99, 102, 241, 0.2)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "126px"
+    }
+  ],
+  "nav": {
+    "label": "navigation",
+    "background": "transparent",
+    "backgroundImage": "",
+    "backdropFilter": "",
+    "color": "#E2E8F0",
+    "padding": "12px",
+    "borderRadius": "0px",
+    "border": "0px solid rgb(30, 41, 59)",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "951px"
+  },
+  "chips": [],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [
+    {
+      "value": "linear-gradient(to right bottom, rgb(2, 6, 23), rgb(15, 23, 42), rgb(2, 6, 23))",
+      "area": 2073600
+    }
+  ],
+  "glass": [
+    {
+      "backdropFilter": "blur(4px)",
+      "background": "rgba(15, 23, 42, 0.8)",
+      "border": "1px solid rgb(30, 41, 59)",
+      "borderRadius": "16px",
+      "boxShadow": "",
+      "area": 980000
+    },
+    {
+      "backdropFilter": "blur(12px)",
+      "background": "rgba(15, 23, 42, 0.9)",
+      "border": "",
+      "borderRadius": "0px",
+      "boxShadow": "",
+      "area": 276480
+    },
+    {
+      "backdropFilter": "blur(12px)",
+      "background": "rgba(15, 23, 42, 0.6)",
+      "border": "",
+      "borderRadius": "0px",
+      "boxShadow": "",
+      "area": 106496
+    }
+  ]
+}

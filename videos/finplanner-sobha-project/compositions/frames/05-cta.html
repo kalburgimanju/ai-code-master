@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; font-family: "Inter", sans-serif; }
+    .clip { visibility: hidden; }
+    .bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      opacity: 0;
+    }
+    .cta-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+      opacity: 0;
+    }
+    .logo {
+      font-size: 96px;
+      font-weight: 900;
+      color: #4F46E5;
+      letter-spacing: 8px;
+      margin-bottom: 24px;
+    }
+    .tagline {
+      font-size: 36px;
+      color: #E2E8F0;
+      margin-bottom: 48px;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 22px 70px;
+      background: #10B981;
+      color: #0F172A;
+      font-size: 28px;
+      font-weight: 700;
+      border-radius: 100px;
+      text-decoration: none;
+      opacity: 0;
+      transform: scale(0.8) translateY(30px);
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.5), 0 0 80px rgba(16, 185, 129, 0.3);
+    }
+    .contact-info {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      opacity: 0;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      background: rgba(79, 70, 229, 0.04);
+      border: 1.5px solid rgba(79, 70, 229, 0.2);
+      border-radius: 100px;
+      color: #E2E8F0;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .contact-btn:hover {
+      background: rgba(79, 70, 229, 0.1);
+      border-color: #4F46E5;
+    }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" id="root" data-composition-id="05-cta" data-start="32" data-duration="7" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-bg" id="bg" class="bg clip" data-start="0" data-duration="7" data-track-index="0"></div>
+    <div class="cta-container clip" data-start="0" data-duration="7" data-track-index="1">
+      <div id="logo" class="logo">SOBHA CITY</div>
+      <div id="tagline" class="tagline">Your Smart Financial Navigator</div>
+      <a id="cta-button" class="cta-button" href="https://financialplanner-sand.vercel.app/properties/h1">
+        Start Exploring Today
+      </a>
+      <div id="contact-info" class="contact-info">
+        <a class="contact-btn" href="tel:+918362200100">📞 Call Now</a>
+        <a class="contact-btn" href="mailto:sales@sobhaltd.com">✉️ Email</a>
+        <a class="contact-btn" href="https://www.sobha.com/hubli-city" target="_blank">🌐 Website</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.to("#bg", { opacity: 1, duration: 0 }, 0);
+
+    tl.fromTo("#logo",
+      { opacity: 0, scale: 0.8 },
+      { opacity: 1, scale: 1, duration: 1.0, ease: "back.out(1.7)" },
+      0.5
+    );
+
+    tl.fromTo("#tagline",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+      1.5
+    );
+
+    tl.fromTo("#cta-button",
+      { opacity: 0, scale: 0.8, y: 30 },
+      { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "back.out(1.7)" },
+      2.5
+    );
+
+    tl.to("#cta-button",
+      { scale: 1.05, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 3 },
+      3.5
+    );
+
+    tl.fromTo("#contact-info",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+      4.0
+    );
+
+    window.__timelines["05-cta"] = tl;
+  </script>
+</body>
+</html>

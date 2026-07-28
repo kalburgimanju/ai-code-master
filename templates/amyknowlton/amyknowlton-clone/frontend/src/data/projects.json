@@ -1,0 +1,50 @@
+[
+  {
+    "id": "modern-building-group",
+    "title": "Modern Building Group",
+    "description": "A modern, professional website design showcasing real estate and construction services with responsive design and intuitive navigation.",
+    "image": "/images/projects/modern-building-group.jpg",
+    "category": "website-design",
+    "year": "2024",
+    "client": "Modern Building Group",
+    "services": ["Website Design", "UI/UX Design", "Responsive Design"],
+    "overview": "Created a modern, professional website for Modern Building Group that effectively communicates their services and expertise in the real estate and construction industry. The site features a clean, responsive design that works seamlessly across all devices.",
+    "challenges": "The client needed a website that would establish their credibility in the competitive construction industry while making it easy for potential customers to find the information they were looking for quickly and efficiently.",
+    "solutions": "Implemented a clean, professional design with clear navigation sections, mobile-responsive layouts, and fast loading times. Integrated contact forms and service call-to-action buttons to drive conversions.",
+    "results": "Successfully increased client inquiries by 45% through improved user experience and clear call-to-action elements. Website received excellent user feedback for its clean aesthetic and easy navigation.",
+    "liveUrl": "https://modernbuildinggroup.com",
+    "caseStudyUrl": "/projects/modern-building-group"
+  },
+  {
+    "id": "danco-heating-cooling",
+    "title": "Danco Heating & Cooling",
+    "description": "A comprehensive website design for HVAC services showcasing product offerings, installation services, and customer testimonials.",
+    "image": "/images/projects/danco-heating-cooling.jpg",
+    "category": "website-design",
+    "year": "2023",
+    "client": "Danco Heating & Cooling",
+    "services": ["Website Design", "Brand Identity", "UX Consulting"],
+    "overview": "Designed a complete website for Danco Heating & Cooling that effectively communicates their HVAC services, installation capabilities, and maintenance offerings. The site helps customers find the right heating and cooling solutions for their needs.",
+    "challenges": "The HVAC industry requires clear communication of technical services while maintaining approachability. The challenge was to create a website that balanced technical accuracy with user-friendly presentation.",
+    "solutions": "Developed a service-oriented design with clear service categories, interactive service calculators, and customer testimonial sections. Implemented responsive design that works well on all devices.",
+    "results": "Streamlined the customer inquiry process, leading to a 30% increase in service bookings. Website users report finding the information they need quickly and easily.",
+    "liveUrl": "https://dancoheatingcooling.com",
+    "caseStudyUrl": "/projects/danco-heating-cooling"
+  },
+  {
+    "id": "big-city-window-cleaners",
+    "title": "Big City Window Cleaners",
+    "description": "A professional website design for window cleaning services featuring service pricing, booking system, and customer testimonials.",
+    "image": "/images/projects/big-city-window-cleaners.jpg",
+    "category": "branding",
+    "year": "2023",
+    "client": "Big City Window Cleaners",
+    "services": ["Brand Identity", "Website Design", "UX Consulting"],
+    "overview": "Created a complete brand identity and website for Big City Window Cleaners, establishing a professional online presence that effectively communicates their window cleaning services and expertise.",
+    "challenges": "Window cleaning services need to convey reliability, cleanliness, and professionalism. The challenge was to create a website that reflected these values while making service booking process intuitive.",
+    "solutions": "Developed a clean, trustworthy design with service pricing transparency, online booking system, and customer testimonials. Implemented mobile-responsive layouts for booking accessibility.",
+    "results": "Helped the client increase their online bookings by 60%. The website's professional appearance and transparent pricing have significantly improved customer trust and engagement.",
+    "liveUrl": "https://bigcitywindowcleaners.com",
+    "caseStudyUrl": "/projects/big-city-window-cleaners"
+  }
+]

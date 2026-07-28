@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 3 - How AI understands business logic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+            color: #FAF9F5;
+            overflow: hidden;
+            width: 1080px;
+            height: 1080px;
+            position: relative;
+        }
+        .clip {
+            position: absolute;
+            width: 1080px;
+            height: 1080px;
+            clip-path: inset(0);
+        }
+        .neuron-network {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 500px;
+            filter: blur(0.5px);
+        }
+        .neuron {
+            fill: #00FF94;
+            opacity: 0.8;
+            rx: 10;
+            ry: 10;
+        }
+        .connection {
+            stroke: #00D4FF;
+            stroke-width: 2;
+            fill: none;
+            opacity: 0.6;
+        }
+        .business-rule {
+            fill: #FF00FF;
+            opacity: 0.7;
+            rx: 5;
+            ry: 5;
+        }
+        .rule-text {
+            fill: #FFFF00;
+            font-family: 'SF Mono', monospace;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .arrow {
+            stroke: #00FF94;
+            stroke-width: 3;
+            fill: none;
+            stroke-dasharray: 5, 5;
+            opacity: 0.8;
+        }
+        .data-stream {
+            stroke: #00D4FF;
+            stroke-width: 2;
+            fill: none;
+            opacity: 0.5;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+        .label {
+            fill: #FAF9F5;
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 300;
+        }
+        .emphasis {
+            fill: #00D4FF;
+            font-weight: 600;
+        }
+        @media (prefers-color-scheme: light) {
+            body {
+                background: radial-gradient(circle at center, #FFFF00 0%, #FFEB3B 100%);
+                color: #141413;
+            }
+            .label { fill: #141413; }
+            .neuron { fill: #00D4FF; }
+            .business-rule { fill: #FF00FF; }
+            .rule-text { fill: #141413; }
+        }
+    </style>
+</head>
+<body>
+    <div class="clip">
+        <!-- Abstract network background -->
+        <svg class="neuron-network">
+            <!-- Neurons -->
+            <circle cx="150" cy="150" r="6" class="neuron"/>
+            <circle cx="300" cy="100" r="8" class="neuron"/>
+            <circle cx="450" cy="150" r="6" class="neuron"/>
+            <circle cx="600" cy="100" r="7" class="neuron"/>
+            <circle cx="750" cy="150" r="6" class="neuron"/>
+
+            <!-- Connections -->
+            <line class="connection" x1="150" y1="150" x2="300" y2="100"/>
+            <line class="connection" x1="150" y1="150" x2="450" y2="150"/>
+            <line class="connection" x1="300" y1="100" x2="450" y2="150"/>
+            <line class="connection" x1="450" y1="150" x2="600" y2="100"/>
+            <line class="connection" x1="600" y1="100" x2="750" y2="150"/>
+
+            <!-- Business rules -->
+            <rect x="500" y="250" width="120" height="60" class="business-rule"/>
+            <text x="560" y="300" class="rule-text">IF condition</text>
+            <rect x="500" y="340" width="120" height="60" class="business-rule"/>
+            <text x="560" y="390" class="rule-text">THEN action</text>
+
+            <!-- Arrows showing connection -->
+            <path class="arrow" d="M 450 150 Q 550 200 650 150"/>
+            <path class="arrow" d="M 550 250 Q 600 200 650 150"/>
+
+            <!-- Data stream -->
+            <line class="data-stream" x1="600" y1="150" x2="600" y2="400"/>
+        </svg>
+
+        <!-- Text elements -->
+        <svg width="1080" height="1080" style="position: absolute; top: 0; left: 0;">
+            <text x="540" y="100" text-anchor="middle" class="label">AI Neural Network</text>
+            <text x="540" y="900" text-anchor="middle" class="label">Connecting to</text>
+            <text x="540" y="960" text-anchor="middle" class="label emphasis">Business Rules</text>
+            <text x="540" y="550" text-anchor="middle" class="label">
+                <tspan x="540" dy="0">Learning relationships</tspan>
+                <tspan x="540" dy="40">between business terms</tspan>
+            </text>
+        </svg>
+    </div>
+
+    <script type="module">
+        import gsap from 'https://esm.run/gsap';
+
+        window.__timelines = {};
+        window.__timelines["composition-03"] = gsap.timeline({ paused: true });
+
+        const tl = window.__timelines["composition-03"];
+
+        // Neurons appear with staggered timing
+        tl.fromTo(
+            ".neuron",
+            { opacity: 0, scale: 0 },
+            {
+                opacity: 0.8,
+                scale: 1,
+                duration: 1,
+                ease: "back.out(1.5)",
+                stagger: 0.1
+            }
+        );
+
+        // Connections draw
+        tl.fromTo(
+            ".connection",
+            { strokeDashoffset: 30 },
+            {
+                strokeDashoffset: 0,
+                duration: 1.5,
+                ease: "power2.inOut",
+                stagger: 0.1
+            },
+            "-=0.8"
+        );
+
+        // Business rules slide in
+        tl.fromTo(
+            ".business-rule",
+            { opacity: 0, x: 50 },
+            {
+                opacity: 0.7,
+                x: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                stagger: 0.1
+            },
+            "-=0.5"
+        );
+
+        // Rule text appears
+        tl.fromTo(
+            ".rule-text",
+            { opacity: 0 },
+            {
+                opacity: 1,
+                duration: 0.5,
+                ease: "power2.out",
+                stagger: 0.1
+            },
+            "-=0.3"
+        );
+
+        // Arrows pulse
+        tl.fromTo(
+            ".arrow",
+            { strokeDashoffset: 20 },
+            {
+                strokeDashoffset: 0,
+                duration: 1,
+                ease: "power2.inOut"
+            },
+            "-=0.5"
+        );
+
+        // Data stream flows
+        tl.fromTo(
+            ".data-stream",
+            { strokeDashoffset: 30 },
+            {
+                strokeDashoffset: 0,
+                duration: 1,
+                ease: "power2.inOut"
+            },
+            "-=0.3"
+        );
+
+        // Background text fades in
+        tl.fromTo(
+            ".label",
+            { opacity: 0, y: 20 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                stagger: 0.1
+            },
+            "-=0.8"
+        );
+    </script>
+</body>
+</html>

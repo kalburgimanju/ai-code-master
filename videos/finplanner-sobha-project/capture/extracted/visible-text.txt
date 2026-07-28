@@ -1,0 +1,99 @@
+[span] FinPlanner
+[span] Real Estate & Finance
+[a] Dashboard
+[a] Properties
+[a] Financial Planner
+[a] AI Agents
+[a] Marketing
+[a] Marketplace
+[a] Community
+[a] Sign In
+[span] Welcome
+[span] Hubli • Bangalore • Mysore
+[button] Back
+[span] Hubli
+[span] Ready to Move
+[h1] Sobha City
+[p] Sobha Ltd
+[span] 4.3
+[span] 128
+[div] Gokul Road
+[div] Hubli
+[div] Type
+[div] Apartment
+[div] Config
+[div] 2, 3 BHK
+[div] Area
+[div] 980 - 1650 sqft
+[div] RERA
+[div] Registered
+[div] ₹35 L - ₹65 L
+[button] Buy Now
+[button] Share
+[button] Contact
+[h2] About This Project
+[p] Sobha City is a premium residential project spread across 25 acres with 70% open space. Features world-class amenities including a clubhouse, swimming pool, and landscaped gardens. Located on Gokul Road with easy access to the Hubli-Dharwad smart city corridor.
+[h3] Amenities
+[span] Clubhouse
+[span] Swimming Pool
+[span] Gym
+[span] Children's Park
+[span] Jogging Track
+[span] 24x7 Security
+[span] Power Backup
+[span] Rainwater Harvesting
+[div] RERA No:
+[div] PRM/KA/HBL/12345
+[div] Possession:
+[div] Ready
+[span] Premium
+[span] Gated Community
+[span] Luxury
+[h2] Cost Calculator
+[p] Based on max price:
+[span] ₹35 L - ₹65 L
+[span] Base Price
+[span] ₹65.0 L
+[span] Stamp Duty (5%)
+[span] ₹3.25 L
+[span] Registration (1%)
+[span] ₹0.65 L
+[span] Total Cost
+[span] 68.9
+[p] 💰 EMI Estimate (80% loan, 8.5%, 20yr)
+[p] 45,127
+[p] /mo
+[button] Full Financial Planner
+[h2] Available Listings
+[span] Sale
+[span] 45.0
+[p] BHK •
+[p] 1250
+[p] sqft • Floor
+[p] 4th of 12
+[p] East
+[p] Sobha Ltd
+[p] 2024-12-15
+[button] Inquire
+[h2] Contact & Location
+[p] Get in touch with the builder for inquiries and site visits
+[span] Sales Phone
+[a] +91-836-2200100
+[p] Call for pricing, site visits & inquiries
+[span] Email
+[a] sales@sobhaltd.com
+[p] Send your inquiries and document requests
+[span] Website
+[a] www.sobha.com/hubli-city
+[p] Visit website for brochures & virtual tours
+[span] Corporate Office
+[p] Sobha Tower, Gokul Road, Hubli - 580030
+[span] Sales Office
+[p] Site Office, Sobha City, Gokul Road
+[p] Visit the sales office for project tour
+[span] Site Visit Timings
+[p] Mon-Sat 9AM-7PM | Sun 10AM-5PM
+[p] Walk-ins welcome | Prior booking recommended
+[a] Call Now
+[a] Send Email
+[a] Visit Website

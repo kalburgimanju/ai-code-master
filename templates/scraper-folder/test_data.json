@@ -1,0 +1,41 @@
+[
+  {
+    "jobTitle": "Senior React Developer",
+    "companyName": "Tech Solutions Inc",
+    "location": "Bangalore, India",
+    "jobUrl": "https://linkedin.com/jobs/12345",
+    "descriptionText": "Looking for senior React developer with 5+ years experience in React, Node.js, TypeScript, and building scalable web applications. Remote work available. Salary range: $120,000 - $160,000. We use n8n for workflow automation and integrate with OpenAI/LLM APIs.",
+    "salaryMin": 120000,
+    "salaryMax": 160000,
+    "applicants": 12,
+    "isRemote": true,
+    "employmentType": "full_time",
+    "postedDate": "2026-07-10"
+  },
+  {
+    "jobTitle": "Full Stack Engineer - AI Automation",
+    "companyName": "Innovation Labs",
+    "location": "Bangalore, India",
+    "jobUrl": "https://linkedin.com/jobs/67890",
+    "descriptionText": "Full stack role requiring AI/automation skills. Must know Next.js, Python, n8n, Make.com, and LLM integration (OpenAI, Claude). Experience with LangChain a plus. Remote position. Salary: $140,000 - $180,000. Work with cutting-edge AI automation tools.",
+    "salaryMin": 140000,
+    "salaryMax": 180000,
+    "applicants": 8,
+    "isRemote": true,
+    "employmentType": "full_time",
+    "postedDate": "2026-07-11"
+  },
+  {
+    "jobTitle": "Claude AI Developer",
+    "companyName": "AI Systems Co",
+    "location": "Bangalore, India",
+    "jobUrl": "https://linkedin.com/jobs/11111",
+    "descriptionText": "Develop AI integration solutions using Claude API and OpenAI GPT models. Prompt engineering, LangChain, and LLM fine-tuning experience required. Remote work available. Salary: $130,000 - $170,000. Building next-gen AI applications.",
+    "salaryMin": 130000,
+    "salaryMax": 170000,
+    "applicants": 15,
+    "isRemote": true,
+    "employmentType": "full_time",
+    "postedDate": "2026-07-12"
+  }
+]

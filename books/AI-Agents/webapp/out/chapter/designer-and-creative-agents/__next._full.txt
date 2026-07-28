@@ -1,0 +1,2479 @@
+1:"$Sreact.fragment"
+2:I[78892,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default"]
+3:I[11359,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default"]
+5:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+9:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"ViewportBoundary"]
+b:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"MetadataBoundary"]
+d:I[65125,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default",1]
+:HL["/_next/static/chunks/157per-6rfej7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","chapter","designer-and-creative-agents"],"q":"","i":false,"f":[[["",{"children":["chapter",{"children":[["slug","designer-and-creative-agents","d",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/157per-6rfej7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3j2brc7c8hat8.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/05b0208rfh8ys.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased","children":["$","body",null,{"className":"min-h-full flex flex-col","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","script","script-0",{"src":"/_next/static/chunks/16vgld9iclosn.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/2rb1230i-fez-.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$@8"]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/157per-6rfej7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"WpHiBD4DjnzuprdEnivdA"}
+e:[]
+8:"$We"
+f:I[89587,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js","/_next/static/chunks/16vgld9iclosn.js","/_next/static/chunks/2rb1230i-fez-.js"],"default"]
+10:T1724d,# Chapter 7: Designer & Creative Agents
+
+## AI Agents for Design and Content Creation
+
+---
+
+> *"The best design is invisible — it simply works. AI agents are learning to create designs that feel effortless, while handling the tedious consistency checks that make great design systems possible."*
+
+---
+
+## Table of Contents
+
+1. [Introduction: The Creative AI Landscape](#1-introduction-the-creative-ai-landscape)
+2. [Image Generation Deep Dive](#2-image-generation-deep-dive)
+3. [Design System Agents](#3-design-system-agents)
+4. [Content Creation](#4-content-creation)
+5. [Brand Consistency](#5-brand-consistency)
+6. [UI/UX Suggestion Agents](#6-uiux-suggestion-agents)
+7. [Multimodal Agents](#7-multimodal-agents)
+8. [Code Example: Image Generation Agent](#8-code-example-image-generation-agent)
+9. [Code Example: Content Creation Agent](#9-code-example-content-creation-agent)
+10. [Comparison Table](#10-comparison-table-image-generation-tools)
+11. [Key Takeaways](#11-key-takeaways)
+12. [Try It Yourself](#12-try-it-yourself)
+
+---
+
+## 1. Introduction: The Creative AI Landscape
+
+Creative AI has moved from a novelty to a core business tool in just a few years. What started with simple style transfers and filter apps has evolved into sophisticated agents that can generate entire design concepts, write marketing copy that matches your brand voice, and check thousands of design assets for consistency — all from natural language descriptions.
+
+### Why Creative Agents Matter
+
+The creative industry faces a fundamental tension: the demand for content is growing exponentially, but the supply of skilled designers and writers is relatively fixed. AI agents don't replace creative professionals. Instead, they amplify their capabilities by handling repetitive tasks, generating initial drafts, and enforcing consistency across large-scale projects.
+
+Consider a marketing team managing a global brand. They need:
+
+- **Hundreds** of social media graphics per week, each on-brand
+- **Thousands** of product images across e-commerce platforms
+- **Consistent** typography, color, and spacing across every touchpoint
+- **Blog posts**, emails, and ad copy that sound like the same voice
+- **Accessibility** compliance in every visual asset
+
+An AI agent system can handle the scale while human creatives focus on strategy, originality, and emotional resonance.
+
+### The Major Players in 2025
+
+| Tool | Company | Focus | Access |
+|------|---------|-------|--------|
+| **DALL-E 3** | OpenAI | Text-to-image via API | API + ChatGPT |
+| **Midjourney** | Midjourney Inc. | Artistic image generation | Web + Discord |
+| **Stable Diffusion** | Stability AI | Open-source image generation | Local + API |
+| **Adobe Firefly** | Adobe | Commercially-safe image generation | Web + API |
+| **Claude Vision** | Anthropic | Image understanding + analysis | API |
+| **GPT-4o Vision** | OpenAI | Multimodal understanding | API |
+| **Runway** | Runway | Video generation | Web |
+
+### How AI Is Transforming Design Workflows
+
+The transformation isn't about replacing designers. It's about reshaping the workflow:
+
+```
+Traditional Design Workflow:
+  Brief → Sketch → Wireframe → Mockup → Review → Revise → Final
+
+AI-Augmented Design Workflow:
+  Brief → Agent Generates Concepts → Designer Curates → Agent Refines
+       → Agent Validates Consistency → Designer Finalizes → Agent Distributes
+```
+
+In the AI-augmented workflow, the designer's role shifts from production to curation and strategy. The agent handles volume, consistency checks, and initial generation. The human provides taste, judgment, and creative direction.
+
+### What You'll Learn in This Chapter
+
+By the end of this chapter, you will:
+
+1. Understand how image generation models work at a conceptual level
+2. Build agents that maintain design system consistency
+3. Create content agents with brand voice control
+4. Work with multimodal models that understand both text and images
+5. Build a complete image generation agent from scratch
+6. Build a brand-consistent content creation agent
+7. Know when to use which creative AI tool
+
+---
+
+## 2. Image Generation Deep Dive
+
+Before building creative agents, you need to understand the engine under the hood. Modern image generation is powered primarily by **diffusion models** — a class of generative AI that creates images by learning to reverse a gradual noise-addition process.
+
+### The Intuition Behind Diffusion
+
+Imagine taking a clear photograph and gradually adding static — like TV snow — until the image is pure noise. Now imagine training a neural network to reverse that process: starting from pure noise and一步一步 removing it until a clear image emerges. That's essentially how diffusion models work.
+
+### The Diffusion Process — Step by Step
+
+Here's the conceptual flow:
+
+```
+FORWARD PROCESS (Training):
+┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+│  Clear   │ →  │  Slight  │ →  │  More    │ →  │  Pure    │
+│  Image   │    │  Noise   │    │  Noise   │    │  Noise   │
+│  (x₀)    │    │  (x₁)   │    │  (x₅₀)  │    │  (x₁₀₀₀) │
+└──────────┘    └──────────┘    └──────────┘    └──────────┘
+  Original       Added a         Added more      Completely
+  photo          tiny bit        noise           random noise
+                 of noise
+
+
+REVERSE PROCESS (Generation):
+┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+│  Pure    │ →  │  Less    │ →  │  Barely  │ →  │  Clear   │
+│  Noise   │    │  Noise   │    │  Noisy   │    │  Image   │
+│  (x₁₀₀₀) │    │  (x₅₀)  │    │  (x₁)   │    │  (x₀)    │
+└──────────┘    └──────────┘    └──────────┘    └──────────┘
+  Start with     Network learns  Noise fades     Final
+  random noise   to remove       away, details   generated
+                 noise at each   sharpen          image
+                 step
+```
+
+### How Text Descriptions Guide Image Creation
+
+Diffusion models don't just denoise randomly — they denoise in a direction guided by your text prompt. This is done through **text conditioning**:
+
+1. **Text Encoding**: Your prompt ("a red fox in a snowy forest") is converted into numerical vectors by a text encoder (like CLIP)
+2. **Cross-Attention**: These text vectors are fed into the diffusion model at multiple layers via cross-attention mechanisms
+3. **Guided Denoising**: The model denoises in a direction that matches your text description
+
+```
+Prompt: "a red fox in a snowy forest"
+    │
+    ▼
+┌──────────────┐
+│  Text Encoder │  (e.g., CLIP)
+│  (converts    │
+│   text to     │
+│   vectors)    │
+└──────┬───────┘
+       │ text vectors
+       ▼
+┌──────────────────┐
+│  Cross-Attention  │  Guides each denoising step
+│  Mechanism        │  to match the text description
+└──────┬───────────┘
+       │
+       ▼
+┌──────────────────┐
+│  Denoising Steps  │  20-50 iterations,
+│  (guided)         │  each one getting closer
+│                   │  to "red fox in snow"
+└──────────────────┘
+```
+
+### Key Parameters You'll Encounter
+
+When working with image generation APIs, you'll see these parameters repeatedly:
+
+#### Steps (Inference Steps)
+
+The number of denoising iterations. More steps generally mean higher quality but slower generation.
+
+| Steps | Quality | Speed | When to Use |
+|-------|---------|-------|-------------|
+| 10-15 | Lower | Fast | Quick previews, thumbnails |
+| 20-30 | Good | Balanced | Most production use cases |
+| 50-100 | High | Slow | Final art, high-detail work |
+
+#### CFG Scale (Classifier-Free Guidance)
+
+This controls how strongly the model follows your text prompt versus its own "creative" direction.
+
+- **Low CFG (1-5)**: More creative, may drift from prompt
+- **Medium CFG (7-12)**: Balanced following of prompt
+- **High CFG (15-30)**: Very literal interpretation, may look over-processed
+
+```python
+# Conceptual representation of CFG scale effect
+def generate_image(prompt, cfg_scale):
+    """
+    CFG Scale controls how closely the output matches the prompt.
+    Higher values = more literal interpretation.
+    """
+    if cfg_scale < 5:
+        return "More artistic, may ignore some prompt details"
+    elif cfg_scale < 12:
+        return "Balanced: follows prompt with creative freedom"
+    else:
+        return "Very literal, may appear over-saturated or harsh"
+```
+
+#### Seed
+
+A random number that initializes the generation process. The same seed + same prompt = same image. This is critical for reproducibility in production systems.
+
+```python
+# Using seeds for reproducible design generation
+import random
+
+def generate_variations(prompt, num_variations=5):
+    """
+    Generate multiple variations of a concept using different seeds.
+    Each seed produces a different interpretation of the same prompt.
+    """
+    variations = []
+    for i in range(num_variations):
+        seed = random.randint(0, 2**32 - 1)
+        image = generate_image(prompt=prompt, seed=seed)
+        variations.append({
+            "seed": seed,
+            "prompt": prompt,
+            "image": image,
+            "variation_index": i
+        })
+    return variations
+```
+
+#### Resolution and Aspect Ratio
+
+Different use cases demand different dimensions. An agent should automatically choose the right resolution:
+
+```python
+# Resolution presets for common design tasks
+RESOLUTION_PRESETS = {
+    "social_media_square": {"width": 1024, "height": 1024},
+    "social_media_story": {"width": 1024, "height": 1792},
+    "blog_header": {"width": 1792, "height": 1024},
+    "product_image": {"width": 1024, "height": 1024},
+    "email_banner": {"width": 1200, "height": 600},
+    "presentation_slide": {"width": 1920, "height": 1024},
+    "thumbnail": {"width": 512, "height": 512},
+}
+```
+
+### The Architecture Behind Modern Image Generators
+
+Most modern image generators use a variant of the **Latent Diffusion Model (LDM)** architecture, popularized by Stable Diffusion:
+
+```
+┌─────────────────────────────────────────────────┐
+│                LATENT DIFFUSION MODEL            │
+│                                                  │
+│  ┌─────────┐    ┌──────────────┐    ┌─────────┐ │
+│  │  VAE    │    │  U-Net with  │    │  VAE    │ │
+│  │ Encoder │ →  │  Attention    │ →  │ Decoder │ │
+│  │         │    │  + Timestep   │    │         │ │
+│  │ Image→  │    │  Conditioning │    │ Latent→ │ │
+│  │ Latent  │    │              │    │ Image   │ │
+│  └─────────┘    └──────────────┘    └─────────┘ │
+│                       ▲                          │
+│                       │ text conditioning        │
+│                  ┌────┴─────┐                    │
+│                  │ CLIP/     │                    │
+│                  │ Text      │                    │
+│                  │ Encoder   │                    │
+│                  └──────────┘                    │
+└─────────────────────────────────────────────────┘
+```
+
+The key insight of latent diffusion is that it works in a compressed "latent" space rather than directly on pixels. This makes it dramatically more efficient — a 1024x1024 image might be compressed to a 128x128 latent representation, reducing computation by 64x while preserving visual quality.
+
+---
+
+## 3. Design System Agents
+
+A **design system** is a collection of reusable components, guidelines, and standards that ensure visual consistency across a product or brand. Maintaining these systems at scale is tedious, error-prone, and exactly the kind of work where agents excel.
+
+### What Design System Agents Do
+
+Design system agents automate the enforcement of visual rules:
+
+1. **Color Palette Validation**: Check that colors used in designs match the approved palette
+2. **Typography Compliance**: Verify font families, sizes, weights, and line heights
+3. **Spacing Audit**: Ensure consistent use of spacing values (padding, margins, gaps)
+4. **Component Usage**: Flag when custom elements are used instead of approved components
+5. **Accessibility Checks**: Verify color contrast ratios meet WCAG standards
+6. **Asset Management**: Ensure image dimensions, formats, and naming follow conventions
+
+### Anatomy of a Design System Agent
+
+```
+┌──────────────────────────────────────────────────┐
+│           DESIGN SYSTEM AGENT                     │
+│                                                   │
+│  Input: Design file / Code / Screenshot            │
+│    │                                               │
+│    ▼                                               │
+│  ┌─────────────────┐                              │
+│  │  Parser          │  Extract design tokens       │
+│  │  (CSS/JSON/IMG)  │  from input                 │
+│  └────────┬────────┘                              │
+│           │                                       │
+│           ▼                                       │
+│  ┌─────────────────┐                              │
+│  │  Rule Engine     │  Compare extracted values    │
+│  │  (Design Tokens) │  against design system spec  │
+│  └────────┬────────┘                              │
+│           │                                       │
+│           ▼                                       │
+│  ┌─────────────────┐                              │
+│  │  Reporter        │  Generate violations report  │
+│  │  + Suggestions   │  with fix recommendations   │
+│  └─────────────────┘                              │
+└──────────────────────────────────────────────────┘
+```
+
+### Implementation: A Design Token Validator
+
+Here's a practical example of an agent that validates CSS against a design system specification:
+
+```python
+"""
+Design System Validator Agent
+
+Validates CSS/code against a design system specification.
+Checks colors, typography, spacing, and accessibility.
+"""
+
+import re
+import json
+from dataclasses import dataclass, field
+from enum import Enum
+
+
+class Severity(Enum):
+    ERROR = "error"       # Must fix
+    WARNING = "warning"   # Should fix
+    INFO = "info"         # Nice to fix
+
+
+@dataclass
+class Violation:
+    """A single design system violation."""
+    rule: str
+    severity: Severity
+    message: str
+    file: str = ""
+    line: int = 0
+    suggestion: str = ""
+
+
+@dataclass
+class DesignSystemSpec:
+    """
+    The design system specification.
+    In production, this would come from a JSON/YAML config file
+    or a design tool API (Figma, Sketch).
+    """
+    # Approved color palette
+    colors: dict[str, str] = field(default_factory=lambda: {
+        "primary": "#2563EB",       # Blue-600
+        "secondary": "#7C3AED",     # Violet-600
+        "success": "#059669",       # Emerald-600
+        "warning": "#D97706",       # Amber-600
+        "error": "#DC2626",         # Red-600
+        "gray-50": "#F9FAFB",
+        "gray-100": "#F3F4F6",
+        "gray-200": "#E5E7EB",
+        "gray-300": "#D1D5DB",
+        "gray-500": "#6B7280",
+        "gray-700": "#374151",
+        "gray-900": "#111827",
+        "white": "#FFFFFF",
+        "black": "#000000",
+    })
+
+    # Approved fonts
+    fonts: list[str] = field(default_factory=lambda: [
+        "Inter",
+        "Inter Tight",
+        "system-ui",
+        "-apple-system",
+        "sans-serif",
+    ])
+
+    # Approved font sizes (in pixels)
+    font_sizes: list[int] = field(default_factory=lambda: [
+        12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72
+    ])
+
+    # Spacing scale (in pixels) — based on 4px grid
+    spacing_scale: list[int] = field(default_factory=lambda: [
+        0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 128
+    ])
+
+    # Required minimum contrast ratio (WCAG AA)
+    min_contrast_ratio: float = 4.5
+
+
+class DesignSystemAgent:
+    """
+    Agent that validates code/designs against a design system specification.
+    """
+
+    def __init__(self, spec: DesignSystemSpec):
+        self.spec = spec
+        self.violations: list[Violation] = []
+
+    def validate_css(self, css_content: str, filename: str = "input.css") -> list[Violation]:
+        """
+        Validate a CSS file against the design system spec.
+        Returns a list of violations found.
+        """
+        self.violations = []
+        lines = css_content.split("\n")
+
+        for line_num, line in enumerate(lines, start=1):
+            stripped = line.strip()
+
+            # Check for unauthorized colors
+            self._check_colors(stripped, filename, line_num)
+
+            # Check for unauthorized fonts
+            self._check_fonts(stripped, filename, line_num)
+
+            # Check for non-standard spacing
+            self._check_spacing(stripped, filename, line_num)
+
+        return self.violations
+
+    def _check_colors(self, line: str, filename: str, line_num: int) -> None:
+        """Check if a color value is in the approved palette."""
+        # Match hex colors (#RGB, #RRGGBB, #RRGGBBAA)
+        hex_pattern = r"#([0-9A-Fa-f]{3,8})\b"
+        matches = re.findall(hex_pattern, line)
+
+        for match in matches:
+            hex_value = f"#{match}"
+            # Normalize to 6-digit hex for comparison
+            normalized = self._normalize_hex(hex_value)
+
+            if normalized and normalized.lower() not in [
+                v.lower() for v in self.spec.colors.values()
+            ]:
+                # Find closest approved color for suggestion
+                suggestion = self._suggest_color(normalized)
+                self.violations.append(Violation(
+                    rule="color-palette",
+                    severity=Severity.WARNING,
+                    message=f"Color {hex_value} is not in the approved palette.",
+                    file=filename,
+                    line=line_num,
+                    suggestion=f"Consider using {suggestion} instead.",
+                ))
+
+    def _check_fonts(self, line: str, filename: str, line_num: int) -> None:
+        """Check if a font family is in the approved list."""
+        font_pattern = r"font-family:\s*([^;]+)"
+        match = re.search(font_pattern, line)
+
+        if match:
+            fonts_used = [f.strip().strip("'\"") for f in match.group(1).split(",")]
+            for font in fonts_used:
+                if font not in self.spec.fonts and font not in [
+                    "serif", "monospace", "cursive", "fantasy"
+                ]:
+                    self.violations.append(Violation(
+                        rule="typography",
+                        severity=Severity.ERROR,
+                        message=f"Font '{font}' is not in the approved font list.",
+                        file=filename,
+                        line=line_num,
+                        suggestion=f"Use one of: {', '.join(self.spec.fonts[:3])}...",
+                    ))
+
+    def _check_spacing(self, line: str, filename: str, line_num: int) -> None:
+        """Check if spacing values follow the approved spacing scale."""
+        spacing_properties = [
+            "padding", "margin", "gap",
+            "padding-top", "padding-bottom", "padding-left", "padding-right",
+            "margin-top", "margin-bottom", "margin-left", "margin-right",
+        ]
+
+        for prop in spacing_properties:
+            pattern = rf"{prop}:\s*(\d+)px"
+            match = re.search(pattern, line)
+            if match:
+                value = int(match.group(1))
+                if value not in self.spec.spacing_scale:
+                    nearest = min(self.spec.spacing_scale, key=lambda x: abs(x - value))
+                    self.violations.append(Violation(
+                        rule="spacing",
+                        severity=Severity.INFO,
+                        message=(
+                            f"{prop}: {value}px is not on the spacing scale. "
+                            f"Values should be multiples of 4."
+                        ),
+                        file=filename,
+                        line=line_num,
+                        suggestion=f"Use {nearest}px instead.",
+                    ))
+
+    def _normalize_hex(self, hex_color: str) -> str | None:
+        """Normalize a hex color to 6-digit format."""
+        hex_val = hex_color.lstrip("#")
+        if len(hex_val) == 3:
+            return "#" + "".join(c * 2 for c in hex_val)
+        elif len(hex_val) == 6:
+            return "#" + hex_val
+        elif len(hex_val) == 8:
+            return "#" + hex_val[:6]  # Strip alpha
+        return None
+
+    def _suggest_color(self, color: str) -> str:
+        """Find the closest approved color by Euclidean distance in RGB space."""
+        def hex_to_rgb(h: str) -> tuple[int, int, int]:
+            h = h.lstrip("#")
+            return (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
+
+        target_rgb = hex_to_rgb(color)
+        best_match = ""
+        best_distance = float("inf")
+
+        for name, approved_hex in self.spec.colors.items():
+            approved_rgb = hex_to_rgb(approved_hex)
+            distance = sum(
+                (t - a) ** 2 for t, a in zip(target_rgb, approved_rgb)
+            )
+            if distance < best_distance:
+                best_distance = distance
+                best_match = f"{name} ({approved_hex})"
+
+        return best_match
+
+    def generate_report(self) -> str:
+        """Generate a human-readable report of all violations."""
+        if not self.violations:
+            return "✅ All checks passed! Design is compliant."
+
+        report_lines = [
+            "# Design System Compliance Report",
+            "",
+            f"Found {len(self.violations)} violations:",
+            "",
+        ]
+
+        # Group by severity
+        for severity in Severity:
+            grouped = [v for v in self.violations if v.severity == severity]
+            if grouped:
+                report_lines.append(f"## {severity.value.upper()} ({len(grouped)})")
+                for v in grouped:
+                    report_lines.append(
+                        f"  - [{v.rule}] {v.file}:{v.line} — {v.message}"
+                    )
+                    if v.suggestion:
+                        report_lines.append(f"    💡 {v.suggestion}")
+                report_lines.append("")
+
+        return "\n".join(report_lines)
+
+
+# --- Usage Example ---
+if __name__ == "__main__":
+    # Define the design system
+    spec = DesignSystemSpec()
+
+    # Sample CSS to validate
+    sample_css = """
+    .header {
+        background-color: #FF5733;
+        font-family: "Roboto", sans-serif;
+        font-size: 24px;
+        padding: 15px;
+        color: #333333;
+    }
+    .button {
+        background-color: #2563EB;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        padding: 12px;
+        margin: 8px;
+    }
+    .sidebar {
+        background-color: #F3F4F6;
+        padding: 18px;
+        gap: 11px;
+    }
+    """
+
+    agent = DesignSystemAgent(spec)
+    violations = agent.validate_css(sample_css, "styles.css")
+    report = agent.generate_report()
+    print(report)
+```
+
+### Running the Validator
+
+When you run this agent against the sample CSS, it produces output like:
+
+```
+# Design System Compliance Report
+
+Found 6 violations:
+
+## ERROR (1)
+  - [typography] styles.css:4 — Font 'Roboto' is not in the approved font list.
+    💡 Use one of: Inter, Inter Tight, system-ui...
+
+## WARNING (2)
+  - [color-palette] styles.css:3 — Color #FF5733 is not in the approved palette.
+    💡 Consider using error (#DC2626) instead.
+  - [color-palette] styles.css:10 — Color #333333 is not in the approved palette.
+    💡 Consider using gray-700 (#374151) instead.
+
+## INFO (3)
+  - [spacing] styles.css:6 — padding: 15px is not on the spacing scale. Values should be multiples of 4.
+    💡 Use 16px instead.
+  - [spacing] styles.css:14 — padding: 18px is not on the spacing scale. Values should be multiples of 4.
+    💡 Use 16px instead.
+  - [spacing] styles.css:15 — gap: 11px is not on the spacing scale. Values should be multiples of 4.
+    💡 Use 12px instead.
+```
+
+This is exactly the kind of agent that runs in CI pipelines to catch design drift before it ships.
+
+### Extending the Agent with LLM Intelligence
+
+For more nuanced checks (like "does this layout feel balanced?" or "is this copy on-brand?"), you can combine the rule-based validator with an LLM:
+
+```python
+import anthropic
+
+client = anthropic.Anthropic()
+
+def llm_design_review(css_content: str, design_brief: str) -> str:
+    """
+    Use Claude to provide subjective design feedback
+    beyond what rule-based validation can catch.
+    """
+    message = client.messages.create(
+        model="claude-sonnet-4-20250514",
+        max_tokens=1024,
+        messages=[
+            {
+                "role": "user",
+                "content": (
+                    f"You are a senior design system reviewer.\n\n"
+                    f"Design Brief: {design_brief}\n\n"
+                    f"CSS Code:\n```css\n{css_content}\n```\n\n"
+                    f"Review this CSS against the brief. Consider:\n"
+                    f"1. Visual hierarchy — is the information ordering clear?\n"
+                    f"2. Consistency — do similar elements use similar styles?\n"
+                    f"3. Spacing rhythm — does the layout feel balanced?\n"
+                    f"4. Responsiveness — are there obvious mobile issues?\n"
+                    f"5. Accessibility — any contrast or size concerns?\n\n"
+                    f"Provide specific, actionable feedback."
+                ),
+            }
+        ],
+    )
+    return message.content[0].text
+```
+
+---
+
+## 4. Content Creation
+
+AI-powered content creation goes far beyond "generate a blog post." The real power is in creating content systems — agents that produce consistent, on-brand content at scale while maintaining quality standards.
+
+### Types of Content Agents
+
+| Agent Type | Input | Output | Use Case |
+|------------|-------|--------|----------|
+| **Blog Writer** | Topic + outline + brand guide | Long-form article | Content marketing |
+| **Social Media Agent** | Topic + platform + tone | Short-form posts | Social media management |
+| **Email Copywriter** | Campaign goal + audience | Email sequence | Email marketing |
+| **Ad Copy Agent** | Product + target + platform | Ad variations | Advertising |
+| **SEO Content Agent** | Keywords + competitor analysis | Optimized article | Organic search |
+| **Documentation Agent** | API/code + style guide | Technical docs | Developer docs |
+
+### How LLMs Generate Creative Content
+
+Modern LLMs generate creative content through a process of conditional text generation:
+
+1. **Understanding**: The model processes the prompt, including any brand guidelines, tone instructions, or context
+2. **Planning**: Through chain-of-thought reasoning, it structures the content logically
+3. **Generation**: It produces text token by token, each word influenced by everything before it
+4. **Refinement**: With the right prompting strategy, it can self-critique and improve
+
+The key to good creative output is the prompt engineering — specifically, providing clear constraints without over-constraining.
+
+### The Prompt Hierarchy for Creative Content
+
+```
+┌─────────────────────────────────────┐
+│         SYSTEM PROMPT               │
+│  Brand identity, voice, audience    │
+│  (Stays constant)                   │
+├─────────────────────────────────────┤
+│         TASK PROMPT                 │
+│  What to create, format, length     │
+│  (Changes per request)              │
+├─────────────────────────────────────┤
+│         CONTEXT PROMPT              │
+│  Topic, keywords, references        │
+│  (Changes per request)              │
+├─────────────────────────────────────┤
+│         CONSTRAINT PROMPT           │
+│  Do's and don'ts, examples          │
+│  (Partially constant)               │
+└─────────────────────────────────────┘
+```
+
+### Tone Control
+
+One of the most powerful capabilities of LLM-based content agents is fine-grained tone control. By adjusting the system prompt, you can shift the same topic across a wide range of tones:
+
+```python
+TONE_PROFILES = {
+    "professional": {
+        "description": "Formal, authoritative, data-driven",
+        "example": "Our latest analysis reveals a 23% improvement in efficiency.",
+        "avoid": ["slang", "excessive exclamation marks", "informal contractions"],
+    },
+    "friendly": {
+        "description": "Warm, approachable, conversational",
+        "example": "Great news — we've made things 23% more efficient!",
+        "avoid": ["jargon", "passive voice", "stiff phrasing"],
+    },
+    "witty": {
+        "description": "Clever, humorous, engaging",
+        "example": "Efficiency went up 23%. Your coffee breaks are safe — for now.",
+        "avoid": ["forced humor", "offensive jokes", "puns about work"],
+    },
+    "inspirational": {
+        "description": "Motivating, forward-looking, empowering",
+        "example": "Imagine what we can achieve with 23% more efficiency.",
+        "avoid": ["clichés", "unsubstantiated claims", "aggressive language"],
+    },
+}
+```
+
+### Audience Targeting
+
+Effective content agents adapt their vocabulary, references, and depth based on the target audience:
+
+| Audience | Vocabulary | Depth | References | Length |
+|----------|-----------|-------|------------|--------|
+| **Technical developers** | Precise, jargon-ok | Deep, code examples | APIs, docs | Long |
+| **Business executives** | Clear, ROI-focused | High-level insights | Market data | Short |
+| **General consumers** | Simple, relatable | Accessible | Everyday analogies | Medium |
+| **Students** | Educational, patient | Step-by-step | Learning resources | Long |
+| **Healthcare professionals** | Clinical, precise | Evidence-based | Research papers | Medium |
+
+### SEO Content Generation
+
+For content that needs to rank in search engines, agents can incorporate SEO best practices:
+
+```python
+def generate_seo_content(
+    topic: str,
+    target_keywords: list[str],
+    word_count: int = 1500,
+) -> str:
+    """
+    Generate SEO-optimized content that reads naturally
+    while incorporating target keywords.
+    """
+    prompt = f"""
+    Write a comprehensive article about: {topic}
+
+    Requirements:
+    - Target word count: {word_count} words
+    - Primary keywords to include (naturally): {', '.join(target_keywords)}
+    - Include the primary keyword in:
+      * The title (H1)
+      * The first 100 words
+      * At least one H2 subheading
+      * The conclusion
+    - Use related keywords and synonyms throughout
+    - Include a FAQ section with schema markup suggestions
+    - Write for humans first, search engines second
+
+    Structure:
+    1. Compelling introduction with hook
+    2. H2 sections covering key aspects
+    3. Practical examples or data points
+    4. FAQ section (3-5 questions)
+    5. Strong conclusion with call to action
+
+    Tone: Authoritative but accessible.
+    """
+    return prompt  # Send to your LLM of choice
+```
+
+---
+
+## 5. Brand Consistency
+
+Brand consistency is where creative agents deliver some of their highest ROI. When every piece of content — from tweets to whitepapers to product descriptions — sounds like it came from the same voice, trust builds. When it doesn't, trust erodes.
+
+### The Challenge of Scale
+
+A single writer can maintain a consistent voice naturally. But when you have:
+
+- 10 writers across 3 agencies
+- Content in 5 languages
+- 50+ pieces per week
+- Multiple platforms with different formats
+
+...consistency breaks down. Agents solve this by encoding your brand voice as rules that never forget, never have bad days, and never drift.
+
+### Building a Brand Voice Profile
+
+A brand voice profile is the DNA of your content agent. It should capture:
+
+```python
+BRAND_VOICE_PROFILE = {
+    "company": "AcmeTech",
+    "industry": "B2B SaaS — project management tools",
+
+    "voice_attributes": {
+        "confident_not": "arrogant",
+        "friendly_not": "unprofessional",
+        "technical_not": "jargon-heavy",
+        "concise_not": "terse",
+    },
+
+    "do": [
+        "Use active voice",
+        "Start sentences with the subject",
+        "Use concrete numbers and data",
+        "Address the reader as 'you'",
+        "Break complex ideas into simple steps",
+    ],
+
+    "dont": [
+        "Use buzzwords like 'synergy', 'leverage', 'disrupt'",
+        "Use passive voice more than 20% of the time",
+        "Start sentences with 'It is' or 'There are'",
+        "Use more than 2 adjectives before a noun",
+        "End paragraphs with questions (except in CTAs)",
+    ],
+
+    "vocabulary": {
+        "use": ["customers", "teams", "projects", "results"],
+        "avoid": ["users", "clients", "deliverables", "utilize"],
+    },
+
+    "sentence_structure": {
+        "avg_length": "12-18 words",
+        "max_length": "25 words",
+        "paragraph_max": "3 sentences",
+    },
+
+    "examples": {
+        "bad": "We leverage cutting-edge synergy to deliver transformative solutions.",
+        "good": "We built AcmeTech to help teams ship projects on time.",
+    }
+}
+```
+
+### Few-Shot Brand Examples
+
+The most effective way to teach an agent your brand voice is through examples. Few-shot learning — providing 3-5 examples of on-brand content — consistently outperforms description-only approaches:
+
+```python
+BRAND_EXAMPLES = [
+    {
+        "topic": "Product launch announcement",
+        "bad": (
+            "We are thrilled to announce the groundbreaking release of our "
+            "innovative new platform, which leverages cutting-edge AI technology "
+            "to revolutionize the way teams collaborate on projects."
+        ),
+        "good": (
+            "AcmeTech 3.0 is here. It writes your project plans, "
+            "tracks progress automatically, and sends updates so you "
+            "don't have to. Teams using the beta shipped 34% more on time."
+        ),
+    },
+    {
+        "topic": "Blog post introduction",
+        "bad": (
+            "In today's fast-paced digital landscape, it is increasingly "
+            "important for organizations to leverage data-driven insights "
+            "to optimize their workflows and maximize productivity."
+        ),
+        "good": (
+            "Your team spends 11 hours a week on status updates. "
+            "That's more than a full workday — gone. Here's how to "
+            "get it back without losing visibility."
+        ),
+    },
+    {
+        "topic": "Error message",
+        "bad": (
+            "An unexpected error has occurred while processing your request. "
+            "Please contact support for assistance."
+        ),
+        "good": (
+            "Something went wrong saving your project. Your changes are "
+            "safe — we saved a backup. Click 'Retry' or contact support "
+            "if this keeps happening."
+        ),
+    },
+]
+```
+
+### System Prompt Template for Brand Voice
+
+Here's a complete system prompt template you can adapt for any brand:
+
+```python
+def build_brand_system_prompt(brand_profile: dict, examples: list[dict]) -> str:
+    """
+    Build a comprehensive system prompt for a brand-consistent
+    content creation agent.
+    """
+    example_text = "\n\n".join(
+        f"TOPIC: {ex['topic']}\n"
+        f"❌ BAD: {ex['bad']}\n"
+        f"✅ GOOD: {ex['good']}"
+        for ex in examples
+    )
+
+    dos = "\n".join(f"  - {d}" for d in brand_profile["do"])
+    donts = "\n".join(f"  - {d}" for d in brand_profile["dont"])
+
+    return f"""
+You are a content writer for {brand_profile['company']}, a {brand_profile['industry']} company.
+
+## Brand Voice
+
+Our voice is:
+{chr(10).join(f"- **{k.replace('_', ' ').title()}**: {v}" for k, v in brand_profile['voice_attributes'].items())}
+
+## Rules
+
+DO:
+{dos}
+
+DON'T:
+{donts}
+
+## Vocabulary
+
+Use these words: {', '.join(brand_profile['vocabulary']['use'])}
+Avoid these words: {', '.join(brand_profile['vocabulary']['avoid'])}
+
+## Writing Style
+
+- Average sentence length: {brand_profile['sentence_structure']['avg_length']}
+- Max sentence length: {brand_profile['sentence_structure']['max_length']}
+- Max sentences per paragraph: {brand_profile['sentence_structure']['paragraph_max']}
+
+## Examples
+
+{example_text}
+
+## Process
+
+When asked to write content:
+1. First, identify the core message (one sentence)
+2. Plan the structure (3-7 points)
+3. Write, checking each sentence against the rules above
+4. Revise: cut any sentence that doesn't serve the reader
+5. Final check: read aloud — does it sound like a smart friend, not a brochure?
+
+Always prioritize clarity and usefulness over cleverness.
+"""
+```
+
+---
+
+## 6. UI/UX Suggestion Agents
+
+UI/UX suggestion agents use multimodal AI to analyze designs and provide actionable feedback. They can review screenshots, wireframes, and mockups to identify usability issues, suggest improvements, and ensure design consistency.
+
+### How They Work
+
+```
+┌──────────────────────────────────────────────────────┐
+│              UI/UX SUGGESTION AGENT                   │
+│                                                       │
+│  ┌──────────┐                                         │
+│  │ Screenshot│ → Vision Model → Analysis              │
+│  │ or Mockup │    (GPT-4o,      - Layout issues       │
+│  └──────────┘     Claude)       - Accessibility        │
+│                                 - Consistency          │
+│                                 - UX patterns          │
+│                                         │              │
+│                                         ▼              │
+│                              ┌──────────────────┐     │
+│                              │  Structured       │     │
+│                              │  Feedback Report  │     │
+│                              │  + Mockups        │     │
+│                              └──────────────────┘     │
+└──────────────────────────────────────────────────────┘
+```
+
+### Analysis Categories
+
+A comprehensive UI/UX agent evaluates designs across multiple dimensions:
+
+| Category | What It Checks | Impact |
+|----------|---------------|--------|
+| **Layout** | Alignment, grid consistency, white space | Visual clarity |
+| **Typography** | Hierarchy, readability, font consistency | Information scannability |
+| **Color** | Contrast, palette adherence, meaning | Accessibility + brand |
+| **Spacing** | Padding, margins, component gaps | Visual rhythm |
+| **Navigation** | Click targets, information architecture | Usability |
+| **Accessibility** | WCAG compliance, screen reader support | Legal + inclusive |
+| **Mobile** | Touch targets, responsive behavior | Cross-device UX |
+| **Consistency** | Component reuse, pattern adherence | Design system integrity |
+
+### Building a UI Feedback Agent
+
+```python
+"""
+UI/UX Suggestion Agent
+
+Analyzes design screenshots and provides structured feedback
+using a multimodal vision model.
+"""
+
+import anthropic
+import base64
+from pathlib import Path
+
+
+def analyze_ui_screenshot(
+    image_path: str,
+    design_system_url: str | None = None,
+    focus_areas: list[str] | None = None,
+) -> dict:
+    """
+    Analyze a UI screenshot and provide structured UX feedback.
+
+    Args:
+        image_path: Path to the screenshot image
+        design_system_url: Optional link to the design system for reference
+        focus_areas: Specific areas to focus on (e.g., ["accessibility", "layout"])
+
+    Returns:
+        Structured feedback dictionary
+    """
+    client = anthropic.Anthropic()
+
+    # Read and encode the image
+    image_data = Path(image_path).read_bytes()
+    base64_image = base64.standard_b64encode(image_data).decode("utf-8")
+
+    # Determine media type
+    suffix = Path(image_path).suffix.lower()
+    media_type_map = {
+        ".png": "image/png",
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+        ".gif": "image/gif",
+        ".webp": "image/webp",
+    }
+    media_type = media_type_map.get(suffix, "image/png")
+
+    # Build the analysis prompt
+    focus_instruction = ""
+    if focus_areas:
+        focus_instruction = (
+            f"\n\nPay special attention to: {', '.join(focus_areas)}"
+        )
+
+    ds_reference = ""
+    if design_system_url:
+        ds_reference = (
+            f"\n\nDesign system reference: {design_system_url}"
+            f"\nCheck if the design follows the system's patterns."
+        )
+
+    message = client.messages.create(
+        model="claude-sonnet-4-20250514",
+        max_tokens=2048,
+        messages=[
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "image",
+                        "source": {
+                            "type": "base64",
+                            "media_type": media_type,
+                            "data": base64_image,
+                        },
+                    },
+                    {
+                        "type": "text",
+                        "text": (
+                            "You are a senior UX designer reviewing this interface. "
+                            "Provide a structured analysis covering these categories:\n\n"
+                            "1. **Layout & Visual Hierarchy** — Is the information "
+                            "hierarchy clear? Is there appropriate use of white space?\n\n"
+                            "2. **Typography** — Is the font sizing and weight creating "
+                            "a clear reading path?\n\n"
+                            "3. **Color & Contrast** — Are there potential accessibility "
+                            "issues with contrast? Does the color usage make sense?\n\n"
+                            "4. **Spacing & Alignment** — Are elements properly aligned? "
+                            "Is spacing consistent?\n\n"
+                            "5. **Usability** — Are interactive elements obvious? "
+                            "Are click targets large enough?\n\n"
+                            "6. **Accessibility** — Any WCAG concerns? Color contrast, "
+                            "text size, touch targets?\n\n"
+                            "For each category, provide:\n"
+                            "- A rating: ✅ Good / ⚠️ Needs Improvement / ❌ Problem\n"
+                            "- Specific observations\n"
+                            "- Actionable suggestions with exact values where possible\n\n"
+                            "Be specific and practical. Reference exact UI elements "
+                            "you see in the screenshot."
+                            f"{focus_instruction}{ds_reference}"
+                        ),
+                    },
+                ],
+            }
+        ],
+    )
+
+    return {"analysis": message.content[0].text, "image": image_path}
+```
+
+### Using the Agent in a Design Review Pipeline
+
+```python
+def batch_design_review(screenshot_paths: list[str]) -> list[dict]:
+    """
+    Review multiple screenshots as part of a design review pipeline.
+    Useful for reviewing all screens of a feature before development.
+    """
+    results = []
+    for path in screenshot_paths:
+        print(f"Reviewing: {path}")
+        result = analyze_ui_screenshot(
+            image_path=path,
+            focus_areas=["accessibility", "layout", "consistency"],
+        )
+        results.append(result)
+        print(f"  ✓ Complete\n")
+
+    # Generate summary report
+    summary = generate_review_summary(results)
+    return results
+
+
+def generate_review_summary(results: list[dict]) -> str:
+    """Create a consolidated summary across all reviewed screens."""
+    summary_parts = [
+        "# Design Review Summary",
+        f"\nReviewed {len(results)} screens.\n",
+    ]
+
+    for i, result in enumerate(results, 1):
+        summary_parts.append(f"## Screen {i}: {result['image']}")
+        summary_parts.append(result["analysis"])
+        summary_parts.append("\n---\n")
+
+    return "\n".join(summary_parts)
+```
+
+---
+
+## 7. Multimodal Agents
+
+Multimodal agents can process and reason about multiple types of input simultaneously — text, images, code, and sometimes audio. In the creative space, this means an agent can look at a design mockup, understand the text describing what it should be, and bridge the gap between them.
+
+### Vision Models: What They Can Do
+
+Modern vision models like Claude, GPT-4o, and Gemini can:
+
+| Capability | Description | Creative Use Case |
+|-----------|-------------|-------------------|
+| **Image Description** | Generate detailed text descriptions of images | Alt text, asset catalogs |
+| **OCR** | Extract text from images | Digitizing handwritten notes |
+| **Visual Q&A** | Answer questions about image content | Design review, QA |
+| **Comparison** | Compare two images for differences | Version control, A/B analysis |
+| **Code Generation** | Convert UI mockups to HTML/CSS | Design-to-code pipelines |
+| **Chart Reading** | Interpret data visualizations | Report generation |
+| **Layout Analysis** | Understand spatial relationships | Document parsing |
+
+### The Multimodal Agent Architecture
+
+```
+┌──────────────────────────────────────────────────────┐
+│              MULTIMODAL AGENT                         │
+│                                                       │
+│  Inputs:                                              │
+│  ┌──────────┐  ┌──────────┐  ┌──────────────────┐   │
+│  │  Text    │  │  Image   │  │  Code / CSS      │   │
+│  │  Prompt  │  │  Input   │  │  / Design Tokens  │   │
+│  └────┬─────┘  └────┬─────┘  └────────┬─────────┘   │
+│       │              │                  │              │
+│       ▼              ▼                  ▼              │
+│  ┌──────────────────────────────────────────────┐    │
+│  │         Multimodal Fusion Layer               │    │
+│  │    (Vision model processes all inputs)        │    │
+│  └──────────────────────┬───────────────────────┘    │
+│                         │                             │
+│                         ▼                             │
+│  ┌──────────────────────────────────────────────┐    │
+│  │         Reasoning + Action Layer              │    │
+│  │    - Analyzes combined understanding          │    │
+│  │    - Generates structured output              │    │
+│  │    - Can call tools (generate images, etc.)   │    │
+│  └──────────────────────┬───────────────────────┘    │
+│                         │                             │
+│                         ▼                             │
+│  Output: Text + Images + Code + Recommendations      │
+└──────────────────────────────────────────────────────┘
+```
+
+### Mockup to Code: A Practical Example
+
+One of the most impactful multimodal workflows is converting design mockups into working code:
+
+```python
+"""
+Mockup-to-Code Agent
+
+Takes a design mockup image and generates corresponding
+HTML/CSS code using a multimodal model.
+"""
+
+import anthropic
+import base64
+from pathlib import Path
+
+
+def mockup_to_code(
+    image_path: str,
+    framework: str = "html",
+    css_framework: str = "tailwind",
+    additional_instructions: str = "",
+) -> str:
+    """
+    Convert a design mockup into working code.
+
+    Args:
+        image_path: Path to the design mockup
+        framework: Target framework (html, react, vue)
+        css_framework: CSS framework to use (tailwind, bootstrap, plain)
+        additional_instructions: Any extra requirements
+
+    Returns:
+        Generated code as a string
+    """
+    client = anthropic.Anthropic()
+
+    # Read and encode the image
+    image_data = Path(image_path).read_bytes()
+    base64_image = base64.standard_b64encode(image_data).decode("utf-8")
+
+    prompt = f"""
+You are a front-end developer converting a design mockup into code.
+
+## Task
+Convert the attached mockup into a pixel-perfect {framework.upper()} implementation.
+
+## Requirements
+- Use {css_framework} for styling
+- Match the layout, colors, typography, and spacing as closely as possible
+- Use semantic HTML elements where appropriate
+- Include hover states for interactive elements
+- Make the layout responsive (mobile-friendly)
+- Use placeholder text and images where the mockup has content
+- Include comments explaining key layout decisions
+
+## Output Format
+Provide the complete, self-contained code that can be saved and opened in a browser.
+Wrap HTML in ```html blocks.
+Wrap CSS in ```css blocks.
+Wrap JavaScript in ```javascript blocks (if needed).
+
+{additional_instructions}
+"""
+
+    message = client.messages.create(
+        model="claude-sonnet-4-20250514",
+        max_tokens=4096,
+        messages=[
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "image",
+                        "source": {
+                            "type": "base64",
+                            "media_type": "image/png",
+                            "data": base64_image,
+                        },
+                    },
+                    {
+                        "type": "text",
+                        "text": prompt,
+                    },
+                ],
+            }
+        ],
+    )
+
+    return message.content[0].text
+
+
+def image_description_agent(image_path: str) -> dict:
+    """
+    Generate detailed descriptions and metadata for design assets.
+    Useful for building searchable design asset libraries.
+    """
+    client = anthropic.Anthropic()
+
+    image_data = Path(image_path).read_bytes()
+    base64_image = base64.standard_b64encode(image_data).decode("utf-8")
+
+    message = client.messages.create(
+        model="claude-sonnet-4-20250514",
+        max_tokens=1024,
+        messages=[
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "image",
+                        "source": {
+                            "type": "base64",
+                            "media_type": "image/png",
+                            "data": base64_image,
+                        },
+                    },
+                    {
+                        "type": "text",
+                        "text": (
+                            "Analyze this design asset and return a JSON object with:\n"
+                            "1. description: A detailed 2-3 sentence description\n"
+                            "2. colors: The dominant colors (hex values)\n"
+                            "3. tags: 5-10 relevant tags for searchability\n"
+                            "4. category: One of (illustration, photo, icon, UI, typography, pattern)\n"
+                            "5. mood: The emotional tone (e.g., professional, playful, minimal)\n"
+                            "6. suggested_use: Best use cases for this asset\n"
+                            "7. alt_text: Accessibility-friendly alt text\n\n"
+                            "Return ONLY the JSON object, no other text."
+                        ),
+                    },
+                ],
+            }
+        ],
+    )
+
+    return message.content[0].text
+```
+
+### Combining Vision and Generation
+
+The most powerful creative agents combine understanding (vision) with creation (generation):
+
+```python
+def iterative_design_agent(
+    brief: str,
+    reference_image: str | None = None,
+    num_iterations: int = 3,
+) -> list[dict]:
+    """
+    An agent that iteratively refines a design:
+    1. Generates an initial design from a brief
+    2. Analyzes the result
+    3. Refines based on analysis
+    4. Repeats for N iterations
+
+    This mimics the human design process of create → critique → refine.
+    """
+    client = anthropic.Anthropic()
+    history = []
+
+    current_brief = brief
+
+    for iteration in range(num_iterations):
+        print(f"\n{'='*50}")
+        print(f"Iteration {iteration + 1}/{num_iterations}")
+        print(f"{'='*50}")
+
+        # Step 1: Generate/refine the image
+        # (In practice, call DALL-E, Midjourney API, etc.)
+        image_prompt = f"{current_brief} (iteration {iteration + 1})"
+        print(f"Generating: {image_prompt}")
+
+        # Simulated — replace with actual API call
+        generated_image = f"generated_image_{iteration + 1}.png"
+
+        # Step 2: Analyze the result
+        analysis = analyze_ui_screenshot(
+            image_path=generated_image,
+            focus_areas=["layout", "color", "typography"],
+        )
+
+        history.append({
+            "iteration": iteration + 1,
+            "image": generated_image,
+            "analysis": analysis["analysis"],
+        })
+
+        # Step 3: Update the brief for next iteration
+        if iteration < num_iterations - 1:
+            current_brief = (
+                f"Original brief: {brief}\n\n"
+                f"Previous iteration feedback:\n{analysis['analysis']}\n\n"
+                f"Improve the design by addressing the issues found. "
+                f"Keep what works, fix what doesn't."
+            )
+
+    return history
+```
+
+---
+
+## 8. Code Example: Image Generation Agent
+
+This is a complete, production-ready image generation agent that takes natural language design briefs and produces images using the OpenAI DALL-E API. It handles prompt engineering, parameter optimization, style management, and result caching.
+
+```python
+"""
+Image Generation Agent — Complete Implementation
+
+A production-ready agent that converts natural language design briefs
+into generated images using OpenAI's DALL-E 3 API.
+
+Features:
+- Automatic prompt optimization for image generation
+- Multiple style presets (photorealistic, illustration, etc.)
+- Resolution and aspect ratio management
+- Retry logic with exponential backoff
+- Result caching for identical requests
+- Batch generation for design variations
+"""
+
+import os
+import json
+import hashlib
+import time
+from pathlib import Path
+from dataclasses import dataclass, field
+from enum import Enum
+from typing import Optional
+
+import httpx
+from openai import OpenAI
+
+
+# ── Configuration ──────────────────────────────────────────────────
+
+class ImageStyle(Enum):
+    """Predefined image generation styles."""
+    PHOTO = "photorealistic"
+    ILLUSTRATION = "digital illustration"
+    FLAT_DESIGN = "flat design, minimal, vector"
+    WATERCOLOR = "watercolor painting"
+    PIXEL_ART = "pixel art, retro"
+    THREE_D = "3D render, cinematic lighting"
+    SKETCH = "pencil sketch, hand-drawn"
+    ABSTRACT = "abstract, geometric"
+
+
+class AspectRatio(Enum):
+    """Supported aspect ratios mapped to DALL-E dimensions."""
+    SQUARE = ("1024x1024", 1024, 1024)
+    PORTRAIT = ("1024x1792", 1024, 1792)
+    LANDSCAPE = ("1792x1024", 1792, 1024)
+
+    def __init__(self, size_str: str, width: int, height: int):
+        self.size_str = size_str
+        self.width = width
+        self.height = height
+
+
+@dataclass
+class GenerationConfig:
+    """Configuration for image generation."""
+    model: str = "dall-e-3"
+    quality: str = "hd"           # "standard" or "hd"
+    style: ImageStyle = ImageStyle.PHOTO
+    aspect_ratio: AspectRatio = AspectRatio.SQUARE
+    num_images: int = 1           # 1-4 for DALL-E 3 (only 1 for hd)
+    cache_dir: str = "./image_cache"
+
+
+@dataclass
+class GeneratedImage:
+    """Represents a single generated image with metadata."""
+    url: str
+    revised_prompt: str
+    original_brief: str
+    style: str
+    size: str
+    generation_time: float
+    cache_key: str = ""
+
+
+# ── Prompt Engineer ────────────────────────────────────────────────
+
+class PromptEngineer:
+    """
+    Transforms natural language design briefs into optimized
+    image generation prompts.
+
+    DALL-E and similar models respond best to prompts that are:
+    - Specific and descriptive
+    - Include composition details
+    - Specify lighting and mood
+    - Mention artistic style explicitly
+    """
+
+    STYLE_MODIFIERS = {
+        ImageStyle.PHOTO: (
+            "photorealistic, shot on Canon EOS R5, 85mm lens, "
+            "natural lighting, 8K resolution, detailed"
+        ),
+        ImageStyle.ILLUSTRATION: (
+            "digital illustration, vibrant colors, clean lines, "
+            "modern art style, detailed, high quality"
+        ),
+        ImageStyle.FLAT_DESIGN: (
+            "flat design, minimal, vector style, bold colors, "
+            "clean geometric shapes, no gradients"
+        ),
+        ImageStyle.WATERCOLOR: (
+            "watercolor painting, soft edges, beautiful color blending, "
+            "artistic, textured paper effect"
+        ),
+        ImageStyle.PIXEL_ART: (
+            "pixel art, 16-bit retro style, limited color palette, "
+            "nostalgic, detailed sprite work"
+        ),
+        ImageStyle.THREE_D: (
+            "3D render, Octane render, cinematic lighting, "
+            "depth of field, subsurface scattering, photorealistic"
+        ),
+        ImageStyle.SKETCH: (
+            "pencil sketch, hand-drawn, detailed linework, "
+            "shading with cross-hatching, artistic"
+        ),
+        ImageStyle.ABSTRACT: (
+            "abstract art, geometric shapes, bold composition, "
+            "contemporary, gallery quality"
+        ),
+    }
+
+    @classmethod
+    def optimize_prompt(
+        cls,
+        brief: str,
+        style: ImageStyle,
+        additional_details: str = "",
+    ) -> str:
+        """
+        Transform a casual design brief into an optimized image prompt.
+
+        Example:
+            Input:  "a logo for a coffee shop"
+            Output: "A professional logo design for an artisan coffee shop,
+                     featuring a minimalist coffee cup icon with steam elements,
+                     warm brown and cream color palette, clean vector style,
+                     flat design, minimal, vector style, bold colors,
+                     clean geometric shapes, no gradients, white background"
+        """
+        # Start with the brief
+        parts = [brief.strip()]
+
+        # Add style modifier
+        style_mod = cls.STYLE_MODIFIERS.get(style, "")
+        if style_mod:
+            parts.append(style_mod)
+
+        # Add composition hints if not already present
+        brief_lower = brief.lower()
+        if not any(w in brief_lower for w in ["background", "on white", "on black"]):
+            parts.append("on a clean background")
+
+        # Add quality boosters
+        if "high quality" not in brief_lower and "8k" not in brief_lower:
+            parts.append("high quality, detailed")
+
+        # Add any additional details
+        if additional_details:
+            parts.append(additional_details)
+
+        return ", ".join(parts)
+
+
+# ── Caching Layer ─────────────────────────────────────────────────
+
+class ImageCache:
+    """
+    Simple file-based cache for generated images.
+    Avoids regenerating identical images.
+    """
+
+    def __init__(self, cache_dir: str = "./image_cache"):
+        self.cache_dir = Path(cache_dir)
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        self.index_file = self.cache_dir / "cache_index.json"
+        self._load_index()
+
+    def _load_index(self) -> None:
+        """Load the cache index from disk."""
+        if self.index_file.exists():
+            with open(self.index_file) as f:
+                self.index = json.load(f)
+        else:
+            self.index = {}
+
+    def _save_index(self) -> None:
+        """Persist the cache index to disk."""
+        with open(self.index_file, "w") as f:
+            json.dump(self.index, f, indent=2)
+
+    def _make_key(self, prompt: str, size: str, quality: str) -> str:
+        """Generate a deterministic cache key from generation params."""
+        content = f"{prompt}|{size}|{quality}"
+        return hashlib.sha256(content.encode()).hexdigest()[:16]
+
+    def get(self, prompt: str, size: str, quality: str) -> str | None:
+        """Look up a cached image URL. Returns None if not cached."""
+        key = self._make_key(prompt, size, quality)
+        return self.index.get(key)
+
+    def store(
+        self,
+        prompt: str,
+        size: str,
+        quality: str,
+        url: str,
+        local_path: str = "",
+    ) -> None:
+        """Store a generated image in the cache."""
+        key = self._make_key(prompt, size, quality)
+        self.index[key] = {
+            "url": url,
+            "local_path": local_path,
+            "prompt": prompt,
+            "size": size,
+            "quality": quality,
+            "cached_at": time.time(),
+        }
+        self._save_index()
+
+
+# ── Main Agent ────────────────────────────────────────────────────
+
+class ImageGenerationAgent:
+    """
+    Agent that takes natural language design briefs and generates images.
+
+    Usage:
+        agent = ImageGenerationAgent()
+        result = agent.generate("A logo for a vegan restaurant called Green Bites")
+        print(result.url)
+    """
+
+    def __init__(self, config: GenerationConfig | None = None):
+        self.config = config or GenerationConfig()
+        self.client = OpenAI()
+        self.cache = ImageCache(self.config.cache_dir)
+        self.prompt_engineer = PromptEngineer()
+
+    def generate(
+        self,
+        brief: str,
+        style: ImageStyle | None = None,
+        aspect_ratio: AspectRatio | None = None,
+        additional_details: str = "",
+        use_cache: bool = True,
+    ) -> GeneratedImage:
+        """
+        Generate an image from a natural language design brief.
+
+        Args:
+            brief: Natural language description of what to generate
+            style: Override the default style for this generation
+            aspect_ratio: Override the default aspect ratio
+            additional_details: Extra details to append to the prompt
+            use_cache: Whether to check/store in the image cache
+
+        Returns:
+            GeneratedImage with URL and metadata
+        """
+        # Resolve settings (use defaults from config if not overridden)
+        gen_style = style or self.config.style
+        gen_ar = aspect_ratio or self.config.aspect_ratio
+
+        # Optimize the prompt
+        optimized_prompt = self.prompt_engineer.optimize_prompt(
+            brief=brief,
+            style=gen_style,
+            additional_details=additional_details,
+        )
+
+        # Check cache first
+        if use_cache:
+            cached_url = self.cache.get(
+                prompt=optimized_prompt,
+                size=gen_ar.size_str,
+                quality=self.config.quality,
+            )
+            if cached_url:
+                print(f"Cache hit for: {brief[:50]}...")
+                return GeneratedImage(
+                    url=cached_url,
+                    revised_prompt=optimized_prompt,
+                    original_brief=brief,
+                    style=gen_style.value,
+                    size=gen_ar.size_str,
+                    generation_time=0.0,
+                    cache_key="cached",
+                )
+
+        # Generate the image with retry logic
+        start_time = time.time()
+        image_url = self._generate_with_retry(
+            prompt=optimized_prompt,
+            size=gen_ar.size_str,
+        )
+        generation_time = time.time() - start_time
+
+        # Cache the result
+        if use_cache:
+            self.cache.store(
+                prompt=optimized_prompt,
+                size=gen_ar.size_str,
+                quality=self.config.quality,
+                url=image_url,
+            )
+
+        return GeneratedImage(
+            url=image_url,
+            revised_prompt=optimized_prompt,
+            original_brief=brief,
+            style=gen_style.value,
+            size=gen_ar.size_str,
+            generation_time=generation_time,
+        )
+
+    def generate_variations(
+        self,
+        brief: str,
+        num_variations: int = 4,
+        styles: list[ImageStyle] | None = None,
+    ) -> list[GeneratedImage]:
+        """
+        Generate multiple variations of a design brief.
+        Useful for exploring different styles or approaches.
+        """
+        if styles is None:
+            # Default: generate in the configured style with slight variations
+            styles = [self.config.style] * num_variations
+
+        results = []
+        for i, style in enumerate(styles):
+            print(f"Generating variation {i + 1}/{len(styles)}...")
+            detail = f"variation {i + 1}" if len(styles) > 1 else ""
+            result = self.generate(
+                brief=brief,
+                style=style,
+                additional_details=detail,
+            )
+            results.append(result)
+
+        return results
+
+    def _generate_with_retry(
+        self,
+        prompt: str,
+        size: str,
+        max_retries: int = 3,
+    ) -> str:
+        """Generate an image with exponential backoff retry."""
+        for attempt in range(max_retries):
+            try:
+                response = self.client.images.generate(
+                    model=self.config.model,
+                    prompt=prompt,
+                    size=size,
+                    quality=self.config.quality,
+                    n=1,  # DALL-E 3 only supports n=1
+                    response_format="url",
+                )
+                return response.data[0].url
+
+            except Exception as e:
+                wait_time = 2 ** attempt  # Exponential backoff
+                print(f"  Attempt {attempt + 1} failed: {e}")
+                if attempt < max_retries - 1:
+                    print(f"  Retrying in {wait_time} seconds...")
+                    time.sleep(wait_time)
+                else:
+                    raise RuntimeError(
+                        f"Image generation failed after {max_retries} attempts: {e}"
+                    ) from e
+
+
+# ── Usage Examples ────────────────────────────────────────────────
+
+if __name__ == "__main__":
+    # Initialize the agent
+    agent = ImageGenerationAgent(
+        config=GenerationConfig(
+            quality="hd",
+            style=ImageStyle.PHOTO,
+            aspect_ratio=AspectRatio.SQUARE,
+        )
+    )
+
+    # Example 1: Simple generation
+    print("--- Example 1: Simple Generation ---")
+    result = agent.generate(
+        brief="A cozy coffee shop interior with warm lighting, "
+              "exposed brick walls, and people working on laptops",
+    )
+    print(f"Generated in {result.generation_time:.1f}s")
+    print(f"URL: {result.url}")
+    print(f"Optimized prompt: {result.revised_prompt}\n")
+
+    # Example 2: Different style
+    print("--- Example 2: Flat Design Illustration ---")
+    result = agent.generate(
+        brief="A friendly robot helping a human at a desk",
+        style=ImageStyle.ILLUSTRATION,
+        aspect_ratio=AspectRatio.LANDSCAPE,
+    )
+    print(f"URL: {result.url}\n")
+
+    # Example 3: Generate variations
+    print("--- Example 3: Style Variations ---")
+    variations = agent.generate_variations(
+        brief="A mountain landscape at sunset with a lake reflection",
+        num_variations=3,
+        styles=[
+            ImageStyle.PHOTO,
+            ImageStyle.WATERCOLOR,
+            ImageStyle.THREE_D,
+        ],
+    )
+    for i, v in enumerate(variations, 1):
+        print(f"  Variation {i} ({v.style}): {v.url}")
+```
+
+This agent demonstrates several production patterns:
+
+1. **Prompt engineering** — transforms casual briefs into optimized prompts
+2. **Caching** — avoids regenerating identical images
+3. **Retry logic** — handles transient API failures gracefully
+4. **Style presets** — maintains consistency across generations
+5. **Batch generation** — efficiently creates multiple variations
+6. **Metadata tracking** — records everything for debugging and auditing
+
+---
+
+## 9. Code Example: Content Creation Agent
+
+This is a complete brand-consistent content creation agent built on the Anthropic API. It generates blog posts, social media content, and marketing copy while maintaining a consistent brand voice.
+
+```python
+"""
+Brand-Consistent Content Creation Agent — Complete Implementation
+
+A production-ready agent that creates content matching your brand voice.
+Supports multiple content types, tones, and audience targeting.
+
+Features:
+- Brand voice consistency via system prompts and few-shot examples
+- Multiple content types (blog, social, email, ad copy)
+- Tone control with fine-grained adjustment
+- SEO keyword integration
+- Content structure templates
+- Revision and refinement loops
+"""
+
+import json
+from dataclasses import dataclass, field
+from enum import Enum
+from typing import Optional
+
+import anthropic
+
+
+# ── Configuration ──────────────────────────────────────────────────
+
+class ContentType(Enum):
+    """Supported content types with their characteristics."""
+    BLOG_POST = "blog_post"
+    SOCIAL_MEDIA = "social_media"
+    EMAIL = "email"
+    AD_COPY = "ad_copy"
+    PRODUCT_DESCRIPTION = "product_description"
+    NEWSLETTER = "newsletter"
+    LANDING_PAGE = "landing_page"
+
+
+class Tone(Enum):
+    """Content tone options."""
+    PROFESSIONAL = "professional"
+    FRIENDLY = "friendly"
+    WITTY = "witty"
+    INSPIRATIONAL = "inspirational"
+    URGENT = "urgent"
+    EDUCATIONAL = "educational"
+
+
+@dataclass
+class BrandVoice:
+    """
+    Complete brand voice definition.
+    Customize this for your brand.
+    """
+    company_name: str = "AcmeTech"
+    industry: str = "B2B SaaS"
+    tagline: str = "Ship faster, together."
+
+    # Voice personality traits (with their limits)
+    traits: dict[str, str] = field(default_factory=lambda: {
+        "confident_not": "arrogant",
+        "friendly_not": "unprofessional",
+        "concise_not": "terse",
+        "technical_not": "jargon-heavy",
+    })
+
+    # Vocabulary preferences
+    preferred_words: list[str] = field(default_factory=lambda: [
+        "teams", "ship", "build", "fast", "simple", "together",
+    ])
+
+    avoided_words: list[str] = field(default_factory=lambda: [
+        "leverage", "synergy", "disrupt", "utilize", "endeavor",
+        "world-class", "best-in-class", "cutting-edge",
+    ])
+
+    # Writing rules
+    rules: list[str] = field(default_factory=lambda: [
+        "Use active voice",
+        "Keep sentences under 20 words",
+        "One idea per paragraph",
+        "Start with the benefit, not the feature",
+        "Use specific numbers when available",
+        "End with a clear call to action",
+    ])
+
+    # Examples of on-brand vs off-brand content
+    examples: list[dict[str, str]] = field(default_factory=lambda: [
+        {
+            "type": "product announcement",
+            "bad": "We are thrilled to announce our groundbreaking new feature "
+                   "that leverages AI technology to revolutionize workflows.",
+            "good": "Auto-plans are here. Describe what you need in plain English, "
+                    "and AcmeTech builds the project plan. Teams using the beta "
+                    "saved 6 hours per week.",
+        },
+        {
+            "type": "blog intro",
+            "bad": "In today's fast-paced digital world, it's crucial for "
+                   "organizations to optimize their processes.",
+            "good": "Most teams lose 11 hours a week to status meetings. "
+                    "Here's the math — and the fix.",
+        },
+    ])
+
+
+# ── Content Templates ─────────────────────────────────────────────
+
+CONTENT_TEMPLATES = {
+    ContentType.BLOG_POST: {
+        "structure": [
+            "Hook (1-2 sentences that grab attention)",
+            "Problem statement (why this matters)",
+            "Key insight or data point",
+            "3-5 main sections with actionable advice",
+            "Real example or case study",
+            "Summary and call to action",
+        ],
+        "word_count": "800-1500",
+        "tone": "Educational with personality",
+    },
+    ContentType.SOCIAL_MEDIA: {
+        "structure": [
+            "Opening hook (pattern interrupt or question)",
+            "Core message (1 key point)",
+            "Supporting detail or example",
+            "Call to action or engagement prompt",
+        ],
+        "word_count": "50-150",
+        "tone": "Conversational and punchy",
+    },
+    ContentType.EMAIL: {
+        "structure": [
+            "Subject line (curiosity + clarity)",
+            "Personal greeting",
+            "Context (why you're writing)",
+            "Main message or offer",
+            "Specific call to action",
+            "Sign-off",
+        ],
+        "word_count": "100-300",
+        "tone": "Professional but warm",
+    },
+    ContentType.AD_COPY: {
+        "structure": [
+            "Headline (attention-grabbing)",
+            "Subheadline (clarify the benefit)",
+            "Body (proof or explanation)",
+            "CTA (clear next step)",
+        ],
+        "word_count": "30-80",
+        "tone": "Persuasive and clear",
+    },
+    ContentType.PRODUCT_DESCRIPTION: {
+        "structure": [
+            "Product name and one-liner",
+            "3 key benefits (not features)",
+            "How it works (1-2 sentences)",
+            "Who it's for",
+            "CTA",
+        ],
+        "word_count": "100-200",
+        "tone": "Benefit-focused, clear",
+    },
+}
+
+
+# ── Main Agent ────────────────────────────────────────────────────
+
+class ContentCreationAgent:
+    """
+    Agent that creates brand-consistent content across multiple
+    formats and channels.
+
+    Usage:
+        agent = ContentCreationAgent()
+        blog_post = agent.create_content(
+            content_type=ContentType.BLOG_POST,
+            topic="Why async communication beats meetings",
+            audience="engineering managers",
+        )
+        print(blog_post)
+    """
+
+    def __init__(self, brand: BrandVoice | None = None):
+        self.brand = brand or BrandVoice()
+        self.client = anthropic.Anthropic()
+        self.system_prompt = self._build_system_prompt()
+
+    def _build_system_prompt(self) -> str:
+        """
+        Build the comprehensive system prompt that encodes
+        the brand voice. This is the most important part of
+        brand consistency.
+        """
+        # Format traits
+        traits_text = "\n".join(
+            f"- Be {k.replace('_not', ', not').replace('_', ' ')}: {v}"
+            for k, v in self.brand.traits.items()
+        )
+
+        # Format rules
+        rules_text = "\n".join(f"- {rule}" for rule in self.brand.rules)
+
+        # Format examples
+        examples_text = "\n\n".join(
+            f"Example ({ex['type']}):\n"
+            f"❌ Bad: {ex['bad']}\n"
+            f"✅ Good: {ex['good']}"
+            for ex in self.brand.examples
+        )
+
+        return f"""You are a content writer for {self.brand.company_name}, a {self.brand.industry} company.
+
+## Brand Identity
+
+Tagline: "{self.brand.tagline}"
+
+## Voice Personality
+
+{traits_text}
+
+## Writing Rules
+
+{rules_text}
+
+## Vocabulary
+
+Use these words: {', '.join(self.brand.preferred_words)}
+Never use these words: {', '.join(self.brand.avoided_words)}
+
+## Examples of On-Brand Writing
+
+{examples_text}
+
+## Process
+
+When creating content:
+1. Understand the core message (one sentence)
+2. Match the content type template structure
+3. Write each sentence checking against the rules
+4. Cut anything that doesn't serve the reader
+5. Read aloud — it should sound like a smart colleague, not a brochure
+
+Always prioritize the reader's time and attention.
+Be specific. Use numbers. Show, don't tell.
+"""
+
+    def create_content(
+        self,
+        content_type: ContentType,
+        topic: str,
+        audience: str = "general",
+        tone: Tone = Tone.PROFESSIONAL,
+        keywords: list[str] | None = None,
+        additional_instructions: str = "",
+        max_tokens: int = 2048,
+    ) -> str:
+        """
+        Create content of the specified type on the given topic.
+
+        Args:
+            content_type: Type of content to create
+            topic: The subject matter
+            audience: Target audience description
+            tone: Desired tone
+            keywords: SEO keywords to include (for applicable types)
+            additional_instructions: Any extra requirements
+            max_tokens: Maximum response length
+
+        Returns:
+            Generated content as a string
+        """
+        # Get the template for this content type
+        template = CONTENT_TEMPLATES.get(content_type, {})
+
+        # Build the user prompt
+        prompt_parts = [
+            f"Create a {content_type.value.replace('_', ' ')} about: {topic}",
+            f"\nTarget audience: {audience}",
+            f"Desired tone: {tone.value}",
+        ]
+
+        if template:
+            prompt_parts.append(
+                f"\nStructure:\n"
+                + "\n".join(f"  {i+1}. {s}" for i, s in enumerate(template["structure"]))
+            )
+            prompt_parts.append(f"Target length: {template['word_count']} words")
+
+        if keywords:
+            prompt_parts.append(
+                f"\nInclude these keywords naturally: {', '.join(keywords)}"
+            )
+
+        if additional_instructions:
+            prompt_parts.append(f"\nAdditional instructions: {additional_instructions}")
+
+        prompt_parts.append(
+            "\n\nWrite the content now. Format with markdown."
+        )
+
+        user_prompt = "\n".join(prompt_parts)
+
+        # Generate content
+        message = self.client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=max_tokens,
+            system=self.system_prompt,
+            messages=[{"role": "user", "content": user_prompt}],
+        )
+
+        return message.content[0].text
+
+    def revise_content(
+        self,
+        original_content: str,
+        revision_instructions: str,
+    ) -> str:
+        """
+        Revise existing content based on specific feedback.
+        Maintains brand voice while making requested changes.
+        """
+        message = self.client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=2048,
+            system=self.system_prompt,
+            messages=[
+                {
+                    "role": "user",
+                    "content": (
+                        f"Revise this content based on the feedback below.\n"
+                        f"Maintain the brand voice throughout.\n\n"
+                        f"## Original Content\n\n{original_content}\n\n"
+                        f"## Revision Instructions\n\n{revision_instructions}\n\n"
+                        f"## Revised Content\n\n"
+                    ),
+                }
+            ],
+        )
+
+        return message.content[0].text
+
+    def generate_social_thread(
+        self,
+        topic: str,
+        num_posts: int = 5,
+        platform: str = "twitter",
+    ) -> list[str]:
+        """
+        Generate a social media thread (series of connected posts).
+        Each post should be standalone but build on the previous.
+        """
+        message = self.client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=2048,
+            system=self.system_prompt,
+            messages=[
+                {
+                    "role": "user",
+                    "content": (
+                        f"Create a {platform} thread of {num_posts} posts about: {topic}\n\n"
+                        f"Rules:\n"
+                        f"- Post 1: Strong hook (no thread marker)\n"
+                        f"- Posts 2-{num_posts-1}: Numbered (2/{num_posts-1}, etc.)\n"
+                        f"  Each post should be a complete thought\n"
+                        f"  Use line breaks for readability\n"
+                        f"  Include at least one specific data point or example\n"
+                        f"- Final post: Summary + CTA\n\n"
+                        f"Format: Number each post clearly with '---' separators.\n"
+                        f"Each post should be under 280 characters if Twitter, "
+                        f"under 3000 if LinkedIn."
+                    ),
+                }
+            ],
+        )
+
+        # Split into individual posts
+        response = message.content[0].text
+        posts = [p.strip() for p in response.split("---") if p.strip()]
+        return posts[:num_posts]
+
+    def batch_generate(
+        self,
+        topics: list[str],
+        content_type: ContentType,
+        audience: str = "general",
+    ) -> list[dict[str, str]]:
+        """
+        Generate multiple pieces of content efficiently.
+        Returns a list of topic-content pairs.
+        """
+        results = []
+        for topic in topics:
+            content = self.create_content(
+                content_type=content_type,
+                topic=topic,
+                audience=audience,
+            )
+            results.append({"topic": topic, "content": content})
+        return results
+
+
+# ── Usage Examples ────────────────────────────────────────────────
+
+if __name__ == "__main__":
+    # Initialize with custom brand voice
+    brand = BrandVoice(
+        company_name="AcmeTech",
+        industry="B2B SaaS — project management",
+    )
+    agent = ContentCreationAgent(brand=brand)
+
+    # Example 1: Blog post
+    print("=" * 60)
+    print("BLOG POST")
+    print("=" * 60)
+    blog = agent.create_content(
+        content_type=ContentType.BLOG_POST,
+        topic="Why async communication beats daily standups",
+        audience="engineering managers at startups",
+        tone=Tone.EDUCATIONAL,
+        keywords=["async communication", "standup meetings", "team productivity"],
+    )
+    print(blog[:500] + "...\n")
+
+    # Example 2: Social media thread
+    print("=" * 60)
+    print("SOCIAL MEDIA THREAD")
+    print("=" * 60)
+    thread = agent.generate_social_thread(
+        topic="The hidden cost of context switching for developers",
+        num_posts=5,
+        platform="linkedin",
+    )
+    for i, post in enumerate(thread, 1):
+        print(f"\n[Post {i}]\n{post}")
+
+    # Example 3: Batch generation
+    print("\n" + "=" * 60)
+    print("BATCH PRODUCT DESCRIPTIONS")
+    print("=" * 60)
+    descriptions = agent.batch_generate(
+        topics=[
+            "Auto-plans: AI-powered project planning",
+            "Real-time dashboards with smart alerts",
+            "Team workload balancing and capacity planning",
+        ],
+        content_type=ContentType.PRODUCT_DESCRIPTION,
+        audience="product managers",
+    )
+    for desc in descriptions:
+        print(f"\n## {desc['topic']}")
+        print(desc["content"][:200] + "...")
+```
+
+### What This Agent Demonstrates
+
+1. **Brand voice encoding** — The system prompt captures voice, vocabulary, rules, and examples
+2. **Content type templates** — Each format has its own structure and constraints
+3. **Tone control** — The same topic can be expressed in multiple tones
+4. **Revision loops** — Content can be refined with specific feedback
+5. **Batch operations** — Generate multiple pieces efficiently
+6. **Thread generation** — Create multi-post social media sequences
+
+---
+
+## 10. Comparison Table: Image Generation Tools
+
+Choosing the right image generation tool depends on your use case, budget, and quality requirements. Here's a detailed comparison:
+
+| Feature | **DALL-E 3** | **Midjourney** | **Stable Diffusion** | **Adobe Firefly** |
+|---------|-------------|---------------|---------------------|-------------------|
+| **Provider** | OpenAI | Midjourney Inc. | Stability AI | Adobe |
+| **Type** | API + ChatGPT | Web App + Discord | Open-Source + API | Web + API |
+| **Access** | API key, ChatGPT Plus | Subscription (midjourney.com) | Download locally or use API | Adobe CC subscription |
+| **Pricing** | ~$0.04-$0.12/image | $10-$120/month | Free (local) / ~$0.002-$0.01/image (API) | Included with Creative Cloud |
+| **Max Resolution** | 1024×1024 (native) | Up to 2048×2048 (upscaled) | Up to 1024×1024 (native) | 1024×1024 (native) |
+| **Quality** | Very Good | Excellent (artistic) | Good-Very Good (model dependent) | Good (commercially safe) |
+| **Customization** | Limited (prompt only) | Moderate (--style, --chaos) | High (ControlNet, LoRA, fine-tuning) | Moderate (style references) |
+| **Speed** | ~10-15 seconds | ~30-60 seconds | ~2-30 seconds (hardware dependent) | ~10-20 seconds |
+| **API Available** | ✅ Yes | ⚠️ Limited (unofficial) | ✅ Yes | ✅ Yes |
+| **Open Source** | ❌ No | ❌ No | ✅ Yes | ❌ No |
+| **Fine-Tuning** | ❌ No | ❌ No | ✅ Yes (LoRA, DreamBooth) | ❌ No |
+| **Commercial License** | ✅ Yes (with TOS) | ✅ Yes (paid plans) | ✅ Yes (permissive) | ✅ Yes (most safe) |
+| **Text in Images** | ✅ Good | ⚠️ Improved but inconsistent | ⚠️ Varies by model | ⚠️ Moderate |
+| **Photorealism** | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ (with right model) | ⭐⭐⭐⭐ |
+| **Artistic/Creative** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **Brand Safety** | ✅ Content policy | ⚠️ Moderate | ⚠️ User responsible | ✅ Highest (trained on licensed data) |
+| **Best For** | API integrations, product images | Artistic work, concept art | Custom workflows, fine-tuning | Enterprise, commercial use |
+
+### Decision Framework
+
+```
+What's your primary need?
+│
+├─ API Integration for a product?
+│  → DALL-E 3 (best API, easy integration)
+│
+├─ Stunning artistic/concept work?
+│  → Midjourney (highest aesthetic quality)
+│
+├─ Full control and custom training?
+│  → Stable Diffusion (open source, extensible)
+│
+├─ Commercial safety is critical?
+│  → Adobe Firefly (trained on licensed content)
+│
+├─ Budget is tight?
+│  → Stable Diffusion (free locally)
+│
+└─ Need enterprise SLA + support?
+   → Adobe Firefly or DALL-E 3
+```
+
+---
+
+## 11. Key Takeaways
+
+Here are the essential points from this chapter:
+
+- **Diffusion models** create images by learning to reverse a noise-addition process, guided by text descriptions through cross-attention mechanisms
+- **Key parameters** (steps, CFG scale, seed, resolution) give you control over generation quality, style adherence, and reproducibility
+- **Design system agents** automate the tedious work of validating designs against style guides, catching color, typography, and spacing violations early
+- **Content creation agents** scale brand-consistent writing across formats by encoding brand voice in system prompts, few-shot examples, and structured rules
+- **Brand voice** is best captured through a combination of personality traits, vocabulary rules, writing guidelines, and concrete examples (good vs. bad)
+- **UI/UX suggestion agents** use multimodal vision models to analyze screenshots and provide actionable design feedback across layout, accessibility, and usability
+- **Multimodal agents** bridge understanding (vision) and creation (generation), enabling workflows like mockup-to-code and iterative design refinement
+- **Caching and retry logic** are essential for production image generation agents to handle API costs and transient failures
+- **The right tool depends on your use case** — DALL-E for API integration, Midjourney for artistic quality, Stable Diffusion for customization, Firefly for commercial safety
+- **Agents don't replace designers** — they amplify their capabilities by handling scale, consistency, and repetitive tasks while humans focus on strategy and creativity
+
+---
+
+## 12. Try It Yourself
+
+### Exercise 1: Build a Design Token Validator
+
+**Goal:** Create a Python agent that validates a CSS file against a custom design system.
+
+**Steps:**
+1. Define a design system specification (colors, fonts, spacing scale)
+2. Write a parser that extracts CSS values from a stylesheet
+3. Implement validation rules for each design token category
+4. Generate a report with violations, severity levels, and suggestions
+5. Test it against a real CSS file from one of your projects
+
+**Challenge:** Extend it to also validate Tailwind CSS utility classes (e.g., check that `text-blue-500` is in your approved color palette).
+
+### Exercise 2: Create a Brand Voice Agent
+
+**Goal:** Build a content agent that writes in a specific brand voice.
+
+**Steps:**
+1. Pick a brand you know well (or create a fictional one)
+2. Write 5 examples of on-brand content and 5 examples of off-brand content
+3. Create a BrandVoice dataclass capturing the brand's personality
+4. Build a system prompt that combines traits, rules, vocabulary, and examples
+5. Generate 3 pieces of content on different topics
+6. Review the output — does it sound like the brand?
+
+**Challenge:** Add a `self_critique` method where the agent reviews its own output against the brand rules and makes revisions automatically.
+
+### Exercise 3: Multimodal Mockup Analyzer
+
+**Goal:** Build an agent that analyzes UI screenshots and produces structured feedback.
+
+**Steps:**
+1. Take 3 screenshots of different apps or websites
+2. Use a vision model (Claude or GPT-4o) to analyze each screenshot
+3. Create a structured output format (JSON) with categories: layout, typography, color, accessibility
+4. Rate each category (good / needs improvement / problem)
+5. Generate specific, actionable suggestions for each issue found
+6. Combine the individual analyses into a summary report
+
+**Challenge:** Add a "before/after" comparison mode — give the agent two versions of the same screen and ask it to identify improvements and regressions.
+
+### Exercise 4: Content Pipeline with Quality Gates
+
+**Goal:** Build a content creation pipeline that includes quality checks.
+
+**Steps:**
+1. Create a ContentCreationAgent using the code from this chapter
+2. Add a "quality gate" step that checks the output against brand rules:
+   - Does it contain any avoided words?
+   - Is the average sentence length within limits?
+   - Does it include at least one specific number or data point?
+3. If the content fails quality gates, automatically request a revision
+4. Track how many revision rounds are needed on average
+5. Generate a quality report for a batch of 10 content pieces
+
+**Challenge:** Add a "plagiarism check" step that compares the generated content against a database of existing content to ensure originality.
+
+---
+
+## Summary
+
+Creative AI agents represent one of the most impactful applications of the agent paradigm. By combining generation capabilities (image and text) with understanding capabilities (vision and analysis), these agents can handle the full creative workflow from brief to polished output.
+
+The key to success is not the raw power of the models — it's how you encode your brand voice, design system, and quality standards into the agent's behavior. The best creative agents are the ones that feel like they truly understand your brand and can make decisions that a human designer would make.
+
+In the next chapter, we'll explore **Data Analysis Agents** — how agents can autonomously explore datasets, generate insights, and create visualizations that tell compelling stories with data.
+
+---
+
+*Continue to Chapter 8: Data Analysis Agents →*
+4:["$","div",null,{"children":["$","$Lf",null,{"content":"$10","currentChapter":{"id":"agents-ch-07","number":7,"title":"Designer & Creative Agents","subtitle":"AI Agents for Design and Content Creation","description":"Explore agents for image generation, design systems, content creation, and multimodal AI interactions.","slug":"designer-and-creative-agents","part":"Part II: Building Agents","estimatedPages":16,"topics":["Image generation","Design system agents","Content creation","Brand consistency","UI/UX suggestions","Multimodal agents"],"icon":"🎨","bookId":"ai-agents"}}]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+c:[["$","title","0",{"children":"AI Agents: The Complete Guide"}],["$","meta","1",{"name":"description","content":"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"}],["$","meta","2",{"name":"author","content":"Manjunath Kalburgi"}],["$","meta","3",{"name":"keywords","content":"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"}]]

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 5 - Why it matters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #0a0a0a 0%, #2a0a0a 100%);
+            color: #FAF9F5;
+            overflow: hidden;
+            width: 1080px;
+            height: 1080px;
+            position: relative;
+        }
+        .clip {
+            position: absolute;
+            width: 1080px;
+            height: 1080px;
+            clip-path: inset(0);
+        }
+        .metric-display {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 400px;
+        }
+        .metric-card {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 212, 255, 0.2));
+            border: 2px solid #00D4FF;
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.5s ease;
+        }
+        .metric-card.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .metric-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            fill: #00D4FF;
+        }
+        .metric-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: #00D4FF;
+            margin-bottom: 10px;
+        }
+        .metric-label {
+            font-size: 18px;
+            color: #FAF9F5;
+            opacity: 0.9;
+        }
+        .growth-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #FF00FF, #00D4FF, #00FF94);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .impact-grid {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .impact-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .impact-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .impact-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #00FF94;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .impact-text {
+            font-size: 16px;
+            color: #FAF9F5;
+            opacity: 0.8;
+        }
+        .celebration-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 255, 148, 0.1), transparent);
+            opacity: 0;
+        }
+        .celebration-pulse.active {
+            animation: pulse 3s ease-out infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            50% { opacity: 0.3; transform: translate(-50%, -50%) scale(1.1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <div class="clip">
+        <div class="metric-display">
+            <!-- Growth indicator -->
+            <div class="growth-indicator"></div>
+
+            <!-- Metric cards -->
+            <div class="metric-card" style="top: 50%; left: 10%; width: 250px;">
+                <div class="metric-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z"/>
+                        <path d="M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"/>
+                    </svg>
+                </div>
+                <div class="metric-value">85%</div>
+                <div class="metric-label">Error Reduction</div>
+            </div>
+
+            <div class="metric-card" style="top: 20%; right: 15%; width: 220px;">
+                <div class="metric-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M13 3a9 9 0 0 0-9 9H1l2.89 2.89.07.07c.45.45.76 1.02.9 1.64l1.99-1.99c-.05-.47-.08-.95-.08-1.44a7.995 7.995 0 0 1 6.74 4.35c.99-.49 1.88-1.18 2.62-2.03l2-2A8.995 8.995 0 0 0 13 3zM3 12c0 1.66.68 3.16 1.78 4.24L1.59 17.59 0 16.17l2.89-2.89C2.32 14.16 2 13.16 2 12zm15 3.83L17.58 15.41 15.17 13l1.42-1.41L18 13.83l1.58-1.58c.39.39.39 1.02 0 1.41l-2 2c-.39.39-1.02.39-1.41 0z"/>
+                    </svg>
+                </div>
+                <div class="metric-value">4.5x</div>
+                <div class="metric-label">Speed Increase</div>
+            </div>
+
+            <div class="metric-card" style="top: 70%; left: 40%; width: 240px;">
+                <div class="metric-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21.41 11.58l-9-9C12.05 2.22 11.04 2 10 2H4C2.9 2 2 2.9 2 4v6c0 1.04.62 1.99 1.58 2.41l9 9c.69.69 1.81.69 2.5 0 .68-.69.68-1.81 0-.05L4.58 3.58A9.957 9.957 0 0 1 12.82 2h6.18C21.42 2 22 2.58 22 3.17v6.18c0 .59-.42 1.09-.97 1.58zM20 10v6.18C20 17.42 18.42 19 16.82 19h-4.64l8 8 1.41-1.41-8-8A8.954 8.954 0 0 0 20 10z"/>
+                    </svg>
+                </div>
+                "gain"
+                <div class="metric-label">Efficiency</div>
+            </div>
+
+            <!-- Impact grid -->
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <span class="impact-number">Time</span>
+                    <span class="impact-text">Saved</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number">85%</span>
+                    <span class="impact-text">Accuracy</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number">3x</span>
+                    <span class="impact-text">ROI</span>
+                </div>
+            </div>
+
+            <!-- Celebration pulse -->
+            <div class="celebration-pulse"></div>
+
+            <div style="position: absolute; bottom: 50px; left: 0; right: 0; text-align: center;">
+                <h1 style="font-size: 42px; font-weight: 700; color: #00FF94; text-shadow: 0 0 20px rgba(0, 255, 148, 0.5);">
+                    Transformative Impact
+                </h1>
+                <p style="font-size: 22px; color: #FAF9F5; margin-top: 10px; opacity: 0.9;">Business Revolution Through AI</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import gsap from 'https://esm.run/gsap';
+
+        window.__timelines = {};
+        window.__timelines["composition-05"] = gsap.timeline({ paused: true });
+
+        const tl = window.__timelines["composition-05"];
+
+        // Metric cards appear with stagger
+        gsap.utils.toArray(".metric-card").forEach((card, index) => {
+            gsap.fromTo(
+                card,
+                {
+                    opacity: 0,
+                    scale: 0.9,
+                    y: 20
+                },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    delay: index * 0.2
+                }
+            );
+        });
+
+        // Impact items appear
+        gsap.utils.toArray(".impact-item").forEach((item, index) => {
+            gsap.fromTo(
+                item,
+                {
+                    opacity: 0,
+                    y: 30
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    delay: 1 + index * 0.2
+                }
+            );
+        });
+
+        // Celebration pulse
+        gsap.to(".celebration-pulse", {
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            delay: 2
+        });
+
+        // Header fades in
+        tl.fromTo(
+            "h1, p",
+            { opacity: 0, y: 20 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out"
+            },
+            "-=1.5"
+        );
+    </script>
+</body>
+</html>

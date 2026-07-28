@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="en" class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/chunks/157per-6rfej7.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/3s_ssfmklbvuh.js"/><script src="/_next/static/chunks/3h0oyn0exvw0m.js" async=""></script><script src="/_next/static/chunks/0gy5uo_6oz9q4.js" async=""></script><script src="/_next/static/chunks/2n-c2rhkbzx6r.js" async=""></script><script src="/_next/static/chunks/turbopack-10u0tugcn5e6r.js" async=""></script><script src="/_next/static/chunks/3j2brc7c8hat8.js" async=""></script><script src="/_next/static/chunks/05b0208rfh8ys.js" async=""></script><script src="/_next/static/chunks/16vgld9iclosn.js" async=""></script><script src="/_next/static/chunks/2rb1230i-fez-.js" async=""></script><meta name="next-size-adjust" content=""/><title>AI Agents: The Complete Guide</title><meta name="description" content="A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"/><meta name="author" content="Manjunath Kalburgi"/><meta name="keywords" content="AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"/><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body class="min-h-full flex flex-col"><div hidden=""><!--$--><!--/$--></div><div><div class="reading-progress" style="width:0%"></div><nav class="fixed top-0 left-0 right-0 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border-color)] z-40 no-print"><div class="flex items-center justify-between px-4 py-2 max-w-full"><div class="flex items-center gap-3"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Toggle sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h14M3 10h14M3 15h14"></path></svg></button><a class="text-sm font-semibold text-primary hover:underline hidden sm:inline" href="/">AI Agents Book</a></div><div class="flex items-center gap-2 text-sm text-[var(--foreground)] opacity-60"><span class="hidden md:inline">Chapter <!-- -->8</span><span class="hidden md:inline">•</span><span class="hidden lg:inline">Multi-Agent Systems</span><span class="lg:hidden">🔗</span></div><div class="flex items-center gap-2"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12V4M4 7l4-4 4 4"></path></svg></button></div></div></nav><div class="flex pt-12 min-h-screen"><aside class="fixed left-0 top-12 bottom-0 w-72 bg-[var(--surface)] border-r border-[var(--border-color)] overflow-y-auto transition-transform duration-300 z-30 no-print translate-x-0"><div class="p-4"><div class="mb-6 pb-4 border-b border-[var(--border-color)]"><span class="text-xs font-medium text-primary uppercase tracking-wide">Chapter <!-- -->8</span><h2 class="text-lg font-bold text-[var(--foreground)] mt-1">Multi-Agent Systems</h2><p class="text-xs text-[var(--foreground)] opacity-60 mt-1">~<!-- -->20<!-- --> pages • <!-- -->Part II: Building Agents</p></div><div class="mb-6"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">On this page</h3><div class="space-y-1"><a href="#chapter-8-multi-agent-systems" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chapter 8: Multi-Agent Systems</a><a href="#8-1-why-single-agents-aren-t-enough" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8.1 Why Single Agents Aren&#x27;t Enough</a><a href="#single-agent-vs-multi-agent" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Single Agent vs Multi-Agent</a><a href="#8-2-agent-orchestration" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8.2 Agent Orchestration</a><a href="#the-orchestrator-pattern" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Orchestrator Pattern</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#8-3-communication-protocols" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8.3 Communication Protocols</a><a href="#message-passing-between-agents" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Message-Passing Between Agents</a><a href="#8-4-crewai-deep-dive" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8.4 CrewAI Deep Dive</a><a href="#building-a-crew-of-agents" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Building a Crew of Agents</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#8-5-supervisor-pattern" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8.5 Supervisor Pattern</a><a href="#manager-agents-directing-workers" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Manager Agents Directing Workers</a><a href="#8-6-architecture-overview" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8.6 Architecture Overview</a><a href="#8-7-when-to-use-multi-agent-vs-single-agent" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8.7 When to Use Multi-Agent vs Single Agent</a><a href="#8-8-key-takeaways" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8.8 Key Takeaways</a><a href="#8-9-try-it-yourself" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8.9 Try It Yourself</a><a href="#exercise-1-build-a-content-crew" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 1: Build a Content Crew</a><a href="#exercise-2-code-review-supervisor" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 2: Code Review Supervisor</a><a href="#exercise-3-research-team" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 3: Research Team</a></div></div><div class="border-t border-[var(--border-color)] pt-4"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">Chapters</h3><div class="space-y-1"><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/llms-and-genai-fundamentals"><span class="text-base">🧠</span><span class="truncate">LLMs &amp; GenAI Fundamentals</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/rag-and-knowledge-systems"><span class="text-base">🔍</span><span class="truncate">RAG &amp; Knowledge Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/introduction-to-ai-agents"><span class="text-base">🤖</span><span class="truncate">Introduction to AI Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/customer-support-agents"><span class="text-base">💬</span><span class="truncate">Customer Support Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/executive-and-analyst-agents"><span class="text-base">📊</span><span class="truncate">Executive &amp; Analyst Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/developer-and-coder-agents"><span class="text-base">👨‍💻</span><span class="truncate">Developer &amp; Coder Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/designer-and-creative-agents"><span class="text-base">🎨</span><span class="truncate">Designer &amp; Creative Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all bg-primary/10 text-primary font-medium" href="/chapter/multi-agent-systems"><span class="text-base">🔗</span><span class="truncate">Multi-Agent Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-tools-from-scratch"><span class="text-base">🔧</span><span class="truncate">Building Tools from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-your-own-llm-pipeline"><span class="text-base">⚙️</span><span class="truncate">Building Your Own LLM Pipeline</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-rag-from-scratch"><span class="text-base">🏗️</span><span class="truncate">Building RAG from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/complete-project-deployment"><span class="text-base">🚀</span><span class="truncate">Complete Project: End to End</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/security-and-safety"><span class="text-base">🛡️</span><span class="truncate">Security, Safety &amp; Guardrails</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/observability-and-scalability"><span class="text-base">📈</span><span class="truncate">Observability &amp; Scalability</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/authenticity-and-future"><span class="text-base">🌍</span><span class="truncate">Authenticity &amp; The Future</span></a></div></div></div></aside><main class="flex-1 transition-all duration-300 ml-72 max-w-4xl px-6 md:px-12 py-12"><div class="mb-10 pb-8 border-b-2 border-primary/20"><span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">Part II: Building Agents</span><h1 class="text-4xl md:text-5xl font-extrabold mb-2 bg-gradient-to-r from-primary via-emerald-400 to-teal-400 -webkit-background-clip-text text-transparent bg-clip-text">Chapter <!-- -->8<!-- -->: <!-- -->Multi-Agent Systems</h1><p class="text-xl text-[var(--foreground)] opacity-70">Orchestrating Teams of AI Agents</p></div><article class="prose-book"><h1 class="text-4xl font-extrabold mt-12 mb-4">Chapter 8: Multi-Agent Systems</h1>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><em class="italic">&quot;Alone we can do so little; together we can do so much.&quot;</em> — Helen Keller</p>
+</blockquote>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8.1 Why Single Agents Aren&#x27;t Enough</h2>
+<p class="mb-4 text-justify">Real-world problems are complex. A single agent trying to do everything becomes a jack of all trades, master of none. Multi-agent systems let you build specialized agents that collaborate.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Single Agent vs Multi-Agent</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Aspect</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Single Agent</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Multi-Agent</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Complexity</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">One agent handles everything</td><td class="px-4 py-3 border border-[var(--border-color)]">Each agent has a focused role</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Expertise</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Generalist</td><td class="px-4 py-3 border border-[var(--border-color)]">Specialist per domain</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Scalability</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Limited by single model</td><td class="px-4 py-3 border border-[var(--border-color)]">Add agents as needed</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Reliability</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Single point of failure</td><td class="px-4 py-3 border border-[var(--border-color)]">Redundancy possible</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Cost</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">One API call per task</td><td class="px-4 py-3 border border-[var(--border-color)]">Multiple calls, but smaller</td></tr></tbody></table></div>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8.2 Agent Orchestration</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Orchestrator Pattern</h3>
+<p class="mb-4 text-justify">A manager agent routes tasks to specialist agents.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Orchestrator Pattern
+A manager agent coordinates specialized worker agents.
+&quot;&quot;&quot;
+
+from openai import OpenAI
+from dataclasses import dataclass
+
+
+@dataclass
+class Agent:
+    name: str
+    role: str
+    system_prompt: str
+
+
+class OrchestratorAgent:
+    &quot;&quot;&quot;Coordinates multiple specialized agents.&quot;&quot;&quot;
+    
+    def __init__(self, api_key: str | None = None):
+        self.client = OpenAI(api_key=api_key)
+        self.agents: dict[str, Agent] = {}
+    
+    def register_agent(self, agent: Agent):
+        self.agents[agent.name] = agent
+    
+    def route_task(self, task: str) -&gt; str:
+        &quot;&quot;&quot;Route a task to the best agent.&quot;&quot;&quot;
+        agent_descriptions = &quot;\n&quot;.join(
+            f&quot;- {name}: {agent.role}&quot;
+            for name, agent in self.agents.items()
+        )
+        
+        prompt = f&quot;&quot;&quot;Route this task to the best agent.
+
+Available agents:
+{agent_descriptions}
+
+Task: {task}
+
+Which agent should handle this? Respond with just the agent name.&quot;&quot;&quot;
+        
+        response = self.client.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}],
+            temperature=0.0
+        )
+        
+        agent_name = response.choices[0].message.content.strip()
+        if agent_name in self.agents:
+            return self._execute(agent_name, task)
+        return &quot;No suitable agent found.&quot;
+    
+    def _execute(self, agent_name: str, task: str) -&gt; str:
+        agent = self.agents[agent_name]
+        response = self.client.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: agent.system_prompt},
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: task}
+            ],
+            temperature=0.3
+        )
+        return response.choices[0].message.content
+    
+    def collaborative_task(self, task: str) -&gt; str:
+        &quot;&quot;&quot;Have all agents collaborate on a task.&quot;&quot;&quot;
+        results = []
+        for name, agent in self.agents.items():
+            result = self._execute(name, f&quot;Your perspective on: {task}&quot;)
+            results.append(f&quot;**{name}** ({agent.role}):\n{result}&quot;)
+        
+        synthesis = f&quot;Synthesize these perspectives:\n\n&quot; + &quot;\n\n&quot;.join(results)
+        response = self.client.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: synthesis}],
+            temperature=0.3
+        )
+        return response.choices[0].message.content
+
+
+# Usage
+orchestrator = OrchestratorAgent()
+orchestrator.register_agent(Agent(&quot;researcher&quot;, &quot;Research&quot;, &quot;You are a research specialist.&quot;))
+orchestrator.register_agent(Agent(&quot;writer&quot;, &quot;Writing&quot;, &quot;You are a content writer.&quot;))
+orchestrator.register_agent(Agent(&quot;editor&quot;, &quot;Editing&quot;, &quot;You are a careful editor.&quot;))
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8.3 Communication Protocols</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Message-Passing Between Agents</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Message Bus for agent communication.
+&quot;&quot;&quot;
+
+from dataclasses import dataclass
+from datetime import datetime
+from enum import Enum
+
+
+class MessageType(Enum):
+    REQUEST = &quot;request&quot;
+    RESPONSE = &quot;response&quot;
+    FEEDBACK = &quot;feedback&quot;
+
+
+@dataclass
+class Message:
+    sender: str
+    receiver: str
+    content: str
+    msg_type: MessageType
+    timestamp: datetime
+
+
+class MessageBus:
+    def __init__(self):
+        self.messages: list[Message] = []
+        self.subscribers: dict[str, list[callable]] = {}
+    
+    def publish(self, message: Message):
+        self.messages.append(message)
+        for callback in self.subscribers.get(message.receiver, []):
+            callback(message)
+    
+    def subscribe(self, agent_id: str, callback: callable):
+        self.subscribers.setdefault(agent_id, []).append(callback)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8.4 CrewAI Deep Dive</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Building a Crew of Agents</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Crew-style multi-agent system.
+&quot;&quot;&quot;
+
+from openai import OpenAI
+from dataclasses import dataclass
+
+
+@dataclass
+class CrewMember:
+    name: str
+    role: str
+    goal: str
+    backstory: str
+
+
+class SimpleCrew:
+    def __init__(self, api_key: str | None = None):
+        self.client = OpenAI(api_key=api_key)
+        self.members: list[CrewMember] = []
+        self.tasks: list[dict] = []
+    
+    def add_member(self, member: CrewMember):
+        self.members.append(member)
+    
+    def add_task(self, description: str, expected_output: str, assigned_to: str | None = None):
+        self.tasks.append({
+            &quot;description&quot;: description,
+            &quot;expected_output&quot;: expected_output,
+            &quot;assigned_to&quot;: assigned_to
+        })
+    
+    def execute_task(self, task: dict) -&gt; str:
+        if task[&quot;assigned_to&quot;]:
+            member = next((m for m in self.members if m.name == task[&quot;assigned_to&quot;]), self.members[0])
+        else:
+            member = self._route_task(task[&quot;description&quot;])
+        
+        prompt = f&quot;&quot;&quot;You are {member.name}, a {member.role}.
+Goal: {member.goal}
+Background: {member.backstory}
+
+Task: {task[&#x27;description&#x27;]}
+Expected output: {task[&#x27;expected_output&#x27;]}&quot;&quot;&quot;
+        
+        response = self.client.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: f&quot;You are {member.name}.&quot;},
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+            ],
+            temperature=0.3
+        )
+        return response.choices[0].message.content
+    
+    def _route_task(self, description: str) -&gt; CrewMember:
+        members_info = &quot;\n&quot;.join(f&quot;- {m.name}: {m.role}&quot; for m in self.members)
+        prompt = f&quot;Route this task. Members:\n{members_info}\n\nTask: {description}\n\nRespond with just the name.&quot;
+        response = self.client.completions.create(model=&quot;gpt-4o&quot;, messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}], temperature=0.0)
+        name = response.choices[0].message.content.strip()
+        return next((m for m in self.members if m.name == name), self.members[0])
+    
+    def run(self) -&gt; list[dict]:
+        return [{&quot;task&quot;: t[&quot;description&quot;], &quot;output&quot;: self.execute_task(t)} for t in self.tasks]
+
+
+# Usage
+crew = SimpleCrew()
+crew.add_member(CrewMember(&quot;Researcher&quot;, &quot;Research Analyst&quot;, &quot;Find accurate information&quot;, &quot;10 years experience&quot;))
+crew.add_member(CrewMember(&quot;Writer&quot;, &quot;Content Writer&quot;, &quot;Create engaging content&quot;, &quot;Published author&quot;))
+crew.add_member(CrewMember(&quot;Editor&quot;, &quot;Editor&quot;, &quot;Ensure quality&quot;, &quot;Former newspaper editor&quot;))
+
+crew.add_task(&quot;Research AI trends in 2025&quot;, &quot;List of 5 key trends&quot;, &quot;Researcher&quot;)
+crew.add_task(&quot;Write a blog post from the research&quot;, &quot;800-word post&quot;, &quot;Writer&quot;)
+crew.add_task(&quot;Edit and polish the post&quot;, &quot;Publication-ready post&quot;, &quot;Editor&quot;)
+
+results = crew.run()
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8.5 Supervisor Pattern</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Manager Agents Directing Workers</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Supervisor manages worker agents and reviews their output.
+&quot;&quot;&quot;
+
+from openai import OpenAI
+from dataclasses import dataclass
+
+
+@dataclass
+class WorkerAgent:
+    name: str
+    specialty: str
+    system_prompt: str
+
+
+class SupervisorAgent:
+    def __init__(self, api_key: str | None = None):
+        self.client = OpenAI(api_key=api_key)
+        self.workers: list[WorkerAgent] = []
+    
+    def add_worker(self, worker: WorkerAgent):
+        self.workers.append(worker)
+    
+    def delegate_and_review(self, task: str) -&gt; str:
+        worker = self._select_worker(task)
+        output = self._execute_worker(worker, task)
+        review = self._review_output(task, output)
+        return f&quot;## Worker Output ({worker.name})\n\n{output}\n\n---\n\n## Supervisor Review\n\n{review}&quot;
+    
+    def _select_worker(self, task: str) -&gt; WorkerAgent:
+        info = &quot;\n&quot;.join(f&quot;- {w.name}: {w.specialty}&quot; for w in self.workers)
+        prompt = f&quot;Select the best worker.\nWorkers:\n{info}\n\nTask: {task}\n\nRespond with just the name.&quot;
+        response = self.client.completions.create(model=&quot;gpt-4o&quot;, messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}], temperature=0.0)
+        name = response.choices[0].message.content.strip()
+        return next((w for w in self.workers if w.name == name), self.workers[0])
+    
+    def _execute_worker(self, worker: WorkerAgent, task: str) -&gt; str:
+        response = self.client.completions.create(model=&quot;gpt-4o&quot;, messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: worker.system_prompt},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: task}
+        ], temperature=0.3)
+        return response.choices[0].message.content
+    
+    def _review_output(self, task: str, output: str) -&gt; str:
+        prompt = f&quot;Review this output.\n\nTask: {task}\n\nOutput:\n{output}\n\nProvide quality assessment, issues, and verdict (APPROVE/REVISE).&quot;
+        response = self.client.completions.create(model=&quot;gpt-4o&quot;, messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}], temperature=0.2)
+        return response.choices[0].message.content
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8.6 Architecture Overview</h2>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────┐
+│           Multi-Agent System            │
+├─────────────────────────────────────────┤
+│                                          │
+│  ┌─────────────┐  ┌─────────────┐      │
+│  │ Orchestrator │  │ Supervisor  │      │
+│  └──────┬──────┘  └──────┬──────┘      │
+│         │                 │             │
+│         ▼                 ▼             │
+│  ┌──────────────────────────────────┐  │
+│  │         Message Bus               │  │
+│  └──────────────────────────────────┘  │
+│    │        │         │        │        │
+│    ▼        ▼         ▼        ▼        │
+│  ┌────┐  ┌────┐   ┌────┐  ┌────┐     │
+│  │ W1 │  │ W2 │   │ W3 │  │ W4 │     │
+│  └────┘  └────┘   └────┘  └────┘     │
+│                                          │
+└─────────────────────────────────────────┘
+</code></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8.7 When to Use Multi-Agent vs Single Agent</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Use Multi-Agent When...</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Use Single Agent When...</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Task requires multiple expertise areas</td><td class="px-4 py-3 border border-[var(--border-color)]">Task is focused and well-defined</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Quality improves with specialization</td><td class="px-4 py-3 border border-[var(--border-color)]">Speed is more important</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">You need review/check steps</td><td class="px-4 py-3 border border-[var(--border-color)]">The task is simple</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Problem is too complex for one context</td><td class="px-4 py-3 border border-[var(--border-color)]">Budget is limited</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">You want parallel processing</td><td class="px-4 py-3 border border-[var(--border-color)]">Single prompt suffices</td></tr></tbody></table></div>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8.8 Key Takeaways</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Multi-agent systems</strong> enable specialization — each agent does what it does best.</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">The orchestrator pattern</strong> uses a manager to route and coordinate work.</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Message passing</strong> lets agents communicate without tight coupling.</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Crews</strong> are teams working toward a common goal with defined roles.</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Supervisor patterns</strong> add quality control through review steps.</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Choose multi-agent</strong> when complexity demands it — don&#x27;t over-engineer simple tasks.</li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8.9 Try It Yourself</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 1: Build a Content Crew</h3>
+<p class="mb-4 text-justify">Create a 3-agent crew: Researcher → Writer → Editor. Have them collaborate on a blog post.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 2: Code Review Supervisor</h3>
+<p class="mb-4 text-justify">Build a supervisor that delegates code review to a specialist, then reviews their feedback.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 3: Research Team</h3>
+<p class="mb-4 text-justify">Create 3 agents focusing on different aspects of a topic, then synthesize their findings.</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Next Chapter</strong>: In <a href="./chapter-09-building-tools-from-scratch.md" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Chapter 9: Building Tools from Scratch</a>, we&#x27;ll create custom tools that agents can use.</p>
+</blockquote></article><div class="mt-16 pt-8 border-t-2 border-[var(--border-color)]"><div class="flex justify-between items-stretch gap-4"><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group" href="/chapter/designer-and-creative-agents"><span class="text-xs text-[var(--foreground)] opacity-50">← Previous</span><div class="flex items-center gap-2 mt-1"><span class="text-xl">🎨</span><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Designer &amp; Creative Agents</span></div></a><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group text-right" href="/chapter/building-tools-from-scratch"><span class="text-xs text-[var(--foreground)] opacity-50">Next →</span><div class="flex items-center justify-end gap-2 mt-1"><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Building Tools from Scratch</span><span class="text-xl">🔧</span></div></a></div></div></main></div></div><!--$--><!--/$--><script src="/_next/static/chunks/3s_ssfmklbvuh.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[78892,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n3:I[11359,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n5:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"OutletBoundary\"]\n6:\"$Sreact.suspense\"\n9:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"ViewportBoundary\"]\nb:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"MetadataBoundary\"]\nd:I[65125,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/157per-6rfej7.css\",\"style\"]\n:HL[\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"chapter\",\"multi-agent-systems\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"chapter\",{\"children\":[[\"slug\",\"multi-agent-systems\",\"d\",null],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3j2brc7c8hat8.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/05b0208rfh8ys.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-full flex flex-col\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/16vgld9iclosn.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/2rb1230i-fez-.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@7\"}]}]]}],{},null,false,null]},null,false,\"$@8\"]},null,false,\"$@8\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L9\",null,{\"children\":\"$La\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Lc\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$d\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"WpHiBD4DjnzuprdEnivdA\"}\n"])</script><script>self.__next_f.push([1,"e:[]\n8:\"$We\"\n"])</script><script>self.__next_f.push([1,"f:I[89587,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\",\"/_next/static/chunks/16vgld9iclosn.js\",\"/_next/static/chunks/2rb1230i-fez-.js\"],\"default\"]\n10:T31bd,"])</script><script>self.__next_f.push([1,"# Chapter 8: Multi-Agent Systems\n\n\u003e *\"Alone we can do so little; together we can do so much.\"* — Helen Keller\n\n---\n\n## 8.1 Why Single Agents Aren't Enough\n\nReal-world problems are complex. A single agent trying to do everything becomes a jack of all trades, master of none. Multi-agent systems let you build specialized agents that collaborate.\n\n### Single Agent vs Multi-Agent\n\n| Aspect | Single Agent | Multi-Agent |\n|--------|-------------|-------------|\n| **Complexity** | One agent handles everything | Each agent has a focused role |\n| **Expertise** | Generalist | Specialist per domain |\n| **Scalability** | Limited by single model | Add agents as needed |\n| **Reliability** | Single point of failure | Redundancy possible |\n| **Cost** | One API call per task | Multiple calls, but smaller |\n\n---\n\n## 8.2 Agent Orchestration\n\n### The Orchestrator Pattern\n\nA manager agent routes tasks to specialist agents.\n\n```python\n\"\"\"\nOrchestrator Pattern\nA manager agent coordinates specialized worker agents.\n\"\"\"\n\nfrom openai import OpenAI\nfrom dataclasses import dataclass\n\n\n@dataclass\nclass Agent:\n    name: str\n    role: str\n    system_prompt: str\n\n\nclass OrchestratorAgent:\n    \"\"\"Coordinates multiple specialized agents.\"\"\"\n    \n    def __init__(self, api_key: str | None = None):\n        self.client = OpenAI(api_key=api_key)\n        self.agents: dict[str, Agent] = {}\n    \n    def register_agent(self, agent: Agent):\n        self.agents[agent.name] = agent\n    \n    def route_task(self, task: str) -\u003e str:\n        \"\"\"Route a task to the best agent.\"\"\"\n        agent_descriptions = \"\\n\".join(\n            f\"- {name}: {agent.role}\"\n            for name, agent in self.agents.items()\n        )\n        \n        prompt = f\"\"\"Route this task to the best agent.\n\nAvailable agents:\n{agent_descriptions}\n\nTask: {task}\n\nWhich agent should handle this? Respond with just the agent name.\"\"\"\n        \n        response = self.client.completions.create(\n            model=\"gpt-4o\",\n            messages=[{\"role\": \"user\", \"content\": prompt}],\n            temperature=0.0\n        )\n        \n        agent_name = response.choices[0].message.content.strip()\n        if agent_name in self.agents:\n            return self._execute(agent_name, task)\n        return \"No suitable agent found.\"\n    \n    def _execute(self, agent_name: str, task: str) -\u003e str:\n        agent = self.agents[agent_name]\n        response = self.client.completions.create(\n            model=\"gpt-4o\",\n            messages=[\n                {\"role\": \"system\", \"content\": agent.system_prompt},\n                {\"role\": \"user\", \"content\": task}\n            ],\n            temperature=0.3\n        )\n        return response.choices[0].message.content\n    \n    def collaborative_task(self, task: str) -\u003e str:\n        \"\"\"Have all agents collaborate on a task.\"\"\"\n        results = []\n        for name, agent in self.agents.items():\n            result = self._execute(name, f\"Your perspective on: {task}\")\n            results.append(f\"**{name}** ({agent.role}):\\n{result}\")\n        \n        synthesis = f\"Synthesize these perspectives:\\n\\n\" + \"\\n\\n\".join(results)\n        response = self.client.completions.create(\n            model=\"gpt-4o\",\n            messages=[{\"role\": \"user\", \"content\": synthesis}],\n            temperature=0.3\n        )\n        return response.choices[0].message.content\n\n\n# Usage\norchestrator = OrchestratorAgent()\norchestrator.register_agent(Agent(\"researcher\", \"Research\", \"You are a research specialist.\"))\norchestrator.register_agent(Agent(\"writer\", \"Writing\", \"You are a content writer.\"))\norchestrator.register_agent(Agent(\"editor\", \"Editing\", \"You are a careful editor.\"))\n```\n\n---\n\n## 8.3 Communication Protocols\n\n### Message-Passing Between Agents\n\n```python\n\"\"\"\nMessage Bus for agent communication.\n\"\"\"\n\nfrom dataclasses import dataclass\nfrom datetime import datetime\nfrom enum import Enum\n\n\nclass MessageType(Enum):\n    REQUEST = \"request\"\n    RESPONSE = \"response\"\n    FEEDBACK = \"feedback\"\n\n\n@dataclass\nclass Message:\n    sender: str\n    receiver: str\n    content: str\n    msg_type: MessageType\n    timestamp: datetime\n\n\nclass MessageBus:\n    def __init__(self):\n        self.messages: list[Message] = []\n        self.subscribers: dict[str, list[callable]] = {}\n    \n    def publish(self, message: Message):\n        self.messages.append(message)\n        for callback in self.subscribers.get(message.receiver, []):\n            callback(message)\n    \n    def subscribe(self, agent_id: str, callback: callable):\n        self.subscribers.setdefault(agent_id, []).append(callback)\n```\n\n---\n\n## 8.4 CrewAI Deep Dive\n\n### Building a Crew of Agents\n\n```python\n\"\"\"\nCrew-style multi-agent system.\n\"\"\"\n\nfrom openai import OpenAI\nfrom dataclasses import dataclass\n\n\n@dataclass\nclass CrewMember:\n    name: str\n    role: str\n    goal: str\n    backstory: str\n\n\nclass SimpleCrew:\n    def __init__(self, api_key: str | None = None):\n        self.client = OpenAI(api_key=api_key)\n        self.members: list[CrewMember] = []\n        self.tasks: list[dict] = []\n    \n    def add_member(self, member: CrewMember):\n        self.members.append(member)\n    \n    def add_task(self, description: str, expected_output: str, assigned_to: str | None = None):\n        self.tasks.append({\n            \"description\": description,\n            \"expected_output\": expected_output,\n            \"assigned_to\": assigned_to\n        })\n    \n    def execute_task(self, task: dict) -\u003e str:\n        if task[\"assigned_to\"]:\n            member = next((m for m in self.members if m.name == task[\"assigned_to\"]), self.members[0])\n        else:\n            member = self._route_task(task[\"description\"])\n        \n        prompt = f\"\"\"You are {member.name}, a {member.role}.\nGoal: {member.goal}\nBackground: {member.backstory}\n\nTask: {task['description']}\nExpected output: {task['expected_output']}\"\"\"\n        \n        response = self.client.completions.create(\n            model=\"gpt-4o\",\n            messages=[\n                {\"role\": \"system\", \"content\": f\"You are {member.name}.\"},\n                {\"role\": \"user\", \"content\": prompt}\n            ],\n            temperature=0.3\n        )\n        return response.choices[0].message.content\n    \n    def _route_task(self, description: str) -\u003e CrewMember:\n        members_info = \"\\n\".join(f\"- {m.name}: {m.role}\" for m in self.members)\n        prompt = f\"Route this task. Members:\\n{members_info}\\n\\nTask: {description}\\n\\nRespond with just the name.\"\n        response = self.client.completions.create(model=\"gpt-4o\", messages=[{\"role\": \"user\", \"content\": prompt}], temperature=0.0)\n        name = response.choices[0].message.content.strip()\n        return next((m for m in self.members if m.name == name), self.members[0])\n    \n    def run(self) -\u003e list[dict]:\n        return [{\"task\": t[\"description\"], \"output\": self.execute_task(t)} for t in self.tasks]\n\n\n# Usage\ncrew = SimpleCrew()\ncrew.add_member(CrewMember(\"Researcher\", \"Research Analyst\", \"Find accurate information\", \"10 years experience\"))\ncrew.add_member(CrewMember(\"Writer\", \"Content Writer\", \"Create engaging content\", \"Published author\"))\ncrew.add_member(CrewMember(\"Editor\", \"Editor\", \"Ensure quality\", \"Former newspaper editor\"))\n\ncrew.add_task(\"Research AI trends in 2025\", \"List of 5 key trends\", \"Researcher\")\ncrew.add_task(\"Write a blog post from the research\", \"800-word post\", \"Writer\")\ncrew.add_task(\"Edit and polish the post\", \"Publication-ready post\", \"Editor\")\n\nresults = crew.run()\n```\n\n---\n\n## 8.5 Supervisor Pattern\n\n### Manager Agents Directing Workers\n\n```python\n\"\"\"\nSupervisor manages worker agents and reviews their output.\n\"\"\"\n\nfrom openai import OpenAI\nfrom dataclasses import dataclass\n\n\n@dataclass\nclass WorkerAgent:\n    name: str\n    specialty: str\n    system_prompt: str\n\n\nclass SupervisorAgent:\n    def __init__(self, api_key: str | None = None):\n        self.client = OpenAI(api_key=api_key)\n        self.workers: list[WorkerAgent] = []\n    \n    def add_worker(self, worker: WorkerAgent):\n        self.workers.append(worker)\n    \n    def delegate_and_review(self, task: str) -\u003e str:\n        worker = self._select_worker(task)\n        output = self._execute_worker(worker, task)\n        review = self._review_output(task, output)\n        return f\"## Worker Output ({worker.name})\\n\\n{output}\\n\\n---\\n\\n## Supervisor Review\\n\\n{review}\"\n    \n    def _select_worker(self, task: str) -\u003e WorkerAgent:\n        info = \"\\n\".join(f\"- {w.name}: {w.specialty}\" for w in self.workers)\n        prompt = f\"Select the best worker.\\nWorkers:\\n{info}\\n\\nTask: {task}\\n\\nRespond with just the name.\"\n        response = self.client.completions.create(model=\"gpt-4o\", messages=[{\"role\": \"user\", \"content\": prompt}], temperature=0.0)\n        name = response.choices[0].message.content.strip()\n        return next((w for w in self.workers if w.name == name), self.workers[0])\n    \n    def _execute_worker(self, worker: WorkerAgent, task: str) -\u003e str:\n        response = self.client.completions.create(model=\"gpt-4o\", messages=[\n            {\"role\": \"system\", \"content\": worker.system_prompt},\n            {\"role\": \"user\", \"content\": task}\n        ], temperature=0.3)\n        return response.choices[0].message.content\n    \n    def _review_output(self, task: str, output: str) -\u003e str:\n        prompt = f\"Review this output.\\n\\nTask: {task}\\n\\nOutput:\\n{output}\\n\\nProvide quality assessment, issues, and verdict (APPROVE/REVISE).\"\n        response = self.client.completions.create(model=\"gpt-4o\", messages=[{\"role\": \"user\", \"content\": prompt}], temperature=0.2)\n        return response.choices[0].message.content\n```\n\n---\n\n## 8.6 Architecture Overview\n\n```\n┌─────────────────────────────────────────┐\n│           Multi-Agent System            │\n├─────────────────────────────────────────┤\n│                                          │\n│  ┌─────────────┐  ┌─────────────┐      │\n│  │ Orchestrator │  │ Supervisor  │      │\n│  └──────┬──────┘  └──────┬──────┘      │\n│         │                 │             │\n│         ▼                 ▼             │\n│  ┌──────────────────────────────────┐  │\n│  │         Message Bus               │  │\n│  └──────────────────────────────────┘  │\n│    │        │         │        │        │\n│    ▼        ▼         ▼        ▼        │\n│  ┌────┐  ┌────┐   ┌────┐  ┌────┐     │\n│  │ W1 │  │ W2 │   │ W3 │  │ W4 │     │\n│  └────┘  └────┘   └────┘  └────┘     │\n│                                          │\n└─────────────────────────────────────────┘\n```\n\n---\n\n## 8.7 When to Use Multi-Agent vs Single Agent\n\n| Use Multi-Agent When... | Use Single Agent When... |\n|------------------------|------------------------|\n| Task requires multiple expertise areas | Task is focused and well-defined |\n| Quality improves with specialization | Speed is more important |\n| You need review/check steps | The task is simple |\n| Problem is too complex for one context | Budget is limited |\n| You want parallel processing | Single prompt suffices |\n\n---\n\n## 8.8 Key Takeaways\n\n1. **Multi-agent systems** enable specialization — each agent does what it does best.\n2. **The orchestrator pattern** uses a manager to route and coordinate work.\n3. **Message passing** lets agents communicate without tight coupling.\n4. **Crews** are teams working toward a common goal with defined roles.\n5. **Supervisor patterns** add quality control through review steps.\n6. **Choose multi-agent** when complexity demands it — don't over-engineer simple tasks.\n\n---\n\n## 8.9 Try It Yourself\n\n### Exercise 1: Build a Content Crew\nCreate a 3-agent crew: Researcher → Writer → Editor. Have them collaborate on a blog post.\n\n### Exercise 2: Code Review Supervisor\nBuild a supervisor that delegates code review to a specialist, then reviews their feedback.\n\n### Exercise 3: Research Team\nCreate 3 agents focusing on different aspects of a topic, then synthesize their findings.\n\n---\n\n\u003e **Next Chapter**: In [Chapter 9: Building Tools from Scratch](./chapter-09-building-tools-from-scratch.md), we'll create custom tools that agents can use.\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"div\",null,{\"children\":[\"$\",\"$Lf\",null,{\"content\":\"$10\",\"currentChapter\":{\"id\":\"agents-ch-08\",\"number\":8,\"title\":\"Multi-Agent Systems\",\"subtitle\":\"Orchestrating Teams of AI Agents\",\"description\":\"Master agent orchestration, communication protocols, supervisor patterns, and build multi-agent crews that collaborate.\",\"slug\":\"multi-agent-systems\",\"part\":\"Part II: Building Agents\",\"estimatedPages\":20,\"topics\":[\"Agent orchestration\",\"Communication protocols\",\"Role specialization\",\"Consensus mechanisms\",\"Supervisor patterns\",\"CrewAI \u0026 AutoGen\"],\"icon\":\"🔗\",\"bookId\":\"ai-agents\"}}]}]\n"])</script><script>self.__next_f.push([1,"a:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"7:null\nc:[[\"$\",\"title\",\"0\",{\"children\":\"AI Agents: The Complete Guide\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi\"}],[\"$\",\"meta\",\"2\",{\"name\":\"author\",\"content\":\"Manjunath Kalburgi\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi\"}]]\n"])</script></body></html>

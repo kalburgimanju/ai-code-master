@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; }
+    .clip { visibility: hidden; }
+    .scene {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 80px;
+    }
+    .phase-label {
+      font-family: "Nunito", sans-serif;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      font-size: 14px; font-weight: 600;
+      color: #0693e3; margin-bottom: 12px; opacity: 0;
+    }
+    .phase-title {
+      font-family: "Nunito", sans-serif;
+      font-size: 48px; font-weight: 700;
+      color: #fff; margin-bottom: 48px; opacity: 0;
+    }
+    .cards {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 32px; width: 100%; max-width: 1200px;
+    }
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 40px 28px;
+      text-align: left; opacity: 0; transform: translateY(20px);
+    }
+    .card:nth-child(1) { border-color: rgba(249,115,22,0.3); }
+    .card:nth-child(2) { border-color: rgba(99,102,241,0.3); }
+    .card-icon { font-size: 36px; display: block; margin-bottom: 12px; }
+    .card-name { font-family: "Nunito", sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .card-track { font-family: "Nunito", sans-serif; font-size: 16px; font-weight: 600; color: #0693e3; margin-bottom: 12px; display: block; }
+    .card-desc { font-family: "Source Serif 4", Georgia, serif; font-size: 16px; color: #94A3B8; line-height: 1.6; }
+    .tools {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;
+    }
+    .tool {
+      font-size: 13px; background: rgba(6,147,227,0.1); color: #0693e3;
+      padding: 4px 12px; border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" data-composition-id="03-phase2" data-start="14" data-duration="5" data-width="1920" data-height="1080">
+    <div class="scene">
+      <div id="phase-label" class="phase-label clip" data-start="0" data-duration="5" data-track-index="0">Phase Two</div>
+      <div id="phase-title" class="phase-title clip" data-start="0" data-duration="5" data-track-index="0">Deep Technical Tracks</div>
+      <div class="cards">
+        <div class="card clip" data-start="0" data-duration="5" data-track-index="1">
+          <span class="card-icon">📚</span>
+          <div class="card-name">AI Engineer</div>
+          <span class="card-track">Core Track</span>
+          <div class="card-desc">Select, build and optimize LLMs from OpenAI to open-source models. Deep expertise in RAG, fine-tuning, and agent platforms.</div>
+          <div class="tools">
+            <span class="tool">OpenAI</span>
+            <span class="tool">Anthropic</span>
+            <span class="tool">Gemini</span>
+            <span class="tool">LangChain</span>
+          </div>
+        </div>
+        <div class="card clip" data-start="0" data-duration="5" data-track-index="2">
+          <span class="card-icon">🕸️</span>
+          <div class="card-name">AI Engineer</div>
+          <span class="card-track">Agentic Track</span>
+          <div class="card-desc">Build autonomous agents with CrewAI, LangGraph, AutoGen, and the OpenAI Agents SDK. Multi-agent systems in production.</div>
+          <div class="tools">
+            <span class="tool">CrewAI</span>
+            <span class="tool">LangGraph</span>
+            <span class="tool">AutoGen</span>
+            <span class="tool">MCP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#phase-label", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0);
+    tl.fromTo("#phase-title", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.5);
+
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card, i) => {
+      tl.fromTo(card, { opacity: 0, x: i === 0 ? -30 : 30, scale: 0.95 },
+        { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "power3.out" }, 1.2 + i * 0.2);
+    });
+
+    window.__timelines["03-phase2"] = tl;
+  </script>
+</body>
+</html>

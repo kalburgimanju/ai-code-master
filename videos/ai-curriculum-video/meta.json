@@ -1,0 +1,8 @@
+{
+  "project": "ai-curriculum-video",
+  "version": "1.0.0",
+  "duration": 29,
+  "fps": 30,
+  "resolution": "1920x1080",
+  "voice": "Samantha (macOS TTS)"
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; }
+    .clip { visibility: hidden; }
+    .scene {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 80px;
+    }
+    .phase-label {
+      font-family: "Nunito", sans-serif;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      font-size: 14px; font-weight: 600;
+      color: #0693e3; margin-bottom: 12px; opacity: 0;
+    }
+    .phase-title {
+      font-family: "Nunito", sans-serif;
+      font-size: 48px; font-weight: 700;
+      color: #fff; margin-bottom: 48px; opacity: 0;
+    }
+    .cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; width: 100%; max-width: 1500px;
+    }
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center; opacity: 0; transform: translateY(20px);
+    }
+    .card-icon { font-size: 40px; display: block; margin-bottom: 16px; }
+    .card-name { font-family: "Nunito", sans-serif; font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .card-desc { font-family: "Source Serif 4", Georgia, serif; font-size: 16px; color: #94A3B8; line-height: 1.5; }
+    .card:nth-child(1) { border-color: rgba(6,147,227,0.3); }
+    .card:nth-child(2) { border-color: rgba(124,58,237,0.3); }
+    .card:nth-child(3) { border-color: rgba(16,185,129,0.3); }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" data-composition-id="02-phase1" data-start="6" data-duration="8" data-width="1920" data-height="1080">
+    <div class="scene">
+      <div id="phase-label" class="phase-label clip" data-start="0" data-duration="8" data-track-index="0">Phase One</div>
+      <div id="phase-title" class="phase-title clip" data-start="0" data-duration="8" data-track-index="0">For Everyone, Technical or Not</div>
+      <div class="cards">
+        <div class="card clip" data-start="0" data-duration="8" data-track-index="1">
+          <span class="card-icon">🤖</span>
+          <div class="card-name">AI Builder</div>
+          <div class="card-desc">Create agents and voice agents with n8n and ElevenLabs</div>
+        </div>
+        <div class="card clip" data-start="0" data-duration="8" data-track-index="2">
+          <span class="card-icon">💻</span>
+          <div class="card-name">AI Coder</div>
+          <div class="card-desc">Vibe coder to agentic engineer with Claude Code</div>
+        </div>
+        <div class="card clip" data-start="0" data-duration="8" data-track-index="3">
+          <span class="card-icon">👑</span>
+          <div class="card-name">AI Leader</div>
+          <div class="card-desc">Deliver commercial impact with AI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#phase-label", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0);
+    tl.fromTo("#phase-title", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.5);
+
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card, i) => {
+      tl.fromTo(card, { opacity: 0, y: 30, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" }, 1.2 + i * 0.15);
+    });
+
+    window.__timelines["02-phase1"] = tl;
+  </script>
+</body>
+</html>

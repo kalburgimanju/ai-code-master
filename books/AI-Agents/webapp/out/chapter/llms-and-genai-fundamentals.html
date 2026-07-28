@@ -1,0 +1,1446 @@
+<!DOCTYPE html><html lang="en" class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/chunks/157per-6rfej7.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/3s_ssfmklbvuh.js"/><script src="/_next/static/chunks/3h0oyn0exvw0m.js" async=""></script><script src="/_next/static/chunks/0gy5uo_6oz9q4.js" async=""></script><script src="/_next/static/chunks/2n-c2rhkbzx6r.js" async=""></script><script src="/_next/static/chunks/turbopack-10u0tugcn5e6r.js" async=""></script><script src="/_next/static/chunks/3j2brc7c8hat8.js" async=""></script><script src="/_next/static/chunks/05b0208rfh8ys.js" async=""></script><script src="/_next/static/chunks/16vgld9iclosn.js" async=""></script><script src="/_next/static/chunks/2rb1230i-fez-.js" async=""></script><meta name="next-size-adjust" content=""/><title>AI Agents: The Complete Guide</title><meta name="description" content="A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"/><meta name="author" content="Manjunath Kalburgi"/><meta name="keywords" content="AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"/><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body class="min-h-full flex flex-col"><div hidden=""><!--$--><!--/$--></div><div><div class="reading-progress" style="width:0%"></div><nav class="fixed top-0 left-0 right-0 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border-color)] z-40 no-print"><div class="flex items-center justify-between px-4 py-2 max-w-full"><div class="flex items-center gap-3"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Toggle sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h14M3 10h14M3 15h14"></path></svg></button><a class="text-sm font-semibold text-primary hover:underline hidden sm:inline" href="/">AI Agents Book</a></div><div class="flex items-center gap-2 text-sm text-[var(--foreground)] opacity-60"><span class="hidden md:inline">Chapter <!-- -->1</span><span class="hidden md:inline">•</span><span class="hidden lg:inline">LLMs &amp; GenAI Fundamentals</span><span class="lg:hidden">🧠</span></div><div class="flex items-center gap-2"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12V4M4 7l4-4 4 4"></path></svg></button></div></div></nav><div class="flex pt-12 min-h-screen"><aside class="fixed left-0 top-12 bottom-0 w-72 bg-[var(--surface)] border-r border-[var(--border-color)] overflow-y-auto transition-transform duration-300 z-30 no-print translate-x-0"><div class="p-4"><div class="mb-6 pb-4 border-b border-[var(--border-color)]"><span class="text-xs font-medium text-primary uppercase tracking-wide">Chapter <!-- -->1</span><h2 class="text-lg font-bold text-[var(--foreground)] mt-1">LLMs &amp; GenAI Fundamentals</h2><p class="text-xs text-[var(--foreground)] opacity-60 mt-1">~<!-- -->18<!-- --> pages • <!-- -->Part I: Foundations</p></div><div class="mb-6"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">On this page</h3><div class="space-y-1"><a href="#chapter-1-llms-genai-fundamentals" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chapter 1: LLMs &amp; GenAI Fundamentals</a><a href="#understanding-the-intelligence-behind-ai-agents" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Understanding the Intelligence Behind AI Agents</a><a href="#table-of-contents" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Table of Contents</a><a href="#1-what-are-large-language-models" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">1. What Are Large Language Models?</a><a href="#definition" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Definition</a><a href="#how-llms-work" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">How LLMs Work</a><a href="#the-training-process" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Training Process</a><a href="#example-training-data-format-for-sft" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Example training data format for SFT</a><a href="#model-sizes-what-large-means" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Model Sizes: What &quot;Large&quot; Means</a><a href="#2-the-transformer-architecture" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">2. The Transformer Architecture</a><a href="#the-foundation-of-modern-ai" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Foundation of Modern AI</a><a href="#high-level-architecture" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">High-Level Architecture</a><a href="#self-attention-the-secret-sauce" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Self-Attention: The Secret Sauce</a><a href="#positional-encoding" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Positional Encoding</a><a href="#why-transformers-beat-earlier-architectures" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Why Transformers Beat Earlier Architectures</a><a href="#3-tokenization-how-text-becomes-numbers" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">3. Tokenization: How Text Becomes Numbers</a><a href="#from-words-to-tokens" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">From Words to Tokens</a><a href="#word-level-tokenization-simple-but-limited" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Word-Level Tokenization (Simple but Limited)</a><a href="#byte-pair-encoding-bpe" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Byte Pair Encoding (BPE)</a><a href="#token-counts-by-model" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Token Counts by Model</a><a href="#practical-implications" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Practical Implications</a><a href="#counting-tokens-with-tiktoken-openai-s-tokenizer" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Counting tokens with tiktoken (OpenAI&#x27;s tokenizer)</a><a href="#gpt-4-tokenizer" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">GPT-4 tokenizer</a><a href="#tokenize-some-text" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Tokenize some text</a><a href="#output" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Output:</a><a href="#text-ai-agents-are-transforming-how-we-work-with-technology" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Text: AI agents are transforming how we work with technology.</a><a href="#tokens-32-10832-527-27460-1268-527-1194-449-7410-13" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Tokens: [32, 10832, 527, 27460, 1268, 527, 1194, 449, 7410, 13]</a><a href="#token-count-11" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Token count: 11</a><a href="#decoded-tokens-ai-agents-are-transform-ing" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Decoded tokens: [&#x27;AI&#x27;, &#x27; agents&#x27;, &#x27; are&#x27;, &#x27; transform&#x27;, &#x27;ing&#x27;, </a><a href="#how-we-work-with-technology" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">&#x27; how&#x27;, &#x27; we&#x27;, &#x27; work&#x27;, &#x27; with&#x27;, &#x27; technology&#x27;, &#x27;.&#x27;]</a><a href="#token-budget-management" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Token Budget Management</a><a href="#cost-estimation-for-different-models" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Cost estimation for different models</a><a href="#example-processing-a-5-000-word-document" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Example: Processing a 5,000-word document</a><a href="#cost-per-request-0-0263" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Cost per request: $0.0263</a><a href="#4-the-genai-landscape" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">4. The GenAI Landscape</a><a href="#major-llm-providers-2024-2025" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Major LLM Providers (2024-2025)</a><a href="#model-comparison-table" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Model Comparison Table</a><a href="#choosing-the-right-model" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Choosing the Right Model</a><a href="#open-source-vs-closed-models" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Open-Source vs. Closed Models</a><a href="#where-to-run-open-source-models" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Where to Run Open-Source Models</a><a href="#option-1-ollama-easiest-for-development" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Option 1: Ollama (easiest for development)</a><a href="#install-curl-fssl-https-ollama-com-install-sh-sh" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Install: curl -fsSL https://ollama.com/install.sh | sh</a><a href="#run-ollama-run-llama3-1-8b" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Run: ollama run llama3.1:8b</a><a href="#option-2-vllm-production-serving" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Option 2: vLLM (production serving)</a><a href="#pip-install-vllm" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">pip install vllm</a><a href="#vllm-serve-meta-llama-llama-3-1-8b-instruct-tensor-parallel-size-2" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">vllm serve meta-llama/Llama-3.1-8B-Instruct --tensor-parallel-size 2</a><a href="#option-3-hugging-face-transformers" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Option 3: Hugging Face Transformers</a><a href="#5-context-windows" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5. Context Windows</a><a href="#what-is-a-context-window" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What Is a Context Window?</a><a href="#context-window-comparison" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Context Window Comparison</a><a href="#why-context-windows-matter-for-agents" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Why Context Windows Matter for Agents</a><a href="#example-agent-context-usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Example: Agent context usage</a><a href="#well-within-gpt-4o-s-128k-limit" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Well within GPT-4o&#x27;s 128K limit</a><a href="#but-could-be-a-problem-with-smaller-context-models" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">But could be a problem with smaller context models</a><a href="#managing-context" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Managing Context</a><a href="#6-temperature-sampling" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">6. Temperature &amp; Sampling</a><a href="#the-creativity-knob" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Creativity Knob</a><a href="#how-temperature-works" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">How Temperature Works</a><a href="#example-model-deciding-between-three-options" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Example: Model deciding between three options</a><a href="#0-9999-0-0001-0-0000-almost-always-picks-yes" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">→ [0.9999, 0.0001, 0.0000]  → Almost always picks &quot;yes&quot;</a><a href="#0-73-0-18-0-09-usually-yes-sometimes-others" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">→ [0.73, 0.18, 0.09]        → Usually &quot;yes&quot;, sometimes others</a><a href="#0-47-0-30-0-23-more-varied-choices" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">→ [0.47, 0.30, 0.23]        → More varied choices</a><a href="#top-p-nucleus-sampling" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Top-p (Nucleus) Sampling</a><a href="#top-k-sampling" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Top-k Sampling</a><a href="#practical-settings-guide" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Practical Settings Guide</a><a href="#7-prompt-engineering-basics" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">7. Prompt Engineering Basics</a><a href="#what-is-prompt-engineering" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What Is Prompt Engineering?</a><a href="#zero-shot-prompting" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Zero-Shot Prompting</a><a href="#zero-shot-classification" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Zero-shot classification</a><a href="#output-positive" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Output: &quot;Positive&quot;</a><a href="#few-shot-prompting" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Few-Shot Prompting</a><a href="#few-shot-classification" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Few-shot classification</a><a href="#output-positive" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Output: &quot;Positive&quot;</a><a href="#chain-of-thought-cot-prompting" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chain-of-Thought (CoT) Prompting</a><a href="#chain-of-thought-for-complex-reasoning" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chain-of-thought for complex reasoning</a><a href="#output-will-walk-through-3-25-75" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Output will walk through: 3 × $25 = $75, </a><a href="#tax-75-0-08-6-total-81" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">tax = $75 × 0.08 = $6, total = $81</a><a href="#system-prompts" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">System Prompts</a><a href="#effective-system-prompt-for-an-agent" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Effective system prompt for an agent</a><a href="#your-role" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Your Role</a><a href="#guidelines" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Guidelines</a><a href="#available-actions" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Available Actions</a><a href="#prompt-patterns" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Prompt Patterns</a><a href="#common-prompt-engineering-mistakes" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Common Prompt Engineering Mistakes</a><a href="#8-hands-on-openai-api" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8. Hands-On: OpenAI API</a><a href="#setting-up" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Setting Up</a><a href="#install-dependencies" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Install dependencies</a><a href="#set-up-your-api-key" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Set up your API key</a><a href="#complete-example-text-generation" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Complete Example: Text Generation</a><a href="#example-usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Example Usage ===</a><a href="#1-simple-completion" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">1. Simple completion</a><a href="#2-chat-with-system-prompt" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">2. Chat with system prompt</a><a href="#3-structured-output" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">3. Structured output</a><a href="#streaming-responses" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Streaming Responses</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#error-handling" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Error Handling</a><a href="#prompt-engineering-patterns-code-examples" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Prompt Engineering Patterns — Code Examples</a><a href="#pattern-1-chain-of-thought-for-math" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Pattern 1: Chain-of-Thought for Math</a><a href="#pattern-2-few-shot-classification" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Pattern 2: Few-Shot Classification</a><a href="#pattern-3-summarization-with-constraints" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Pattern 3: Summarization with Constraints</a><a href="#pattern-4-extraction-into-structured-data" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Pattern 4: Extraction into Structured Data</a><a href="#run-examples" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Run Examples ===</a><a href="#9-key-takeaways" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">9. Key Takeaways</a><a href="#10-try-it-yourself" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">10. Try It Yourself</a><a href="#exercise-1-token-counter" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 1: Token Counter</a><a href="#exercise-2-prompt-engineering-lab" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 2: Prompt Engineering Lab</a><a href="#exercise-3-temperature-experiment" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 3: Temperature Experiment</a><a href="#exercise-4-structured-output" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 4: Structured Output</a><a href="#exercise-5-build-a-mini-chatbot" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 5: Build a Mini-Chatbot</a></div></div><div class="border-t border-[var(--border-color)] pt-4"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">Chapters</h3><div class="space-y-1"><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all bg-primary/10 text-primary font-medium" href="/chapter/llms-and-genai-fundamentals"><span class="text-base">🧠</span><span class="truncate">LLMs &amp; GenAI Fundamentals</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/rag-and-knowledge-systems"><span class="text-base">🔍</span><span class="truncate">RAG &amp; Knowledge Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/introduction-to-ai-agents"><span class="text-base">🤖</span><span class="truncate">Introduction to AI Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/customer-support-agents"><span class="text-base">💬</span><span class="truncate">Customer Support Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/executive-and-analyst-agents"><span class="text-base">📊</span><span class="truncate">Executive &amp; Analyst Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/developer-and-coder-agents"><span class="text-base">👨‍💻</span><span class="truncate">Developer &amp; Coder Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/designer-and-creative-agents"><span class="text-base">🎨</span><span class="truncate">Designer &amp; Creative Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/multi-agent-systems"><span class="text-base">🔗</span><span class="truncate">Multi-Agent Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-tools-from-scratch"><span class="text-base">🔧</span><span class="truncate">Building Tools from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-your-own-llm-pipeline"><span class="text-base">⚙️</span><span class="truncate">Building Your Own LLM Pipeline</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-rag-from-scratch"><span class="text-base">🏗️</span><span class="truncate">Building RAG from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/complete-project-deployment"><span class="text-base">🚀</span><span class="truncate">Complete Project: End to End</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/security-and-safety"><span class="text-base">🛡️</span><span class="truncate">Security, Safety &amp; Guardrails</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/observability-and-scalability"><span class="text-base">📈</span><span class="truncate">Observability &amp; Scalability</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/authenticity-and-future"><span class="text-base">🌍</span><span class="truncate">Authenticity &amp; The Future</span></a></div></div></div></aside><main class="flex-1 transition-all duration-300 ml-72 max-w-4xl px-6 md:px-12 py-12"><div class="mb-10 pb-8 border-b-2 border-primary/20"><span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">Part I: Foundations</span><h1 class="text-4xl md:text-5xl font-extrabold mb-2 bg-gradient-to-r from-primary via-emerald-400 to-teal-400 -webkit-background-clip-text text-transparent bg-clip-text">Chapter <!-- -->1<!-- -->: <!-- -->LLMs &amp; GenAI Fundamentals</h1><p class="text-xl text-[var(--foreground)] opacity-70">Understanding the Intelligence Behind AI Agents</p></div><article class="prose-book"><h1 class="text-4xl font-extrabold mt-12 mb-4">Chapter 1: LLMs &amp; GenAI Fundamentals</h1>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Understanding the Intelligence Behind AI Agents</h2>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><em class="italic">&quot;To build something extraordinary, you must first understand the foundation it rests upon.&quot;</em></p>
+</blockquote>
+<p class="mb-4 text-justify">Before we dive into building AI agents, we need to understand the engine that powers them: <strong class="font-bold text-primary">Large Language Models (LLMs)</strong> and the broader <strong class="font-bold text-primary">Generative AI</strong> ecosystem. This chapter will demystify these technologies, from the mathematics of transformers to the practical art of prompt engineering.</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Table of Contents</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><a href="#1-what-are-large-language-models" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">What Are Large Language Models?</a></li>
+<li class="text-[var(--foreground)]"><a href="#2-the-transformer-architecture" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">The Transformer Architecture</a></li>
+<li class="text-[var(--foreground)]"><a href="#3-tokenization-how-text-becomes-numbers" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Tokenization: How Text Becomes Numbers</a></li>
+<li class="text-[var(--foreground)]"><a href="#4-the-genai-landscape" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">The GenAI Landscape</a></li>
+<li class="text-[var(--foreground)]"><a href="#5-context-windows" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Context Windows</a></li>
+<li class="text-[var(--foreground)]"><a href="#6-temperature--sampling" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Temperature &amp; Sampling</a></li>
+<li class="text-[var(--foreground)]"><a href="#7-prompt-engineering-basics" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Prompt Engineering Basics</a></li>
+<li class="text-[var(--foreground)]"><a href="#8-hands-on-openai-api" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Hands-On: OpenAI API</a></li>
+<li class="text-[var(--foreground)]"><a href="#9-key-takeaways" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Key Takeaways</a></li>
+<li class="text-[var(--foreground)]"><a href="#10-try-it-yourself" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Try It Yourself</a></li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">1. What Are Large Language Models?</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Definition</h3>
+<p class="mb-4 text-justify">A <strong class="font-bold text-primary">Large Language Model (LLM)</strong> is an artificial intelligence system trained on massive amounts of text data to understand, generate, and manipulate human language. The &quot;large&quot; refers to both the size of the training data (often trillions of tokens) and the number of parameters in the model (billions to trillions).</p>
+<p class="mb-4 text-justify">Think of an LLM as an incredibly sophisticated autocomplete. When you type a sentence, it predicts the most likely next word (or token) based on patterns it learned during training. But unlike your phone&#x27;s autocomplete, LLMs can:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Write</strong> essays, code, poetry, and stories</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Summarize</strong> long documents into key points</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Translate</strong> between languages</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Reason</strong> through complex problems step-by-step</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Follow instructions</strong> given in natural language</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Generate</strong> structured data like JSON, SQL, or XML</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">How LLMs Work</h3>
+<p class="mb-4 text-justify">At their core, LLMs are <strong class="font-bold text-primary">next-token prediction machines</strong>. Given a sequence of tokens, they predict the probability distribution over the next possible token.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Input:  &quot;The cat sat on the&quot;
+                    ↓
+Model:  {&quot;mat&quot;: 0.35, &quot;floor&quot;: 0.25, &quot;couch&quot;: 0.20, &quot;roof&quot;: 0.05, ...}
+                    ↓
+Output: &quot;mat&quot; (sampled from the distribution)
+</code></pre>
+<p class="mb-4 text-justify">This simple mechanism, repeated billions of times across massive datasets, produces remarkably capable language systems.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Training Process</h3>
+<p class="mb-4 text-justify">Training an LLM happens in three main phases:</p>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Phase 1: Pre-training (Unsupervised)</h4>
+<p class="mb-4 text-justify">The model reads vast amounts of text from the internet, books, code repositories, and other sources. It learns to predict the next token in any sequence.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Objective: Given tokens [t1, t2, t3, ..., tn], predict t(n+1)
+
+Example:
+  &quot;Artificial intelligence is the simulation of human&quot; → &quot;intelligence&quot;
+  &quot;def fibonacci(n):&quot; → &quot;\n    if n &lt;= 1:&quot;
+  &quot;The capital of France is&quot; → &quot;Paris&quot;
+</code></pre>
+<p class="mb-4 text-justify">This teaches the model:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Grammar and syntax</li>
+<li class="text-[var(--foreground)]">Facts about the world</li>
+<li class="text-[var(--foreground)]">How to reason and follow logic</li>
+<li class="text-[var(--foreground)]">Programming patterns</li>
+<li class="text-[var(--foreground)]">Writing styles and conventions</li>
+</ul>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Cost</strong>: Pre-training a frontier model costs $50M-$100M+ in compute resources.</p>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Phase 2: Supervised Fine-Tuning (SFT)</h4>
+<p class="mb-4 text-justify">Human trainers create high-quality question-answer pairs to teach the model how to respond helpfully. This shapes the model from a text-predictor into an assistant.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Example training data format for SFT
+{
+    &quot;messages&quot;: [
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a helpful assistant.&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What is the capital of Japan?&quot;},
+        {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;The capital of Japan is Tokyo. 
+        It has been the de facto capital since 1868 and is one of the 
+        world&#x27;s most populous metropolitan areas.&quot;}
+    ]
+}
+</code></pre></pre>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Phase 3: Reinforcement Learning from Human Feedback (RLHF)</h4>
+<p class="mb-4 text-justify">Human evaluators rank the model&#x27;s responses, teaching it which answers are most helpful, harmless, and honest. The model learns to produce outputs that humans prefer.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Question: &quot;How do I make a bomb?&quot;
+                    ↓
+Response A: [Instructions]     → Human rates: HARMFUL (1/5)
+Response B: [Refusal]          → Human rates: SAFE (5/5)
+                    ↓
+Model learns: Prefer refusals for dangerous requests
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Model Sizes: What &quot;Large&quot; Means</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Size Category</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Parameters</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Examples</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Training Cost</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Small</td><td class="px-4 py-3 border border-[var(--border-color)]">1B - 7B</td><td class="px-4 py-3 border border-[var(--border-color)]">Phi-3, Gemma, Llama 3.2</td><td class="px-4 py-3 border border-[var(--border-color)]">$10K - $500K</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">8B - 34B</td><td class="px-4 py-3 border border-[var(--border-color)]">Llama 3.1 8B, Mistral 7B</td><td class="px-4 py-3 border border-[var(--border-color)]">$500K - $5M</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Large</td><td class="px-4 py-3 border border-[var(--border-color)]">70B - 130B</td><td class="px-4 py-3 border border-[var(--border-color)]">Llama 3.1 70B, Claude 3.5</td><td class="px-4 py-3 border border-[var(--border-color)]">$5M - $30M</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Frontier</td><td class="px-4 py-3 border border-[var(--border-color)]">300B - 1.8T</td><td class="px-4 py-3 border border-[var(--border-color)]">GPT-4, Claude 3.5 Opus, Gemini</td><td class="px-4 py-3 border border-[var(--border-color)]">$50M - $200M+</td></tr></tbody></table></div>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">2. The Transformer Architecture</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Foundation of Modern AI</h3>
+<p class="mb-4 text-justify">The <strong class="font-bold text-primary">Transformer</strong>, introduced in the landmark 2017 paper &quot;Attention Is All You Need&quot; by Vaswani et al., is the architecture behind virtually every modern LLM. Understanding it — even conceptually — is crucial for working with AI agents.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">High-Level Architecture</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────┐
+│              TRANSFORMER                 │
+│                                          │
+│  ┌────────────────────────────────────┐  │
+│  │        Decoder Stack (x N)         │  │
+│  │  ┌──────────────────────────────┐  │  │
+│  │  │   Masked Multi-Head          │  │  │
+│  │  │   Self-Attention             │  │  │
+│  │  └──────────────┬───────────────┘  │  │
+│  │                 │                   │  │
+│  │  ┌──────────────▼───────────────┐  │  │
+│  │  │   Add &amp; Layer Normalize      │  │  │
+│  │  └──────────────┬───────────────┘  │  │
+│  │                 │                   │  │
+│  │  ┌──────────────▼───────────────┐  │  │
+│  │  │   Feed-Forward Network       │  │  │
+│  │  └──────────────┬───────────────┘  │  │
+│  │                 │                   │  │
+│  │  ┌──────────────▼───────────────┐  │  │
+│  │  │   Add &amp; Layer Normalize      │  │  │
+│  │  └──────────────┬───────────────┘  │  │
+│  │                 │                   │  │
+│  └─────────────────┘                   │  │
+│                 │                       │
+│  ┌──────────────▼───────────────┐      │
+│  │   Linear + Softmax           │      │
+│  │   (Output Probabilities)     │      │
+│  └──────────────────────────────┘      │
+└─────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Self-Attention: The Secret Sauce</h3>
+<p class="mb-4 text-justify">Self-attention is what makes transformers so powerful. It allows every token in a sequence to &quot;look at&quot; every other token and decide how much attention to pay to each one.</p>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Why Attention Matters</h4>
+<p class="mb-4 text-justify">Consider this sentence:</p>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify">&quot;The cat didn&#x27;t cross the street because <strong class="font-bold text-primary">it</strong> was too tired.&quot;</p>
+</blockquote>
+<p class="mb-4 text-justify">What does &quot;it&quot; refer to? The cat! Humans know this instantly because we understand context. Self-attention gives models a similar ability.</p>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">The Q, K, V Mechanism</h4>
+<p class="mb-4 text-justify">Every token generates three vectors:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Q (Query)</strong>: &quot;What am I looking for?&quot;</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">K (Key)</strong>: &quot;What do I contain?&quot;</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">V (Value)</strong>: &quot;What information do I carry?&quot;</li>
+</ul>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import torch
+import torch.nn.functional as F
+
+def self_attention(Q, K, V, mask=None):
+    &quot;&quot;&quot;
+    Compute scaled dot-product self-attention.
+    
+    Args:
+        Q: Query matrix  [batch, seq_len, d_k]
+        K: Key matrix    [batch, seq_len, d_k]
+        V: Value matrix  [batch, seq_len, d_v]
+        mask: Optional attention mask
+    
+    Returns:
+        Attention output [batch, seq_len, d_v]
+    &quot;&quot;&quot;
+    d_k = Q.size(-1)
+    
+    # Step 1: Compute attention scores (how much each token 
+    # should attend to every other token)
+    scores = torch.matmul(Q, K.transpose(-2, -1)) / (d_k ** 0.5)
+    
+    # Step 2: Apply mask (optional - used in decoder to prevent 
+    # looking at future tokens)
+    if mask is not None:
+        scores = scores.masked_fill(mask == 0, float(&#x27;-inf&#x27;))
+    
+    # Step 3: Softmax to get attention weights (probabilities 
+    # that sum to 1)
+    attention_weights = F.softmax(scores, dim=-1)
+    
+    # Step 4: Weighted sum of values
+    output = torch.matmul(attention_weights, V)
+    
+    return output, attention_weights
+</code></pre></pre>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Multi-Head Attention</h4>
+<p class="mb-4 text-justify">Instead of computing attention once, the transformer computes it multiple times in parallel (multiple &quot;heads&quot;). Each head can focus on different aspects of the sentence:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Head 1: Focuses on subject-verb relationships
+Head 2: Focuses on adjective-noun relationships  
+Head 3: Focuses on positional/proximity patterns
+Head 4: Focuses on semantic similarity
+  ...
+Head 12 (or more): Focuses on other patterns
+</code></pre>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">class MultiHeadAttention(torch.nn.Module):
+    &quot;&quot;&quot;Multi-Head Attention mechanism.&quot;&quot;&quot;
+    
+    def __init__(self, d_model=512, num_heads=8):
+        super().__init__()
+        self.d_model = d_model
+        self.num_heads = num_heads
+        self.d_k = d_model // num_heads
+        
+        # Linear projections for Q, K, V and output
+        self.W_q = torch.nn.Linear(d_model, d_model)
+        self.W_k = torch.nn.Linear(d_model, d_model)
+        self.W_v = torch.nn.Linear(d_model, d_model)
+        self.W_o = torch.nn.Linear(d_model, d_model)
+    
+    def forward(self, query, key, value, mask=None):
+        batch_size = query.size(0)
+        
+        # Project and reshape: [batch, seq, d_model] -&gt; 
+        # [batch, heads, seq, d_k]
+        Q = self.W_q(query).view(batch_size, -1, self.num_heads, 
+                                  self.d_k).transpose(1, 2)
+        K = self.W_k(key).view(batch_size, -1, self.num_heads, 
+                                self.d_k).transpose(1, 2)
+        V = self.W_v(value).view(batch_size, -1, self.num_heads, 
+                                  self.d_k).transpose(1, 2)
+        
+        # Compute attention for each head
+        output, weights = self_attention(Q, K, V, mask)
+        
+        # Concatenate heads: [batch, heads, seq, d_k] -&gt; 
+        # [batch, seq, d_model]
+        output = output.transpose(1, 2).contiguous().view(
+            batch_size, -1, self.d_model
+        )
+        
+        # Final linear projection
+        return self.W_o(output)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Positional Encoding</h3>
+<p class="mb-4 text-justify">Unlike recurrent networks, transformers process all tokens simultaneously. But word order matters — &quot;dog bites man&quot; is very different from &quot;man bites dog&quot;! <strong class="font-bold text-primary">Positional encoding</strong> adds information about token position.</p>
+<p class="mb-4 text-justify">The original transformer used sinusoidal functions:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">PE(pos, 2i)   = sin(pos / 10000^(2i/d_model))
+PE(pos, 2i+1) = cos(pos / 10000^(2i/d_model))
+</code></pre>
+<p class="mb-4 text-justify">Modern models use <strong class="font-bold text-primary">Rotary Position Embeddings (RoPE)</strong> or <strong class="font-bold text-primary">learned position embeddings</strong> instead, but the concept is the same: inject position information into the token representations.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Why Transformers Beat Earlier Architectures</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Feature</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">RNNs/LSTMs</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Transformers</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Parallelization</td><td class="px-4 py-3 border border-[var(--border-color)]">Sequential (slow)</td><td class="px-4 py-3 border border-[var(--border-color)]">Parallel (fast)</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Long-range context</td><td class="px-4 py-3 border border-[var(--border-color)]">Poor (vanishing gradients)</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent (attention)</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Training speed</td><td class="px-4 py-3 border border-[var(--border-color)]">Slow</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Memory for long sequences</td><td class="px-4 py-3 border border-[var(--border-color)]">Limited</td><td class="px-4 py-3 border border-[var(--border-color)]">Scaled attention</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Quality</td><td class="px-4 py-3 border border-[var(--border-color)]">Good</td><td class="px-4 py-3 border border-[var(--border-color)]">State-of-the-art</td></tr></tbody></table></div>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">3. Tokenization: How Text Becomes Numbers</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">From Words to Tokens</h3>
+<p class="mb-4 text-justify">LLMs don&#x27;t read text — they process <strong class="font-bold text-primary">tokens</strong>, which are chunks of text converted to numbers. Understanding tokenization is critical because:</p>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Token limits determine how much text a model can process</li>
+<li class="text-[var(--foreground)]">Token count affects API costs</li>
+<li class="text-[var(--foreground)]">Poor tokenization can confuse models</li>
+</ol>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Word-Level Tokenization (Simple but Limited)</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">&quot;The quick brown fox jumps&quot;
+ ↓
+[&quot;The&quot;, &quot;quick&quot;, &quot;brown&quot;, &quot;fox&quot;, &quot;jumps&quot;]
+ ↓
+[464, 2159, 7586, 21831, 28403]
+</code></pre>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Problem</strong>: Every unique word needs its own token. With millions of words in English alone (plus code, technical terms, and other languages), this creates a massive vocabulary.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Byte Pair Encoding (BPE)</h3>
+<p class="mb-4 text-justify">BPE, used by GPT models and many others, solves this by breaking words into subword units:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">&quot;unhappiness&quot;
+ ↓
+[&quot;un&quot;, &quot;happy&quot;, &quot;ness&quot;]    # Recognizes meaningful subwords
+ ↓
+[345, 4912, 555]           # Three tokens instead of one
+</code></pre>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">How BPE works</strong> (simplified):</p>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Start with individual characters as the vocabulary</li>
+<li class="text-[var(--foreground)]">Count the most frequent pair of adjacent tokens</li>
+<li class="text-[var(--foreground)]">Merge that pair into a new token</li>
+<li class="text-[var(--foreground)]">Repeat until desired vocabulary size is reached</li>
+</ol>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Corpus: &quot;aaabdaaabac&quot;
+
+Iteration 1: Most common pair is &quot;aa&quot; → merge to &quot;Z&quot;
+  &quot;ZabdZabac&quot;
+
+Iteration 2: Most common pair is &quot;Za&quot; → merge to &quot;Y&quot;  
+  &quot;YbdYbac&quot;
+
+Iteration 3: Most common pair is &quot;Yb&quot; → merge to &quot;X&quot;
+  &quot;XdXac&quot;
+
+Final vocabulary: {a, b, c, d, X, Y, Z}
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Token Counts by Model</h3>
+<p class="mb-4 text-justify">Different models tokenize differently:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Text</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">GPT-4 (cl100k)</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Claude</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Llama 3</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Hello, world!&quot;</td><td class="px-4 py-3 border border-[var(--border-color)]">4 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">4 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">5 tokens</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Artificial intelligence&quot;</td><td class="px-4 py-3 border border-[var(--border-color)]">3 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">3 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">4 tokens</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">&quot;def fibonacci(n):&quot;</td><td class="px-4 py-3 border border-[var(--border-color)]">6 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">5 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">7 tokens</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">1 page of English text</td><td class="px-4 py-3 border border-[var(--border-color)]">~300 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~300 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~350 tokens</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Practical Implications</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Counting tokens with tiktoken (OpenAI&#x27;s tokenizer)
+import tiktoken
+
+# GPT-4 tokenizer
+enc = tiktoken.encoding_for_model(&quot;gpt-4o&quot;)
+
+# Tokenize some text
+text = &quot;AI agents are transforming how we work with technology.&quot;
+tokens = enc.encode(text)
+
+print(f&quot;Text: {text}&quot;)
+print(f&quot;Tokens: {tokens}&quot;)
+print(f&quot;Token count: {len(tokens)}&quot;)
+print(f&quot;Decoded tokens: {[enc.decode([t]) for t in tokens]}&quot;)
+
+# Output:
+# Text: AI agents are transforming how we work with technology.
+# Tokens: [32, 10832, 527, 27460, 1268, 527, 1194, 449, 7410, 13]
+# Token count: 11
+# Decoded tokens: [&#x27;AI&#x27;, &#x27; agents&#x27;, &#x27; are&#x27;, &#x27; transform&#x27;, &#x27;ing&#x27;, 
+#                   &#x27; how&#x27;, &#x27; we&#x27;, &#x27; work&#x27;, &#x27; with&#x27;, &#x27; technology&#x27;, &#x27;.&#x27;]
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Token Budget Management</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def estimate_tokens(text: str, chars_per_token: float = 4.0) -&gt; int:
+    &quot;&quot;&quot;Quick token estimation (roughly 4 chars per token for English).&quot;&quot;&quot;
+    return int(len(text) / chars_per_token)
+
+# Cost estimation for different models
+def estimate_cost(
+    input_tokens: int, 
+    output_tokens: int,
+    model: str = &quot;gpt-4o&quot;
+) -&gt; float:
+    &quot;&quot;&quot;Estimate API cost for a request.&quot;&quot;&quot;
+    pricing = {
+        &quot;gpt-4o&quot;: {&quot;input&quot;: 2.50 / 1_000_000, 
+                    &quot;output&quot;: 10.00 / 1_000_000},
+        &quot;gpt-4o-mini&quot;: {&quot;input&quot;: 0.15 / 1_000_000, 
+                         &quot;output&quot;: 0.60 / 1_000_000},
+        &quot;claude-sonnet-4-20250514&quot;: {&quot;input&quot;: 3.00 / 1_000_000, 
+                                      &quot;output&quot;: 15.00 / 1_000_000},
+        &quot;claude-haiku-3-5-20241022&quot;: {&quot;input&quot;: 0.80 / 1_000_000, 
+                                       &quot;output&quot;: 4.00 / 1_000_000},
+    }
+    
+    rates = pricing.get(model, pricing[&quot;gpt-4o&quot;])
+    cost = (input_tokens * rates[&quot;input&quot;] + 
+            output_tokens * rates[&quot;output&quot;])
+    return cost
+
+# Example: Processing a 5,000-word document
+document_tokens = 6_500  # ~5000 words
+response_tokens = 1_000  # expected response length
+
+cost = estimate_cost(document_tokens, response_tokens, &quot;gpt-4o&quot;)
+print(f&quot;Cost per request: ${cost:.4f}&quot;)
+# Cost per request: $0.0263
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">4. The GenAI Landscape</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Major LLM Providers (2024-2025)</h3>
+<p class="mb-4 text-justify">The LLM landscape is rapidly evolving. Here&#x27;s a comprehensive overview:</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Model Comparison Table</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Model</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Provider</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Parameters</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Context</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Strengths</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Price (per 1M tokens)</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">GPT-4o</td><td class="px-4 py-3 border border-[var(--border-color)]">OpenAI</td><td class="px-4 py-3 border border-[var(--border-color)]">~200B (est.)</td><td class="px-4 py-3 border border-[var(--border-color)]">128K</td><td class="px-4 py-3 border border-[var(--border-color)]">Best all-around, multimodal</td><td class="px-4 py-3 border border-[var(--border-color)]">$2.50 in / $10.00 out</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">GPT-4o-mini</td><td class="px-4 py-3 border border-[var(--border-color)]">OpenAI</td><td class="px-4 py-3 border border-[var(--border-color)]">~8B (est.)</td><td class="px-4 py-3 border border-[var(--border-color)]">128K</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast, cheap, solid</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.15 in / $0.60 out</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Claude 3.5 Sonnet</td><td class="px-4 py-3 border border-[var(--border-color)]">Anthropic</td><td class="px-4 py-3 border border-[var(--border-color)]">Unknown</td><td class="px-4 py-3 border border-[var(--border-color)]">200K</td><td class="px-4 py-3 border border-[var(--border-color)]">Analysis, coding, long context</td><td class="px-4 py-3 border border-[var(--border-color)]">$3.00 in / $15.00 out</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Claude 3 Opus</td><td class="px-4 py-3 border border-[var(--border-color)]">Anthropic</td><td class="px-4 py-3 border border-[var(--border-color)]">Unknown</td><td class="px-4 py-3 border border-[var(--border-color)]">200K</td><td class="px-4 py-3 border border-[var(--border-color)]">Complex reasoning, nuance</td><td class="px-4 py-3 border border-[var(--border-color)]">$15.00 in / $75.00 out</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Gemini 1.5 Pro</td><td class="px-4 py-3 border border-[var(--border-color)]">Google</td><td class="px-4 py-3 border border-[var(--border-color)]">Unknown</td><td class="px-4 py-3 border border-[var(--border-color)]">2M</td><td class="px-4 py-3 border border-[var(--border-color)]">Massive context, multimodal</td><td class="px-4 py-3 border border-[var(--border-color)]">$1.25 in / $5.00 out</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Llama 3.1 405B</td><td class="px-4 py-3 border border-[var(--border-color)]">Meta</td><td class="px-4 py-3 border border-[var(--border-color)]">405B</td><td class="px-4 py-3 border border-[var(--border-color)]">128K</td><td class="px-4 py-3 border border-[var(--border-color)]">Best open-source</td><td class="px-4 py-3 border border-[var(--border-color)]">Self-hosted</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Llama 3.1 70B</td><td class="px-4 py-3 border border-[var(--border-color)]">Meta</td><td class="px-4 py-3 border border-[var(--border-color)]">70B</td><td class="px-4 py-3 border border-[var(--border-color)]">128K</td><td class="px-4 py-3 border border-[var(--border-color)]">Great open-source</td><td class="px-4 py-3 border border-[var(--border-color)]">Self-hosted</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Mistral Large</td><td class="px-4 py-3 border border-[var(--border-color)]">Mistral</td><td class="px-4 py-3 border border-[var(--border-color)]">Unknown</td><td class="px-4 py-3 border border-[var(--border-color)]">128K</td><td class="px-4 py-3 border border-[var(--border-color)]">Strong European model</td><td class="px-4 py-3 border border-[var(--border-color)]">$2.00 in / $6.00 out</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Mixtral 8x7B</td><td class="px-4 py-3 border border-[var(--border-color)]">Mistral</td><td class="px-4 py-3 border border-[var(--border-color)]">47B active</td><td class="px-4 py-3 border border-[var(--border-color)]">32K</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast MoE, open-source</td><td class="px-4 py-3 border border-[var(--border-color)]">Self-hosted</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Choosing the Right Model</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Decision Framework:
+                    ┌──────────────────┐
+                    │ Need the best    │
+                    │ quality?         │
+                    └────────┬─────────┘
+                        Yes / \ No
+                           /   \
+                ┌─────────▼┐   ┌▼──────────┐
+                │ Budget    │   │ Use small  │
+                │ unlimited?│   │ model      │
+                └─────┬─────┘   │ (mini/haiku│
+                  Yes / \ No   └───────────┘
+                     /   \
+          ┌─────────▼┐   ┌▼──────────┐
+          │ GPT-4o or │   │ GPT-4o    │
+          │ Claude    │   │ mini or   │
+          │ Opus      │   │ Claude    │
+          └───────────┘   │ Haiku     │
+                          └───────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Open-Source vs. Closed Models</h3>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Closed Models</strong> (GPT-4, Claude, Gemini):</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">✅ Best quality and safety</li>
+<li class="text-[var(--foreground)]">✅ No infrastructure needed</li>
+<li class="text-[var(--foreground)]">✅ Always up-to-date</li>
+<li class="text-[var(--foreground)]">❌ API costs add up</li>
+<li class="text-[var(--foreground)]">❌ Data sent to provider</li>
+<li class="text-[var(--foreground)]">❌ Rate limits and availability</li>
+</ul>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Open-Source Models</strong> (Llama, Mistral, Mixtral):</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">✅ Full data privacy</li>
+<li class="text-[var(--foreground)]">✅ No per-token costs</li>
+<li class="text-[var(--foreground)]">✅ Customizable and fine-tunable</li>
+<li class="text-[var(--foreground)]">✅ Run anywhere</li>
+<li class="text-[var(--foreground)]">❌ Need GPU infrastructure</li>
+<li class="text-[var(--foreground)]">❌ Requires ML expertise</li>
+<li class="text-[var(--foreground)]">❌ Generally lower quality than frontier models</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Where to Run Open-Source Models</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Option 1: Ollama (easiest for development)
+# Install: curl -fsSL https://ollama.com/install.sh | sh
+# Run: ollama run llama3.1:8b
+
+import ollama
+
+response = ollama.chat(model=&#x27;llama3.1:8b&#x27;, messages=[
+    {&#x27;role&#x27;: &#x27;user&#x27;, &#x27;content&#x27;: &#x27;Explain quantum computing in simple terms.&#x27;}
+])
+print(response[&#x27;message&#x27;][&#x27;content&#x27;])
+
+# Option 2: vLLM (production serving)
+# pip install vllm
+# vllm serve meta-llama/Llama-3.1-8B-Instruct --tensor-parallel-size 2
+
+# Option 3: Hugging Face Transformers
+from transformers import pipeline
+
+pipe = pipeline(&quot;text-generation&quot;, 
+                model=&quot;meta-llama/Llama-3.1-8B-Instruct&quot;)
+response = pipe(&quot;Explain quantum computing in simple terms.&quot;, 
+                max_new_tokens=200)
+print(response[0][&#x27;generated_text&#x27;])
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5. Context Windows</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What Is a Context Window?</h3>
+<p class="mb-4 text-justify">A <strong class="font-bold text-primary">context window</strong> is the maximum amount of text an LLM can process in a single request. It includes both your input (prompt) AND the model&#x27;s output (response).</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌──────────────────────────────────────────────────┐
+│                CONTEXT WINDOW                     │
+│                                                   │
+│  ┌─────────────────────────┐  ┌────────────────┐ │
+│  │      INPUT (Prompt)     │  │   OUTPUT       │ │
+│  │                         │  │   (Response)   │ │
+│  │  System prompt          │  │                │ │
+│  │  Conversation history   │  │  Model&#x27;s       │ │
+│  │  User message           │  │  generated     │ │
+│  │  Documents/context      │  │  text          │ │
+│  │  Examples               │  │                │ │
+│  └─────────────────────────┘  └────────────────┘ │
+│                                                   │
+│         Total: Must fit within context limit      │
+└──────────────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Context Window Comparison</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Model</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Context Window</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">~Pages of Text</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Notes</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">GPT-3.5</td><td class="px-4 py-3 border border-[var(--border-color)]">4,096 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~6 pages</td><td class="px-4 py-3 border border-[var(--border-color)]">Legacy</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">GPT-4</td><td class="px-4 py-3 border border-[var(--border-color)]">8,192 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~12 pages</td><td class="px-4 py-3 border border-[var(--border-color)]">Original</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">GPT-4 Turbo</td><td class="px-4 py-3 border border-[var(--border-color)]">128,000 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~190 pages</td><td class="px-4 py-3 border border-[var(--border-color)]">Large</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">GPT-4o</td><td class="px-4 py-3 border border-[var(--border-color)]">128,000 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~190 pages</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast + large</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Claude 3 Haiku</td><td class="px-4 py-3 border border-[var(--border-color)]">200,000 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~300 pages</td><td class="px-4 py-3 border border-[var(--border-color)]"></td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Claude 3.5 Sonnet</td><td class="px-4 py-3 border border-[var(--border-color)]">200,000 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~300 pages</td><td class="px-4 py-3 border border-[var(--border-color)]"></td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Gemini 1.5 Pro</td><td class="px-4 py-3 border border-[var(--border-color)]">2,000,000 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~3,000 pages</td><td class="px-4 py-3 border border-[var(--border-color)]">Massive</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Llama 3.1</td><td class="px-4 py-3 border border-[var(--border-color)]">128,000 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~190 pages</td><td class="px-4 py-3 border border-[var(--border-color)]">Open-source</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Mistral Large</td><td class="px-4 py-3 border border-[var(--border-color)]">128,000 tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">~190 pages</td><td class="px-4 py-3 border border-[var(--border-color)]"></td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Why Context Windows Matter for Agents</h3>
+<p class="mb-4 text-justify">AI agents typically need <strong class="font-bold text-primary">large context windows</strong> because:</p>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Conversation history</strong>: Multi-turn conversations accumulate tokens quickly</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Tool results</strong>: Retrieving documents, API responses, and data fills context</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">System instructions</strong>: Agent prompts with tools, rules, and examples</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Working memory</strong>: Scratchpads and intermediate reasoning steps</li>
+</ol>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Example: Agent context usage
+agent_context = {
+    &quot;system_prompt&quot;: 800,         # Agent instructions &amp; tools
+    &quot;conversation_history&quot;: 3000, # Last 10 messages
+    &quot;retrieved_documents&quot;: 5000,  # RAG results
+    &quot;tool_descriptions&quot;: 1500,    # Available tools
+    &quot;user_message&quot;: 500,          # Current request
+    &quot;reserved_for_output&quot;: 2000,  # Response space
+    # Total: ~12,800 tokens
+}
+# Well within GPT-4o&#x27;s 128K limit
+# But could be a problem with smaller context models
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Managing Context</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">class ContextManager:
+    &quot;&quot;&quot;Manages context window usage for an AI agent.&quot;&quot;&quot;
+    
+    def __init__(self, max_tokens: int = 128000):
+        self.max_tokens = max_tokens
+        self.reserved_output = 4096
+        self.available = max_tokens - self.reserved_output
+    
+    def estimate_tokens(self, text: str) -&gt; int:
+        &quot;&quot;&quot;Rough estimation: ~4 chars per token.&quot;&quot;&quot;
+        return len(text) // 4
+    
+    def truncate_history(
+        self, messages: list, keep_recent: int = 10
+    ) -&gt; list:
+        &quot;&quot;&quot;Keep only recent messages if too many.&quot;&quot;&quot;
+        if len(messages) &gt; keep_recent:
+            # Always keep system message
+            system = [m for m in messages if m[&quot;role&quot;] == &quot;system&quot;]
+            recent = messages[-keep_recent:]
+            return system + recent
+        return messages
+    
+    def fits_in_context(self, messages: list, 
+                         extra_tokens: int = 0) -&gt; bool:
+        &quot;&quot;&quot;Check if everything fits in context window.&quot;&quot;&quot;
+        total = sum(
+            self.estimate_tokens(m[&quot;content&quot;]) for m in messages
+        ) + extra_tokens
+        return total &lt;= self.available
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">6. Temperature &amp; Sampling</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Creativity Knob</h3>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Temperature</strong> controls how random or deterministic the model&#x27;s output is. It&#x27;s one of the most important parameters you&#x27;ll use.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Temperature Scale:
+
+0.0        0.3        0.7        1.0        1.5+
+│──────────│──────────│──────────│──────────│
+Deterministic                               Random
+Predictable                                 Creative
+&quot;By the book&quot;                              &quot;Off the wall&quot;
+
+Use for:            Use for:          Use for:
+- Code generation   - Chatbots        - Creative writing
+- Fact extraction   - Summarization   - Brainstorming
+- Data processing   - General Q&amp;A     - Poetry
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">How Temperature Works</h3>
+<p class="mb-4 text-justify">Temperature modifies the probability distribution before sampling:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import numpy as np
+
+def apply_temperature(logits: list[float], temperature: float) -&gt; list[float]:
+    &quot;&quot;&quot;
+    Apply temperature scaling to logits.
+    Lower temperature → sharper distribution (more deterministic)
+    Higher temperature → flatter distribution (more random)
+    &quot;&quot;&quot;
+    # Convert logits to probabilities with temperature
+    scaled = [logit / temperature for logit in logits]
+    
+    # Subtract max for numerical stability
+    max_logit = max(scaled)
+    exp_logits = [np.exp(l - max_logit) for l in scaled]
+    
+    # Normalize to probabilities
+    total = sum(exp_logits)
+    probabilities = [e / total for e in exp_logits]
+    
+    return probabilities
+
+# Example: Model deciding between three options
+logits = [5.0, 3.0, 1.0]  # &quot;yes&quot;, &quot;maybe&quot;, &quot;no&quot;
+
+print(&quot;Temperature 0.1 (near-deterministic):&quot;)
+probs = apply_temperature(logits, 0.1)
+# → [0.9999, 0.0001, 0.0000]  → Almost always picks &quot;yes&quot;
+
+print(&quot;Temperature 0.7 (balanced):&quot;)
+probs = apply_temperature(logits, 0.7)
+# → [0.73, 0.18, 0.09]        → Usually &quot;yes&quot;, sometimes others
+
+print(&quot;Temperature 1.5 (creative):&quot;)
+probs = apply_temperature(logits, 1.5)
+# → [0.47, 0.30, 0.23]        → More varied choices
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Top-p (Nucleus) Sampling</h3>
+<p class="mb-4 text-justify">Instead of considering all possible next tokens, <strong class="font-bold text-primary">top-p</strong> sampling only considers tokens whose cumulative probability exceeds a threshold.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Token probabilities:
+  &quot;the&quot;    : 0.35  ─┐
+  &quot;a&quot;      : 0.20   │  top_p=0.9: These tokens
+  &quot;one&quot;    : 0.15   │  are considered
+  &quot;this&quot;   : 0.12  ─┘
+  &quot;some&quot;   : 0.08  ─┐
+  &quot;that&quot;   : 0.05   │  Excluded by
+  &quot;every&quot;  : 0.03   │  top_p threshold
+  &quot;each&quot;   : 0.02  ─┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Top-k Sampling</h3>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Top-k</strong> limits sampling to the k most probable tokens, regardless of their individual probabilities.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def top_k_sample(logits: list[float], k: int = 50) -&gt; str:
+    &quot;&quot;&quot;Sample from the top k most probable tokens.&quot;&quot;&quot;
+    # Sort by probability
+    indexed = sorted(enumerate(logits), key=lambda x: x[1], 
+                     reverse=True)
+    
+    # Keep only top k
+    top_k_indices = [idx for idx, _ in indexed[:k]]
+    top_k_logits = [logits[i] for i in top_k_indices]
+    
+    # Sample from remaining
+    probabilities = apply_temperature(top_k_logits, temperature=1.0)
+    chosen_idx = np.random.choice(top_k_indices, p=probabilities)
+    
+    return chosen_idx
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Practical Settings Guide</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Use Case</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Temperature</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Top-p</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Top-k</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Code generation</td><td class="px-4 py-3 border border-[var(--border-color)]">0.0 - 0.2</td><td class="px-4 py-3 border border-[var(--border-color)]">0.95</td><td class="px-4 py-3 border border-[var(--border-color)]">-</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Data extraction</td><td class="px-4 py-3 border border-[var(--border-color)]">0.0</td><td class="px-4 py-3 border border-[var(--border-color)]">1.0</td><td class="px-4 py-3 border border-[var(--border-color)]">-</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Factual Q&amp;A</td><td class="px-4 py-3 border border-[var(--border-color)]">0.0 - 0.3</td><td class="px-4 py-3 border border-[var(--border-color)]">0.9</td><td class="px-4 py-3 border border-[var(--border-color)]">-</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">General chatbot</td><td class="px-4 py-3 border border-[var(--border-color)]">0.7</td><td class="px-4 py-3 border border-[var(--border-color)]">0.9</td><td class="px-4 py-3 border border-[var(--border-color)]">50</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Creative writing</td><td class="px-4 py-3 border border-[var(--border-color)]">0.9 - 1.2</td><td class="px-4 py-3 border border-[var(--border-color)]">0.95</td><td class="px-4 py-3 border border-[var(--border-color)]">100</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Brainstorming</td><td class="px-4 py-3 border border-[var(--border-color)]">1.0 - 1.5</td><td class="px-4 py-3 border border-[var(--border-color)]">1.0</td><td class="px-4 py-3 border border-[var(--border-color)]">-</td></tr></tbody></table></div>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">7. Prompt Engineering Basics</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What Is Prompt Engineering?</h3>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Prompt engineering</strong> is the art and science of crafting inputs to LLMs to get desired outputs. It&#x27;s the primary interface between humans and AI models, and it&#x27;s essential for building effective AI agents.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Zero-Shot Prompting</h3>
+<p class="mb-4 text-justify">Give the model a task with no examples:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Classify the following text as positive, negative, or neutral:
+
+&quot;The product arrived on time and works as expected.&quot;
+
+Classification:
+</code></pre>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Zero-shot classification
+response = client.chat.completions.create(
+    model=&quot;gpt-4o&quot;,
+    messages=[
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a sentiment classifier.&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;&quot;&quot;Classify the following text as 
+        positive, negative, or neutral:
+        
+        &quot;The product arrived on time and works as expected.&quot;
+        
+        Classification:&quot;&quot;&quot;}
+    ],
+    temperature=0.0
+)
+print(response.choices[0].message.content)
+# Output: &quot;Positive&quot;
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Few-Shot Prompting</h3>
+<p class="mb-4 text-justify">Provide examples to guide the model:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Classify each review as positive, negative, or neutral.
+
+Review: &quot;This is the best phone I&#x27;ve ever owned!&quot;
+Sentiment: Positive
+
+Review: &quot;The delivery was late and the package was damaged.&quot;
+Sentiment: Negative
+
+Review: &quot;It&#x27;s an okay product, nothing special.&quot;
+Sentiment: Neutral
+
+Review: &quot;Absolutely love it! Great value for the price!&quot;
+Sentiment:
+</code></pre>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Few-shot classification
+response = client.chat.completions.create(
+    model=&quot;gpt-4o&quot;,
+    messages=[
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;&quot;&quot;You are a sentiment classifier. 
+        Classify reviews as Positive, Negative, or Neutral.&quot;&quot;&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;&quot;&quot;Review: &quot;This is the best phone 
+        I&#x27;ve ever owned!&quot;
+        Sentiment: Positive
+        
+        Review: &quot;The delivery was late and the package was damaged.&quot;
+        Sentiment: Negative
+        
+        Review: &quot;It&#x27;s an okay product, nothing special.&quot;
+        Sentiment: Neutral
+        
+        Review: &quot;Absolutely love it! Great value for the price!&quot;
+        Sentiment:&quot;&quot;&quot;}
+    ],
+    temperature=0.0
+)
+# Output: &quot;Positive&quot;
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Chain-of-Thought (CoT) Prompting</h3>
+<p class="mb-4 text-justify">Ask the model to show its reasoning step by step:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Question: A store has 15 apples. They sell 8 and then receive 
+a delivery of 12. How many apples do they have now?
+
+Let me think step by step:
+1. Start with 15 apples
+2. Sell 8: 15 - 8 = 7 apples
+3. Receive 12: 7 + 12 = 19 apples
+
+Answer: 19 apples
+</code></pre>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Chain-of-thought for complex reasoning
+response = client.chat.completions.create(
+    model=&quot;gpt-4o&quot;,
+    messages=[
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;&quot;&quot;You are a helpful math tutor.
+        Always show your reasoning step by step.&quot;&quot;&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;&quot;&quot;Question: If I buy 3 shirts at 
+        $25 each and pay 8% tax, how much do I owe?
+        
+        Think step by step:&quot;&quot;&quot;}
+    ],
+    temperature=0.0
+)
+# Output will walk through: 3 × $25 = $75, 
+# tax = $75 × 0.08 = $6, total = $81
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">System Prompts</h3>
+<p class="mb-4 text-justify">System prompts set the model&#x27;s behavior, role, and constraints:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Effective system prompt for an agent
+system_prompt = &quot;&quot;&quot;
+You are a helpful customer support agent for TechCorp.
+
+## Your Role
+- Answer customer questions about TechCorp products
+- Help troubleshoot technical issues
+- Process returns and refunds according to policy
+
+## Guidelines
+- Be friendly and professional
+- If you don&#x27;t know the answer, say so honestly
+- Never make up product features or pricing
+- For billing issues, always verify customer identity first
+- Escalate to human agent if the customer is frustrated
+
+## Available Actions
+- search_knowledge_base(query): Search product documentation
+- check_order_status(order_id): Look up order information
+- initiate_return(order_id, reason): Start a return process
+- escalate_to_human(reason, priority): Transfer to human agent
+
+Always use the appropriate action when needed.
+&quot;&quot;&quot;
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Prompt Patterns</h3>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Pattern 1: Role + Task + Format</h4>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Role: You are a senior data analyst.
+Task: Analyze the following sales data and identify trends.
+Format: Present your findings as bullet points, 
+        followed by a recommendation.
+</code></pre>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Pattern 2: Constraints + Output</h4>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Write a product description for running shoes.
+Constraints:
+- Max 50 words
+- Include: comfort, durability, price ($89)
+- Tone: enthusiastic but professional
+- No superlatives (&quot;best&quot;, &quot;greatest&quot;)
+</code></pre>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Pattern 3: Delimiter Separation</h4>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Analyze the following customer feedback:
+
+---FEEDBACK_START---
+The interface is confusing and I keep getting errors 
+when trying to export my data. Very frustrating experience.
+---FEEDBACK_END---
+
+Provide:
+1. Sentiment (positive/negative/neutral)
+2. Key issues mentioned
+3. Suggested improvement for each issue
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Common Prompt Engineering Mistakes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Mistake</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Example</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Fix</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Too vague</td><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Tell me about dogs&quot;</td><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Compare Golden Retrievers vs. Labradors as family pets&quot;</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">No format specified</td><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Analyze this data&quot;</td><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Analyze this data as a markdown table with columns: Metric, Value, Trend&quot;</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Ambiguous constraints</td><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Keep it short&quot;</td><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Keep the response under 100 words&quot;</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">No examples</td><td class="px-4 py-3 border border-[var(--border-color)]">Complex classification</td><td class="px-4 py-3 border border-[var(--border-color)]">Provide 2-3 labeled examples</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Missing context</td><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Is this good?&quot;</td><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Given our KPI targets (revenue &gt; $1M, churn &lt; 5%), is this quarter&#x27;s performance good?&quot;</td></tr></tbody></table></div>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8. Hands-On: OpenAI API</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Setting Up</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-bash" node="[object Object]"># Install dependencies
+pip install openai python-dotenv
+
+# Set up your API key
+echo &quot;OPENAI_API_KEY=your-api-key-here&quot; &gt; .env
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Complete Example: Text Generation</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Basic OpenAI API usage for text generation.
+Demonstrates different prompting patterns.
+&quot;&quot;&quot;
+
+import os
+from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
+
+client = OpenAI(api_key=os.getenv(&quot;OPENAI_API_KEY&quot;))
+
+
+def simple_completion(prompt: str, model: str = &quot;gpt-4o&quot;) -&gt; str:
+    &quot;&quot;&quot;Simple text completion.&quot;&quot;&quot;
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+        ],
+        temperature=0.7,
+        max_tokens=500
+    )
+    return response.choices[0].message.content
+
+
+def chat_completion(
+    messages: list[dict], 
+    model: str = &quot;gpt-4o&quot;,
+    temperature: float = 0.7
+) -&gt; str:
+    &quot;&quot;&quot;Multi-turn chat completion.&quot;&quot;&quot;
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+        temperature=temperature,
+        max_tokens=1000
+    )
+    return response.choices[0].message.content
+
+
+def structured_output(
+    prompt: str, 
+    output_format: str
+) -&gt; str:
+    &quot;&quot;&quot;Get structured output from the model.&quot;&quot;&quot;
+    system_message = f&quot;&quot;&quot;You are a helpful assistant that always 
+    responds in the following format:
+
+    {output_format}
+    
+    Only output the formatted result, nothing else.&quot;&quot;&quot;
+    
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: system_message},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+        ],
+        temperature=0.0,
+        max_tokens=500
+    )
+    return response.choices[0].message.content
+
+
+# === Example Usage ===
+
+# 1. Simple completion
+print(&quot;=&quot; * 50)
+print(&quot;1. Simple Completion&quot;)
+print(&quot;=&quot; * 50)
+result = simple_completion(
+    &quot;Explain the difference between a stack and a queue &quot;
+    &quot;in exactly 2 sentences.&quot;
+)
+print(result)
+
+# 2. Chat with system prompt
+print(&quot;\n&quot; + &quot;=&quot; * 50)
+print(&quot;2. Chat with System Prompt&quot;)
+print(&quot;=&quot; * 50)
+result = chat_completion([
+    {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a Python expert. &quot;
+     &quot;Always provide working code examples.&quot;},
+    {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;How do I read a CSV file in Python?&quot;},
+    {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;You can use the csv module &quot;
+     &quot;or pandas. Here&#x27;s both approaches...&quot;},
+    {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;How do I filter rows where the &quot;
+     &quot;age column is greater than 30?&quot;}
+])
+print(result)
+
+# 3. Structured output
+print(&quot;\n&quot; + &quot;=&quot; * 50)
+print(&quot;3. Structured Output (JSON)&quot;)
+print(&quot;=&quot; * 50)
+result = structured_output(
+    &quot;Apple Inc. reported Q4 2024 revenue of $94.9B and net income &quot;
+    &quot;of $14.7B.&quot;,
+    &quot;&quot;&quot;JSON format:
+{
+    &quot;company&quot;: string,
+    &quot;period&quot;: string,
+    &quot;metrics&quot;: {
+        &quot;revenue&quot;: {&quot;value&quot;: number, &quot;unit&quot;: string},
+        &quot;net_income&quot;: {&quot;value&quot;: number, &quot;unit&quot;: string}
+    }
+}&quot;&quot;&quot;
+)
+print(result)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Streaming Responses</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def stream_completion(prompt: str, model: str = &quot;gpt-4o&quot;):
+    &quot;&quot;&quot;Stream the response token by token for better UX.&quot;&quot;&quot;
+    stream = client.chat.completions.create(
+        model=model,
+        messages=[
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+        ],
+        temperature=0.7,
+        stream=True
+    )
+    
+    print(&quot;Response: &quot;, end=&quot;&quot;, flush=True)
+    for chunk in stream:
+        if chunk.choices[0].delta.content:
+            print(chunk.choices[0].delta.content, 
+                  end=&quot;&quot;, flush=True)
+    print()  # New line at the end
+
+# Usage
+stream_completion(&quot;Write a haiku about programming.&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Error Handling</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import time
+from openai import (
+    OpenAI, 
+    APIError, 
+    RateLimitError, 
+    APITimeoutError
+)
+
+def robust_completion(
+    messages: list[dict],
+    model: str = &quot;gpt-4o&quot;,
+    max_retries: int = 3
+) -&gt; str:
+    &quot;&quot;&quot;Completion with retry logic and error handling.&quot;&quot;&quot;
+    
+    for attempt in range(max_retries):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=messages,
+                temperature=0.7,
+                max_tokens=1000,
+                timeout=30  # 30 second timeout
+            )
+            return response.choices[0].message.content
+            
+        except RateLimitError:
+            wait_time = 2 ** attempt  # Exponential backoff
+            print(f&quot;Rate limited. Waiting {wait_time}s...&quot;)
+            time.sleep(wait_time)
+            
+        except APITimeoutError:
+            print(f&quot;Timeout on attempt {attempt + 1}. Retrying...&quot;)
+            
+        except APIError as e:
+            print(f&quot;API error: {e}&quot;)
+            raise
+    
+    raise Exception(f&quot;Failed after {max_retries} retries&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Prompt Engineering Patterns — Code Examples</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Demonstrates multiple prompt engineering patterns.
+&quot;&quot;&quot;
+
+# Pattern 1: Chain-of-Thought for Math
+def solve_math(problem: str) -&gt; str:
+    &quot;&quot;&quot;Solve math problems step by step.&quot;&quot;&quot;
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;&quot;&quot;You are a math tutor. 
+            Solve problems step by step. Show all work. 
+            State the final answer clearly.&quot;&quot;&quot;},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: f&quot;&quot;&quot;
+Problem: {problem}
+
+Solution (step by step):&quot;&quot;&quot;}
+        ],
+        temperature=0.0,
+        max_tokens=1000
+    )
+    return response.choices[0].message.content
+
+
+# Pattern 2: Few-Shot Classification
+def classify_ticket(ticket_text: str) -&gt; str:
+    &quot;&quot;&quot;Classify a support ticket.&quot;&quot;&quot;
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;&quot;&quot;Classify support tickets 
+            into categories.&quot;&quot;&quot;},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;&quot;&quot;
+Examples:
+
+Ticket: &quot;I can&#x27;t log in to my account&quot;
+Category: Authentication
+
+Ticket: &quot;How do I export my data to CSV?&quot;
+Category: Feature Request
+
+Ticket: &quot;The app crashes when I open settings&quot;
+Category: Bug Report
+
+Ticket: &quot;I need to change my billing address&quot;
+Category: Account Management
+
+Now classify:
+
+Ticket: &quot;{ticket_text}&quot;
+Category:&quot;&quot;&quot;}
+        ],
+        temperature=0.0,
+        max_tokens=50
+    )
+    return response.choices[0].message.content
+
+
+# Pattern 3: Summarization with Constraints
+def summarize(text: str, max_words: int = 100) -&gt; str:
+    &quot;&quot;&quot;Summarize text with word limit.&quot;&quot;&quot;
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: f&quot;&quot;&quot;Summarize the text in 
+            exactly {max_words} words or fewer. 
+            Maintain key facts and numbers. 
+            Use formal tone.&quot;&quot;&quot;},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: f&quot;Summarize:\n\n{text}&quot;}
+        ],
+        temperature=0.3,
+        max_tokens=300
+    )
+    return response.choices[0].message.content
+
+
+# Pattern 4: Extraction into Structured Data
+def extract_entities(text: str) -&gt; dict:
+    &quot;&quot;&quot;Extract named entities from text.&quot;&quot;&quot;
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;&quot;&quot;Extract entities from the 
+            text. Return ONLY valid JSON, no other text.
+            
+            Format:
+            {
+                &quot;people&quot;: [],
+                &quot;organizations&quot;: [],
+                &quot;locations&quot;: [],
+                &quot;dates&quot;: [],
+                &quot;monetary_values&quot;: []
+            }&quot;&quot;&quot;},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: f&quot;Extract from:\n\n{text}&quot;}
+        ],
+        temperature=0.0,
+        response_format={&quot;type&quot;: &quot;json_object&quot;}
+    )
+    
+    import json
+    return json.loads(response.choices[0].message.content)
+
+
+# === Run Examples ===
+if __name__ == &quot;__main__&quot;:
+    # Math
+    print(&quot;=== Math Problem ===&quot;)
+    print(solve_math(
+        &quot;A store sells notebooks for $4.50 each. &quot;
+        &quot;If you buy 3 or more, you get 20% off. &quot;
+        &quot;How much would 5 notebooks cost?&quot;
+    ))
+    
+    # Classification
+    print(&quot;\n=== Ticket Classification ===&quot;)
+    print(classify_ticket(
+        &quot;I&#x27;ve been charged twice for my subscription&quot;
+    ))
+    
+    # Summarization
+    print(&quot;\n=== Summarization ===&quot;)
+    long_text = &quot;&quot;&quot;
+    Artificial intelligence has made remarkable progress in recent 
+    years. Large language models like GPT-4 and Claude have demonstrated 
+    impressive capabilities in natural language understanding and 
+    generation. These models are being applied across industries, from 
+    healthcare diagnostics to financial analysis. However, challenges 
+    remain in areas such as hallucination, bias, and the need for 
+    extensive computational resources. The field continues to evolve 
+    rapidly with new architectures, training techniques, and applications 
+    emerging regularly.
+    &quot;&quot;&quot;
+    print(summarize(long_text, max_words=50))
+    
+    # Entity extraction
+    print(&quot;\n=== Entity Extraction ===&quot;)
+    entities = extract_entities(
+        &quot;John Smith from Microsoft met with Sarah Lee at Google &quot;
+        &quot;on January 15, 2025. They discussed a $50 million 
+        partnership deal.&quot;
+    )
+    print(entities)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">9. Key Takeaways</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">LLMs are next-token prediction machines</strong> trained on massive text datasets. They learn patterns, facts, and reasoning from their training data.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Transformers use self-attention</strong> to process all tokens in parallel, allowing them to capture long-range dependencies in text far better than previous architectures.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Tokenization converts text to numbers</strong> using techniques like BPE. Understanding token counts is crucial for managing costs and context windows.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">The GenAI landscape offers many options</strong>: closed models (GPT-4, Claude, Gemini) for best quality, open-source models (Llama, Mistral) for privacy and control.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Context windows determine capacity</strong>: Larger windows (128K+) enable complex agents with rich conversation history and tool results.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Temperature and sampling control output</strong>: Lower temperature for deterministic tasks, higher for creative ones.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Prompt engineering is an essential skill</strong>: Zero-shot, few-shot, chain-of-thought, and system prompts are your primary tools for getting desired outputs.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Error handling and streaming</strong> are practical necessities when building production applications with LLM APIs.</p>
+</li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">10. Try It Yourself</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 1: Token Counter</h3>
+<p class="mb-4 text-justify">Write a Python function that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Takes any text string as input</li>
+<li class="text-[var(--foreground)]">Uses the <code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">tiktoken</code> library to count tokens for GPT-4</li>
+<li class="text-[var(--foreground)]">Reports the token count, estimated cost (at $2.50/1M input tokens), and character-to-token ratio</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 2: Prompt Engineering Lab</h3>
+<p class="mb-4 text-justify">Create a prompt that can classify customer support emails into exactly one of these categories: <code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Billing</code>, <code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Technical</code>, <code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Shipping</code>, <code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Account</code>, <code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">General</code>. Test it with at least 10 different emails of your creation, including edge cases (emails that mention multiple topics, sarcastic emails, very short emails).</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 3: Temperature Experiment</h3>
+<p class="mb-4 text-justify">Run the same creative writing prompt (&quot;Write a one-paragraph story about a robot&quot;) with temperatures 0.0, 0.5, 1.0, and 1.5. Save the outputs and analyze: How does the output change? Is there a &quot;sweet spot&quot; for creative writing?</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 4: Structured Output</h3>
+<p class="mb-4 text-justify">Write a prompt that extracts product information from messy text and returns it as clean JSON. Example input: &quot;iPhone 15 Pro, $999, released Sept 2023, 4.8 stars, available in black titanium, blue titanium, natural titanium, white titanium.&quot; Expected output should include name, price, release_date, rating, and color_options.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 5: Build a Mini-Chatbot</h3>
+<p class="mb-4 text-justify">Using the OpenAI API, build a chatbot that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Has a system prompt defining its personality</li>
+<li class="text-[var(--foreground)]">Maintains conversation history (up to 10 messages)</li>
+<li class="text-[var(--foreground)]">Handles errors gracefully</li>
+<li class="text-[var(--foreground)]">Streams responses in real-time</li>
+<li class="text-[var(--foreground)]">Can be exited by typing &quot;quit&quot;</li>
+</ul>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Next Chapter</strong>: In <a href="./chapter-02-rag-and-knowledge-systems.md" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Chapter 2: RAG &amp; Knowledge Systems</a>, we&#x27;ll learn how to give LLMs access to your own data using Retrieval-Augmented Generation — the first building block of intelligent AI agents.</p>
+</blockquote></article><div class="mt-16 pt-8 border-t-2 border-[var(--border-color)]"><div class="flex justify-between items-stretch gap-4"><div class="flex-1"></div><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group text-right" href="/chapter/rag-and-knowledge-systems"><span class="text-xs text-[var(--foreground)] opacity-50">Next →</span><div class="flex items-center justify-end gap-2 mt-1"><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">RAG &amp; Knowledge Systems</span><span class="text-xl">🔍</span></div></a></div></div></main></div></div><!--$--><!--/$--><script src="/_next/static/chunks/3s_ssfmklbvuh.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[78892,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n3:I[11359,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n5:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"OutletBoundary\"]\n6:\"$Sreact.suspense\"\n9:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"ViewportBoundary\"]\nb:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"MetadataBoundary\"]\nd:I[65125,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/157per-6rfej7.css\",\"style\"]\n:HL[\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"chapter\",\"llms-and-genai-fundamentals\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"chapter\",{\"children\":[[\"slug\",\"llms-and-genai-fundamentals\",\"d\",null],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3j2brc7c8hat8.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/05b0208rfh8ys.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-full flex flex-col\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/16vgld9iclosn.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/2rb1230i-fez-.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@7\"}]}]]}],{},null,false,null]},null,false,\"$@8\"]},null,false,\"$@8\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L9\",null,{\"children\":\"$La\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Lc\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$d\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"WpHiBD4DjnzuprdEnivdA\"}\n"])</script><script>self.__next_f.push([1,"e:[]\n8:\"$We\"\n"])</script><script>self.__next_f.push([1,"f:I[89587,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\",\"/_next/static/chunks/16vgld9iclosn.js\",\"/_next/static/chunks/2rb1230i-fez-.js\"],\"default\"]\n10:Tb0d2,"])</script><script>self.__next_f.push([1,"# Chapter 1: LLMs \u0026 GenAI Fundamentals\n\n## Understanding the Intelligence Behind AI Agents\n\n---\n\n\u003e *\"To build something extraordinary, you must first understand the foundation it rests upon.\"*\n\nBefore we dive into building AI agents, we need to understand the engine that powers them: **Large Language Models (LLMs)** and the broader **Generative AI** ecosystem. This chapter will demystify these technologies, from the mathematics of transformers to the practical art of prompt engineering.\n\n---\n\n## Table of Contents\n\n1. [What Are Large Language Models?](#1-what-are-large-language-models)\n2. [The Transformer Architecture](#2-the-transformer-architecture)\n3. [Tokenization: How Text Becomes Numbers](#3-tokenization-how-text-becomes-numbers)\n4. [The GenAI Landscape](#4-the-genai-landscape)\n5. [Context Windows](#5-context-windows)\n6. [Temperature \u0026 Sampling](#6-temperature--sampling)\n7. [Prompt Engineering Basics](#7-prompt-engineering-basics)\n8. [Hands-On: OpenAI API](#8-hands-on-openai-api)\n9. [Key Takeaways](#9-key-takeaways)\n10. [Try It Yourself](#10-try-it-yourself)\n\n---\n\n## 1. What Are Large Language Models?\n\n### Definition\n\nA **Large Language Model (LLM)** is an artificial intelligence system trained on massive amounts of text data to understand, generate, and manipulate human language. The \"large\" refers to both the size of the training data (often trillions of tokens) and the number of parameters in the model (billions to trillions).\n\nThink of an LLM as an incredibly sophisticated autocomplete. When you type a sentence, it predicts the most likely next word (or token) based on patterns it learned during training. But unlike your phone's autocomplete, LLMs can:\n\n- **Write** essays, code, poetry, and stories\n- **Summarize** long documents into key points\n- **Translate** between languages\n- **Reason** through complex problems step-by-step\n- **Follow instructions** given in natural language\n- **Generate** structured data like JSON, SQL, or XML\n\n### How LLMs Work\n\nAt their core, LLMs are **next-token prediction machines**. Given a sequence of tokens, they predict the probability distribution over the next possible token.\n\n```\nInput:  \"The cat sat on the\"\n                    ↓\nModel:  {\"mat\": 0.35, \"floor\": 0.25, \"couch\": 0.20, \"roof\": 0.05, ...}\n                    ↓\nOutput: \"mat\" (sampled from the distribution)\n```\n\nThis simple mechanism, repeated billions of times across massive datasets, produces remarkably capable language systems.\n\n### The Training Process\n\nTraining an LLM happens in three main phases:\n\n#### Phase 1: Pre-training (Unsupervised)\n\nThe model reads vast amounts of text from the internet, books, code repositories, and other sources. It learns to predict the next token in any sequence.\n\n```\nObjective: Given tokens [t1, t2, t3, ..., tn], predict t(n+1)\n\nExample:\n  \"Artificial intelligence is the simulation of human\" → \"intelligence\"\n  \"def fibonacci(n):\" → \"\\n    if n \u003c= 1:\"\n  \"The capital of France is\" → \"Paris\"\n```\n\nThis teaches the model:\n- Grammar and syntax\n- Facts about the world\n- How to reason and follow logic\n- Programming patterns\n- Writing styles and conventions\n\n**Cost**: Pre-training a frontier model costs $50M-$100M+ in compute resources.\n\n#### Phase 2: Supervised Fine-Tuning (SFT)\n\nHuman trainers create high-quality question-answer pairs to teach the model how to respond helpfully. This shapes the model from a text-predictor into an assistant.\n\n```python\n# Example training data format for SFT\n{\n    \"messages\": [\n        {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n        {\"role\": \"user\", \"content\": \"What is the capital of Japan?\"},\n        {\"role\": \"assistant\", \"content\": \"The capital of Japan is Tokyo. \n        It has been the de facto capital since 1868 and is one of the \n        world's most populous metropolitan areas.\"}\n    ]\n}\n```\n\n#### Phase 3: Reinforcement Learning from Human Feedback (RLHF)\n\nHuman evaluators rank the model's responses, teaching it which answers are most helpful, harmless, and honest. The model learns to produce outputs that humans prefer.\n\n```\nQuestion: \"How do I make a bomb?\"\n                    ↓\nResponse A: [Instructions]     → Human rates: HARMFUL (1/5)\nResponse B: [Refusal]          → Human rates: SAFE (5/5)\n                    ↓\nModel learns: Prefer refusals for dangerous requests\n```\n\n### Model Sizes: What \"Large\" Means\n\n| Size Category | Parameters | Examples | Training Cost |\n|---------------|-----------|----------|---------------|\n| Small | 1B - 7B | Phi-3, Gemma, Llama 3.2 | $10K - $500K |\n| Medium | 8B - 34B | Llama 3.1 8B, Mistral 7B | $500K - $5M |\n| Large | 70B - 130B | Llama 3.1 70B, Claude 3.5 | $5M - $30M |\n| Frontier | 300B - 1.8T | GPT-4, Claude 3.5 Opus, Gemini | $50M - $200M+ |\n\n---\n\n## 2. The Transformer Architecture\n\n### The Foundation of Modern AI\n\nThe **Transformer**, introduced in the landmark 2017 paper \"Attention Is All You Need\" by Vaswani et al., is the architecture behind virtually every modern LLM. Understanding it — even conceptually — is crucial for working with AI agents.\n\n### High-Level Architecture\n\n```\n┌─────────────────────────────────────────┐\n│              TRANSFORMER                 │\n│                                          │\n│  ┌────────────────────────────────────┐  │\n│  │        Decoder Stack (x N)         │  │\n│  │  ┌──────────────────────────────┐  │  │\n│  │  │   Masked Multi-Head          │  │  │\n│  │  │   Self-Attention             │  │  │\n│  │  └──────────────┬───────────────┘  │  │\n│  │                 │                   │  │\n│  │  ┌──────────────▼───────────────┐  │  │\n│  │  │   Add \u0026 Layer Normalize      │  │  │\n│  │  └──────────────┬───────────────┘  │  │\n│  │                 │                   │  │\n│  │  ┌──────────────▼───────────────┐  │  │\n│  │  │   Feed-Forward Network       │  │  │\n│  │  └──────────────┬───────────────┘  │  │\n│  │                 │                   │  │\n│  │  ┌──────────────▼───────────────┐  │  │\n│  │  │   Add \u0026 Layer Normalize      │  │  │\n│  │  └──────────────┬───────────────┘  │  │\n│  │                 │                   │  │\n│  └─────────────────┘                   │  │\n│                 │                       │\n│  ┌──────────────▼───────────────┐      │\n│  │   Linear + Softmax           │      │\n│  │   (Output Probabilities)     │      │\n│  └──────────────────────────────┘      │\n└─────────────────────────────────────────┘\n```\n\n### Self-Attention: The Secret Sauce\n\nSelf-attention is what makes transformers so powerful. It allows every token in a sequence to \"look at\" every other token and decide how much attention to pay to each one.\n\n#### Why Attention Matters\n\nConsider this sentence:\n\n\u003e \"The cat didn't cross the street because **it** was too tired.\"\n\nWhat does \"it\" refer to? The cat! Humans know this instantly because we understand context. Self-attention gives models a similar ability.\n\n#### The Q, K, V Mechanism\n\nEvery token generates three vectors:\n- **Q (Query)**: \"What am I looking for?\"\n- **K (Key)**: \"What do I contain?\"\n- **V (Value)**: \"What information do I carry?\"\n\n```python\nimport torch\nimport torch.nn.functional as F\n\ndef self_attention(Q, K, V, mask=None):\n    \"\"\"\n    Compute scaled dot-product self-attention.\n    \n    Args:\n        Q: Query matrix  [batch, seq_len, d_k]\n        K: Key matrix    [batch, seq_len, d_k]\n        V: Value matrix  [batch, seq_len, d_v]\n        mask: Optional attention mask\n    \n    Returns:\n        Attention output [batch, seq_len, d_v]\n    \"\"\"\n    d_k = Q.size(-1)\n    \n    # Step 1: Compute attention scores (how much each token \n    # should attend to every other token)\n    scores = torch.matmul(Q, K.transpose(-2, -1)) / (d_k ** 0.5)\n    \n    # Step 2: Apply mask (optional - used in decoder to prevent \n    # looking at future tokens)\n    if mask is not None:\n        scores = scores.masked_fill(mask == 0, float('-inf'))\n    \n    # Step 3: Softmax to get attention weights (probabilities \n    # that sum to 1)\n    attention_weights = F.softmax(scores, dim=-1)\n    \n    # Step 4: Weighted sum of values\n    output = torch.matmul(attention_weights, V)\n    \n    return output, attention_weights\n```\n\n#### Multi-Head Attention\n\nInstead of computing attention once, the transformer computes it multiple times in parallel (multiple \"heads\"). Each head can focus on different aspects of the sentence:\n\n```\nHead 1: Focuses on subject-verb relationships\nHead 2: Focuses on adjective-noun relationships  \nHead 3: Focuses on positional/proximity patterns\nHead 4: Focuses on semantic similarity\n  ...\nHead 12 (or more): Focuses on other patterns\n```\n\n```python\nclass MultiHeadAttention(torch.nn.Module):\n    \"\"\"Multi-Head Attention mechanism.\"\"\"\n    \n    def __init__(self, d_model=512, num_heads=8):\n        super().__init__()\n        self.d_model = d_model\n        self.num_heads = num_heads\n        self.d_k = d_model // num_heads\n        \n        # Linear projections for Q, K, V and output\n        self.W_q = torch.nn.Linear(d_model, d_model)\n        self.W_k = torch.nn.Linear(d_model, d_model)\n        self.W_v = torch.nn.Linear(d_model, d_model)\n        self.W_o = torch.nn.Linear(d_model, d_model)\n    \n    def forward(self, query, key, value, mask=None):\n        batch_size = query.size(0)\n        \n        # Project and reshape: [batch, seq, d_model] -\u003e \n        # [batch, heads, seq, d_k]\n        Q = self.W_q(query).view(batch_size, -1, self.num_heads, \n                                  self.d_k).transpose(1, 2)\n        K = self.W_k(key).view(batch_size, -1, self.num_heads, \n                                self.d_k).transpose(1, 2)\n        V = self.W_v(value).view(batch_size, -1, self.num_heads, \n                                  self.d_k).transpose(1, 2)\n        \n        # Compute attention for each head\n        output, weights = self_attention(Q, K, V, mask)\n        \n        # Concatenate heads: [batch, heads, seq, d_k] -\u003e \n        # [batch, seq, d_model]\n        output = output.transpose(1, 2).contiguous().view(\n            batch_size, -1, self.d_model\n        )\n        \n        # Final linear projection\n        return self.W_o(output)\n```\n\n### Positional Encoding\n\nUnlike recurrent networks, transformers process all tokens simultaneously. But word order matters — \"dog bites man\" is very different from \"man bites dog\"! **Positional encoding** adds information about token position.\n\nThe original transformer used sinusoidal functions:\n\n```\nPE(pos, 2i)   = sin(pos / 10000^(2i/d_model))\nPE(pos, 2i+1) = cos(pos / 10000^(2i/d_model))\n```\n\nModern models use **Rotary Position Embeddings (RoPE)** or **learned position embeddings** instead, but the concept is the same: inject position information into the token representations.\n\n### Why Transformers Beat Earlier Architectures\n\n| Feature | RNNs/LSTMs | Transformers |\n|---------|-----------|--------------|\n| Parallelization | Sequential (slow) | Parallel (fast) |\n| Long-range context | Poor (vanishing gradients) | Excellent (attention) |\n| Training speed | Slow | Fast |\n| Memory for long sequences | Limited | Scaled attention |\n| Quality | Good | State-of-the-art |\n\n---\n\n## 3. Tokenization: How Text Becomes Numbers\n\n### From Words to Tokens\n\nLLMs don't read text — they process **tokens**, which are chunks of text converted to numbers. Understanding tokenization is critical because:\n\n1. Token limits determine how much text a model can process\n2. Token count affects API costs\n3. Poor tokenization can confuse models\n\n### Word-Level Tokenization (Simple but Limited)\n\n```\n\"The quick brown fox jumps\"\n ↓\n[\"The\", \"quick\", \"brown\", \"fox\", \"jumps\"]\n ↓\n[464, 2159, 7586, 21831, 28403]\n```\n\n**Problem**: Every unique word needs its own token. With millions of words in English alone (plus code, technical terms, and other languages), this creates a massive vocabulary.\n\n### Byte Pair Encoding (BPE)\n\nBPE, used by GPT models and many others, solves this by breaking words into subword units:\n\n```\n\"unhappiness\"\n ↓\n[\"un\", \"happy\", \"ness\"]    # Recognizes meaningful subwords\n ↓\n[345, 4912, 555]           # Three tokens instead of one\n```\n\n**How BPE works** (simplified):\n\n1. Start with individual characters as the vocabulary\n2. Count the most frequent pair of adjacent tokens\n3. Merge that pair into a new token\n4. Repeat until desired vocabulary size is reached\n\n```\nCorpus: \"aaabdaaabac\"\n\nIteration 1: Most common pair is \"aa\" → merge to \"Z\"\n  \"ZabdZabac\"\n\nIteration 2: Most common pair is \"Za\" → merge to \"Y\"  \n  \"YbdYbac\"\n\nIteration 3: Most common pair is \"Yb\" → merge to \"X\"\n  \"XdXac\"\n\nFinal vocabulary: {a, b, c, d, X, Y, Z}\n```\n\n### Token Counts by Model\n\nDifferent models tokenize differently:\n\n| Text | GPT-4 (cl100k) | Claude | Llama 3 |\n|------|----------------|--------|---------|\n| \"Hello, world!\" | 4 tokens | 4 tokens | 5 tokens |\n| \"Artificial intelligence\" | 3 tokens | 3 tokens | 4 tokens |\n| \"def fibonacci(n):\" | 6 tokens | 5 tokens | 7 tokens |\n| 1 page of English text | ~300 tokens | ~300 tokens | ~350 tokens |\n\n### Practical Implications\n\n```python\n# Counting tokens with tiktoken (OpenAI's tokenizer)\nimport tiktoken\n\n# GPT-4 tokenizer\nenc = tiktoken.encoding_for_model(\"gpt-4o\")\n\n# Tokenize some text\ntext = \"AI agents are transforming how we work with technology.\"\ntokens = enc.encode(text)\n\nprint(f\"Text: {text}\")\nprint(f\"Tokens: {tokens}\")\nprint(f\"Token count: {len(tokens)}\")\nprint(f\"Decoded tokens: {[enc.decode([t]) for t in tokens]}\")\n\n# Output:\n# Text: AI agents are transforming how we work with technology.\n# Tokens: [32, 10832, 527, 27460, 1268, 527, 1194, 449, 7410, 13]\n# Token count: 11\n# Decoded tokens: ['AI', ' agents', ' are', ' transform', 'ing', \n#                   ' how', ' we', ' work', ' with', ' technology', '.']\n```\n\n### Token Budget Management\n\n```python\ndef estimate_tokens(text: str, chars_per_token: float = 4.0) -\u003e int:\n    \"\"\"Quick token estimation (roughly 4 chars per token for English).\"\"\"\n    return int(len(text) / chars_per_token)\n\n# Cost estimation for different models\ndef estimate_cost(\n    input_tokens: int, \n    output_tokens: int,\n    model: str = \"gpt-4o\"\n) -\u003e float:\n    \"\"\"Estimate API cost for a request.\"\"\"\n    pricing = {\n        \"gpt-4o\": {\"input\": 2.50 / 1_000_000, \n                    \"output\": 10.00 / 1_000_000},\n        \"gpt-4o-mini\": {\"input\": 0.15 / 1_000_000, \n                         \"output\": 0.60 / 1_000_000},\n        \"claude-sonnet-4-20250514\": {\"input\": 3.00 / 1_000_000, \n                                      \"output\": 15.00 / 1_000_000},\n        \"claude-haiku-3-5-20241022\": {\"input\": 0.80 / 1_000_000, \n                                       \"output\": 4.00 / 1_000_000},\n    }\n    \n    rates = pricing.get(model, pricing[\"gpt-4o\"])\n    cost = (input_tokens * rates[\"input\"] + \n            output_tokens * rates[\"output\"])\n    return cost\n\n# Example: Processing a 5,000-word document\ndocument_tokens = 6_500  # ~5000 words\nresponse_tokens = 1_000  # expected response length\n\ncost = estimate_cost(document_tokens, response_tokens, \"gpt-4o\")\nprint(f\"Cost per request: ${cost:.4f}\")\n# Cost per request: $0.0263\n```\n\n---\n\n## 4. The GenAI Landscape\n\n### Major LLM Providers (2024-2025)\n\nThe LLM landscape is rapidly evolving. Here's a comprehensive overview:\n\n### Model Comparison Table\n\n| Model | Provider | Parameters | Context | Strengths | Price (per 1M tokens) |\n|-------|----------|-----------|---------|-----------|----------------------|\n| GPT-4o | OpenAI | ~200B (est.) | 128K | Best all-around, multimodal | $2.50 in / $10.00 out |\n| GPT-4o-mini | OpenAI | ~8B (est.) | 128K | Fast, cheap, solid | $0.15 in / $0.60 out |\n| Claude 3.5 Sonnet | Anthropic | Unknown | 200K | Analysis, coding, long context | $3.00 in / $15.00 out |\n| Claude 3 Opus | Anthropic | Unknown | 200K | Complex reasoning, nuance | $15.00 in / $75.00 out |\n| Gemini 1.5 Pro | Google | Unknown | 2M | Massive context, multimodal | $1.25 in / $5.00 out |\n| Llama 3.1 405B | Meta | 405B | 128K | Best open-source | Self-hosted |\n| Llama 3.1 70B | Meta | 70B | 128K | Great open-source | Self-hosted |\n| Mistral Large | Mistral | Unknown | 128K | Strong European model | $2.00 in / $6.00 out |\n| Mixtral 8x7B | Mistral | 47B active | 32K | Fast MoE, open-source | Self-hosted |\n\n### Choosing the Right Model\n\n```\nDecision Framework:\n                    ┌──────────────────┐\n                    │ Need the best    │\n                    │ quality?         │\n                    └────────┬─────────┘\n                        Yes / \\ No\n                           /   \\\n                ┌─────────▼┐   ┌▼──────────┐\n                │ Budget    │   │ Use small  │\n                │ unlimited?│   │ model      │\n                └─────┬─────┘   │ (mini/haiku│\n                  Yes / \\ No   └───────────┘\n                     /   \\\n          ┌─────────▼┐   ┌▼──────────┐\n          │ GPT-4o or │   │ GPT-4o    │\n          │ Claude    │   │ mini or   │\n          │ Opus      │   │ Claude    │\n          └───────────┘   │ Haiku     │\n                          └───────────┘\n```\n\n### Open-Source vs. Closed Models\n\n**Closed Models** (GPT-4, Claude, Gemini):\n- ✅ Best quality and safety\n- ✅ No infrastructure needed\n- ✅ Always up-to-date\n- ❌ API costs add up\n- ❌ Data sent to provider\n- ❌ Rate limits and availability\n\n**Open-Source Models** (Llama, Mistral, Mixtral):\n- ✅ Full data privacy\n- ✅ No per-token costs\n- ✅ Customizable and fine-tunable\n- ✅ Run anywhere\n- ❌ Need GPU infrastructure\n- ❌ Requires ML expertise\n- ❌ Generally lower quality than frontier models\n\n### Where to Run Open-Source Models\n\n```python\n# Option 1: Ollama (easiest for development)\n# Install: curl -fsSL https://ollama.com/install.sh | sh\n# Run: ollama run llama3.1:8b\n\nimport ollama\n\nresponse = ollama.chat(model='llama3.1:8b', messages=[\n    {'role': 'user', 'content': 'Explain quantum computing in simple terms.'}\n])\nprint(response['message']['content'])\n\n# Option 2: vLLM (production serving)\n# pip install vllm\n# vllm serve meta-llama/Llama-3.1-8B-Instruct --tensor-parallel-size 2\n\n# Option 3: Hugging Face Transformers\nfrom transformers import pipeline\n\npipe = pipeline(\"text-generation\", \n                model=\"meta-llama/Llama-3.1-8B-Instruct\")\nresponse = pipe(\"Explain quantum computing in simple terms.\", \n                max_new_tokens=200)\nprint(response[0]['generated_text'])\n```\n\n---\n\n## 5. Context Windows\n\n### What Is a Context Window?\n\nA **context window** is the maximum amount of text an LLM can process in a single request. It includes both your input (prompt) AND the model's output (response).\n\n```\n┌──────────────────────────────────────────────────┐\n│                CONTEXT WINDOW                     │\n│                                                   │\n│  ┌─────────────────────────┐  ┌────────────────┐ │\n│  │      INPUT (Prompt)     │  │   OUTPUT       │ │\n│  │                         │  │   (Response)   │ │\n│  │  System prompt          │  │                │ │\n│  │  Conversation history   │  │  Model's       │ │\n│  │  User message           │  │  generated     │ │\n│  │  Documents/context      │  │  text          │ │\n│  │  Examples               │  │                │ │\n│  └─────────────────────────┘  └────────────────┘ │\n│                                                   │\n│         Total: Must fit within context limit      │\n└──────────────────────────────────────────────────┘\n```\n\n### Context Window Comparison\n\n| Model | Context Window | ~Pages of Text | Notes |\n|-------|---------------|----------------|-------|\n| GPT-3.5 | 4,096 tokens | ~6 pages | Legacy |\n| GPT-4 | 8,192 tokens | ~12 pages | Original |\n| GPT-4 Turbo | 128,000 tokens | ~190 pages | Large |\n| GPT-4o | 128,000 tokens | ~190 pages | Fast + large |\n| Claude 3 Haiku | 200,000 tokens | ~300 pages | |\n| Claude 3.5 Sonnet | 200,000 tokens | ~300 pages | |\n| Gemini 1.5 Pro | 2,000,000 tokens | ~3,000 pages | Massive |\n| Llama 3.1 | 128,000 tokens | ~190 pages | Open-source |\n| Mistral Large | 128,000 tokens | ~190 pages | |\n\n### Why Context Windows Matter for Agents\n\nAI agents typically need **large context windows** because:\n\n1. **Conversation history**: Multi-turn conversations accumulate tokens quickly\n2. **Tool results**: Retrieving documents, API responses, and data fills context\n3. **System instructions**: Agent prompts with tools, rules, and examples\n4. **Working memory**: Scratchpads and intermediate reasoning steps\n\n```python\n# Example: Agent context usage\nagent_context = {\n    \"system_prompt\": 800,         # Agent instructions \u0026 tools\n    \"conversation_history\": 3000, # Last 10 messages\n    \"retrieved_documents\": 5000,  # RAG results\n    \"tool_descriptions\": 1500,    # Available tools\n    \"user_message\": 500,          # Current request\n    \"reserved_for_output\": 2000,  # Response space\n    # Total: ~12,800 tokens\n}\n# Well within GPT-4o's 128K limit\n# But could be a problem with smaller context models\n```\n\n### Managing Context\n\n```python\nclass ContextManager:\n    \"\"\"Manages context window usage for an AI agent.\"\"\"\n    \n    def __init__(self, max_tokens: int = 128000):\n        self.max_tokens = max_tokens\n        self.reserved_output = 4096\n        self.available = max_tokens - self.reserved_output\n    \n    def estimate_tokens(self, text: str) -\u003e int:\n        \"\"\"Rough estimation: ~4 chars per token.\"\"\"\n        return len(text) // 4\n    \n    def truncate_history(\n        self, messages: list, keep_recent: int = 10\n    ) -\u003e list:\n        \"\"\"Keep only recent messages if too many.\"\"\"\n        if len(messages) \u003e keep_recent:\n            # Always keep system message\n            system = [m for m in messages if m[\"role\"] == \"system\"]\n            recent = messages[-keep_recent:]\n            return system + recent\n        return messages\n    \n    def fits_in_context(self, messages: list, \n                         extra_tokens: int = 0) -\u003e bool:\n        \"\"\"Check if everything fits in context window.\"\"\"\n        total = sum(\n            self.estimate_tokens(m[\"content\"]) for m in messages\n        ) + extra_tokens\n        return total \u003c= self.available\n```\n\n---\n\n## 6. Temperature \u0026 Sampling\n\n### The Creativity Knob\n\n**Temperature** controls how random or deterministic the model's output is. It's one of the most important parameters you'll use.\n\n```\nTemperature Scale:\n\n0.0        0.3        0.7        1.0        1.5+\n│──────────│──────────│──────────│──────────│\nDeterministic                               Random\nPredictable                                 Creative\n\"By the book\"                              \"Off the wall\"\n\nUse for:            Use for:          Use for:\n- Code generation   - Chatbots        - Creative writing\n- Fact extraction   - Summarization   - Brainstorming\n- Data processing   - General Q\u0026A     - Poetry\n```\n\n### How Temperature Works\n\nTemperature modifies the probability distribution before sampling:\n\n```python\nimport numpy as np\n\ndef apply_temperature(logits: list[float], temperature: float) -\u003e list[float]:\n    \"\"\"\n    Apply temperature scaling to logits.\n    Lower temperature → sharper distribution (more deterministic)\n    Higher temperature → flatter distribution (more random)\n    \"\"\"\n    # Convert logits to probabilities with temperature\n    scaled = [logit / temperature for logit in logits]\n    \n    # Subtract max for numerical stability\n    max_logit = max(scaled)\n    exp_logits = [np.exp(l - max_logit) for l in scaled]\n    \n    # Normalize to probabilities\n    total = sum(exp_logits)\n    probabilities = [e / total for e in exp_logits]\n    \n    return probabilities\n\n# Example: Model deciding between three options\nlogits = [5.0, 3.0, 1.0]  # \"yes\", \"maybe\", \"no\"\n\nprint(\"Temperature 0.1 (near-deterministic):\")\nprobs = apply_temperature(logits, 0.1)\n# → [0.9999, 0.0001, 0.0000]  → Almost always picks \"yes\"\n\nprint(\"Temperature 0.7 (balanced):\")\nprobs = apply_temperature(logits, 0.7)\n# → [0.73, 0.18, 0.09]        → Usually \"yes\", sometimes others\n\nprint(\"Temperature 1.5 (creative):\")\nprobs = apply_temperature(logits, 1.5)\n# → [0.47, 0.30, 0.23]        → More varied choices\n```\n\n### Top-p (Nucleus) Sampling\n\nInstead of considering all possible next tokens, **top-p** sampling only considers tokens whose cumulative probability exceeds a threshold.\n\n```\nToken probabilities:\n  \"the\"    : 0.35  ─┐\n  \"a\"      : 0.20   │  top_p=0.9: These tokens\n  \"one\"    : 0.15   │  are considered\n  \"this\"   : 0.12  ─┘\n  \"some\"   : 0.08  ─┐\n  \"that\"   : 0.05   │  Excluded by\n  \"every\"  : 0.03   │  top_p threshold\n  \"each\"   : 0.02  ─┘\n```\n\n### Top-k Sampling\n\n**Top-k** limits sampling to the k most probable tokens, regardless of their individual probabilities.\n\n```python\ndef top_k_sample(logits: list[float], k: int = 50) -\u003e str:\n    \"\"\"Sample from the top k most probable tokens.\"\"\"\n    # Sort by probability\n    indexed = sorted(enumerate(logits), key=lambda x: x[1], \n                     reverse=True)\n    \n    # Keep only top k\n    top_k_indices = [idx for idx, _ in indexed[:k]]\n    top_k_logits = [logits[i] for i in top_k_indices]\n    \n    # Sample from remaining\n    probabilities = apply_temperature(top_k_logits, temperature=1.0)\n    chosen_idx = np.random.choice(top_k_indices, p=probabilities)\n    \n    return chosen_idx\n```\n\n### Practical Settings Guide\n\n| Use Case | Temperature | Top-p | Top-k |\n|-----------|------------|-------|-------|\n| Code generation | 0.0 - 0.2 | 0.95 | - |\n| Data extraction | 0.0 | 1.0 | - |\n| Factual Q\u0026A | 0.0 - 0.3 | 0.9 | - |\n| General chatbot | 0.7 | 0.9 | 50 |\n| Creative writing | 0.9 - 1.2 | 0.95 | 100 |\n| Brainstorming | 1.0 - 1.5 | 1.0 | - |\n\n---\n\n## 7. Prompt Engineering Basics\n\n### What Is Prompt Engineering?\n\n**Prompt engineering** is the art and science of crafting inputs to LLMs to get desired outputs. It's the primary interface between humans and AI models, and it's essential for building effective AI agents.\n\n### Zero-Shot Prompting\n\nGive the model a task with no examples:\n\n```\nClassify the following text as positive, negative, or neutral:\n\n\"The product arrived on time and works as expected.\"\n\nClassification:\n```\n\n```python\n# Zero-shot classification\nresponse = client.chat.completions.create(\n    model=\"gpt-4o\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You are a sentiment classifier.\"},\n        {\"role\": \"user\", \"content\": \"\"\"Classify the following text as \n        positive, negative, or neutral:\n        \n        \"The product arrived on time and works as expected.\"\n        \n        Classification:\"\"\"}\n    ],\n    temperature=0.0\n)\nprint(response.choices[0].message.content)\n# Output: \"Positive\"\n```\n\n### Few-Shot Prompting\n\nProvide examples to guide the model:\n\n```\nClassify each review as positive, negative, or neutral.\n\nReview: \"This is the best phone I've ever owned!\"\nSentiment: Positive\n\nReview: \"The delivery was late and the package was damaged.\"\nSentiment: Negative\n\nReview: \"It's an okay product, nothing special.\"\nSentiment: Neutral\n\nReview: \"Absolutely love it! Great value for the price!\"\nSentiment:\n```\n\n```python\n# Few-shot classification\nresponse = client.chat.completions.create(\n    model=\"gpt-4o\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"\"\"You are a sentiment classifier. \n        Classify reviews as Positive, Negative, or Neutral.\"\"\"},\n        {\"role\": \"user\", \"content\": \"\"\"Review: \"This is the best phone \n        I've ever owned!\"\n        Sentiment: Positive\n        \n        Review: \"The delivery was late and the package was damaged.\"\n        Sentiment: Negative\n        \n        Review: \"It's an okay product, nothing special.\"\n        Sentiment: Neutral\n        \n        Review: \"Absolutely love it! Great value for the price!\"\n        Sentiment:\"\"\"}\n    ],\n    temperature=0.0\n)\n# Output: \"Positive\"\n```\n\n### Chain-of-Thought (CoT) Prompting\n\nAsk the model to show its reasoning step by step:\n\n```\nQuestion: A store has 15 apples. They sell 8 and then receive \na delivery of 12. How many apples do they have now?\n\nLet me think step by step:\n1. Start with 15 apples\n2. Sell 8: 15 - 8 = 7 apples\n3. Receive 12: 7 + 12 = 19 apples\n\nAnswer: 19 apples\n```\n\n```python\n# Chain-of-thought for complex reasoning\nresponse = client.chat.completions.create(\n    model=\"gpt-4o\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"\"\"You are a helpful math tutor.\n        Always show your reasoning step by step.\"\"\"},\n        {\"role\": \"user\", \"content\": \"\"\"Question: If I buy 3 shirts at \n        $25 each and pay 8% tax, how much do I owe?\n        \n        Think step by step:\"\"\"}\n    ],\n    temperature=0.0\n)\n# Output will walk through: 3 × $25 = $75, \n# tax = $75 × 0.08 = $6, total = $81\n```\n\n### System Prompts\n\nSystem prompts set the model's behavior, role, and constraints:\n\n```python\n# Effective system prompt for an agent\nsystem_prompt = \"\"\"\nYou are a helpful customer support agent for TechCorp.\n\n## Your Role\n- Answer customer questions about TechCorp products\n- Help troubleshoot technical issues\n- Process returns and refunds according to policy\n\n## Guidelines\n- Be friendly and professional\n- If you don't know the answer, say so honestly\n- Never make up product features or pricing\n- For billing issues, always verify customer identity first\n- Escalate to human agent if the customer is frustrated\n\n## Available Actions\n- search_knowledge_base(query): Search product documentation\n- check_order_status(order_id): Look up order information\n- initiate_return(order_id, reason): Start a return process\n- escalate_to_human(reason, priority): Transfer to human agent\n\nAlways use the appropriate action when needed.\n\"\"\"\n```\n\n### Prompt Patterns\n\n#### Pattern 1: Role + Task + Format\n\n```\nRole: You are a senior data analyst.\nTask: Analyze the following sales data and identify trends.\nFormat: Present your findings as bullet points, \n        followed by a recommendation.\n```\n\n#### Pattern 2: Constraints + Output\n\n```\nWrite a product description for running shoes.\nConstraints:\n- Max 50 words\n- Include: comfort, durability, price ($89)\n- Tone: enthusiastic but professional\n- No superlatives (\"best\", \"greatest\")\n```\n\n#### Pattern 3: Delimiter Separation\n\n```\nAnalyze the following customer feedback:\n\n---FEEDBACK_START---\nThe interface is confusing and I keep getting errors \nwhen trying to export my data. Very frustrating experience.\n---FEEDBACK_END---\n\nProvide:\n1. Sentiment (positive/negative/neutral)\n2. Key issues mentioned\n3. Suggested improvement for each issue\n```\n\n### Common Prompt Engineering Mistakes\n\n| Mistake | Example | Fix |\n|---------|---------|-----|\n| Too vague | \"Tell me about dogs\" | \"Compare Golden Retrievers vs. Labradors as family pets\" |\n| No format specified | \"Analyze this data\" | \"Analyze this data as a markdown table with columns: Metric, Value, Trend\" |\n| Ambiguous constraints | \"Keep it short\" | \"Keep the response under 100 words\" |\n| No examples | Complex classification | Provide 2-3 labeled examples |\n| Missing context | \"Is this good?\" | \"Given our KPI targets (revenue \u003e $1M, churn \u003c 5%), is this quarter's performance good?\" |\n\n---\n\n## 8. Hands-On: OpenAI API\n\n### Setting Up\n\n```bash\n# Install dependencies\npip install openai python-dotenv\n\n# Set up your API key\necho \"OPENAI_API_KEY=your-api-key-here\" \u003e .env\n```\n\n### Complete Example: Text Generation\n\n```python\n\"\"\"\nBasic OpenAI API usage for text generation.\nDemonstrates different prompting patterns.\n\"\"\"\n\nimport os\nfrom openai import OpenAI\nfrom dotenv import load_dotenv\n\nload_dotenv()\n\nclient = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n\n\ndef simple_completion(prompt: str, model: str = \"gpt-4o\") -\u003e str:\n    \"\"\"Simple text completion.\"\"\"\n    response = client.chat.completions.create(\n        model=model,\n        messages=[\n            {\"role\": \"user\", \"content\": prompt}\n        ],\n        temperature=0.7,\n        max_tokens=500\n    )\n    return response.choices[0].message.content\n\n\ndef chat_completion(\n    messages: list[dict], \n    model: str = \"gpt-4o\",\n    temperature: float = 0.7\n) -\u003e str:\n    \"\"\"Multi-turn chat completion.\"\"\"\n    response = client.chat.completions.create(\n        model=model,\n        messages=messages,\n        temperature=temperature,\n        max_tokens=1000\n    )\n    return response.choices[0].message.content\n\n\ndef structured_output(\n    prompt: str, \n    output_format: str\n) -\u003e str:\n    \"\"\"Get structured output from the model.\"\"\"\n    system_message = f\"\"\"You are a helpful assistant that always \n    responds in the following format:\n\n    {output_format}\n    \n    Only output the formatted result, nothing else.\"\"\"\n    \n    response = client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=[\n            {\"role\": \"system\", \"content\": system_message},\n            {\"role\": \"user\", \"content\": prompt}\n        ],\n        temperature=0.0,\n        max_tokens=500\n    )\n    return response.choices[0].message.content\n\n\n# === Example Usage ===\n\n# 1. Simple completion\nprint(\"=\" * 50)\nprint(\"1. Simple Completion\")\nprint(\"=\" * 50)\nresult = simple_completion(\n    \"Explain the difference between a stack and a queue \"\n    \"in exactly 2 sentences.\"\n)\nprint(result)\n\n# 2. Chat with system prompt\nprint(\"\\n\" + \"=\" * 50)\nprint(\"2. Chat with System Prompt\")\nprint(\"=\" * 50)\nresult = chat_completion([\n    {\"role\": \"system\", \"content\": \"You are a Python expert. \"\n     \"Always provide working code examples.\"},\n    {\"role\": \"user\", \"content\": \"How do I read a CSV file in Python?\"},\n    {\"role\": \"assistant\", \"content\": \"You can use the csv module \"\n     \"or pandas. Here's both approaches...\"},\n    {\"role\": \"user\", \"content\": \"How do I filter rows where the \"\n     \"age column is greater than 30?\"}\n])\nprint(result)\n\n# 3. Structured output\nprint(\"\\n\" + \"=\" * 50)\nprint(\"3. Structured Output (JSON)\")\nprint(\"=\" * 50)\nresult = structured_output(\n    \"Apple Inc. reported Q4 2024 revenue of $94.9B and net income \"\n    \"of $14.7B.\",\n    \"\"\"JSON format:\n{\n    \"company\": string,\n    \"period\": string,\n    \"metrics\": {\n        \"revenue\": {\"value\": number, \"unit\": string},\n        \"net_income\": {\"value\": number, \"unit\": string}\n    }\n}\"\"\"\n)\nprint(result)\n```\n\n### Streaming Responses\n\n```python\ndef stream_completion(prompt: str, model: str = \"gpt-4o\"):\n    \"\"\"Stream the response token by token for better UX.\"\"\"\n    stream = client.chat.completions.create(\n        model=model,\n        messages=[\n            {\"role\": \"user\", \"content\": prompt}\n        ],\n        temperature=0.7,\n        stream=True\n    )\n    \n    print(\"Response: \", end=\"\", flush=True)\n    for chunk in stream:\n        if chunk.choices[0].delta.content:\n            print(chunk.choices[0].delta.content, \n                  end=\"\", flush=True)\n    print()  # New line at the end\n\n# Usage\nstream_completion(\"Write a haiku about programming.\")\n```\n\n### Error Handling\n\n```python\nimport time\nfrom openai import (\n    OpenAI, \n    APIError, \n    RateLimitError, \n    APITimeoutError\n)\n\ndef robust_completion(\n    messages: list[dict],\n    model: str = \"gpt-4o\",\n    max_retries: int = 3\n) -\u003e str:\n    \"\"\"Completion with retry logic and error handling.\"\"\"\n    \n    for attempt in range(max_retries):\n        try:\n            response = client.chat.completions.create(\n                model=model,\n                messages=messages,\n                temperature=0.7,\n                max_tokens=1000,\n                timeout=30  # 30 second timeout\n            )\n            return response.choices[0].message.content\n            \n        except RateLimitError:\n            wait_time = 2 ** attempt  # Exponential backoff\n            print(f\"Rate limited. Waiting {wait_time}s...\")\n            time.sleep(wait_time)\n            \n        except APITimeoutError:\n            print(f\"Timeout on attempt {attempt + 1}. Retrying...\")\n            \n        except APIError as e:\n            print(f\"API error: {e}\")\n            raise\n    \n    raise Exception(f\"Failed after {max_retries} retries\")\n```\n\n### Prompt Engineering Patterns — Code Examples\n\n```python\n\"\"\"\nDemonstrates multiple prompt engineering patterns.\n\"\"\"\n\n# Pattern 1: Chain-of-Thought for Math\ndef solve_math(problem: str) -\u003e str:\n    \"\"\"Solve math problems step by step.\"\"\"\n    response = client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=[\n            {\"role\": \"system\", \"content\": \"\"\"You are a math tutor. \n            Solve problems step by step. Show all work. \n            State the final answer clearly.\"\"\"},\n            {\"role\": \"user\", \"content\": f\"\"\"\nProblem: {problem}\n\nSolution (step by step):\"\"\"}\n        ],\n        temperature=0.0,\n        max_tokens=1000\n    )\n    return response.choices[0].message.content\n\n\n# Pattern 2: Few-Shot Classification\ndef classify_ticket(ticket_text: str) -\u003e str:\n    \"\"\"Classify a support ticket.\"\"\"\n    response = client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=[\n            {\"role\": \"system\", \"content\": \"\"\"Classify support tickets \n            into categories.\"\"\"},\n            {\"role\": \"user\", \"content\": \"\"\"\nExamples:\n\nTicket: \"I can't log in to my account\"\nCategory: Authentication\n\nTicket: \"How do I export my data to CSV?\"\nCategory: Feature Request\n\nTicket: \"The app crashes when I open settings\"\nCategory: Bug Report\n\nTicket: \"I need to change my billing address\"\nCategory: Account Management\n\nNow classify:\n\nTicket: \"{ticket_text}\"\nCategory:\"\"\"}\n        ],\n        temperature=0.0,\n        max_tokens=50\n    )\n    return response.choices[0].message.content\n\n\n# Pattern 3: Summarization with Constraints\ndef summarize(text: str, max_words: int = 100) -\u003e str:\n    \"\"\"Summarize text with word limit.\"\"\"\n    response = client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=[\n            {\"role\": \"system\", \"content\": f\"\"\"Summarize the text in \n            exactly {max_words} words or fewer. \n            Maintain key facts and numbers. \n            Use formal tone.\"\"\"},\n            {\"role\": \"user\", \"content\": f\"Summarize:\\n\\n{text}\"}\n        ],\n        temperature=0.3,\n        max_tokens=300\n    )\n    return response.choices[0].message.content\n\n\n# Pattern 4: Extraction into Structured Data\ndef extract_entities(text: str) -\u003e dict:\n    \"\"\"Extract named entities from text.\"\"\"\n    response = client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=[\n            {\"role\": \"system\", \"content\": \"\"\"Extract entities from the \n            text. Return ONLY valid JSON, no other text.\n            \n            Format:\n            {\n                \"people\": [],\n                \"organizations\": [],\n                \"locations\": [],\n                \"dates\": [],\n                \"monetary_values\": []\n            }\"\"\"},\n            {\"role\": \"user\", \"content\": f\"Extract from:\\n\\n{text}\"}\n        ],\n        temperature=0.0,\n        response_format={\"type\": \"json_object\"}\n    )\n    \n    import json\n    return json.loads(response.choices[0].message.content)\n\n\n# === Run Examples ===\nif __name__ == \"__main__\":\n    # Math\n    print(\"=== Math Problem ===\")\n    print(solve_math(\n        \"A store sells notebooks for $4.50 each. \"\n        \"If you buy 3 or more, you get 20% off. \"\n        \"How much would 5 notebooks cost?\"\n    ))\n    \n    # Classification\n    print(\"\\n=== Ticket Classification ===\")\n    print(classify_ticket(\n        \"I've been charged twice for my subscription\"\n    ))\n    \n    # Summarization\n    print(\"\\n=== Summarization ===\")\n    long_text = \"\"\"\n    Artificial intelligence has made remarkable progress in recent \n    years. Large language models like GPT-4 and Claude have demonstrated \n    impressive capabilities in natural language understanding and \n    generation. These models are being applied across industries, from \n    healthcare diagnostics to financial analysis. However, challenges \n    remain in areas such as hallucination, bias, and the need for \n    extensive computational resources. The field continues to evolve \n    rapidly with new architectures, training techniques, and applications \n    emerging regularly.\n    \"\"\"\n    print(summarize(long_text, max_words=50))\n    \n    # Entity extraction\n    print(\"\\n=== Entity Extraction ===\")\n    entities = extract_entities(\n        \"John Smith from Microsoft met with Sarah Lee at Google \"\n        \"on January 15, 2025. They discussed a $50 million \n        partnership deal.\"\n    )\n    print(entities)\n```\n\n---\n\n## 9. Key Takeaways\n\n1. **LLMs are next-token prediction machines** trained on massive text datasets. They learn patterns, facts, and reasoning from their training data.\n\n2. **Transformers use self-attention** to process all tokens in parallel, allowing them to capture long-range dependencies in text far better than previous architectures.\n\n3. **Tokenization converts text to numbers** using techniques like BPE. Understanding token counts is crucial for managing costs and context windows.\n\n4. **The GenAI landscape offers many options**: closed models (GPT-4, Claude, Gemini) for best quality, open-source models (Llama, Mistral) for privacy and control.\n\n5. **Context windows determine capacity**: Larger windows (128K+) enable complex agents with rich conversation history and tool results.\n\n6. **Temperature and sampling control output**: Lower temperature for deterministic tasks, higher for creative ones.\n\n7. **Prompt engineering is an essential skill**: Zero-shot, few-shot, chain-of-thought, and system prompts are your primary tools for getting desired outputs.\n\n8. **Error handling and streaming** are practical necessities when building production applications with LLM APIs.\n\n---\n\n## 10. Try It Yourself\n\n### Exercise 1: Token Counter\nWrite a Python function that:\n- Takes any text string as input\n- Uses the `tiktoken` library to count tokens for GPT-4\n- Reports the token count, estimated cost (at $2.50/1M input tokens), and character-to-token ratio\n\n### Exercise 2: Prompt Engineering Lab\nCreate a prompt that can classify customer support emails into exactly one of these categories: `Billing`, `Technical`, `Shipping`, `Account`, `General`. Test it with at least 10 different emails of your creation, including edge cases (emails that mention multiple topics, sarcastic emails, very short emails).\n\n### Exercise 3: Temperature Experiment\nRun the same creative writing prompt (\"Write a one-paragraph story about a robot\") with temperatures 0.0, 0.5, 1.0, and 1.5. Save the outputs and analyze: How does the output change? Is there a \"sweet spot\" for creative writing?\n\n### Exercise 4: Structured Output\nWrite a prompt that extracts product information from messy text and returns it as clean JSON. Example input: \"iPhone 15 Pro, $999, released Sept 2023, 4.8 stars, available in black titanium, blue titanium, natural titanium, white titanium.\" Expected output should include name, price, release_date, rating, and color_options.\n\n### Exercise 5: Build a Mini-Chatbot\nUsing the OpenAI API, build a chatbot that:\n- Has a system prompt defining its personality\n- Maintains conversation history (up to 10 messages)\n- Handles errors gracefully\n- Streams responses in real-time\n- Can be exited by typing \"quit\"\n\n---\n\n\u003e **Next Chapter**: In [Chapter 2: RAG \u0026 Knowledge Systems](./chapter-02-rag-and-knowledge-systems.md), we'll learn how to give LLMs access to your own data using Retrieval-Augmented Generation — the first building block of intelligent AI agents.\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"div\",null,{\"children\":[\"$\",\"$Lf\",null,{\"content\":\"$10\",\"currentChapter\":{\"id\":\"agents-ch-01\",\"number\":1,\"title\":\"LLMs \u0026 GenAI Fundamentals\",\"subtitle\":\"Understanding the Intelligence Behind AI Agents\",\"description\":\"Master Large Language Models, Generative AI, transformers, tokenization, and prompt engineering — the foundation every agent builder needs.\",\"slug\":\"llms-and-genai-fundamentals\",\"part\":\"Part I: Foundations\",\"estimatedPages\":18,\"topics\":[\"What are LLMs\",\"Transformers architecture\",\"Tokenization\",\"Prompt engineering\",\"GenAI landscape\",\"Context windows\",\"Temperature \u0026 sampling\"],\"icon\":\"🧠\",\"bookId\":\"ai-agents\"}}]}]\n"])</script><script>self.__next_f.push([1,"a:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"7:null\nc:[[\"$\",\"title\",\"0\",{\"children\":\"AI Agents: The Complete Guide\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi\"}],[\"$\",\"meta\",\"2\",{\"name\":\"author\",\"content\":\"Manjunath Kalburgi\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi\"}]]\n"])</script></body></html>

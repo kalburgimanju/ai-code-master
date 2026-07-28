@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 1 - The AI automation problem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #141413;
+            color: #FAF9F5;
+            overflow: hidden;
+            width: 1080px;
+            height: 1080px;
+            position: relative;
+        }
+        .clip {
+            position: absolute;
+            width: 1080px;
+            height: 1080px;
+            clip-path: inset(0);
+        }
+        .grid-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .circuit-board {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 400px;
+            filter: blur(0.5px);
+        }
+        .circuit-path {
+            stroke: #00D4FF;
+            stroke-width: 3;
+            fill: none;
+            opacity: 0.8;
+            vector-effect: non-scaling-stroke;
+        }
+        .neural-connection {
+            stroke: #00FF94;
+            stroke-width: 2;
+            fill: none;
+            opacity: 0.6;
+        }
+        .task-marker {
+            fill: #FF00FF;
+            opacity: 0.8;
+        }
+        .task-text {
+            fill: #FFFF00;
+            font-family: 'SF Mono', monospace;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .label {
+            fill: #FAF9F5;
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-weight: 300;
+        }
+        .emphasis {
+            fill: #00D4FF;
+            font-weight: 600;
+        }
+        .glow {
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+        }
+        @media (prefers-color-scheme: light) {
+            body {
+                background: #FAF9F5;
+                color: #141413;
+            }
+            .label { fill: #141413; }
+            .task-text { fill: #141413; }
+        }
+    </style>
+</head>
+<body>
+    <div class="clip">
+        <div class="grid-lines"></div>
+
+        <!-- Circuit Background -->
+        <svg class="circuit-board">
+            <!-- Circuit Traces -->
+            <path class="circuit-path" d="M 50,200 Q 200,100 350,200 T 550,200"/>
+            <path class="circuit-path" d="M 100,300 Q 250,200 400,300 T 600,300"/>
+            <path class="circuit-path" d="M 150,350 Q 300,250 450,350"/>
+
+            <!-- Neural Connections -->
+            <circle cx="200" cy="150" r="3" fill="#00FF94" class="neural-connection"/>
+            <circle cx="350" cy="250" r="4" fill="#00FF94" class="neural-connection"/>
+            <circle cx="500" cy="180" r="3" fill="#00FF94" class="neural-connection"/>
+
+            <!-- Task Markers -->
+            <rect x="250" y="90" width="80" height="40" rx="4" class="task-marker"/>
+            <text x="290" y="120" class="task-text">TODO</text>
+            <rect x="420" y="260" width="100" height="40" rx="4" class="task-marker"/>
+            <text x="450" y="290" class="task-text">PENDING</text>
+        </svg>
+
+        <!-- Text Elements -->
+        <svg width="1080" height="1080" style="position: absolute; top: 0; left: 0;">
+            <text x="540" y="120" text-anchor="middle" class="label">AI Automation</text>
+            <text x="540" y="180" text-anchor="middle" class="label emphasis">Problem</text>
+            <text x="540" y="900" text-anchor="middle" class="label">Complex Logic Tasks</text>
+            <text x="540" y="960" text-anchor="middle" class="label">Need Intelligent</text>
+            <text x="540" y="1020" text-anchor="middle" class="label emphasis">Interpretation</text>
+        </svg>
+    </div>
+
+    <script type="module">
+        import gsap from 'https://esm.run/gsap';
+
+        window.__timelines = {};
+        window.__timelines["composition-01"] = gsap.timeline({ paused: true });
+
+        const tl = window.__timelines["composition-01"];
+
+        // Grid lines animation
+        tl.fromTo(
+            ".grid-lines",
+            { opacity: 0 },
+            { opacity: 1, duration: 2, ease: "power2.out" }
+        );
+
+        // Circuit paths reveal with glitch effect
+        tl.fromTo(
+            ".circuit-path",
+            { strokeDashoffset: 500, strokeOpacity: 0 },
+            {
+                strokeDashoffset: 0,
+                strokeOpacity: 0.8,
+                duration: 1.5,
+                ease: "power2.inOut",
+                stagger: 0.2
+            },
+            "-=1.5"
+        );
+
+        // Neural connections pulse
+        tl.fromTo(
+            ".neural-connection",
+            { opacity: 0, r: 0 },
+            {
+                opacity: 0.6,
+                r: 4,
+                duration: 0.5,
+                ease: "back.out(1.5)",
+                stagger: 0.1
+            },
+            "-=1.2"
+        );
+
+        // Task markers appear with scale
+        tl.fromTo(
+            ".task-marker",
+            { opacity: 0, scale: 0.8 },
+            {
+                opacity: 0.8,
+                scale: 1,
+                duration: 0.3,
+                ease: "back.out(1.2)",
+                stagger: 0.1
+            },
+            "-=1.0"
+        );
+
+        // Task text appears
+        tl.fromTo(
+            ".task-text",
+            { opacity: 0 },
+            {
+                opacity: 1,
+                duration: 0.2,
+                ease: "power2.out",
+                stagger: 0.05
+            },
+            "-=0.8"
+        );
+
+        // Main labels fade in
+        tl.fromTo(
+            ".label",
+            { opacity: 0, y: 20 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                stagger: 0.1
+            },
+            "-=1.0"
+        );
+
+        // Emphasis elements glow
+        tl.to(
+            ".emphasis",
+            {
+                duration: 1.5,
+                textShadow: "0 0 20px rgba(0, 212, 255, 0.8), 0 0 30px rgba(0, 212, 255, 0.6)",
+                repeat: -1,
+                yoyo: true
+            },
+            "-=0.5"
+        );
+    </script>
+</body>
+</html>

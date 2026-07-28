@@ -1,0 +1,59 @@
+# Dependencies
+/node_modules
+/.next
+/coverage
+/.nyc_output
+/out
+*.tsbuildinfo
+
+# Build
+/dist
+build
+*.log
+
+# Environment
+.env
+.env.local
+.env.production
+.env.development
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Test output
+/jest-monocypher
+/cypress/screenshots
+/cypress/videos
+
+# Local data
+*.db
+*.sqlite
+
+# Next.js export directory
+out/
+
+# Development
+.DS_Store
+tmp/
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# macOS
+.DS_Store
+/Desktop Viewer*
+
+# Windows
+Thumbs.db
+Thumbs.db.thumbcache
+hgignore
+.hgflow
+
+# Git
+.git/ignored

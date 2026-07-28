@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; font-family: "Inter", sans-serif; }
+    .clip { visibility: hidden; }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 1600px;
+    }
+    .section-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #4F46E5;
+      margin-bottom: 40px;
+      opacity: 0;
+    }
+    .pricing-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+    .price-range {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .price-label {
+      font-size: 24px;
+      font-weight: 600;
+      color: #E2E8F0;
+    }
+    .price-value {
+      font-size: 48px;
+      font-weight: 700;
+      color: #10B981;
+    }
+    .price-separator {
+      font-size: 32px;
+      color: #94A3B8;
+    }
+    .calculator-section {
+      background: rgba(79, 70, 229, 0.04);
+      border: 1.5px solid rgba(79, 70, 229, 0.2);
+      border-radius: 14px;
+      padding: 40px;
+      width: 100%;
+      max-width: 800px;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(79, 70, 229, 0.1);
+    }
+    .calc-row:last-child { border-bottom: none; }
+    .calc-label {
+      font-size: 20px;
+      color: #E2E8F0;
+    }
+    .calc-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #10B981;
+    }
+    .calc-value.total {
+      font-size: 32px;
+      color: #4F46E5;
+    }
+    .emi-highlight {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 20px;
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    .emi-label {
+      font-size: 18px;
+      color: #94A3B8;
+      margin-bottom: 8px;
+    }
+    .emi-value {
+      font-size: 42px;
+      font-weight: 800;
+      color: #10B981;
+    }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" id="root" data-composition-id="04-pricing" data-start="24" data-duration="8" data-width="1920" data-height="1080">
+    <div class="container clip" data-start="0" data-duration="8" data-track-index="1">
+      <div id="section-title" class="section-title">Pricing & Financial Planning</div>
+      <div class="pricing-container">
+        <div id="price-range" class="price-range">
+          <span class="price-label">Starting From</span>
+          <span class="price-value">₹35 L</span>
+          <span class="price-separator">to</span>
+          <span class="price-value">₹65 L</span>
+        </div>
+        <div id="calculator" class="calculator-section">
+          <div class="calc-row">
+            <span class="calc-label">Base Price</span>
+            <span class="calc-value">₹65.0 L</span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">Stamp Duty (5%)</span>
+            <span class="calc-value">₹3.25 L</span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">Registration (1%)</span>
+            <span class="calc-value">₹0.65 L</span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">Total Cost</span>
+            <span class="calc-value total">₹68.9 L</span>
+          </div>
+        </div>
+        <div id="emi" class="emi-highlight">
+          <div class="emi-label">EMI Estimate (80% loan, 8.5% interest, 20 years)</div>
+          <div class="emi-value">₹45,127/month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#section-title",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+      0.5
+    );
+
+    tl.fromTo("#price-range",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+      1.0
+    );
+
+    tl.fromTo("#calculator",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+      1.5
+    );
+
+    tl.fromTo("#emi",
+      { opacity: 0, scale: 0.9 },
+      { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)" },
+      2.5
+    );
+
+    window.__timelines["04-pricing"] = tl;
+  </script>
+</body>
+</html>

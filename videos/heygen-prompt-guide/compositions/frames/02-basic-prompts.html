@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; }
+    .clip { visibility: hidden; }
+    .scene {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 80px;
+    }
+    .section-label {
+      font-family: "Nunito", sans-serif;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      font-size: 13px; font-weight: 600;
+      color: #4F46E5; margin-bottom: 8px; opacity: 0;
+    }
+    .section-title {
+      font-family: "Nunito", sans-serif;
+      font-size: 36px; font-weight: 700;
+      color: #fff; margin-bottom: 32px; opacity: 0;
+    }
+    .cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; width: 100%; max-width: 1400px;
+    }
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 28px 22px;
+      text-align: center; opacity: 0; transform: translateY(20px);
+    }
+    .card:nth-child(1) { border-color: rgba(79,70,229,0.3); }
+    .card:nth-child(2) { border-color: rgba(6,147,227,0.3); }
+    .card:nth-child(3) { border-color: rgba(16,185,129,0.3); }
+    .card-icon { font-size: 32px; display: block; margin-bottom: 12px; }
+    .card-name { font-family: "Nunito", sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .card-desc { font-family: "Source Serif 4", Georgia, serif; font-size: 14px; color: #94A3B8; line-height: 1.5; }
+    .example {
+      margin-top: 12px; padding: 8px 12px;
+      background: rgba(79,70,229,0.06);
+      border-radius: 8px;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 12px; color: #A5B4FC; font-style: italic;
+    }
+    .avatar-wrap {
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(79, 70, 229, 0.3);
+      opacity: 0;
+    }
+    .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" data-composition-id="02-basic-prompts" data-start="5" data-duration="9" data-width="1920" data-height="1080">
+    <div class="scene">
+      <div id="label" class="section-label clip" data-start="0" data-duration="9" data-track-index="0">Three Basic Controls</div>
+      <div id="title" class="section-title clip" data-start="0" data-duration="9" data-track-index="0">Start Simple</div>
+      <div class="cards">
+        <div class="card clip" data-start="0" data-duration="9" data-track-index="1">
+          <span class="card-icon">👤</span>
+          <div class="card-name">Avatar Selection</div>
+          <div class="card-desc">Pick your presenter or go with no avatar for voice-only content</div>
+          <div class="example">"Use a professional female avatar"</div>
+        </div>
+        <div class="card clip" data-start="0" data-duration="9" data-track-index="2">
+          <span class="card-icon">⏱️</span>
+          <div class="card-name">Duration & Aspect</div>
+          <div class="card-desc">Auto, 30s, 1min, or 2min — portrait, landscape, or auto</div>
+          <div class="example">"1 minute, landscape"</div>
+        </div>
+        <div class="card clip" data-start="0" data-duration="9" data-track-index="3">
+          <span class="card-icon">📝</span>
+          <div class="card-name">Basic Content Prompt</div>
+          <div class="card-desc">Describe what your video should cover in plain language</div>
+          <div class="example">"Explain phishing with examples"</div>
+        </div>
+      </div>
+    </div>
+    <div class="avatar-wrap clip" data-start="0" data-duration="9" data-track-index="0">
+      <img src="https://app.heygen.com/embeddings/ef75c18fca604ac6b359d6b6cb785a7f/image.png" alt="" />
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#label", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0);
+    tl.fromTo("#title", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.4);
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((c, i) => {
+      tl.fromTo(c, { opacity: 0, y: 25, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 0.9 + i * 0.12);
+    });
+    tl.to(".avatar-wrap", { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.8);
+
+    window.__timelines["02-basic-prompts"] = tl;
+  </script>
+</body>
+</html>

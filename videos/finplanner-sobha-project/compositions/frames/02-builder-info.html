@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; font-family: "Inter", sans-serif; }
+    .clip { visibility: hidden; }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 1700px;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #4F46E5;
+      margin-bottom: 40px;
+      opacity: 0;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    .info-card {
+      background: rgba(79, 70, 229, 0.04);
+      border: 1.5px solid rgba(79, 70, 229, 0.2);
+      border-radius: 14px;
+      padding: 30px;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .info-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #4F46E5;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .info-value {
+      font-size: 22px;
+      font-weight: 500;
+      color: #E2E8F0;
+      line-height: 1.4;
+    }
+    .rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #10B981;
+      color: #0F172A;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" id="root" data-composition-id="02-builder-info" data-start="8" data-duration="8" data-width="1920" data-height="1080">
+    <div class="container clip" data-start="0" data-duration="8" data-track-index="1">
+      <div id="section-title" class="section-title">Builder Information</div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-label">Builder</div>
+          <div class="info-value">Sobha Ltd</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">Rating</div>
+          <div class="info-value rating">4.3 ⭐ (128 reviews)</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">Location</div>
+          <div class="info-value">Gokul Road, Hubli</div>
+        </div>
+      </div>
+      <div class="info-card" style="max-width: 800px; margin: 0 auto;">
+        <div class="info-label">Project Highlights</div>
+        <div class="info-value">Premium residential project across 25 acres with 70% open space</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#section-title",
+      { opacity: 0, y: -30 },
+      { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+      0.3
+    );
+
+    tl.fromTo(".info-card",
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out" },
+      0.8
+    );
+
+    window.__timelines["02-builder-info"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Course Platform - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        nav button:hover {
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .course-form {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+
+        .course-list {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button.primary {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        button.primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .course-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .course-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+
+        .course-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status.active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 AI Course Platform</h1>
+            <p class="subtitle">Intelligent Course Management with AI-Powered Lesson Generation</p>
+        </header>
+
+        <nav>
+            <button onclick="showSection('create')">+ Create Course</button>
+            <button onclick="showSection('list')">📚 View All Courses</button>
+            <button onclick="showSection('analytics')">📊 Analytics</button>
+            <button onclick="showSection('settings')">⚙️ Settings</button>
+        </nav>
+
+        <div class="content">
+            <!-- Create Course Section -->
+            <div id="create-section" class="course-form" style="display: block;">
+                <h2>🚀 Create New Course</h2>
+                <form id="create-course-form">
+                    <div class="form-group">
+                        <label for="course-title">Course Title</label>
+                        <input type="text" id="course-title" placeholder="e.g., Introduction to Machine Learning" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course-topic">Primary Topic</label>
+                        <input type="text" id="course-topic" placeholder="e.g., Machine Learning, Data Science, AI Ethics" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course-description">Description</label>
+                        <textarea id="course-description" placeholder="Describe what students will learn..." rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course-level">Difficulty Level</label>
+                        <select id="course-level">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course-duration">Duration (weeks)</label>
+                        <input type="number" id="course-duration" placeholder="e.g., 6" min="1" max="52" value="6">
+                    </div>
+
+                    <button type="submit" class="primary">Create Course</button>
+                </form>
+            </div>
+
+            <!-- Course List Section -->
+            <div id="list-section" class="course-list" style="display: none;">
+                <h2>📚 Your Courses</h2>
+                <div id="course-list-content">
+                    <div class="loading">Loading courses...</div>
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div id="analytics-section" class="course-list" style="display: none;">
+                <h2>📊 Course Analytics</h2>
+                <div id="analytics-content">
+                    <div class="loading">Loading analytics...</div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="settings-section" class="course-list" style="display: none;">
+                <h2>⚙️ Settings</h2>
+                <p>Course platform settings will go here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock API endpoints (in production, these would be real API calls)
+        const API_BASE = 'http://localhost:8000';
+
+        // Show different sections
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.course-form, .course-list').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            // Show the requested section
+            document.getElementById(section + '-section').style.display = 'block';
+
+            // Load section-specific content
+            if (section === 'list') {
+                loadCourses();
+            } else if (section === 'analytics') {
+                loadAnalytics();
+            }
+        }
+
+        // Load courses from API
+        async function loadCourses() {
+            const courseList = document.getElementById('course-list-content');
+            courseList.innerHTML = '<div class="loading">Loading courses...</div>';
+
+            try {
+                // Mock data for demonstration
+                const mockCourses = [
+                    {
+                        id: 'course_1',
+                        title: 'Introduction to Machine Learning',
+                        description: 'Learn the fundamentals of ML algorithms and concepts',
+                        topic: 'Machine Learning',
+                        level: 'beginner',
+                        duration: 6,
+                        status: 'active',
+                        enrollment_count: 45,
+                        completion_rate: 78
+                    },
+                    {
+                        id: 'course_2',
+                        title: 'Advanced Data Science',
+                        description: 'Deep dive into data science techniques and tools',
+                        topic: 'Data Science',
+                        level: 'advanced',
+                        duration: 8,
+                        status: 'active',
+                        enrollment_count: 23,
+                        completion_rate: 65
+                    },
+                    {
+                        id: 'course_3',
+                        title: 'AI Ethics and Responsible Computing',
+                        description: 'Explore ethical considerations in AI development',
+                        topic: 'AI Ethics',
+                        level: 'intermediate',
+                        duration: 4,
+                        status: 'inactive',
+                        enrollment_count: 12,
+                        completion_rate: 42
+                    }
+                ];
+
+                courseList.innerHTML = '';
+                mockCourses.forEach(course => {
+                    const courseCard = document.createElement('div');
+                    courseCard.className = 'course-card';
+                    courseCard.innerHTML = `
+                        <h3>📖 ${course.title}</h3>
+                        <p>${course.description}</p>
+                        <div class="course-meta">
+                            <span>🎯 ${course.topic}</span>
+                            <span>📊 ${course.level}</span>
+                            <span>⏱️ ${course.duration} weeks</span>
+                            <span>📝 ${course.enrollment_count} students</span>
+                            <span class="status ${course.status}">${course.status.toUpperCase()}</span>
+                        </div>
+                    `;
+                    courseList.appendChild(courseCard);
+                });
+            } catch (error) {
+                courseList.innerHTML = `<div class="error">Failed to load courses: ${error.message}</div>`;
+            }
+        }
+
+        // Load analytics
+        async function loadAnalytics() {
+            const analyticsContent = document.getElementById('analytics-content');
+            analyticsContent.innerHTML = '<div class="loading">Loading analytics...</div>';
+
+            try {
+                // Mock analytics data
+                analyticsContent.innerHTML = `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <div style="background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%); padding: 20px; border-radius: 10px; color: white;">
+                            <h3 style="margin-bottom: 10px;">Total Courses</h3>
+                            <p style="font-size: 2rem; font-weight: bold;">3</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #ff9a76 0%, #f095f1 100%); padding: 20px; border-radius: 10px; color: white;">
+                            <h3 style="margin-bottom: 10px;">Active Students</h3>
+                            <p style="font-size: 2rem; font-weight: bold;">80</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); padding: 20px; border-radius: 10px; color: white;">
+                            <h3 style="margin-bottom: 10px;">Completion Rate</h3>
+                            <p style="font-size: 2rem; font-weight: bold;">61%</p>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                analyticsContent.innerHTML = `<div class="error">Failed to load analytics: ${error.message}</div>`;
+            }
+        }
+
+        // Create course form submission
+        document.getElementById('create-course-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = {
+                title: document.getElementById('course-title').value,
+                topic: document.getElementElementById('course-topic').value,
+                description: document.getElementById('course-description').value,
+                level: document.getElementById('course-level').value,
+                duration: parseInt(document.getElementById('course-duration').value)
+            };
+
+            // Validate form
+            if (!formData.title || !formData.topic || !formData.description) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            try {
+                // Mock API call
+                const response = await new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve({
+                            id: 'course_' + Date.now(),
+                            ...formData,
+                            status: 'active',
+                            enrollment_count: 0,
+                            completion_rate: 0
+                        });
+                    }, 1000);
+                });
+
+                alert(`Course created successfully! Course ID: ${response.id}`);
+                document.getElementById('create-course-form').reset();
+                showSection('list');
+            } catch (error) {
+                alert(`Error creating course: ${error.message}`);
+            }
+        });
+
+        // Initialize the dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('list');
+        });
+    </script>
+</body>
+</html>

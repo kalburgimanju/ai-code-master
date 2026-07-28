@@ -1,0 +1,45 @@
+"""Storage package initialization."""
+
+from backend.storage.database import DatabaseManager, get_db_manager, get_db_session
+from backend.storage.models import (
+    AgentConfig,
+    AgentRun,
+    AgentStatus,
+    AgentRunStatus,
+    Company,
+    CompanyStage,
+    Contact,
+    OutreachCampaign,
+    CampaignStatus,
+    EmailLog,
+    EmailStatus,
+    PipelineDeal,
+    DealActivity,
+    CallBooking,
+    UnsubscribeRecord,
+    AnalyticsSnapshot,
+    Base,
+)
+
+__all__ = [
+    "DatabaseManager",
+    "get_db_manager",
+    "get_db_session",
+    "AgentConfig",
+    "AgentRun",
+    "AgentStatus",
+    "AgentRunStatus",
+    "Company",
+    "CompanyStage",
+    "Contact",
+    "OutreachCampaign",
+    "CampaignStatus",
+    "EmailLog",
+    "EmailStatus",
+    "PipelineDeal",
+    "DealActivity",
+    "CallBooking",
+    "UnsubscribeRecord",
+    "AnalyticsSnapshot",
+    "Base",
+]

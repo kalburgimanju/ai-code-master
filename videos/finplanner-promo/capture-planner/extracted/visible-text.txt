@@ -1,0 +1,70 @@
+[span] FinPlanner
+[span] Real Estate & Finance
+[a] Dashboard
+[a] Properties
+[a] Financial Planner
+[a] AI Agents
+[a] Marketing
+[a] Marketplace
+[a] Community
+[a] Sign In
+[span] Welcome
+[span] Hubli • Bangalore • Mysore
+[h1] Financial Planner
+[p] Plan your finances, calculate affordability, and get AI-powered advice
+[button] Profile
+[button] Calculator
+[button] AI Advisor
+[h2] Your Profile
+[span] Monthly Salary (₹)
+[span] 75,000
+[span] Current Savings (₹)
+[span] 5,00,000
+[span] Monthly Expenses (₹)
+[span] 30,000
+[span] Current EMIs (₹)
+[span] 5,000
+[span] Emergency Fund (₹)
+[span] 2,00,000
+[span] Target Monthly Savings (₹)
+[span] 15,000
+[span] Target Property Budget (₹)
+[span] 50,00,000
+[span] Your Age
+[span] Retirement Age
+[span] Dependents
+[h2] Financial Summary
+[span] Monthly Income
+[span] ₹75,000
+[span] Monthly Outgo
+[span] ₹50,000
+[span] Disposable Income
+[span] ₹25,000
+[span] Annual Saving Potential
+[span] ₹1,80,000
+[h2] Home Loan Eligibility
+[span] Property Budget
+[span] ₹50,00,000
+[span] 20% Down Payment Needed
+[span] ₹10,00,000
+[span] Loan Amount Needed
+[span] ₹40,00,000
+[span] Max Loan Eligible (est.)
+[span] ₹90,00,000
+[span] Monthly EMI (est.)
+[span] ₹34,713
+[span] EMI-to-Income Ratio
+[span] 46%
+[p] EMI ratio: Ideal is 30-40% of income.
+[p] Consider a lower budget.
+[h2] Goals & Projections
+[span] Emergency Fund Coverage
+[span] 7 months
+[span] Months to Down Payment
+[span] 34 months
+[span] Retirement Corpus (est.)
+[span] ₹54,00,000
+[p] AI Tip
+[p] Based on your profile, try to save at least 20% of your income. An ideal home budget is 3-5x your annual income. Switch to the
+[button] AI Advisor
+[p] for personalized recommendations.

@@ -1,0 +1,4481 @@
+{
+  "tts_provider": "kokoro",
+  "voice_id": "af_heart",
+  "bgm": {
+    "path": "assets/bgm/track.wav",
+    "volume": 0.12,
+    "mode": "detached-seed-loop",
+    "duration_s": null
+  },
+  "bgm_pending": true,
+  "bgm_provider": "musicgen",
+  "bgm_pid": 38425,
+  "bgm_log": "/Users/manjunathkalburgi/Documents/AI_React_Projects/claude/free-claude-code/videos/phishing-compliance-training/assets/bgm/bgm-1784977916382.log",
+  "bgm_mode": "detached-seed-loop",
+  "bgm_target_duration_s": 303.873,
+  "bgm_seed_duration_s": 28,
+  "bgm_loop_count": 11,
+  "voices": [
+    {
+      "id": "intro",
+      "path": "assets/voice/intro.wav",
+      "duration_s": 4.117,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Phishing",
+          "start": 0.11,
+          "end": 0.47
+        },
+        {
+          "id": "w1",
+          "text": "Spot",
+          "start": 0.55,
+          "end": 0.84
+        },
+        {
+          "id": "w2",
+          "text": "It,",
+          "start": 0.84,
+          "end": 1.25
+        },
+        {
+          "id": "w3",
+          "text": "Stop",
+          "start": 1.25,
+          "end": 1.63
+        },
+        {
+          "id": "w4",
+          "text": "It,",
+          "start": 2.04,
+          "end": 2.15
+        },
+        {
+          "id": "w5",
+          "text": "a",
+          "start": 2.15,
+          "end": 2.27
+        },
+        {
+          "id": "w6",
+          "text": "cybersecurity",
+          "start": 2.27,
+          "end": 2.93
+        },
+        {
+          "id": "w7",
+          "text": "compliance",
+          "start": 2.93,
+          "end": 3.52
+        },
+        {
+          "id": "w8",
+          "text": "training.",
+          "start": 3.52,
+          "end": 4.01
+        }
+      ]
+    },
+    {
+      "id": "s1-1",
+      "path": "assets/voice/s1-1.wav",
+      "duration_s": 9.045,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Every",
+          "start": 0.03,
+          "end": 0.42
+        },
+        {
+          "id": "w1",
+          "text": "day,",
+          "start": 0.42,
+          "end": 0.84
+        },
+        {
+          "id": "w2",
+          "text": "over",
+          "start": 0.84,
+          "end": 1.18
+        },
+        {
+          "id": "w3",
+          "text": "three.",
+          "start": 1.18,
+          "end": 1.88
+        },
+        {
+          "id": "w4",
+          "text": "Four",
+          "start": 1.91,
+          "end": 2.16
+        },
+        {
+          "id": "w5",
+          "text": "billion",
+          "start": 2.16,
+          "end": 2.5
+        },
+        {
+          "id": "w6",
+          "text": "phishing",
+          "start": 2.69,
+          "end": 3.22
+        },
+        {
+          "id": "w7",
+          "text": "emails",
+          "start": 3.22,
+          "end": 3.29
+        },
+        {
+          "id": "w8",
+          "text": "are",
+          "start": 3.29,
+          "end": 3.91
+        },
+        {
+          "id": "w9",
+          "text": "sent",
+          "start": 3.91,
+          "end": 4.17
+        },
+        {
+          "id": "w10",
+          "text": "worldwide,",
+          "start": 4.22,
+          "end": 5.26
+        },
+        {
+          "id": "w11",
+          "text": "and",
+          "start": 5.29,
+          "end": 5.39
+        },
+        {
+          "id": "w12",
+          "text": "it",
+          "start": 5.43,
+          "end": 5.54
+        },
+        {
+          "id": "w13",
+          "text": "only",
+          "start": 5.54,
+          "end": 5.77
+        },
+        {
+          "id": "w14",
+          "text": "takes",
+          "start": 5.77,
+          "end": 5.88
+        },
+        {
+          "id": "w15",
+          "text": "one",
+          "start": 6.07,
+          "end": 6.23
+        },
+        {
+          "id": "w16",
+          "text": "click",
+          "start": 6.23,
+          "end": 6.56
+        },
+        {
+          "id": "w17",
+          "text": "to",
+          "start": 6.56,
+          "end": 6.67
+        },
+        {
+          "id": "w18",
+          "text": "compromise",
+          "start": 7.29,
+          "end": 7.4
+        },
+        {
+          "id": "w19",
+          "text": "an",
+          "start": 7.43,
+          "end": 7.53
+        },
+        {
+          "id": "w20",
+          "text": "entire",
+          "start": 7.57,
+          "end": 8
+        },
+        {
+          "id": "w21",
+          "text": "organization.",
+          "start": 8,
+          "end": 9.16
+        }
+      ]
+    },
+    {
+      "id": "s1-2",
+      "path": "assets/voice/s1-2.wav",
+      "duration_s": 8.832,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Phishing",
+          "start": 0.11,
+          "end": 0.57
+        },
+        {
+          "id": "w1",
+          "text": "isn't",
+          "start": 0.57,
+          "end": 0.92
+        },
+        {
+          "id": "w2",
+          "text": "just",
+          "start": 0.92,
+          "end": 1.21
+        },
+        {
+          "id": "w3",
+          "text": "the",
+          "start": 1.21,
+          "end": 1.4
+        },
+        {
+          "id": "w4",
+          "text": "most",
+          "start": 1.44,
+          "end": 1.71
+        },
+        {
+          "id": "w5",
+          "text": "common",
+          "start": 1.71,
+          "end": 2.14
+        },
+        {
+          "id": "w6",
+          "text": "cyber",
+          "start": 2.14,
+          "end": 2.5
+        },
+        {
+          "id": "w7",
+          "text": "attack,",
+          "start": 2.5,
+          "end": 3.04
+        },
+        {
+          "id": "w8",
+          "text": "it's",
+          "start": 3.09,
+          "end": 3.25
+        },
+        {
+          "id": "w9",
+          "text": "also",
+          "start": 3.27,
+          "end": 3.48
+        },
+        {
+          "id": "w10",
+          "text": "the",
+          "start": 3.48,
+          "end": 3.65
+        },
+        {
+          "id": "w11",
+          "text": "most",
+          "start": 3.65,
+          "end": 3.89
+        },
+        {
+          "id": "w12",
+          "text": "effective.",
+          "start": 3.89,
+          "end": 5
+        },
+        {
+          "id": "w13",
+          "text": "91%",
+          "start": 5.11,
+          "end": 5.47
+        },
+        {
+          "id": "w14",
+          "text": "of",
+          "start": 5.51,
+          "end": 5.67
+        },
+        {
+          "id": "w15",
+          "text": "all",
+          "start": 5.67,
+          "end": 5.89
+        },
+        {
+          "id": "w16",
+          "text": "data",
+          "start": 5.89,
+          "end": 6.19
+        },
+        {
+          "id": "w17",
+          "text": "breaches",
+          "start": 6.19,
+          "end": 6.77
+        },
+        {
+          "id": "w18",
+          "text": "begin",
+          "start": 6.89,
+          "end": 7.17
+        },
+        {
+          "id": "w19",
+          "text": "with",
+          "start": 7.17,
+          "end": 7.47
+        },
+        {
+          "id": "w20",
+          "text": "a",
+          "start": 7.47,
+          "end": 7.54
+        },
+        {
+          "id": "w21",
+          "text": "phishing",
+          "start": 7.54,
+          "end": 8.14
+        },
+        {
+          "id": "w22",
+          "text": "email.",
+          "start": 8.14,
+          "end": 8.8
+        }
+      ]
+    },
+    {
+      "id": "s1-3",
+      "path": "assets/voice/s1-3.wav",
+      "duration_s": 10.944,
+      "words": [
+        {
+          "id": "w0",
+          "text": "These",
+          "start": 0.06,
+          "end": 0.38
+        },
+        {
+          "id": "w1",
+          "text": "aren't",
+          "start": 0.38,
+          "end": 0.84
+        },
+        {
+          "id": "w2",
+          "text": "random",
+          "start": 0.84,
+          "end": 1.29
+        },
+        {
+          "id": "w3",
+          "text": "attempts",
+          "start": 1.32,
+          "end": 1.91
+        },
+        {
+          "id": "w4",
+          "text": "by",
+          "start": 1.91,
+          "end": 2.06
+        },
+        {
+          "id": "w5",
+          "text": "amateurs.",
+          "start": 2.06,
+          "end": 2.74
+        },
+        {
+          "id": "w6",
+          "text": "Sophisticated",
+          "start": 2.81,
+          "end": 3.68
+        },
+        {
+          "id": "w7",
+          "text": "attackers",
+          "start": 3.68,
+          "end": 4.32
+        },
+        {
+          "id": "w8",
+          "text": "craft",
+          "start": 4.34,
+          "end": 4.71
+        },
+        {
+          "id": "w9",
+          "text": "convincing",
+          "start": 4.71,
+          "end": 4.95
+        },
+        {
+          "id": "w10",
+          "text": "messages",
+          "start": 5.56,
+          "end": 6.22
+        },
+        {
+          "id": "w11",
+          "text": "designed",
+          "start": 6.29,
+          "end": 6.81
+        },
+        {
+          "id": "w12",
+          "text": "to",
+          "start": 6.81,
+          "end": 6.96
+        },
+        {
+          "id": "w13",
+          "text": "bypass",
+          "start": 6.96,
+          "end": 7.4
+        },
+        {
+          "id": "w14",
+          "text": "every",
+          "start": 7.4,
+          "end": 7.76
+        },
+        {
+          "id": "w15",
+          "text": "security",
+          "start": 7.76,
+          "end": 8.36
+        },
+        {
+          "id": "w16",
+          "text": "filter",
+          "start": 8.36,
+          "end": 8.43
+        },
+        {
+          "id": "w17",
+          "text": "and",
+          "start": 8.91,
+          "end": 9.02
+        },
+        {
+          "id": "w18",
+          "text": "trick",
+          "start": 9.06,
+          "end": 9.4
+        },
+        {
+          "id": "w19",
+          "text": "even",
+          "start": 9.4,
+          "end": 9.68
+        },
+        {
+          "id": "w20",
+          "text": "vigilant",
+          "start": 9.68,
+          "end": 10.19
+        },
+        {
+          "id": "w21",
+          "text": "employees.",
+          "start": 10.26,
+          "end": 11.04
+        }
+      ]
+    },
+    {
+      "id": "s1-4",
+      "path": "assets/voice/s1-4.wav",
+      "duration_s": 6.805,
+      "words": [
+        {
+          "id": "w0",
+          "text": "The",
+          "start": 0.05,
+          "end": 0.24
+        },
+        {
+          "id": "w1",
+          "text": "good",
+          "start": 0.24,
+          "end": 0.57
+        },
+        {
+          "id": "w2",
+          "text": "news,",
+          "start": 0.57,
+          "end": 1.08
+        },
+        {
+          "id": "w3",
+          "text": "with",
+          "start": 1.14,
+          "end": 1.3
+        },
+        {
+          "id": "w4",
+          "text": "the",
+          "start": 1.3,
+          "end": 1.47
+        },
+        {
+          "id": "w5",
+          "text": "right",
+          "start": 1.47,
+          "end": 1.75
+        },
+        {
+          "id": "w6",
+          "text": "knowledge,",
+          "start": 1.75,
+          "end": 2.3
+        },
+        {
+          "id": "w7",
+          "text": "you",
+          "start": 2.33,
+          "end": 2.49
+        },
+        {
+          "id": "w8",
+          "text": "can",
+          "start": 2.49,
+          "end": 2.64
+        },
+        {
+          "id": "w9",
+          "text": "spot",
+          "start": 2.7,
+          "end": 2.9
+        },
+        {
+          "id": "w10",
+          "text": "a",
+          "start": 2.9,
+          "end": 3.02
+        },
+        {
+          "id": "w11",
+          "text": "fish",
+          "start": 3.02,
+          "end": 3.22
+        },
+        {
+          "id": "w12",
+          "text": "before",
+          "start": 3.3,
+          "end": 3.59
+        },
+        {
+          "id": "w13",
+          "text": "it",
+          "start": 3.59,
+          "end": 3.66
+        },
+        {
+          "id": "w14",
+          "text": "ever",
+          "start": 3.7,
+          "end": 3.92
+        },
+        {
+          "id": "w15",
+          "text": "reaches",
+          "start": 3.92,
+          "end": 4.26
+        },
+        {
+          "id": "w16",
+          "text": "your",
+          "start": 4.26,
+          "end": 4.39
+        },
+        {
+          "id": "w17",
+          "text": "inbox",
+          "start": 4.45,
+          "end": 4.79
+        },
+        {
+          "id": "w18",
+          "text": "or",
+          "start": 4.79,
+          "end": 4.94
+        },
+        {
+          "id": "w19",
+          "text": "before",
+          "start": 4.94,
+          "end": 5.13
+        },
+        {
+          "id": "w20",
+          "text": "you",
+          "start": 5.53,
+          "end": 5.59
+        },
+        {
+          "id": "w21",
+          "text": "take",
+          "start": 5.66,
+          "end": 5.95
+        },
+        {
+          "id": "w22",
+          "text": "the",
+          "start": 5.95,
+          "end": 6.18
+        },
+        {
+          "id": "w23",
+          "text": "bait.",
+          "start": 6.18,
+          "end": 6.76
+        }
+      ]
+    },
+    {
+      "id": "s2-1",
+      "path": "assets/voice/s2-1.wav",
+      "duration_s": 14.784,
+      "words": [
+        {
+          "id": "w0",
+          "text": "So",
+          "start": 0.13,
+          "end": 0.17
+        },
+        {
+          "id": "w1",
+          "text": "what",
+          "start": 0.17,
+          "end": 0.5
+        },
+        {
+          "id": "w2",
+          "text": "exactly",
+          "start": 0.51,
+          "end": 1.11
+        },
+        {
+          "id": "w3",
+          "text": "is",
+          "start": 1.11,
+          "end": 1.26
+        },
+        {
+          "id": "w4",
+          "text": "phishing?",
+          "start": 1.33,
+          "end": 2.26
+        },
+        {
+          "id": "w5",
+          "text": "At",
+          "start": 2.39,
+          "end": 2.45
+        },
+        {
+          "id": "w6",
+          "text": "its",
+          "start": 2.45,
+          "end": 2.73
+        },
+        {
+          "id": "w7",
+          "text": "core,",
+          "start": 2.73,
+          "end": 3.32
+        },
+        {
+          "id": "w8",
+          "text": "phishing",
+          "start": 3.32,
+          "end": 3.8
+        },
+        {
+          "id": "w9",
+          "text": "is",
+          "start": 3.8,
+          "end": 3.92
+        },
+        {
+          "id": "w10",
+          "text": "a",
+          "start": 3.92,
+          "end": 3.96
+        },
+        {
+          "id": "w11",
+          "text": "type",
+          "start": 3.97,
+          "end": 3.98
+        },
+        {
+          "id": "w12",
+          "text": "of",
+          "start": 3.98,
+          "end": 4.32
+        },
+        {
+          "id": "w13",
+          "text": "social",
+          "start": 4.53,
+          "end": 4.67
+        },
+        {
+          "id": "w14",
+          "text": "engineering",
+          "start": 4.67,
+          "end": 5.25
+        },
+        {
+          "id": "w15",
+          "text": "attack",
+          "start": 5.67,
+          "end": 5.86
+        },
+        {
+          "id": "w16",
+          "text": "where",
+          "start": 5.97,
+          "end": 6.16
+        },
+        {
+          "id": "w17",
+          "text": "cyber",
+          "start": 6.16,
+          "end": 6.46
+        },
+        {
+          "id": "w18",
+          "text": "criminals",
+          "start": 6.46,
+          "end": 7
+        },
+        {
+          "id": "w19",
+          "text": "impersonate",
+          "start": 7,
+          "end": 7.56
+        },
+        {
+          "id": "w20",
+          "text": "a",
+          "start": 7.56,
+          "end": 8.13
+        },
+        {
+          "id": "w21",
+          "text": "trusted",
+          "start": 8.13,
+          "end": 8.2
+        },
+        {
+          "id": "w22",
+          "text": "entity",
+          "start": 8.2,
+          "end": 8.68
+        },
+        {
+          "id": "w23",
+          "text": "to",
+          "start": 8.79,
+          "end": 8.83
+        },
+        {
+          "id": "w24",
+          "text": "steal",
+          "start": 8.83,
+          "end": 9.21
+        },
+        {
+          "id": "w25",
+          "text": "sensitive",
+          "start": 9.21,
+          "end": 9.87
+        },
+        {
+          "id": "w26",
+          "text": "information,",
+          "start": 9.87,
+          "end": 10.92
+        },
+        {
+          "id": "w27",
+          "text": "passwords,",
+          "start": 11.05,
+          "end": 11.8
+        },
+        {
+          "id": "w28",
+          "text": "credit",
+          "start": 11.88,
+          "end": 12.33
+        },
+        {
+          "id": "w29",
+          "text": "card",
+          "start": 12.33,
+          "end": 12.62
+        },
+        {
+          "id": "w30",
+          "text": "numbers,",
+          "start": 13.19,
+          "end": 13.4
+        },
+        {
+          "id": "w31",
+          "text": "or",
+          "start": 13.4,
+          "end": 13.51
+        },
+        {
+          "id": "w32",
+          "text": "access",
+          "start": 13.57,
+          "end": 13.91
+        },
+        {
+          "id": "w33",
+          "text": "credentials.",
+          "start": 14.33,
+          "end": 14.9
+        }
+      ]
+    },
+    {
+      "id": "s2-2",
+      "path": "assets/voice/s2-2.wav",
+      "duration_s": 15.189,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Think",
+          "start": 0.08,
+          "end": 0.42
+        },
+        {
+          "id": "w1",
+          "text": "of",
+          "start": 0.42,
+          "end": 0.59
+        },
+        {
+          "id": "w2",
+          "text": "it",
+          "start": 0.59,
+          "end": 0.69
+        },
+        {
+          "id": "w3",
+          "text": "as",
+          "start": 0.8,
+          "end": 0.91
+        },
+        {
+          "id": "w4",
+          "text": "digital",
+          "start": 0.94,
+          "end": 1.44
+        },
+        {
+          "id": "w5",
+          "text": "bait.",
+          "start": 1.51,
+          "end": 2.14
+        },
+        {
+          "id": "w6",
+          "text": "The",
+          "start": 2.22,
+          "end": 2.36
+        },
+        {
+          "id": "w7",
+          "text": "attacker",
+          "start": 2.36,
+          "end": 2.96
+        },
+        {
+          "id": "w8",
+          "text": "sends",
+          "start": 2.96,
+          "end": 3.32
+        },
+        {
+          "id": "w9",
+          "text": "a",
+          "start": 3.32,
+          "end": 3.34
+        },
+        {
+          "id": "w10",
+          "text": "lure,",
+          "start": 3.4,
+          "end": 3.73
+        },
+        {
+          "id": "w11",
+          "text": "an",
+          "start": 3.86,
+          "end": 4.07
+        },
+        {
+          "id": "w12",
+          "text": "email,",
+          "start": 4.32,
+          "end": 4.7
+        },
+        {
+          "id": "w13",
+          "text": "text",
+          "start": 4.79,
+          "end": 5.11
+        },
+        {
+          "id": "w14",
+          "text": "message,",
+          "start": 5.11,
+          "end": 5.74
+        },
+        {
+          "id": "w15",
+          "text": "or",
+          "start": 5.82,
+          "end": 5.89
+        },
+        {
+          "id": "w16",
+          "text": "phone",
+          "start": 5.89,
+          "end": 6.2
+        },
+        {
+          "id": "w17",
+          "text": "call",
+          "start": 6.29,
+          "end": 6.59
+        },
+        {
+          "id": "w18",
+          "text": "that",
+          "start": 6.59,
+          "end": 6.9
+        },
+        {
+          "id": "w19",
+          "text": "looks",
+          "start": 6.9,
+          "end": 7.29
+        },
+        {
+          "id": "w20",
+          "text": "legitimate,",
+          "start": 7.29,
+          "end": 8.1
+        },
+        {
+          "id": "w21",
+          "text": "designed",
+          "start": 8.18,
+          "end": 8.51
+        },
+        {
+          "id": "w22",
+          "text": "to",
+          "start": 8.51,
+          "end": 8.56
+        },
+        {
+          "id": "w23",
+          "text": "hook",
+          "start": 8.65,
+          "end": 8.79
+        },
+        {
+          "id": "w24",
+          "text": "you",
+          "start": 8.9,
+          "end": 8.98
+        },
+        {
+          "id": "w25",
+          "text": "into",
+          "start": 8.98,
+          "end": 9.18
+        },
+        {
+          "id": "w26",
+          "text": "clicking",
+          "start": 9.18,
+          "end": 9.54
+        },
+        {
+          "id": "w27",
+          "text": "a",
+          "start": 9.61,
+          "end": 9.65
+        },
+        {
+          "id": "w28",
+          "text": "malicious",
+          "start": 9.65,
+          "end": 10.32
+        },
+        {
+          "id": "w29",
+          "text": "link,",
+          "start": 10.32,
+          "end": 10.78
+        },
+        {
+          "id": "w30",
+          "text": "downloading",
+          "start": 10.86,
+          "end": 11.63
+        },
+        {
+          "id": "w31",
+          "text": "an",
+          "start": 11.63,
+          "end": 11.78
+        },
+        {
+          "id": "w32",
+          "text": "infected",
+          "start": 11.78,
+          "end": 12.34
+        },
+        {
+          "id": "w33",
+          "text": "attachment,",
+          "start": 12.93,
+          "end": 13.18
+        },
+        {
+          "id": "w34",
+          "text": "or",
+          "start": 13.26,
+          "end": 13.32
+        },
+        {
+          "id": "w35",
+          "text": "revealing",
+          "start": 13.32,
+          "end": 13.86
+        },
+        {
+          "id": "w36",
+          "text": "confidential",
+          "start": 13.98,
+          "end": 14.74
+        },
+        {
+          "id": "w37",
+          "text": "data.",
+          "start": 15.07,
+          "end": 15.3
+        }
+      ]
+    },
+    {
+      "id": "s2-3",
+      "path": "assets/voice/s2-3.wav",
+      "duration_s": 11.2,
+      "words": [
+        {
+          "id": "w0",
+          "text": "The",
+          "start": 0.05,
+          "end": 0.25
+        },
+        {
+          "id": "w1",
+          "text": "term",
+          "start": 0.25,
+          "end": 0.59
+        },
+        {
+          "id": "w2",
+          "text": "fishing",
+          "start": 0.59,
+          "end": 1.13
+        },
+        {
+          "id": "w3",
+          "text": "is",
+          "start": 1.2,
+          "end": 1.35
+        },
+        {
+          "id": "w4",
+          "text": "a",
+          "start": 1.35,
+          "end": 1.43
+        },
+        {
+          "id": "w5",
+          "text": "play",
+          "start": 1.43,
+          "end": 1.67
+        },
+        {
+          "id": "w6",
+          "text": "on",
+          "start": 1.79,
+          "end": 1.94
+        },
+        {
+          "id": "w7",
+          "text": "fishing,",
+          "start": 1.94,
+          "end": 2.66
+        },
+        {
+          "id": "w8",
+          "text": "because",
+          "start": 2.66,
+          "end": 3
+        },
+        {
+          "id": "w9",
+          "text": "attackers",
+          "start": 3,
+          "end": 3.48
+        },
+        {
+          "id": "w10",
+          "text": "are",
+          "start": 3.48,
+          "end": 3.58
+        },
+        {
+          "id": "w11",
+          "text": "casting",
+          "start": 3.65,
+          "end": 4.04
+        },
+        {
+          "id": "w12",
+          "text": "a",
+          "start": 4.04,
+          "end": 4.16
+        },
+        {
+          "id": "w13",
+          "text": "line",
+          "start": 4.16,
+          "end": 4.66
+        },
+        {
+          "id": "w14",
+          "text": "and",
+          "start": 4.73,
+          "end": 4.84
+        },
+        {
+          "id": "w15",
+          "text": "waiting",
+          "start": 4.84,
+          "end": 5.14
+        },
+        {
+          "id": "w16",
+          "text": "for",
+          "start": 5.14,
+          "end": 5.32
+        },
+        {
+          "id": "w17",
+          "text": "someone",
+          "start": 5.37,
+          "end": 5.97
+        },
+        {
+          "id": "w18",
+          "text": "to",
+          "start": 5.97,
+          "end": 6.15
+        },
+        {
+          "id": "w19",
+          "text": "bite.",
+          "start": 6.15,
+          "end": 6.81
+        },
+        {
+          "id": "w20",
+          "text": "And",
+          "start": 6.87,
+          "end": 6.98
+        },
+        {
+          "id": "w21",
+          "text": "while",
+          "start": 7.04,
+          "end": 7.22
+        },
+        {
+          "id": "w22",
+          "text": "some",
+          "start": 7.33,
+          "end": 7.57
+        },
+        {
+          "id": "w23",
+          "text": "attacks",
+          "start": 7.57,
+          "end": 7.95
+        },
+        {
+          "id": "w24",
+          "text": "are",
+          "start": 8.02,
+          "end": 8.2
+        },
+        {
+          "id": "w25",
+          "text": "broad",
+          "start": 8.2,
+          "end": 8.49
+        },
+        {
+          "id": "w26",
+          "text": "and",
+          "start": 8.61,
+          "end": 8.7
+        },
+        {
+          "id": "w27",
+          "text": "untargeted,",
+          "start": 8.7,
+          "end": 9.43
+        },
+        {
+          "id": "w28",
+          "text": "others",
+          "start": 9.44,
+          "end": 9.82
+        },
+        {
+          "id": "w29",
+          "text": "are",
+          "start": 9.82,
+          "end": 9.95
+        },
+        {
+          "id": "w30",
+          "text": "highly",
+          "start": 10.02,
+          "end": 10.39
+        },
+        {
+          "id": "w31",
+          "text": "specific.",
+          "start": 10.39,
+          "end": 11.16
+        }
+      ]
+    },
+    {
+      "id": "s3-1",
+      "path": "assets/voice/s3-1.wav",
+      "duration_s": 4.864,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Fishing",
+          "start": 0.11,
+          "end": 0.49
+        },
+        {
+          "id": "w1",
+          "text": "comes",
+          "start": 0.54,
+          "end": 0.91
+        },
+        {
+          "id": "w2",
+          "text": "in",
+          "start": 0.91,
+          "end": 1.06
+        },
+        {
+          "id": "w3",
+          "text": "many",
+          "start": 1.06,
+          "end": 1.36
+        },
+        {
+          "id": "w4",
+          "text": "forms.",
+          "start": 1.36,
+          "end": 1.77
+        },
+        {
+          "id": "w5",
+          "text": "Let's",
+          "start": 2.11,
+          "end": 2.31
+        },
+        {
+          "id": "w6",
+          "text": "break",
+          "start": 2.31,
+          "end": 2.63
+        },
+        {
+          "id": "w7",
+          "text": "down",
+          "start": 2.63,
+          "end": 2.88
+        },
+        {
+          "id": "w8",
+          "text": "the",
+          "start": 2.88,
+          "end": 3.07
+        },
+        {
+          "id": "w9",
+          "text": "most",
+          "start": 3.07,
+          "end": 3.18
+        },
+        {
+          "id": "w10",
+          "text": "common",
+          "start": 3.32,
+          "end": 3.7
+        },
+        {
+          "id": "w11",
+          "text": "ones",
+          "start": 3.7,
+          "end": 3.77
+        },
+        {
+          "id": "w12",
+          "text": "you'll",
+          "start": 4.2,
+          "end": 4.33
+        },
+        {
+          "id": "w13",
+          "text": "encounter.",
+          "start": 4.41,
+          "end": 5
+        }
+      ]
+    },
+    {
+      "id": "s3-2",
+      "path": "assets/voice/s3-2.wav",
+      "duration_s": 19.563,
+      "words": [
+        {
+          "id": "w0",
+          "text": "First,",
+          "start": 0.11,
+          "end": 0.48
+        },
+        {
+          "id": "w1",
+          "text": "email",
+          "start": 0.62,
+          "end": 0.96
+        },
+        {
+          "id": "w2",
+          "text": "phishing,",
+          "start": 0.96,
+          "end": 1.76
+        },
+        {
+          "id": "w3",
+          "text": "the",
+          "start": 1.84,
+          "end": 2
+        },
+        {
+          "id": "w4",
+          "text": "classic.",
+          "start": 2,
+          "end": 2.86
+        },
+        {
+          "id": "w5",
+          "text": "You",
+          "start": 2.97,
+          "end": 3.04
+        },
+        {
+          "id": "w6",
+          "text": "receive",
+          "start": 3.04,
+          "end": 3.34
+        },
+        {
+          "id": "w7",
+          "text": "an",
+          "start": 3.48,
+          "end": 3.59
+        },
+        {
+          "id": "w8",
+          "text": "urgent",
+          "start": 3.59,
+          "end": 3.84
+        },
+        {
+          "id": "w9",
+          "text": "message",
+          "start": 3.97,
+          "end": 4.36
+        },
+        {
+          "id": "w10",
+          "text": "that",
+          "start": 4.53,
+          "end": 4.63
+        },
+        {
+          "id": "w11",
+          "text": "appears",
+          "start": 4.63,
+          "end": 4.9
+        },
+        {
+          "id": "w12",
+          "text": "to",
+          "start": 5.04,
+          "end": 5.1
+        },
+        {
+          "id": "w13",
+          "text": "be",
+          "start": 5.1,
+          "end": 5.2
+        },
+        {
+          "id": "w14",
+          "text": "from",
+          "start": 5.2,
+          "end": 5.4
+        },
+        {
+          "id": "w15",
+          "text": "your",
+          "start": 5.4,
+          "end": 5.62
+        },
+        {
+          "id": "w16",
+          "text": "bank,",
+          "start": 5.62,
+          "end": 5.93
+        },
+        {
+          "id": "w17",
+          "text": "IT",
+          "start": 6.09,
+          "end": 6.15
+        },
+        {
+          "id": "w18",
+          "text": "department,",
+          "start": 6.15,
+          "end": 7.17
+        },
+        {
+          "id": "w19",
+          "text": "or",
+          "start": 7.17,
+          "end": 7.34
+        },
+        {
+          "id": "w20",
+          "text": "a",
+          "start": 7.34,
+          "end": 7.42
+        },
+        {
+          "id": "w21",
+          "text": "trusted",
+          "start": 7.42,
+          "end": 8.02
+        },
+        {
+          "id": "w22",
+          "text": "vendor.",
+          "start": 8.02,
+          "end": 8.82
+        },
+        {
+          "id": "w23",
+          "text": "It",
+          "start": 8.93,
+          "end": 8.95
+        },
+        {
+          "id": "w24",
+          "text": "asks",
+          "start": 8.95,
+          "end": 9.18
+        },
+        {
+          "id": "w25",
+          "text": "you",
+          "start": 9.22,
+          "end": 9.3
+        },
+        {
+          "id": "w26",
+          "text": "to",
+          "start": 9.44,
+          "end": 9.55
+        },
+        {
+          "id": "w27",
+          "text": "verify",
+          "start": 9.55,
+          "end": 9.95
+        },
+        {
+          "id": "w28",
+          "text": "your",
+          "start": 9.95,
+          "end": 10.22
+        },
+        {
+          "id": "w29",
+          "text": "account,",
+          "start": 10.22,
+          "end": 10.86
+        },
+        {
+          "id": "w30",
+          "text": "reset",
+          "start": 10.97,
+          "end": 11.19
+        },
+        {
+          "id": "w31",
+          "text": "your",
+          "start": 11.19,
+          "end": 11.34
+        },
+        {
+          "id": "w32",
+          "text": "password,",
+          "start": 11.48,
+          "end": 12.12
+        },
+        {
+          "id": "w33",
+          "text": "or",
+          "start": 12.12,
+          "end": 12.3
+        },
+        {
+          "id": "w34",
+          "text": "take",
+          "start": 12.3,
+          "end": 12.37
+        },
+        {
+          "id": "w35",
+          "text": "immediate",
+          "start": 12.7,
+          "end": 13.29
+        },
+        {
+          "id": "w36",
+          "text": "action.",
+          "start": 13.75,
+          "end": 14.3
+        },
+        {
+          "id": "w37",
+          "text": "The",
+          "start": 14.41,
+          "end": 14.5
+        },
+        {
+          "id": "w38",
+          "text": "link",
+          "start": 14.5,
+          "end": 14.72
+        },
+        {
+          "id": "w39",
+          "text": "in",
+          "start": 14.77,
+          "end": 14.78
+        },
+        {
+          "id": "w40",
+          "text": "the",
+          "start": 14.92,
+          "end": 15.1
+        },
+        {
+          "id": "w41",
+          "text": "email",
+          "start": 15.1,
+          "end": 15.47
+        },
+        {
+          "id": "w42",
+          "text": "leads",
+          "start": 15.47,
+          "end": 15.8
+        },
+        {
+          "id": "w43",
+          "text": "to",
+          "start": 15.8,
+          "end": 15.97
+        },
+        {
+          "id": "w44",
+          "text": "a",
+          "start": 15.97,
+          "end": 16.14
+        },
+        {
+          "id": "w45",
+          "text": "fake",
+          "start": 16.14,
+          "end": 16.55
+        },
+        {
+          "id": "w46",
+          "text": "login",
+          "start": 16.55,
+          "end": 16.74
+        },
+        {
+          "id": "w47",
+          "text": "page",
+          "start": 17.19,
+          "end": 17.6
+        },
+        {
+          "id": "w48",
+          "text": "designed",
+          "start": 17.71,
+          "end": 18.02
+        },
+        {
+          "id": "w49",
+          "text": "to",
+          "start": 18.07,
+          "end": 18.08
+        },
+        {
+          "id": "w50",
+          "text": "capture",
+          "start": 18.22,
+          "end": 18.59
+        },
+        {
+          "id": "w51",
+          "text": "your",
+          "start": 18.71,
+          "end": 18.85
+        },
+        {
+          "id": "w52",
+          "text": "credentials.",
+          "start": 18.85,
+          "end": 19.7
+        }
+      ]
+    },
+    {
+      "id": "s3-3",
+      "path": "assets/voice/s3-3.wav",
+      "duration_s": 15.296,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Next,",
+          "start": 0.05,
+          "end": 0.49
+        },
+        {
+          "id": "w1",
+          "text": "spear",
+          "start": 0.55,
+          "end": 0.92
+        },
+        {
+          "id": "w2",
+          "text": "phishing.",
+          "start": 1.04,
+          "end": 1.9
+        },
+        {
+          "id": "w3",
+          "text": "Unlike",
+          "start": 1.95,
+          "end": 2.26
+        },
+        {
+          "id": "w4",
+          "text": "broad",
+          "start": 2.31,
+          "end": 2.67
+        },
+        {
+          "id": "w5",
+          "text": "email",
+          "start": 2.67,
+          "end": 3.02
+        },
+        {
+          "id": "w6",
+          "text": "phishing,",
+          "start": 3.02,
+          "end": 3.76
+        },
+        {
+          "id": "w7",
+          "text": "spear",
+          "start": 3.82,
+          "end": 4.11
+        },
+        {
+          "id": "w8",
+          "text": "phishing",
+          "start": 4.11,
+          "end": 4.64
+        },
+        {
+          "id": "w9",
+          "text": "targets",
+          "start": 4.73,
+          "end": 5.15
+        },
+        {
+          "id": "w10",
+          "text": "you",
+          "start": 5.23,
+          "end": 5.42
+        },
+        {
+          "id": "w11",
+          "text": "personally.",
+          "start": 5.42,
+          "end": 6.42
+        },
+        {
+          "id": "w12",
+          "text": "The",
+          "start": 6.47,
+          "end": 6.59
+        },
+        {
+          "id": "w13",
+          "text": "attacker",
+          "start": 6.59,
+          "end": 7.06
+        },
+        {
+          "id": "w14",
+          "text": "researches",
+          "start": 7.06,
+          "end": 7.64
+        },
+        {
+          "id": "w15",
+          "text": "your",
+          "start": 7.64,
+          "end": 7.84
+        },
+        {
+          "id": "w16",
+          "text": "role,",
+          "start": 8.1,
+          "end": 8.26
+        },
+        {
+          "id": "w17",
+          "text": "your",
+          "start": 8.34,
+          "end": 8.65
+        },
+        {
+          "id": "w18",
+          "text": "team,",
+          "start": 8.74,
+          "end": 9.18
+        },
+        {
+          "id": "w19",
+          "text": "or",
+          "start": 9.23,
+          "end": 9.3
+        },
+        {
+          "id": "w20",
+          "text": "your",
+          "start": 9.3,
+          "end": 9.52
+        },
+        {
+          "id": "w21",
+          "text": "projects",
+          "start": 9.55,
+          "end": 10.06
+        },
+        {
+          "id": "w22",
+          "text": "to",
+          "start": 10.06,
+          "end": 10.1
+        },
+        {
+          "id": "w23",
+          "text": "craft",
+          "start": 10.21,
+          "end": 10.48
+        },
+        {
+          "id": "w24",
+          "text": "a",
+          "start": 10.5,
+          "end": 10.56
+        },
+        {
+          "id": "w25",
+          "text": "message",
+          "start": 10.56,
+          "end": 10.59
+        },
+        {
+          "id": "w26",
+          "text": "that",
+          "start": 11.11,
+          "end": 11.3
+        },
+        {
+          "id": "w27",
+          "text": "feels",
+          "start": 11.37,
+          "end": 11.69
+        },
+        {
+          "id": "w28",
+          "text": "legitimate",
+          "start": 11.69,
+          "end": 12.38
+        },
+        {
+          "id": "w29",
+          "text": "and",
+          "start": 12.38,
+          "end": 12.48
+        },
+        {
+          "id": "w30",
+          "text": "relevant.",
+          "start": 12.98,
+          "end": 13.29
+        },
+        {
+          "id": "w31",
+          "text": "That",
+          "start": 13.43,
+          "end": 13.62
+        },
+        {
+          "id": "w32",
+          "text": "makes",
+          "start": 13.69,
+          "end": 13.98
+        },
+        {
+          "id": "w33",
+          "text": "it",
+          "start": 13.99,
+          "end": 14.12
+        },
+        {
+          "id": "w34",
+          "text": "far",
+          "start": 14.12,
+          "end": 14.3
+        },
+        {
+          "id": "w35",
+          "text": "more",
+          "start": 14.42,
+          "end": 14.57
+        },
+        {
+          "id": "w36",
+          "text": "dangerous.",
+          "start": 14.58,
+          "end": 15.42
+        }
+      ]
+    },
+    {
+      "id": "s3-4",
+      "path": "assets/voice/s3-4.wav",
+      "duration_s": 15.829,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Then",
+          "start": 0.06,
+          "end": 0.35
+        },
+        {
+          "id": "w1",
+          "text": "there's",
+          "start": 0.35,
+          "end": 0.94
+        },
+        {
+          "id": "w2",
+          "text": "smishing",
+          "start": 1.13,
+          "end": 1.61
+        },
+        {
+          "id": "w3",
+          "text": "or",
+          "start": 1.72,
+          "end": 1.83
+        },
+        {
+          "id": "w4",
+          "text": "SMS",
+          "start": 1.83,
+          "end": 2.02
+        },
+        {
+          "id": "w5",
+          "text": "text",
+          "start": 2.09,
+          "end": 2.42
+        },
+        {
+          "id": "w6",
+          "text": "message",
+          "start": 2.46,
+          "end": 3.06
+        },
+        {
+          "id": "w7",
+          "text": "phishing,",
+          "start": 3.06,
+          "end": 3.84
+        },
+        {
+          "id": "w8",
+          "text": "and",
+          "start": 3.9,
+          "end": 4.09
+        },
+        {
+          "id": "w9",
+          "text": "phishing",
+          "start": 4.09,
+          "end": 4.77
+        },
+        {
+          "id": "w10",
+          "text": "or",
+          "start": 4.77,
+          "end": 4.79
+        },
+        {
+          "id": "w11",
+          "text": "voice",
+          "start": 5.09,
+          "end": 5.36
+        },
+        {
+          "id": "w12",
+          "text": "phishing.",
+          "start": 5.36,
+          "end": 6.32
+        },
+        {
+          "id": "w13",
+          "text": "Wailing",
+          "start": 6.38,
+          "end": 6.87
+        },
+        {
+          "id": "w14",
+          "text": "targets",
+          "start": 6.87,
+          "end": 7.26
+        },
+        {
+          "id": "w15",
+          "text": "senior",
+          "start": 7.57,
+          "end": 7.91
+        },
+        {
+          "id": "w16",
+          "text": "executives",
+          "start": 7.91,
+          "end": 8.68
+        },
+        {
+          "id": "w17",
+          "text": "and",
+          "start": 8.78,
+          "end": 8.9
+        },
+        {
+          "id": "w18",
+          "text": "business",
+          "start": 8.9,
+          "end": 9.4
+        },
+        {
+          "id": "w19",
+          "text": "email",
+          "start": 9.4,
+          "end": 9.66
+        },
+        {
+          "id": "w20",
+          "text": "compromise",
+          "start": 9.97,
+          "end": 10.33
+        },
+        {
+          "id": "w21",
+          "text": "involves",
+          "start": 10.44,
+          "end": 10.74
+        },
+        {
+          "id": "w22",
+          "text": "attackers",
+          "start": 10.86,
+          "end": 11.42
+        },
+        {
+          "id": "w23",
+          "text": "posing",
+          "start": 11.44,
+          "end": 11.93
+        },
+        {
+          "id": "w24",
+          "text": "as",
+          "start": 12,
+          "end": 12.2
+        },
+        {
+          "id": "w25",
+          "text": "a",
+          "start": 12.2,
+          "end": 12.33
+        },
+        {
+          "id": "w26",
+          "text": "CEO",
+          "start": 12.33,
+          "end": 12.71
+        },
+        {
+          "id": "w27",
+          "text": "or",
+          "start": 12.71,
+          "end": 12.88
+        },
+        {
+          "id": "w28",
+          "text": "vendor",
+          "start": 13.19,
+          "end": 13.76
+        },
+        {
+          "id": "w29",
+          "text": "to",
+          "start": 13.76,
+          "end": 13.9
+        },
+        {
+          "id": "w30",
+          "text": "request",
+          "start": 13.9,
+          "end": 14.36
+        },
+        {
+          "id": "w31",
+          "text": "urgent",
+          "start": 14.4,
+          "end": 14.81
+        },
+        {
+          "id": "w32",
+          "text": "wire",
+          "start": 14.81,
+          "end": 15.09
+        },
+        {
+          "id": "w33",
+          "text": "transfers.",
+          "start": 15.09,
+          "end": 15.96
+        }
+      ]
+    },
+    {
+      "id": "s4-1",
+      "path": "assets/voice/s4-1.wav",
+      "duration_s": 4.971,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Let's",
+          "start": 0.05,
+          "end": 0.28
+        },
+        {
+          "id": "w1",
+          "text": "look",
+          "start": 0.31,
+          "end": 0.51
+        },
+        {
+          "id": "w2",
+          "text": "at",
+          "start": 0.51,
+          "end": 0.61
+        },
+        {
+          "id": "w3",
+          "text": "what",
+          "start": 0.62,
+          "end": 0.77
+        },
+        {
+          "id": "w4",
+          "text": "a",
+          "start": 0.89,
+          "end": 0.9
+        },
+        {
+          "id": "w5",
+          "text": "phishing",
+          "start": 0.9,
+          "end": 1.35
+        },
+        {
+          "id": "w6",
+          "text": "email",
+          "start": 1.35,
+          "end": 1.62
+        },
+        {
+          "id": "w7",
+          "text": "actually",
+          "start": 1.71,
+          "end": 2.16
+        },
+        {
+          "id": "w8",
+          "text": "looks",
+          "start": 2.16,
+          "end": 2.54
+        },
+        {
+          "id": "w9",
+          "text": "like.",
+          "start": 2.54,
+          "end": 3.1
+        },
+        {
+          "id": "w10",
+          "text": "Watch",
+          "start": 3.15,
+          "end": 3.26
+        },
+        {
+          "id": "w11",
+          "text": "for",
+          "start": 3.41,
+          "end": 3.6
+        },
+        {
+          "id": "w12",
+          "text": "these",
+          "start": 3.6,
+          "end": 3.87
+        },
+        {
+          "id": "w13",
+          "text": "telltale",
+          "start": 3.99,
+          "end": 4.41
+        },
+        {
+          "id": "w14",
+          "text": "signs.",
+          "start": 4.41,
+          "end": 4.93
+        }
+      ]
+    },
+    {
+      "id": "s4-2",
+      "path": "assets/voice/s4-2.wav",
+      "duration_s": 6.101,
+      "words": [
+        {
+          "id": "w0",
+          "text": "The",
+          "start": 0.06,
+          "end": 0.12
+        },
+        {
+          "id": "w1",
+          "text": "sender",
+          "start": 0.22,
+          "end": 0.53
+        },
+        {
+          "id": "w2",
+          "text": "address",
+          "start": 0.53,
+          "end": 0.86
+        },
+        {
+          "id": "w3",
+          "text": "doesn't",
+          "start": 1.11,
+          "end": 1.34
+        },
+        {
+          "id": "w4",
+          "text": "match",
+          "start": 1.34,
+          "end": 1.66
+        },
+        {
+          "id": "w5",
+          "text": "the",
+          "start": 1.72,
+          "end": 1.86
+        },
+        {
+          "id": "w6",
+          "text": "organization",
+          "start": 1.86,
+          "end": 2.6
+        },
+        {
+          "id": "w7",
+          "text": "it",
+          "start": 2.6,
+          "end": 2.73
+        },
+        {
+          "id": "w8",
+          "text": "claims",
+          "start": 2.79,
+          "end": 3.3
+        },
+        {
+          "id": "w9",
+          "text": "to",
+          "start": 3.42,
+          "end": 3.5
+        },
+        {
+          "id": "w10",
+          "text": "be",
+          "start": 3.5,
+          "end": 3.63
+        },
+        {
+          "id": "w11",
+          "text": "from.",
+          "start": 4.08,
+          "end": 4.2
+        },
+        {
+          "id": "w12",
+          "text": "It",
+          "start": 4.25,
+          "end": 4.3
+        },
+        {
+          "id": "w13",
+          "text": "might",
+          "start": 4.3,
+          "end": 4.57
+        },
+        {
+          "id": "w14",
+          "text": "be",
+          "start": 4.57,
+          "end": 4.67
+        },
+        {
+          "id": "w15",
+          "text": "off",
+          "start": 4.67,
+          "end": 4.77
+        },
+        {
+          "id": "w16",
+          "text": "by",
+          "start": 4.82,
+          "end": 4.93
+        },
+        {
+          "id": "w17",
+          "text": "a",
+          "start": 4.93,
+          "end": 4.98
+        },
+        {
+          "id": "w18",
+          "text": "single",
+          "start": 4.98,
+          "end": 5.06
+        },
+        {
+          "id": "w19",
+          "text": "character.",
+          "start": 5.31,
+          "end": 5.99
+        }
+      ]
+    },
+    {
+      "id": "s4-3",
+      "path": "assets/voice/s4-3.wav",
+      "duration_s": 4.693,
+      "words": [
+        {
+          "id": "w0",
+          "text": "The",
+          "start": 0.06,
+          "end": 0.18
+        },
+        {
+          "id": "w1",
+          "text": "greeting",
+          "start": 0.21,
+          "end": 0.71
+        },
+        {
+          "id": "w2",
+          "text": "is",
+          "start": 0.79,
+          "end": 0.9
+        },
+        {
+          "id": "w3",
+          "text": "generic,",
+          "start": 0.9,
+          "end": 1.54
+        },
+        {
+          "id": "w4",
+          "text": "dear",
+          "start": 1.61,
+          "end": 1.76
+        },
+        {
+          "id": "w5",
+          "text": "customer",
+          "start": 1.83,
+          "end": 2.35
+        },
+        {
+          "id": "w6",
+          "text": "or",
+          "start": 2.41,
+          "end": 2.6
+        },
+        {
+          "id": "w7",
+          "text": "dear",
+          "start": 2.6,
+          "end": 3.03
+        },
+        {
+          "id": "w8",
+          "text": "user,",
+          "start": 3.03,
+          "end": 3.48
+        },
+        {
+          "id": "w9",
+          "text": "instead",
+          "start": 3.54,
+          "end": 4.14
+        },
+        {
+          "id": "w10",
+          "text": "of",
+          "start": 4.14,
+          "end": 4.32
+        },
+        {
+          "id": "w11",
+          "text": "using",
+          "start": 4.32,
+          "end": 4.76
+        },
+        {
+          "id": "w12",
+          "text": "your",
+          "start": 5.09,
+          "end": 5.16
+        },
+        {
+          "id": "w13",
+          "text": "name.",
+          "start": 5.16,
+          "end": 5.83
+        }
+      ]
+    },
+    {
+      "id": "s4-4",
+      "path": "assets/voice/s4-4.wav",
+      "duration_s": 8.064,
+      "words": [
+        {
+          "id": "w0",
+          "text": "The",
+          "start": 0.05,
+          "end": 0.24
+        },
+        {
+          "id": "w1",
+          "text": "message",
+          "start": 0.33,
+          "end": 0.86
+        },
+        {
+          "id": "w2",
+          "text": "creates",
+          "start": 0.86,
+          "end": 1.39
+        },
+        {
+          "id": "w3",
+          "text": "urgency.",
+          "start": 1.46,
+          "end": 2.08
+        },
+        {
+          "id": "w4",
+          "text": "Your",
+          "start": 2.13,
+          "end": 2.29
+        },
+        {
+          "id": "w5",
+          "text": "account",
+          "start": 2.29,
+          "end": 2.59
+        },
+        {
+          "id": "w6",
+          "text": "will",
+          "start": 2.73,
+          "end": 2.87
+        },
+        {
+          "id": "w7",
+          "text": "be",
+          "start": 2.87,
+          "end": 2.96
+        },
+        {
+          "id": "w8",
+          "text": "suspended",
+          "start": 2.97,
+          "end": 3.46
+        },
+        {
+          "id": "w9",
+          "text": "within",
+          "start": 3.46,
+          "end": 3.75
+        },
+        {
+          "id": "w10",
+          "text": "24",
+          "start": 4.2,
+          "end": 4.5
+        },
+        {
+          "id": "w11",
+          "text": "hours.",
+          "start": 4.5,
+          "end": 5.22
+        },
+        {
+          "id": "w12",
+          "text": "Fear",
+          "start": 5.27,
+          "end": 5.46
+        },
+        {
+          "id": "w13",
+          "text": "and",
+          "start": 5.55,
+          "end": 5.67
+        },
+        {
+          "id": "w14",
+          "text": "time",
+          "start": 5.67,
+          "end": 5.93
+        },
+        {
+          "id": "w15",
+          "text": "pressure",
+          "start": 5.93,
+          "end": 6.43
+        },
+        {
+          "id": "w16",
+          "text": "are",
+          "start": 6.46,
+          "end": 6.61
+        },
+        {
+          "id": "w17",
+          "text": "the",
+          "start": 6.68,
+          "end": 6.83
+        },
+        {
+          "id": "w18",
+          "text": "Fisher's",
+          "start": 6.83,
+          "end": 7.35
+        },
+        {
+          "id": "w19",
+          "text": "best",
+          "start": 7.35,
+          "end": 7.6
+        },
+        {
+          "id": "w20",
+          "text": "tools.",
+          "start": 7.64,
+          "end": 8.2
+        }
+      ]
+    },
+    {
+      "id": "s4-5",
+      "path": "assets/voice/s4-5.wav",
+      "duration_s": 9.152,
+      "words": [
+        {
+          "id": "w0",
+          "text": "The",
+          "start": 0.04,
+          "end": 0.21
+        },
+        {
+          "id": "w1",
+          "text": "email",
+          "start": 0.21,
+          "end": 0.55
+        },
+        {
+          "id": "w2",
+          "text": "includes",
+          "start": 0.56,
+          "end": 1.12
+        },
+        {
+          "id": "w3",
+          "text": "a",
+          "start": 1.12,
+          "end": 1.18
+        },
+        {
+          "id": "w4",
+          "text": "suspicious",
+          "start": 1.21,
+          "end": 1.89
+        },
+        {
+          "id": "w5",
+          "text": "link",
+          "start": 1.89,
+          "end": 2.03
+        },
+        {
+          "id": "w6",
+          "text": "or",
+          "start": 2.25,
+          "end": 2.39
+        },
+        {
+          "id": "w7",
+          "text": "attachment.",
+          "start": 2.39,
+          "end": 3.68
+        },
+        {
+          "id": "w8",
+          "text": "Hover",
+          "start": 3.72,
+          "end": 3.99
+        },
+        {
+          "id": "w9",
+          "text": "over",
+          "start": 3.99,
+          "end": 4.23
+        },
+        {
+          "id": "w10",
+          "text": "any",
+          "start": 4.24,
+          "end": 4.4
+        },
+        {
+          "id": "w11",
+          "text": "link",
+          "start": 4.48,
+          "end": 4.65
+        },
+        {
+          "id": "w12",
+          "text": "without",
+          "start": 4.71,
+          "end": 5.07
+        },
+        {
+          "id": "w13",
+          "text": "clicking,",
+          "start": 5.14,
+          "end": 5.62
+        },
+        {
+          "id": "w14",
+          "text": "the",
+          "start": 5.66,
+          "end": 5.86
+        },
+        {
+          "id": "w15",
+          "text": "actual",
+          "start": 5.86,
+          "end": 6.31
+        },
+        {
+          "id": "w16",
+          "text": "URL",
+          "start": 6.42,
+          "end": 6.59
+        },
+        {
+          "id": "w17",
+          "text": "rarely",
+          "start": 6.59,
+          "end": 7.01
+        },
+        {
+          "id": "w18",
+          "text": "matches",
+          "start": 7.08,
+          "end": 7.6
+        },
+        {
+          "id": "w19",
+          "text": "what",
+          "start": 7.65,
+          "end": 7.97
+        },
+        {
+          "id": "w20",
+          "text": "the",
+          "start": 7.97,
+          "end": 8.21
+        },
+        {
+          "id": "w21",
+          "text": "text",
+          "start": 8.21,
+          "end": 8.53
+        },
+        {
+          "id": "w22",
+          "text": "claims.",
+          "start": 8.53,
+          "end": 9.3
+        }
+      ]
+    },
+    {
+      "id": "s4-6",
+      "path": "assets/voice/s4-6.wav",
+      "duration_s": 9.387,
+      "words": [
+        {
+          "id": "w0",
+          "text": "And",
+          "start": 0.04,
+          "end": 0.13
+        },
+        {
+          "id": "w1",
+          "text": "finally,",
+          "start": 0.25,
+          "end": 0.72
+        },
+        {
+          "id": "w2",
+          "text": "there",
+          "start": 0.91,
+          "end": 1.11
+        },
+        {
+          "id": "w3",
+          "text": "are",
+          "start": 1.19,
+          "end": 1.32
+        },
+        {
+          "id": "w4",
+          "text": "often",
+          "start": 1.43,
+          "end": 1.66
+        },
+        {
+          "id": "w5",
+          "text": "grammatical",
+          "start": 1.66,
+          "end": 2.39
+        },
+        {
+          "id": "w6",
+          "text": "errors,",
+          "start": 2.39,
+          "end": 2.96
+        },
+        {
+          "id": "w7",
+          "text": "awkward",
+          "start": 3,
+          "end": 3.48
+        },
+        {
+          "id": "w8",
+          "text": "phrasing,",
+          "start": 3.48,
+          "end": 4.24
+        },
+        {
+          "id": "w9",
+          "text": "or",
+          "start": 4.24,
+          "end": 4.42
+        },
+        {
+          "id": "w10",
+          "text": "unusual",
+          "start": 4.42,
+          "end": 5.05
+        },
+        {
+          "id": "w11",
+          "text": "formatting.",
+          "start": 5.05,
+          "end": 6.22
+        },
+        {
+          "id": "w12",
+          "text": "Legitimate",
+          "start": 6.28,
+          "end": 6.88
+        },
+        {
+          "id": "w13",
+          "text": "organizations",
+          "start": 6.88,
+          "end": 7.72
+        },
+        {
+          "id": "w14",
+          "text": "proofread",
+          "start": 7.72,
+          "end": 8.23
+        },
+        {
+          "id": "w15",
+          "text": "their",
+          "start": 8.29,
+          "end": 8.53
+        },
+        {
+          "id": "w16",
+          "text": "communications.",
+          "start": 8.53,
+          "end": 9.5
+        }
+      ]
+    },
+    {
+      "id": "s5-1",
+      "path": "assets/voice/s5-1.wav",
+      "duration_s": 4.331,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Here",
+          "start": 0.09,
+          "end": 0.31
+        },
+        {
+          "id": "w1",
+          "text": "are",
+          "start": 0.31,
+          "end": 0.53
+        },
+        {
+          "id": "w2",
+          "text": "the",
+          "start": 0.53,
+          "end": 0.75
+        },
+        {
+          "id": "w3",
+          "text": "top",
+          "start": 0.92,
+          "end": 1
+        },
+        {
+          "id": "w4",
+          "text": "five",
+          "start": 1,
+          "end": 1.31
+        },
+        {
+          "id": "w5",
+          "text": "red",
+          "start": 1.31,
+          "end": 1.54
+        },
+        {
+          "id": "w6",
+          "text": "flags",
+          "start": 1.54,
+          "end": 1.82
+        },
+        {
+          "id": "w7",
+          "text": "to",
+          "start": 1.97,
+          "end": 2.09
+        },
+        {
+          "id": "w8",
+          "text": "watch",
+          "start": 2.09,
+          "end": 2.44
+        },
+        {
+          "id": "w9",
+          "text": "for",
+          "start": 2.51,
+          "end": 2.57
+        },
+        {
+          "id": "w10",
+          "text": "every",
+          "start": 2.63,
+          "end": 2.93
+        },
+        {
+          "id": "w11",
+          "text": "time",
+          "start": 2.98,
+          "end": 3.22
+        },
+        {
+          "id": "w12",
+          "text": "you",
+          "start": 3.22,
+          "end": 3.3
+        },
+        {
+          "id": "w13",
+          "text": "check",
+          "start": 3.35,
+          "end": 3.5
+        },
+        {
+          "id": "w14",
+          "text": "your",
+          "start": 3.6,
+          "end": 3.75
+        },
+        {
+          "id": "w15",
+          "text": "inbox.",
+          "start": 3.75,
+          "end": 4.26
+        }
+      ]
+    },
+    {
+      "id": "s5-2",
+      "path": "assets/voice/s5-2.wav",
+      "duration_s": 10.773,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Number",
+          "start": 0.04,
+          "end": 0.46
+        },
+        {
+          "id": "w1",
+          "text": "one,",
+          "start": 0.46,
+          "end": 0.85
+        },
+        {
+          "id": "w2",
+          "text": "unexpected",
+          "start": 0.98,
+          "end": 1.61
+        },
+        {
+          "id": "w3",
+          "text": "requests",
+          "start": 1.63,
+          "end": 2.24
+        },
+        {
+          "id": "w4",
+          "text": "for",
+          "start": 2.32,
+          "end": 2.45
+        },
+        {
+          "id": "w5",
+          "text": "sensitive",
+          "start": 2.53,
+          "end": 3.17
+        },
+        {
+          "id": "w6",
+          "text": "information.",
+          "start": 3.17,
+          "end": 4.24
+        },
+        {
+          "id": "w7",
+          "text": "No",
+          "start": 4.28,
+          "end": 4.37
+        },
+        {
+          "id": "w8",
+          "text": "legitimate",
+          "start": 4.37,
+          "end": 4.84
+        },
+        {
+          "id": "w9",
+          "text": "organization",
+          "start": 5.22,
+          "end": 5.9
+        },
+        {
+          "id": "w10",
+          "text": "will",
+          "start": 5.9,
+          "end": 6.2
+        },
+        {
+          "id": "w11",
+          "text": "ask",
+          "start": 6.2,
+          "end": 6.33
+        },
+        {
+          "id": "w12",
+          "text": "for",
+          "start": 6.43,
+          "end": 6.65
+        },
+        {
+          "id": "w13",
+          "text": "your",
+          "start": 6.65,
+          "end": 6.89
+        },
+        {
+          "id": "w14",
+          "text": "password,",
+          "start": 6.97,
+          "end": 7.67
+        },
+        {
+          "id": "w15",
+          "text": "PIN,",
+          "start": 7.72,
+          "end": 8.1
+        },
+        {
+          "id": "w16",
+          "text": "or",
+          "start": 8.1,
+          "end": 8.27
+        },
+        {
+          "id": "w17",
+          "text": "social",
+          "start": 8.27,
+          "end": 8.78
+        },
+        {
+          "id": "w18",
+          "text": "security",
+          "start": 8.78,
+          "end": 9.42
+        },
+        {
+          "id": "w19",
+          "text": "number",
+          "start": 9.48,
+          "end": 9.92
+        },
+        {
+          "id": "w20",
+          "text": "via",
+          "start": 10,
+          "end": 10.22
+        },
+        {
+          "id": "w21",
+          "text": "email.",
+          "start": 10.22,
+          "end": 10.92
+        }
+      ]
+    },
+    {
+      "id": "s5-3",
+      "path": "assets/voice/s5-3.wav",
+      "duration_s": 9.835,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Number",
+          "start": 0.04,
+          "end": 0.51
+        },
+        {
+          "id": "w1",
+          "text": "two,",
+          "start": 0.51,
+          "end": 0.93
+        },
+        {
+          "id": "w2",
+          "text": "emotional",
+          "start": 0.93,
+          "end": 1.7
+        },
+        {
+          "id": "w3",
+          "text": "manipulation.",
+          "start": 1.7,
+          "end": 2.76
+        },
+        {
+          "id": "w4",
+          "text": "Urgency,",
+          "start": 2.81,
+          "end": 3.42
+        },
+        {
+          "id": "w5",
+          "text": "fear,",
+          "start": 3.63,
+          "end": 4.08
+        },
+        {
+          "id": "w6",
+          "text": "curiosity,",
+          "start": 4.08,
+          "end": 4.94
+        },
+        {
+          "id": "w7",
+          "text": "or",
+          "start": 5.09,
+          "end": 5.27
+        },
+        {
+          "id": "w8",
+          "text": "excitement,",
+          "start": 5.54,
+          "end": 6.19
+        },
+        {
+          "id": "w9",
+          "text": "fissures",
+          "start": 6.35,
+          "end": 6.83
+        },
+        {
+          "id": "w10",
+          "text": "exploit",
+          "start": 6.83,
+          "end": 7.3
+        },
+        {
+          "id": "w11",
+          "text": "your",
+          "start": 7.3,
+          "end": 7.57
+        },
+        {
+          "id": "w12",
+          "text": "emotions",
+          "start": 7.57,
+          "end": 8.14
+        },
+        {
+          "id": "w13",
+          "text": "to",
+          "start": 8.19,
+          "end": 8.25
+        },
+        {
+          "id": "w14",
+          "text": "override",
+          "start": 8.25,
+          "end": 8.69
+        },
+        {
+          "id": "w15",
+          "text": "your",
+          "start": 8.69,
+          "end": 8.8
+        },
+        {
+          "id": "w16",
+          "text": "critical",
+          "start": 9.01,
+          "end": 9.35
+        },
+        {
+          "id": "w17",
+          "text": "thinking.",
+          "start": 9.35,
+          "end": 9.96
+        }
+      ]
+    },
+    {
+      "id": "s5-4",
+      "path": "assets/voice/s5-4.wav",
+      "duration_s": 7.659,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Number",
+          "start": 0.04,
+          "end": 0.56
+        },
+        {
+          "id": "w1",
+          "text": "three,",
+          "start": 0.56,
+          "end": 1.21
+        },
+        {
+          "id": "w2",
+          "text": "mismatched",
+          "start": 1.21,
+          "end": 2.07
+        },
+        {
+          "id": "w3",
+          "text": "URLs.",
+          "start": 2.07,
+          "end": 2.6
+        },
+        {
+          "id": "w4",
+          "text": "The",
+          "start": 2.6,
+          "end": 2.75
+        },
+        {
+          "id": "w5",
+          "text": "text",
+          "start": 2.75,
+          "end": 3
+        },
+        {
+          "id": "w6",
+          "text": "says",
+          "start": 3,
+          "end": 3.24
+        },
+        {
+          "id": "w7",
+          "text": "one",
+          "start": 3.4,
+          "end": 3.44
+        },
+        {
+          "id": "w8",
+          "text": "thing,",
+          "start": 3.44,
+          "end": 3.78
+        },
+        {
+          "id": "w9",
+          "text": "but",
+          "start": 3.82,
+          "end": 3.97
+        },
+        {
+          "id": "w10",
+          "text": "the",
+          "start": 3.97,
+          "end": 4.06
+        },
+        {
+          "id": "w11",
+          "text": "actual",
+          "start": 4.17,
+          "end": 4.46
+        },
+        {
+          "id": "w12",
+          "text": "link",
+          "start": 4.62,
+          "end": 4.8
+        },
+        {
+          "id": "w13",
+          "text": "goes",
+          "start": 4.81,
+          "end": 5.07
+        },
+        {
+          "id": "w14",
+          "text": "somewhere",
+          "start": 5.07,
+          "end": 5.64
+        },
+        {
+          "id": "w15",
+          "text": "else.",
+          "start": 5.64,
+          "end": 6.14
+        },
+        {
+          "id": "w16",
+          "text": "Always",
+          "start": 6.18,
+          "end": 6.58
+        },
+        {
+          "id": "w17",
+          "text": "hover",
+          "start": 6.58,
+          "end": 6.82
+        },
+        {
+          "id": "w18",
+          "text": "to",
+          "start": 6.98,
+          "end": 7.09
+        },
+        {
+          "id": "w19",
+          "text": "verify.",
+          "start": 7.09,
+          "end": 7.78
+        }
+      ]
+    },
+    {
+      "id": "s5-5",
+      "path": "assets/voice/s5-5.wav",
+      "duration_s": 8.128,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Number",
+          "start": 0.04,
+          "end": 0.47
+        },
+        {
+          "id": "w1",
+          "text": "four,",
+          "start": 0.47,
+          "end": 0.93
+        },
+        {
+          "id": "w2",
+          "text": "unsolicited",
+          "start": 0.93,
+          "end": 1.75
+        },
+        {
+          "id": "w3",
+          "text": "attachments.",
+          "start": 1.8,
+          "end": 2.9
+        },
+        {
+          "id": "w4",
+          "text": "If",
+          "start": 2.94,
+          "end": 3
+        },
+        {
+          "id": "w5",
+          "text": "you",
+          "start": 3,
+          "end": 3.15
+        },
+        {
+          "id": "w6",
+          "text": "weren't",
+          "start": 3.15,
+          "end": 3.51
+        },
+        {
+          "id": "w7",
+          "text": "expecting",
+          "start": 3.51,
+          "end": 3.98
+        },
+        {
+          "id": "w8",
+          "text": "a",
+          "start": 3.98,
+          "end": 4.02
+        },
+        {
+          "id": "w9",
+          "text": "document",
+          "start": 4.12,
+          "end": 4.48
+        },
+        {
+          "id": "w10",
+          "text": "or",
+          "start": 4.48,
+          "end": 4.64
+        },
+        {
+          "id": "w11",
+          "text": "invoice,",
+          "start": 4.64,
+          "end": 5.32
+        },
+        {
+          "id": "w12",
+          "text": "don't",
+          "start": 5.36,
+          "end": 5.6
+        },
+        {
+          "id": "w13",
+          "text": "open",
+          "start": 5.74,
+          "end": 6.02
+        },
+        {
+          "id": "w14",
+          "text": "it.",
+          "start": 6.21,
+          "end": 6.44
+        },
+        {
+          "id": "w15",
+          "text": "That's",
+          "start": 6.52,
+          "end": 6.76
+        },
+        {
+          "id": "w16",
+          "text": "how",
+          "start": 6.9,
+          "end": 7.03
+        },
+        {
+          "id": "w17",
+          "text": "ransomware",
+          "start": 7.03,
+          "end": 7.6
+        },
+        {
+          "id": "w18",
+          "text": "gets",
+          "start": 7.7,
+          "end": 7.89
+        },
+        {
+          "id": "w19",
+          "text": "in.",
+          "start": 7.9,
+          "end": 8.23
+        }
+      ]
+    },
+    {
+      "id": "s5-6",
+      "path": "assets/voice/s5-6.wav",
+      "duration_s": 9.024,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Number",
+          "start": 0.06,
+          "end": 0.48
+        },
+        {
+          "id": "w1",
+          "text": "five,",
+          "start": 0.48,
+          "end": 0.96
+        },
+        {
+          "id": "w2",
+          "text": "too",
+          "start": 0.96,
+          "end": 1.2
+        },
+        {
+          "id": "w3",
+          "text": "good",
+          "start": 1.2,
+          "end": 1.52
+        },
+        {
+          "id": "w4",
+          "text": "to",
+          "start": 1.52,
+          "end": 1.65
+        },
+        {
+          "id": "w5",
+          "text": "be",
+          "start": 1.68,
+          "end": 1.84
+        },
+        {
+          "id": "w6",
+          "text": "true.",
+          "start": 1.84,
+          "end": 2.42
+        },
+        {
+          "id": "w7",
+          "text": "A",
+          "start": 2.42,
+          "end": 2.48
+        },
+        {
+          "id": "w8",
+          "text": "prize",
+          "start": 2.48,
+          "end": 2.72
+        },
+        {
+          "id": "w9",
+          "text": "you",
+          "start": 2.83,
+          "end": 2.96
+        },
+        {
+          "id": "w10",
+          "text": "didn't",
+          "start": 2.96,
+          "end": 3.32
+        },
+        {
+          "id": "w11",
+          "text": "enter,",
+          "start": 3.38,
+          "end": 3.78
+        },
+        {
+          "id": "w12",
+          "text": "a",
+          "start": 3.78,
+          "end": 3.83
+        },
+        {
+          "id": "w13",
+          "text": "refund",
+          "start": 3.86,
+          "end": 4.31
+        },
+        {
+          "id": "w14",
+          "text": "you",
+          "start": 4.31,
+          "end": 4.33
+        },
+        {
+          "id": "w15",
+          "text": "didn't",
+          "start": 4.48,
+          "end": 4.86
+        },
+        {
+          "id": "w16",
+          "text": "request,",
+          "start": 4.89,
+          "end": 5.42
+        },
+        {
+          "id": "w17",
+          "text": "a",
+          "start": 5.48,
+          "end": 5.5
+        },
+        {
+          "id": "w18",
+          "text": "deal",
+          "start": 5.5,
+          "end": 5.72
+        },
+        {
+          "id": "w19",
+          "text": "nobody",
+          "start": 5.83,
+          "end": 6.14
+        },
+        {
+          "id": "w20",
+          "text": "else",
+          "start": 6.38,
+          "end": 6.62
+        },
+        {
+          "id": "w21",
+          "text": "got.",
+          "start": 6.62,
+          "end": 6.88
+        },
+        {
+          "id": "w22",
+          "text": "If",
+          "start": 6.94,
+          "end": 7.01
+        },
+        {
+          "id": "w23",
+          "text": "it",
+          "start": 7.01,
+          "end": 7.14
+        },
+        {
+          "id": "w24",
+          "text": "sounds",
+          "start": 7.14,
+          "end": 7.53
+        },
+        {
+          "id": "w25",
+          "text": "too",
+          "start": 7.53,
+          "end": 7.61
+        },
+        {
+          "id": "w26",
+          "text": "good",
+          "start": 7.84,
+          "end": 7.98
+        },
+        {
+          "id": "w27",
+          "text": "to",
+          "start": 7.98,
+          "end": 8.11
+        },
+        {
+          "id": "w28",
+          "text": "be",
+          "start": 8.11,
+          "end": 8.24
+        },
+        {
+          "id": "w29",
+          "text": "true,",
+          "start": 8.24,
+          "end": 8.63
+        },
+        {
+          "id": "w30",
+          "text": "it",
+          "start": 8.63,
+          "end": 8.76
+        },
+        {
+          "id": "w31",
+          "text": "is.",
+          "start": 8.76,
+          "end": 9.12
+        }
+      ]
+    },
+    {
+      "id": "s6-1",
+      "path": "assets/voice/s6-1.wav",
+      "duration_s": 2.475,
+      "words": [
+        {
+          "id": "w0",
+          "text": "So",
+          "start": 0.09,
+          "end": 0.13
+        },
+        {
+          "id": "w1",
+          "text": "what",
+          "start": 0.13,
+          "end": 0.28
+        },
+        {
+          "id": "w2",
+          "text": "should",
+          "start": 0.28,
+          "end": 0.57
+        },
+        {
+          "id": "w3",
+          "text": "you",
+          "start": 0.57,
+          "end": 0.71
+        },
+        {
+          "id": "w4",
+          "text": "do",
+          "start": 0.71,
+          "end": 0.8
+        },
+        {
+          "id": "w5",
+          "text": "when",
+          "start": 0.8,
+          "end": 0.99
+        },
+        {
+          "id": "w6",
+          "text": "you",
+          "start": 0.99,
+          "end": 1.13
+        },
+        {
+          "id": "w7",
+          "text": "spot",
+          "start": 1.13,
+          "end": 1.27
+        },
+        {
+          "id": "w8",
+          "text": "a",
+          "start": 1.34,
+          "end": 1.36
+        },
+        {
+          "id": "w9",
+          "text": "fishing",
+          "start": 1.36,
+          "end": 1.7
+        },
+        {
+          "id": "w10",
+          "text": "attempt?",
+          "start": 1.7,
+          "end": 2.24
+        }
+      ]
+    },
+    {
+      "id": "s6-2",
+      "path": "assets/voice/s6-2.wav",
+      "duration_s": 5.099,
+      "words": [
+        {
+          "id": "w0",
+          "text": "First,",
+          "start": 0.13,
+          "end": 0.56
+        },
+        {
+          "id": "w1",
+          "text": "do",
+          "start": 0.56,
+          "end": 0.72
+        },
+        {
+          "id": "w2",
+          "text": "not",
+          "start": 0.72,
+          "end": 0.96
+        },
+        {
+          "id": "w3",
+          "text": "click",
+          "start": 0.96,
+          "end": 1.36
+        },
+        {
+          "id": "w4",
+          "text": "reply",
+          "start": 1.41,
+          "end": 1.77
+        },
+        {
+          "id": "w5",
+          "text": "or",
+          "start": 1.87,
+          "end": 1.98
+        },
+        {
+          "id": "w6",
+          "text": "open",
+          "start": 1.98,
+          "end": 2.34
+        },
+        {
+          "id": "w7",
+          "text": "any",
+          "start": 2.34,
+          "end": 2.58
+        },
+        {
+          "id": "w8",
+          "text": "attachments,",
+          "start": 2.6,
+          "end": 3.72
+        },
+        {
+          "id": "w9",
+          "text": "not",
+          "start": 3.72,
+          "end": 3.91
+        },
+        {
+          "id": "w10",
+          "text": "even",
+          "start": 3.91,
+          "end": 4.13
+        },
+        {
+          "id": "w11",
+          "text": "to",
+          "start": 4.17,
+          "end": 4.28
+        },
+        {
+          "id": "w12",
+          "text": "unsubscribe.",
+          "start": 4.28,
+          "end": 5
+        }
+      ]
+    },
+    {
+      "id": "s6-3",
+      "path": "assets/voice/s6-3.wav",
+      "duration_s": 9.792,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Second,",
+          "start": 0.12,
+          "end": 0.48
+        },
+        {
+          "id": "w1",
+          "text": "report",
+          "start": 0.64,
+          "end": 1.09
+        },
+        {
+          "id": "w2",
+          "text": "it",
+          "start": 1.18,
+          "end": 1.27
+        },
+        {
+          "id": "w3",
+          "text": "immediately.",
+          "start": 1.27,
+          "end": 2.4
+        },
+        {
+          "id": "w4",
+          "text": "Use",
+          "start": 2.52,
+          "end": 2.57
+        },
+        {
+          "id": "w5",
+          "text": "your",
+          "start": 2.57,
+          "end": 2.8
+        },
+        {
+          "id": "w6",
+          "text": "company's",
+          "start": 2.8,
+          "end": 3.32
+        },
+        {
+          "id": "w7",
+          "text": "phishing",
+          "start": 3.32,
+          "end": 3.78
+        },
+        {
+          "id": "w8",
+          "text": "reporting",
+          "start": 3.78,
+          "end": 4.23
+        },
+        {
+          "id": "w9",
+          "text": "button",
+          "start": 4.23,
+          "end": 4.84
+        },
+        {
+          "id": "w10",
+          "text": "or",
+          "start": 4.84,
+          "end": 4.87
+        },
+        {
+          "id": "w11",
+          "text": "forward",
+          "start": 4.87,
+          "end": 5.4
+        },
+        {
+          "id": "w12",
+          "text": "the",
+          "start": 5.4,
+          "end": 5.62
+        },
+        {
+          "id": "w13",
+          "text": "email",
+          "start": 5.62,
+          "end": 5.99
+        },
+        {
+          "id": "w14",
+          "text": "to",
+          "start": 5.99,
+          "end": 6.14
+        },
+        {
+          "id": "w15",
+          "text": "your",
+          "start": 6.14,
+          "end": 6.44
+        },
+        {
+          "id": "w16",
+          "text": "security",
+          "start": 6.44,
+          "end": 6.58
+        },
+        {
+          "id": "w17",
+          "text": "team.",
+          "start": 7.14,
+          "end": 7.6
+        },
+        {
+          "id": "w18",
+          "text": "Every",
+          "start": 7.72,
+          "end": 7.89
+        },
+        {
+          "id": "w19",
+          "text": "report",
+          "start": 7.89,
+          "end": 8.07
+        },
+        {
+          "id": "w20",
+          "text": "helps",
+          "start": 8.24,
+          "end": 8.53
+        },
+        {
+          "id": "w21",
+          "text": "protect",
+          "start": 8.53,
+          "end": 8.93
+        },
+        {
+          "id": "w22",
+          "text": "your",
+          "start": 8.93,
+          "end": 9.16
+        },
+        {
+          "id": "w23",
+          "text": "colleagues.",
+          "start": 9.16,
+          "end": 9.94
+        }
+      ]
+    },
+    {
+      "id": "s6-4",
+      "path": "assets/voice/s6-4.wav",
+      "duration_s": 6.805,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Third,",
+          "start": 0.14,
+          "end": 0.5
+        },
+        {
+          "id": "w1",
+          "text": "delete",
+          "start": 0.7,
+          "end": 0.97
+        },
+        {
+          "id": "w2",
+          "text": "the",
+          "start": 0.97,
+          "end": 1.19
+        },
+        {
+          "id": "w3",
+          "text": "message",
+          "start": 1.19,
+          "end": 1.62
+        },
+        {
+          "id": "w4",
+          "text": "after",
+          "start": 1.79,
+          "end": 2.08
+        },
+        {
+          "id": "w5",
+          "text": "reporting",
+          "start": 2.08,
+          "end": 2.61
+        },
+        {
+          "id": "w6",
+          "text": "it.",
+          "start": 2.76,
+          "end": 3.16
+        },
+        {
+          "id": "w7",
+          "text": "Don't",
+          "start": 3.3,
+          "end": 3.49
+        },
+        {
+          "id": "w8",
+          "text": "forward",
+          "start": 3.49,
+          "end": 3.97
+        },
+        {
+          "id": "w9",
+          "text": "it",
+          "start": 3.97,
+          "end": 4.1
+        },
+        {
+          "id": "w10",
+          "text": "to",
+          "start": 4.1,
+          "end": 4.23
+        },
+        {
+          "id": "w11",
+          "text": "coworkers",
+          "start": 4.23,
+          "end": 4.78
+        },
+        {
+          "id": "w12",
+          "text": "or",
+          "start": 4.95,
+          "end": 5.05
+        },
+        {
+          "id": "w13",
+          "text": "try",
+          "start": 5.12,
+          "end": 5.33
+        },
+        {
+          "id": "w14",
+          "text": "to",
+          "start": 5.39,
+          "end": 5.48
+        },
+        {
+          "id": "w15",
+          "text": "investigate",
+          "start": 5.48,
+          "end": 5.77
+        },
+        {
+          "id": "w16",
+          "text": "it",
+          "start": 5.91,
+          "end": 6.2
+        },
+        {
+          "id": "w17",
+          "text": "yourself.",
+          "start": 6.36,
+          "end": 6.72
+        }
+      ]
+    },
+    {
+      "id": "s6-5",
+      "path": "assets/voice/s6-5.wav",
+      "duration_s": 10.283,
+      "words": [
+        {
+          "id": "w0",
+          "text": "And",
+          "start": 0.05,
+          "end": 0.21
+        },
+        {
+          "id": "w1",
+          "text": "remember,",
+          "start": 0.21,
+          "end": 0.91
+        },
+        {
+          "id": "w2",
+          "text": "if",
+          "start": 0.91,
+          "end": 0.97
+        },
+        {
+          "id": "w3",
+          "text": "you",
+          "start": 1.05,
+          "end": 1.26
+        },
+        {
+          "id": "w4",
+          "text": "do",
+          "start": 1.26,
+          "end": 1.4
+        },
+        {
+          "id": "w5",
+          "text": "accidentally",
+          "start": 1.4,
+          "end": 2.24
+        },
+        {
+          "id": "w6",
+          "text": "click,",
+          "start": 2.24,
+          "end": 2.64
+        },
+        {
+          "id": "w7",
+          "text": "don't",
+          "start": 2.69,
+          "end": 3.05
+        },
+        {
+          "id": "w8",
+          "text": "panic.",
+          "start": 3.05,
+          "end": 3.74
+        },
+        {
+          "id": "w9",
+          "text": "Immediately",
+          "start": 3.79,
+          "end": 4.67
+        },
+        {
+          "id": "w10",
+          "text": "notify",
+          "start": 4.67,
+          "end": 5.17
+        },
+        {
+          "id": "w11",
+          "text": "your",
+          "start": 5.17,
+          "end": 5.5
+        },
+        {
+          "id": "w12",
+          "text": "IT",
+          "start": 5.5,
+          "end": 5.67
+        },
+        {
+          "id": "w13",
+          "text": "security",
+          "start": 5.67,
+          "end": 6.11
+        },
+        {
+          "id": "w14",
+          "text": "team.",
+          "start": 6.43,
+          "end": 6.93
+        },
+        {
+          "id": "w15",
+          "text": "Quick",
+          "start": 7.01,
+          "end": 7.29
+        },
+        {
+          "id": "w16",
+          "text": "action",
+          "start": 7.29,
+          "end": 7.66
+        },
+        {
+          "id": "w17",
+          "text": "can",
+          "start": 7.66,
+          "end": 7.87
+        },
+        {
+          "id": "w18",
+          "text": "contain",
+          "start": 7.87,
+          "end": 8.33
+        },
+        {
+          "id": "w19",
+          "text": "the",
+          "start": 8.33,
+          "end": 8.51
+        },
+        {
+          "id": "w20",
+          "text": "damage",
+          "start": 8.51,
+          "end": 8.94
+        },
+        {
+          "id": "w21",
+          "text": "and",
+          "start": 8.99,
+          "end": 9.12
+        },
+        {
+          "id": "w22",
+          "text": "prevent",
+          "start": 9.12,
+          "end": 9.53
+        },
+        {
+          "id": "w23",
+          "text": "a",
+          "start": 9.53,
+          "end": 9.6
+        },
+        {
+          "id": "w24",
+          "text": "full",
+          "start": 9.6,
+          "end": 9.66
+        },
+        {
+          "id": "w25",
+          "text": "breach.",
+          "start": 9.84,
+          "end": 10.4
+        }
+      ]
+    },
+    {
+      "id": "s6-6",
+      "path": "assets/voice/s6-6.wav",
+      "duration_s": 8.491,
+      "words": [
+        {
+          "id": "w0",
+          "text": "At",
+          "start": 0.03,
+          "end": 0.13
+        },
+        {
+          "id": "w1",
+          "text": "our",
+          "start": 0.13,
+          "end": 0.33
+        },
+        {
+          "id": "w2",
+          "text": "organization,",
+          "start": 0.33,
+          "end": 1.14
+        },
+        {
+          "id": "w3",
+          "text": "security",
+          "start": 1.34,
+          "end": 1.92
+        },
+        {
+          "id": "w4",
+          "text": "is",
+          "start": 1.92,
+          "end": 2.08
+        },
+        {
+          "id": "w5",
+          "text": "everyone's",
+          "start": 2.08,
+          "end": 2.87
+        },
+        {
+          "id": "w6",
+          "text": "responsibility.",
+          "start": 2.87,
+          "end": 4.24
+        },
+        {
+          "id": "w7",
+          "text": "When",
+          "start": 4.27,
+          "end": 4.49
+        },
+        {
+          "id": "w8",
+          "text": "you",
+          "start": 4.49,
+          "end": 4.67
+        },
+        {
+          "id": "w9",
+          "text": "stay",
+          "start": 4.67,
+          "end": 4.88
+        },
+        {
+          "id": "w10",
+          "text": "vigilant,",
+          "start": 4.94,
+          "end": 5.55
+        },
+        {
+          "id": "w11",
+          "text": "you",
+          "start": 5.55,
+          "end": 5.7
+        },
+        {
+          "id": "w12",
+          "text": "protect",
+          "start": 5.76,
+          "end": 6.12
+        },
+        {
+          "id": "w13",
+          "text": "not",
+          "start": 6.12,
+          "end": 6.4
+        },
+        {
+          "id": "w14",
+          "text": "just",
+          "start": 6.4,
+          "end": 6.57
+        },
+        {
+          "id": "w15",
+          "text": "yourself,",
+          "start": 6.58,
+          "end": 7.24
+        },
+        {
+          "id": "w16",
+          "text": "but",
+          "start": 7.27,
+          "end": 7.39
+        },
+        {
+          "id": "w17",
+          "text": "everyone",
+          "start": 7.39,
+          "end": 7.8
+        },
+        {
+          "id": "w18",
+          "text": "around",
+          "start": 7.8,
+          "end": 8.11
+        },
+        {
+          "id": "w19",
+          "text": "you.",
+          "start": 8.11,
+          "end": 8.38
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "path": "assets/voice/outro.wav",
+      "duration_s": 4.352,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Fishing.",
+          "start": 0.11,
+          "end": 0.95
+        },
+        {
+          "id": "w1",
+          "text": "Spot",
+          "start": 1,
+          "end": 1.01
+        },
+        {
+          "id": "w2",
+          "text": "it.",
+          "start": 1.08,
+          "end": 1.22
+        },
+        {
+          "id": "w3",
+          "text": "Stop",
+          "start": 1.36,
+          "end": 1.59
+        },
+        {
+          "id": "w4",
+          "text": "it.",
+          "start": 1.66,
+          "end": 2.2
+        },
+        {
+          "id": "w5",
+          "text": "Thank",
+          "start": 2.25,
+          "end": 2.39
+        },
+        {
+          "id": "w6",
+          "text": "you",
+          "start": 2.41,
+          "end": 2.49
+        },
+        {
+          "id": "w7",
+          "text": "for",
+          "start": 2.56,
+          "end": 2.62
+        },
+        {
+          "id": "w8",
+          "text": "doing",
+          "start": 2.62,
+          "end": 2.85
+        },
+        {
+          "id": "w9",
+          "text": "your",
+          "start": 2.85,
+          "end": 2.95
+        },
+        {
+          "id": "w10",
+          "text": "part",
+          "start": 3.03,
+          "end": 3.22
+        },
+        {
+          "id": "w11",
+          "text": "to",
+          "start": 3.3,
+          "end": 3.37
+        },
+        {
+          "id": "w12",
+          "text": "keep",
+          "start": 3.37,
+          "end": 3.62
+        },
+        {
+          "id": "w13",
+          "text": "us",
+          "start": 3.62,
+          "end": 3.76
+        },
+        {
+          "id": "w14",
+          "text": "secure.",
+          "start": 3.76,
+          "end": 4.24
+        }
+      ]
+    }
+  ],
+  "sfx": [],
+  "total_duration_s": 275.883
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; }
+    .clip { visibility: hidden; }
+    .scene {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 80px;
+    }
+    .eyebrow {
+      font-family: "Nunito", sans-serif;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      font-size: 13px; font-weight: 600;
+      color: #787670; margin-bottom: 12px; opacity: 0;
+    }
+    .quote {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 36px; font-weight: 600;
+      color: #fff; line-height: 1.3;
+      max-width: 900px; margin-bottom: 32px; opacity: 0;
+    }
+    .quote em { color: #A5B4FC; font-style: normal; }
+    .cta-btn {
+      display: inline-block;
+      padding: 18px 56px;
+      background: linear-gradient(135deg, #0693e3, #4F46E5);
+      color: #fff;
+      font-family: "Nunito", sans-serif;
+      font-size: 20px; font-weight: 700;
+      border-radius: 100px;
+      text-decoration: none;
+      opacity: 0; transform: scale(0.8);
+      box-shadow: 0 0 30px rgba(6,147,227,0.3);
+    }
+    .byline {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 18px;
+      color: #555451;
+      margin-top: 24px; opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" data-composition-id="05-cta" data-start="33" data-duration="5" data-width="1920" data-height="1080">
+    <div class="scene">
+      <div id="eyebrow" class="eyebrow clip" data-start="0" data-duration="5" data-track-index="0">You Had The Message</div>
+      <div id="quote" class="quote clip" data-start="0" data-duration="5" data-track-index="0"><em>Now you own the production.</em><br>Try these prompts with your content.</div>
+      <a id="cta" class="cta-btn clip" href="https://www.heygen.com/blog/video-agent-prompt-guide" target="_blank" data-start="0" data-duration="5" data-track-index="0">
+        Read the Full Guide →
+      </a>
+      <div id="byline" class="byline clip" data-start="0" data-duration="5" data-track-index="0">heygen.com/blog/video-agent-prompt-guide</div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#eyebrow", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0);
+    tl.fromTo("#quote", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.4);
+    tl.fromTo("#cta", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }, 1.2);
+    tl.to("#cta", { scale: 1.05, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 2 }, 2.0);
+    tl.fromTo("#byline", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 2.8);
+
+    window.__timelines["05-cta"] = tl;
+  </script>
+</body>
+</html>

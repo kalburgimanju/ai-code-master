@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0a0a0f; font-family: "Inter", sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; }
+    .scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .clip { visibility: hidden; }
+
+    /* Avatar styling - top right corner, circular */
+    .avatar-wrap {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(0, 212, 255, 0.5);
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.25), 0 0 60px rgba(0, 212, 255, 0.1);
+      opacity: 0;
+      animation: avatar-pulse 3s ease-in-out infinite;
+      z-index: 100;
+    }
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    @keyframes avatar-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.1); }
+      50% { box-shadow: 0 0 35px rgba(0, 212, 255, 0.5), 0 0 70px rgba(0, 212, 255, 0.2); }
+    }
+  </style>
+</head>
+<body>
+  <div
+    id="root"
+    data-composition-id="main"
+    data-start="0"
+    data-duration="39"
+    data-width="1920"
+    data-height="1080"
+  >
+    <!-- AVATAR wrapper -->
+    <div class="avatar-wrap">
+      <img
+        id="avatar-img"
+        src="https://app.heygen.com/embeddings/ef75c18fca604ac6b359d6b6cb785a7f/image.png"
+        alt="Annie"
+      />
+    </div>
+
+    <!-- SCENE 1: Hero (0-8s) -->
+    <div
+      id="el-01-hero"
+      class="scene"
+      data-composition-id="01-hero"
+      data-composition-src="compositions/frames/01-hero.html"
+      data-start="0"
+      data-duration="8"
+      data-track-index="1"
+    ></div>
+    <audio
+      id="el-01-hero-voice"
+      src="assets/voice/01.wav"
+      data-start="0"
+      data-duration="8"
+      data-track-index="10"
+      data-volume="1"
+    ></audio>
+
+    <!-- SCENE 2: Builder Info (8-16s) -->
+    <div
+      id="el-02-builder"
+      class="scene"
+      data-composition-id="02-builder"
+      data-composition-src="compositions/frames/02-builder.html"
+      data-start="8"
+      data-duration="8"
+      data-track-index="1"
+    ></div>
+    <audio
+      id="el-02-builder-voice"
+      src="assets/voice/02.wav"
+      data-start="8"
+      data-duration="8"
+      data-track-index="10"
+      data-volume="1"
+    ></audio>
+
+    <!-- SCENE 3: Amenities (16-24s) -->
+    <div
+      id="el-03-amenities"
+      class="scene"
+      data-composition-id="03-amenities"
+      data-composition-src="compositions/frames/03-amenities.html"
+      data-start="16"
+      data-duration="8"
+      data-track-index="1"
+    ></div>
+    <audio
+      id="el-03-amenities-voice"
+      src="assets/voice/03.wav"
+      data-start="16"
+      data-duration="8"
+      data-track-index="10"
+      data-volume="1"
+    ></audio>
+
+    <!-- SCENE 4: Pricing (24-32s) -->
+    <div
+      id="el-04-pricing"
+      class="scene"
+      data-composition-id="04-pricing"
+      data-composition-src="compositions/frames/04-pricing.html"
+      data-start="24"
+      data-duration="8"
+      data-track-index="1"
+    ></div>
+    <audio
+      id="el-04-pricing-voice"
+      src="assets/voice/04.wav"
+      data-start="24"
+      data-duration="8"
+      data-track-index="10"
+      data-volume="1"
+    ></audio>
+
+    <!-- SCENE 5: CTA (32-39s) -->
+    <div
+      id="el-05-cta"
+      class="scene"
+      data-composition-id="05-cta"
+      data-composition-src="compositions/frames/05-cta.html"
+      data-start="32"
+      data-duration="7"
+      data-track-index="1"
+    ></div>
+    <audio
+      id="el-05-cta-voice"
+      src="assets/voice/05.wav"
+      data-start="32"
+      data-duration="7"
+      data-track-index="10"
+      data-volume="1"
+    ></audio>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = gsap.timeline({ paused: true });
+
+    // Show avatar with delay for better entrance
+    gsap.to("#avatar", { opacity: 1, duration: 1.0, ease: "back.out(1.5)" }, 1.0);
+  </script>
+</body>
+</html>

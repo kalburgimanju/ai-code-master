@@ -1,0 +1,254 @@
+{
+  "bgm": null,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 6.379,
+      "words": []
+    },
+    {
+      "frame": 2,
+      "path": "assets/voice/02.wav",
+      "duration_s": 11.819,
+      "words": []
+    },
+    {
+      "frame": 3,
+      "path": "assets/voice/03.wav",
+      "duration_s": 10.091,
+      "words": []
+    },
+    {
+      "frame": 4,
+      "path": "assets/voice/04.wav",
+      "duration_s": 9.045,
+      "words": []
+    },
+    {
+      "frame": 5,
+      "path": "assets/voice/05.wav",
+      "duration_s": 9.941,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Plan",
+          "start": 0.08,
+          "end": 0.31
+        },
+        {
+          "id": "w1",
+          "text": "your",
+          "start": 0.31,
+          "end": 0.61
+        },
+        {
+          "id": "w2",
+          "text": "finances",
+          "start": 0.61,
+          "end": 1.2
+        },
+        {
+          "id": "w3",
+          "text": "with",
+          "start": 1.25,
+          "end": 1.56
+        },
+        {
+          "id": "w4",
+          "text": "precision.",
+          "start": 1.56,
+          "end": 2.54
+        },
+        {
+          "id": "w5",
+          "text": "Calculate",
+          "start": 2.62,
+          "end": 3.69
+        },
+        {
+          "id": "w6",
+          "text": "EMIs,",
+          "start": 3.69,
+          "end": 4.45
+        },
+        {
+          "id": "w7",
+          "text": "compare",
+          "start": 4.5,
+          "end": 4.51
+        },
+        {
+          "id": "w8",
+          "text": "loan",
+          "start": 5.11,
+          "end": 5.36
+        },
+        {
+          "id": "w9",
+          "text": "options,",
+          "start": 5.41,
+          "end": 6
+        },
+        {
+          "id": "w10",
+          "text": "and",
+          "start": 6.08,
+          "end": 6.21
+        },
+        {
+          "id": "w11",
+          "text": "see",
+          "start": 6.21,
+          "end": 6.42
+        },
+        {
+          "id": "w12",
+          "text": "the",
+          "start": 6.42,
+          "end": 6.63
+        },
+        {
+          "id": "w13",
+          "text": "true",
+          "start": 6.63,
+          "end": 6.91
+        },
+        {
+          "id": "w14",
+          "text": "cost",
+          "start": 6.91,
+          "end": 7.2
+        },
+        {
+          "id": "w15",
+          "text": "of",
+          "start": 7.2,
+          "end": 7.35
+        },
+        {
+          "id": "w16",
+          "text": "your",
+          "start": 7.46,
+          "end": 7.65
+        },
+        {
+          "id": "w17",
+          "text": "investment",
+          "start": 7.65,
+          "end": 7.93
+        },
+        {
+          "id": "w18",
+          "text": "down",
+          "start": 8.5,
+          "end": 8.73
+        },
+        {
+          "id": "w19",
+          "text": "to",
+          "start": 8.73,
+          "end": 8.87
+        },
+        {
+          "id": "w20",
+          "text": "the",
+          "start": 9,
+          "end": 9.11
+        },
+        {
+          "id": "w21",
+          "text": "last",
+          "start": 9.11,
+          "end": 9.39
+        },
+        {
+          "id": "w22",
+          "text": "rupee.",
+          "start": 9.43,
+          "end": 10.08
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "path": "assets/voice/06.wav",
+      "duration_s": 8.704,
+      "words": []
+    },
+    {
+      "frame": 7,
+      "path": "assets/voice/07.wav",
+      "duration_s": 6.571,
+      "words": []
+    },
+    {
+      "frame": 8,
+      "path": "assets/voice/08.wav",
+      "duration_s": 7.168,
+      "words": []
+    },
+    {
+      "frame": 9,
+      "path": "assets/voice/09.wav",
+      "duration_s": 4.992,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Finn",
+          "start": 0.13,
+          "end": 0.41
+        },
+        {
+          "id": "w1",
+          "text": "Planner,",
+          "start": 0.49,
+          "end": 1.43
+        },
+        {
+          "id": "w2",
+          "text": "your",
+          "start": 1.43,
+          "end": 1.73
+        },
+        {
+          "id": "w3",
+          "text": "smart",
+          "start": 1.73,
+          "end": 2.1
+        },
+        {
+          "id": "w4",
+          "text": "financial",
+          "start": 2.1,
+          "end": 2.78
+        },
+        {
+          "id": "w5",
+          "text": "navigator,",
+          "start": 2.78,
+          "end": 3.57
+        },
+        {
+          "id": "w6",
+          "text": "start",
+          "start": 3.61,
+          "end": 3.8
+        },
+        {
+          "id": "w7",
+          "text": "exploring",
+          "start": 3.8,
+          "end": 4.49
+        },
+        {
+          "id": "w8",
+          "text": "today.",
+          "start": 4.49,
+          "end": 4.92
+        }
+      ]
+    }
+  ],
+  "sfx": []
+}

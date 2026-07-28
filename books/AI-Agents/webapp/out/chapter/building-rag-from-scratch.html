@@ -1,0 +1,1802 @@
+<!DOCTYPE html><html lang="en" class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/chunks/157per-6rfej7.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/3s_ssfmklbvuh.js"/><script src="/_next/static/chunks/3h0oyn0exvw0m.js" async=""></script><script src="/_next/static/chunks/0gy5uo_6oz9q4.js" async=""></script><script src="/_next/static/chunks/2n-c2rhkbzx6r.js" async=""></script><script src="/_next/static/chunks/turbopack-10u0tugcn5e6r.js" async=""></script><script src="/_next/static/chunks/3j2brc7c8hat8.js" async=""></script><script src="/_next/static/chunks/05b0208rfh8ys.js" async=""></script><script src="/_next/static/chunks/16vgld9iclosn.js" async=""></script><script src="/_next/static/chunks/2rb1230i-fez-.js" async=""></script><meta name="next-size-adjust" content=""/><title>AI Agents: The Complete Guide</title><meta name="description" content="A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"/><meta name="author" content="Manjunath Kalburgi"/><meta name="keywords" content="AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"/><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body class="min-h-full flex flex-col"><div hidden=""><!--$--><!--/$--></div><div><div class="reading-progress" style="width:0%"></div><nav class="fixed top-0 left-0 right-0 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border-color)] z-40 no-print"><div class="flex items-center justify-between px-4 py-2 max-w-full"><div class="flex items-center gap-3"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Toggle sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h14M3 10h14M3 15h14"></path></svg></button><a class="text-sm font-semibold text-primary hover:underline hidden sm:inline" href="/">AI Agents Book</a></div><div class="flex items-center gap-2 text-sm text-[var(--foreground)] opacity-60"><span class="hidden md:inline">Chapter <!-- -->11</span><span class="hidden md:inline">•</span><span class="hidden lg:inline">Building RAG from Scratch</span><span class="lg:hidden">🏗️</span></div><div class="flex items-center gap-2"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12V4M4 7l4-4 4 4"></path></svg></button></div></div></nav><div class="flex pt-12 min-h-screen"><aside class="fixed left-0 top-12 bottom-0 w-72 bg-[var(--surface)] border-r border-[var(--border-color)] overflow-y-auto transition-transform duration-300 z-30 no-print translate-x-0"><div class="p-4"><div class="mb-6 pb-4 border-b border-[var(--border-color)]"><span class="text-xs font-medium text-primary uppercase tracking-wide">Chapter <!-- -->11</span><h2 class="text-lg font-bold text-[var(--foreground)] mt-1">Building RAG from Scratch</h2><p class="text-xs text-[var(--foreground)] opacity-60 mt-1">~<!-- -->22<!-- --> pages • <!-- -->Part III: Build from Scratch</p></div><div class="mb-6"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">On this page</h3><div class="space-y-1"><a href="#chapter-11-building-rag-from-scratch" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chapter 11: Building RAG from Scratch</a><a href="#every-component-explained-and-built" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Every Component, Explained and Built</a><a href="#table-of-contents" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Table of Contents</a><a href="#11-1-why-rag-the-problem-it-solves" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.1 Why RAG? The Problem It Solves</a><a href="#the-three-pillars-of-llm-limitations" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Three Pillars of LLM Limitations</a><a href="#when-rag-is-the-right-choice" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">When RAG Is the Right Choice</a><a href="#11-2-the-rag-architecture-overview" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.2 The RAG Architecture Overview</a><a href="#the-core-data-flow" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Core Data Flow</a><a href="#the-simplest-possible-rag-in-pseudocode" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The simplest possible RAG in pseudocode</a><a href="#11-3-document-ingestion-pipeline" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.3 Document Ingestion Pipeline</a><a href="#supported-formats" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Supported Formats</a><a href="#pdf-parsing" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">PDF Parsing</a><a href="#using-pymupdf-for-pdf-extraction" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using PyMuPDF for PDF extraction</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#html-parsing" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">HTML Parsing</a><a href="#using-trafilatura-for-clean-html-extraction" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using Trafilatura for clean HTML extraction</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#markdown-parsing" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Markdown Parsing</a><a href="#simple-markdown-parser-with-structure-preservation" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Simple markdown parser with structure preservation</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#unified-ingestion-pipeline" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Unified Ingestion Pipeline</a><a href="#11-4-text-cleaning-and-preprocessing" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.4 Text Cleaning and Preprocessing</a><a href="#the-cleaning-pipeline" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Cleaning Pipeline</a><a href="#language-detection" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Language Detection</a><a href="#using-langdetect-for-language-filtering" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using langdetect for language filtering</a><a href="#make-detection-deterministic" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Make detection deterministic</a><a href="#quality-filtering" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Quality Filtering</a><a href="#11-5-embedding-models-deep-dive" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.5 Embedding Models Deep Dive</a><a href="#what-are-embeddings" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What Are Embeddings?</a><a href="#embedding-model-comparison" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Embedding Model Comparison</a><a href="#using-openai-embeddings" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using OpenAI Embeddings</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#batch-embedding-much-faster-for-many-texts" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Batch embedding (much faster for many texts)</a><a href="#using-sentence-transformers-free-local" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using Sentence Transformers (Free, Local)</a><a href="#download-and-cache-the-model-runs-locally-no-api-costs" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Download and cache the model (runs locally, no API costs)</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#choosing-the-right-model" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Choosing the Right Model</a><a href="#11-6-vector-stores-choosing-and-setting-up" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.6 Vector Stores: Choosing and Setting Up</a><a href="#vector-store-comparison" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Vector Store Comparison</a><a href="#setting-up-faiss-local-fast" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Setting Up FAISS (Local, Fast)</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#add-documents" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Add documents</a><a href="#search" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Search</a><a href="#setting-up-chroma-lightweight-persistent" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Setting Up Chroma (Lightweight, Persistent)</a><a href="#create-a-persistent-client-data-saved-to-disk" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Create a persistent client (data saved to disk)</a><a href="#create-or-get-a-collection" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Create or get a collection</a><a href="#add-documents-with-embeddings" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Add documents with embeddings</a><a href="#query" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Query</a><a href="#setting-up-pinecone-cloud-production" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Setting Up Pinecone (Cloud, Production)</a><a href="#initialize" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Initialize</a><a href="#create-index" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Create index</a><a href="#connect-to-index" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Connect to index</a><a href="#upsert-vectors" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Upsert vectors</a><a href="#query" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Query</a><a href="#11-7-chunking-strategies-the-hidden-art" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.7 Chunking Strategies: The Hidden Art</a><a href="#why-chunking-matters" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Why Chunking Matters</a><a href="#chunking-strategies" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chunking Strategies</a><a href="#chunking-comparison" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chunking Comparison</a><a href="#recommended-langchain-s-recursivetextsplitter" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Recommended: LangChain&#x27;s RecursiveTextSplitter</a><a href="#11-8-retrieval-optimization" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.8 Retrieval Optimization</a><a href="#similarity-metrics" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Similarity Metrics</a><a href="#maximum-marginal-relevance-mmr" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Maximum Marginal Relevance (MMR)</a><a href="#query-expansion" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Query Expansion</a><a href="#example" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Example</a><a href="#original-how-do-i-fix-the-login-issue" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Original: &quot;How do I fix the login issue?&quot;</a><a href="#expanded" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Expanded:</a><a href="#how-do-i-fix-the-login-issue" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">- &quot;How do I fix the login issue?&quot;</a><a href="#login-not-working-troubleshooting-steps" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">- &quot;Login not working troubleshooting steps&quot;</a><a href="#cannot-sign-in-to-my-account" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">- &quot;Cannot sign in to my account&quot;</a><a href="#authentication-error-resolution" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">- &quot;Authentication error resolution&quot;</a><a href="#hybrid-search" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Hybrid Search</a><a href="#11-9-reranking-for-precision" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.9 Reranking for Precision</a><a href="#why-rerank" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Why Rerank?</a><a href="#using-cohere-rerank" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using Cohere Rerank</a><a href="#using-a-local-cross-encoder" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using a Local Cross-Encoder</a><a href="#load-a-cross-encoder-model" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Load a cross-encoder model</a><a href="#using-colbert" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using ColBERT</a><a href="#using-ragatouille-for-colbert" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using RAGatouille for ColBERT</a><a href="#index-documents" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Index documents</a><a href="#search-with-colbert" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Search with ColBERT</a><a href="#reranking-comparison" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Reranking Comparison</a><a href="#11-10-multi-modal-rag" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.10 Multi-Modal RAG</a><a href="#architecture-for-multi-modal-rag" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Architecture for Multi-Modal RAG</a><a href="#using-clip-for-image-embeddings" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using CLIP for Image Embeddings</a><a href="#load-clip-model" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Load CLIP model</a><a href="#table-extraction-and-description" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Table Extraction and Description</a><a href="#11-11-complete-rag-pipeline-in-100-lines" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.11 Complete RAG Pipeline in 100 Lines</a><a href="#configuration" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Configuration ──────────────────────────────────────────────</a><a href="#initialize" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Initialize ─────────────────────────────────────────────────</a><a href="#text-processing" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Text Processing ────────────────────────────────────────────</a><a href="#ingestion" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Ingestion ──────────────────────────────────────────────────</a><a href="#retrieval" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Retrieval ──────────────────────────────────────────────────</a><a href="#generation" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Generation ─────────────────────────────────────────────────</a><a href="#example-usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Example Usage ──────────────────────────────────────────────</a><a href="#11-12-rag-with-reranking" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.12 RAG with Reranking</a><a href="#initialize-reranker" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Initialize Reranker ───────────────────────────────────────</a><a href="#enhanced-retrieval-with-reranking" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Enhanced Retrieval with Reranking ──────────────────────────</a><a href="#complete-pipeline" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Complete Pipeline ──────────────────────────────────────────</a><a href="#comparison-without-vs-with-reranking" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">─── Comparison: Without vs With Reranking ──────────────────────</a><a href="#11-13-evaluation-measuring-quality" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.13 Evaluation: Measuring Quality</a><a href="#key-metrics" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Key Metrics</a><a href="#using-ragas-for-evaluation" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using RAGAS for Evaluation</a><a href="#prepare-evaluation-data" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Prepare evaluation data</a><a href="#run-evaluation" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Run evaluation</a><a href="#faithfulness-0-95-answer-relevancy-0-88" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">{&#x27;faithfulness&#x27;: 0.95, &#x27;answerrelevancy&#x27;: 0.88, ...}</a><a href="#manual-evaluation-framework" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Manual Evaluation Framework</a><a href="#building-an-evaluation-dataset" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Building an Evaluation Dataset</a><a href="#rag-pipeline-evaluation-loop" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">RAG Pipeline Evaluation Loop</a><a href="#11-14-key-takeaways" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.14 Key Takeaways</a><a href="#11-15-try-it-yourself" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11.15 Try It Yourself</a><a href="#exercise-1-build-your-first-rag-system" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 1: Build Your First RAG System</a><a href="#exercise-2-chunking-experiment" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 2: Chunking Experiment</a><a href="#exercise-3-reranking-a-b-test" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 3: Reranking A/B Test</a><a href="#exercise-4-embedding-model-comparison" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 4: Embedding Model Comparison</a><a href="#exercise-5-build-an-evaluation-dataset" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 5: Build an Evaluation Dataset</a></div></div><div class="border-t border-[var(--border-color)] pt-4"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">Chapters</h3><div class="space-y-1"><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/llms-and-genai-fundamentals"><span class="text-base">🧠</span><span class="truncate">LLMs &amp; GenAI Fundamentals</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/rag-and-knowledge-systems"><span class="text-base">🔍</span><span class="truncate">RAG &amp; Knowledge Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/introduction-to-ai-agents"><span class="text-base">🤖</span><span class="truncate">Introduction to AI Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/customer-support-agents"><span class="text-base">💬</span><span class="truncate">Customer Support Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/executive-and-analyst-agents"><span class="text-base">📊</span><span class="truncate">Executive &amp; Analyst Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/developer-and-coder-agents"><span class="text-base">👨‍💻</span><span class="truncate">Developer &amp; Coder Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/designer-and-creative-agents"><span class="text-base">🎨</span><span class="truncate">Designer &amp; Creative Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/multi-agent-systems"><span class="text-base">🔗</span><span class="truncate">Multi-Agent Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-tools-from-scratch"><span class="text-base">🔧</span><span class="truncate">Building Tools from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-your-own-llm-pipeline"><span class="text-base">⚙️</span><span class="truncate">Building Your Own LLM Pipeline</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all bg-primary/10 text-primary font-medium" href="/chapter/building-rag-from-scratch"><span class="text-base">🏗️</span><span class="truncate">Building RAG from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/complete-project-deployment"><span class="text-base">🚀</span><span class="truncate">Complete Project: End to End</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/security-and-safety"><span class="text-base">🛡️</span><span class="truncate">Security, Safety &amp; Guardrails</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/observability-and-scalability"><span class="text-base">📈</span><span class="truncate">Observability &amp; Scalability</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/authenticity-and-future"><span class="text-base">🌍</span><span class="truncate">Authenticity &amp; The Future</span></a></div></div></div></aside><main class="flex-1 transition-all duration-300 ml-72 max-w-4xl px-6 md:px-12 py-12"><div class="mb-10 pb-8 border-b-2 border-primary/20"><span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">Part III: Build from Scratch</span><h1 class="text-4xl md:text-5xl font-extrabold mb-2 bg-gradient-to-r from-primary via-emerald-400 to-teal-400 -webkit-background-clip-text text-transparent bg-clip-text">Chapter <!-- -->11<!-- -->: <!-- -->Building RAG from Scratch</h1><p class="text-xl text-[var(--foreground)] opacity-70">Every Component, Explained and Built</p></div><article class="prose-book"><h1 class="text-4xl font-extrabold mt-12 mb-4">Chapter 11: Building RAG from Scratch</h1>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Every Component, Explained and Built</h2>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify">&quot;Retrieval-Augmented Generation is not a feature you bolt on. It is an architecture you build from first principles.&quot;</p>
+</blockquote>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<p class="mb-4 text-justify">In the previous chapters, you learned how LLMs work, how agents reason, and how tools extend their capabilities. But there is one critical limitation that none of these solve on their own: <strong class="font-bold text-primary">knowledge cutoff</strong>. An LLM trained in 2024 cannot know about events in 2025. A model trained on public internet data cannot answer questions about your company&#x27;s internal documentation.</p>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Retrieval-Augmented Generation (RAG)</strong> solves this by combining two powerful ideas:</p>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Retrieve</strong> relevant documents from a knowledge base at query time.</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Generate</strong> an answer using both the retrieved documents and the LLM&#x27;s reasoning.</li>
+</ol>
+<p class="mb-4 text-justify">This chapter builds a complete RAG system from scratch. Not a high-level overview — every component, every trade-off, and every line of code explained.</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Table of Contents</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><a href="#111-why-rag-the-problem-it-solves" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Why RAG? The Problem It Solves</a></li>
+<li class="text-[var(--foreground)]"><a href="#112-the-rag-architecture-overview" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">The RAG Architecture Overview</a></li>
+<li class="text-[var(--foreground)]"><a href="#113-document-ingestion-pipeline" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Document Ingestion Pipeline</a></li>
+<li class="text-[var(--foreground)]"><a href="#114-text-cleaning-and-preprocessing" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Text Cleaning and Preprocessing</a></li>
+<li class="text-[var(--foreground)]"><a href="#115-embedding-models-deep-dive" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Embedding Models Deep Dive</a></li>
+<li class="text-[var(--foreground)]"><a href="#116-vector-stores-choosing-and-setting-up" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Vector Stores: Choosing and Setting Up</a></li>
+<li class="text-[var(--foreground)]"><a href="#117-chunking-strategies-the-hidden-art" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Chunking Strategies: The Hidden Art</a></li>
+<li class="text-[var(--foreground)]"><a href="#118-retrieval-optimization" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Retrieval Optimization</a></li>
+<li class="text-[var(--foreground)]"><a href="#119-reranking-for-precision" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Reranking for Precision</a></li>
+<li class="text-[var(--foreground)]"><a href="#1110-multi-modal-rag" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Multi-Modal RAG</a></li>
+<li class="text-[var(--foreground)]"><a href="#1111-complete-rag-pipeline-in-100-lines" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Complete RAG Pipeline in 100 Lines</a></li>
+<li class="text-[var(--foreground)]"><a href="#1112-rag-with-reranking" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">RAG with Reranking</a></li>
+<li class="text-[var(--foreground)]"><a href="#1113-evaluation-measuring-quality" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Evaluation: Measuring Quality</a></li>
+<li class="text-[var(--foreground)]"><a href="#1114-key-takeaways" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Key Takeaways</a></li>
+<li class="text-[var(--foreground)]"><a href="#1115-try-it-yourself" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Try It Yourself</a></li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.1 Why RAG? The Problem It Solves</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Three Pillars of LLM Limitations</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────────────────┐
+│              LLM LIMITATIONS                        │
+├──────────────────┬──────────────────┬───────────────┤
+│  KNOWLEDGE       │  HALLUCINATION   │  FRESHNESS    │
+│  CUTOFF          │                  │               │
+│                  │  Models fabricate│  Training data│
+│  Trained on data │  facts when they │  is months or │
+│  up to a certain │  don&#x27;t know the  │  years old    │
+│  date            │  answer          │               │
+└──────────────────┴──────────────────┴───────────────┘
+</code></pre>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Fine-tuning</strong> was the first answer to these problems. But fine-tuning has real costs:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Approach</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Knowledge Update</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Cost</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Accuracy</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Freshness</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Fine-tuning</td><td class="px-4 py-3 border border-[var(--border-color)]">Retrain entire model</td><td class="px-4 py-3 border border-[var(--border-color)]">$1,000-$100,000+</td><td class="px-4 py-3 border border-[var(--border-color)]">High</td><td class="px-4 py-3 border border-[var(--border-color)]">Stale</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">RAG</td><td class="px-4 py-3 border border-[var(--border-color)]">Add new documents</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.01-$1.00</td><td class="px-4 py-3 border border-[var(--border-color)]">High</td><td class="px-4 py-3 border border-[var(--border-color)]">Real-time</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Prompt stuffing</td><td class="px-4 py-3 border border-[var(--border-color)]">Add to context window</td><td class="px-4 py-3 border border-[var(--border-color)]">Near zero</td><td class="px-4 py-3 border border-[var(--border-color)]">Variable</td><td class="px-4 py-3 border border-[var(--border-color)]">Real-time</td></tr></tbody></table></div>
+<p class="mb-4 text-justify">RAG wins on cost and freshness. It gives you a system that can answer questions about <strong class="font-bold text-primary">any document you feed it</strong>, without retraining.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">When RAG Is the Right Choice</h3>
+<p class="mb-4 text-justify">RAG is ideal when:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">You have a <strong class="font-bold text-primary">large corpus</strong> of documents (thousands to millions).</li>
+<li class="text-[var(--foreground)]">The information <strong class="font-bold text-primary">changes frequently</strong> (support docs, policies, regulations).</li>
+<li class="text-[var(--foreground)]">You need <strong class="font-bold text-primary">attributable answers</strong> (legal, medical, financial).</li>
+<li class="text-[var(--foreground)]">You want to <strong class="font-bold text-primary">reduce hallucinations</strong> by grounding responses in real data.</li>
+<li class="text-[var(--foreground)]">You need <strong class="font-bold text-primary">auditability</strong> (who said what, and from where).</li>
+</ul>
+<p class="mb-4 text-justify">RAG is NOT ideal when:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">The task requires deep reasoning over a single short text (just use long-context).</li>
+<li class="text-[var(--foreground)]">You need the model to <strong class="font-bold text-primary">learn a new skill</strong> (fine-tuning is better).</li>
+<li class="text-[var(--foreground)]">Your documents are <strong class="font-bold text-primary">extremely noisy</strong> and cannot be cleaned.</li>
+</ul>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.2 The RAG Architecture Overview</h2>
+<p class="mb-4 text-justify">Here is the full RAG pipeline, broken into two phases:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">                    ════════════════════════════════════
+                        PHASE 1: INDEXING (Offline)
+                    ════════════════════════════════════
+
+    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+    │  Raw     │───▶│  Parse &amp; │───▶│  Chunk   │───▶│ Embed &amp;  │
+    │  Docs    │    │  Clean   │    │  Text    │    │  Store   │
+    └──────────┘    └──────────┘    └──────────┘    └──────────┘
+     PDF, HTML,      Remove noise,  Split into     Convert to
+     Markdown        normalize      manageable     vectors,
+                                     pieces        save to DB
+
+                    ════════════════════════════════════
+                        PHASE 2: QUERYING (Online)
+                    ════════════════════════════════════
+
+    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+    │  User    │───▶│  Embed   │───▶│ Retrieve │───▶│ Generate │
+    │  Query   │    │  Query   │    │ Top-K    │    │ Answer   │
+    └──────────┘    └──────────┘    └──────────┘    └──────────┘
+     &quot;What is the    Convert to     Find most       LLM reads
+      refund         vector         relevant        docs +
+      policy?&quot;                      chunks          question
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Core Data Flow</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># The simplest possible RAG in pseudocode
+def rag(query: str) -&gt; str:
+    # Step 1: Embed the query
+    query_vector = embed(query)
+
+    # Step 2: Find relevant chunks
+    relevant_chunks = vector_store.search(query_vector, top_k=5)
+
+    # Step 3: Build a prompt with context
+    context = &quot;\n\n&quot;.join(relevant_chunks)
+    prompt = f&quot;&quot;&quot;Answer the question based on the context below.
+
+Context:
+{context}
+
+Question: {query}
+Answer:&quot;&quot;&quot;
+
+    # Step 4: Generate the answer
+    return llm.generate(prompt)
+</code></pre></pre>
+<p class="mb-4 text-justify">That is the essence of RAG. Everything else is optimization. Let&#x27;s build each piece.</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.3 Document Ingestion Pipeline</h2>
+<p class="mb-4 text-justify">The first challenge is getting your documents into a format the system can process. Real-world documents come in dozens of formats. Here is how to handle the most common ones.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Supported Formats</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Format</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Parser</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Complexity</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Notes</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">PDF</td><td class="px-4 py-3 border border-[var(--border-color)]">PyMuPDF, pdfplumber</td><td class="px-4 py-3 border border-[var(--border-color)]">High</td><td class="px-4 py-3 border border-[var(--border-color)]">Layouts, tables, images</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">HTML</td><td class="px-4 py-3 border border-[var(--border-color)]">BeautifulSoup, Trafilatura</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Ads, navigation, boilerplate</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Markdown</td><td class="px-4 py-3 border border-[var(--border-color)]">markdown-it-py</td><td class="px-4 py-3 border border-[var(--border-color)]">Low</td><td class="px-4 py-3 border border-[var(--border-color)]">Clean, structured</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">DOCX</td><td class="px-4 py-3 border border-[var(--border-color)]">python-docx</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Styles, tables, images</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Plain Text</td><td class="px-4 py-3 border border-[var(--border-color)]">Built-in</td><td class="px-4 py-3 border border-[var(--border-color)]">None</td><td class="px-4 py-3 border border-[var(--border-color)]">Straightforward</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">CSV</td><td class="px-4 py-3 border border-[var(--border-color)]">pandas</td><td class="px-4 py-3 border border-[var(--border-color)]">Low</td><td class="px-4 py-3 border border-[var(--border-color)]">Tabular data</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">JSON</td><td class="px-4 py-3 border border-[var(--border-color)]">json</td><td class="px-4 py-3 border border-[var(--border-color)]">Low</td><td class="px-4 py-3 border border-[var(--border-color)]">Structured data</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">PDF Parsing</h3>
+<p class="mb-4 text-justify">PDFs are the hardest format. They are visual layouts, not text documents. Text can appear in columns, tables, sidebars, headers, and footers — and the raw bytes don&#x27;t tell you which is which.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Using PyMuPDF for PDF extraction
+import fitz  # PyMuPDF
+
+def parse_pdf(file_path: str) -&gt; list[dict]:
+    &quot;&quot;&quot;Extract text from PDF with page metadata.&quot;&quot;&quot;
+    doc = fitz.open(file_path)
+    pages = []
+
+    for page_num in range(len(doc)):
+        page = doc[page_num]
+
+        # Extract text blocks with position info
+        blocks = page.get_text(&quot;dict&quot;)[&quot;blocks&quot;]
+
+        page_text = []
+        for block in blocks:
+            if block[&quot;type&quot;] == 0:  # Text block
+                for line in block[&quot;lines&quot;]:
+                    text = &quot;&quot;.join(span[&quot;text&quot;] for span in line[&quot;spans&quot;])
+                    if text.strip():
+                        page_text.append(text)
+
+        pages.append({
+            &quot;page_num&quot;: page_num + 1,
+            &quot;text&quot;: &quot;\n&quot;.join(page_text),
+            &quot;source&quot;: file_path,
+        })
+
+    doc.close()
+    return pages
+
+# Usage
+pages = parse_pdf(&quot;company_handbook.pdf&quot;)
+print(f&quot;Extracted {len(pages)} pages&quot;)
+for page in pages[:3]:
+    print(f&quot;Page {page[&#x27;page_num&#x27;]}: {page[&#x27;text&#x27;][:100]}...&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">HTML Parsing</h3>
+<p class="mb-4 text-justify">HTML requires you to strip boilerplate (navigation, footers, ads) while preserving the actual content.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Using Trafilatura for clean HTML extraction
+import trafilatura
+
+def parse_html(url: str) -&gt; dict:
+    &quot;&quot;&quot;Download and extract clean text from a URL.&quot;&quot;&quot;
+    downloaded = trafilatura.fetch_url(url)
+
+    if not downloaded:
+        raise ValueError(f&quot;Failed to download: {url}&quot;)
+
+    text = trafilatura.extract(
+        downloaded,
+        include_links=True,
+        include_tables=True,
+        favor_precision=True,
+    )
+
+    return {
+        &quot;url&quot;: url,
+        &quot;text&quot;: text,
+        &quot;source&quot;: &quot;html&quot;,
+    }
+
+# Usage
+article = parse_html(&quot;https://example.com/article&quot;)
+print(f&quot;Extracted {len(article[&#x27;text&#x27;])} characters&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Markdown Parsing</h3>
+<p class="mb-4 text-justify">Markdown is the easiest format to parse because it is already structured.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Simple markdown parser with structure preservation
+import re
+from pathlib import Path
+
+def parse_markdown(file_path: str) -&gt; dict:
+    &quot;&quot;&quot;Parse markdown preserving headers as structure.&quot;&quot;&quot;
+    content = Path(file_path).read_text(encoding=&quot;utf-8&quot;)
+
+    # Split by headers to preserve document structure
+    sections = re.split(r&#x27;^(#{1,6}\s+.+)$&#x27;, content, flags=re.MULTILINE)
+
+    structured_sections = []
+    current_header = &quot;Introduction&quot;
+
+    for section in sections:
+        if re.match(r&#x27;^#{1,6}\s+&#x27;, section):
+            current_header = section.strip()
+        elif section.strip():
+            structured_sections.append({
+                &quot;header&quot;: current_header,
+                &quot;text&quot;: section.strip(),
+            })
+
+    return {
+        &quot;file_path&quot;: file_path,
+        &quot;sections&quot;: structured_sections,
+        &quot;full_text&quot;: content,
+        &quot;source&quot;: &quot;markdown&quot;,
+    }
+
+# Usage
+doc = parse_markdown(&quot;README.md&quot;)
+print(f&quot;Found {len(doc[&#x27;sections&#x27;])} sections&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Unified Ingestion Pipeline</h3>
+<p class="mb-4 text-justify">Combine all parsers into one pipeline:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">from pathlib import Path
+
+def ingest_document(file_path: str) -&gt; list[dict]:
+    &quot;&quot;&quot;Universal document ingestion.&quot;&quot;&quot;
+    path = Path(file_path)
+    suffix = path.suffix.lower()
+
+    if suffix == &quot;.pdf&quot;:
+        pages = parse_pdf(file_path)
+        return [
+            {
+                &quot;text&quot;: page[&quot;text&quot;],
+                &quot;metadata&quot;: {
+                    &quot;source&quot;: file_path,
+                    &quot;page&quot;: page[&quot;page_num&quot;],
+                    &quot;format&quot;: &quot;pdf&quot;,
+                },
+            }
+            for page in pages
+        ]
+
+    elif suffix in (&quot;.html&quot;, &quot;.htm&quot;):
+        result = parse_html(file_path)
+        return [
+            {
+                &quot;text&quot;: result[&quot;text&quot;],
+                &quot;metadata&quot;: {
+                    &quot;source&quot;: file_path,
+                    &quot;format&quot;: &quot;html&quot;,
+                },
+            }
+        ]
+
+    elif suffix == &quot;.md&quot;:
+        result = parse_markdown(file_path)
+        return [
+            {
+                &quot;text&quot;: section[&quot;text&quot;],
+                &quot;metadata&quot;: {
+                    &quot;source&quot;: file_path,
+                    &quot;header&quot;: section[&quot;header&quot;],
+                    &quot;format&quot;: &quot;markdown&quot;,
+                },
+            }
+            for section in result[&quot;sections&quot;]
+        ]
+
+    elif suffix == &quot;.txt&quot;:
+        text = path.read_text(encoding=&quot;utf-8&quot;)
+        return [
+            {
+                &quot;text&quot;: text,
+                &quot;metadata&quot;: {
+                    &quot;source&quot;: file_path,
+                    &quot;format&quot;: &quot;text&quot;,
+                },
+            }
+        ]
+
+    else:
+        raise ValueError(f&quot;Unsupported format: {suffix}&quot;)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.4 Text Cleaning and Preprocessing</h2>
+<p class="mb-4 text-justify">Raw text from documents is messy. It contains special characters, inconsistent formatting, and duplicate content. Cleaning it improves retrieval quality dramatically.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Cleaning Pipeline</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import re
+import hashlib
+
+def clean_text(text: str) -&gt; str:
+    &quot;&quot;&quot;Clean and normalize text for RAG.&quot;&quot;&quot;
+    # Step 1: Remove excessive whitespace
+    text = re.sub(r&#x27;\n{3,}&#x27;, &#x27;\n\n&#x27;, text)  # Max 2 newlines
+    text = re.sub(r&#x27; {2,}&#x27;, &#x27; &#x27;, text)      # Max 1 space
+    text = text.strip()
+
+    # Step 2: Remove page numbers and headers/footers
+    text = re.sub(r&#x27;^\d+\s*$&#x27;, &#x27;&#x27;, text, flags=re.MULTILINE)  # Standalone numbers
+    text = re.sub(r&#x27;^Page \d+ of \d+$&#x27;, &#x27;&#x27;, text, flags=re.MULTILINE)
+
+    # Step 3: Fix encoding issues
+    text = text.replace(&#x27;’&#x27;, &quot;&#x27;&quot;)   # Smart single quote
+    text = text.replace(&#x27;“&#x27;, &#x27;&quot;&#x27;)   # Smart left double quote
+    text = text.replace(&#x27;”&#x27;, &#x27;&quot;&#x27;)   # Smart right double quote
+    text = text.replace(&#x27;—&#x27;, &#x27;—&#x27;)   # Em dash
+    text = text.replace(&#x27;–&#x27;, &#x27;–&#x27;)   # En dash
+    text = text.replace(&#x27;\xa0&#x27;, &#x27; &#x27;)     # Non-breaking space
+
+    # Step 4: Remove control characters (keep newlines and tabs)
+    text = re.sub(r&#x27;[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]&#x27;, &#x27;&#x27;, text)
+
+    # Step 5: Normalize bullet points
+    text = re.sub(r&#x27;[•●○◦▪▸►→]&#x27;, &#x27;•&#x27;, text)
+
+    return text
+
+def deduplicate_chunks(chunks: list[dict]) -&gt; list[dict]:
+    &quot;&quot;&quot;Remove exact and near-duplicate chunks.&quot;&quot;&quot;
+    seen_hashes = set()
+    unique_chunks = []
+
+    for chunk in chunks:
+        # Normalize for comparison
+        normalized = re.sub(r&#x27;\s+&#x27;, &#x27; &#x27;, chunk[&quot;text&quot;].lower().strip())
+        content_hash = hashlib.md5(normalized.encode()).hexdigest()
+
+        if content_hash not in seen_hashes:
+            seen_hashes.add(content_hash)
+            unique_chunks.append(chunk)
+
+    removed = len(chunks) - len(unique_chunks)
+    if removed:
+        print(f&quot;Removed {removed} duplicate chunks&quot;)
+    return unique_chunks
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Language Detection</h3>
+<p class="mb-4 text-justify">When your knowledge base contains multiple languages, detect and filter:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Using langdetect for language filtering
+from langdetect import detect, DetectorFactory
+
+# Make detection deterministic
+DetectorFactory.seed = 0
+
+def filter_by_language(
+    chunks: list[dict],
+    target_language: str = &quot;en&quot;,
+    confidence_threshold: float = 0.7,
+) -&gt; list[dict]:
+    &quot;&quot;&quot;Keep only chunks in the target language.&quot;&quot;&quot;
+    filtered = []
+    for chunk in chunks:
+        try:
+            lang = detect(chunk[&quot;text&quot;])
+            if lang == target_language:
+                filtered.append(chunk)
+        except Exception:
+            # If detection fails, keep the chunk
+            filtered.append(chunk)
+
+    print(f&quot;Kept {len(filtered)}/{len(chunks)} chunks in &#x27;{target_language}&#x27;&quot;)
+    return filtered
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Quality Filtering</h3>
+<p class="mb-4 text-justify">Not all text is worth indexing. Filter out low-quality content:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def quality_filter(chunk: dict, min_length: int = 50, max_length: int = 10000) -&gt; bool:
+    &quot;&quot;&quot;Check if a chunk meets quality thresholds.&quot;&quot;&quot;
+    text = chunk[&quot;text&quot;]
+
+    # Too short
+    if len(text) &lt; min_length:
+        return False
+
+    # Too long (likely parsing error)
+    if len(text) &gt; max_length:
+        return False
+
+    # Too many special characters (likely garbled)
+    special_ratio = sum(1 for c in text if not c.isalnum() and not c.isspace()) / len(text)
+    if special_ratio &gt; 0.3:
+        return False
+
+    # Too few real words
+    words = text.split()
+    if len(words) &lt; 10:
+        return False
+
+    # Mostly uppercase (likely headers or noise)
+    alpha_chars = [c for c in text if c.isalpha()]
+    if alpha_chars and sum(1 for c in alpha_chars if c.isupper()) / len(alpha_chars) &gt; 0.8:
+        return False
+
+    return True
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.5 Embedding Models Deep Dive</h2>
+<p class="mb-4 text-justify">Embeddings are the heart of RAG. They convert text into numerical vectors that capture meaning. Choosing the right embedding model directly impacts retrieval quality.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What Are Embeddings?</h3>
+<p class="mb-4 text-justify">An embedding is a list of numbers (a vector) that represents the meaning of a piece of text. Similar texts get similar vectors.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">&quot;The cat sat on the mat&quot;  →  [0.12, -0.34, 0.56, ..., 0.78]  (1536 numbers)
+&quot;The feline rested on the rug&quot; → [0.11, -0.33, 0.57, ..., 0.79]  (very close!)
+&quot;The stock market crashed&quot; → [-0.45, 0.67, -0.12, ..., 0.23]  (very different!)
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Embedding Model Comparison</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Model</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Dimensions</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Speed</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Quality</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Cost</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Best For</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">OpenAI text-embedding-3-small</td><td class="px-4 py-3 border border-[var(--border-color)]">1536</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Good</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.02/1M tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">General purpose</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">OpenAI text-embedding-3-large</td><td class="px-4 py-3 border border-[var(--border-color)]">3072</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.13/1M tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">High accuracy needed</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">all-MiniLM-L6-v2</td><td class="px-4 py-3 border border-[var(--border-color)]">384</td><td class="px-4 py-3 border border-[var(--border-color)]">Very fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Good</td><td class="px-4 py-3 border border-[var(--border-color)]">Free (local)</td><td class="px-4 py-3 border border-[var(--border-color)]">Prototyping, budget</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">all-mpnet-base-v2</td><td class="px-4 py-3 border border-[var(--border-color)]">768</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Very good</td><td class="px-4 py-3 border border-[var(--border-color)]">Free (local)</td><td class="px-4 py-3 border border-[var(--border-color)]">Best open-source</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Cohere embed-v3</td><td class="px-4 py-3 border border-[var(--border-color)]">1024</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.10/1M tokens</td><td class="px-4 py-3 border border-[var(--border-color)]">Multilingual</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Nomic embed v1.5</td><td class="px-4 py-3 border border-[var(--border-color)]">768</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td><td class="px-4 py-3 border border-[var(--border-color)]">Free (local)</td><td class="px-4 py-3 border border-[var(--border-color)]">Open-source leader</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">BGE-large-en-v1.5</td><td class="px-4 py-3 border border-[var(--border-color)]">1024</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td><td class="px-4 py-3 border border-[var(--border-color)]">Free (local)</td><td class="px-4 py-3 border border-[var(--border-color)]">Best retrieval</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Using OpenAI Embeddings</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">from openai import OpenAI
+
+client = OpenAI()
+
+def embed_text(text: str, model: str = &quot;text-embedding-3-small&quot;) -&gt; list[float]:
+    &quot;&quot;&quot;Embed a single piece of text.&quot;&quot;&quot;
+    response = client.embeddings.create(
+        model=model,
+        input=text,
+    )
+    return response.data[0].embedding
+
+def embed_batch(texts: list[str], model: str = &quot;text-embedding-3-small&quot;) -&gt; list[list[float]]:
+    &quot;&quot;&quot;Embed multiple texts efficiently.&quot;&quot;&quot;
+    response = client.embeddings.create(
+        model=model,
+        input=texts,
+    )
+    # Sort by index to maintain order
+    return [item.embedding for item in sorted(response.data, key=lambda x: x.index)]
+
+# Usage
+vector = embed_text(&quot;What is RAG?&quot;)
+print(f&quot;Embedding dimension: {len(vector)}&quot;)  # 1536
+
+# Batch embedding (much faster for many texts)
+texts = [&quot;Document 1&quot;, &quot;Document 2&quot;, &quot;Document 3&quot;]
+vectors = embed_batch(texts)
+print(f&quot;Embedded {len(vectors)} texts&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Using Sentence Transformers (Free, Local)</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">from sentence_transformers import SentenceTransformer
+
+# Download and cache the model (runs locally, no API costs)
+model = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)
+
+def embed_local(texts: list[str]) -&gt; list[list[float]]:
+    &quot;&quot;&quot;Embed texts using local model.&quot;&quot;&quot;
+    embeddings = model.encode(
+        texts,
+        show_progress_bar=True,
+        batch_size=32,
+        normalize_embeddings=True,  # Important for cosine similarity
+    )
+    return embeddings.tolist()
+
+# Usage
+texts = [
+    &quot;How do I reset my password?&quot;,
+    &quot;I forgot my login credentials&quot;,
+    &quot;What is your return policy?&quot;,
+]
+vectors = embed_local(texts)
+print(f&quot;Each vector has {len(vectors[0])} dimensions&quot;)  # 384
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Choosing the Right Model</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">                    DECISION TREE: CHOOSING AN EMBEDDING MODEL
+
+                    ┌─────────────────────────┐
+                    │  Need highest quality?   │
+                    └────────┬────────────────┘
+                             │
+                    ┌────────▼────────────┐
+                    │   Yes                │    No
+                    │                      │
+            ┌───────▼──────┐      ┌───────▼────────┐
+            │ Budget for   │      │ Need offline / │
+            │ API costs?   │      │ no API?        │
+            └──┬────────┬──┘      └──┬──────────┬──┘
+           Yes │        │ No     Yes │          │ No
+               │        │           │            │
+        ┌──────▼──┐ ┌───▼────┐ ┌───▼─────┐ ┌───▼──────┐
+        │ OpenAI  │ │ Cohere │ │ BGE-    │ │ all-     │
+        │ 3-large │ │ embed  │ │ large   │ │ MiniLM   │
+        └─────────┘ └────────┘ └─────────┘ └──────────┘
+</code></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.6 Vector Stores: Choosing and Setting Up</h2>
+<p class="mb-4 text-justify">A vector store holds your embeddings and lets you search for the most similar ones. Think of it as a search engine for meaning.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Vector Store Comparison</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Store</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Type</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Persistence</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Scalability</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Setup</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Best For</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">FAISS</td><td class="px-4 py-3 border border-[var(--border-color)]">In-memory</td><td class="px-4 py-3 border border-[var(--border-color)]">Manual save/load</td><td class="px-4 py-3 border border-[var(--border-color)]">High (single machine)</td><td class="px-4 py-3 border border-[var(--border-color)]">Simple</td><td class="px-4 py-3 border border-[var(--border-color)]">Prototyping</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Chroma</td><td class="px-4 py-3 border border-[var(--border-color)]">Embedded</td><td class="px-4 py-3 border border-[var(--border-color)]">Automatic</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Very simple</td><td class="px-4 py-3 border border-[var(--border-color)]">Development</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Pinecone</td><td class="px-4 py-3 border border-[var(--border-color)]">Cloud</td><td class="px-4 py-3 border border-[var(--border-color)]">Managed</td><td class="px-4 py-3 border border-[var(--border-color)]">Very high</td><td class="px-4 py-3 border border-[var(--border-color)]">Simple</td><td class="px-4 py-3 border border-[var(--border-color)]">Production</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Weaviate</td><td class="px-4 py-3 border border-[var(--border-color)]">Self-hosted/Cloud</td><td class="px-4 py-3 border border-[var(--border-color)]">Managed</td><td class="px-4 py-3 border border-[var(--border-color)]">Very high</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Complex queries</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Qdrant</td><td class="px-4 py-3 border border-[var(--border-color)]">Self-hosted/Cloud</td><td class="px-4 py-3 border border-[var(--border-color)]">Managed</td><td class="px-4 py-3 border border-[var(--border-color)]">Very high</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">High performance</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">pgvector</td><td class="px-4 py-3 border border-[var(--border-color)]">PostgreSQL extension</td><td class="px-4 py-3 border border-[var(--border-color)]">Automatic</td><td class="px-4 py-3 border border-[var(--border-color)]">High</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Existing PG setup</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Milvus</td><td class="px-4 py-3 border border-[var(--border-color)]">Self-hosted</td><td class="px-4 py-3 border border-[var(--border-color)]">Managed</td><td class="px-4 py-3 border border-[var(--border-color)]">Very high</td><td class="px-4 py-3 border border-[var(--border-color)]">Complex</td><td class="px-4 py-3 border border-[var(--border-color)]">Enterprise scale</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Setting Up FAISS (Local, Fast)</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import faiss
+import numpy as np
+import json
+
+class FAISSVectorStore:
+    &quot;&quot;&quot;Simple FAISS vector store with persistence.&quot;&quot;&quot;
+
+    def __init__(self, dimension: int):
+        self.dimension = dimension
+        self.index = faiss.IndexFlatL2(dimension)  # L2 (Euclidean) distance
+        self.documents = []  # Store metadata alongside vectors
+
+    def add(self, embeddings: list[list[float]], documents: list[dict]):
+        &quot;&quot;&quot;Add vectors and their metadata.&quot;&quot;&quot;
+        vectors = np.array(embeddings, dtype=np.float32)
+        self.index.add(vectors)
+        self.documents.extend(documents)
+
+    def search(self, query_embedding: list[float], top_k: int = 5) -&gt; list[dict]:
+        &quot;&quot;&quot;Find the most similar vectors.&quot;&quot;&quot;
+        query = np.array([query_embedding], dtype=np.float32)
+        distances, indices = self.index.search(query, top_k)
+
+        results = []
+        for dist, idx in zip(distances[0], indices[0]):
+            if idx &lt; len(self.documents):
+                result = self.documents[idx].copy()
+                result[&quot;distance&quot;] = float(dist)
+                results.append(result)
+
+        return results
+
+    def save(self, path: str):
+        &quot;&quot;&quot;Save index and metadata to disk.&quot;&quot;&quot;
+        faiss.write_index(self.index, f&quot;{path}.faiss&quot;)
+        with open(f&quot;{path}.meta.json&quot;, &quot;w&quot;) as f:
+            json.dump(self.documents, f)
+
+    @classmethod
+    def load(cls, path: str) -&gt; &quot;FAISSVectorStore&quot;:
+        &quot;&quot;&quot;Load index and metadata from disk.&quot;&quot;&quot;
+        index = faiss.read_index(f&quot;{path}.faiss&quot;)
+        with open(f&quot;{path}.meta.json&quot;) as f:
+            documents = json.load(f)
+
+        store = cls(index.d)
+        store.index = index
+        store.documents = documents
+        return store
+
+# Usage
+store = FAISSVectorStore(dimension=384)
+
+# Add documents
+embeddings = embed_local([&quot;Doc 1&quot;, &quot;Doc 2&quot;, &quot;Doc 3&quot;])
+docs = [
+    {&quot;text&quot;: &quot;Doc 1&quot;, &quot;source&quot;: &quot;file1.pdf&quot;, &quot;page&quot;: 1},
+    {&quot;text&quot;: &quot;Doc 2&quot;, &quot;source&quot;: &quot;file2.pdf&quot;, &quot;page&quot;: 5},
+    {&quot;text&quot;: &quot;Doc 3&quot;, &quot;source&quot;: &quot;file3.pdf&quot;, &quot;page&quot;: 12},
+]
+store.add(embeddings, docs)
+
+# Search
+query_vec = embed_local([&quot;How to reset password&quot;])[0]
+results = store.search(query_vec, top_k=2)
+for r in results:
+    print(f&quot;Score: {r[&#x27;distance&#x27;]:.4f} | {r[&#x27;text&#x27;]}&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Setting Up Chroma (Lightweight, Persistent)</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import chromadb
+
+# Create a persistent client (data saved to disk)
+client = chromadb.PersistentClient(path=&quot;./chroma_db&quot;)
+
+# Create or get a collection
+collection = client.get_or_create_collection(
+    name=&quot;knowledge_base&quot;,
+    metadata={&quot;hnsw:space&quot;: &quot;cosine&quot;},  # Use cosine similarity
+)
+
+# Add documents with embeddings
+collection.add(
+    documents=[&quot;How to reset password&quot;, &quot;Return policy details&quot;],
+    embeddings=embed_local([&quot;How to reset password&quot;, &quot;Return policy details&quot;]),
+    metadatas=[
+        {&quot;source&quot;: &quot;faq.pdf&quot;, &quot;page&quot;: 1},
+        {&quot;source&quot;: &quot;policy.pdf&quot;, &quot;page&quot;: 3},
+    ],
+    ids=[&quot;doc_1&quot;, &quot;doc_2&quot;],
+)
+
+# Query
+results = collection.query(
+    query_embeddings=embed_local([&quot;forgot my password&quot;]),
+    n_results=2,
+)
+print(results[&quot;documents&quot;])
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Setting Up Pinecone (Cloud, Production)</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">from pinecone import Pinecone, ServerlessSpec
+
+# Initialize
+pc = Pinecone(api_key=&quot;your-api-key&quot;)
+
+# Create index
+index_name = &quot;knowledge-base&quot;
+if index_name not in pc.list_indexes().names():
+    pc.create_index(
+        name=index_name,
+        dimension=1536,
+        metric=&quot;cosine&quot;,
+        spec=ServerlessSpec(cloud=&quot;aws&quot;, region=&quot;us-east-1&quot;),
+    )
+
+# Connect to index
+index = pc.Index(index_name)
+
+# Upsert vectors
+vectors = [
+    {
+        &quot;id&quot;: &quot;doc_1&quot;,
+        &quot;values&quot;: embed_text(&quot;How to reset password&quot;),
+        &quot;metadata&quot;: {&quot;source&quot;: &quot;faq.pdf&quot;, &quot;page&quot;: 1},
+    },
+    {
+        &quot;id&quot;: &quot;doc_2&quot;,
+        &quot;values&quot;: embed_text(&quot;Return policy details&quot;),
+        &quot;metadata&quot;: {&quot;source&quot;: &quot;policy.pdf&quot;, &quot;page&quot;: 3},
+    },
+]
+index.upsert(vectors=vectors)
+
+# Query
+results = index.query(
+    vector=embed_text(&quot;forgot my password&quot;),
+    top_k=2,
+    include_metadata=True,
+)
+print(results[&quot;matches&quot;])
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.7 Chunking Strategies: The Hidden Art</h2>
+<p class="mb-4 text-justify">Chunking is arguably the most important — and most overlooked — part of RAG. If your chunks are too large, retrieval is imprecise. Too small, and you lose context.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Why Chunking Matters</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">TOO LARGE (2000 tokens):
+┌─────────────────────────────────────────────────────────┐
+│  &quot;Our return policy allows customers to return items    │
+│   within 30 days. Refunds are processed within 5-7     │
+│   business days. Items must be in original packaging.   │
+│   Sale items are final. Electronics have a 14-day       │
+│   return window. Free shipping applies to orders over   │
+│   $50. International returns require customs forms...&quot;  │
+└─────────────────────────────────────────────────────────┘
+  Problem: Retrieves the ENTIRE policy for any question
+  about returns, even &quot;What&#x27;s the refund timeframe?&quot;
+
+TOO SMALL (50 tokens):
+┌──────────────────────┐ ┌──────────────────────┐
+│ &quot;Refunds are         │ │ &quot;within 5-7 business  │
+│  processed&quot;          │ │  days&quot;                │
+└──────────────────────┘ └──────────────────────┘
+  Problem: Lost context. &quot;Refunds are processed&quot; alone
+  doesn&#x27;t tell you WHO processes them or WHEN.
+
+JUST RIGHT (300 tokens):
+┌──────────────────────────────────────────┐
+│ &quot;Refunds are processed within 5-7       │
+│  business days after we receive the     │
+│  returned item. The refund is credited  │
+│  to the original payment method.&quot;       │
+└──────────────────────────────────────────┘
+  Good: Self-contained, precise, answerable.
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Chunking Strategies</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import re
+
+def fixed_size_chunks(text: str, chunk_size: int = 500, overlap: int = 50) -&gt; list[str]:
+    &quot;&quot;&quot;Split text into fixed-size chunks with overlap.&quot;&quot;&quot;
+    words = text.split()
+    chunks = []
+
+    for i in range(0, len(words), chunk_size - overlap):
+        chunk = &quot; &quot;.join(words[i : i + chunk_size])
+        chunks.append(chunk)
+
+    return chunks
+
+def sentence_chunks(text: str, max_chunk_size: int = 500) -&gt; list[str]:
+    &quot;&quot;&quot;Split text at sentence boundaries.&quot;&quot;&quot;
+    # Split into sentences
+    sentences = re.split(r&#x27;(?&lt;=[.!?])\s+&#x27;, text)
+
+    chunks = []
+    current_chunk = []
+    current_size = 0
+
+    for sentence in sentences:
+        sentence_words = len(sentence.split())
+
+        if current_size + sentence_words &gt; max_chunk_size and current_chunk:
+            chunks.append(&quot; &quot;.join(current_chunk))
+            current_chunk = [sentence]
+            current_size = sentence_words
+        else:
+            current_chunk.append(sentence)
+            current_size += sentence_words
+
+    if current_chunk:
+        chunks.append(&quot; &quot;.join(current_chunk))
+
+    return chunks
+
+def semantic_chunks(
+    text: str,
+    headers_pattern: str = r&#x27;\n#{1,3}\s+&#x27;,
+) -&gt; list[dict]:
+    &quot;&quot;&quot;Split by document structure (headers).&quot;&quot;&quot;
+    sections = re.split(f&#x27;({headers_pattern})&#x27;, text, flags=re.MULTILINE)
+
+    chunks = []
+    current_header = &quot;Content&quot;
+
+    for section in sections:
+        if re.match(headers_pattern, section):
+            current_header = section.strip()
+        elif section.strip():
+            chunks.append({
+                &quot;header&quot;: current_header,
+                &quot;text&quot;: section.strip(),
+            })
+
+    return chunks
+
+def recursive_chunking(
+    text: str,
+    chunk_size: int = 500,
+    separators: list[str] | None = None,
+) -&gt; list[str]:
+    &quot;&quot;&quot;Recursively split using a hierarchy of separators.&quot;&quot;&quot;
+    if separators is None:
+        separators = [&quot;\n\n&quot;, &quot;\n&quot;, &quot;. &quot;, &quot; &quot;, &quot;&quot;]
+
+    if len(text) &lt;= chunk_size:
+        return [text]
+
+    for separator in separators:
+        if separator == &quot;&quot;:
+            # Last resort: hard split at character level
+            return [
+                text[i:i + chunk_size]
+                for i in range(0, len(text), chunk_size)
+            ]
+
+        splits = text.split(separator)
+        if len(splits) &gt; 1:
+            chunks = []
+            current = &quot;&quot;
+
+            for split in splits:
+                test = current + separator + split if current else split
+                if len(test) &lt;= chunk_size:
+                    current = test
+                else:
+                    if current:
+                        chunks.append(current)
+                    current = split
+
+            if current:
+                chunks.append(current)
+
+            # Recursively split any remaining oversized chunks
+            result = []
+            for chunk in chunks:
+                if len(chunk) &gt; chunk_size:
+                    result.extend(recursive_chunking(chunk, chunk_size, separators))
+                else:
+                    result.append(chunk)
+            return result
+
+    return [text]
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Chunking Comparison</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Strategy</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Pros</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Cons</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Best For</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Fixed-size</td><td class="px-4 py-3 border border-[var(--border-color)]">Simple, predictable</td><td class="px-4 py-3 border border-[var(--border-color)]">Breaks sentences</td><td class="px-4 py-3 border border-[var(--border-color)]">Quick prototype</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Sentence-based</td><td class="px-4 py-3 border border-[var(--border-color)]">Natural boundaries</td><td class="px-4 py-3 border border-[var(--border-color)]">Variable sizes</td><td class="px-4 py-3 border border-[var(--border-color)]">General purpose</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Semantic (headers)</td><td class="px-4 py-3 border border-[var(--border-color)]">Structure-aware</td><td class="px-4 py-3 border border-[var(--border-color)]">Requires headers</td><td class="px-4 py-3 border border-[var(--border-color)]">Technical docs</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Recursive</td><td class="px-4 py-3 border border-[var(--border-color)]">Balanced</td><td class="px-4 py-3 border border-[var(--border-color)]">More complex</td><td class="px-4 py-3 border border-[var(--border-color)]">Production systems</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Recommended: LangChain&#x27;s RecursiveTextSplitter</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500,
+    chunk_overlap=50,
+    length_function=len,
+    separators=[&quot;\n\n&quot;, &quot;\n&quot;, &quot;. &quot;, &quot; &quot;, &quot;&quot;],
+)
+
+text = &quot;Your long document text here...&quot;
+chunks = splitter.split_text(text)
+print(f&quot;Created {len(chunks)} chunks&quot;)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.8 Retrieval Optimization</h2>
+<p class="mb-4 text-justify">Basic vector search is a good start, but production RAG needs optimization.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Similarity Metrics</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import numpy as np
+
+def cosine_similarity(a: list[float], b: list[float]) -&gt; float:
+    &quot;&quot;&quot;Measure the angle between two vectors.&quot;&quot;&quot;
+    a, b = np.array(a), np.array(b)
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+def dot_product(a: list[float], b: list[float]) -&gt; float:
+    &quot;&quot;&quot;Simple dot product (works well with normalized vectors).&quot;&quot;&quot;
+    return np.dot(a, b)
+
+def l2_distance(a: list[float], b: list[float]) -&gt; float:
+    &quot;&quot;&quot;Euclidean distance (lower = more similar).&quot;&quot;&quot;
+    return np.linalg.norm(np.array(a) - np.array(b))
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Maximum Marginal Relevance (MMR)</h3>
+<p class="mb-4 text-justify">MMR balances <strong class="font-bold text-primary">relevance</strong> with <strong class="font-bold text-primary">diversity</strong>. Without it, you might get 5 chunks that all say the same thing.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def mmr_retrieval(
+    query_embedding: list[float],
+    document_embeddings: list[list[float]],
+    documents: list[dict],
+    top_k: int = 5,
+    lambda_param: float = 0.5,  # 0 = max diversity, 1 = max relevance
+) -&gt; list[dict]:
+    &quot;&quot;&quot;MMR-based retrieval for diverse results.&quot;&quot;&quot;
+    query_vec = np.array(query_embedding)
+    doc_vecs = np.array(document_embeddings)
+
+    # Compute similarities to query
+    query_sims = np.dot(doc_vecs, query_vec) / (
+        np.linalg.norm(doc_vecs, axis=1) * np.linalg.norm(query_vec)
+    )
+
+    selected = []
+    remaining = list(range(len(documents)))
+
+    for _ in range(min(top_k, len(documents))):
+        best_score = -float(&quot;inf&quot;)
+        best_idx = -1
+
+        for idx in remaining:
+            relevance = query_sims[idx]
+
+            # Compute max similarity to already selected docs
+            diversity = 0.0
+            if selected:
+                selected_vecs = doc_vecs[selected]
+                doc_similarities = np.dot(selected_vecs, doc_vecs[idx]) / (
+                    np.linalg.norm(selected_vecs, axis=1) * np.linalg.norm(doc_vecs[idx])
+                )
+                diversity = np.max(doc_similarities)
+
+            # MMR score: balance relevance and diversity
+            mmr_score = lambda_param * relevance - (1 - lambda_param) * diversity
+
+            if mmr_score &gt; best_score:
+                best_score = mmr_score
+                best_idx = idx
+
+        if best_idx &gt;= 0:
+            selected.append(best_idx)
+            remaining.remove(best_idx)
+            documents[best_idx][&quot;mmr_score&quot;] = float(best_score)
+
+    return [documents[i] for i in selected]
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Query Expansion</h3>
+<p class="mb-4 text-justify">Sometimes the user&#x27;s query doesn&#x27;t match the document&#x27;s language. Query expansion helps bridge that gap.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def expand_query(query: str, llm) -&gt; list[str]:
+    &quot;&quot;&quot;Generate multiple query variations.&quot;&quot;&quot;
+    prompt = f&quot;&quot;&quot;Generate 3 alternative search queries for the following question.
+Each should capture a different way of asking the same thing.
+
+Original query: {query}
+
+Return ONLY the 3 queries, one per line, no numbering.&quot;&quot;&quot;
+
+    response = llm.generate(prompt)
+    variations = [q.strip() for q in response.split(&quot;\n&quot;) if q.strip()]
+
+    return [query] + variations[:3]
+
+# Example
+# Original: &quot;How do I fix the login issue?&quot;
+# Expanded:
+#   - &quot;How do I fix the login issue?&quot;
+#   - &quot;Login not working troubleshooting steps&quot;
+#   - &quot;Cannot sign in to my account&quot;
+#   - &quot;Authentication error resolution&quot;
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Hybrid Search</h3>
+<p class="mb-4 text-justify">Combine vector search with keyword search for better results:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def hybrid_search(
+    query: str,
+    vector_store,
+    keyword_index,
+    alpha: float = 0.7,  # Weight for vector search
+    top_k: int = 10,
+) -&gt; list[dict]:
+    &quot;&quot;&quot;Combine vector similarity with keyword matching.&quot;&quot;&quot;
+    # Vector search results
+    query_vec = embed_text(query)
+    vector_results = vector_store.search(query_vec, top_k=top_k * 2)
+
+    # Keyword search results (BM25 or similar)
+    keyword_results = keyword_index.search(query, top_k=top_k * 2)
+
+    # Reciprocal Rank Fusion
+    scores = {}
+    k = 60  # RRF constant
+
+    for rank, result in enumerate(vector_results):
+        doc_id = result[&quot;id&quot;]
+        scores[doc_id] = scores.get(doc_id, 0) + alpha * (1 / (k + rank + 1))
+
+    for rank, result in enumerate(keyword_results):
+        doc_id = result[&quot;id&quot;]
+        scores[doc_id] = scores.get(doc_id, 0) + (1 - alpha) * (1 / (k + rank + 1))
+
+    # Sort by combined score
+    ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+    return ranked[:top_k]
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.9 Reranking for Precision</h2>
+<p class="mb-4 text-justify">Retrieval gets you candidates. Reranking picks the best ones. This is the secret weapon of high-quality RAG.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Why Rerank?</h3>
+<p class="mb-4 text-justify">Initial retrieval (vector search) uses <strong class="font-bold text-primary">bi-encoder</strong> models: the query and documents are embedded separately, then compared. This is fast but approximate.</p>
+<p class="mb-4 text-justify">Reranking uses <strong class="font-bold text-primary">cross-encoder</strong> models: the query and each document are processed <strong class="font-bold text-primary">together</strong>. This is slower but much more accurate.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">BI-ENCODER (Retrieval):
+  Query ──► Encoder ──► Query Vector ──┐
+                                       ├──► Similarity Score
+  Doc ──► Encoder ──► Doc Vector ──────┘
+  (Fast: O(n) encoding, O(n) comparison)
+
+CROSS-ENCODER (Reranking):
+  [Query + Doc] ──► Encoder ──► Relevance Score
+  (Slow: O(n) full encoding, but much more accurate)
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Using Cohere Rerank</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">from cohere import ClientV2
+
+cohere_client = ClientV2(api_key=&quot;your-api-key&quot;)
+
+def rerank_cohere(
+    query: str,
+    documents: list[dict],
+    top_k: int = 5,
+) -&gt; list[dict]:
+    &quot;&quot;&quot;Rerank documents using Cohere.&quot;&quot;&quot;
+    doc_texts = [doc[&quot;text&quot;] for doc in documents]
+
+    response = cohere_client.rerank(
+        query=query,
+        documents=doc_texts,
+        top_n=top_k,
+        model=&quot;rerank-english-v3.0&quot;,
+    )
+
+    reranked = []
+    for result in response.results:
+        doc = documents[result.index].copy()
+        doc[&quot;rerank_score&quot;] = result.relevance_score
+        reranked.append(doc)
+
+    return reranked
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Using a Local Cross-Encoder</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">from sentence_transformers import CrossEncoder
+
+# Load a cross-encoder model
+cross_encoder = CrossEncoder(&quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;)
+
+def rerank_local(
+    query: str,
+    documents: list[dict],
+    top_k: int = 5,
+) -&gt; list[dict]:
+    &quot;&quot;&quot;Rerank using a local cross-encoder model.&quot;&quot;&quot;
+    pairs = [(query, doc[&quot;text&quot;]) for doc in documents]
+    scores = cross_encoder.predict(pairs)
+
+    # Combine scores with documents
+    scored_docs = list(zip(documents, scores))
+    scored_docs.sort(key=lambda x: x[1], reverse=True)
+
+    reranked = []
+    for doc, score in scored_docs[:top_k]:
+        result = doc.copy()
+        result[&quot;rerank_score&quot;] = float(score)
+        reranked.append(result)
+
+    return reranked
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Using ColBERT</h3>
+<p class="mb-4 text-justify">ColBERT uses late interaction — a middle ground between bi-encoders and cross-encoders:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># Using RAGatouille for ColBERT
+from ragatouille import RAGPretrainedModel
+
+colbert = RAGPretrainedModel.from_pretrained(&quot;colbert-ir/colbertv2.0&quot;)
+
+# Index documents
+colbert.add(
+    documents=[&quot;Doc 1 text&quot;, &quot;Doc 2 text&quot;],
+    document_metadatas=[{&quot;source&quot;: &quot;file1&quot;}, {&quot;source&quot;: &quot;file2&quot;}],
+    document_ids=[&quot;doc1&quot;, &quot;doc2&quot;],
+)
+
+# Search with ColBERT
+results = colbert.search(&quot;What is RAG?&quot;, k=5)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Reranking Comparison</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Method</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Speed</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Quality</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Cost</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Setup</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Cohere Rerank</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.001/query</td><td class="px-4 py-3 border border-[var(--border-color)]">API key needed</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Cross-Encoder</td><td class="px-4 py-3 border border-[var(--border-color)]">Slow</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td><td class="px-4 py-3 border border-[var(--border-color)]">Free (local)</td><td class="px-4 py-3 border border-[var(--border-color)]">Model download</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">ColBERT</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Very good</td><td class="px-4 py-3 border border-[var(--border-color)]">Free (local)</td><td class="px-4 py-3 border border-[var(--border-color)]">More complex</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">LLM Rerank</td><td class="px-4 py-3 border border-[var(--border-color)]">Very slow</td><td class="px-4 py-3 border border-[var(--border-color)]">Best</td><td class="px-4 py-3 border border-[var(--border-color)]">API costs</td><td class="px-4 py-3 border border-[var(--border-color)]">Prompt engineering</td></tr></tbody></table></div>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.10 Multi-Modal RAG</h2>
+<p class="mb-4 text-justify">Real-world documents contain more than text. Images, charts, and tables carry crucial information. Multi-modal RAG handles them all.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Architecture for Multi-Modal RAG</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────────────┐
+│              MULTI-MODAL RAG                     │
+├─────────────────────────────────────────────────┤
+│                                                  │
+│  PDF ──┬──► Text Chunks ──► Text Embeddings ──┐ │
+│        │                                      │ │
+│        ├──► Images ──► Image Embeddings ──────┤ │
+│        │    (CLIP)                            │ │
+│        │                                      ├──► Vector Store
+│        └──► Tables ──► Table Descriptions ────┘ │
+│             (parsed)      (text embeddings)     │
+│                                                  │
+└─────────────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Using CLIP for Image Embeddings</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import torch
+from PIL import Image
+from transformers import CLIPModel, CLIPProcessor
+
+# Load CLIP model
+clip_model = CLIPModel.from_pretrained(&quot;openai/clip-vit-base-patch32&quot;)
+clip_processor = CLIPProcessor.from_pretrained(&quot;openai/clip-vit-base-patch32&quot;)
+
+def embed_image(image_path: str) -&gt; list[float]:
+    &quot;&quot;&quot;Embed an image using CLIP.&quot;&quot;&quot;
+    image = Image.open(image_path)
+    inputs = clip_processor(images=image, return_tensors=&quot;pt&quot;)
+
+    with torch.no_grad():
+        features = clip_model.get_image_features(**inputs)
+
+    return features[0].tolist()
+
+def embed_image_text_pair(image_path: str, text: str) -&gt; list[float]:
+    &quot;&quot;&quot;Embed an image and text together using CLIP.&quot;&quot;&quot;
+    image = Image.open(image_path)
+    inputs = clip_processor(
+        images=image,
+        text=text,
+        return_tensors=&quot;pt&quot;,
+        padding=True,
+    )
+
+    with torch.no_grad():
+        image_features = clip_model.get_image_features(**inputs)
+        text_features = clip_model.get_text_features(**inputs)
+
+    # Average the two for a combined embedding
+    combined = (image_features + text_features) / 2
+    return combined[0].tolist()
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Table Extraction and Description</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def describe_table_for_rag(table_data: list[list[str]]) -&gt; str:
+    &quot;&quot;&quot;Convert a table to a searchable text description.&quot;&quot;&quot;
+    if not table_data:
+        return &quot;&quot;
+
+    headers = table_data[0]
+    rows = table_data[1:]
+
+    descriptions = []
+    descriptions.append(f&quot;Table with columns: {&#x27;, &#x27;.join(headers)}&quot;)
+    descriptions.append(f&quot;Contains {len(rows)} rows of data.&quot;)
+
+    # Sample a few rows for context
+    for i, row in enumerate(rows[:3]):
+        row_desc = &quot;, &quot;.join(
+            f&quot;{header}: {value}&quot;
+            for header, value in zip(headers, row)
+        )
+        descriptions.append(f&quot;Row {i+1}: {row_desc}&quot;)
+
+    return &quot; | &quot;.join(descriptions)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.11 Complete RAG Pipeline in 100 Lines</h2>
+<p class="mb-4 text-justify">Here is a fully functional RAG system in under 100 lines of Python:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Complete RAG Pipeline - ~100 lines of working code.&quot;&quot;&quot;
+
+from pathlib import Path
+from sentence_transformers import SentenceTransformer
+import chromadb
+import re
+
+# ─── Configuration ──────────────────────────────────────────────
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 50
+TOP_K = 5
+
+# ─── Initialize ─────────────────────────────────────────────────
+embed_model = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)
+chroma_client = chromadb.PersistentClient(path=&quot;./rag_db&quot;)
+collection = chroma_client.get_or_create_collection(
+    name=&quot;knowledge_base&quot;,
+    metadata={&quot;hnsw:space&quot;: &quot;cosine&quot;},
+)
+
+# ─── Text Processing ────────────────────────────────────────────
+def clean_text(text: str) -&gt; str:
+    text = re.sub(r&#x27;\n{3,}&#x27;, &#x27;\n\n&#x27;, text)
+    text = re.sub(r&#x27; {2,}&#x27;, &#x27; &#x27;, text)
+    return text.strip()
+
+def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -&gt; list[str]:
+    words = text.split()
+    return [
+        &quot; &quot;.join(words[i:i + size])
+        for i in range(0, len(words), size - overlap)
+        if words[i:i + size]
+    ]
+
+# ─── Ingestion ──────────────────────────────────────────────────
+def ingest_file(file_path: str):
+    text = clean_text(Path(file_path).read_text(encoding=&quot;utf-8&quot;))
+    chunks = chunk_text(text)
+
+    embeddings = embed_model.encode(chunks, show_progress_bar=True).tolist()
+    ids = [f&quot;{Path(file_path).stem}_chunk_{i}&quot; for i in range(len(chunks))]
+    metadatas = [{&quot;source&quot;: file_path, &quot;chunk_index&quot;: i} for i in range(len(chunks))]
+
+    collection.add(
+        documents=chunks,
+        embeddings=embeddings,
+        ids=ids,
+        metadatas=metadatas,
+    )
+    print(f&quot;Ingested {len(chunks)} chunks from {file_path}&quot;)
+
+# ─── Retrieval ──────────────────────────────────────────────────
+def retrieve(query: str, top_k: int = TOP_K) -&gt; list[dict]:
+    query_embedding = embed_model.encode([query]).tolist()
+    results = collection.query(
+        query_embeddings=query_embedding,
+        n_results=top_k,
+        include=[&quot;documents&quot;, &quot;metadatas&quot;, &quot;distances&quot;],
+    )
+    return [
+        {
+            &quot;text&quot;: doc,
+            &quot;metadata&quot;: meta,
+            &quot;score&quot;: 1 - dist,  # Convert distance to similarity
+        }
+        for doc, meta, dist in zip(
+            results[&quot;documents&quot;][0],
+            results[&quot;metadatas&quot;][0],
+            results[&quot;distances&quot;][0],
+        )
+    ]
+
+# ─── Generation ─────────────────────────────────────────────────
+def generate_answer(query: str) -&gt; str:
+    # Retrieve relevant chunks
+    results = retrieve(query)
+
+    # Build context
+    context = &quot;\n\n---\n\n&quot;.join(
+        f&quot;[Source: {r[&#x27;metadata&#x27;][&#x27;source&#x27;]}]\n{r[&#x27;text&#x27;]}&quot;
+        for r in results
+    )
+
+    # Format prompt (use with any LLM)
+    prompt = f&quot;&quot;&quot;Answer the question based ONLY on the context below.
+If the answer is not in the context, say &quot;I don&#x27;t have enough information.&quot;
+
+Context:
+{context}
+
+Question: {query}
+Answer:&quot;&quot;&quot;
+
+    return prompt  # Send this to your LLM of choice
+
+# ─── Example Usage ──────────────────────────────────────────────
+if __name__ == &quot;__main__&quot;:
+    # Ingest documents
+    for file in Path(&quot;./docs&quot;).glob(&quot;*.txt&quot;):
+        ingest_file(str(file))
+
+    # Ask a question
+    query = &quot;What is the refund policy?&quot;
+    prompt = generate_answer(query)
+    print(prompt)
+    # Send prompt to your LLM to get the final answer
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.12 RAG with Reranking</h2>
+<p class="mb-4 text-justify">Now let&#x27;s add reranking to our pipeline for better precision:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;RAG Pipeline with Reranking - Enhanced Version.&quot;&quot;&quot;
+
+from sentence_transformers import CrossEncoder
+
+# ─── Initialize Reranker ───────────────────────────────────────
+reranker = CrossEncoder(&quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;)
+
+# ─── Enhanced Retrieval with Reranking ──────────────────────────
+def retrieve_with_rerank(
+    query: str,
+    initial_k: int = 20,  # Retrieve more candidates
+    final_k: int = 5,      # Return fewer, better results
+) -&gt; list[dict]:
+    &quot;&quot;&quot;Retrieve and rerank for better precision.&quot;&quot;&quot;
+    # Step 1: Get more candidates than needed
+    query_embedding = embed_model.encode([query]).tolist()
+    results = collection.query(
+        query_embeddings=query_embedding,
+        n_results=initial_k,
+        include=[&quot;documents&quot;, &quot;metadatas&quot;, &quot;distances&quot;],
+    )
+
+    documents = [
+        {
+            &quot;text&quot;: doc,
+            &quot;metadata&quot;: meta,
+            &quot;vector_score&quot;: 1 - dist,
+        }
+        for doc, meta, dist in zip(
+            results[&quot;documents&quot;][0],
+            results[&quot;metadatas&quot;][0],
+            results[&quot;distances&quot;][0],
+        )
+    ]
+
+    # Step 2: Rerank using cross-encoder
+    pairs = [(query, doc[&quot;text&quot;]) for doc in documents]
+    scores = reranker.predict(pairs)
+
+    # Step 3: Sort by rerank score
+    for doc, score in zip(documents, scores):
+        doc[&quot;rerank_score&quot;] = float(score)
+
+    reranked = sorted(documents, key=lambda x: x[&quot;rerank_score&quot;], reverse=True)
+    return reranked[:final_k]
+
+# ─── Complete Pipeline ──────────────────────────────────────────
+def rag_with_rerank(query: str) -&gt; str:
+    results = retrieve_with_rerank(query)
+
+    context = &quot;\n\n---\n\n&quot;.join(
+        f&quot;[Source: {r[&#x27;metadata&#x27;][&#x27;source&#x27;]} | Score: {r[&#x27;rerank_score&#x27;]:.3f}]\n{r[&#x27;text&#x27;]}&quot;
+        for r in results
+    )
+
+    return f&quot;&quot;&quot;Answer based ONLY on the context. If unsure, say so.
+
+Context:
+{context}
+
+Question: {query}
+Answer:&quot;&quot;&quot;
+
+# ─── Comparison: Without vs With Reranking ──────────────────────
+def compare_retrieval(query: str):
+    &quot;&quot;&quot;Show the difference reranking makes.&quot;&quot;&quot;
+    print(f&quot;\n{&#x27;=&#x27;*60}&quot;)
+    print(f&quot;Query: {query}&quot;)
+    print(f&quot;{&#x27;=&#x27;*60}&quot;)
+
+    # Without reranking
+    basic_results = retrieve(query, top_k=5)
+    print(&quot;\n--- WITHOUT Reranking ---&quot;)
+    for i, r in enumerate(basic_results, 1):
+        print(f&quot;  {i}. [{r[&#x27;score&#x27;]:.3f}] {r[&#x27;text&#x27;][:80]}...&quot;)
+
+    # With reranking
+    reranked_results = retrieve_with_rerank(query, initial_k=20, final_k=5)
+    print(&quot;\n--- WITH Reranking ---&quot;)
+    for i, r in enumerate(reranked_results, 1):
+        print(f&quot;  {i}. [{r[&#x27;rerank_score&#x27;]:.3f}] {r[&#x27;text&#x27;][:80]}...&quot;)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.13 Evaluation: Measuring Quality</h2>
+<p class="mb-4 text-justify">How do you know if your RAG system is good? You need systematic evaluation.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Key Metrics</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Metric</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">What It Measures</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Target</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Faithfulness</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Does the answer stay true to retrieved docs?</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 0.85</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Answer Relevance</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Does the answer address the question?</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 0.80</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Context Precision</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Are the retrieved chunks relevant?</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 0.75</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Context Recall</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Did we retrieve all necessary information?</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 0.70</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Using RAGAS for Evaluation</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">from ragas import evaluate
+from ragas.metrics import (
+    faithfulness,
+    answer_relevancy,
+    context_precision,
+    context_recall,
+)
+from datasets import Dataset
+
+# Prepare evaluation data
+eval_data = {
+    &quot;question&quot;: [
+        &quot;What is the refund policy?&quot;,
+        &quot;How do I reset my password?&quot;,
+    ],
+    &quot;answer&quot;: [
+        &quot;You can get a full refund within 30 days.&quot;,
+        &quot;Go to Settings &gt; Account &gt; Reset Password.&quot;,
+    ],
+    &quot;contexts&quot;: [
+        [&quot;Our refund policy allows returns within 30 days for a full refund.&quot;],
+        [&quot;To reset your password, navigate to Settings, then Account, and click Reset Password.&quot;],
+    ],
+    &quot;ground_truth&quot;: [
+        &quot;Full refund within 30 days of purchase.&quot;,
+        &quot;Navigate to Settings &gt; Account &gt; Reset Password.&quot;,
+    ],
+}
+
+dataset = Dataset.from_dict(eval_data)
+
+# Run evaluation
+results = evaluate(
+    dataset,
+    metrics=[
+        faithfulness,
+        answer_relevancy,
+        context_precision,
+        context_recall,
+    ],
+)
+
+print(results)
+# {&#x27;faithfulness&#x27;: 0.95, &#x27;answer_relevancy&#x27;: 0.88, ...}
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Manual Evaluation Framework</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def manual_evaluation(query: str, answer: str, contexts: list[str]) -&gt; dict:
+    &quot;&quot;&quot;Human-in-the-loop evaluation criteria.&quot;&quot;&quot;
+    return {
+        &quot;query&quot;: query,
+        &quot;answer&quot;: answer,
+        &quot;num_contexts_used&quot;: len(contexts),
+        &quot;context_quality&quot;: {
+            &quot;relevance&quot;: None,    # 1-5: How relevant are the contexts?
+            &quot;completeness&quot;: None, # 1-5: Do they cover the full answer?
+            &quot;noise&quot;: None,        # 1-5: Is there irrelevant content? (5 = no noise)
+        },
+        &quot;answer_quality&quot;: {
+            &quot;accuracy&quot;: None,     # 1-5: Is the answer factually correct?
+            &quot;completeness&quot;: None, # 1-5: Does it fully answer the question?
+            &quot;clarity&quot;: None,      # 1-5: Is it easy to understand?
+            &quot;grounded&quot;: None,     # 1-5: Is it based on the retrieved docs?
+        },
+    }
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Building an Evaluation Dataset</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import json
+from pathlib import Path
+
+def create_eval_dataset(
+    documents: list[str],
+    llm,
+    num_questions_per_doc: int = 3,
+) -&gt; list[dict]:
+    &quot;&quot;&quot;Auto-generate evaluation questions from documents.&quot;&quot;&quot;
+    eval_pairs = []
+
+    for doc in documents:
+        prompt = f&quot;&quot;&quot;Generate {num_questions_per_doc} questions that can be
+answered using ONLY this document. Also provide the answer.
+
+Document:
+{doc[:2000]}
+
+Return as JSON array: [{{&quot;question&quot;: &quot;...&quot;, &quot;answer&quot;: &quot;...&quot;}}]&quot;&quot;&quot;
+
+        response = llm.generate(prompt)
+        try:
+            qa_pairs = json.loads(response)
+            for pair in qa_pairs:
+                eval_pairs.append({
+                    &quot;question&quot;: pair[&quot;question&quot;],
+                    &quot;ground_truth&quot;: pair[&quot;answer&quot;],
+                    &quot;context&quot;: doc,
+                })
+        except json.JSONDecodeError:
+            continue
+
+    # Save evaluation dataset
+    Path(&quot;eval_dataset.json&quot;).write_text(
+        json.dumps(eval_pairs, indent=2)
+    )
+    print(f&quot;Created {len(eval_pairs)} evaluation pairs&quot;)
+    return eval_pairs
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">RAG Pipeline Evaluation Loop</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def evaluate_rag_pipeline(
+    eval_dataset: list[dict],
+    retrieve_fn,
+    generate_fn,
+) -&gt; dict:
+    &quot;&quot;&quot;Run evaluation across the full dataset.&quot;&quot;&quot;
+    results = []
+
+    for item in eval_dataset:
+        query = item[&quot;question&quot;]
+        ground_truth = item[&quot;ground_truth&quot;]
+
+        # Get pipeline&#x27;s answer
+        contexts = retrieve_fn(query)
+        answer = generate_fn(query, contexts)
+
+        # Score
+        results.append({
+            &quot;question&quot;: query,
+            &quot;ground_truth&quot;: ground_truth,
+            &quot;predicted_answer&quot;: answer,
+            &quot;contexts_used&quot;: len(contexts),
+        })
+
+    # Compute aggregate metrics
+    total = len(results)
+    exact_match = sum(
+        1 for r in results
+        if r[&quot;ground_truth&quot;].lower() in r[&quot;predicted_answer&quot;].lower()
+    )
+
+    return {
+        &quot;total_questions&quot;: total,
+        &quot;exact_match_rate&quot;: exact_match / total if total else 0,
+        &quot;detailed_results&quot;: results,
+    }
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.14 Key Takeaways</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">RAG = Retrieve + Generate</strong>. It grounds LLM responses in real documents, reducing hallucination and keeping knowledge fresh.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Chunking is king</strong>. The quality of your chunks directly impacts retrieval quality. Use recursive chunking with 300-500 token sizes and 10-15% overlap as a starting point.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Embedding choice matters</strong>. Use OpenAI embeddings for ease, BGE-large for open-source, and Cohere for multilingual needs. Always test with your actual data.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Vector stores are interchangeable</strong>. FAISS for prototyping, Chroma for development, Pinecone/Weaviate for production. The interface is similar across all of them.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Reranking is the secret weapon</strong>. A cross-encoder reranker after initial retrieval dramatically improves precision. Always retrieve more candidates than you need.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">MMR prevents redundancy</strong>. Use Maximum Marginal Relevance to ensure your retrieved chunks are diverse, not just similar.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Evaluation is not optional</strong>. Use RAGAS for automated evaluation and manual spot-checks for quality assurance. Track faithfulness, relevance, precision, and recall.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Multi-modal RAG is the future</strong>. Use CLIP for images and table descriptions for structured data to build truly comprehensive knowledge bases.</p>
+</li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11.15 Try It Yourself</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 1: Build Your First RAG System</h3>
+<p class="mb-4 text-justify">Using the complete pipeline in Section 11.11, build a RAG system over 5 text files of your choice. Measure retrieval quality by checking if the top-5 results are relevant for 10 test queries.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 2: Chunking Experiment</h3>
+<p class="mb-4 text-justify">Take the same document and chunk it using all four strategies (fixed-size, sentence, semantic, recursive). Compare the number of chunks, average chunk size, and retrieval quality for each.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 3: Reranking A/B Test</h3>
+<p class="mb-4 text-justify">Run 20 queries through your RAG system with and without reranking. Calculate how many times reranking changes the top result. Is the new top result more relevant?</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 4: Embedding Model Comparison</h3>
+<p class="mb-4 text-justify">Embed the same 100 documents using three different models (e.g., all-MiniLM-L6-v2, all-mpnet-base-v2, and OpenAI text-embedding-3-small). Compare retrieval quality on 10 queries.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 5: Build an Evaluation Dataset</h3>
+<p class="mb-4 text-justify">Generate 50 question-answer pairs from a set of documents. Use them to create a test suite you can run against any version of your RAG pipeline.</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Next Chapter</strong>: We&#x27;ll take everything we&#x27;ve learned and build a complete, production-ready project from zero to deployment.</p>
+</blockquote></article><div class="mt-16 pt-8 border-t-2 border-[var(--border-color)]"><div class="flex justify-between items-stretch gap-4"><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group" href="/chapter/building-your-own-llm-pipeline"><span class="text-xs text-[var(--foreground)] opacity-50">← Previous</span><div class="flex items-center gap-2 mt-1"><span class="text-xl">⚙️</span><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Building Your Own LLM Pipeline</span></div></a><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group text-right" href="/chapter/complete-project-deployment"><span class="text-xs text-[var(--foreground)] opacity-50">Next →</span><div class="flex items-center justify-end gap-2 mt-1"><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Complete Project: End to End</span><span class="text-xl">🚀</span></div></a></div></div></main></div></div><!--$--><!--/$--><script src="/_next/static/chunks/3s_ssfmklbvuh.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[78892,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n3:I[11359,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n5:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"OutletBoundary\"]\n6:\"$Sreact.suspense\"\n9:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"ViewportBoundary\"]\nb:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"MetadataBoundary\"]\nd:I[65125,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/157per-6rfej7.css\",\"style\"]\n:HL[\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"chapter\",\"building-rag-from-scratch\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"chapter\",{\"children\":[[\"slug\",\"building-rag-from-scratch\",\"d\",null],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3j2brc7c8hat8.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/05b0208rfh8ys.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-full flex flex-col\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/16vgld9iclosn.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/2rb1230i-fez-.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@7\"}]}]]}],{},null,false,null]},null,false,\"$@8\"]},null,false,\"$@8\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L9\",null,{\"children\":\"$La\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Lc\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$d\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"WpHiBD4DjnzuprdEnivdA\"}\n"])</script><script>self.__next_f.push([1,"e:[]\n8:\"$We\"\n"])</script><script>self.__next_f.push([1,"f:I[89587,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\",\"/_next/static/chunks/16vgld9iclosn.js\",\"/_next/static/chunks/2rb1230i-fez-.js\"],\"default\"]\n10:Tdf1a,"])</script><script>self.__next_f.push([1,"# Chapter 11: Building RAG from Scratch\n\n## Every Component, Explained and Built\n\n---\n\n\u003e \"Retrieval-Augmented Generation is not a feature you bolt on. It is an architecture you build from first principles.\"\n\n---\n\nIn the previous chapters, you learned how LLMs work, how agents reason, and how tools extend their capabilities. But there is one critical limitation that none of these solve on their own: **knowledge cutoff**. An LLM trained in 2024 cannot know about events in 2025. A model trained on public internet data cannot answer questions about your company's internal documentation.\n\n**Retrieval-Augmented Generation (RAG)** solves this by combining two powerful ideas:\n\n1. **Retrieve** relevant documents from a knowledge base at query time.\n2. **Generate** an answer using both the retrieved documents and the LLM's reasoning.\n\nThis chapter builds a complete RAG system from scratch. Not a high-level overview — every component, every trade-off, and every line of code explained.\n\n---\n\n## Table of Contents\n\n1. [Why RAG? The Problem It Solves](#111-why-rag-the-problem-it-solves)\n2. [The RAG Architecture Overview](#112-the-rag-architecture-overview)\n3. [Document Ingestion Pipeline](#113-document-ingestion-pipeline)\n4. [Text Cleaning and Preprocessing](#114-text-cleaning-and-preprocessing)\n5. [Embedding Models Deep Dive](#115-embedding-models-deep-dive)\n6. [Vector Stores: Choosing and Setting Up](#116-vector-stores-choosing-and-setting-up)\n7. [Chunking Strategies: The Hidden Art](#117-chunking-strategies-the-hidden-art)\n8. [Retrieval Optimization](#118-retrieval-optimization)\n9. [Reranking for Precision](#119-reranking-for-precision)\n10. [Multi-Modal RAG](#1110-multi-modal-rag)\n11. [Complete RAG Pipeline in 100 Lines](#1111-complete-rag-pipeline-in-100-lines)\n12. [RAG with Reranking](#1112-rag-with-reranking)\n13. [Evaluation: Measuring Quality](#1113-evaluation-measuring-quality)\n14. [Key Takeaways](#1114-key-takeaways)\n15. [Try It Yourself](#1115-try-it-yourself)\n\n---\n\n## 11.1 Why RAG? The Problem It Solves\n\n### The Three Pillars of LLM Limitations\n\n```\n┌─────────────────────────────────────────────────────┐\n│              LLM LIMITATIONS                        │\n├──────────────────┬──────────────────┬───────────────┤\n│  KNOWLEDGE       │  HALLUCINATION   │  FRESHNESS    │\n│  CUTOFF          │                  │               │\n│                  │  Models fabricate│  Training data│\n│  Trained on data │  facts when they │  is months or │\n│  up to a certain │  don't know the  │  years old    │\n│  date            │  answer          │               │\n└──────────────────┴──────────────────┴───────────────┘\n```\n\n**Fine-tuning** was the first answer to these problems. But fine-tuning has real costs:\n\n| Approach | Knowledge Update | Cost | Accuracy | Freshness |\n|----------|-----------------|------|----------|-----------|\n| Fine-tuning | Retrain entire model | $1,000-$100,000+ | High | Stale |\n| RAG | Add new documents | $0.01-$1.00 | High | Real-time |\n| Prompt stuffing | Add to context window | Near zero | Variable | Real-time |\n\nRAG wins on cost and freshness. It gives you a system that can answer questions about **any document you feed it**, without retraining.\n\n### When RAG Is the Right Choice\n\nRAG is ideal when:\n\n- You have a **large corpus** of documents (thousands to millions).\n- The information **changes frequently** (support docs, policies, regulations).\n- You need **attributable answers** (legal, medical, financial).\n- You want to **reduce hallucinations** by grounding responses in real data.\n- You need **auditability** (who said what, and from where).\n\nRAG is NOT ideal when:\n\n- The task requires deep reasoning over a single short text (just use long-context).\n- You need the model to **learn a new skill** (fine-tuning is better).\n- Your documents are **extremely noisy** and cannot be cleaned.\n\n---\n\n## 11.2 The RAG Architecture Overview\n\nHere is the full RAG pipeline, broken into two phases:\n\n```\n                    ════════════════════════════════════\n                        PHASE 1: INDEXING (Offline)\n                    ════════════════════════════════════\n\n    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐\n    │  Raw     │───▶│  Parse \u0026 │───▶│  Chunk   │───▶│ Embed \u0026  │\n    │  Docs    │    │  Clean   │    │  Text    │    │  Store   │\n    └──────────┘    └──────────┘    └──────────┘    └──────────┘\n     PDF, HTML,      Remove noise,  Split into     Convert to\n     Markdown        normalize      manageable     vectors,\n                                     pieces        save to DB\n\n                    ════════════════════════════════════\n                        PHASE 2: QUERYING (Online)\n                    ════════════════════════════════════\n\n    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐\n    │  User    │───▶│  Embed   │───▶│ Retrieve │───▶│ Generate │\n    │  Query   │    │  Query   │    │ Top-K    │    │ Answer   │\n    └──────────┘    └──────────┘    └──────────┘    └──────────┘\n     \"What is the    Convert to     Find most       LLM reads\n      refund         vector         relevant        docs +\n      policy?\"                      chunks          question\n```\n\n### The Core Data Flow\n\n```python\n# The simplest possible RAG in pseudocode\ndef rag(query: str) -\u003e str:\n    # Step 1: Embed the query\n    query_vector = embed(query)\n\n    # Step 2: Find relevant chunks\n    relevant_chunks = vector_store.search(query_vector, top_k=5)\n\n    # Step 3: Build a prompt with context\n    context = \"\\n\\n\".join(relevant_chunks)\n    prompt = f\"\"\"Answer the question based on the context below.\n\nContext:\n{context}\n\nQuestion: {query}\nAnswer:\"\"\"\n\n    # Step 4: Generate the answer\n    return llm.generate(prompt)\n```\n\nThat is the essence of RAG. Everything else is optimization. Let's build each piece.\n\n---\n\n## 11.3 Document Ingestion Pipeline\n\nThe first challenge is getting your documents into a format the system can process. Real-world documents come in dozens of formats. Here is how to handle the most common ones.\n\n### Supported Formats\n\n| Format | Parser | Complexity | Notes |\n|--------|--------|------------|-------|\n| PDF | PyMuPDF, pdfplumber | High | Layouts, tables, images |\n| HTML | BeautifulSoup, Trafilatura | Medium | Ads, navigation, boilerplate |\n| Markdown | markdown-it-py | Low | Clean, structured |\n| DOCX | python-docx | Medium | Styles, tables, images |\n| Plain Text | Built-in | None | Straightforward |\n| CSV | pandas | Low | Tabular data |\n| JSON | json | Low | Structured data |\n\n### PDF Parsing\n\nPDFs are the hardest format. They are visual layouts, not text documents. Text can appear in columns, tables, sidebars, headers, and footers — and the raw bytes don't tell you which is which.\n\n```python\n# Using PyMuPDF for PDF extraction\nimport fitz  # PyMuPDF\n\ndef parse_pdf(file_path: str) -\u003e list[dict]:\n    \"\"\"Extract text from PDF with page metadata.\"\"\"\n    doc = fitz.open(file_path)\n    pages = []\n\n    for page_num in range(len(doc)):\n        page = doc[page_num]\n\n        # Extract text blocks with position info\n        blocks = page.get_text(\"dict\")[\"blocks\"]\n\n        page_text = []\n        for block in blocks:\n            if block[\"type\"] == 0:  # Text block\n                for line in block[\"lines\"]:\n                    text = \"\".join(span[\"text\"] for span in line[\"spans\"])\n                    if text.strip():\n                        page_text.append(text)\n\n        pages.append({\n            \"page_num\": page_num + 1,\n            \"text\": \"\\n\".join(page_text),\n            \"source\": file_path,\n        })\n\n    doc.close()\n    return pages\n\n# Usage\npages = parse_pdf(\"company_handbook.pdf\")\nprint(f\"Extracted {len(pages)} pages\")\nfor page in pages[:3]:\n    print(f\"Page {page['page_num']}: {page['text'][:100]}...\")\n```\n\n### HTML Parsing\n\nHTML requires you to strip boilerplate (navigation, footers, ads) while preserving the actual content.\n\n```python\n# Using Trafilatura for clean HTML extraction\nimport trafilatura\n\ndef parse_html(url: str) -\u003e dict:\n    \"\"\"Download and extract clean text from a URL.\"\"\"\n    downloaded = trafilatura.fetch_url(url)\n\n    if not downloaded:\n        raise ValueError(f\"Failed to download: {url}\")\n\n    text = trafilatura.extract(\n        downloaded,\n        include_links=True,\n        include_tables=True,\n        favor_precision=True,\n    )\n\n    return {\n        \"url\": url,\n        \"text\": text,\n        \"source\": \"html\",\n    }\n\n# Usage\narticle = parse_html(\"https://example.com/article\")\nprint(f\"Extracted {len(article['text'])} characters\")\n```\n\n### Markdown Parsing\n\nMarkdown is the easiest format to parse because it is already structured.\n\n```python\n# Simple markdown parser with structure preservation\nimport re\nfrom pathlib import Path\n\ndef parse_markdown(file_path: str) -\u003e dict:\n    \"\"\"Parse markdown preserving headers as structure.\"\"\"\n    content = Path(file_path).read_text(encoding=\"utf-8\")\n\n    # Split by headers to preserve document structure\n    sections = re.split(r'^(#{1,6}\\s+.+)$', content, flags=re.MULTILINE)\n\n    structured_sections = []\n    current_header = \"Introduction\"\n\n    for section in sections:\n        if re.match(r'^#{1,6}\\s+', section):\n            current_header = section.strip()\n        elif section.strip():\n            structured_sections.append({\n                \"header\": current_header,\n                \"text\": section.strip(),\n            })\n\n    return {\n        \"file_path\": file_path,\n        \"sections\": structured_sections,\n        \"full_text\": content,\n        \"source\": \"markdown\",\n    }\n\n# Usage\ndoc = parse_markdown(\"README.md\")\nprint(f\"Found {len(doc['sections'])} sections\")\n```\n\n### Unified Ingestion Pipeline\n\nCombine all parsers into one pipeline:\n\n```python\nfrom pathlib import Path\n\ndef ingest_document(file_path: str) -\u003e list[dict]:\n    \"\"\"Universal document ingestion.\"\"\"\n    path = Path(file_path)\n    suffix = path.suffix.lower()\n\n    if suffix == \".pdf\":\n        pages = parse_pdf(file_path)\n        return [\n            {\n                \"text\": page[\"text\"],\n                \"metadata\": {\n                    \"source\": file_path,\n                    \"page\": page[\"page_num\"],\n                    \"format\": \"pdf\",\n                },\n            }\n            for page in pages\n        ]\n\n    elif suffix in (\".html\", \".htm\"):\n        result = parse_html(file_path)\n        return [\n            {\n                \"text\": result[\"text\"],\n                \"metadata\": {\n                    \"source\": file_path,\n                    \"format\": \"html\",\n                },\n            }\n        ]\n\n    elif suffix == \".md\":\n        result = parse_markdown(file_path)\n        return [\n            {\n                \"text\": section[\"text\"],\n                \"metadata\": {\n                    \"source\": file_path,\n                    \"header\": section[\"header\"],\n                    \"format\": \"markdown\",\n                },\n            }\n            for section in result[\"sections\"]\n        ]\n\n    elif suffix == \".txt\":\n        text = path.read_text(encoding=\"utf-8\")\n        return [\n            {\n                \"text\": text,\n                \"metadata\": {\n                    \"source\": file_path,\n                    \"format\": \"text\",\n                },\n            }\n        ]\n\n    else:\n        raise ValueError(f\"Unsupported format: {suffix}\")\n```\n\n---\n\n## 11.4 Text Cleaning and Preprocessing\n\nRaw text from documents is messy. It contains special characters, inconsistent formatting, and duplicate content. Cleaning it improves retrieval quality dramatically.\n\n### The Cleaning Pipeline\n\n```python\nimport re\nimport hashlib\n\ndef clean_text(text: str) -\u003e str:\n    \"\"\"Clean and normalize text for RAG.\"\"\"\n    # Step 1: Remove excessive whitespace\n    text = re.sub(r'\\n{3,}', '\\n\\n', text)  # Max 2 newlines\n    text = re.sub(r' {2,}', ' ', text)      # Max 1 space\n    text = text.strip()\n\n    # Step 2: Remove page numbers and headers/footers\n    text = re.sub(r'^\\d+\\s*$', '', text, flags=re.MULTILINE)  # Standalone numbers\n    text = re.sub(r'^Page \\d+ of \\d+$', '', text, flags=re.MULTILINE)\n\n    # Step 3: Fix encoding issues\n    text = text.replace('’', \"'\")   # Smart single quote\n    text = text.replace('“', '\"')   # Smart left double quote\n    text = text.replace('”', '\"')   # Smart right double quote\n    text = text.replace('—', '—')   # Em dash\n    text = text.replace('–', '–')   # En dash\n    text = text.replace('\\xa0', ' ')     # Non-breaking space\n\n    # Step 4: Remove control characters (keep newlines and tabs)\n    text = re.sub(r'[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f]', '', text)\n\n    # Step 5: Normalize bullet points\n    text = re.sub(r'[•●○◦▪▸►→]', '•', text)\n\n    return text\n\ndef deduplicate_chunks(chunks: list[dict]) -\u003e list[dict]:\n    \"\"\"Remove exact and near-duplicate chunks.\"\"\"\n    seen_hashes = set()\n    unique_chunks = []\n\n    for chunk in chunks:\n        # Normalize for comparison\n        normalized = re.sub(r'\\s+', ' ', chunk[\"text\"].lower().strip())\n        content_hash = hashlib.md5(normalized.encode()).hexdigest()\n\n        if content_hash not in seen_hashes:\n            seen_hashes.add(content_hash)\n            unique_chunks.append(chunk)\n\n    removed = len(chunks) - len(unique_chunks)\n    if removed:\n        print(f\"Removed {removed} duplicate chunks\")\n    return unique_chunks\n```\n\n### Language Detection\n\nWhen your knowledge base contains multiple languages, detect and filter:\n\n```python\n# Using langdetect for language filtering\nfrom langdetect import detect, DetectorFactory\n\n# Make detection deterministic\nDetectorFactory.seed = 0\n\ndef filter_by_language(\n    chunks: list[dict],\n    target_language: str = \"en\",\n    confidence_threshold: float = 0.7,\n) -\u003e list[dict]:\n    \"\"\"Keep only chunks in the target language.\"\"\"\n    filtered = []\n    for chunk in chunks:\n        try:\n            lang = detect(chunk[\"text\"])\n            if lang == target_language:\n                filtered.append(chunk)\n        except Exception:\n            # If detection fails, keep the chunk\n            filtered.append(chunk)\n\n    print(f\"Kept {len(filtered)}/{len(chunks)} chunks in '{target_language}'\")\n    return filtered\n```\n\n### Quality Filtering\n\nNot all text is worth indexing. Filter out low-quality content:\n\n```python\ndef quality_filter(chunk: dict, min_length: int = 50, max_length: int = 10000) -\u003e bool:\n    \"\"\"Check if a chunk meets quality thresholds.\"\"\"\n    text = chunk[\"text\"]\n\n    # Too short\n    if len(text) \u003c min_length:\n        return False\n\n    # Too long (likely parsing error)\n    if len(text) \u003e max_length:\n        return False\n\n    # Too many special characters (likely garbled)\n    special_ratio = sum(1 for c in text if not c.isalnum() and not c.isspace()) / len(text)\n    if special_ratio \u003e 0.3:\n        return False\n\n    # Too few real words\n    words = text.split()\n    if len(words) \u003c 10:\n        return False\n\n    # Mostly uppercase (likely headers or noise)\n    alpha_chars = [c for c in text if c.isalpha()]\n    if alpha_chars and sum(1 for c in alpha_chars if c.isupper()) / len(alpha_chars) \u003e 0.8:\n        return False\n\n    return True\n```\n\n---\n\n## 11.5 Embedding Models Deep Dive\n\nEmbeddings are the heart of RAG. They convert text into numerical vectors that capture meaning. Choosing the right embedding model directly impacts retrieval quality.\n\n### What Are Embeddings?\n\nAn embedding is a list of numbers (a vector) that represents the meaning of a piece of text. Similar texts get similar vectors.\n\n```\n\"The cat sat on the mat\"  →  [0.12, -0.34, 0.56, ..., 0.78]  (1536 numbers)\n\"The feline rested on the rug\" → [0.11, -0.33, 0.57, ..., 0.79]  (very close!)\n\"The stock market crashed\" → [-0.45, 0.67, -0.12, ..., 0.23]  (very different!)\n```\n\n### Embedding Model Comparison\n\n| Model | Dimensions | Speed | Quality | Cost | Best For |\n|-------|-----------|-------|---------|------|----------|\n| OpenAI text-embedding-3-small | 1536 | Fast | Good | $0.02/1M tokens | General purpose |\n| OpenAI text-embedding-3-large | 3072 | Fast | Excellent | $0.13/1M tokens | High accuracy needed |\n| all-MiniLM-L6-v2 | 384 | Very fast | Good | Free (local) | Prototyping, budget |\n| all-mpnet-base-v2 | 768 | Medium | Very good | Free (local) | Best open-source |\n| Cohere embed-v3 | 1024 | Fast | Excellent | $0.10/1M tokens | Multilingual |\n| Nomic embed v1.5 | 768 | Fast | Excellent | Free (local) | Open-source leader |\n| BGE-large-en-v1.5 | 1024 | Medium | Excellent | Free (local) | Best retrieval |\n\n### Using OpenAI Embeddings\n\n```python\nfrom openai import OpenAI\n\nclient = OpenAI()\n\ndef embed_text(text: str, model: str = \"text-embedding-3-small\") -\u003e list[float]:\n    \"\"\"Embed a single piece of text.\"\"\"\n    response = client.embeddings.create(\n        model=model,\n        input=text,\n    )\n    return response.data[0].embedding\n\ndef embed_batch(texts: list[str], model: str = \"text-embedding-3-small\") -\u003e list[list[float]]:\n    \"\"\"Embed multiple texts efficiently.\"\"\"\n    response = client.embeddings.create(\n        model=model,\n        input=texts,\n    )\n    # Sort by index to maintain order\n    return [item.embedding for item in sorted(response.data, key=lambda x: x.index)]\n\n# Usage\nvector = embed_text(\"What is RAG?\")\nprint(f\"Embedding dimension: {len(vector)}\")  # 1536\n\n# Batch embedding (much faster for many texts)\ntexts = [\"Document 1\", \"Document 2\", \"Document 3\"]\nvectors = embed_batch(texts)\nprint(f\"Embedded {len(vectors)} texts\")\n```\n\n### Using Sentence Transformers (Free, Local)\n\n```python\nfrom sentence_transformers import SentenceTransformer\n\n# Download and cache the model (runs locally, no API costs)\nmodel = SentenceTransformer(\"all-MiniLM-L6-v2\")\n\ndef embed_local(texts: list[str]) -\u003e list[list[float]]:\n    \"\"\"Embed texts using local model.\"\"\"\n    embeddings = model.encode(\n        texts,\n        show_progress_bar=True,\n        batch_size=32,\n        normalize_embeddings=True,  # Important for cosine similarity\n    )\n    return embeddings.tolist()\n\n# Usage\ntexts = [\n    \"How do I reset my password?\",\n    \"I forgot my login credentials\",\n    \"What is your return policy?\",\n]\nvectors = embed_local(texts)\nprint(f\"Each vector has {len(vectors[0])} dimensions\")  # 384\n```\n\n### Choosing the Right Model\n\n```\n                    DECISION TREE: CHOOSING AN EMBEDDING MODEL\n\n                    ┌─────────────────────────┐\n                    │  Need highest quality?   │\n                    └────────┬────────────────┘\n                             │\n                    ┌────────▼────────────┐\n                    │   Yes                │    No\n                    │                      │\n            ┌───────▼──────┐      ┌───────▼────────┐\n            │ Budget for   │      │ Need offline / │\n            │ API costs?   │      │ no API?        │\n            └──┬────────┬──┘      └──┬──────────┬──┘\n           Yes │        │ No     Yes │          │ No\n               │        │           │            │\n        ┌──────▼──┐ ┌───▼────┐ ┌───▼─────┐ ┌───▼──────┐\n        │ OpenAI  │ │ Cohere │ │ BGE-    │ │ all-     │\n        │ 3-large │ │ embed  │ │ large   │ │ MiniLM   │\n        └─────────┘ └────────┘ └─────────┘ └──────────┘\n```\n\n---\n\n## 11.6 Vector Stores: Choosing and Setting Up\n\nA vector store holds your embeddings and lets you search for the most similar ones. Think of it as a search engine for meaning.\n\n### Vector Store Comparison\n\n| Store | Type | Persistence | Scalability | Setup | Best For |\n|-------|------|-------------|-------------|-------|----------|\n| FAISS | In-memory | Manual save/load | High (single machine) | Simple | Prototyping |\n| Chroma | Embedded | Automatic | Medium | Very simple | Development |\n| Pinecone | Cloud | Managed | Very high | Simple | Production |\n| Weaviate | Self-hosted/Cloud | Managed | Very high | Medium | Complex queries |\n| Qdrant | Self-hosted/Cloud | Managed | Very high | Medium | High performance |\n| pgvector | PostgreSQL extension | Automatic | High | Medium | Existing PG setup |\n| Milvus | Self-hosted | Managed | Very high | Complex | Enterprise scale |\n\n### Setting Up FAISS (Local, Fast)\n\n```python\nimport faiss\nimport numpy as np\nimport json\n\nclass FAISSVectorStore:\n    \"\"\"Simple FAISS vector store with persistence.\"\"\"\n\n    def __init__(self, dimension: int):\n        self.dimension = dimension\n        self.index = faiss.IndexFlatL2(dimension)  # L2 (Euclidean) distance\n        self.documents = []  # Store metadata alongside vectors\n\n    def add(self, embeddings: list[list[float]], documents: list[dict]):\n        \"\"\"Add vectors and their metadata.\"\"\"\n        vectors = np.array(embeddings, dtype=np.float32)\n        self.index.add(vectors)\n        self.documents.extend(documents)\n\n    def search(self, query_embedding: list[float], top_k: int = 5) -\u003e list[dict]:\n        \"\"\"Find the most similar vectors.\"\"\"\n        query = np.array([query_embedding], dtype=np.float32)\n        distances, indices = self.index.search(query, top_k)\n\n        results = []\n        for dist, idx in zip(distances[0], indices[0]):\n            if idx \u003c len(self.documents):\n                result = self.documents[idx].copy()\n                result[\"distance\"] = float(dist)\n                results.append(result)\n\n        return results\n\n    def save(self, path: str):\n        \"\"\"Save index and metadata to disk.\"\"\"\n        faiss.write_index(self.index, f\"{path}.faiss\")\n        with open(f\"{path}.meta.json\", \"w\") as f:\n            json.dump(self.documents, f)\n\n    @classmethod\n    def load(cls, path: str) -\u003e \"FAISSVectorStore\":\n        \"\"\"Load index and metadata from disk.\"\"\"\n        index = faiss.read_index(f\"{path}.faiss\")\n        with open(f\"{path}.meta.json\") as f:\n            documents = json.load(f)\n\n        store = cls(index.d)\n        store.index = index\n        store.documents = documents\n        return store\n\n# Usage\nstore = FAISSVectorStore(dimension=384)\n\n# Add documents\nembeddings = embed_local([\"Doc 1\", \"Doc 2\", \"Doc 3\"])\ndocs = [\n    {\"text\": \"Doc 1\", \"source\": \"file1.pdf\", \"page\": 1},\n    {\"text\": \"Doc 2\", \"source\": \"file2.pdf\", \"page\": 5},\n    {\"text\": \"Doc 3\", \"source\": \"file3.pdf\", \"page\": 12},\n]\nstore.add(embeddings, docs)\n\n# Search\nquery_vec = embed_local([\"How to reset password\"])[0]\nresults = store.search(query_vec, top_k=2)\nfor r in results:\n    print(f\"Score: {r['distance']:.4f} | {r['text']}\")\n```\n\n### Setting Up Chroma (Lightweight, Persistent)\n\n```python\nimport chromadb\n\n# Create a persistent client (data saved to disk)\nclient = chromadb.PersistentClient(path=\"./chroma_db\")\n\n# Create or get a collection\ncollection = client.get_or_create_collection(\n    name=\"knowledge_base\",\n    metadata={\"hnsw:space\": \"cosine\"},  # Use cosine similarity\n)\n\n# Add documents with embeddings\ncollection.add(\n    documents=[\"How to reset password\", \"Return policy details\"],\n    embeddings=embed_local([\"How to reset password\", \"Return policy details\"]),\n    metadatas=[\n        {\"source\": \"faq.pdf\", \"page\": 1},\n        {\"source\": \"policy.pdf\", \"page\": 3},\n    ],\n    ids=[\"doc_1\", \"doc_2\"],\n)\n\n# Query\nresults = collection.query(\n    query_embeddings=embed_local([\"forgot my password\"]),\n    n_results=2,\n)\nprint(results[\"documents\"])\n```\n\n### Setting Up Pinecone (Cloud, Production)\n\n```python\nfrom pinecone import Pinecone, ServerlessSpec\n\n# Initialize\npc = Pinecone(api_key=\"your-api-key\")\n\n# Create index\nindex_name = \"knowledge-base\"\nif index_name not in pc.list_indexes().names():\n    pc.create_index(\n        name=index_name,\n        dimension=1536,\n        metric=\"cosine\",\n        spec=ServerlessSpec(cloud=\"aws\", region=\"us-east-1\"),\n    )\n\n# Connect to index\nindex = pc.Index(index_name)\n\n# Upsert vectors\nvectors = [\n    {\n        \"id\": \"doc_1\",\n        \"values\": embed_text(\"How to reset password\"),\n        \"metadata\": {\"source\": \"faq.pdf\", \"page\": 1},\n    },\n    {\n        \"id\": \"doc_2\",\n        \"values\": embed_text(\"Return policy details\"),\n        \"metadata\": {\"source\": \"policy.pdf\", \"page\": 3},\n    },\n]\nindex.upsert(vectors=vectors)\n\n# Query\nresults = index.query(\n    vector=embed_text(\"forgot my password\"),\n    top_k=2,\n    include_metadata=True,\n)\nprint(results[\"matches\"])\n```\n\n---\n\n## 11.7 Chunking Strategies: The Hidden Art\n\nChunking is arguably the most important — and most overlooked — part of RAG. If your chunks are too large, retrieval is imprecise. Too small, and you lose context.\n\n### Why Chunking Matters\n\n```\nTOO LARGE (2000 tokens):\n┌─────────────────────────────────────────────────────────┐\n│  \"Our return policy allows customers to return items    │\n│   within 30 days. Refunds are processed within 5-7     │\n│   business days. Items must be in original packaging.   │\n│   Sale items are final. Electronics have a 14-day       │\n│   return window. Free shipping applies to orders over   │\n│   $50. International returns require customs forms...\"  │\n└─────────────────────────────────────────────────────────┘\n  Problem: Retrieves the ENTIRE policy for any question\n  about returns, even \"What's the refund timeframe?\"\n\nTOO SMALL (50 tokens):\n┌──────────────────────┐ ┌──────────────────────┐\n│ \"Refunds are         │ │ \"within 5-7 business  │\n│  processed\"          │ │  days\"                │\n└──────────────────────┘ └──────────────────────┘\n  Problem: Lost context. \"Refunds are processed\" alone\n  doesn't tell you WHO processes them or WHEN.\n\nJUST RIGHT (300 tokens):\n┌──────────────────────────────────────────┐\n│ \"Refunds are processed within 5-7       │\n│  business days after we receive the     │\n│  returned item. The refund is credited  │\n│  to the original payment method.\"       │\n└──────────────────────────────────────────┘\n  Good: Self-contained, precise, answerable.\n```\n\n### Chunking Strategies\n\n```python\nimport re\n\ndef fixed_size_chunks(text: str, chunk_size: int = 500, overlap: int = 50) -\u003e list[str]:\n    \"\"\"Split text into fixed-size chunks with overlap.\"\"\"\n    words = text.split()\n    chunks = []\n\n    for i in range(0, len(words), chunk_size - overlap):\n        chunk = \" \".join(words[i : i + chunk_size])\n        chunks.append(chunk)\n\n    return chunks\n\ndef sentence_chunks(text: str, max_chunk_size: int = 500) -\u003e list[str]:\n    \"\"\"Split text at sentence boundaries.\"\"\"\n    # Split into sentences\n    sentences = re.split(r'(?\u003c=[.!?])\\s+', text)\n\n    chunks = []\n    current_chunk = []\n    current_size = 0\n\n    for sentence in sentences:\n        sentence_words = len(sentence.split())\n\n        if current_size + sentence_words \u003e max_chunk_size and current_chunk:\n            chunks.append(\" \".join(current_chunk))\n            current_chunk = [sentence]\n            current_size = sentence_words\n        else:\n            current_chunk.append(sentence)\n            current_size += sentence_words\n\n    if current_chunk:\n        chunks.append(\" \".join(current_chunk))\n\n    return chunks\n\ndef semantic_chunks(\n    text: str,\n    headers_pattern: str = r'\\n#{1,3}\\s+',\n) -\u003e list[dict]:\n    \"\"\"Split by document structure (headers).\"\"\"\n    sections = re.split(f'({headers_pattern})', text, flags=re.MULTILINE)\n\n    chunks = []\n    current_header = \"Content\"\n\n    for section in sections:\n        if re.match(headers_pattern, section):\n            current_header = section.strip()\n        elif section.strip():\n            chunks.append({\n                \"header\": current_header,\n                \"text\": section.strip(),\n            })\n\n    return chunks\n\ndef recursive_chunking(\n    text: str,\n    chunk_size: int = 500,\n    separators: list[str] | None = None,\n) -\u003e list[str]:\n    \"\"\"Recursively split using a hierarchy of separators.\"\"\"\n    if separators is None:\n        separators = [\"\\n\\n\", \"\\n\", \". \", \" \", \"\"]\n\n    if len(text) \u003c= chunk_size:\n        return [text]\n\n    for separator in separators:\n        if separator == \"\":\n            # Last resort: hard split at character level\n            return [\n                text[i:i + chunk_size]\n                for i in range(0, len(text), chunk_size)\n            ]\n\n        splits = text.split(separator)\n        if len(splits) \u003e 1:\n            chunks = []\n            current = \"\"\n\n            for split in splits:\n                test = current + separator + split if current else split\n                if len(test) \u003c= chunk_size:\n                    current = test\n                else:\n                    if current:\n                        chunks.append(current)\n                    current = split\n\n            if current:\n                chunks.append(current)\n\n            # Recursively split any remaining oversized chunks\n            result = []\n            for chunk in chunks:\n                if len(chunk) \u003e chunk_size:\n                    result.extend(recursive_chunking(chunk, chunk_size, separators))\n                else:\n                    result.append(chunk)\n            return result\n\n    return [text]\n```\n\n### Chunking Comparison\n\n| Strategy | Pros | Cons | Best For |\n|----------|------|------|----------|\n| Fixed-size | Simple, predictable | Breaks sentences | Quick prototype |\n| Sentence-based | Natural boundaries | Variable sizes | General purpose |\n| Semantic (headers) | Structure-aware | Requires headers | Technical docs |\n| Recursive | Balanced | More complex | Production systems |\n\n### Recommended: LangChain's RecursiveTextSplitter\n\n```python\nfrom langchain.text_splitter import RecursiveCharacterTextSplitter\n\nsplitter = RecursiveCharacterTextSplitter(\n    chunk_size=500,\n    chunk_overlap=50,\n    length_function=len,\n    separators=[\"\\n\\n\", \"\\n\", \". \", \" \", \"\"],\n)\n\ntext = \"Your long document text here...\"\nchunks = splitter.split_text(text)\nprint(f\"Created {len(chunks)} chunks\")\n```\n\n---\n\n## 11.8 Retrieval Optimization\n\nBasic vector search is a good start, but production RAG needs optimization.\n\n### Similarity Metrics\n\n```python\nimport numpy as np\n\ndef cosine_similarity(a: list[float], b: list[float]) -\u003e float:\n    \"\"\"Measure the angle between two vectors.\"\"\"\n    a, b = np.array(a), np.array(b)\n    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))\n\ndef dot_product(a: list[float], b: list[float]) -\u003e float:\n    \"\"\"Simple dot product (works well with normalized vectors).\"\"\"\n    return np.dot(a, b)\n\ndef l2_distance(a: list[float], b: list[float]) -\u003e float:\n    \"\"\"Euclidean distance (lower = more similar).\"\"\"\n    return np.linalg.norm(np.array(a) - np.array(b))\n```\n\n### Maximum Marginal Relevance (MMR)\n\nMMR balances **relevance** with **diversity**. Without it, you might get 5 chunks that all say the same thing.\n\n```python\ndef mmr_retrieval(\n    query_embedding: list[float],\n    document_embeddings: list[list[float]],\n    documents: list[dict],\n    top_k: int = 5,\n    lambda_param: float = 0.5,  # 0 = max diversity, 1 = max relevance\n) -\u003e list[dict]:\n    \"\"\"MMR-based retrieval for diverse results.\"\"\"\n    query_vec = np.array(query_embedding)\n    doc_vecs = np.array(document_embeddings)\n\n    # Compute similarities to query\n    query_sims = np.dot(doc_vecs, query_vec) / (\n        np.linalg.norm(doc_vecs, axis=1) * np.linalg.norm(query_vec)\n    )\n\n    selected = []\n    remaining = list(range(len(documents)))\n\n    for _ in range(min(top_k, len(documents))):\n        best_score = -float(\"inf\")\n        best_idx = -1\n\n        for idx in remaining:\n            relevance = query_sims[idx]\n\n            # Compute max similarity to already selected docs\n            diversity = 0.0\n            if selected:\n                selected_vecs = doc_vecs[selected]\n                doc_similarities = np.dot(selected_vecs, doc_vecs[idx]) / (\n                    np.linalg.norm(selected_vecs, axis=1) * np.linalg.norm(doc_vecs[idx])\n                )\n                diversity = np.max(doc_similarities)\n\n            # MMR score: balance relevance and diversity\n            mmr_score = lambda_param * relevance - (1 - lambda_param) * diversity\n\n            if mmr_score \u003e best_score:\n                best_score = mmr_score\n                best_idx = idx\n\n        if best_idx \u003e= 0:\n            selected.append(best_idx)\n            remaining.remove(best_idx)\n            documents[best_idx][\"mmr_score\"] = float(best_score)\n\n    return [documents[i] for i in selected]\n```\n\n### Query Expansion\n\nSometimes the user's query doesn't match the document's language. Query expansion helps bridge that gap.\n\n```python\ndef expand_query(query: str, llm) -\u003e list[str]:\n    \"\"\"Generate multiple query variations.\"\"\"\n    prompt = f\"\"\"Generate 3 alternative search queries for the following question.\nEach should capture a different way of asking the same thing.\n\nOriginal query: {query}\n\nReturn ONLY the 3 queries, one per line, no numbering.\"\"\"\n\n    response = llm.generate(prompt)\n    variations = [q.strip() for q in response.split(\"\\n\") if q.strip()]\n\n    return [query] + variations[:3]\n\n# Example\n# Original: \"How do I fix the login issue?\"\n# Expanded:\n#   - \"How do I fix the login issue?\"\n#   - \"Login not working troubleshooting steps\"\n#   - \"Cannot sign in to my account\"\n#   - \"Authentication error resolution\"\n```\n\n### Hybrid Search\n\nCombine vector search with keyword search for better results:\n\n```python\ndef hybrid_search(\n    query: str,\n    vector_store,\n    keyword_index,\n    alpha: float = 0.7,  # Weight for vector search\n    top_k: int = 10,\n) -\u003e list[dict]:\n    \"\"\"Combine vector similarity with keyword matching.\"\"\"\n    # Vector search results\n    query_vec = embed_text(query)\n    vector_results = vector_store.search(query_vec, top_k=top_k * 2)\n\n    # Keyword search results (BM25 or similar)\n    keyword_results = keyword_index.search(query, top_k=top_k * 2)\n\n    # Reciprocal Rank Fusion\n    scores = {}\n    k = 60  # RRF constant\n\n    for rank, result in enumerate(vector_results):\n        doc_id = result[\"id\"]\n        scores[doc_id] = scores.get(doc_id, 0) + alpha * (1 / (k + rank + 1))\n\n    for rank, result in enumerate(keyword_results):\n        doc_id = result[\"id\"]\n        scores[doc_id] = scores.get(doc_id, 0) + (1 - alpha) * (1 / (k + rank + 1))\n\n    # Sort by combined score\n    ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)\n    return ranked[:top_k]\n```\n\n---\n\n## 11.9 Reranking for Precision\n\nRetrieval gets you candidates. Reranking picks the best ones. This is the secret weapon of high-quality RAG.\n\n### Why Rerank?\n\nInitial retrieval (vector search) uses **bi-encoder** models: the query and documents are embedded separately, then compared. This is fast but approximate.\n\nReranking uses **cross-encoder** models: the query and each document are processed **together**. This is slower but much more accurate.\n\n```\nBI-ENCODER (Retrieval):\n  Query ──► Encoder ──► Query Vector ──┐\n                                       ├──► Similarity Score\n  Doc ──► Encoder ──► Doc Vector ──────┘\n  (Fast: O(n) encoding, O(n) comparison)\n\nCROSS-ENCODER (Reranking):\n  [Query + Doc] ──► Encoder ──► Relevance Score\n  (Slow: O(n) full encoding, but much more accurate)\n```\n\n### Using Cohere Rerank\n\n```python\nfrom cohere import ClientV2\n\ncohere_client = ClientV2(api_key=\"your-api-key\")\n\ndef rerank_cohere(\n    query: str,\n    documents: list[dict],\n    top_k: int = 5,\n) -\u003e list[dict]:\n    \"\"\"Rerank documents using Cohere.\"\"\"\n    doc_texts = [doc[\"text\"] for doc in documents]\n\n    response = cohere_client.rerank(\n        query=query,\n        documents=doc_texts,\n        top_n=top_k,\n        model=\"rerank-english-v3.0\",\n    )\n\n    reranked = []\n    for result in response.results:\n        doc = documents[result.index].copy()\n        doc[\"rerank_score\"] = result.relevance_score\n        reranked.append(doc)\n\n    return reranked\n```\n\n### Using a Local Cross-Encoder\n\n```python\nfrom sentence_transformers import CrossEncoder\n\n# Load a cross-encoder model\ncross_encoder = CrossEncoder(\"cross-encoder/ms-marco-MiniLM-L-6-v2\")\n\ndef rerank_local(\n    query: str,\n    documents: list[dict],\n    top_k: int = 5,\n) -\u003e list[dict]:\n    \"\"\"Rerank using a local cross-encoder model.\"\"\"\n    pairs = [(query, doc[\"text\"]) for doc in documents]\n    scores = cross_encoder.predict(pairs)\n\n    # Combine scores with documents\n    scored_docs = list(zip(documents, scores))\n    scored_docs.sort(key=lambda x: x[1], reverse=True)\n\n    reranked = []\n    for doc, score in scored_docs[:top_k]:\n        result = doc.copy()\n        result[\"rerank_score\"] = float(score)\n        reranked.append(result)\n\n    return reranked\n```\n\n### Using ColBERT\n\nColBERT uses late interaction — a middle ground between bi-encoders and cross-encoders:\n\n```python\n# Using RAGatouille for ColBERT\nfrom ragatouille import RAGPretrainedModel\n\ncolbert = RAGPretrainedModel.from_pretrained(\"colbert-ir/colbertv2.0\")\n\n# Index documents\ncolbert.add(\n    documents=[\"Doc 1 text\", \"Doc 2 text\"],\n    document_metadatas=[{\"source\": \"file1\"}, {\"source\": \"file2\"}],\n    document_ids=[\"doc1\", \"doc2\"],\n)\n\n# Search with ColBERT\nresults = colbert.search(\"What is RAG?\", k=5)\n```\n\n### Reranking Comparison\n\n| Method | Speed | Quality | Cost | Setup |\n|--------|-------|---------|------|-------|\n| Cohere Rerank | Fast | Excellent | $0.001/query | API key needed |\n| Cross-Encoder | Slow | Excellent | Free (local) | Model download |\n| ColBERT | Medium | Very good | Free (local) | More complex |\n| LLM Rerank | Very slow | Best | API costs | Prompt engineering |\n\n---\n\n## 11.10 Multi-Modal RAG\n\nReal-world documents contain more than text. Images, charts, and tables carry crucial information. Multi-modal RAG handles them all.\n\n### Architecture for Multi-Modal RAG\n\n```\n┌─────────────────────────────────────────────────┐\n│              MULTI-MODAL RAG                     │\n├─────────────────────────────────────────────────┤\n│                                                  │\n│  PDF ──┬──► Text Chunks ──► Text Embeddings ──┐ │\n│        │                                      │ │\n│        ├──► Images ──► Image Embeddings ──────┤ │\n│        │    (CLIP)                            │ │\n│        │                                      ├──► Vector Store\n│        └──► Tables ──► Table Descriptions ────┘ │\n│             (parsed)      (text embeddings)     │\n│                                                  │\n└─────────────────────────────────────────────────┘\n```\n\n### Using CLIP for Image Embeddings\n\n```python\nimport torch\nfrom PIL import Image\nfrom transformers import CLIPModel, CLIPProcessor\n\n# Load CLIP model\nclip_model = CLIPModel.from_pretrained(\"openai/clip-vit-base-patch32\")\nclip_processor = CLIPProcessor.from_pretrained(\"openai/clip-vit-base-patch32\")\n\ndef embed_image(image_path: str) -\u003e list[float]:\n    \"\"\"Embed an image using CLIP.\"\"\"\n    image = Image.open(image_path)\n    inputs = clip_processor(images=image, return_tensors=\"pt\")\n\n    with torch.no_grad():\n        features = clip_model.get_image_features(**inputs)\n\n    return features[0].tolist()\n\ndef embed_image_text_pair(image_path: str, text: str) -\u003e list[float]:\n    \"\"\"Embed an image and text together using CLIP.\"\"\"\n    image = Image.open(image_path)\n    inputs = clip_processor(\n        images=image,\n        text=text,\n        return_tensors=\"pt\",\n        padding=True,\n    )\n\n    with torch.no_grad():\n        image_features = clip_model.get_image_features(**inputs)\n        text_features = clip_model.get_text_features(**inputs)\n\n    # Average the two for a combined embedding\n    combined = (image_features + text_features) / 2\n    return combined[0].tolist()\n```\n\n### Table Extraction and Description\n\n```python\ndef describe_table_for_rag(table_data: list[list[str]]) -\u003e str:\n    \"\"\"Convert a table to a searchable text description.\"\"\"\n    if not table_data:\n        return \"\"\n\n    headers = table_data[0]\n    rows = table_data[1:]\n\n    descriptions = []\n    descriptions.append(f\"Table with columns: {', '.join(headers)}\")\n    descriptions.append(f\"Contains {len(rows)} rows of data.\")\n\n    # Sample a few rows for context\n    for i, row in enumerate(rows[:3]):\n        row_desc = \", \".join(\n            f\"{header}: {value}\"\n            for header, value in zip(headers, row)\n        )\n        descriptions.append(f\"Row {i+1}: {row_desc}\")\n\n    return \" | \".join(descriptions)\n```\n\n---\n\n## 11.11 Complete RAG Pipeline in 100 Lines\n\nHere is a fully functional RAG system in under 100 lines of Python:\n\n```python\n\"\"\"Complete RAG Pipeline - ~100 lines of working code.\"\"\"\n\nfrom pathlib import Path\nfrom sentence_transformers import SentenceTransformer\nimport chromadb\nimport re\n\n# ─── Configuration ──────────────────────────────────────────────\nCHUNK_SIZE = 500\nCHUNK_OVERLAP = 50\nTOP_K = 5\n\n# ─── Initialize ─────────────────────────────────────────────────\nembed_model = SentenceTransformer(\"all-MiniLM-L6-v2\")\nchroma_client = chromadb.PersistentClient(path=\"./rag_db\")\ncollection = chroma_client.get_or_create_collection(\n    name=\"knowledge_base\",\n    metadata={\"hnsw:space\": \"cosine\"},\n)\n\n# ─── Text Processing ────────────────────────────────────────────\ndef clean_text(text: str) -\u003e str:\n    text = re.sub(r'\\n{3,}', '\\n\\n', text)\n    text = re.sub(r' {2,}', ' ', text)\n    return text.strip()\n\ndef chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -\u003e list[str]:\n    words = text.split()\n    return [\n        \" \".join(words[i:i + size])\n        for i in range(0, len(words), size - overlap)\n        if words[i:i + size]\n    ]\n\n# ─── Ingestion ──────────────────────────────────────────────────\ndef ingest_file(file_path: str):\n    text = clean_text(Path(file_path).read_text(encoding=\"utf-8\"))\n    chunks = chunk_text(text)\n\n    embeddings = embed_model.encode(chunks, show_progress_bar=True).tolist()\n    ids = [f\"{Path(file_path).stem}_chunk_{i}\" for i in range(len(chunks))]\n    metadatas = [{\"source\": file_path, \"chunk_index\": i} for i in range(len(chunks))]\n\n    collection.add(\n        documents=chunks,\n        embeddings=embeddings,\n        ids=ids,\n        metadatas=metadatas,\n    )\n    print(f\"Ingested {len(chunks)} chunks from {file_path}\")\n\n# ─── Retrieval ──────────────────────────────────────────────────\ndef retrieve(query: str, top_k: int = TOP_K) -\u003e list[dict]:\n    query_embedding = embed_model.encode([query]).tolist()\n    results = collection.query(\n        query_embeddings=query_embedding,\n        n_results=top_k,\n        include=[\"documents\", \"metadatas\", \"distances\"],\n    )\n    return [\n        {\n            \"text\": doc,\n            \"metadata\": meta,\n            \"score\": 1 - dist,  # Convert distance to similarity\n        }\n        for doc, meta, dist in zip(\n            results[\"documents\"][0],\n            results[\"metadatas\"][0],\n            results[\"distances\"][0],\n        )\n    ]\n\n# ─── Generation ─────────────────────────────────────────────────\ndef generate_answer(query: str) -\u003e str:\n    # Retrieve relevant chunks\n    results = retrieve(query)\n\n    # Build context\n    context = \"\\n\\n---\\n\\n\".join(\n        f\"[Source: {r['metadata']['source']}]\\n{r['text']}\"\n        for r in results\n    )\n\n    # Format prompt (use with any LLM)\n    prompt = f\"\"\"Answer the question based ONLY on the context below.\nIf the answer is not in the context, say \"I don't have enough information.\"\n\nContext:\n{context}\n\nQuestion: {query}\nAnswer:\"\"\"\n\n    return prompt  # Send this to your LLM of choice\n\n# ─── Example Usage ──────────────────────────────────────────────\nif __name__ == \"__main__\":\n    # Ingest documents\n    for file in Path(\"./docs\").glob(\"*.txt\"):\n        ingest_file(str(file))\n\n    # Ask a question\n    query = \"What is the refund policy?\"\n    prompt = generate_answer(query)\n    print(prompt)\n    # Send prompt to your LLM to get the final answer\n```\n\n---\n\n## 11.12 RAG with Reranking\n\nNow let's add reranking to our pipeline for better precision:\n\n```python\n\"\"\"RAG Pipeline with Reranking - Enhanced Version.\"\"\"\n\nfrom sentence_transformers import CrossEncoder\n\n# ─── Initialize Reranker ───────────────────────────────────────\nreranker = CrossEncoder(\"cross-encoder/ms-marco-MiniLM-L-6-v2\")\n\n# ─── Enhanced Retrieval with Reranking ──────────────────────────\ndef retrieve_with_rerank(\n    query: str,\n    initial_k: int = 20,  # Retrieve more candidates\n    final_k: int = 5,      # Return fewer, better results\n) -\u003e list[dict]:\n    \"\"\"Retrieve and rerank for better precision.\"\"\"\n    # Step 1: Get more candidates than needed\n    query_embedding = embed_model.encode([query]).tolist()\n    results = collection.query(\n        query_embeddings=query_embedding,\n        n_results=initial_k,\n        include=[\"documents\", \"metadatas\", \"distances\"],\n    )\n\n    documents = [\n        {\n            \"text\": doc,\n            \"metadata\": meta,\n            \"vector_score\": 1 - dist,\n        }\n        for doc, meta, dist in zip(\n            results[\"documents\"][0],\n            results[\"metadatas\"][0],\n            results[\"distances\"][0],\n        )\n    ]\n\n    # Step 2: Rerank using cross-encoder\n    pairs = [(query, doc[\"text\"]) for doc in documents]\n    scores = reranker.predict(pairs)\n\n    # Step 3: Sort by rerank score\n    for doc, score in zip(documents, scores):\n        doc[\"rerank_score\"] = float(score)\n\n    reranked = sorted(documents, key=lambda x: x[\"rerank_score\"], reverse=True)\n    return reranked[:final_k]\n\n# ─── Complete Pipeline ──────────────────────────────────────────\ndef rag_with_rerank(query: str) -\u003e str:\n    results = retrieve_with_rerank(query)\n\n    context = \"\\n\\n---\\n\\n\".join(\n        f\"[Source: {r['metadata']['source']} | Score: {r['rerank_score']:.3f}]\\n{r['text']}\"\n        for r in results\n    )\n\n    return f\"\"\"Answer based ONLY on the context. If unsure, say so.\n\nContext:\n{context}\n\nQuestion: {query}\nAnswer:\"\"\"\n\n# ─── Comparison: Without vs With Reranking ──────────────────────\ndef compare_retrieval(query: str):\n    \"\"\"Show the difference reranking makes.\"\"\"\n    print(f\"\\n{'='*60}\")\n    print(f\"Query: {query}\")\n    print(f\"{'='*60}\")\n\n    # Without reranking\n    basic_results = retrieve(query, top_k=5)\n    print(\"\\n--- WITHOUT Reranking ---\")\n    for i, r in enumerate(basic_results, 1):\n        print(f\"  {i}. [{r['score']:.3f}] {r['text'][:80]}...\")\n\n    # With reranking\n    reranked_results = retrieve_with_rerank(query, initial_k=20, final_k=5)\n    print(\"\\n--- WITH Reranking ---\")\n    for i, r in enumerate(reranked_results, 1):\n        print(f\"  {i}. [{r['rerank_score']:.3f}] {r['text'][:80]}...\")\n```\n\n---\n\n## 11.13 Evaluation: Measuring Quality\n\nHow do you know if your RAG system is good? You need systematic evaluation.\n\n### Key Metrics\n\n| Metric | What It Measures | Target |\n|--------|-----------------|--------|\n| **Faithfulness** | Does the answer stay true to retrieved docs? | \u003e 0.85 |\n| **Answer Relevance** | Does the answer address the question? | \u003e 0.80 |\n| **Context Precision** | Are the retrieved chunks relevant? | \u003e 0.75 |\n| **Context Recall** | Did we retrieve all necessary information? | \u003e 0.70 |\n\n### Using RAGAS for Evaluation\n\n```python\nfrom ragas import evaluate\nfrom ragas.metrics import (\n    faithfulness,\n    answer_relevancy,\n    context_precision,\n    context_recall,\n)\nfrom datasets import Dataset\n\n# Prepare evaluation data\neval_data = {\n    \"question\": [\n        \"What is the refund policy?\",\n        \"How do I reset my password?\",\n    ],\n    \"answer\": [\n        \"You can get a full refund within 30 days.\",\n        \"Go to Settings \u003e Account \u003e Reset Password.\",\n    ],\n    \"contexts\": [\n        [\"Our refund policy allows returns within 30 days for a full refund.\"],\n        [\"To reset your password, navigate to Settings, then Account, and click Reset Password.\"],\n    ],\n    \"ground_truth\": [\n        \"Full refund within 30 days of purchase.\",\n        \"Navigate to Settings \u003e Account \u003e Reset Password.\",\n    ],\n}\n\ndataset = Dataset.from_dict(eval_data)\n\n# Run evaluation\nresults = evaluate(\n    dataset,\n    metrics=[\n        faithfulness,\n        answer_relevancy,\n        context_precision,\n        context_recall,\n    ],\n)\n\nprint(results)\n# {'faithfulness': 0.95, 'answer_relevancy': 0.88, ...}\n```\n\n### Manual Evaluation Framework\n\n```python\ndef manual_evaluation(query: str, answer: str, contexts: list[str]) -\u003e dict:\n    \"\"\"Human-in-the-loop evaluation criteria.\"\"\"\n    return {\n        \"query\": query,\n        \"answer\": answer,\n        \"num_contexts_used\": len(contexts),\n        \"context_quality\": {\n            \"relevance\": None,    # 1-5: How relevant are the contexts?\n            \"completeness\": None, # 1-5: Do they cover the full answer?\n            \"noise\": None,        # 1-5: Is there irrelevant content? (5 = no noise)\n        },\n        \"answer_quality\": {\n            \"accuracy\": None,     # 1-5: Is the answer factually correct?\n            \"completeness\": None, # 1-5: Does it fully answer the question?\n            \"clarity\": None,      # 1-5: Is it easy to understand?\n            \"grounded\": None,     # 1-5: Is it based on the retrieved docs?\n        },\n    }\n```\n\n### Building an Evaluation Dataset\n\n```python\nimport json\nfrom pathlib import Path\n\ndef create_eval_dataset(\n    documents: list[str],\n    llm,\n    num_questions_per_doc: int = 3,\n) -\u003e list[dict]:\n    \"\"\"Auto-generate evaluation questions from documents.\"\"\"\n    eval_pairs = []\n\n    for doc in documents:\n        prompt = f\"\"\"Generate {num_questions_per_doc} questions that can be\nanswered using ONLY this document. Also provide the answer.\n\nDocument:\n{doc[:2000]}\n\nReturn as JSON array: [{{\"question\": \"...\", \"answer\": \"...\"}}]\"\"\"\n\n        response = llm.generate(prompt)\n        try:\n            qa_pairs = json.loads(response)\n            for pair in qa_pairs:\n                eval_pairs.append({\n                    \"question\": pair[\"question\"],\n                    \"ground_truth\": pair[\"answer\"],\n                    \"context\": doc,\n                })\n        except json.JSONDecodeError:\n            continue\n\n    # Save evaluation dataset\n    Path(\"eval_dataset.json\").write_text(\n        json.dumps(eval_pairs, indent=2)\n    )\n    print(f\"Created {len(eval_pairs)} evaluation pairs\")\n    return eval_pairs\n```\n\n### RAG Pipeline Evaluation Loop\n\n```python\ndef evaluate_rag_pipeline(\n    eval_dataset: list[dict],\n    retrieve_fn,\n    generate_fn,\n) -\u003e dict:\n    \"\"\"Run evaluation across the full dataset.\"\"\"\n    results = []\n\n    for item in eval_dataset:\n        query = item[\"question\"]\n        ground_truth = item[\"ground_truth\"]\n\n        # Get pipeline's answer\n        contexts = retrieve_fn(query)\n        answer = generate_fn(query, contexts)\n\n        # Score\n        results.append({\n            \"question\": query,\n            \"ground_truth\": ground_truth,\n            \"predicted_answer\": answer,\n            \"contexts_used\": len(contexts),\n        })\n\n    # Compute aggregate metrics\n    total = len(results)\n    exact_match = sum(\n        1 for r in results\n        if r[\"ground_truth\"].lower() in r[\"predicted_answer\"].lower()\n    )\n\n    return {\n        \"total_questions\": total,\n        \"exact_match_rate\": exact_match / total if total else 0,\n        \"detailed_results\": results,\n    }\n```\n\n---\n\n## 11.14 Key Takeaways\n\n1. **RAG = Retrieve + Generate**. It grounds LLM responses in real documents, reducing hallucination and keeping knowledge fresh.\n\n2. **Chunking is king**. The quality of your chunks directly impacts retrieval quality. Use recursive chunking with 300-500 token sizes and 10-15% overlap as a starting point.\n\n3. **Embedding choice matters**. Use OpenAI embeddings for ease, BGE-large for open-source, and Cohere for multilingual needs. Always test with your actual data.\n\n4. **Vector stores are interchangeable**. FAISS for prototyping, Chroma for development, Pinecone/Weaviate for production. The interface is similar across all of them.\n\n5. **Reranking is the secret weapon**. A cross-encoder reranker after initial retrieval dramatically improves precision. Always retrieve more candidates than you need.\n\n6. **MMR prevents redundancy**. Use Maximum Marginal Relevance to ensure your retrieved chunks are diverse, not just similar.\n\n7. **Evaluation is not optional**. Use RAGAS for automated evaluation and manual spot-checks for quality assurance. Track faithfulness, relevance, precision, and recall.\n\n8. **Multi-modal RAG is the future**. Use CLIP for images and table descriptions for structured data to build truly comprehensive knowledge bases.\n\n---\n\n## 11.15 Try It Yourself\n\n### Exercise 1: Build Your First RAG System\nUsing the complete pipeline in Section 11.11, build a RAG system over 5 text files of your choice. Measure retrieval quality by checking if the top-5 results are relevant for 10 test queries.\n\n### Exercise 2: Chunking Experiment\nTake the same document and chunk it using all four strategies (fixed-size, sentence, semantic, recursive). Compare the number of chunks, average chunk size, and retrieval quality for each.\n\n### Exercise 3: Reranking A/B Test\nRun 20 queries through your RAG system with and without reranking. Calculate how many times reranking changes the top result. Is the new top result more relevant?\n\n### Exercise 4: Embedding Model Comparison\nEmbed the same 100 documents using three different models (e.g., all-MiniLM-L6-v2, all-mpnet-base-v2, and OpenAI text-embedding-3-small). Compare retrieval quality on 10 queries.\n\n### Exercise 5: Build an Evaluation Dataset\nGenerate 50 question-answer pairs from a set of documents. Use them to create a test suite you can run against any version of your RAG pipeline.\n\n---\n\n\u003e **Next Chapter**: We'll take everything we've learned and build a complete, production-ready project from zero to deployment.\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"div\",null,{\"children\":[\"$\",\"$Lf\",null,{\"content\":\"$10\",\"currentChapter\":{\"id\":\"agents-ch-11\",\"number\":11,\"title\":\"Building RAG from Scratch\",\"subtitle\":\"Every Component, Explained and Built\",\"description\":\"Build a complete RAG system: document ingestion, embeddings, vector stores, retrieval optimization, and reranking.\",\"slug\":\"building-rag-from-scratch\",\"part\":\"Part III: Build from Scratch\",\"estimatedPages\":22,\"topics\":[\"Document ingestion\",\"Embedding models\",\"Vector stores (FAISS, Pinecone)\",\"Retrieval optimization\",\"Reranking\",\"Multi-modal RAG\"],\"icon\":\"🏗️\",\"bookId\":\"ai-agents\"}}]}]\n"])</script><script>self.__next_f.push([1,"a:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"7:null\nc:[[\"$\",\"title\",\"0\",{\"children\":\"AI Agents: The Complete Guide\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi\"}],[\"$\",\"meta\",\"2\",{\"name\":\"author\",\"content\":\"Manjunath Kalburgi\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi\"}]]\n"])</script></body></html>

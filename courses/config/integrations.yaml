@@ -1,0 +1,68 @@
+integrations:
+  lesson_generator:
+    model: "gpt-4"
+    max_tokens: 4000
+    temperature: 0.7
+    timeout: 30
+    retry_attempts: 3
+
+  content_generator:
+    model: "claude-3-opus"
+    max_tokens: 8000
+    temperature: 0.3
+
+  presentation_creator:
+    tool: "python-pptx"
+    template: "default"
+    default_font: "Arial"
+    slide_width: 1920
+    slide_height: 1080
+
+  social_media:
+    auto_post: false
+    post_schedule: "daily"
+    default_time: "09:00"
+    timezone: "UTC"
+
+  media_recorder:
+    default_quality: "1080p"
+    codec: "h264"
+    audio_bitrate: "192kbps"
+    video_bitrate: "5000kbps"
+
+  analytics:
+    track_engagement: true
+    track_progress: true
+    track_completion: true
+    track_social_interactions: true
+
+  authentication:
+    jwt_secret: "your-jwt-secret-key"
+    token_expiry: 24
+    refresh_token_expiry: 168
+
+  certificate:
+    template: "default"
+    issuer_name: "AI Course Platform"
+    issuer_title: "AI Learning Institute"
+
+  backup:
+    enabled: true
+    storage_location: "s3"
+    retention_days: 30
+
+  notifications:
+    email:
+      enabled: true
+      provider: "smtp"
+      smtp_server: "smtp.gmail.com"
+      smtp_port: 587
+
+    push:
+      enabled: true
+      provider: "firebase"
+
+    webhook:
+      enabled: false
+      url: "your-webhook-url"
+      events: ["lesson_completed", "certificate_issued"]

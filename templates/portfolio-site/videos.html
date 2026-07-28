@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Videos – Manjunath Kalburgi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-mono: 'DM Mono', ui-monospace, monospace;
+      --color-background: #0f1117;
+      --color-foreground: #f2f2f2;
+      --color-card: #181b23;
+      --color-card-foreground: #f2f2f2;
+      --color-primary: #3b82f6;
+      --color-primary-foreground: #ffffff;
+      --color-secondary: #262a35;
+      --color-secondary-foreground: #f2f2f2;
+      --color-muted: #262a35;
+      --color-muted-foreground: #94a3b8;
+      --color-accent: #9333ea;
+      --color-accent-foreground: #ffffff;
+      --color-border: #262a35;
+      --color-input: #262a35;
+      --color-ring: #3b82f6;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  </style>
+</head>
+<body class="min-h-screen bg-background text-foreground font-sans antialiased">
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-xl font-bold gradient-text">MK</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html#about" class="text-sm text-muted-foreground hover:text-foreground transition-colors">About</a>
+        <a href="index.html#experience" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Experience</a>
+        <a href="index.html#projects" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Projects</a>
+        <a href="blog.html" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Blog</a>
+        <a href="videos.html" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Videos</a>
+        <a href="index.html#contact" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+        <a href="hire-me.html" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-9 px-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">Hire Me</a>
+      </div>
+      <button class="md:hidden text-foreground" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Videos -->
+  <section class="pt-28 pb-24 px-6">
+    <div class="container mx-auto max-w-5xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-center">Videos</h1>
+      <p class="text-center text-muted-foreground mb-12">Talks, tutorials, and demos on AI engineering and product leadership.</p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="rounded-xl border border-border bg-card overflow-hidden hover:border-primary transition-all group">
+          <div class="aspect-video bg-muted flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1 group-hover:text-primary transition-colors">Building AI Agents with LangChain.js</h3>
+            <p class="text-xs text-muted-foreground">A hands-on demo of building production AI agents using LangChain.js and OpenAI GPT-4.</p>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-border bg-card overflow-hidden hover:border-primary transition-all group">
+          <div class="aspect-video bg-muted flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1 group-hover:text-primary transition-colors">RAG Systems Deep Dive</h3>
+            <p class="text-xs text-muted-foreground">Understanding retrieval-augmented generation from architecture to production deployment.</p>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-border bg-card overflow-hidden hover:border-primary transition-all group">
+          <div class="aspect-video bg-muted flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1 group-hover:text-primary transition-colors">AI Product Strategy for Engineers</h3>
+            <p class="text-xs text-muted-foreground">How engineers can think about AI product strategy and ship products that matter.</p>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-border bg-card overflow-hidden hover:border-primary transition-all group">
+          <div class="aspect-video bg-muted flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1 group-hover:text-primary transition-colors">Claude Code: Building with Anthropic</h3>
+            <p class="text-xs text-muted-foreground">Exploring Claude Code and Anthropic's approach to AI-assisted software development.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-border bg-card/50">
+    <div class="container mx-auto px-6 py-12">
+      <div class="pt-8 border-t border-border text-center text-sm text-muted-foreground">
+        <p>&copy; 2026 Manjunath Kalburgi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

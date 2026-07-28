@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gmail-50: #f0f7ff;
+  --color-gmail-100: #e0effe;
+  --color-gmail-200: #bae0fd;
+  --color-gmail-300: #7cc8fc;
+  --color-gmail-400: #36aaf8;
+  --color-gmail-500: #0c90e9;
+  --color-gmail-600: #0072c7;
+  --color-gmail-700: #015aa2;
+  --color-gmail-800: #064d85;
+  --color-gmail-900: #0b416e;
+  --color-gmail-950: #072949;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Email content styles */
+.email-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.email-content a {
+  color: #0c90e9;
+  text-decoration: underline;
+}
+
+.email-content blockquote {
+  border-left: 3px solid #e2e8f0;
+  padding-left: 12px;
+  margin: 8px 0;
+  color: #64748b;
+}

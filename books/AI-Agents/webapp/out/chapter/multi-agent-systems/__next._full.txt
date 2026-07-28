@@ -1,0 +1,388 @@
+1:"$Sreact.fragment"
+2:I[78892,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default"]
+3:I[11359,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default"]
+5:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+9:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"ViewportBoundary"]
+b:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"MetadataBoundary"]
+d:I[65125,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default",1]
+:HL["/_next/static/chunks/157per-6rfej7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","chapter","multi-agent-systems"],"q":"","i":false,"f":[[["",{"children":["chapter",{"children":[["slug","multi-agent-systems","d",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/157per-6rfej7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3j2brc7c8hat8.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/05b0208rfh8ys.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased","children":["$","body",null,{"className":"min-h-full flex flex-col","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","script","script-0",{"src":"/_next/static/chunks/16vgld9iclosn.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/2rb1230i-fez-.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$@8"]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/157per-6rfej7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"WpHiBD4DjnzuprdEnivdA"}
+e:[]
+8:"$We"
+f:I[89587,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js","/_next/static/chunks/16vgld9iclosn.js","/_next/static/chunks/2rb1230i-fez-.js"],"default"]
+10:T31bd,# Chapter 8: Multi-Agent Systems
+
+> *"Alone we can do so little; together we can do so much."* — Helen Keller
+
+---
+
+## 8.1 Why Single Agents Aren't Enough
+
+Real-world problems are complex. A single agent trying to do everything becomes a jack of all trades, master of none. Multi-agent systems let you build specialized agents that collaborate.
+
+### Single Agent vs Multi-Agent
+
+| Aspect | Single Agent | Multi-Agent |
+|--------|-------------|-------------|
+| **Complexity** | One agent handles everything | Each agent has a focused role |
+| **Expertise** | Generalist | Specialist per domain |
+| **Scalability** | Limited by single model | Add agents as needed |
+| **Reliability** | Single point of failure | Redundancy possible |
+| **Cost** | One API call per task | Multiple calls, but smaller |
+
+---
+
+## 8.2 Agent Orchestration
+
+### The Orchestrator Pattern
+
+A manager agent routes tasks to specialist agents.
+
+```python
+"""
+Orchestrator Pattern
+A manager agent coordinates specialized worker agents.
+"""
+
+from openai import OpenAI
+from dataclasses import dataclass
+
+
+@dataclass
+class Agent:
+    name: str
+    role: str
+    system_prompt: str
+
+
+class OrchestratorAgent:
+    """Coordinates multiple specialized agents."""
+    
+    def __init__(self, api_key: str | None = None):
+        self.client = OpenAI(api_key=api_key)
+        self.agents: dict[str, Agent] = {}
+    
+    def register_agent(self, agent: Agent):
+        self.agents[agent.name] = agent
+    
+    def route_task(self, task: str) -> str:
+        """Route a task to the best agent."""
+        agent_descriptions = "\n".join(
+            f"- {name}: {agent.role}"
+            for name, agent in self.agents.items()
+        )
+        
+        prompt = f"""Route this task to the best agent.
+
+Available agents:
+{agent_descriptions}
+
+Task: {task}
+
+Which agent should handle this? Respond with just the agent name."""
+        
+        response = self.client.completions.create(
+            model="gpt-4o",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.0
+        )
+        
+        agent_name = response.choices[0].message.content.strip()
+        if agent_name in self.agents:
+            return self._execute(agent_name, task)
+        return "No suitable agent found."
+    
+    def _execute(self, agent_name: str, task: str) -> str:
+        agent = self.agents[agent_name]
+        response = self.client.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": agent.system_prompt},
+                {"role": "user", "content": task}
+            ],
+            temperature=0.3
+        )
+        return response.choices[0].message.content
+    
+    def collaborative_task(self, task: str) -> str:
+        """Have all agents collaborate on a task."""
+        results = []
+        for name, agent in self.agents.items():
+            result = self._execute(name, f"Your perspective on: {task}")
+            results.append(f"**{name}** ({agent.role}):\n{result}")
+        
+        synthesis = f"Synthesize these perspectives:\n\n" + "\n\n".join(results)
+        response = self.client.completions.create(
+            model="gpt-4o",
+            messages=[{"role": "user", "content": synthesis}],
+            temperature=0.3
+        )
+        return response.choices[0].message.content
+
+
+# Usage
+orchestrator = OrchestratorAgent()
+orchestrator.register_agent(Agent("researcher", "Research", "You are a research specialist."))
+orchestrator.register_agent(Agent("writer", "Writing", "You are a content writer."))
+orchestrator.register_agent(Agent("editor", "Editing", "You are a careful editor."))
+```
+
+---
+
+## 8.3 Communication Protocols
+
+### Message-Passing Between Agents
+
+```python
+"""
+Message Bus for agent communication.
+"""
+
+from dataclasses import dataclass
+from datetime import datetime
+from enum import Enum
+
+
+class MessageType(Enum):
+    REQUEST = "request"
+    RESPONSE = "response"
+    FEEDBACK = "feedback"
+
+
+@dataclass
+class Message:
+    sender: str
+    receiver: str
+    content: str
+    msg_type: MessageType
+    timestamp: datetime
+
+
+class MessageBus:
+    def __init__(self):
+        self.messages: list[Message] = []
+        self.subscribers: dict[str, list[callable]] = {}
+    
+    def publish(self, message: Message):
+        self.messages.append(message)
+        for callback in self.subscribers.get(message.receiver, []):
+            callback(message)
+    
+    def subscribe(self, agent_id: str, callback: callable):
+        self.subscribers.setdefault(agent_id, []).append(callback)
+```
+
+---
+
+## 8.4 CrewAI Deep Dive
+
+### Building a Crew of Agents
+
+```python
+"""
+Crew-style multi-agent system.
+"""
+
+from openai import OpenAI
+from dataclasses import dataclass
+
+
+@dataclass
+class CrewMember:
+    name: str
+    role: str
+    goal: str
+    backstory: str
+
+
+class SimpleCrew:
+    def __init__(self, api_key: str | None = None):
+        self.client = OpenAI(api_key=api_key)
+        self.members: list[CrewMember] = []
+        self.tasks: list[dict] = []
+    
+    def add_member(self, member: CrewMember):
+        self.members.append(member)
+    
+    def add_task(self, description: str, expected_output: str, assigned_to: str | None = None):
+        self.tasks.append({
+            "description": description,
+            "expected_output": expected_output,
+            "assigned_to": assigned_to
+        })
+    
+    def execute_task(self, task: dict) -> str:
+        if task["assigned_to"]:
+            member = next((m for m in self.members if m.name == task["assigned_to"]), self.members[0])
+        else:
+            member = self._route_task(task["description"])
+        
+        prompt = f"""You are {member.name}, a {member.role}.
+Goal: {member.goal}
+Background: {member.backstory}
+
+Task: {task['description']}
+Expected output: {task['expected_output']}"""
+        
+        response = self.client.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": f"You are {member.name}."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3
+        )
+        return response.choices[0].message.content
+    
+    def _route_task(self, description: str) -> CrewMember:
+        members_info = "\n".join(f"- {m.name}: {m.role}" for m in self.members)
+        prompt = f"Route this task. Members:\n{members_info}\n\nTask: {description}\n\nRespond with just the name."
+        response = self.client.completions.create(model="gpt-4o", messages=[{"role": "user", "content": prompt}], temperature=0.0)
+        name = response.choices[0].message.content.strip()
+        return next((m for m in self.members if m.name == name), self.members[0])
+    
+    def run(self) -> list[dict]:
+        return [{"task": t["description"], "output": self.execute_task(t)} for t in self.tasks]
+
+
+# Usage
+crew = SimpleCrew()
+crew.add_member(CrewMember("Researcher", "Research Analyst", "Find accurate information", "10 years experience"))
+crew.add_member(CrewMember("Writer", "Content Writer", "Create engaging content", "Published author"))
+crew.add_member(CrewMember("Editor", "Editor", "Ensure quality", "Former newspaper editor"))
+
+crew.add_task("Research AI trends in 2025", "List of 5 key trends", "Researcher")
+crew.add_task("Write a blog post from the research", "800-word post", "Writer")
+crew.add_task("Edit and polish the post", "Publication-ready post", "Editor")
+
+results = crew.run()
+```
+
+---
+
+## 8.5 Supervisor Pattern
+
+### Manager Agents Directing Workers
+
+```python
+"""
+Supervisor manages worker agents and reviews their output.
+"""
+
+from openai import OpenAI
+from dataclasses import dataclass
+
+
+@dataclass
+class WorkerAgent:
+    name: str
+    specialty: str
+    system_prompt: str
+
+
+class SupervisorAgent:
+    def __init__(self, api_key: str | None = None):
+        self.client = OpenAI(api_key=api_key)
+        self.workers: list[WorkerAgent] = []
+    
+    def add_worker(self, worker: WorkerAgent):
+        self.workers.append(worker)
+    
+    def delegate_and_review(self, task: str) -> str:
+        worker = self._select_worker(task)
+        output = self._execute_worker(worker, task)
+        review = self._review_output(task, output)
+        return f"## Worker Output ({worker.name})\n\n{output}\n\n---\n\n## Supervisor Review\n\n{review}"
+    
+    def _select_worker(self, task: str) -> WorkerAgent:
+        info = "\n".join(f"- {w.name}: {w.specialty}" for w in self.workers)
+        prompt = f"Select the best worker.\nWorkers:\n{info}\n\nTask: {task}\n\nRespond with just the name."
+        response = self.client.completions.create(model="gpt-4o", messages=[{"role": "user", "content": prompt}], temperature=0.0)
+        name = response.choices[0].message.content.strip()
+        return next((w for w in self.workers if w.name == name), self.workers[0])
+    
+    def _execute_worker(self, worker: WorkerAgent, task: str) -> str:
+        response = self.client.completions.create(model="gpt-4o", messages=[
+            {"role": "system", "content": worker.system_prompt},
+            {"role": "user", "content": task}
+        ], temperature=0.3)
+        return response.choices[0].message.content
+    
+    def _review_output(self, task: str, output: str) -> str:
+        prompt = f"Review this output.\n\nTask: {task}\n\nOutput:\n{output}\n\nProvide quality assessment, issues, and verdict (APPROVE/REVISE)."
+        response = self.client.completions.create(model="gpt-4o", messages=[{"role": "user", "content": prompt}], temperature=0.2)
+        return response.choices[0].message.content
+```
+
+---
+
+## 8.6 Architecture Overview
+
+```
+┌─────────────────────────────────────────┐
+│           Multi-Agent System            │
+├─────────────────────────────────────────┤
+│                                          │
+│  ┌─────────────┐  ┌─────────────┐      │
+│  │ Orchestrator │  │ Supervisor  │      │
+│  └──────┬──────┘  └──────┬──────┘      │
+│         │                 │             │
+│         ▼                 ▼             │
+│  ┌──────────────────────────────────┐  │
+│  │         Message Bus               │  │
+│  └──────────────────────────────────┘  │
+│    │        │         │        │        │
+│    ▼        ▼         ▼        ▼        │
+│  ┌────┐  ┌────┐   ┌────┐  ┌────┐     │
+│  │ W1 │  │ W2 │   │ W3 │  │ W4 │     │
+│  └────┘  └────┘   └────┘  └────┘     │
+│                                          │
+└─────────────────────────────────────────┘
+```
+
+---
+
+## 8.7 When to Use Multi-Agent vs Single Agent
+
+| Use Multi-Agent When... | Use Single Agent When... |
+|------------------------|------------------------|
+| Task requires multiple expertise areas | Task is focused and well-defined |
+| Quality improves with specialization | Speed is more important |
+| You need review/check steps | The task is simple |
+| Problem is too complex for one context | Budget is limited |
+| You want parallel processing | Single prompt suffices |
+
+---
+
+## 8.8 Key Takeaways
+
+1. **Multi-agent systems** enable specialization — each agent does what it does best.
+2. **The orchestrator pattern** uses a manager to route and coordinate work.
+3. **Message passing** lets agents communicate without tight coupling.
+4. **Crews** are teams working toward a common goal with defined roles.
+5. **Supervisor patterns** add quality control through review steps.
+6. **Choose multi-agent** when complexity demands it — don't over-engineer simple tasks.
+
+---
+
+## 8.9 Try It Yourself
+
+### Exercise 1: Build a Content Crew
+Create a 3-agent crew: Researcher → Writer → Editor. Have them collaborate on a blog post.
+
+### Exercise 2: Code Review Supervisor
+Build a supervisor that delegates code review to a specialist, then reviews their feedback.
+
+### Exercise 3: Research Team
+Create 3 agents focusing on different aspects of a topic, then synthesize their findings.
+
+---
+
+> **Next Chapter**: In [Chapter 9: Building Tools from Scratch](./chapter-09-building-tools-from-scratch.md), we'll create custom tools that agents can use.
+4:["$","div",null,{"children":["$","$Lf",null,{"content":"$10","currentChapter":{"id":"agents-ch-08","number":8,"title":"Multi-Agent Systems","subtitle":"Orchestrating Teams of AI Agents","description":"Master agent orchestration, communication protocols, supervisor patterns, and build multi-agent crews that collaborate.","slug":"multi-agent-systems","part":"Part II: Building Agents","estimatedPages":20,"topics":["Agent orchestration","Communication protocols","Role specialization","Consensus mechanisms","Supervisor patterns","CrewAI & AutoGen"],"icon":"🔗","bookId":"ai-agents"}}]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+c:[["$","title","0",{"children":"AI Agents: The Complete Guide"}],["$","meta","1",{"name":"description","content":"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"}],["$","meta","2",{"name":"author","content":"Manjunath Kalburgi"}],["$","meta","3",{"name":"keywords","content":"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"}]]

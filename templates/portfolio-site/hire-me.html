@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hire Me – Manjunath Kalburgi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-mono: 'DM Mono', ui-monospace, monospace;
+      --color-background: #0f1117;
+      --color-foreground: #f2f2f2;
+      --color-card: #181b23;
+      --color-card-foreground: #f2f2f2;
+      --color-primary: #3b82f6;
+      --color-primary-foreground: #ffffff;
+      --color-secondary: #262a35;
+      --color-secondary-foreground: #f2f2f2;
+      --color-muted: #262a35;
+      --color-muted-foreground: #94a3b8;
+      --color-accent: #9333ea;
+      --color-accent-foreground: #ffffff;
+      --color-border: #262a35;
+      --color-input: #262a35;
+      --color-ring: #3b82f6;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  </style>
+</head>
+<body class="min-h-screen bg-background text-foreground font-sans antialiased">
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-xl font-bold gradient-text">MK</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html#about" class="text-sm text-muted-foreground hover:text-foreground transition-colors">About</a>
+        <a href="index.html#experience" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Experience</a>
+        <a href="index.html#projects" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Projects</a>
+        <a href="blog.html" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Blog</a>
+        <a href="videos.html" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Videos</a>
+        <a href="index.html#contact" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+        <a href="hire-me.html" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-9 px-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">Hire Me</a>
+      </div>
+      <button class="md:hidden text-foreground" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hire Me -->
+  <section class="pt-28 pb-24 px-6">
+    <div class="container mx-auto max-w-3xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-center">Work With Me</h1>
+      <p class="text-center text-muted-foreground mb-12">Let's build something amazing together. I'm available for consulting, fractional CTO roles, and AI product leadership.</p>
+
+      <!-- What I Offer -->
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <div class="p-6 rounded-xl border border-border bg-card">
+          <h3 class="text-lg font-semibold mb-3 text-primary">AI Product Strategy</h3>
+          <p class="text-sm text-muted-foreground">End-to-end AI product strategy from ideation to launch. I'll help you identify the right AI use cases and build a roadmap.</p>
+        </div>
+        <div class="p-6 rounded-xl border border-border bg-card">
+          <h3 class="text-lg font-semibold mb-3 text-primary">Technical Leadership</h3>
+          <p class="text-sm text-muted-foreground">Fractional CTO / Tech Lead services for startups and scale-ups building AI-powered products.</p>
+        </div>
+        <div class="p-6 rounded-xl border border-border bg-card">
+          <h3 class="text-lg font-semibold mb-3 text-primary">AI Engineering</h3>
+          <p class="text-sm text-muted-foreground">Hands-on building of production AI systems with OpenAI, LangChain, RAG, and modern full-stack tools.</p>
+        </div>
+        <div class="p-6 rounded-xl border border-border bg-card">
+          <h3 class="text-lg font-semibold mb-3 text-primary">Consulting & Mentoring</h3>
+          <p class="text-sm text-muted-foreground">Product strategy consulting and engineering mentoring for teams adopting AI technologies.</p>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="p-8 rounded-xl border border-border bg-card">
+        <h2 class="text-2xl font-bold mb-6 text-center">Send a Message</h2>
+        <form class="space-y-6" id="hire-form">
+          <div>
+            <label class="text-sm font-medium mb-2 block">Name</label>
+            <input type="text" placeholder="Your name" required class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" />
+          </div>
+          <div>
+            <label class="text-sm font-medium mb-2 block">Email</label>
+            <input type="email" placeholder="your@email.com" required class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" />
+          </div>
+          <div>
+            <label class="text-sm font-medium mb-2 block">Company</label>
+            <input type="text" placeholder="Your company" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" />
+          </div>
+          <div>
+            <label class="text-sm font-medium mb-2 block">How can I help?</label>
+            <textarea placeholder="Tell me about your project and what you need..." rows="5" required class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 resize-none"></textarea>
+          </div>
+          <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-10 px-4 bg-primary text-primary-foreground hover:bg-primary/90 w-full transition-colors">
+            Send Inquiry
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-border bg-card/50">
+    <div class="container mx-auto px-6 py-12">
+      <div class="pt-8 border-t border-border text-center text-sm text-muted-foreground">
+        <p>&copy; 2026 Manjunath Kalburgi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('hire-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Inquiry sent!', 'I will get back to you within 24 hours.');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "student-whatsapp-crm",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Student CRM + WhatsApp Automation + AI Assistant + Analytics for education coaching businesses",
+  "scripts": {
+    "dev": "concurrently -n backend,dashboard -c blue,magenta \"npm --prefix backend run start:dev\" \"npm --prefix dashboard run dev\"",
+    "install:all": "npm --prefix backend install && npm --prefix dashboard install",
+    "seed": "npm --prefix backend run seed",
+    "test": "npm --prefix backend run test",
+    "test:e2e": "npm --prefix backend run test:e2e"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

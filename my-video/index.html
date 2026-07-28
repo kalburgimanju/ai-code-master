@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0a0a0f;
+        font-family: "Inter", sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0F172A;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      /* Avatar styling - top right corner, circular */
+      .avatar-wrap {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid rgba(0, 212, 255, 0.5);
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.25), 0 0 60px rgba(0, 212, 255, 0.1);
+        opacity: 0;
+        animation: avatar-pulse 3s ease-in-out infinite;
+        z-index: 100;
+      }
+      .avatar-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+      @keyframes avatar-pulse {
+        0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.1); }
+        50% { box-shadow: 0 0 35px rgba(0, 212, 255, 0.5), 0 0 70px rgba(0, 212, 255, 0.2); }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="65"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- AVATAR wrapper -->
+      <div class="avatar-wrap">
+        <img
+          id="avatar-img"
+          src="https://app.heygen.com/embeddings/ef75c18fca604ac6b359d6b6cb785a7f/image.png"
+          alt="Annie"
+        />
+      </div>
+      <!-- Scenes will be dynamically loaded here via compositions -->
+      <div id="scenes-container"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+
+      // Show avatar with delay for better entrance
+      gsap.to("#avatar", { opacity: 1, duration: 1.0, ease: "back.out(1.5)" }, 1.0);
+    </script>
+  </body>
+</html>

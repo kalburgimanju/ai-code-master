@@ -1,0 +1,2170 @@
+1:"$Sreact.fragment"
+2:I[89587,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js","/_next/static/chunks/16vgld9iclosn.js","/_next/static/chunks/2rb1230i-fez-.js"],"default"]
+7:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"OutletBoundary"]
+8:"$Sreact.suspense"
+3:T14e62,# Chapter 6: Developer & Coder Agents
+
+## AI-Powered Software Engineering
+
+> "Any sufficiently advanced technology is indistinguishable from magic."
+> — Arthur C. Clarke
+
+The way we write software is undergoing a fundamental transformation. What once required hours of searching documentation, debugging cryptic errors, and writing repetitive boilerplate code can now be accomplished in minutes with AI-powered developer agents. This chapter explores how these agents work, what they can do, and how you can build your own.
+
+---
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Code Generation](#code-generation)
+3. [Code Review Agents](#code-review-agents)
+4. [Debugging Assistants](#debugging-assistants)
+5. [Test Generation](#test-generation)
+6. [CI/CD Integration](#cicd-integration)
+7. [IDE Plugin Architecture](#ide-plugin-architecture)
+8. [Code Example: Building a Code Review Agent](#code-example-building-a-code-review-agent)
+9. [Code Example: Test Generation Agent](#code-example-test-generation-agent)
+10. [Comparison Table](#comparison-table)
+11. [Best Practices](#best-practices)
+12. [Key Takeaways](#key-takeaways)
+13. [Try It Yourself](#try-it-yourself)
+
+---
+
+## Introduction
+
+### The Rise of AI Coding Assistants
+
+Software development has always been a craft that balances creativity with precision. Developers spend a surprising amount of time on tasks that are not deeply creative: writing boilerplate, looking up API documentation, fixing typos, formatting code, and writing repetitive tests. These are exactly the kinds of tasks where artificial intelligence excels.
+
+The modern era of AI coding assistance began quietly. IDEs have had basic autocomplete for decades — JetBrains IntelliJ could suggest variable names, and Visual Studio could complete method signatures. But these tools operated on static analysis: they parsed your code's syntax tree and offered suggestions based on what a variable's type allowed. They could not understand what you were trying to *do*.
+
+Everything changed when large language models (LLMs) demonstrated that they could not just complete code syntax but understand programmer *intent*. The jump from "this variable is a string, so here are string methods" to "you are building a REST API, so here is a handler function that validates input and returns JSON" represents a paradigm shift in how tools support developers.
+
+### The Evolution of Code Assistance
+
+The progression from basic autocomplete to modern AI agents happened in distinct stages:
+
+| Era | Period | Technology | Capability |
+|-----|--------|-----------|------------|
+| **Autocomplete** | 2000–2018 | Static analysis, rule-based | Method signatures, variable names |
+| **Smart Completion** | 2018–2021 | ML-enhanced completion | Context-aware suggestions from usage patterns |
+| **Code Synthesis** | 2021–2023 | GPT-3, Codex, CodeGen | Generate entire functions from comments |
+| **AI Pair Programming** | 2022–2024 | Copilot, Cursor, Cody | Inline suggestions, chat-based generation, refactoring |
+| **Autonomous Agents** | 2024–Present | Claude Code, Devin, OpenHands | Full task execution, multi-file edits, CLI interaction |
+
+### The Big Players
+
+Several tools now dominate the AI coding assistant landscape:
+
+- **GitHub Copilot**: The first major AI coding assistant, powered by OpenAI's Codex/GPT models. Integrated directly into VS Code, JetBrains, and Neovim. It offers inline completions and a chat interface.
+- **Cursor**: A fork of VS Code that places AI at the center of the editing experience. It supports multi-file edits, codebase-wide context, and powerful chat capabilities.
+- **Claude Code**: Anthropic's CLI-based coding agent. It operates in your terminal, can read and write files, run commands, and autonomously complete multi-step programming tasks.
+- **Cody**: Sourcegraph's AI coding assistant. It focuses on codebase understanding through code search and embeddings, providing context-aware suggestions across large repositories.
+
+Each of these tools takes a different architectural approach, but they all share the same underlying principle: using large language models to understand code and assist developers in writing better software faster.
+
+### What This Chapter Covers
+
+In this chapter, we will go beyond simply using these tools. We will understand how they work under the hood. You will learn:
+
+- How LLMs generate code token by token
+- How to build your own code review agent from scratch
+- How debugging assistants analyze error messages and propose fixes
+- How to automatically generate tests for your code
+- How to integrate AI agents into your CI/CD pipeline
+- The architecture behind IDE plugins and coding assistants
+
+By the end, you will not just be a user of AI coding tools — you will understand them deeply enough to build your own.
+
+---
+
+## Code Generation
+
+### How LLMs Write Code
+
+At the most fundamental level, large language models generate code the same way they generate text: one token at a time, selecting each token based on the probability distribution conditioned on all previous tokens. A "token" in this context is typically a subword unit — part of a word, a whole short word, or a punctuation character.
+
+When you write a prompt like "Write a Python function to merge two sorted lists," the model processes this prompt into a sequence of tokens, computes an internal representation (a set of hidden states), and then begins generating output tokens sequentially. The first generated token might be `def`, the next might be ` merge_sorted_lists`, the next `(`, and so on.
+
+Here is a simplified illustration of the token generation process:
+
+```
+Prompt: "Write a Python function to merge two sorted lists"
+
+Token Stream (input):
+  ["Write", " a", " Python", " function", " to", " merge", " two", " sorted", " lists"]
+
+Generation (output, one token at a time):
+  Step 1: "def"         → P("def" | prompt) = 0.92
+  Step 2: " merge"      → P(" merge" | ...) = 0.87
+  Step 3: "_sorted"     → P("_sorted" | ...) = 0.91
+  Step 4: "_lists"      → P("_lists" | ...) = 0.88
+  Step 5: "("           → P("(" | ...) = 0.99
+  Step 6: "list1"       → P("list1" | ...) = 0.73
+  Step 7: ":"           → P(":" | ...) = 0.95
+  Step 8: " List"       → P(" List" | ...) = 0.82
+  ...
+```
+
+Each step, the model considers everything generated so far and predicts the most likely next token. The process continues until the model generates a stop token or reaches its maximum output length.
+
+### Autocomplete vs. Chat-Based Generation
+
+There are two primary modes of code generation, and understanding the difference matters:
+
+**Autocomplete Mode (Inline Completion)**
+
+In autocomplete mode, the model receives the code around your cursor position and generates a continuation. This is what GitHub Copilot does when you are typing code and it shows gray ghost text with a suggestion.
+
+```
+# You type this:
+def calculate_fibonacci(n):
+    """Calculate the nth Fibonacci number."""
+    # Copilot generates:
+    if n <= 1:
+        return n
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b
+```
+
+The context sent to the model includes the surrounding code (often several hundred lines), the language, and sometimes comments or function signatures. The model then generates a continuation that fits naturally.
+
+**Chat-Based Generation**
+
+In chat-based generation, you provide a natural language instruction and the model generates code from scratch. This is more flexible but requires more explicit direction.
+
+```python
+# User prompt in chat mode:
+"""
+Write a Python class called `LRUCache` that implements a
+Least Recently Used cache with the following methods:
+- `__init__(self, capacity: int)`
+- `get(self, key: int) -> int`
+- `put(self, key: int, value: int) -> None`
+
+Both get and put must run in O(1) time complexity.
+"""
+
+# Model response:
+from collections import OrderedDict
+
+
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.cache = OrderedDict()
+
+    def get(self, key: int) -> int:
+        if key not in self.cache:
+            return -1
+        self.cache.move_to_end(key)
+        return self.cache[key]
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.cache:
+            self.cache.move_to_end(key)
+        self.cache[key] = value
+        if len(self.cache) > self.capacity:
+            self.cache.popitem(last=False)
+```
+
+### Temperature and Top-p for Code Generation
+
+When generating code, the sampling parameters you choose significantly affect output quality:
+
+- **Temperature**: Controls randomness. For code, you typically want a low temperature (0.0–0.3) because code must be syntactically correct. A high temperature might produce creative but broken code.
+- **Top-p (nucleus sampling)**: Limits the token pool to the smallest set of tokens whose cumulative probability exceeds the threshold. For code, values of 0.9–0.95 work well — high enough to allow some variation but low enough to avoid nonsensical tokens.
+
+```python
+import anthropic
+
+client = anthropic.Anthropic()
+
+# Low temperature for deterministic, correct code
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    messages=[{
+        "role": "user",
+        "content": "Write a Python function to find the longest palindromic substring."
+    }],
+    # Temperature 0.0 = most deterministic output
+    # Best for code where correctness matters
+)
+
+# Higher temperature for exploring different approaches
+response_creative = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    messages=[{
+        "role": "user",
+        "content": "Suggest 3 different algorithms to find the longest palindromic substring, each with different trade-offs."
+    }],
+    # Temperature 0.7 = more creative, diverse suggestions
+    # Good for brainstorming, but verify all suggestions
+)
+```
+
+### How Models Are Trained on Code
+
+Modern code-generation models are trained on massive datasets of publicly available source code. Here are some of the key datasets:
+
+| Dataset | Size | Source | Languages |
+|---------|------|--------|-----------|
+| **The Stack** | 6.4 TB | GitHub permissively-licensed repos | 358 languages |
+| **The Stack v2** | 67.5 TB | Software Heritage archive | 600+ languages |
+| **CodeParrot** | ~159 GB | GitHub Python code | Python |
+| **StarCoder Data** | ~783 GB | GitHub filtered repos | 86 languages |
+| **Dolma** | 3 TB | Mixed web + code sources | Multiple |
+
+The training process typically involves:
+
+1. **Pre-training**: The model learns general patterns of code — syntax, common idioms, API usage patterns, and the relationship between natural language and code.
+2. **Fine-tuning**: The model is further trained on instruction-following examples where a natural language prompt is paired with the expected code output.
+3. **Reinforcement Learning from Human Feedback (RLHF)**: Human developers rate model outputs, and the model is further adjusted to prefer higher-quality code.
+
+### Practical Code Examples: Different Generation Approaches
+
+Here are several examples showing how different prompt strategies produce different kinds of code output:
+
+```python
+"""
+Example 1: Generation from a comment (autocomplete-style)
+The model reads the comment and generates the implementation.
+"""
+
+def merge_sort(arr):
+    """Sort an array using merge sort algorithm."""
+    # TODO: implement merge sort
+    pass
+
+# After prompting the model with this context, it generates:
+
+def merge_sort(arr):
+    """Sort an array using merge sort algorithm."""
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    return _merge(left, right)
+
+
+def _merge(left, right):
+    """Merge two sorted arrays into a single sorted array."""
+    result = []
+    i = j = 0
+
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+```
+
+```python
+"""
+Example 2: Generation from a specification (chat-style)
+The model generates a complete module from a detailed description.
+"""
+
+# Prompt: "Create a Python module for working with binary trees.
+# Include: TreeNode class, insert, search, in-order traversal,
+# find height, and check if balanced."
+
+class TreeNode:
+    """A node in a binary search tree."""
+
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+
+class BinaryTree:
+    """A binary search tree implementation."""
+
+    def __init__(self):
+        self.root = None
+
+    def insert(self, value):
+        """Insert a value into the tree."""
+        if self.root is None:
+            self.root = TreeNode(value)
+        else:
+            self._insert_recursive(self.root, value)
+
+    def _insert_recursive(self, node, value):
+        if value < node.value:
+            if node.left is None:
+                node.left = TreeNode(value)
+            else:
+                self._insert_recursive(node.left, value)
+        else:
+            if node.right is None:
+                node.right = TreeNode(value)
+            else:
+                self._insert_recursive(node.right, value)
+
+    def search(self, value):
+        """Search for a value in the tree. Returns the node or None."""
+        return self._search_recursive(self.root, value)
+
+    def _search_recursive(self, node, value):
+        if node is None or node.value == value:
+            return node
+        if value < node.value:
+            return self._search_recursive(node.left, value)
+        return self._search_recursive(node.right, value)
+
+    def in_order(self):
+        """Return values in in-order traversal."""
+        result = []
+        self._in_order_recursive(self.root, result)
+        return result
+
+    def _in_order_recursive(self, node, result):
+        if node:
+            self._in_order_recursive(node.left, result)
+            result.append(node.value)
+            self._in_order_recursive(node.right, result)
+
+    def height(self):
+        """Calculate the height of the tree."""
+        return self._height_recursive(self.root)
+
+    def _height_recursive(self, node):
+        if node is None:
+            return -1
+        return 1 + max(
+            self._height_recursive(node.left),
+            self._height_recursive(node.right)
+        )
+
+    def is_balanced(self):
+        """Check if the tree is height-balanced."""
+        return self._check_balance(self.root)[0]
+
+    def _check_balance(self, node):
+        if node is None:
+            return True, -1
+        left_balanced, left_height = self._check_balance(node.left)
+        right_balanced, right_height = self._check_balance(node.right)
+
+        balanced = (
+            left_balanced
+            and right_balanced
+            and abs(left_height - right_height) <= 1
+        )
+        height = 1 + max(left_height, right_height)
+        return balanced, height
+```
+
+```python
+"""
+Example 3: Refactoring with AI
+The model takes existing code and improves it.
+"""
+
+# Before (original code):
+def process_data(data):
+    result = []
+    for item in data:
+        if item is not None:
+            if item > 0:
+                if item < 100:
+                    result.append(item * 2)
+    return result
+
+# After AI-assisted refactoring:
+def process_data(data):
+    """Double all positive values less than 100, excluding None."""
+    return [
+        item * 2
+        for item in data
+        if item is not None and 0 < item < 100
+    ]
+```
+
+---
+
+## Code Review Agents
+
+### What Is Automated Code Review?
+
+Code review is one of the most valuable practices in software engineering. Studies consistently show that finding defects early in the development cycle dramatically reduces the cost of fixing them. A bug found during code review might cost minutes to fix; the same bug found in production could cost days or weeks.
+
+Code review agents use LLMs to analyze code changes (diffs), understand the context of a project, and provide feedback that mimics what an experienced developer would say during a review. They can:
+
+- Identify potential bugs and logic errors
+- Detect security vulnerabilities (SQL injection, XSS, etc.)
+- Suggest performance improvements
+- Enforce coding style and best practices
+- Check for proper error handling
+- Verify that tests are adequate
+
+### How Review Agents Analyze Diffs
+
+When a code review agent processes a pull request, it typically follows these steps:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   CODE REVIEW PIPELINE                  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  1. PARSE DIFF                                          │
+│     ┌──────────────────────────────────────┐            │
+│     │  Extract added/removed/modified lines │            │
+│     │  Map to file paths and line numbers   │            │
+│     └──────────────┬───────────────────────┘            │
+│                    │                                    │
+│  2. GATHER CONTEXT                                      │
+│     ┌──────────────▼───────────────────────┐            │
+│     │  Read surrounding code (±50 lines)   │            │
+│     │  Check related files and imports      │            │
+│     │  Review commit message and PR desc    │            │
+│     └──────────────┬───────────────────────┘            │
+│                    │                                    │
+│  3. ANALYZE                                              │
+│     ┌──────────────▼───────────────────────┐            │
+│     │  Apply review rules/checklist         │            │
+│     │  LLM evaluates each changed function  │            │
+│     │  Cross-reference with project norms   │            │
+│     └──────────────┬───────────────────────┘            │
+│                    │                                    │
+│  4. GENERATE FEEDBACK                                   │
+│     ┌──────────────▼───────────────────────┐            │
+│     │  Rank issues by severity              │            │
+│     │  Map comments to specific line ranges │            │
+│     │  Suggest concrete fixes               │            │
+│     └──────────────────────────────────────┘            │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Security Vulnerability Detection
+
+One of the most critical functions of a code review agent is detecting security vulnerabilities. Here are common vulnerability patterns that agents can identify:
+
+```python
+# VULNERABILITY: SQL Injection
+# The agent would flag this and suggest parameterized queries
+
+# BAD (vulnerable):
+def get_user(username):
+    query = f"SELECT * FROM users WHERE name = '{username}'"
+    cursor.execute(query)
+    return cursor.fetchone()
+
+# GOOD (safe):
+def get_user(username):
+    query = "SELECT * FROM users WHERE name = %s"
+    cursor.execute(query, (username,))
+    return cursor.fetchone()
+
+
+# VULNERABILITY: Command Injection
+import os
+
+# BAD (vulnerable):
+def ping(host):
+    result = os.popen(f"ping -c 1 {host}").read()
+    return result
+
+# GOOD (safe):
+import subprocess
+
+def ping(host):
+    # Validate and sanitize the input
+    if not re.match(r'^[\d.]+$', host):
+        raise ValueError(f"Invalid host: {host}")
+    result = subprocess.run(
+        ["ping", "-c", "1", host],
+        capture_output=True,
+        text=True,
+        timeout=5
+    )
+    return result.stdout
+
+
+# VULNERABILITY: Insecure Deserialization
+import pickle
+
+# BAD (vulnerable):
+def load_user_data(data_bytes):
+    return pickle.loads(data_bytes)  # Arbitrary code execution!
+
+# GOOD (safe):
+import json
+
+def load_user_data(data_string):
+    return json.loads(data_string)  # Only deserializes data
+```
+
+### Building Review Awareness Into Agents
+
+A good code review agent does not just look at changed lines — it understands the broader context. It considers:
+
+- **Project conventions**: Does the code follow the existing style?
+- **Side effects**: Does the change affect other parts of the system?
+- **Edge cases**: Are boundary conditions handled?
+- **Performance**: Is the algorithmic complexity reasonable?
+- **Documentation**: Are public APIs documented?
+
+---
+
+## Debugging Assistants
+
+### How AI Agents Debug Code
+
+Debugging is one of the most time-consuming activities in software development. Studies suggest that developers spend 35–50% of their time on debugging activities. AI debugging assistants can dramatically reduce this time by analyzing error messages, tracing through code logic, and suggesting targeted fixes.
+
+The debugging process for an AI agent typically follows this pattern:
+
+```
+┌───────────────────────────────────────────────────────┐
+│                DEBUGGING WORKFLOW                      │
+├───────────────────────────────────────────────────────┤
+│                                                       │
+│  Input: Error message / stack trace / failing test    │
+│          │                                            │
+│          ▼                                            │
+│  ┌─────────────────────────┐                          │
+│  │ 1. Parse error message  │                          │
+│  │    - Error type         │                          │
+│  │    - Error message      │                          │
+│  │    - File and line      │                          │
+│  └──────────┬──────────────┘                          │
+│             │                                         │
+│             ▼                                         │
+│  ┌─────────────────────────┐                          │
+│  │ 2. Locate source code   │                          │
+│  │    - Read the file      │                          │
+│  │    - Read related files │                          │
+│  └──────────┬──────────────┘                          │
+│             │                                         │
+│             ▼                                         │
+│  ┌─────────────────────────┐                          │
+│  │ 3. Analyze root cause   │                          │
+│  │    - Trace data flow    │                          │
+│  │    - Identify bad logic │                          │
+│  └──────────┬──────────────┘                          │
+│             │                                         │
+│             ▼                                         │
+│  ┌─────────────────────────┐                          │
+│  │ 4. Propose fix          │                          │
+│  │    - Minimal change     │                          │
+│  │    - Explain the fix    │                          │
+│  │    - Show before/after  │                          │
+│  └─────────────────────────┘                          │
+│                                                       │
+└───────────────────────────────────────────────────────┘
+```
+
+### Stack Trace Interpretation
+
+One of the most valuable skills for a debugging agent is parsing and interpreting stack traces. Here is an example:
+
+```python
+"""
+Example: A debugging assistant analyzing a traceback.
+
+Input stack trace:
+  File "app.py", line 42, in process_order
+    total = sum(item.price * item.quantity for item in order.items)
+  File "app.py", line 42, in <genexpr>
+    total = sum(item.price * item.quantity for item in order.items)
+  File "models.py", line 28, in quantity
+    return self._quantity.strip()  # AttributeError!
+AttributeError: 'NoneType' object has no attribute 'strip'
+"""
+
+# The debugging agent reads the traceback and analyzes:
+#
+# 1. The error is an AttributeError on line 28 of models.py
+# 2. `self._quantity` is None when `.strip()` is called
+# 3. This happens during order processing (app.py line 42)
+#
+# Root cause analysis:
+# The `quantity` property calls `.strip()` on `self._quantity`,
+# but `_quantity` can be None (likely from an unvalidated input).
+#
+# Suggested fix:
+
+class OrderItem:
+    @property
+    def quantity(self):
+        """Return quantity as a cleaned string."""
+        if self._quantity is None:
+            return "0"  # Default to zero if not set
+        return self._quantity.strip()
+```
+
+### Building a Debugging Agent
+
+A debugging agent combines several capabilities:
+
+```python
+"""
+A simple debugging agent that analyzes error messages
+and suggests fixes using the Anthropic API.
+"""
+
+import anthropic
+
+
+class DebuggingAgent:
+    """An AI-powered debugging assistant."""
+
+    def __init__(self):
+        self.client = anthropic.Anthropic()
+        self.model = "claude-sonnet-4-20250514"
+
+    def analyze_error(self, error_traceback: str, source_code: str) -> str:
+        """
+        Analyze a Python error traceback and source code
+        to suggest a fix.
+
+        Args:
+            error_traceback: The full error traceback string
+            source_code: The relevant source code file
+
+        Returns:
+            A detailed analysis with suggested fix
+        """
+        prompt = f"""You are an expert Python debugger.
+
+Analyze the following error traceback and source code.
+Provide:
+1. A clear explanation of the error in plain language
+2. The root cause of the error
+3. The exact line(s) causing the problem
+4. A concrete fix with before/after code
+5. Suggestions to prevent similar errors in the future
+
+## Error Traceback:
+```
+{error_traceback}
+```
+
+## Source Code:
+```python
+{source_code}
+```
+
+Be specific and practical. Show exact line changes."""
+
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=2048,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.2,
+        )
+        return response.content[0].text
+
+    def analyze_test_failure(
+        self, test_output: str, test_code: str, source_code: str
+    ) -> str:
+        """
+        Analyze a failing test and suggest fixes.
+
+        Args:
+            test_output: The test runner output (assertion errors, etc.)
+            test_code: The test file source code
+            source_code: The source code being tested
+
+        Returns:
+            Analysis and suggested fix
+        """
+        prompt = f"""You are an expert at debugging test failures.
+
+Analyze the failing test output, the test code, and the source
+code being tested. Determine whether the bug is in the test
+or the source code, and provide a fix.
+
+## Test Output:
+```
+{test_output}
+```
+
+## Test Code:
+```python
+{test_code}
+```
+
+## Source Code Under Test:
+```python
+{source_code}
+```
+
+Provide your analysis and suggested fix."""
+
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=2048,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.2,
+        )
+        return response.content[0].text
+
+
+# Example usage:
+if __name__ == "__main__":
+    agent = DebuggingAgent()
+
+    traceback = """
+Traceback (most recent call last):
+  File "server.py", line 15, in handle_request
+    response = process_request(data)
+  File "server.py", line 28, in process_request
+    return {"status": "ok", "data": data["payload"].upper()}
+KeyError: 'payload'
+    """
+
+    source = """
+def process_request(data):
+    # Process the incoming request
+    return {"status": "ok", "data": data["payload"].upper()}
+    """
+
+    analysis = agent.analyze_error(traceback, source)
+    print(analysis)
+```
+
+### Common Error Patterns Agents Can Recognize
+
+Debugging agents become more powerful as they learn to recognize common error patterns:
+
+| Error Type | Common Cause | Typical Fix |
+|-----------|-------------|-------------|
+| `AttributeError` | Accessing property of `None` | Add null check or validate initialization |
+| `KeyError` | Dict key doesn't exist | Use `.get()` with default or validate keys |
+| `IndexError` | List index out of range | Check bounds before accessing |
+| `TypeError` | Wrong argument type | Add type validation or conversion |
+| `ImportError` | Missing module | Check installation and import paths |
+| `ValueError` | Invalid argument value | Add input validation |
+| `RecursionError` | Infinite recursion | Add base case or use iteration |
+| `TimeoutError` | Operation too slow | Optimize algorithm or add timeout handling |
+
+---
+
+## Test Generation
+
+### Why Automated Test Generation Matters
+
+Writing tests is one of those activities that every developer knows is important but often deprioritizes under time pressure. Studies consistently show that well-tested code has fewer defects in production and is easier to maintain. Yet test coverage in many projects remains critically low.
+
+AI-powered test generation addresses this gap by automatically creating tests for existing code. The agent analyzes function signatures, docstrings, type hints, and implementation details to generate comprehensive test cases.
+
+### How Agents Understand Code to Generate Tests
+
+When a test generation agent processes a function, it considers multiple dimensions:
+
+1. **Happy path**: Does the function work correctly with typical inputs?
+2. **Edge cases**: What happens with empty inputs, zero values, maximum values?
+3. **Error cases**: What exceptions should be raised for invalid inputs?
+4. **Boundary conditions**: What happens at the exact boundary of valid input?
+5. **Type variations**: What if the input is an unexpected type?
+
+```python
+"""
+Example: How a test generation agent analyzes a function
+and produces test cases.
+"""
+
+def calculate_average(numbers: list[float]) -> float:
+    """
+    Calculate the arithmetic mean of a list of numbers.
+
+    Args:
+        numbers: A list of numeric values
+
+    Returns:
+        The arithmetic mean of the numbers
+
+    Raises:
+        ValueError: If the list is empty
+        TypeError: If the list contains non-numeric values
+    """
+    if not numbers:
+        raise ValueError("Cannot calculate average of empty list")
+    if not all(isinstance(n, (int, float)) for n in numbers):
+        raise TypeError("All elements must be numeric")
+    return sum(numbers) / len(numbers)
+
+
+# A test generation agent would produce these test cases:
+
+import pytest
+
+
+class TestCalculateAverage:
+    """Tests for the calculate_average function."""
+
+    def test_basic_average(self):
+        """Test average of simple list."""
+        assert calculate_average([1, 2, 3, 4, 5]) == 3.0
+
+    def test_single_element(self):
+        """Test average of single-element list."""
+        assert calculate_average([42.0]) == 42.0
+
+    def test_negative_numbers(self):
+        """Test average of negative numbers."""
+        assert calculate_average([-1, -2, -3]) == -2.0
+
+    def test_mixed_positive_negative(self):
+        """Test average of mixed positive and negative."""
+        assert calculate_average([-10, 10]) == 0.0
+
+    def test_floats(self):
+        """Test average of floating-point numbers."""
+        result = calculate_average([1.5, 2.5, 3.5])
+        assert result == pytest.approx(2.5)
+
+    def test_large_numbers(self):
+        """Test average of very large numbers."""
+        assert calculate_average([1e10, 2e10, 3e10]) == 2e10
+
+    def test_empty_list_raises_value_error(self):
+        """Test that empty list raises ValueError."""
+        with pytest.raises(ValueError, match="empty"):
+            calculate_average([])
+
+    def test_non_numeric_raises_type_error(self):
+        """Test that non-numeric elements raise TypeError."""
+        with pytest.raises(TypeError, match="numeric"):
+            calculate_average([1, "two", 3])
+
+    def test_none_element_raises_type_error(self):
+        """Test that None elements raise TypeError."""
+        with pytest.raises(TypeError):
+            calculate_average([1, None, 3])
+
+    def test_mixed_int_float(self):
+        """Test average of mixed int and float."""
+        assert calculate_average([1, 2.0, 3]) == 2.0
+```
+
+### Test Generation Agent Code
+
+Here is a complete test generation agent using the Anthropic API:
+
+```python
+"""
+A test generation agent that automatically creates unit tests
+for Python functions using the Anthropic API.
+"""
+
+import anthropic
+import ast
+import textwrap
+
+
+class TestGenerationAgent:
+    """Generates comprehensive unit tests for Python functions."""
+
+    def __init__(self):
+        self.client = anthropic.Anthropic()
+        self.model = "claude-sonnet-4-20250514"
+
+    def generate_tests(self, source_code: str) -> str:
+        """
+        Generate pytest unit tests for the given Python source code.
+
+        Args:
+            source_code: Python source code containing functions to test
+
+        Returns:
+            Complete test file as a string
+        """
+        # Validate that the input is valid Python
+        try:
+            ast.parse(source_code)
+        except SyntaxError as e:
+            raise ValueError(f"Invalid Python code: {e}")
+
+        prompt = f"""You are an expert Python test engineer.
+Generate comprehensive pytest unit tests for the following code.
+
+Requirements:
+- Test ALL public functions and methods
+- Include happy path, edge cases, and error cases
+- Use descriptive test names that explain what is being tested
+- Use pytest fixtures where appropriate
+- Use parametrize for testing multiple inputs
+- Include docstrings in each test
+- Assert both the return value and any side effects
+- Test boundary conditions and special values
+- Use pytest.approx() for floating-point comparisons
+
+## Source Code to Test:
+```python
+{source_code}
+```
+
+Generate ONLY the test code. Do not include explanations outside
+the code. Use proper pytest conventions."""
+
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=3008,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.2,
+        )
+        return response.content[0].text
+
+    def generate_and_save(
+        self, source_code: str, output_path: str
+    ) -> str:
+        """
+        Generate tests and save them to a file.
+
+        Args:
+            source_code: Python source code to generate tests for
+            output_path: Path to save the test file
+
+        Returns:
+            The generated test code
+        """
+        test_code = self.generate_tests(source_code)
+
+        # Extract just the code blocks if wrapped in markdown
+        if "```python" in test_code:
+            # Parse out the code between ```python and ```
+            parts = test_code.split("```python")
+            if len(parts) > 1:
+                code_block = parts[1].split("```")[0]
+                test_code = code_block.strip()
+
+        # Add header comment
+        header = textwrap.dedent("""\
+            \"\"\"
+            Auto-generated tests.
+            Generated by TestGenerationAgent.
+            Review and modify as needed.
+            \"\"\"
+        """)
+        full_test = header + "\n\n" + test_code
+
+        with open(output_path, "w") as f:
+            f.write(full_test)
+
+        return full_test
+
+
+# Example usage
+if __name__ == "__main__":
+    agent = TestGenerationAgent()
+
+    code_to_test = '''
+def factorial(n):
+    """Calculate the factorial of a non-negative integer."""
+    if not isinstance(n, int):
+        raise TypeError("n must be an integer")
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    if n <= 1:
+        return 1
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+'''
+
+    tests = agent.generate_and_save(code_to_test, "test_factorial.py")
+    print(tests)
+```
+
+---
+
+## CI/CD Integration
+
+### Agents in Your Pipeline
+
+The real power of AI coding agents emerges when they are integrated into your continuous integration and continuous deployment (CI/CD) pipeline. Instead of running code review or test generation as a one-time activity, you can make them automatic parts of your development workflow.
+
+A typical integration looks like this:
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    CI/CD PIPELINE WITH AI                    │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Developer pushes code                                       │
+│         │                                                    │
+│         ▼                                                    │
+│  ┌─────────────┐     ┌──────────────────────┐               │
+│  │   Lint &    │────▶│   Run Existing Tests  │               │
+│  │   Format    │     └──────────┬───────────┘               │
+│  └─────────────┘                │                            │
+│                                 ▼                            │
+│                  ┌──────────────────────────┐               │
+│                  │  AI Code Review Agent    │               │
+│                  │  - Analyze diff          │               │
+│                  │  - Check for bugs        │               │
+│                  │  - Security scan         │               │
+│                  │  - Post PR comments      │               │
+│                  └──────────────┬──────────┘               │
+│                                 │                            │
+│                                 ▼                            │
+│                  ┌──────────────────────────┐               │
+│                  │  AI Test Generator       │               │
+│                  │  - Generate missing tests│               │
+│                  │  - Run new tests         │               │
+│                  └──────────────┬──────────┘               │
+│                                 │                            │
+│                                 ▼                            │
+│                  ┌──────────────────────────┐               │
+│                  │  Deploy (if all pass)    │               │
+│                  └──────────────────────────┘               │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### GitHub Actions Integration
+
+Here is a complete GitHub Actions workflow that integrates AI-powered code review:
+
+```yaml
+# .github/workflows/ai-review.yml
+# Automated AI code review on every pull request
+
+name: AI Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, develop]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  ai-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for diff context
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install anthropic requests
+
+      - name: Get PR diff
+        id: diff
+        run: |
+          DIFF=$(git diff origin/${{ github.base_ref }}...HEAD)
+          echo "diff<<DIFF_EOF" >> $GITHUB_OUTPUT
+          echo "$DIFF" >> $GITHUB_OUTPUT
+          echo "DIFF_EOF" >> $GITHUB_OUTPUT
+
+      - name: Run AI Code Review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python .github/scripts/ai_review.py \
+            --diff "${{ steps.diff.outputs.diff }}" \
+            --pr-number ${{ github.event.pull_request.number }} \
+            --repo ${{ github.repository }}
+
+      - name: Run AI Test Generation Check
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python .github/scripts/check_test_coverage.py \
+            --diff "${{ steps.diff.outputs.diff }}"
+
+  # Additional job: Run existing tests
+  test:
+    runs-on: ubuntu-latest
+    needs: ai-review
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run tests
+        run: |
+          pip install pytest pytest-cov
+          pytest tests/ -v --cov=src --cov-report=xml
+
+  # Deploy only after all checks pass
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [ai-review, test]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy
+        run: echo "Deployment would happen here"
+```
+
+### Automated Code Quality Checks
+
+You can also set up automated quality checks that run on a schedule or on specific events:
+
+```yaml
+# .github/workflows/quality-sweep.yml
+# Weekly AI-powered code quality analysis
+
+name: Weekly Quality Sweep
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"  # Every Monday at 9 AM UTC
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  quality-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Analyze code quality
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python .github/scripts/quality_analysis.py \
+            --directory src/ \
+            --output report.md
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-report
+          path: report.md
+```
+
+---
+
+## IDE Plugin Architecture
+
+### How Coding Assistants Work Under the Hood
+
+Modern AI coding assistants are complex systems that combine multiple technologies. Understanding their architecture helps you use them more effectively and troubleshoot when they do not work as expected.
+
+Here is a simplified architecture diagram:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    IDE PLUGIN ARCHITECTURE                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐    │
+│  │                    USER INTERFACE                        │    │
+│  │  ┌──────────┐  ┌───────────┐  ┌────────────────────┐  │    │
+│  │  │ Inline   │  │ Chat Panel│  │ Code Actions Menu  │  │    │
+│  │  │ Ghost    │  │           │  │                    │  │    │
+│  │  │ Text     │  │  ┌─────┐  │  │  • Refactor        │  │    │
+│  │  │          │  │  │     │  │  │  • Generate Test   │  │    │
+│  │  │          │  │  │User │  │  │  • Explain Code    │  │    │
+│  │  │          │  │  │     │  │  │  • Fix Bug         │  │    │
+│  │  │          │  │  └─────┘  │  │  • Optimize        │  │    │
+│  │  └────┬─────┘  └─────┬─────┘  └─────────┬──────────┘  │    │
+│  └───────┼──────────────┼───────────────────┼──────────────┘    │
+│          │              │                   │                    │
+│  ┌───────▼──────────────▼───────────────────▼──────────────┐    │
+│  │                  CONTEXT MANAGER                        │    │
+│  │  ┌─────────────────┐  ┌──────────────────────────┐     │    │
+│  │  │ LSP Integration │  │ File Indexer              │     │    │
+│  │  │                 │  │                           │     │    │
+│  │  │ • Symbol info   │  │ • Watches file changes    │     │    │
+│  │  │ • Diagnostics   │  │ • Maintains file map      │     │    │
+│  │  │ • References    │  │ • Tracks imports          │     │    │
+│  │  │ • Completions   │  │ • Language detection      │     │    │
+│  │  └─────────────────┘  └──────────────────────────┘     │    │
+│  │                                                         │    │
+│  │  ┌─────────────────────┐  ┌────────────────────────┐   │    │
+│  │  │ Embedding Retrieval │  │ Context Window Manager │   │    │
+│  │  │                     │  │                        │   │    │
+│  │  │ • Vector embeddings │  │ • Token counting       │   │    │
+│  │  │ • Semantic search   │  │ • Priority selection   │   │    │
+│  │  │ • Relevant docs     │  │ • Truncation strategy  │   │    │
+│  │  │ • Code snippets     │  │ • Sliding window       │   │    │
+│  │  └─────────────────────┘  └────────────────────────┘   │    │
+│  └─────────────────────────┬───────────────────────────────┘    │
+│                            │                                    │
+│  ┌─────────────────────────▼───────────────────────────────┐    │
+│  │                   REQUEST ROUTER                        │    │
+│  │  Determines which model/approach to use for each        │    │
+│  │  request based on task type and complexity               │    │
+│  └─────────────────────────┬───────────────────────────────┘    │
+│                            │                                    │
+│  ┌─────────────────────────▼───────────────────────────────┐    │
+│  │                   API LAYER                              │    │
+│  │  ┌──────────┐  ┌──────────┐  ┌────────────────────┐   │    │
+│  │  │ Anthropic│  │ OpenAI   │  │  Local Model       │   │    │
+│  │  │ API      │  │ API      │  │  (Ollama/llama.cpp)│   │    │
+│  │  └──────────┘  └──────────┘  └────────────────────┘   │    │
+│  └─────────────────────────────────────────────────────────┘    │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### LSP Integration
+
+The Language Server Protocol (LSP) is a standardized protocol that IDEs use to get language-specific features like code completion, error highlighting, and go-to-definition. AI coding assistants leverage LSP to understand code structure:
+
+- **Symbol information**: Knowing that `user.name` refers to the `name` attribute of a `User` class
+- **Diagnostics**: Real-time error and warning information
+- **References**: Finding all usages of a function or variable
+- **Hover information**: Getting type information and documentation
+
+### Context Window Management
+
+One of the biggest challenges for IDE plugins is managing the context window. LLMs have a limited context window (even the largest models have constraints), but a codebase can span thousands of files. Effective context management involves:
+
+1. **Prioritization**: The file being edited gets highest priority, followed by open tabs, then related files
+2. **Relevance scoring**: Using embeddings to find semantically similar code snippets
+3. **Compression**: Summarizing large files to their relevant portions
+4. **Chunking**: Breaking large contexts into smaller pieces that fit within the window
+
+### Embedding-Based Retrieval
+
+Modern coding assistants use vector embeddings to find relevant code:
+
+```python
+"""
+Simplified example of how embedding-based code retrieval works.
+This is the core concept behind tools like Cody's code graph.
+"""
+
+import anthropic
+import numpy as np
+
+
+class CodeRetriever:
+    """Find relevant code snippets using semantic similarity."""
+
+    def __init__(self):
+        self.client = anthropic.Anthropic()
+        self.code_chunks = []  # Stored code chunks
+        self.embeddings = []   # Their vector representations
+
+    def index_code(self, file_path: str, content: str, chunk_size: int = 50):
+        """
+        Index a code file by splitting it into chunks
+        and computing embeddings.
+        """
+        lines = content.split("\n")
+
+        for i in range(0, len(lines), chunk_size):
+            chunk = "\n".join(lines[i : i + chunk_size])
+            embedding = self._get_embedding(chunk)
+            self.code_chunks.append({
+                "file": file_path,
+                "start_line": i + 1,
+                "content": chunk,
+            })
+            self.embeddings.append(embedding)
+
+    def find_relevant(self, query: str, top_k: int = 5) -> list[dict]:
+        """
+        Find the most relevant code chunks for a given query
+        using cosine similarity.
+        """
+        query_embedding = self._get_embedding(query)
+
+        # Compute cosine similarities
+        similarities = []
+        for i, emb in enumerate(self.embeddings):
+            sim = self._cosine_similarity(query_embedding, emb)
+            similarities.append((i, sim))
+
+        # Sort by similarity and return top_k
+        similarities.sort(key=lambda x: x[1], reverse=True)
+        return [self.code_chunks[i] for i, _ in similarities[:top_k]]
+
+    def _get_embedding(self, text: str) -> list[float]:
+        """Get vector embedding for text (simplified)."""
+        # In practice, you would use a dedicated embedding model
+        # This is a placeholder showing the concept
+        response = self.client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            messages=[{
+                "role": "user",
+                "content": f"Return a 10-dimensional numerical "
+                           f"vector representation of this code: {text[:500]}"
+            }]
+        )
+        # Parse the numeric response into a vector
+        # (simplified for illustration)
+        return [0.1] * 10  # Placeholder
+
+    @staticmethod
+    def _cosine_similarity(a: list[float], b: list[float]) -> float:
+        """Compute cosine similarity between two vectors."""
+        a_arr = np.array(a)
+        b_arr = np.array(b)
+        return float(np.dot(a_arr, b_arr) / (
+            np.linalg.norm(a_arr) * np.linalg.norm(b_arr)
+        ))
+```
+
+---
+
+## Code Example: Building a Code Review Agent
+
+Now let us put everything together and build a complete, functional code review agent. This agent will take a git diff as input, analyze it using the Anthropic API, and return structured review comments with severity levels.
+
+```python
+#!/usr/bin/env python3
+"""
+Code Review Agent
+=================
+An AI-powered code review agent that analyzes git diffs
+and provides structured review comments.
+
+Usage:
+    python code_review_agent.py --diff-file changes.diff
+    git diff HEAD~1 | python code_review_agent.py
+
+Dependencies:
+    pip install anthropic
+"""
+
+import argparse
+import json
+import sys
+from dataclasses import dataclass, field, asdict
+from enum import Enum
+from typing import Optional
+
+import anthropic
+
+
+class Severity(Enum):
+    """Severity levels for review comments."""
+    CRITICAL = "critical"
+    WARNING = "warning"
+    SUGGESTION = "suggestion"
+    NIT = "nit"
+
+
+@dataclass
+class ReviewComment:
+    """A single review comment on code."""
+    file_path: str
+    line_start: int
+    line_end: int
+    severity: str
+    category: str
+    message: str
+    suggestion: Optional[str] = None
+
+
+@dataclass
+class ReviewResult:
+    """Complete review result for a diff."""
+    summary: str
+    total_issues: int
+    critical_count: int = 0
+    warning_count: int = 0
+    suggestion_count: int = 0
+    nit_count: int = 0
+    comments: list[ReviewComment] = field(default_factory=list)
+
+
+class CodeReviewAgent:
+    """
+    An AI-powered code review agent that analyzes code diffs
+    and provides structured, actionable review comments.
+    """
+
+    def __init__(self, model: str = "claude-sonnet-4-20250514"):
+        """
+        Initialize the review agent.
+
+        Args:
+            model: The Anthropic model to use for review
+        """
+        self.client = anthropic.Anthropic()
+        self.model = model
+        self.review_prompt = self._build_system_prompt()
+
+    def _build_system_prompt(self) -> str:
+        """Build the system prompt for the review agent."""
+        return """You are an expert code reviewer. Your job is to
+analyze code changes (diffs) and provide helpful, actionable feedback.
+
+For each issue you find, respond with a JSON object containing:
+- file_path: The file where the issue exists
+- line_start: Starting line number of the issue
+- line_end: Ending line number of the issue
+- severity: One of "critical", "warning", "suggestion", "nit"
+- category: The type of issue (e.g., "security", "performance",
+  "correctness", "style", "documentation")
+- message: Clear explanation of the issue
+- suggestion: (Optional) Concrete code fix if applicable
+
+Severity guide:
+- CRITICAL: Bugs, security vulnerabilities, data loss risks
+- WARNING: Potential issues, bad practices, missing error handling
+- SUGGESTION: Improvements, better patterns, optimization ideas
+- NIT: Style, naming, minor readability improvements
+
+Respond with a JSON object:
+{
+    "summary": "Brief overall assessment",
+    "comments": [list of comment objects]
+}
+
+Be specific and reference exact lines. Focus on the most important
+issues first. Not every line needs a comment — focus on what matters."""
+
+    def review_diff(self, diff: str) -> ReviewResult:
+        """
+        Review a code diff and return structured comments.
+
+        Args:
+            diff: The git diff content to review
+
+        Returns:
+            A ReviewResult containing all review comments
+        """
+        user_prompt = f"""Please review the following code diff and
+provide your analysis as JSON.
+
+## Code Diff:
+```
+{diff}
+```
+
+Provide your review as a JSON object with "summary" and "comments"
+fields. Each comment should have: file_path, line_start, line_end,
+severity, category, message, and optionally suggestion."""
+
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=4096,
+            system=self.review_prompt,
+            messages=[{"role": "user", "content": user_prompt}],
+            temperature=0.1,
+        )
+
+        return self._parse_response(response.content[0].text)
+
+    def _parse_response(self, response_text: str) -> ReviewResult:
+        """
+        Parse the LLM response into a structured ReviewResult.
+
+        Args:
+            response_text: The raw text response from the model
+
+        Returns:
+            A parsed ReviewResult
+        """
+        # Extract JSON from the response (handle markdown code blocks)
+        text = response_text.strip()
+        if text.startswith("```"):
+            # Remove markdown code fences
+            lines = text.split("\n")
+            text = "\n".join(lines[1:-1])
+
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError:
+            # If JSON parsing fails, return a single comment
+            # with the raw text
+            return ReviewResult(
+                summary="Review completed (raw output - JSON parse failed)",
+                total_issues=1,
+                critical_count=1,
+                comments=[ReviewComment(
+                    file_path="unknown",
+                    line_start=0,
+                    line_end=0,
+                    severity="warning",
+                    category="parsing",
+                    message=f"Could not parse structured review: "
+                            f"{response_text[:200]}...",
+                )],
+            )
+
+        # Convert comment dicts to ReviewComment objects
+        comments = []
+        for c in data.get("comments", []):
+            comments.append(ReviewComment(
+                file_path=c.get("file_path", "unknown"),
+                line_start=c.get("line_start", 0),
+                line_end=c.get("line_end", 0),
+                severity=c.get("severity", "nit"),
+                category=c.get("category", "general"),
+                message=c.get("message", ""),
+                suggestion=c.get("suggestion"),
+            ))
+
+        # Count by severity
+        severity_counts = {"critical": 0, "warning": 0,
+                           "suggestion": 0, "nit": 0}
+        for c in comments:
+            severity_counts[c.severity] = severity_counts.get(
+                c.severity, 0
+            ) + 1
+
+        return ReviewResult(
+            summary=data.get("summary", "Review completed"),
+            total_issues=len(comments),
+            critical_count=severity_counts.get("critical", 0),
+            warning_count=severity_counts.get("warning", 0),
+            suggestion_count=severity_counts.get("suggestion", 0),
+            nit_count=severity_counts.get("nit", 0),
+            comments=comments,
+        )
+
+    def format_report(self, result: ReviewResult) -> str:
+        """
+        Format a ReviewResult as a human-readable report.
+
+        Args:
+            result: The ReviewResult to format
+
+        Returns:
+            A formatted string report
+        """
+        lines = []
+        lines.append("=" * 60)
+        lines.append("           CODE REVIEW REPORT")
+        lines.append("=" * 60)
+        lines.append("")
+        lines.append(f"Summary: {result.summary}")
+        lines.append(f"Total Issues: {result.total_issues}")
+        lines.append(f"  Critical:  {result.critical_count}")
+        lines.append(f"  Warnings:  {result.warning_count}")
+        lines.append(f"  Suggestions: {result.suggestion_count}")
+        lines.append(f"  Nits:      {result.nit_count}")
+        lines.append("")
+        lines.append("-" * 60)
+
+        # Sort by severity
+        severity_order = {
+            "critical": 0, "warning": 1, "suggestion": 2, "nit": 3
+        }
+        sorted_comments = sorted(
+            result.comments,
+            key=lambda c: severity_order.get(c.severity, 4),
+        )
+
+        for i, comment in enumerate(sorted_comments, 1):
+            severity_icon = {
+                "critical": "🔴",
+                "warning": "🟡",
+                "suggestion": "🔵",
+                "nit": "⚪",
+            }.get(comment.severity, "⚪")
+
+            lines.append(f"\n{severity_icon} Issue #{i} "
+                         f"[{comment.severity.upper()}]")
+            lines.append(f"   File: {comment.file_path} "
+                         f"(lines {comment.line_start}-{comment.line_end})")
+            lines.append(f"   Category: {comment.category}")
+            lines.append(f"   {comment.message}")
+            if comment.suggestion:
+                lines.append(f"   Suggestion: {comment.suggestion}")
+            lines.append("")
+
+        lines.append("=" * 60)
+        return "\n".join(lines)
+
+
+def main():
+    """Main entry point for the code review agent."""
+    parser = argparse.ArgumentParser(
+        description="AI-powered code review agent"
+    )
+    parser.add_argument(
+        "--diff-file", "-f",
+        help="Path to a file containing the diff to review",
+    )
+    parser.add_argument(
+        "--output", "-o",
+        help="Output file path (default: stdout)",
+    )
+    parser.add_argument(
+        "--json", "-j",
+        action="store_true",
+        help="Output in JSON format",
+    )
+    args = parser.parse_args()
+
+    # Read the diff
+    if args.diff_file:
+        with open(args.diff_file) as f:
+            diff = f.read()
+    else:
+        diff = sys.stdin.read()
+
+    if not diff.strip():
+        print("Error: No diff content provided.", file=sys.stderr)
+        sys.exit(1)
+
+    # Run the review
+    agent = CodeReviewAgent()
+    result = agent.review_diff(diff)
+
+    # Output the results
+    if args.json:
+        output = json.dumps(asdict(result), indent=2, default=str)
+    else:
+        output = agent.format_report(result)
+
+    if args.output:
+        with open(args.output, "w") as f:
+            f.write(output)
+        print(f"Review saved to {args.output}")
+    else:
+        print(output)
+
+    # Exit with non-zero if critical issues found
+    if result.critical_count > 0:
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+---
+
+## Code Example: Test Generation Agent
+
+Here is a complete test generation agent that takes a Python function and produces comprehensive unit tests:
+
+```python
+#!/usr/bin/env python3
+"""
+Test Generation Agent
+=====================
+Automatically generates comprehensive unit tests for Python functions.
+
+Usage:
+    python test_generator.py --source myfile.py --output test_myfile.py
+    python test_generator.py --function "def add(a, b): return a + b"
+
+Dependencies:
+    pip install anthropic
+"""
+
+import argparse
+import ast
+import sys
+import textwrap
+from pathlib import Path
+
+import anthropic
+
+
+class TestGenerator:
+    """
+    Generates comprehensive pytest unit tests for Python functions
+    using the Anthropic API.
+    """
+
+    def __init__(self, model: str = "claude-sonnet-4-20250514"):
+        """
+        Initialize the test generator.
+
+        Args:
+            model: The Anthropic model to use for generation
+        """
+        self.client = anthropic.Anthropic()
+        self.model = model
+
+    def extract_functions(self, source_code: str) -> list[dict]:
+        """
+        Extract all function definitions from source code.
+
+        Args:
+            source_code: Python source code as a string
+
+        Returns:
+            List of dicts with 'name', 'code', and 'line' keys
+        """
+        tree = ast.parse(source_code)
+        functions = []
+
+        for node in ast.walk(tree):
+            if isinstance(node, ast.FunctionDef):
+                # Get the full source of the function
+                start = node.lineno - 1
+                # Find the end line by looking at the last node in body
+                end = max(
+                    getattr(n, "end_lineno", node.lineno) or node.lineno
+                    for n in ast.walk(node)
+                )
+                lines = source_code.split("\n")[start:end]
+                func_code = "\n".join(lines)
+
+                functions.append({
+                    "name": node.name,
+                    "code": func_code,
+                    "line": node.lineno,
+                    "args": [arg.arg for arg in node.args.args],
+                    "decorators": [
+                        ast.dump(d) for d in node.decorator_list
+                    ],
+                })
+
+        return functions
+
+    def generate_tests_for_function(
+        self, func_code: str, context: str = ""
+    ) -> str:
+        """
+        Generate tests for a single function.
+
+        Args:
+            func_code: The function source code
+            context: Additional context (other functions, classes, etc.)
+
+        Returns:
+            Generated test code as a string
+        """
+        prompt = f"""You are an expert Python test engineer.
+Generate comprehensive pytest tests for this function.
+
+## Function to test:
+```python
+{func_code}
+```
+
+{f"## Additional context (other code in the same file):{chr(10)}```python{chr(10)}{context}{chr(10)}```" if context else ""}
+
+## Requirements:
+- Cover ALL code paths including branches and edge cases
+- Use descriptive test names (test_<what>_<condition>_<expected>)
+- Include docstrings explaining what each test verifies
+- Use pytest.raises for exception testing
+- Use pytest.approx for floating-point comparisons
+- Use @pytest.mark.parametrize where multiple inputs test the same logic
+- Test both valid inputs and invalid inputs
+- Test boundary conditions (empty, single element, large inputs)
+- Do NOT import the function — assume it is available in the test scope
+
+Generate ONLY valid Python test code. No explanations."""
+
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=4096,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.2,
+        )
+
+        test_code = response.content[0].text
+
+        # Clean up: remove markdown code fences if present
+        if test_code.startswith("```"):
+            lines = test_code.split("\n")
+            # Remove first line (```python) and last line (```)
+            test_code = "\n".join(lines[1:-1])
+
+        return test_code.strip()
+
+    def generate_all_tests(
+        self, source_code: str, module_name: str = "module"
+    ) -> str:
+        """
+        Generate tests for all functions in a source file.
+
+        Args:
+            source_code: Complete Python source code
+            module_name: Name of the module (for import statements)
+
+        Returns:
+            Complete test file as a string
+        """
+        functions = self.extract_functions(source_code)
+
+        if not functions:
+            return "# No functions found to test."
+
+        # Filter out private/helper functions for top-level testing
+        public_functions = [
+            f for f in functions if not f["name"].startswith("_")
+        ]
+
+        # Generate individual test blocks
+        test_blocks = []
+        for func in public_functions:
+            print(f"Generating tests for {func['name']}...", file=sys.stderr)
+            test_block = self.generate_tests_for_function(
+                func_code=func["code"],
+                context=source_code,
+            )
+            test_blocks.append(test_block)
+
+        # Assemble the complete test file
+        header = textwrap.dedent(f"""\
+            \"\"\"
+            Auto-generated tests for {module_name}
+            Generated by TestGenerator
+
+            Review all generated tests carefully. Some may need
+            adjustment based on your specific requirements.
+            \"\"\"
+
+            import pytest
+            from {module_name} import {", ".join(f["name"] for f in public_functions)}
+
+        """)
+
+        return header + "\n\n\n".join(test_blocks)
+
+    def generate_and_save(
+        self,
+        source_path: str,
+        output_path: str | None = None,
+    ) -> str:
+        """
+        Generate tests for a file and save them.
+
+        Args:
+            source_path: Path to the source file
+            output_path: Path to save the test file
+                        (defaults to test_<filename>.py)
+
+        Returns:
+            The path where tests were saved
+        """
+        source = Path(source_path)
+        if not source.exists():
+            raise FileNotFoundError(f"Source file not found: {source_path}")
+
+        source_code = source.read_text()
+        module_name = source.stem
+
+        if output_path is None:
+            output_path = f"test_{module_name}.py"
+
+        test_code = self.generate_all_tests(source_code, module_name)
+
+        Path(output_path).write_text(test_code)
+        print(f"Tests saved to {output_path}", file=sys.stderr)
+
+        return output_path
+
+
+def main():
+    """Main entry point."""
+    parser = argparse.ArgumentParser(
+        description="AI-powered test generator for Python code"
+    )
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument(
+        "--source", "-s",
+        help="Path to Python source file to generate tests for",
+    )
+    group.add_argument(
+        "--function", "-F",
+        help="A Python function string to generate tests for",
+    )
+    parser.add_argument(
+        "--output", "-o",
+        help="Output test file path",
+    )
+    args = parser.parse_args()
+
+    generator = TestGenerator()
+
+    if args.function:
+        # Generate tests for a single function string
+        tests = generator.generate_tests_for_function(args.function)
+        if args.output:
+            Path(args.output).write_text(tests)
+            print(f"Tests saved to {args.output}", file=sys.stderr)
+        else:
+            print(tests)
+    else:
+        # Generate tests for an entire file
+        output = generator.generate_and_save(args.source, args.output)
+        print(f"Generated: {output}")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+---
+
+## Comparison Table
+
+The following table provides a detailed comparison of the major AI coding assistants available today:
+
+| Feature | GitHub Copilot | Cursor | Claude Code | Cody (Sourcegraph) |
+|---------|---------------|--------|-------------|-------------------|
+| **Provider** | GitHub / Microsoft | Cursor Inc. | Anthropic | Sourcegraph |
+| **Primary Model** | GPT-4o / Claude 3.5 Sonnet | GPT-4o / Claude 3.5 Sonnet | Claude Sonnet / Opus | Claude 3.5 Sonnet |
+| **Context Window** | ~128K tokens | ~128K tokens | 200K tokens | ~128K tokens |
+| **Codebase Context** | Limited (open files) | Full repo indexing | Full repo via CLI | Code graph + embeddings |
+| **Key Features** | Inline completions, chat, CLI suggestions, multi-language support | Multi-file edits, composer mode, inline chat, tab completions | CLI agent, file I/O, shell commands, autonomous task completion | Code search, context from code graph, chat, inline assists |
+| **Pricing** | $10/mo individual, $19/mo business | $20/mo pro, $40/mo business | Pay-per-token via API or Claude Max subscription | Free tier, $9/mo pro, $19/mo enterprise |
+| **Best For** | Quick completions, mainstream languages, team workflows | Complex refactoring, multi-file changes, power users | Autonomous tasks, CLI workflows, terminal-native development | Large codebases, cross-repo context, code search |
+| **IDE Support** | VS Code, JetBrains, Neovim, Xcode | Cursor IDE (VS Code fork) | CLI + any editor via terminal | VS Code, JetBrains, Web |
+| **Offline Support** | No (requires API) | No (requires API) | No (requires API) | Partial (local models for Cody) |
+| **Multi-File Editing** | Limited (via chat) | Excellent (Composer mode) | Excellent (agent mode) | Limited |
+| **Custom Instructions** | .github/copilot-instructions.md | .cursorrules | CLAUDE.md / AGENTS.md | .cody/ignore, custom prompts |
+
+### Choosing the Right Tool
+
+Different tools suit different workflows:
+
+- **GitHub Copilot** is best for developers who want seamless inline completions without changing their editor. It integrates into existing IDEs and requires minimal setup.
+- **Cursor** excels when you need to make complex, multi-file changes. Its Composer mode can understand your entire codebase and make coordinated edits across many files.
+- **Claude Code** is ideal for developers who prefer working in the terminal and want an agent that can autonomously complete entire tasks — reading files, writing code, running tests, and iterating until the job is done.
+- **Cody** is the strongest choice for large, complex codebases where understanding context across many repositories matters. Its code graph and embedding-based retrieval provide deep codebase awareness.
+
+---
+
+## Best Practices
+
+Using AI coding agents effectively is a skill in itself. Here are best practices to get the most out of these tools while maintaining code quality:
+
+### 1. Always Verify Generated Code
+
+Never blindly accept AI-generated code. Treat it like code from a junior developer: review it carefully, run tests, and verify it works correctly. AI models can produce code that looks right but contains subtle bugs.
+
+```python
+# AI might generate this seemingly correct code:
+def average(values):
+    return sum(values) / len(values)
+
+# But this fails for an empty list (ZeroDivisionError).
+# Always check edge cases the AI might have missed.
+def average(values):
+    if not values:
+        raise ValueError("Cannot average empty list")
+    return sum(values) / len(values)
+```
+
+### 2. Provide Context, Not Just Code
+
+The more context you give the AI, the better its output. Instead of asking "fix this function," explain what the function should do, what inputs it receives, and what errors you are seeing.
+
+### 3. Use AI for Boilerplate, Not Core Logic
+
+AI agents excel at generating boilerplate code, test scaffolding, documentation, and standard patterns. Reserve your deep thinking for core business logic, architecture decisions, and security-sensitive code.
+
+### 4. Break Down Complex Tasks
+
+Instead of asking an AI agent to "build a complete web application," break it into smaller steps:
+1. "Create the database schema for a user model"
+2. "Write API endpoints for CRUD operations on users"
+3. "Add input validation for the user endpoints"
+4. "Write tests for the user API"
+
+### 5. Learn from the Generated Code
+
+Use AI-generated code as a learning opportunity. When the AI suggests a solution you did not think of, take time to understand *why* it works. This is especially valuable for learning new languages or frameworks.
+
+### 6. Keep Your Codebase Clean
+
+AI agents perform better with well-organized code. Clean naming conventions, consistent formatting, and clear documentation all help the model understand your code and generate better suggestions.
+
+### 7. Use Version Control Aggressively
+
+When using AI to make changes, commit frequently. If the AI makes changes that break things, you can easily revert to the last working state. Never let AI make large changes without incremental commits.
+
+### 8. Customize Your AI Assistant
+
+Most tools support custom instructions. Configure them to match your project's conventions:
+- **Copilot**: `.github/copilot-instructions.md`
+- **Cursor**: `.cursorrules`
+- **Claude Code**: `CLAUDE.md`
+- **Cody**: `.cody/ignore`
+
+### 9. Be Specific About Requirements
+
+Vague prompts produce vague code. Instead of "write a parser," try "write a parser for RFC 822 email headers that handles folded lines and returns a dictionary of header names to values."
+
+### 10. Use AI for Code Review, Not Just Generation
+
+AI code review can catch issues you might miss, especially in large diffs. Use it as a supplement to (not replacement for) human code review.
+
+### 11. Monitor Costs
+
+AI API calls are not free. Be mindful of token usage, especially when working with large files or generating many iterations. Use appropriate model sizes for the task at hand.
+
+### 12. Understand Model Limitations
+
+AI models have knowledge cutoff dates and may not know about very recent library versions or APIs. They can hallucinate function names, parameters, or entire APIs. Always verify against actual documentation.
+
+---
+
+## Key Takeaways
+
+- **AI coding assistants have evolved rapidly** from simple autocomplete to fully autonomous agents capable of completing complex, multi-step programming tasks.
+
+- **Code generation uses the same token-by-token prediction** as language models, but with specialized training on code datasets and fine-tuning for program correctness.
+
+- **Code review agents can catch bugs, security vulnerabilities, and style issues** that human reviewers might miss, especially in large or complex diffs.
+
+- **Debugging assistants interpret error messages and stack traces** to suggest targeted fixes, dramatically reducing time spent on troubleshooting.
+
+- **Test generation agents analyze function signatures and implementations** to produce comprehensive test suites covering happy paths, edge cases, and error conditions.
+
+- **CI/CD integration makes AI assistance automatic**, embedding code review and test generation into your development workflow.
+
+- **IDE plugin architecture** combines LSP integration, file indexing, embedding-based retrieval, and context window management to provide intelligent assistance within your editor.
+
+- **Always verify AI-generated code** — treat it as a starting point, not a final answer. AI tools augment developer judgment; they do not replace it.
+
+- **Customize your tools** with project-specific instructions to get the most relevant and useful suggestions.
+
+- **The landscape is evolving fast** — new models, tools, and capabilities appear regularly. Stay curious and keep experimenting.
+
+---
+
+## Try It Yourself
+
+### Exercise 1: Build a Simple Code Review Agent
+
+Using the code review agent example from this chapter as a starting point, build your own version with these modifications:
+
+1. Add support for reviewing JavaScript and TypeScript files
+2. Add a severity filter that only shows warnings and above
+3. Add the ability to post comments directly to a GitHub PR using the GitHub API
+4. Test it on a real pull request from one of your own projects
+
+**Starter code hint**: Use `subprocess.run(["git", "diff", "main"])` to get the diff, and the `requests` library to interact with the GitHub API.
+
+### Exercise 2: Extend the Test Generator
+
+Take the test generation agent and add the following features:
+
+1. **Coverage analysis**: After generating tests, run `pytest --cov` and report which lines are not covered
+2. **Mutation testing**: Use `mutmut` to verify that the generated tests actually catch real bugs
+3. **Regression testing**: Given a bug report, generate a specific regression test case
+4. **Conftest generation**: Automatically generate shared fixtures and conftest.py files
+
+**Challenge**: Can you get the agent to generate tests that achieve 100% branch coverage on a simple module?
+
+### Exercise 3: Create a CI/CD Pipeline
+
+Set up a GitHub Actions workflow that:
+
+1. Runs on every pull request
+2. Uses the Anthropic API to review the diff
+3. Posts review comments on the PR
+4. Generates tests for any new or modified functions
+5. Runs all tests (existing + new) and reports results
+6. Only allows merging if all tests pass and no critical issues are found
+
+**Hint**: Start with the workflow YAML from the CI/CD section and build from there.
+
+### Exercise 4: Build a Codebase-Aware Chat Agent
+
+Create a terminal-based chat agent that:
+
+1. Indexes all Python files in a directory using embeddings
+2. Accepts natural language questions about the codebase
+3. Retrieves relevant code snippets for each question
+4. Uses the Anthropic API to answer questions using the retrieved context
+5. Supports follow-up questions in a conversation loop
+
+**Starter structure**:
+
+```python
+"""
+Codebase Chat Agent
+Ask questions about your codebase and get AI-powered answers.
+"""
+
+import os
+import anthropic
+from pathlib import Path
+
+
+class CodebaseChat:
+    def __init__(self, project_path: str):
+        self.client = anthropic.Anthropic()
+        self.project_path = Path(project_path)
+        self.index = {}  # file_path -> content
+        self.conversation = []  # chat history
+
+    def index_project(self):
+        """Index all Python files in the project."""
+        for py_file in self.project_path.rglob("*.py"):
+            if ".venv" in str(py_file):
+                continue
+            self.index[str(py_file)] = py_file.read_text()
+
+    def search_code(self, query: str, top_k: int = 5):
+        """Find relevant code for a query."""
+        # Implement keyword or embedding search
+        # Return top_k most relevant file chunks
+        pass
+
+    def chat(self, question: str) -> str:
+        """Ask a question about the codebase."""
+        # 1. Search for relevant code
+        relevant = self.search_code(question)
+
+        # 2. Build context from retrieved code
+        context = "\n\n".join(
+            f"File: {path}\n```\n{content[:2000]}\n```"
+            for path, content in relevant
+        )
+
+        # 3. Ask Claude with context
+        # 4. Return and store the answer
+        pass
+
+
+if __name__ == "__main__":
+    agent = CodebaseChat(".")
+    agent.index_project()
+
+    while True:
+        question = input("\nAsk about the codebase (q to quit): ")
+        if question.lower() == "q":
+            break
+        answer = agent.chat(question)
+        print(f"\n{answer}")
+```
+
+---
+
+## Summary
+
+This chapter has taken you on a journey through the landscape of AI-powered software engineering. From understanding how LLMs generate code token by token, to building your own code review and test generation agents, to integrating these tools into your CI/CD pipeline — you now have both the conceptual knowledge and the practical skills to leverage AI in your development workflow.
+
+The key insight is that these tools are not magic. They are sophisticated systems that combine large language models with carefully designed context management, retrieval systems, and integration layers. Understanding how they work empowers you to use them more effectively — and to build your own specialized tools when existing ones do not meet your needs.
+
+As you continue your journey, remember: AI coding agents are powerful collaborators, but the best code is still written by developers who understand what they are building and why. Use AI to accelerate your work, learn new patterns, and handle routine tasks — but never outsource your judgment.
+
+In the next chapter, we will explore how AI agents are transforming data analysis and scientific research, opening up new possibilities for discovery and insight.
+
+---
+
+*Continue to [Chapter 7: Data Analysis & Research Agents →]*
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"children":["$","$L2",null,{"content":"$3","currentChapter":{"id":"agents-ch-06","number":6,"title":"Developer & Coder Agents","subtitle":"AI-Powered Software Engineering","description":"Build agents that generate code, review PRs, debug issues, write tests, and integrate into your CI/CD pipeline.","slug":"developer-and-coder-agents","part":"Part II: Building Agents","estimatedPages":20,"topics":["Code generation","Code review agents","Debugging assistants","Test generation","CI/CD integration","IDE plugin architecture"],"icon":"👨‍💻","bookId":"ai-agents"}}]}],["$L4","$L5"],"$L6"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"WpHiBD4DjnzuprdEnivdA"}
+4:["$","script","script-0",{"src":"/_next/static/chunks/16vgld9iclosn.js","async":true}]
+5:["$","script","script-1",{"src":"/_next/static/chunks/2rb1230i-fez-.js","async":true}]
+6:["$","$L7",null,{"children":["$","$8",null,{"name":"Next.MetadataOutlet","children":"$@9"}]}]
+9:null

@@ -1,0 +1,1857 @@
+<!DOCTYPE html><html lang="en" class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/chunks/157per-6rfej7.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/3s_ssfmklbvuh.js"/><script src="/_next/static/chunks/3h0oyn0exvw0m.js" async=""></script><script src="/_next/static/chunks/0gy5uo_6oz9q4.js" async=""></script><script src="/_next/static/chunks/2n-c2rhkbzx6r.js" async=""></script><script src="/_next/static/chunks/turbopack-10u0tugcn5e6r.js" async=""></script><script src="/_next/static/chunks/3j2brc7c8hat8.js" async=""></script><script src="/_next/static/chunks/05b0208rfh8ys.js" async=""></script><script src="/_next/static/chunks/16vgld9iclosn.js" async=""></script><script src="/_next/static/chunks/2rb1230i-fez-.js" async=""></script><meta name="next-size-adjust" content=""/><title>AI Agents: The Complete Guide</title><meta name="description" content="A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"/><meta name="author" content="Manjunath Kalburgi"/><meta name="keywords" content="AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"/><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body class="min-h-full flex flex-col"><div hidden=""><!--$--><!--/$--></div><div><div class="reading-progress" style="width:0%"></div><nav class="fixed top-0 left-0 right-0 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border-color)] z-40 no-print"><div class="flex items-center justify-between px-4 py-2 max-w-full"><div class="flex items-center gap-3"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Toggle sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h14M3 10h14M3 15h14"></path></svg></button><a class="text-sm font-semibold text-primary hover:underline hidden sm:inline" href="/">AI Agents Book</a></div><div class="flex items-center gap-2 text-sm text-[var(--foreground)] opacity-60"><span class="hidden md:inline">Chapter <!-- -->3</span><span class="hidden md:inline">•</span><span class="hidden lg:inline">Introduction to AI Agents</span><span class="lg:hidden">🤖</span></div><div class="flex items-center gap-2"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12V4M4 7l4-4 4 4"></path></svg></button></div></div></nav><div class="flex pt-12 min-h-screen"><aside class="fixed left-0 top-12 bottom-0 w-72 bg-[var(--surface)] border-r border-[var(--border-color)] overflow-y-auto transition-transform duration-300 z-30 no-print translate-x-0"><div class="p-4"><div class="mb-6 pb-4 border-b border-[var(--border-color)]"><span class="text-xs font-medium text-primary uppercase tracking-wide">Chapter <!-- -->3</span><h2 class="text-lg font-bold text-[var(--foreground)] mt-1">Introduction to AI Agents</h2><p class="text-xs text-[var(--foreground)] opacity-60 mt-1">~<!-- -->18<!-- --> pages • <!-- -->Part I: Foundations</p></div><div class="mb-6"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">On this page</h3><div class="space-y-1"><a href="#chapter-3-introduction-to-ai-agents" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chapter 3: Introduction to AI Agents</a><a href="#what-makes-an-agent-different-from-a-chatbot" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What Makes an Agent Different from a Chatbot</a><a href="#table-of-contents" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Table of Contents</a><a href="#1-chatbot-vs-agent-the-key-difference" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">1. Chatbot vs Agent: The Key Difference</a><a href="#the-spectrum-of-ai-systems" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Spectrum of AI Systems</a><a href="#comparison-table" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Comparison Table</a><a href="#the-action-difference" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The &quot;Action&quot; Difference</a><a href="#real-world-agent-capabilities" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Real-World Agent Capabilities</a><a href="#what-an-agent-can-do-vs-what-a-chatbot-can-do" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What an agent can DO vs what a chatbot can do</a><a href="#2-the-agent-loop" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">2. The Agent Loop</a><a href="#the-core-cycle" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Core Cycle</a><a href="#step-by-step-walkthrough" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Step-by-Step Walkthrough</a><a href="#the-loop-in-code" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Loop in Code</a><a href="#3-tool-use-function-calling" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">3. Tool Use / Function Calling</a><a href="#what-are-tools" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What Are Tools?</a><a href="#function-calling-with-openai" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Function Calling with OpenAI</a><a href="#define-tools-the-agent-can-use" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Define tools the agent can use</a><a href="#map-function-names-to-actual-implementations" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Map function names to actual implementations</a><a href="#test-the-agent" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Test the agent ===</a><a href="#anthropic-claude-tool-use" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Anthropic Claude Tool Use</a><a href="#define-tools-for-claude" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Define tools for Claude</a><a href="#4-memory-systems" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">4. Memory Systems</a><a href="#types-of-agent-memory" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Types of Agent Memory</a><a href="#short-term-memory-conversation-buffer" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Short-Term Memory (Conversation Buffer)</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#simulate-a-conversation" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Simulate a conversation</a><a href="#get-messages-for-api-call" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Get messages for API call</a><a href="#long-term-memory-vector-store" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Long-Term Memory (Vector Store)</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#store-preferences" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Store preferences</a><a href="#store-task-outcomes" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Store task outcomes</a><a href="#recall-memories" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Recall memories</a><a href="#working-memory-scratchpad" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Working Memory (Scratchpad)</a><a href="#usage-in-agent-loop" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage in agent loop</a><a href="#plan-the-task" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Plan the task</a><a href="#record-progress" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Record progress</a><a href="#5-planning" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5. Planning</a><a href="#why-planning-matters" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Why Planning Matters</a><a href="#plan-and-execute-pattern" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Plan-and-Execute Pattern</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#6-agent-frameworks-overview" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">6. Agent Frameworks Overview</a><a href="#popular-frameworks-comparison" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Popular Frameworks Comparison</a><a href="#langchain-example" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">LangChain Example</a><a href="#define-tools" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Define tools</a><a href="#create-agent" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Create agent</a><a href="#run" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Run</a><a href="#crewai-example" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">CrewAI Example</a><a href="#define-agents-with-specific-roles" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Define agents with specific roles</a><a href="#define-tasks" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Define tasks</a><a href="#create-crew-and-run" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Create crew and run</a><a href="#7-architecture-patterns" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">7. Architecture Patterns</a><a href="#react-reasoning-acting" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">ReAct (Reasoning + Acting)</a><a href="#plan-and-execute" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Plan-and-Execute</a><a href="#reflexion" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Reflexion</a><a href="#multi-agent-collaboration" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Multi-Agent Collaboration</a><a href="#8-building-a-simple-agent" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8. Building a Simple Agent</a><a href="#complete-react-agent-from-scratch" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Complete ReAct Agent from Scratch</a><a href="#define-tools" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Define Tools ===</a><a href="#create-and-use-the-agent" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Create and Use the Agent ===</a><a href="#register-tools" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Register tools</a><a href="#test-the-agent" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Test the agent</a><a href="#show-stats" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Show stats</a><a href="#9-building-an-agent-with-memory" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">9. Building an Agent with Memory</a><a href="#agent-with-full-memory-integration" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Agent with Full Memory Integration</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Usage ===</a><a href="#first-conversation" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">First conversation</a><a href="#explicit-learning" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Explicit learning</a><a href="#second-conversation-simulating-new-session-with-memory" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Second conversation (simulating new session with memory)</a><a href="#working-memory-for-a-specific-task" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Working memory for a specific task</a><a href="#10-key-takeaways" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">10. Key Takeaways</a><a href="#11-try-it-yourself" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11. Try It Yourself</a><a href="#exercise-1-basic-react-agent" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 1: Basic ReAct Agent</a><a href="#exercise-2-agent-with-memory" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 2: Agent with Memory</a><a href="#exercise-3-plan-and-execute-agent" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 3: Plan-and-Execute Agent</a><a href="#exercise-4-multi-tool-agent" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 4: Multi-Tool Agent</a><a href="#exercise-5-agent-with-self-reflection" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 5: Agent with Self-Reflection</a></div></div><div class="border-t border-[var(--border-color)] pt-4"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">Chapters</h3><div class="space-y-1"><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/llms-and-genai-fundamentals"><span class="text-base">🧠</span><span class="truncate">LLMs &amp; GenAI Fundamentals</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/rag-and-knowledge-systems"><span class="text-base">🔍</span><span class="truncate">RAG &amp; Knowledge Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all bg-primary/10 text-primary font-medium" href="/chapter/introduction-to-ai-agents"><span class="text-base">🤖</span><span class="truncate">Introduction to AI Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/customer-support-agents"><span class="text-base">💬</span><span class="truncate">Customer Support Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/executive-and-analyst-agents"><span class="text-base">📊</span><span class="truncate">Executive &amp; Analyst Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/developer-and-coder-agents"><span class="text-base">👨‍💻</span><span class="truncate">Developer &amp; Coder Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/designer-and-creative-agents"><span class="text-base">🎨</span><span class="truncate">Designer &amp; Creative Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/multi-agent-systems"><span class="text-base">🔗</span><span class="truncate">Multi-Agent Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-tools-from-scratch"><span class="text-base">🔧</span><span class="truncate">Building Tools from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-your-own-llm-pipeline"><span class="text-base">⚙️</span><span class="truncate">Building Your Own LLM Pipeline</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-rag-from-scratch"><span class="text-base">🏗️</span><span class="truncate">Building RAG from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/complete-project-deployment"><span class="text-base">🚀</span><span class="truncate">Complete Project: End to End</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/security-and-safety"><span class="text-base">🛡️</span><span class="truncate">Security, Safety &amp; Guardrails</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/observability-and-scalability"><span class="text-base">📈</span><span class="truncate">Observability &amp; Scalability</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/authenticity-and-future"><span class="text-base">🌍</span><span class="truncate">Authenticity &amp; The Future</span></a></div></div></div></aside><main class="flex-1 transition-all duration-300 ml-72 max-w-4xl px-6 md:px-12 py-12"><div class="mb-10 pb-8 border-b-2 border-primary/20"><span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">Part I: Foundations</span><h1 class="text-4xl md:text-5xl font-extrabold mb-2 bg-gradient-to-r from-primary via-emerald-400 to-teal-400 -webkit-background-clip-text text-transparent bg-clip-text">Chapter <!-- -->3<!-- -->: <!-- -->Introduction to AI Agents</h1><p class="text-xl text-[var(--foreground)] opacity-70">What Makes an Agent Different from a Chatbot</p></div><article class="prose-book"><h1 class="text-4xl font-extrabold mt-12 mb-4">Chapter 3: Introduction to AI Agents</h1>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">What Makes an Agent Different from a Chatbot</h2>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><em class="italic">&quot;A chatbot answers your question. An agent solves your problem.&quot;</em></p>
+</blockquote>
+<p class="mb-4 text-justify">This chapter marks the turning point of our journey. We&#x27;ve covered LLMs and RAG — the building blocks. Now we assemble them into something far more powerful: an <strong class="font-bold text-primary">AI Agent</strong> that can reason, plan, and take actions in the real world.</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Table of Contents</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><a href="#1-chatbot-vs-agent-the-key-difference" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Chatbot vs Agent: The Key Difference</a></li>
+<li class="text-[var(--foreground)]"><a href="#2-the-agent-loop" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">The Agent Loop</a></li>
+<li class="text-[var(--foreground)]"><a href="#3-tool-use--function-calling" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Tool Use / Function Calling</a></li>
+<li class="text-[var(--foreground)]"><a href="#4-memory-systems" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Memory Systems</a></li>
+<li class="text-[var(--foreground)]"><a href="#5-planning" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Planning</a></li>
+<li class="text-[var(--foreground)]"><a href="#6-agent-frameworks-overview" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Agent Frameworks Overview</a></li>
+<li class="text-[var(--foreground)]"><a href="#7-architecture-patterns" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Architecture Patterns</a></li>
+<li class="text-[var(--foreground)]"><a href="#8-building-a-simple-agent" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Building a Simple Agent</a></li>
+<li class="text-[var(--foreground)]"><a href="#9-building-an-agent-with-memory" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Building an Agent with Memory</a></li>
+<li class="text-[var(--foreground)]"><a href="#10-key-takeaways" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Key Takeaways</a></li>
+<li class="text-[var(--foreground)]"><a href="#11-try-it-yourself" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Try It Yourself</a></li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">1. Chatbot vs Agent: The Key Difference</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Spectrum of AI Systems</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Simple                                                     Complex
+│                                                            │
+▼                                                            ▼
+┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+│  Basic   │  │  Smart   │  │  RAG-    │  │  Tool-   │  │  Full    │
+│  Chatbot │→ │ Chatbot  │→ │  Augmented│→ │  Using   │→ │  Agent   │
+│          │  │          │  │  Chatbot  │  │  Agent   │  │          │
+│ Single   │  │ Multi-   │  │ Accesses │  │ Can call │  │ Plans,   │
+│ turn,    │  │ turn,    │  │ external │  │ APIs &amp;   │  │ reasons, │
+│ no state │  │ has      │  │ docs     │  │ tools    │  │ acts     │
+│          │  │ memory   │  │          │  │          │  │ autonomously│
+└──────────┘  └──────────┘  └──────────┘  └──────────┘  └──────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Comparison Table</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Feature</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Chatbot</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">RAG Chatbot</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">AI Agent</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Responds to questions</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Maintains conversation</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Accesses external data</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Uses external tools</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Takes autonomous actions</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Plans multi-step tasks</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Self-corrects errors</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Interacts with APIs</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Handles complex workflows</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">❌</td><td class="px-4 py-3 border border-[var(--border-color)]">✅</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The &quot;Action&quot; Difference</h3>
+<p class="mb-4 text-justify">The defining characteristic of an agent is <strong class="font-bold text-primary">taking action</strong>:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">User: &quot;Book me a flight from NYC to London next Tuesday&quot;
+
+Chatbot:
+  &quot;I&#x27;d recommend checking Expedia or Google Flights for 
+   flights from NYC to London. Prices typically range from 
+   $400-$800 round trip.&quot;
+  (Provides advice but CANNOT book the flight)
+
+Agent:
+  1. Searches available flights on Tuesday
+  2. Filters by user preferences (economy, non-stop)
+  3. Selects best option based on price and time
+  4. Books the flight using the airline API
+  5. Sends confirmation to user&#x27;s email
+  (Takes ACTION and completes the task)
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Real-World Agent Capabilities</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># What an agent can DO vs what a chatbot can do
+
+chatbot_capabilities = {
+    &quot;answer_questions&quot;: True,
+    &quot;have_conversations&quot;: True,
+    &quot;provide_explanations&quot;: True,
+    &quot;summarize_text&quot;: True,
+    &quot;translate&quot;: True,
+}
+
+agent_capabilities = {
+    **chatbot_capabilities,
+    &quot;search_the_web&quot;: True,
+    &quot;read_and_write_files&quot;: True,
+    &quot;execute_code&quot;: True,
+    &quot;call_apis&quot;: True,
+    &quot;send_emails&quot;: True,
+    &quot;manage_databases&quot;: True,
+    &quot;browse_websites&quot;: True,
+    &quot;make_decisions&quot;: True,
+    &quot;learn_from_feedback&quot;: True,
+    &quot;collaborate_with_other_agents&quot;: True,
+}
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">2. The Agent Loop</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Core Cycle</h3>
+<p class="mb-4 text-justify">Every AI agent operates on a fundamental loop:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">                    ┌─────────────────┐
+                    │                 │
+                    ▼                 │
+            ┌──────────────┐         │
+            │   OBSERVE    │         │
+            │              │         │
+            │ Receive user │         │
+            │ input or     │         │
+            │ environment  │         │
+            │ feedback     │         │
+            └──────┬───────┘         │
+                   │                  │
+                   ▼                  │
+            ┌──────────────┐         │
+            │    THINK     │         │
+            │              │         │
+            │ Reason about │         │
+            │ what to do   │         │
+            │ next         │         │
+            └──────┬───────┘         │
+                   │                  │
+                   ▼                  │
+            ┌──────────────┐         │
+            │     ACT      │         │
+            │              │         │
+            │ Execute tool │         │
+            │ or generate  │         │
+            │ response     │─────────┘
+            └──────────────┘
+
+         Repeat until task is complete
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Step-by-Step Walkthrough</h3>
+<p class="mb-4 text-justify">Let&#x27;s trace through a real agent interaction:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">User: &quot;Find the top 3 restaurants near me and make a reservation 
+       at the best one for 7pm tonight&quot;
+
+ITERATION 1:
+  Observe: User wants restaurant recommendations + reservation
+  Think:   Need to (1) find restaurants (2) pick best (3) book
+  Act:     Call Google Maps API: search_restaurants(
+             location=&quot;user_location&quot;, 
+             cuisine=&quot;any&quot;,
+             open_now=True
+           )
+
+ITERATION 2:
+  Observe: Got list of 20 restaurants
+  Think:   Need to filter to top 3 by rating and reviews
+  Act:     Process results: filter and rank by rating + reviews
+           → Top 3: [Sakura (4.8), Pasta House (4.7), 
+                      Taco Loco (4.6)]
+
+ITERATION 3:
+  Observe: Have top 3 restaurants identified
+  Think:   Sakura has highest rating, should book there
+  Act:     Call OpenTable API: make_reservation(
+             restaurant=&quot;Sakura&quot;,
+             time=&quot;19:00&quot;,
+             date=&quot;today&quot;,
+             party_size=user.party_size
+           )
+
+ITERATION 4:
+  Observe: Reservation confirmed (Confirmation #R4521)
+  Think:   Task complete! Summarize for user
+  Act:     Respond: &quot;I found the top 3 restaurants: Sakura 
+           (4.8★), Pasta House (4.7★), and Taco Loco (4.6★).
+           I&#x27;ve booked a table at Sakura for 7pm tonight. 
+           Confirmation #R4521. You&#x27;ll receive a confirmation 
+           email shortly.&quot;
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Loop in Code</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+The fundamental agent loop pattern.
+&quot;&quot;&quot;
+
+from enum import Enum
+from dataclasses import dataclass
+
+
+class AgentState(Enum):
+    &quot;&quot;&quot;Possible states of the agent loop.&quot;&quot;&quot;
+    OBSERVING = &quot;observing&quot;
+    THINKING = &quot;thinking&quot;
+    ACTING = &quot;acting&quot;
+    DONE = &quot;done&quot;
+    ERROR = &quot;error&quot;
+
+
+@dataclass
+class AgentStep:
+    &quot;&quot;&quot;Represents one step in the agent loop.&quot;&quot;&quot;
+    iteration: int
+    state: AgentState
+    observation: str
+    thought: str
+    action: str
+    action_result: str
+
+
+class AgentLoop:
+    &quot;&quot;&quot;
+    Base class implementing the core agent loop.
+    Subclass this and override the methods for specific agents.
+    &quot;&quot;&quot;
+    
+    def __init__(self, name: str = &quot;Agent&quot;):
+        self.name = name
+        self.state = AgentState.OBSERVING
+        self.history: list[AgentStep] = []
+        self.max_iterations = 10
+    
+    def observe(self, input_data: str) -&gt; str:
+        &quot;&quot;&quot;
+        Process input from user or environment.
+        Override this for custom observation logic.
+        &quot;&quot;&quot;
+        return input_data
+    
+    def think(self, observation: str) -&gt; tuple[str, str]:
+        &quot;&quot;&quot;
+        Decide what action to take.
+        Returns (thought, action_description).
+        Override this with your LLM reasoning logic.
+        &quot;&quot;&quot;
+        raise NotImplementedError(&quot;Subclass must implement think()&quot;)
+    
+    def act(self, action: str) -&gt; str:
+        &quot;&quot;&quot;
+        Execute the decided action.
+        Returns the result of the action.
+        Override this with your tool execution logic.
+        &quot;&quot;&quot;
+        raise NotImplementedError(&quot;Subclass must implement act()&quot;)
+    
+    def is_done(self, step: AgentStep) -&gt; bool:
+        &quot;&quot;&quot;
+        Determine if the agent should stop.
+        Override this for custom termination conditions.
+        &quot;&quot;&quot;
+        return &quot;DONE&quot; in step.action_result.upper()
+    
+    def run(self, user_input: str) -&gt; list[AgentStep]:
+        &quot;&quot;&quot;
+        Execute the full agent loop.
+        &quot;&quot;&quot;
+        self.state = AgentState.OBSERVING
+        
+        for iteration in range(self.max_iterations):
+            # OBSERVE
+            observation = self.observe(user_input)
+            self.state = AgentState.THINKING
+            
+            # THINK
+            thought, action = self.think(observation)
+            self.state = AgentState.ACTING
+            
+            # ACT
+            try:
+                action_result = self.act(action)
+            except Exception as e:
+                action_result = f&quot;Error: {str(e)}&quot;
+                self.state = AgentState.ERROR
+            
+            # Record step
+            step = AgentStep(
+                iteration=iteration + 1,
+                state=self.state,
+                observation=observation if iteration == 0 
+                    else self.history[-1].action_result,
+                thought=thought,
+                action=action,
+                action_result=action_result
+            )
+            self.history.append(step)
+            
+            # Check if done
+            if self.is_done(step):
+                self.state = AgentState.DONE
+                break
+        
+        return self.history
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">3. Tool Use / Function Calling</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What Are Tools?</h3>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Tools</strong> are external functions, APIs, or capabilities that an agent can call upon. They extend the agent beyond text generation into the real world.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Without tools:                    With tools:
+                                 
+LLM: &quot;I think the               LLM: &quot;Let me check the
+weather is probably              weather for you.&quot;
+nice today.&quot;                     
+                                  → Calls weather_api(&quot;NYC&quot;)
+LLM: Can&#x27;t verify               
+LLM: Might be wrong             Weather API: {&quot;temp&quot;: 72, 
+                                     &quot;condition&quot;: &quot;Sunny&quot;}
+                                 
+                                 LLM: &quot;It&#x27;s 72°F and sunny 
+                                 in NYC today!&quot;
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Function Calling with OpenAI</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Function Calling - The foundation of agent tool use.
+&quot;&quot;&quot;
+
+from openai import OpenAI
+import json
+
+client = OpenAI()
+
+# Define tools the agent can use
+tools = [
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;function&quot;: {
+            &quot;name&quot;: &quot;get_weather&quot;,
+            &quot;description&quot;: &quot;Get the current weather for a location&quot;,
+            &quot;parameters&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;location&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;City name (e.g., &#x27;New York&#x27;)&quot;
+                    },
+                    &quot;unit&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [&quot;celsius&quot;, &quot;fahrenheit&quot;],
+                        &quot;description&quot;: &quot;Temperature unit&quot;
+                    }
+                },
+                &quot;required&quot;: [&quot;location&quot;]
+            }
+        }
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;function&quot;: {
+            &quot;name&quot;: &quot;search_database&quot;,
+            &quot;description&quot;: &quot;Search the product database&quot;,
+            &quot;parameters&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;query&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;Search query&quot;
+                    },
+                    &quot;category&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;Product category filter&quot;
+                    },
+                    &quot;max_price&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;description&quot;: &quot;Maximum price filter&quot;
+                    }
+                },
+                &quot;required&quot;: [&quot;query&quot;]
+            }
+        }
+    }
+]
+
+
+def get_weather(location: str, unit: str = &quot;fahrenheit&quot;) -&gt; dict:
+    &quot;&quot;&quot;Simulated weather API call.&quot;&quot;&quot;
+    # In production, call a real weather API
+    return {
+        &quot;location&quot;: location,
+        &quot;temperature&quot;: 72 if unit == &quot;fahrenheit&quot; else 22,
+        &quot;condition&quot;: &quot;Sunny&quot;,
+        &quot;humidity&quot;: 45,
+        &quot;wind_speed&quot;: 8
+    }
+
+
+def search_database(
+    query: str, 
+    category: str = None, 
+    max_price: float = None
+) -&gt; list[dict]:
+    &quot;&quot;&quot;Simulated database search.&quot;&quot;&quot;
+    # In production, query your actual database
+    products = [
+        {&quot;name&quot;: &quot;Wireless Headphones&quot;, &quot;price&quot;: 79.99, 
+         &quot;category&quot;: &quot;electronics&quot;},
+        {&quot;name&quot;: &quot;Running Shoes&quot;, &quot;price&quot;: 129.99, 
+         &quot;category&quot;: &quot;footwear&quot;},
+        {&quot;name&quot;: &quot;Coffee Maker&quot;, &quot;price&quot;: 49.99, 
+         &quot;category&quot;: &quot;kitchen&quot;},
+    ]
+    
+    results = [
+        p for p in products
+        if query.lower() in p[&quot;name&quot;].lower()
+        and (not category or p[&quot;category&quot;] == category)
+        and (not max_price or p[&quot;price&quot;] &lt;= max_price)
+    ]
+    return results
+
+
+# Map function names to actual implementations
+available_functions = {
+    &quot;get_weather&quot;: get_weather,
+    &quot;search_database&quot;: search_database,
+}
+
+
+def run_agent(user_message: str) -&gt; str:
+    &quot;&quot;&quot;
+    Run the agent with tool use.
+    Handles the full observe-think-act loop.
+    &quot;&quot;&quot;
+    messages = [
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a helpful assistant &quot;
+         &quot;with access to weather and product search tools.&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: user_message}
+    ]
+    
+    # Agent loop: keep going until no more tool calls needed
+    while True:
+        response = client.chat.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=messages,
+            tools=tools,
+            tool_choice=&quot;auto&quot;  # Let model decide when to use tools
+        )
+        
+        response_message = response.choices[0].message
+        
+        # If no tool calls, return the text response
+        if not response_message.tool_calls:
+            return response_message.content
+        
+        # Process tool calls
+        messages.append(response_message)
+        
+        for tool_call in response_message.tool_calls:
+            function_name = tool_call.function.name
+            function_args = json.loads(
+                tool_call.function.arguments
+            )
+            
+            print(f&quot;  Tool: {function_name}({function_args})&quot;)
+            
+            # Execute the function
+            function_result = available_functions[function_name](
+                **function_args
+            )
+            
+            # Add tool result to messages
+            messages.append({
+                &quot;tool_call_id&quot;: tool_call.id,
+                &quot;role&quot;: &quot;tool&quot;,
+                &quot;name&quot;: function_name,
+                &quot;content&quot;: json.dumps(function_result)
+            })
+    
+    return &quot;Max iterations reached&quot;
+
+
+# === Test the agent ===
+print(&quot;Agent:&quot;, run_agent(
+    &quot;What&#x27;s the weather in London? And do you have any electronics &quot;
+    &quot;under $100?&quot;
+))
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Anthropic Claude Tool Use</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Tool use with Claude (Anthropic&#x27;s API).
+&quot;&quot;&quot;
+
+import anthropic
+import json
+
+client = anthropic.Anthropic()
+
+# Define tools for Claude
+tools = [
+    {
+        &quot;name&quot;: &quot;get_weather&quot;,
+        &quot;description&quot;: &quot;Get current weather for a location&quot;,
+        &quot;input_schema&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;location&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;description&quot;: &quot;City name&quot;
+                }
+            },
+            &quot;required&quot;: [&quot;location&quot;]
+        }
+    }
+]
+
+
+def run_claude_agent(user_message: str) -&gt; str:
+    &quot;&quot;&quot;Run agent using Claude&#x27;s tool use.&quot;&quot;&quot;
+    
+    messages = [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: user_message}]
+    
+    while True:
+        # Call Claude
+        response = client.messages.create(
+            model=&quot;claude-sonnet-4-20250514&quot;,
+            max_tokens=1024,
+            tools=tools,
+            messages=messages
+        )
+        
+        # Check if Claude wants to use a tool
+        if response.stop_reason == &quot;tool_use&quot;:
+            # Process tool calls
+            tool_results = []
+            
+            for block in response.content:
+                if block.type == &quot;tool_use&quot;:
+                    print(f&quot;  Claude calls: {block.name}&quot;
+                          f&quot;({block.input})&quot;)
+                    
+                    # Execute tool
+                    result = get_weather(**block.input)
+                    
+                    tool_results.append({
+                        &quot;type&quot;: &quot;tool_result&quot;,
+                        &quot;tool_use_id&quot;: block.id,
+                        &quot;content&quot;: json.dumps(result)
+                    })
+            
+            # Add to conversation and continue
+            messages.append({&quot;role&quot;: &quot;assistant&quot;, 
+                           &quot;content&quot;: response.content})
+            messages.append({&quot;role&quot;: &quot;user&quot;, 
+                           &quot;content&quot;: tool_results})
+        else:
+            # No more tool use - return final response
+            return response.content[0].text
+    
+    return &quot;Max iterations reached&quot;
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">4. Memory Systems</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Types of Agent Memory</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────────────────┐
+│                    AGENT MEMORY                       │
+│                                                       │
+│  ┌─────────────────┐  ┌─────────────────┐            │
+│  │  SHORT-TERM     │  │  LONG-TERM      │            │
+│  │  (Conversation  │  │  (Persistent    │            │
+│  │   Buffer)       │  │   Storage)      │            │
+│  │                 │  │                 │            │
+│  │ Last N messages │  │ Vector store of │            │
+│  │ in conversation │  │ past interactions│           │
+│  │                 │  │ &amp; learned facts │            │
+│  │ Context window  │  │                 │            │
+│  │ limits this     │  │ Grows over time │            │
+│  └─────────────────┘  └─────────────────┘            │
+│                                                       │
+│  ┌─────────────────┐  ┌─────────────────┐            │
+│  │  WORKING        │  │  EPISODIC       │            │
+│  │  MEMORY         │  │  MEMORY         │            │
+│  │  (Scratchpad)   │  │  (Task History) │            │
+│  │                 │  │                 │            │
+│  │ Intermediate    │  │ Record of past  │            │
+│  │ results, plans, │  │ tasks and their │            │
+│  │ scratch notes   │  │ outcomes        │            │
+│  │                 │  │                 │            │
+│  │ Current task    │  │ &quot;Last time I    │            │
+│  │ state           │  │  tried X, it    │            │
+│  │                 │  │  failed because │            │
+│  └─────────────────┘  │  of Y&quot;          │            │
+│                       └─────────────────┘            │
+└─────────────────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Short-Term Memory (Conversation Buffer)</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Short-term memory: managing conversation history.
+&quot;&quot;&quot;
+
+from collections import deque
+
+
+class ConversationMemory:
+    &quot;&quot;&quot;
+    Manages conversation history within context window limits.
+    &quot;&quot;&quot;
+    
+    def __init__(self, max_messages: int = 20, 
+                 system_prompt: str = &quot;&quot;):
+        self.max_messages = max_messages
+        self.system_prompt = system_prompt
+        self.messages: deque = deque(maxlen=max_messages)
+    
+    def add_message(self, role: str, content: str):
+        &quot;&quot;&quot;Add a message to the conversation.&quot;&quot;&quot;
+        self.messages.append({&quot;role&quot;: role, &quot;content&quot;: content})
+    
+    def get_messages(self) -&gt; list[dict]:
+        &quot;&quot;&quot;Get messages for API call.&quot;&quot;&quot;
+        result = []
+        if self.system_prompt:
+            result.append({
+                &quot;role&quot;: &quot;system&quot;, 
+                &quot;content&quot;: self.system_prompt
+            })
+        result.extend(list(self.messages))
+        return result
+    
+    def summarize_old_messages(self, keep_recent: int = 10) -&gt; str:
+        &quot;&quot;&quot;
+        Summarize older messages to save context space.
+        Useful when conversation gets very long.
+        &quot;&quot;&quot;
+        if len(self.messages) &lt;= keep_recent:
+            return &quot;&quot;
+        
+        old_messages = list(self.messages)[:-keep_recent]
+        
+        # In production, use LLM to summarize
+        summary = &quot;Previous conversation summary: &quot;
+        summary += f&quot;Discussed {len(old_messages)} messages about &quot;
+        topics = set()
+        for msg in old_messages:
+            if msg[&quot;role&quot;] == &quot;user&quot;:
+                topics.add(msg[&quot;content&quot;][:50])
+        summary += &quot;, &quot;.join(list(topics)[:3])
+        
+        return summary
+    
+    def clear(self):
+        &quot;&quot;&quot;Clear conversation history.&quot;&quot;&quot;
+        self.messages.clear()
+
+
+# Usage
+memory = ConversationMemory(
+    max_messages=20,
+    system_prompt=&quot;You are a helpful coding assistant.&quot;
+)
+
+# Simulate a conversation
+memory.add_message(&quot;user&quot;, &quot;How do I sort a list in Python?&quot;)
+memory.add_message(&quot;assistant&quot;, &quot;Use sorted() or list.sort().&quot;)
+memory.add_message(&quot;user&quot;, &quot;What about sorting dictionaries?&quot;)
+memory.add_message(&quot;assistant&quot;, 
+    &quot;Use sorted(d.items(), key=lambda x: x[1]).&quot;)
+
+# Get messages for API call
+api_messages = memory.get_messages()
+print(f&quot;Messages in context: {len(api_messages)}&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Long-Term Memory (Vector Store)</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Long-term memory: persistent knowledge across sessions.
+&quot;&quot;&quot;
+
+from chromadb import Client
+from datetime import datetime
+
+
+class LongTermMemory:
+    &quot;&quot;&quot;
+    Persistent memory using vector database.
+    Stores important information for future retrieval.
+    &quot;&quot;&quot;
+    
+    def __init__(self, db_path: str = &quot;./agent_memory&quot;):
+        self.client = Client(path=db_path)
+        self.collection = self.client.get_or_create_collection(
+            name=&quot;long_term_memory&quot;
+        )
+    
+    def store(
+        self, 
+        content: str, 
+        memory_type: str = &quot;fact&quot;,
+        metadata: dict | None = None
+    ):
+        &quot;&quot;&quot;Store a piece of information.&quot;&quot;&quot;
+        entry_metadata = {
+            &quot;type&quot;: memory_type,
+            &quot;timestamp&quot;: datetime.now().isoformat(),
+            **(metadata or {})
+        }
+        
+        # Generate unique ID
+        entry_id = f&quot;mem_{datetime.now().timestamp()}&quot;
+        
+        self.collection.add(
+            ids=[entry_id],
+            documents=[content],
+            metadatas=[entry_metadata]
+        )
+    
+    def recall(
+        self, 
+        query: str, 
+        n_results: int = 5,
+        memory_type: str | None = None
+    ) -&gt; list[dict]:
+        &quot;&quot;&quot;Recall relevant memories.&quot;&quot;&quot;
+        query_params = {
+            &quot;query_texts&quot;: [query],
+            &quot;n_results&quot;: n_results
+        }
+        
+        if memory_type:
+            query_params[&quot;where&quot;] = {&quot;type&quot;: memory_type}
+        
+        results = self.collection.query(**query_params)
+        
+        memories = []
+        for i in range(len(results[&quot;ids&quot;][0])):
+            memories.append({
+                &quot;content&quot;: results[&quot;documents&quot;][0][i],
+                &quot;metadata&quot;: results[&quot;metadatas&quot;][0][i],
+                &quot;relevance&quot;: 1 - results[&quot;distances&quot;][0][i]
+            })
+        
+        return memories
+    
+    def store_user_preference(self, preference: str):
+        &quot;&quot;&quot;Store a user preference.&quot;&quot;&quot;
+        self.store(
+            content=preference,
+            memory_type=&quot;preference&quot;,
+            metadata={&quot;category&quot;: &quot;user_preference&quot;}
+        )
+    
+    def store_task_outcome(
+        self, task: str, outcome: str, success: bool
+    ):
+        &quot;&quot;&quot;Store the outcome of a task for future reference.&quot;&quot;&quot;
+        self.store(
+            content=f&quot;Task: {task}\nOutcome: {outcome}&quot;,
+            memory_type=&quot;task_outcome&quot;,
+            metadata={
+                &quot;success&quot;: success,
+                &quot;category&quot;: &quot;task_history&quot;
+            }
+        )
+    
+    def get_user_preferences(self) -&gt; list[str]:
+        &quot;&quot;&quot;Retrieve all stored user preferences.&quot;&quot;&quot;
+        results = self.collection.query(
+            query_texts=[&quot;user preferences&quot;],
+            n_results=100,
+            where={&quot;type&quot;: &quot;preference&quot;}
+        )
+        return results[&quot;documents&quot;][0] if results[&quot;documents&quot;] else []
+
+
+# Usage
+memory = LongTermMemory()
+
+# Store preferences
+memory.store_user_preference(
+    &quot;User prefers dark mode in all applications&quot;
+)
+memory.store_user_preference(
+    &quot;User&#x27;s timezone is PST (UTC-8)&quot;
+)
+memory.store_user_preference(
+    &quot;User prefers concise responses under 100 words&quot;
+)
+
+# Store task outcomes
+memory.store_task_outcome(
+    task=&quot;Deploy web app to AWS&quot;,
+    outcome=&quot;Successfully deployed using ECS Fargate&quot;,
+    success=True
+)
+
+# Recall memories
+relevant = memory.recall(&quot;user interface preferences&quot;)
+for mem in relevant:
+    print(f&quot;  [{mem[&#x27;relevance&#x27;]:.2f}] {mem[&#x27;content&#x27;]}&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Working Memory (Scratchpad)</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Working memory: intermediate state for current task.
+&quot;&quot;&quot;
+
+from dataclasses import dataclass, field
+
+
+@dataclass
+class WorkingMemory:
+    &quot;&quot;&quot;
+    Temporary storage for the current task.
+    Acts as a scratchpad for the agent&#x27;s reasoning.
+    &quot;&quot;&quot;
+    
+    task_description: str = &quot;&quot;
+    plan: list[str] = field(default_factory=list)
+    current_step: int = 0
+    intermediate_results: dict = field(default_factory=dict)
+    errors: list[str] = field(default_factory=list)
+    notes: list[str] = field(default_factory=list)
+    
+    def add_plan_step(self, step: str):
+        &quot;&quot;&quot;Add a step to the plan.&quot;&quot;&quot;
+        self.plan.append(step)
+    
+    def record_result(self, key: str, value):
+        &quot;&quot;&quot;Store an intermediate result.&quot;&quot;&quot;
+        self.intermediate_results[key] = value
+    
+    def record_error(self, error: str):
+        &quot;&quot;&quot;Record an error for debugging.&quot;&quot;&quot;
+        self.errors.append(error)
+    
+    def add_note(self, note: str):
+        &quot;&quot;&quot;Add a scratch note.&quot;&quot;&quot;
+        self.notes.append(note)
+    
+    def get_summary(self) -&gt; str:
+        &quot;&quot;&quot;Get a summary of current working state.&quot;&quot;&quot;
+        summary_parts = [
+            f&quot;Task: {self.task_description}&quot;,
+            f&quot;Progress: Step {self.current_step + 1}/&quot;
+            f&quot;{len(self.plan)}&quot;,
+            f&quot;Current plan: {self.plan[self.current_step] if self.plan else &#x27;None&#x27;}&quot;,
+            f&quot;Results so far: {list(self.intermediate_results.keys())}&quot;,
+        ]
+        if self.errors:
+            summary_parts.append(f&quot;Errors: {len(self.errors)}&quot;)
+        return &quot;\n&quot;.join(summary_parts)
+
+
+# Usage in agent loop
+working = WorkingMemory(task_description=&quot;Analyze sales data&quot;)
+
+# Plan the task
+working.add_plan_step(&quot;Load sales data from CSV&quot;)
+working.add_plan_step(&quot;Clean and validate data&quot;)
+working.add_plan_step(&quot;Calculate key metrics&quot;)
+working.add_plan_step(&quot;Generate visualization&quot;)
+working.add_plan_step(&quot;Write summary report&quot;)
+
+# Record progress
+working.current_step = 0
+working.record_result(&quot;row_count&quot;, 10000)
+working.record_result(&quot;date_range&quot;, &quot;2024-01-01 to 2024-12-31&quot;)
+
+print(working.get_summary())
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5. Planning</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Why Planning Matters</h3>
+<p class="mb-4 text-justify">Without planning, agents struggle with complex tasks. Planning breaks down complex requests into manageable steps.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Without Planning:                  With Planning:
+                                   
+User: &quot;Analyze our                User: &quot;Analyze our
+Q4 sales and create               Q4 sales and create
+a report with                     a report with
+recommendations&quot;                  recommendations&quot;
+                                   
+Agent: (Confused,                Agent: (Plans first)
+tries to do everything           1. Load Q4 sales data
+at once, misses steps,           2. Calculate key metrics
+produces incomplete              3. Identify trends
+output)                          4. Generate charts
+                                 5. Write recommendations
+                                 6. Assemble report
+                                 7. Review and finalize
+                                   
+                                 Then executes each step
+                                 systematically
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Plan-and-Execute Pattern</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Plan-and-Execute agent pattern.
+First creates a plan, then executes each step.
+&quot;&quot;&quot;
+
+from openai import OpenAI
+import json
+
+client = OpenAI()
+
+
+def create_plan(task: str) -&gt; list[str]:
+    &quot;&quot;&quot;Create a step-by-step plan for a task.&quot;&quot;&quot;
+    
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;&quot;&quot;You are a task planner.
+            Given a task, create a step-by-step plan.
+            
+            Return ONLY a JSON array of step descriptions.
+            Each step should be specific and actionable.
+            
+            Example: [&quot;Step 1 description&quot;, &quot;Step 2 description&quot;]&quot;&quot;&quot;},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: f&quot;Create a plan for: {task}&quot;}
+        ],
+        temperature=0.0,
+        response_format={&quot;type&quot;: &quot;json_object&quot;}
+    )
+    
+    result = json.loads(response.choices[0].message.content)
+    return result.get(&quot;steps&quot;, result.get(&quot;plan&quot;, []))
+
+
+def execute_step(
+    step: str, 
+    context: dict
+) -&gt; str:
+    &quot;&quot;&quot;Execute a single step of the plan.&quot;&quot;&quot;
+    
+    context_str = json.dumps(context, indent=2)
+    
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: f&quot;&quot;&quot;Execute this step of 
+            a plan. Use the provided context from previous steps.
+            
+            Context from previous steps:
+            {context_str}
+            
+            Provide the specific output for this step.&quot;&quot;&quot;},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: f&quot;Execute: {step}&quot;}
+        ],
+        temperature=0.2
+    )
+    
+    return response.choices[0].message.content
+
+
+def plan_and_execute(task: str) -&gt; dict:
+    &quot;&quot;&quot;
+    Complete plan-and-execute agent.
+    &quot;&quot;&quot;
+    # Step 1: Create plan
+    print(f&quot;Task: {task}&quot;)
+    print(&quot;=&quot; * 50)
+    
+    plan = create_plan(task)
+    print(f&quot;\nPlan ({len(plan)} steps):&quot;)
+    for i, step in enumerate(plan, 1):
+        print(f&quot;  {i}. {step}&quot;)
+    
+    # Step 2: Execute each step
+    context = {}
+    results = []
+    
+    for i, step in enumerate(plan, 1):
+        print(f&quot;\n--- Executing Step {i} ---&quot;)
+        print(f&quot;  {step}&quot;)
+        
+        result = execute_step(step, context)
+        results.append({
+            &quot;step&quot;: i,
+            &quot;description&quot;: step,
+            &quot;result&quot;: result
+        })
+        
+        context[f&quot;step_{i}&quot;] = result
+        print(f&quot;  Result: {result[:100]}...&quot;)
+    
+    return {
+        &quot;task&quot;: task,
+        &quot;plan&quot;: plan,
+        &quot;results&quot;: results
+    }
+
+
+# Usage
+output = plan_and_execute(
+    &quot;Analyze our website&#x27;s user engagement metrics for last month &quot;
+    &quot;and create a 5-slide presentation outline with key findings&quot;
+)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">6. Agent Frameworks Overview</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Popular Frameworks Comparison</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Framework</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Language</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Strengths</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Best For</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">LangChain</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Python/JS</td><td class="px-4 py-3 border border-[var(--border-color)]">Large ecosystem, many integrations</td><td class="px-4 py-3 border border-[var(--border-color)]">General-purpose agents</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">LlamaIndex</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Python</td><td class="px-4 py-3 border border-[var(--border-color)]">Data-focused, excellent RAG</td><td class="px-4 py-3 border border-[var(--border-color)]">Knowledge-intensive agents</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">CrewAI</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Python</td><td class="px-4 py-3 border border-[var(--border-color)]">Multi-agent, role-based</td><td class="px-4 py-3 border border-[var(--border-color)]">Collaborative agent teams</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">AutoGen</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Python</td><td class="px-4 py-3 border border-[var(--border-color)]">Multi-agent conversations</td><td class="px-4 py-3 border border-[var(--border-color)]">Research &amp; complex tasks</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Semantic Kernel</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">C#/Python</td><td class="px-4 py-3 border border-[var(--border-color)]">Enterprise, Microsoft integration</td><td class="px-4 py-3 border border-[var(--border-color)]">Enterprise applications</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Haystack</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Python</td><td class="px-4 py-3 border border-[var(--border-color)]">Pipeline-based, modular</td><td class="px-4 py-3 border border-[var(--border-color)]">Production RAG systems</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Pydantic AI</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Python</td><td class="px-4 py-3 border border-[var(--border-color)]">Type-safe, minimal</td><td class="px-4 py-3 border border-[var(--border-color)]">Clean, testable agents</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">LangChain Example</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Simple agent using LangChain.
+&quot;&quot;&quot;
+
+from langchain_openai import ChatOpenAI
+from langchain.agents import create_tool_calling_agent, AgentExecutor
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.tools import tool
+
+
+# Define tools
+@tool
+def search_web(query: str) -&gt; str:
+    &quot;&quot;&quot;Search the web for information.&quot;&quot;&quot;
+    # In production, use a real search API
+    return f&quot;Search results for &#x27;{query}&#x27;: [relevant results here]&quot;
+
+
+@tool
+def calculate(expression: str) -&gt; str:
+    &quot;&quot;&quot;Calculate a mathematical expression safely.&quot;&quot;&quot;
+    try:
+        # Only allow safe math operations
+        allowed_chars = set(&quot;0123456789+-*/.(). &quot;)
+        if all(c in allowed_chars for c in expression):
+            result = eval(expression)
+            return str(result)
+        return &quot;Error: Invalid expression&quot;
+    except Exception as e:
+        return f&quot;Error: {str(e)}&quot;
+
+
+# Create agent
+llm = ChatOpenAI(model=&quot;gpt-4o&quot;, temperature=0)
+prompt = ChatPromptTemplate.from_messages([
+    (&quot;system&quot;, &quot;You are a helpful assistant. Use tools when needed.&quot;),
+    (&quot;human&quot;, &quot;{input}&quot;),
+    (&quot;placeholder&quot;, &quot;{agent_scratchpad}&quot;)
+])
+
+tools = [search_web, calculate]
+agent = create_tool_calling_agent(llm, tools, prompt)
+executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+# Run
+result = executor.invoke({
+    &quot;input&quot;: &quot;What&#x27;s the population of Tokyo divided by 3?&quot;
+})
+print(result[&quot;output&quot;])
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">CrewAI Example</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Multi-agent system using CrewAI.
+&quot;&quot;&quot;
+
+from crewai import Agent, Task, Crew
+from langchain_openai import ChatOpenAI
+
+# Define agents with specific roles
+researcher = Agent(
+    role=&quot;Research Analyst&quot;,
+    goal=&quot;Find comprehensive information about the given topic&quot;,
+    backstory=&quot;Expert researcher with 10 years of experience&quot;,
+    llm=ChatOpenAI(model=&quot;gpt-4o&quot;),
+    verbose=True
+)
+
+writer = Agent(
+    role=&quot;Content Writer&quot;,
+    goal=&quot;Write engaging, accurate content based on research&quot;,
+    backstory=&quot;Professional writer with expertise in tech topics&quot;,
+    llm=ChatOpenAI(model=&quot;gpt-4o&quot;),
+    verbose=True
+)
+
+editor = Agent(
+    role=&quot;Editor&quot;,
+    goal=&quot;Review and polish content for accuracy and clarity&quot;,
+    backstory=&quot;Experienced editor with eye for detail&quot;,
+    llm=ChatOpenAI(model=&quot;gpt-4o&quot;),
+    verbose=True
+)
+
+# Define tasks
+research_task = Task(
+    description=&quot;Research the latest developments in AI agents&quot;,
+    expected_output=&quot;Comprehensive research notes with sources&quot;,
+    agent=researcher
+)
+
+writing_task = Task(
+    description=&quot;Write a 500-word article based on the research&quot;,
+    expected_output=&quot;A well-structured 500-word article&quot;,
+    agent=writer,
+    context=[research_task]
+)
+
+editing_task = Task(
+    description=&quot;Review and polish the article&quot;,
+    expected_output=&quot;A final, publication-ready article&quot;,
+    agent=editor,
+    context=[writing_task]
+)
+
+# Create crew and run
+crew = Crew(
+    agents=[researcher, writer, editor],
+    tasks=[research_task, writing_task, editing_task],
+    verbose=True
+)
+
+result = crew.kickoff()
+print(result)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">7. Architecture Patterns</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">ReAct (Reasoning + Acting)</h3>
+<p class="mb-4 text-justify">The most popular agent pattern. Combines reasoning traces with actions.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Thought: I need to find the population of France
+Action: search(&quot;population of France 2024&quot;)
+Observation: France has approximately 68.4 million people
+Thought: Now I need to compare it to Germany
+Action: search(&quot;population of Germany 2024&quot;)  
+Observation: Germany has approximately 84.5 million people
+Thought: I have both numbers, I can now answer
+Action: respond(&quot;Germany (84.5M) has a larger population than 
+France (68.4M)&quot;)
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Plan-and-Execute</h3>
+<p class="mb-4 text-justify">Create a plan first, then execute each step.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Step 1: PLANNING
+  User: &quot;Create a marketing campaign for our new product&quot;
+  
+  Plan:
+  1. Research target audience
+  2. Analyze competitor campaigns
+  3. Develop key messaging
+  4. Create content calendar
+  5. Draft campaign assets
+  6. Review and finalize
+
+Step 2: EXECUTION
+  Execute step 1 → results
+  Execute step 2 → results
+  Execute step 3 → results
+  ...
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Reflexion</h3>
+<p class="mb-4 text-justify">Agent reflects on its own performance and improves.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Attempt 1:
+  Action: Wrote code to solve the problem
+  Result: Test failed - off-by-one error
+
+Reflection: I made an indexing mistake. I need to be more careful
+with boundary conditions. Let me review the test cases first.
+
+Attempt 2:
+  Action: Reviewed test cases, rewrote code with careful indexing
+  Result: All tests pass!
+
+Reflection: Success! The key was reviewing expectations before coding.
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Multi-Agent Collaboration</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────────┐
+│              ORCHESTRATOR                     │
+│         (Decides who does what)              │
+└───────┬──────────────┬──────────────┬───────┘
+        │              │              │
+        ▼              ▼              ▼
+┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+│  Research    │ │  Coding      │ │  Review      │
+│  Agent       │ │  Agent       │ │  Agent       │
+│              │ │              │ │              │
+│ Finds info,  │ │ Writes code, │ │ Reviews      │
+│ reads docs,  │ │ runs tests,  │ │ quality,     │
+│ analyzes     │ │ debugs       │ │ suggests     │
+│ data         │ │              │ │ improvements │
+└──────────────┘ └──────────────┘ └──────────────┘
+</code></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8. Building a Simple Agent</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Complete ReAct Agent from Scratch</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+A complete ReAct agent built from scratch.
+No frameworks - just OpenAI API + Python.
+&quot;&quot;&quot;
+
+import json
+import os
+from openai import OpenAI
+from datetime import datetime
+
+
+class SimpleAgent:
+    &quot;&quot;&quot;
+    A ReAct (Reasoning + Acting) agent built from scratch.
+    
+    Features:
+    - Tool use with automatic execution
+    - Conversation memory
+    - Error handling
+    - Step logging
+    &quot;&quot;&quot;
+    
+    def __init__(
+        self, 
+        model: str = &quot;gpt-4o&quot;,
+        system_prompt: str | None = None,
+        max_iterations: int = 10
+    ):
+        self.client = OpenAI(api_key=os.getenv(&quot;OPENAI_API_KEY&quot;))
+        self.model = model
+        self.max_iterations = max_iterations
+        self.messages = []
+        self.tools = {}
+        self.tool_schemas = []
+        self.step_log = []
+        
+        # Set default system prompt
+        if system_prompt is None:
+            system_prompt = (
+                &quot;You are a helpful AI assistant with access to &quot;
+                &quot;tools. Use tools when needed to complete tasks. &quot;
+                &quot;Think step by step before acting.&quot;
+            )
+        
+        self.messages.append({
+            &quot;role&quot;: &quot;system&quot;, 
+            &quot;content&quot;: system_prompt
+        })
+    
+    def register_tool(
+        self, 
+        name: str, 
+        description: str,
+        parameters: dict,
+        function: callable
+    ):
+        &quot;&quot;&quot;Register a tool the agent can use.&quot;&quot;&quot;
+        self.tools[name] = function
+        self.tool_schemas.append({
+            &quot;type&quot;: &quot;function&quot;,
+            &quot;function&quot;: {
+                &quot;name&quot;: name,
+                &quot;description&quot;: description,
+                &quot;parameters&quot;: parameters
+            }
+        })
+    
+    def think(self, user_input: str) -&gt; str:
+        &quot;&quot;&quot;
+        Core reasoning loop: observe, think, act.
+        Returns the final response.
+        &quot;&quot;&quot;
+        self.messages.append({
+            &quot;role&quot;: &quot;user&quot;, 
+            &quot;content&quot;: user_input
+        })
+        
+        for iteration in range(self.max_iterations):
+            # Call LLM
+            kwargs = {
+                &quot;model&quot;: self.model,
+                &quot;messages&quot;: self.messages,
+                &quot;temperature&quot;: 0.2
+            }
+            
+            if self.tool_schemas:
+                kwargs[&quot;tools&quot;] = self.tool_schemas
+                kwargs[&quot;tool_choice&quot;] = &quot;auto&quot;
+            
+            response = self.client.chat.completions.create(**kwargs)
+            assistant_message = response.choices[0].message
+            
+            # Log the step
+            self.step_log.append({
+                &quot;iteration&quot;: iteration + 1,
+                &quot;model&quot;: self.model,
+                &quot;tool_calls&quot;: len(
+                    assistant_message.tool_calls or []
+                ),
+                &quot;timestamp&quot;: datetime.now().isoformat()
+            })
+            
+            # If no tool calls, return the text response
+            if not assistant_message.tool_calls:
+                self.messages.append({
+                    &quot;role&quot;: &quot;assistant&quot;,
+                    &quot;content&quot;: assistant_message.content
+                })
+                return assistant_message.content
+            
+            # Process tool calls
+            self.messages.append({
+                &quot;role&quot;: &quot;assistant&quot;,
+                &quot;content&quot;: assistant_message.content,
+                &quot;tool_calls&quot;: [
+                    {
+                        &quot;id&quot;: tc.id,
+                        &quot;type&quot;: &quot;function&quot;,
+                        &quot;function&quot;: {
+                            &quot;name&quot;: tc.function.name,
+                            &quot;arguments&quot;: tc.function.arguments
+                        }
+                    }
+                    for tc in assistant_message.tool_calls
+                ]
+            })
+            
+            for tool_call in assistant_message.tool_calls:
+                name = tool_call.function.name
+                args = json.loads(tool_call.function.arguments)
+                
+                print(f&quot;  [Tool] {name}({json.dumps(args)[:80]})&quot;)
+                
+                # Execute the tool
+                try:
+                    result = self.tools[name](**args)
+                    result_str = json.dumps(result) if isinstance(
+                        result, (dict, list)
+                    ) else str(result)
+                except Exception as e:
+                    result_str = f&quot;Error: {str(e)}&quot;
+                    print(f&quot;  [Error] {name}: {e}&quot;)
+                
+                self.messages.append({
+                    &quot;role&quot;: &quot;tool&quot;,
+                    &quot;tool_call_id&quot;: tool_call.id,
+                    &quot;content&quot;: result_str
+                })
+        
+        return &quot;I&#x27;ve reached the maximum number of steps.&quot;
+    
+    def reset(self):
+        &quot;&quot;&quot;Clear conversation history.&quot;&quot;&quot;
+        self.messages = [self.messages[0]]  # Keep system prompt
+        self.step_log.clear()
+    
+    def get_stats(self) -&gt; dict:
+        &quot;&quot;&quot;Get statistics about the conversation.&quot;&quot;&quot;
+        return {
+            &quot;total_steps&quot;: len(self.step_log),
+            &quot;total_tool_calls&quot;: sum(
+                s[&quot;tool_calls&quot;] for s in self.step_log
+            ),
+            &quot;total_messages&quot;: len(self.messages),
+            &quot;model&quot;: self.model
+        }
+
+
+# === Define Tools ===
+
+def web_search(query: str) -&gt; dict:
+    &quot;&quot;&quot;Search the web (simulated).&quot;&quot;&quot;
+    # In production, use a real search API
+    return {
+        &quot;query&quot;: query,
+        &quot;results&quot;: [
+            {&quot;title&quot;: f&quot;Result for: {query}&quot;, 
+             &quot;snippet&quot;: &quot;Relevant information...&quot;},
+        ]
+    }
+
+
+def calculator(expression: str) -&gt; dict:
+    &quot;&quot;&quot;Calculate a math expression.&quot;&quot;&quot;
+    try:
+        # Safe evaluation for math
+        allowed = set(&quot;0123456789+-*/(). %&quot;)
+        if all(c in allowed for c in expression):
+            result = eval(expression)
+            return {&quot;expression&quot;: expression, &quot;result&quot;: result}
+        return {&quot;error&quot;: &quot;Invalid characters in expression&quot;}
+    except Exception as e:
+        return {&quot;error&quot;: str(e)}
+
+
+def get_current_time() -&gt; dict:
+    &quot;&quot;&quot;Get the current date and time.&quot;&quot;&quot;
+    now = datetime.now()
+    return {
+        &quot;date&quot;: now.strftime(&quot;%Y-%m-%d&quot;),
+        &quot;time&quot;: now.strftime(&quot;%H:%M:%S&quot;),
+        &quot;day&quot;: now.strftime(&quot;%A&quot;)
+    }
+
+
+def read_file(filepath: str) -&gt; dict:
+    &quot;&quot;&quot;Read a file&#x27;s contents.&quot;&quot;&quot;
+    try:
+        with open(filepath, &quot;r&quot;) as f:
+            content = f.read()
+        return {&quot;filepath&quot;: filepath, &quot;content&quot;: content[:5000]}
+    except FileNotFoundError:
+        return {&quot;error&quot;: f&quot;File not found: {filepath}&quot;}
+    except Exception as e:
+        return {&quot;error&quot;: str(e)}
+
+
+# === Create and Use the Agent ===
+
+agent = SimpleAgent(
+    system_prompt=&quot;&quot;&quot;You are a helpful assistant that can:
+    - Search the web for information
+    - Perform calculations
+    - Get the current time
+    - Read files
+    
+    Think step by step before answering complex questions.
+    Use tools when you need real data.&quot;&quot;&quot;
+)
+
+# Register tools
+agent.register_tool(
+    name=&quot;web_search&quot;,
+    description=&quot;Search the web for current information&quot;,
+    parameters={
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;query&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;description&quot;: &quot;Search query&quot;
+            }
+        },
+        &quot;required&quot;: [&quot;query&quot;]
+    },
+    function=web_search
+)
+
+agent.register_tool(
+    name=&quot;calculator&quot;,
+    description=&quot;Calculate a mathematical expression&quot;,
+    parameters={
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;expression&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;description&quot;: &quot;Math expression to evaluate&quot;
+            }
+        },
+        &quot;required&quot;: [&quot;expression&quot;]
+    },
+    function=calculator
+)
+
+agent.register_tool(
+    name=&quot;get_current_time&quot;,
+    description=&quot;Get the current date and time&quot;,
+    parameters={
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {},
+        &quot;required&quot;: []
+    },
+    function=get_current_time
+)
+
+# Test the agent
+print(&quot;=&quot; * 60)
+print(&quot;Test 1: Simple question&quot;)
+print(&quot;=&quot; * 60)
+response = agent.think(&quot;What time is it right now?&quot;)
+print(f&quot;Agent: {response}\n&quot;)
+
+print(&quot;=&quot; * 60)
+print(&quot;Test 2: Calculation&quot;)
+print(&quot;=&quot; * 60)
+response = agent.think(
+    &quot;What&#x27;s 15% of 2847? Use the calculator.&quot;
+)
+print(f&quot;Agent: {response}\n&quot;)
+
+print(&quot;=&quot; * 60)
+print(&quot;Test 3: Multi-step reasoning&quot;)
+print(&quot;=&quot; * 60)
+response = agent.think(
+    &quot;I have a budget of $10,000. If I need to buy 15 licenses &quot;
+    &quot;at $599 each, how much will I have left? Use the calculator.&quot;
+)
+print(f&quot;Agent: {response}\n&quot;)
+
+# Show stats
+print(&quot;Agent Stats:&quot;, agent.get_stats())
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">9. Building an Agent with Memory</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Agent with Full Memory Integration</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Agent with short-term, long-term, and working memory.
+&quot;&quot;&quot;
+
+import json
+import os
+from datetime import datetime
+from openai import OpenAI
+
+
+class MemoryAgent:
+    &quot;&quot;&quot;
+    AI Agent with three types of memory:
+    1. Short-term: conversation buffer
+    2. Long-term: persistent vector store
+    3. Working: scratchpad for current task
+    &quot;&quot;&quot;
+    
+    def __init__(self, model: str = &quot;gpt-4o&quot;):
+        self.client = OpenAI(api_key=os.getenv(&quot;OPENAI_API_KEY&quot;))
+        self.model = model
+        
+        # Memory systems
+        self.conversation_history = []  # Short-term
+        self.long_term_store = []       # Simplified vector store
+        self.working_memory = {}        # Scratchpad
+        
+        # Tools
+        self.tools = {}
+        self.tool_schemas = []
+    
+    def _search_long_term(self, query: str, k: int = 3) -&gt; list[str]:
+        &quot;&quot;&quot;Simple similarity search in long-term memory.&quot;&quot;&quot;
+        if not self.long_term_store:
+            return []
+        
+        # Simple keyword matching (replace with real embedding 
+        # search in production)
+        results = []
+        query_words = set(query.lower().split())
+        
+        for entry in self.long_term_store:
+            entry_words = set(entry[&quot;content&quot;].lower().split())
+            overlap = len(query_words &amp; entry_words)
+            if overlap &gt; 0:
+                results.append((overlap, entry[&quot;content&quot;]))
+        
+        results.sort(reverse=True, key=lambda x: x[0])
+        return [content for _, content in results[:k]]
+    
+    def _store_long_term(self, content: str, 
+                          category: str = &quot;general&quot;):
+        &quot;&quot;&quot;Store information in long-term memory.&quot;&quot;&quot;
+        self.long_term_store.append({
+            &quot;content&quot;: content,
+            &quot;category&quot;: category,
+            &quot;timestamp&quot;: datetime.now().isoformat()
+        })
+    
+    def _build_context(self, user_input: str) -&gt; str:
+        &quot;&quot;&quot;Build context from all memory sources.&quot;&quot;&quot;
+        context_parts = []
+        
+        # Add relevant long-term memories
+        relevant = self._search_long_term(user_input)
+        if relevant:
+            context_parts.append(
+                &quot;Relevant memories:\n&quot; + 
+                &quot;\n&quot;.join(f&quot;- {m}&quot; for m in relevant)
+            )
+        
+        # Add working memory if available
+        if self.working_memory:
+            context_parts.append(
+                &quot;Current task context:\n&quot; + 
+                json.dumps(self.working_memory, indent=2)
+            )
+        
+        return &quot;\n\n&quot;.join(context_parts)
+    
+    def think(self, user_input: str) -&gt; str:
+        &quot;&quot;&quot;Process user input through the agent loop.&quot;&quot;&quot;
+        
+        # Build context from memories
+        context = self._build_context(user_input)
+        
+        # Add user message with context
+        if context:
+            enhanced_input = (
+                f&quot;{user_input}\n\n&quot;
+                f&quot;[Context from memory]:\n{context}&quot;
+            )
+        else:
+            enhanced_input = user_input
+        
+        self.conversation_history.append({
+            &quot;role&quot;: &quot;user&quot;, 
+            &quot;content&quot;: enhanced_input
+        })
+        
+        # Build messages for API call
+        messages = [
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: (
+                &quot;You are a helpful assistant with memory. &quot;
+                &quot;Remember important facts about the user. &quot;
+                &quot;Use the [context from memory] when relevant.&quot;
+            )},
+            *self.conversation_history[-10:]  # Last 10 messages
+        ]
+        
+        # Call LLM
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+            temperature=0.3
+        )
+        
+        assistant_response = response.choices[0].message.content
+        
+        self.conversation_history.append({
+            &quot;role&quot;: &quot;assistant&quot;,
+            &quot;content&quot;: assistant_response
+        })
+        
+        # Extract and store important information
+        self._extract_and_store(user_input, assistant_response)
+        
+        return assistant_response
+    
+    def _extract_and_store(self, user_input: str, 
+                           response: str):
+        &quot;&quot;&quot;Automatically extract important info to long-term memory.&quot;&quot;&quot;
+        
+        # Simple heuristic: store if user shares personal info
+        personal_keywords = [
+            &quot;my name is&quot;, &quot;i live in&quot;, &quot;i work at&quot;,
+            &quot;i prefer&quot;, &quot;i like&quot;, &quot;i don&#x27;t like&quot;,
+            &quot;my favorite&quot;, &quot;i need&quot;
+        ]
+        
+        for keyword in personal_keywords:
+            if keyword in user_input.lower():
+                self._store_long_term(
+                    user_input, category=&quot;user_info&quot;
+                )
+                break
+    
+    def learn(self, fact: str, category: str = &quot;learned&quot;):
+        &quot;&quot;&quot;Explicitly learn and store a fact.&quot;&quot;&quot;
+        self._store_long_term(fact, category)
+        return f&quot;Learned: {fact}&quot;
+    
+    def recall(self, query: str) -&gt; list[str]:
+        &quot;&quot;&quot;Search long-term memories.&quot;&quot;&quot;
+        return self._search_long_term(query)
+    
+    def set_task(self, task: str):
+        &quot;&quot;&quot;Set the current task in working memory.&quot;&quot;&quot;
+        self.working_memory[&quot;task&quot;] = task
+        self.working_memory[&quot;started&quot;] = (
+            datetime.now().isoformat()
+        )
+    
+    def update_task(self, **kwargs):
+        &quot;&quot;&quot;Update working memory for current task.&quot;&quot;&quot;
+        self.working_memory.update(kwargs)
+    
+    def forget_conversation(self):
+        &quot;&quot;&quot;Clear short-term memory.&quot;&quot;&quot;
+        self.conversation_history.clear()
+
+
+# === Usage ===
+
+agent = MemoryAgent()
+
+# First conversation
+print(&quot;--- Session 1 ---&quot;)
+print(agent.think(&quot;Hi! My name is Alice and I work at TechCorp.&quot;))
+print()
+print(agent.think(&quot;I prefer Python over JavaScript.&quot;))
+print()
+
+# Explicit learning
+agent.learn(&quot;Alice is working on a customer support chatbot&quot;)
+agent.learn(&quot;The chatbot should handle refunds automatically&quot;)
+
+# Second conversation (simulating new session with memory)
+print(&quot;\n--- Session 2 (with memory) ---&quot;)
+agent.forget_conversation()  # Clear conversation but keep long-term
+
+print(agent.think(&quot;What do you remember about me?&quot;))
+print()
+print(agent.think(&quot;What project am I working on?&quot;))
+print()
+
+# Working memory for a specific task
+print(&quot;\n--- Task Mode ---&quot;)
+agent.set_task(&quot;Build a refund chatbot&quot;)
+agent.update_task(
+    step=&quot;Design refund flow&quot;,
+    status=&quot;in_progress&quot;
+)
+print(agent.think(&quot;Help me design the refund flow for my chatbot&quot;))
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">10. Key Takeaways</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Agents differ from chatbots</strong> in their ability to <strong class="font-bold text-primary">take actions</strong> — they don&#x27;t just answer questions, they solve problems by using tools and interacting with external systems.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">The Agent Loop</strong> (Observe → Think → Act → Repeat) is the fundamental pattern behind all AI agents.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Tool Use / Function Calling</strong> extends agents beyond text generation. OpenAI, Claude, and other providers all support structured tool calling.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Memory Systems</strong> give agents the ability to remember:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Short-term: Conversation history</li>
+<li class="text-[var(--foreground)]">Long-term: Persistent knowledge</li>
+<li class="text-[var(--foreground)]">Working: Task-specific scratchpad</li>
+</ul>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Planning</strong> enables agents to handle complex, multi-step tasks by breaking them into manageable pieces.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Architecture Patterns</strong> (ReAct, Plan-and-Execute, Reflexion) provide proven templates for building effective agents.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Agent Frameworks</strong> (LangChain, CrewAI, etc.) provide ready-made infrastructure but understanding the underlying patterns is essential.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Build from scratch first</strong>, then adopt frameworks — you&#x27;ll understand what&#x27;s happening under the hood.</p>
+</li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11. Try It Yourself</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 1: Basic ReAct Agent</h3>
+<p class="mb-4 text-justify">Build a ReAct agent from scratch (no frameworks) that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Has at least 3 tools (calculator, web search, file reader)</li>
+<li class="text-[var(--foreground)]">Implements the full observe-think-act loop</li>
+<li class="text-[var(--foreground)]">Logs every step of its reasoning</li>
+<li class="text-[var(--foreground)]">Handles errors gracefully</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 2: Agent with Memory</h3>
+<p class="mb-4 text-justify">Extend your agent with:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Conversation memory (keep last 10 messages)</li>
+<li class="text-[var(--foreground)]">Long-term memory (store user preferences automatically)</li>
+<li class="text-[var(--foreground)]">Working memory (track current task progress)</li>
+<li class="text-[var(--foreground)]">A &quot;remember&quot; command that explicitly stores facts</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 3: Plan-and-Execute Agent</h3>
+<p class="mb-4 text-justify">Build an agent that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Takes a complex task as input</li>
+<li class="text-[var(--foreground)]">Creates a step-by-step plan first</li>
+<li class="text-[var(--foreground)]">Executes each step sequentially</li>
+<li class="text-[var(--foreground)]">Reports progress after each step</li>
+<li class="text-[var(--foreground)]">Handles step failures with replanning</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 4: Multi-Tool Agent</h3>
+<p class="mb-4 text-justify">Create an agent with these tools:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Calculator (eval math expressions)</li>
+<li class="text-[var(--foreground)]">File I/O (read/write files)</li>
+<li class="text-[var(--foreground)]">Database query (SQLite)</li>
+<li class="text-[var(--foreground)]">HTTP request (fetch URLs)</li>
+<li class="text-[var(--foreground)]">Send email (via SMTP)</li>
+</ul>
+<p class="mb-4 text-justify">Test it with: &quot;Read the sales data from data.csv, calculate the total revenue, and save a summary to report.txt&quot;</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 5: Agent with Self-Reflection</h3>
+<p class="mb-4 text-justify">Build an agent that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Attempts tasks</li>
+<li class="text-[var(--foreground)]">Evaluates its own output quality</li>
+<li class="text-[var(--foreground)]">Retries with improvements if quality is low</li>
+<li class="text-[var(--foreground)]">Keeps a log of attempts and what went wrong</li>
+</ul>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Next Chapter</strong>: In <a href="./chapter-04-customer-support-agents.md" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Chapter 4: Customer Support Agents</a>, we&#x27;ll build our first real-world agent — an intelligent customer support system.</p>
+</blockquote></article><div class="mt-16 pt-8 border-t-2 border-[var(--border-color)]"><div class="flex justify-between items-stretch gap-4"><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group" href="/chapter/rag-and-knowledge-systems"><span class="text-xs text-[var(--foreground)] opacity-50">← Previous</span><div class="flex items-center gap-2 mt-1"><span class="text-xl">🔍</span><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">RAG &amp; Knowledge Systems</span></div></a><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group text-right" href="/chapter/customer-support-agents"><span class="text-xs text-[var(--foreground)] opacity-50">Next →</span><div class="flex items-center justify-end gap-2 mt-1"><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Customer Support Agents</span><span class="text-xl">💬</span></div></a></div></div></main></div></div><!--$--><!--/$--><script src="/_next/static/chunks/3s_ssfmklbvuh.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[78892,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n3:I[11359,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n5:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"OutletBoundary\"]\n6:\"$Sreact.suspense\"\n9:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"ViewportBoundary\"]\nb:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"MetadataBoundary\"]\nd:I[65125,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/157per-6rfej7.css\",\"style\"]\n:HL[\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"chapter\",\"introduction-to-ai-agents\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"chapter\",{\"children\":[[\"slug\",\"introduction-to-ai-agents\",\"d\",null],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3j2brc7c8hat8.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/05b0208rfh8ys.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-full flex flex-col\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/16vgld9iclosn.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/2rb1230i-fez-.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@7\"}]}]]}],{},null,false,null]},null,false,\"$@8\"]},null,false,\"$@8\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L9\",null,{\"children\":\"$La\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Lc\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$d\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"WpHiBD4DjnzuprdEnivdA\"}\n"])</script><script>self.__next_f.push([1,"e:[]\n8:\"$We\"\n"])</script><script>self.__next_f.push([1,"f:I[89587,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\",\"/_next/static/chunks/16vgld9iclosn.js\",\"/_next/static/chunks/2rb1230i-fez-.js\"],\"default\"]\n10:Tde01,"])</script><script>self.__next_f.push([1,"# Chapter 3: Introduction to AI Agents\n\n## What Makes an Agent Different from a Chatbot\n\n---\n\n\u003e *\"A chatbot answers your question. An agent solves your problem.\"*\n\nThis chapter marks the turning point of our journey. We've covered LLMs and RAG — the building blocks. Now we assemble them into something far more powerful: an **AI Agent** that can reason, plan, and take actions in the real world.\n\n---\n\n## Table of Contents\n\n1. [Chatbot vs Agent: The Key Difference](#1-chatbot-vs-agent-the-key-difference)\n2. [The Agent Loop](#2-the-agent-loop)\n3. [Tool Use / Function Calling](#3-tool-use--function-calling)\n4. [Memory Systems](#4-memory-systems)\n5. [Planning](#5-planning)\n6. [Agent Frameworks Overview](#6-agent-frameworks-overview)\n7. [Architecture Patterns](#7-architecture-patterns)\n8. [Building a Simple Agent](#8-building-a-simple-agent)\n9. [Building an Agent with Memory](#9-building-an-agent-with-memory)\n10. [Key Takeaways](#10-key-takeaways)\n11. [Try It Yourself](#11-try-it-yourself)\n\n---\n\n## 1. Chatbot vs Agent: The Key Difference\n\n### The Spectrum of AI Systems\n\n```\nSimple                                                     Complex\n│                                                            │\n▼                                                            ▼\n┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐\n│  Basic   │  │  Smart   │  │  RAG-    │  │  Tool-   │  │  Full    │\n│  Chatbot │→ │ Chatbot  │→ │  Augmented│→ │  Using   │→ │  Agent   │\n│          │  │          │  │  Chatbot  │  │  Agent   │  │          │\n│ Single   │  │ Multi-   │  │ Accesses │  │ Can call │  │ Plans,   │\n│ turn,    │  │ turn,    │  │ external │  │ APIs \u0026   │  │ reasons, │\n│ no state │  │ has      │  │ docs     │  │ tools    │  │ acts     │\n│          │  │ memory   │  │          │  │          │  │ autonomously│\n└──────────┘  └──────────┘  └──────────┘  └──────────┘  └──────────┘\n```\n\n### Comparison Table\n\n| Feature | Chatbot | RAG Chatbot | AI Agent |\n|---------|---------|-------------|----------|\n| **Responds to questions** | ✅ | ✅ | ✅ |\n| **Maintains conversation** | ✅ | ✅ | ✅ |\n| **Accesses external data** | ❌ | ✅ | ✅ |\n| **Uses external tools** | ❌ | ❌ | ✅ |\n| **Takes autonomous actions** | ❌ | ❌ | ✅ |\n| **Plans multi-step tasks** | ❌ | ❌ | ✅ |\n| **Self-corrects errors** | ❌ | ❌ | ✅ |\n| **Interacts with APIs** | ❌ | ❌ | ✅ |\n| **Handles complex workflows** | ❌ | ❌ | ✅ |\n\n### The \"Action\" Difference\n\nThe defining characteristic of an agent is **taking action**:\n\n```\nUser: \"Book me a flight from NYC to London next Tuesday\"\n\nChatbot:\n  \"I'd recommend checking Expedia or Google Flights for \n   flights from NYC to London. Prices typically range from \n   $400-$800 round trip.\"\n  (Provides advice but CANNOT book the flight)\n\nAgent:\n  1. Searches available flights on Tuesday\n  2. Filters by user preferences (economy, non-stop)\n  3. Selects best option based on price and time\n  4. Books the flight using the airline API\n  5. Sends confirmation to user's email\n  (Takes ACTION and completes the task)\n```\n\n### Real-World Agent Capabilities\n\n```python\n# What an agent can DO vs what a chatbot can do\n\nchatbot_capabilities = {\n    \"answer_questions\": True,\n    \"have_conversations\": True,\n    \"provide_explanations\": True,\n    \"summarize_text\": True,\n    \"translate\": True,\n}\n\nagent_capabilities = {\n    **chatbot_capabilities,\n    \"search_the_web\": True,\n    \"read_and_write_files\": True,\n    \"execute_code\": True,\n    \"call_apis\": True,\n    \"send_emails\": True,\n    \"manage_databases\": True,\n    \"browse_websites\": True,\n    \"make_decisions\": True,\n    \"learn_from_feedback\": True,\n    \"collaborate_with_other_agents\": True,\n}\n```\n\n---\n\n## 2. The Agent Loop\n\n### The Core Cycle\n\nEvery AI agent operates on a fundamental loop:\n\n```\n                    ┌─────────────────┐\n                    │                 │\n                    ▼                 │\n            ┌──────────────┐         │\n            │   OBSERVE    │         │\n            │              │         │\n            │ Receive user │         │\n            │ input or     │         │\n            │ environment  │         │\n            │ feedback     │         │\n            └──────┬───────┘         │\n                   │                  │\n                   ▼                  │\n            ┌──────────────┐         │\n            │    THINK     │         │\n            │              │         │\n            │ Reason about │         │\n            │ what to do   │         │\n            │ next         │         │\n            └──────┬───────┘         │\n                   │                  │\n                   ▼                  │\n            ┌──────────────┐         │\n            │     ACT      │         │\n            │              │         │\n            │ Execute tool │         │\n            │ or generate  │         │\n            │ response     │─────────┘\n            └──────────────┘\n\n         Repeat until task is complete\n```\n\n### Step-by-Step Walkthrough\n\nLet's trace through a real agent interaction:\n\n```\nUser: \"Find the top 3 restaurants near me and make a reservation \n       at the best one for 7pm tonight\"\n\nITERATION 1:\n  Observe: User wants restaurant recommendations + reservation\n  Think:   Need to (1) find restaurants (2) pick best (3) book\n  Act:     Call Google Maps API: search_restaurants(\n             location=\"user_location\", \n             cuisine=\"any\",\n             open_now=True\n           )\n\nITERATION 2:\n  Observe: Got list of 20 restaurants\n  Think:   Need to filter to top 3 by rating and reviews\n  Act:     Process results: filter and rank by rating + reviews\n           → Top 3: [Sakura (4.8), Pasta House (4.7), \n                      Taco Loco (4.6)]\n\nITERATION 3:\n  Observe: Have top 3 restaurants identified\n  Think:   Sakura has highest rating, should book there\n  Act:     Call OpenTable API: make_reservation(\n             restaurant=\"Sakura\",\n             time=\"19:00\",\n             date=\"today\",\n             party_size=user.party_size\n           )\n\nITERATION 4:\n  Observe: Reservation confirmed (Confirmation #R4521)\n  Think:   Task complete! Summarize for user\n  Act:     Respond: \"I found the top 3 restaurants: Sakura \n           (4.8★), Pasta House (4.7★), and Taco Loco (4.6★).\n           I've booked a table at Sakura for 7pm tonight. \n           Confirmation #R4521. You'll receive a confirmation \n           email shortly.\"\n```\n\n### The Loop in Code\n\n```python\n\"\"\"\nThe fundamental agent loop pattern.\n\"\"\"\n\nfrom enum import Enum\nfrom dataclasses import dataclass\n\n\nclass AgentState(Enum):\n    \"\"\"Possible states of the agent loop.\"\"\"\n    OBSERVING = \"observing\"\n    THINKING = \"thinking\"\n    ACTING = \"acting\"\n    DONE = \"done\"\n    ERROR = \"error\"\n\n\n@dataclass\nclass AgentStep:\n    \"\"\"Represents one step in the agent loop.\"\"\"\n    iteration: int\n    state: AgentState\n    observation: str\n    thought: str\n    action: str\n    action_result: str\n\n\nclass AgentLoop:\n    \"\"\"\n    Base class implementing the core agent loop.\n    Subclass this and override the methods for specific agents.\n    \"\"\"\n    \n    def __init__(self, name: str = \"Agent\"):\n        self.name = name\n        self.state = AgentState.OBSERVING\n        self.history: list[AgentStep] = []\n        self.max_iterations = 10\n    \n    def observe(self, input_data: str) -\u003e str:\n        \"\"\"\n        Process input from user or environment.\n        Override this for custom observation logic.\n        \"\"\"\n        return input_data\n    \n    def think(self, observation: str) -\u003e tuple[str, str]:\n        \"\"\"\n        Decide what action to take.\n        Returns (thought, action_description).\n        Override this with your LLM reasoning logic.\n        \"\"\"\n        raise NotImplementedError(\"Subclass must implement think()\")\n    \n    def act(self, action: str) -\u003e str:\n        \"\"\"\n        Execute the decided action.\n        Returns the result of the action.\n        Override this with your tool execution logic.\n        \"\"\"\n        raise NotImplementedError(\"Subclass must implement act()\")\n    \n    def is_done(self, step: AgentStep) -\u003e bool:\n        \"\"\"\n        Determine if the agent should stop.\n        Override this for custom termination conditions.\n        \"\"\"\n        return \"DONE\" in step.action_result.upper()\n    \n    def run(self, user_input: str) -\u003e list[AgentStep]:\n        \"\"\"\n        Execute the full agent loop.\n        \"\"\"\n        self.state = AgentState.OBSERVING\n        \n        for iteration in range(self.max_iterations):\n            # OBSERVE\n            observation = self.observe(user_input)\n            self.state = AgentState.THINKING\n            \n            # THINK\n            thought, action = self.think(observation)\n            self.state = AgentState.ACTING\n            \n            # ACT\n            try:\n                action_result = self.act(action)\n            except Exception as e:\n                action_result = f\"Error: {str(e)}\"\n                self.state = AgentState.ERROR\n            \n            # Record step\n            step = AgentStep(\n                iteration=iteration + 1,\n                state=self.state,\n                observation=observation if iteration == 0 \n                    else self.history[-1].action_result,\n                thought=thought,\n                action=action,\n                action_result=action_result\n            )\n            self.history.append(step)\n            \n            # Check if done\n            if self.is_done(step):\n                self.state = AgentState.DONE\n                break\n        \n        return self.history\n```\n\n---\n\n## 3. Tool Use / Function Calling\n\n### What Are Tools?\n\n**Tools** are external functions, APIs, or capabilities that an agent can call upon. They extend the agent beyond text generation into the real world.\n\n```\nWithout tools:                    With tools:\n                                 \nLLM: \"I think the               LLM: \"Let me check the\nweather is probably              weather for you.\"\nnice today.\"                     \n                                  → Calls weather_api(\"NYC\")\nLLM: Can't verify               \nLLM: Might be wrong             Weather API: {\"temp\": 72, \n                                     \"condition\": \"Sunny\"}\n                                 \n                                 LLM: \"It's 72°F and sunny \n                                 in NYC today!\"\n```\n\n### Function Calling with OpenAI\n\n```python\n\"\"\"\nFunction Calling - The foundation of agent tool use.\n\"\"\"\n\nfrom openai import OpenAI\nimport json\n\nclient = OpenAI()\n\n# Define tools the agent can use\ntools = [\n    {\n        \"type\": \"function\",\n        \"function\": {\n            \"name\": \"get_weather\",\n            \"description\": \"Get the current weather for a location\",\n            \"parameters\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"location\": {\n                        \"type\": \"string\",\n                        \"description\": \"City name (e.g., 'New York')\"\n                    },\n                    \"unit\": {\n                        \"type\": \"string\",\n                        \"enum\": [\"celsius\", \"fahrenheit\"],\n                        \"description\": \"Temperature unit\"\n                    }\n                },\n                \"required\": [\"location\"]\n            }\n        }\n    },\n    {\n        \"type\": \"function\",\n        \"function\": {\n            \"name\": \"search_database\",\n            \"description\": \"Search the product database\",\n            \"parameters\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"query\": {\n                        \"type\": \"string\",\n                        \"description\": \"Search query\"\n                    },\n                    \"category\": {\n                        \"type\": \"string\",\n                        \"description\": \"Product category filter\"\n                    },\n                    \"max_price\": {\n                        \"type\": \"number\",\n                        \"description\": \"Maximum price filter\"\n                    }\n                },\n                \"required\": [\"query\"]\n            }\n        }\n    }\n]\n\n\ndef get_weather(location: str, unit: str = \"fahrenheit\") -\u003e dict:\n    \"\"\"Simulated weather API call.\"\"\"\n    # In production, call a real weather API\n    return {\n        \"location\": location,\n        \"temperature\": 72 if unit == \"fahrenheit\" else 22,\n        \"condition\": \"Sunny\",\n        \"humidity\": 45,\n        \"wind_speed\": 8\n    }\n\n\ndef search_database(\n    query: str, \n    category: str = None, \n    max_price: float = None\n) -\u003e list[dict]:\n    \"\"\"Simulated database search.\"\"\"\n    # In production, query your actual database\n    products = [\n        {\"name\": \"Wireless Headphones\", \"price\": 79.99, \n         \"category\": \"electronics\"},\n        {\"name\": \"Running Shoes\", \"price\": 129.99, \n         \"category\": \"footwear\"},\n        {\"name\": \"Coffee Maker\", \"price\": 49.99, \n         \"category\": \"kitchen\"},\n    ]\n    \n    results = [\n        p for p in products\n        if query.lower() in p[\"name\"].lower()\n        and (not category or p[\"category\"] == category)\n        and (not max_price or p[\"price\"] \u003c= max_price)\n    ]\n    return results\n\n\n# Map function names to actual implementations\navailable_functions = {\n    \"get_weather\": get_weather,\n    \"search_database\": search_database,\n}\n\n\ndef run_agent(user_message: str) -\u003e str:\n    \"\"\"\n    Run the agent with tool use.\n    Handles the full observe-think-act loop.\n    \"\"\"\n    messages = [\n        {\"role\": \"system\", \"content\": \"You are a helpful assistant \"\n         \"with access to weather and product search tools.\"},\n        {\"role\": \"user\", \"content\": user_message}\n    ]\n    \n    # Agent loop: keep going until no more tool calls needed\n    while True:\n        response = client.chat.completions.create(\n            model=\"gpt-4o\",\n            messages=messages,\n            tools=tools,\n            tool_choice=\"auto\"  # Let model decide when to use tools\n        )\n        \n        response_message = response.choices[0].message\n        \n        # If no tool calls, return the text response\n        if not response_message.tool_calls:\n            return response_message.content\n        \n        # Process tool calls\n        messages.append(response_message)\n        \n        for tool_call in response_message.tool_calls:\n            function_name = tool_call.function.name\n            function_args = json.loads(\n                tool_call.function.arguments\n            )\n            \n            print(f\"  Tool: {function_name}({function_args})\")\n            \n            # Execute the function\n            function_result = available_functions[function_name](\n                **function_args\n            )\n            \n            # Add tool result to messages\n            messages.append({\n                \"tool_call_id\": tool_call.id,\n                \"role\": \"tool\",\n                \"name\": function_name,\n                \"content\": json.dumps(function_result)\n            })\n    \n    return \"Max iterations reached\"\n\n\n# === Test the agent ===\nprint(\"Agent:\", run_agent(\n    \"What's the weather in London? And do you have any electronics \"\n    \"under $100?\"\n))\n```\n\n### Anthropic Claude Tool Use\n\n```python\n\"\"\"\nTool use with Claude (Anthropic's API).\n\"\"\"\n\nimport anthropic\nimport json\n\nclient = anthropic.Anthropic()\n\n# Define tools for Claude\ntools = [\n    {\n        \"name\": \"get_weather\",\n        \"description\": \"Get current weather for a location\",\n        \"input_schema\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"location\": {\n                    \"type\": \"string\",\n                    \"description\": \"City name\"\n                }\n            },\n            \"required\": [\"location\"]\n        }\n    }\n]\n\n\ndef run_claude_agent(user_message: str) -\u003e str:\n    \"\"\"Run agent using Claude's tool use.\"\"\"\n    \n    messages = [{\"role\": \"user\", \"content\": user_message}]\n    \n    while True:\n        # Call Claude\n        response = client.messages.create(\n            model=\"claude-sonnet-4-20250514\",\n            max_tokens=1024,\n            tools=tools,\n            messages=messages\n        )\n        \n        # Check if Claude wants to use a tool\n        if response.stop_reason == \"tool_use\":\n            # Process tool calls\n            tool_results = []\n            \n            for block in response.content:\n                if block.type == \"tool_use\":\n                    print(f\"  Claude calls: {block.name}\"\n                          f\"({block.input})\")\n                    \n                    # Execute tool\n                    result = get_weather(**block.input)\n                    \n                    tool_results.append({\n                        \"type\": \"tool_result\",\n                        \"tool_use_id\": block.id,\n                        \"content\": json.dumps(result)\n                    })\n            \n            # Add to conversation and continue\n            messages.append({\"role\": \"assistant\", \n                           \"content\": response.content})\n            messages.append({\"role\": \"user\", \n                           \"content\": tool_results})\n        else:\n            # No more tool use - return final response\n            return response.content[0].text\n    \n    return \"Max iterations reached\"\n```\n\n---\n\n## 4. Memory Systems\n\n### Types of Agent Memory\n\n```\n┌─────────────────────────────────────────────────────┐\n│                    AGENT MEMORY                       │\n│                                                       │\n│  ┌─────────────────┐  ┌─────────────────┐            │\n│  │  SHORT-TERM     │  │  LONG-TERM      │            │\n│  │  (Conversation  │  │  (Persistent    │            │\n│  │   Buffer)       │  │   Storage)      │            │\n│  │                 │  │                 │            │\n│  │ Last N messages │  │ Vector store of │            │\n│  │ in conversation │  │ past interactions│           │\n│  │                 │  │ \u0026 learned facts │            │\n│  │ Context window  │  │                 │            │\n│  │ limits this     │  │ Grows over time │            │\n│  └─────────────────┘  └─────────────────┘            │\n│                                                       │\n│  ┌─────────────────┐  ┌─────────────────┐            │\n│  │  WORKING        │  │  EPISODIC       │            │\n│  │  MEMORY         │  │  MEMORY         │            │\n│  │  (Scratchpad)   │  │  (Task History) │            │\n│  │                 │  │                 │            │\n│  │ Intermediate    │  │ Record of past  │            │\n│  │ results, plans, │  │ tasks and their │            │\n│  │ scratch notes   │  │ outcomes        │            │\n│  │                 │  │                 │            │\n│  │ Current task    │  │ \"Last time I    │            │\n│  │ state           │  │  tried X, it    │            │\n│  │                 │  │  failed because │            │\n│  └─────────────────┘  │  of Y\"          │            │\n│                       └─────────────────┘            │\n└─────────────────────────────────────────────────────┘\n```\n\n### Short-Term Memory (Conversation Buffer)\n\n```python\n\"\"\"\nShort-term memory: managing conversation history.\n\"\"\"\n\nfrom collections import deque\n\n\nclass ConversationMemory:\n    \"\"\"\n    Manages conversation history within context window limits.\n    \"\"\"\n    \n    def __init__(self, max_messages: int = 20, \n                 system_prompt: str = \"\"):\n        self.max_messages = max_messages\n        self.system_prompt = system_prompt\n        self.messages: deque = deque(maxlen=max_messages)\n    \n    def add_message(self, role: str, content: str):\n        \"\"\"Add a message to the conversation.\"\"\"\n        self.messages.append({\"role\": role, \"content\": content})\n    \n    def get_messages(self) -\u003e list[dict]:\n        \"\"\"Get messages for API call.\"\"\"\n        result = []\n        if self.system_prompt:\n            result.append({\n                \"role\": \"system\", \n                \"content\": self.system_prompt\n            })\n        result.extend(list(self.messages))\n        return result\n    \n    def summarize_old_messages(self, keep_recent: int = 10) -\u003e str:\n        \"\"\"\n        Summarize older messages to save context space.\n        Useful when conversation gets very long.\n        \"\"\"\n        if len(self.messages) \u003c= keep_recent:\n            return \"\"\n        \n        old_messages = list(self.messages)[:-keep_recent]\n        \n        # In production, use LLM to summarize\n        summary = \"Previous conversation summary: \"\n        summary += f\"Discussed {len(old_messages)} messages about \"\n        topics = set()\n        for msg in old_messages:\n            if msg[\"role\"] == \"user\":\n                topics.add(msg[\"content\"][:50])\n        summary += \", \".join(list(topics)[:3])\n        \n        return summary\n    \n    def clear(self):\n        \"\"\"Clear conversation history.\"\"\"\n        self.messages.clear()\n\n\n# Usage\nmemory = ConversationMemory(\n    max_messages=20,\n    system_prompt=\"You are a helpful coding assistant.\"\n)\n\n# Simulate a conversation\nmemory.add_message(\"user\", \"How do I sort a list in Python?\")\nmemory.add_message(\"assistant\", \"Use sorted() or list.sort().\")\nmemory.add_message(\"user\", \"What about sorting dictionaries?\")\nmemory.add_message(\"assistant\", \n    \"Use sorted(d.items(), key=lambda x: x[1]).\")\n\n# Get messages for API call\napi_messages = memory.get_messages()\nprint(f\"Messages in context: {len(api_messages)}\")\n```\n\n### Long-Term Memory (Vector Store)\n\n```python\n\"\"\"\nLong-term memory: persistent knowledge across sessions.\n\"\"\"\n\nfrom chromadb import Client\nfrom datetime import datetime\n\n\nclass LongTermMemory:\n    \"\"\"\n    Persistent memory using vector database.\n    Stores important information for future retrieval.\n    \"\"\"\n    \n    def __init__(self, db_path: str = \"./agent_memory\"):\n        self.client = Client(path=db_path)\n        self.collection = self.client.get_or_create_collection(\n            name=\"long_term_memory\"\n        )\n    \n    def store(\n        self, \n        content: str, \n        memory_type: str = \"fact\",\n        metadata: dict | None = None\n    ):\n        \"\"\"Store a piece of information.\"\"\"\n        entry_metadata = {\n            \"type\": memory_type,\n            \"timestamp\": datetime.now().isoformat(),\n            **(metadata or {})\n        }\n        \n        # Generate unique ID\n        entry_id = f\"mem_{datetime.now().timestamp()}\"\n        \n        self.collection.add(\n            ids=[entry_id],\n            documents=[content],\n            metadatas=[entry_metadata]\n        )\n    \n    def recall(\n        self, \n        query: str, \n        n_results: int = 5,\n        memory_type: str | None = None\n    ) -\u003e list[dict]:\n        \"\"\"Recall relevant memories.\"\"\"\n        query_params = {\n            \"query_texts\": [query],\n            \"n_results\": n_results\n        }\n        \n        if memory_type:\n            query_params[\"where\"] = {\"type\": memory_type}\n        \n        results = self.collection.query(**query_params)\n        \n        memories = []\n        for i in range(len(results[\"ids\"][0])):\n            memories.append({\n                \"content\": results[\"documents\"][0][i],\n                \"metadata\": results[\"metadatas\"][0][i],\n                \"relevance\": 1 - results[\"distances\"][0][i]\n            })\n        \n        return memories\n    \n    def store_user_preference(self, preference: str):\n        \"\"\"Store a user preference.\"\"\"\n        self.store(\n            content=preference,\n            memory_type=\"preference\",\n            metadata={\"category\": \"user_preference\"}\n        )\n    \n    def store_task_outcome(\n        self, task: str, outcome: str, success: bool\n    ):\n        \"\"\"Store the outcome of a task for future reference.\"\"\"\n        self.store(\n            content=f\"Task: {task}\\nOutcome: {outcome}\",\n            memory_type=\"task_outcome\",\n            metadata={\n                \"success\": success,\n                \"category\": \"task_history\"\n            }\n        )\n    \n    def get_user_preferences(self) -\u003e list[str]:\n        \"\"\"Retrieve all stored user preferences.\"\"\"\n        results = self.collection.query(\n            query_texts=[\"user preferences\"],\n            n_results=100,\n            where={\"type\": \"preference\"}\n        )\n        return results[\"documents\"][0] if results[\"documents\"] else []\n\n\n# Usage\nmemory = LongTermMemory()\n\n# Store preferences\nmemory.store_user_preference(\n    \"User prefers dark mode in all applications\"\n)\nmemory.store_user_preference(\n    \"User's timezone is PST (UTC-8)\"\n)\nmemory.store_user_preference(\n    \"User prefers concise responses under 100 words\"\n)\n\n# Store task outcomes\nmemory.store_task_outcome(\n    task=\"Deploy web app to AWS\",\n    outcome=\"Successfully deployed using ECS Fargate\",\n    success=True\n)\n\n# Recall memories\nrelevant = memory.recall(\"user interface preferences\")\nfor mem in relevant:\n    print(f\"  [{mem['relevance']:.2f}] {mem['content']}\")\n```\n\n### Working Memory (Scratchpad)\n\n```python\n\"\"\"\nWorking memory: intermediate state for current task.\n\"\"\"\n\nfrom dataclasses import dataclass, field\n\n\n@dataclass\nclass WorkingMemory:\n    \"\"\"\n    Temporary storage for the current task.\n    Acts as a scratchpad for the agent's reasoning.\n    \"\"\"\n    \n    task_description: str = \"\"\n    plan: list[str] = field(default_factory=list)\n    current_step: int = 0\n    intermediate_results: dict = field(default_factory=dict)\n    errors: list[str] = field(default_factory=list)\n    notes: list[str] = field(default_factory=list)\n    \n    def add_plan_step(self, step: str):\n        \"\"\"Add a step to the plan.\"\"\"\n        self.plan.append(step)\n    \n    def record_result(self, key: str, value):\n        \"\"\"Store an intermediate result.\"\"\"\n        self.intermediate_results[key] = value\n    \n    def record_error(self, error: str):\n        \"\"\"Record an error for debugging.\"\"\"\n        self.errors.append(error)\n    \n    def add_note(self, note: str):\n        \"\"\"Add a scratch note.\"\"\"\n        self.notes.append(note)\n    \n    def get_summary(self) -\u003e str:\n        \"\"\"Get a summary of current working state.\"\"\"\n        summary_parts = [\n            f\"Task: {self.task_description}\",\n            f\"Progress: Step {self.current_step + 1}/\"\n            f\"{len(self.plan)}\",\n            f\"Current plan: {self.plan[self.current_step] if self.plan else 'None'}\",\n            f\"Results so far: {list(self.intermediate_results.keys())}\",\n        ]\n        if self.errors:\n            summary_parts.append(f\"Errors: {len(self.errors)}\")\n        return \"\\n\".join(summary_parts)\n\n\n# Usage in agent loop\nworking = WorkingMemory(task_description=\"Analyze sales data\")\n\n# Plan the task\nworking.add_plan_step(\"Load sales data from CSV\")\nworking.add_plan_step(\"Clean and validate data\")\nworking.add_plan_step(\"Calculate key metrics\")\nworking.add_plan_step(\"Generate visualization\")\nworking.add_plan_step(\"Write summary report\")\n\n# Record progress\nworking.current_step = 0\nworking.record_result(\"row_count\", 10000)\nworking.record_result(\"date_range\", \"2024-01-01 to 2024-12-31\")\n\nprint(working.get_summary())\n```\n\n---\n\n## 5. Planning\n\n### Why Planning Matters\n\nWithout planning, agents struggle with complex tasks. Planning breaks down complex requests into manageable steps.\n\n```\nWithout Planning:                  With Planning:\n                                   \nUser: \"Analyze our                User: \"Analyze our\nQ4 sales and create               Q4 sales and create\na report with                     a report with\nrecommendations\"                  recommendations\"\n                                   \nAgent: (Confused,                Agent: (Plans first)\ntries to do everything           1. Load Q4 sales data\nat once, misses steps,           2. Calculate key metrics\nproduces incomplete              3. Identify trends\noutput)                          4. Generate charts\n                                 5. Write recommendations\n                                 6. Assemble report\n                                 7. Review and finalize\n                                   \n                                 Then executes each step\n                                 systematically\n```\n\n### Plan-and-Execute Pattern\n\n```python\n\"\"\"\nPlan-and-Execute agent pattern.\nFirst creates a plan, then executes each step.\n\"\"\"\n\nfrom openai import OpenAI\nimport json\n\nclient = OpenAI()\n\n\ndef create_plan(task: str) -\u003e list[str]:\n    \"\"\"Create a step-by-step plan for a task.\"\"\"\n    \n    response = client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=[\n            {\"role\": \"system\", \"content\": \"\"\"You are a task planner.\n            Given a task, create a step-by-step plan.\n            \n            Return ONLY a JSON array of step descriptions.\n            Each step should be specific and actionable.\n            \n            Example: [\"Step 1 description\", \"Step 2 description\"]\"\"\"},\n            {\"role\": \"user\", \"content\": f\"Create a plan for: {task}\"}\n        ],\n        temperature=0.0,\n        response_format={\"type\": \"json_object\"}\n    )\n    \n    result = json.loads(response.choices[0].message.content)\n    return result.get(\"steps\", result.get(\"plan\", []))\n\n\ndef execute_step(\n    step: str, \n    context: dict\n) -\u003e str:\n    \"\"\"Execute a single step of the plan.\"\"\"\n    \n    context_str = json.dumps(context, indent=2)\n    \n    response = client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=[\n            {\"role\": \"system\", \"content\": f\"\"\"Execute this step of \n            a plan. Use the provided context from previous steps.\n            \n            Context from previous steps:\n            {context_str}\n            \n            Provide the specific output for this step.\"\"\"},\n            {\"role\": \"user\", \"content\": f\"Execute: {step}\"}\n        ],\n        temperature=0.2\n    )\n    \n    return response.choices[0].message.content\n\n\ndef plan_and_execute(task: str) -\u003e dict:\n    \"\"\"\n    Complete plan-and-execute agent.\n    \"\"\"\n    # Step 1: Create plan\n    print(f\"Task: {task}\")\n    print(\"=\" * 50)\n    \n    plan = create_plan(task)\n    print(f\"\\nPlan ({len(plan)} steps):\")\n    for i, step in enumerate(plan, 1):\n        print(f\"  {i}. {step}\")\n    \n    # Step 2: Execute each step\n    context = {}\n    results = []\n    \n    for i, step in enumerate(plan, 1):\n        print(f\"\\n--- Executing Step {i} ---\")\n        print(f\"  {step}\")\n        \n        result = execute_step(step, context)\n        results.append({\n            \"step\": i,\n            \"description\": step,\n            \"result\": result\n        })\n        \n        context[f\"step_{i}\"] = result\n        print(f\"  Result: {result[:100]}...\")\n    \n    return {\n        \"task\": task,\n        \"plan\": plan,\n        \"results\": results\n    }\n\n\n# Usage\noutput = plan_and_execute(\n    \"Analyze our website's user engagement metrics for last month \"\n    \"and create a 5-slide presentation outline with key findings\"\n)\n```\n\n---\n\n## 6. Agent Frameworks Overview\n\n### Popular Frameworks Comparison\n\n| Framework | Language | Strengths | Best For |\n|-----------|----------|-----------|----------|\n| **LangChain** | Python/JS | Large ecosystem, many integrations | General-purpose agents |\n| **LlamaIndex** | Python | Data-focused, excellent RAG | Knowledge-intensive agents |\n| **CrewAI** | Python | Multi-agent, role-based | Collaborative agent teams |\n| **AutoGen** | Python | Multi-agent conversations | Research \u0026 complex tasks |\n| **Semantic Kernel** | C#/Python | Enterprise, Microsoft integration | Enterprise applications |\n| **Haystack** | Python | Pipeline-based, modular | Production RAG systems |\n| **Pydantic AI** | Python | Type-safe, minimal | Clean, testable agents |\n\n### LangChain Example\n\n```python\n\"\"\"\nSimple agent using LangChain.\n\"\"\"\n\nfrom langchain_openai import ChatOpenAI\nfrom langchain.agents import create_tool_calling_agent, AgentExecutor\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.tools import tool\n\n\n# Define tools\n@tool\ndef search_web(query: str) -\u003e str:\n    \"\"\"Search the web for information.\"\"\"\n    # In production, use a real search API\n    return f\"Search results for '{query}': [relevant results here]\"\n\n\n@tool\ndef calculate(expression: str) -\u003e str:\n    \"\"\"Calculate a mathematical expression safely.\"\"\"\n    try:\n        # Only allow safe math operations\n        allowed_chars = set(\"0123456789+-*/.(). \")\n        if all(c in allowed_chars for c in expression):\n            result = eval(expression)\n            return str(result)\n        return \"Error: Invalid expression\"\n    except Exception as e:\n        return f\"Error: {str(e)}\"\n\n\n# Create agent\nllm = ChatOpenAI(model=\"gpt-4o\", temperature=0)\nprompt = ChatPromptTemplate.from_messages([\n    (\"system\", \"You are a helpful assistant. Use tools when needed.\"),\n    (\"human\", \"{input}\"),\n    (\"placeholder\", \"{agent_scratchpad}\")\n])\n\ntools = [search_web, calculate]\nagent = create_tool_calling_agent(llm, tools, prompt)\nexecutor = AgentExecutor(agent=agent, tools=tools, verbose=True)\n\n# Run\nresult = executor.invoke({\n    \"input\": \"What's the population of Tokyo divided by 3?\"\n})\nprint(result[\"output\"])\n```\n\n### CrewAI Example\n\n```python\n\"\"\"\nMulti-agent system using CrewAI.\n\"\"\"\n\nfrom crewai import Agent, Task, Crew\nfrom langchain_openai import ChatOpenAI\n\n# Define agents with specific roles\nresearcher = Agent(\n    role=\"Research Analyst\",\n    goal=\"Find comprehensive information about the given topic\",\n    backstory=\"Expert researcher with 10 years of experience\",\n    llm=ChatOpenAI(model=\"gpt-4o\"),\n    verbose=True\n)\n\nwriter = Agent(\n    role=\"Content Writer\",\n    goal=\"Write engaging, accurate content based on research\",\n    backstory=\"Professional writer with expertise in tech topics\",\n    llm=ChatOpenAI(model=\"gpt-4o\"),\n    verbose=True\n)\n\neditor = Agent(\n    role=\"Editor\",\n    goal=\"Review and polish content for accuracy and clarity\",\n    backstory=\"Experienced editor with eye for detail\",\n    llm=ChatOpenAI(model=\"gpt-4o\"),\n    verbose=True\n)\n\n# Define tasks\nresearch_task = Task(\n    description=\"Research the latest developments in AI agents\",\n    expected_output=\"Comprehensive research notes with sources\",\n    agent=researcher\n)\n\nwriting_task = Task(\n    description=\"Write a 500-word article based on the research\",\n    expected_output=\"A well-structured 500-word article\",\n    agent=writer,\n    context=[research_task]\n)\n\nediting_task = Task(\n    description=\"Review and polish the article\",\n    expected_output=\"A final, publication-ready article\",\n    agent=editor,\n    context=[writing_task]\n)\n\n# Create crew and run\ncrew = Crew(\n    agents=[researcher, writer, editor],\n    tasks=[research_task, writing_task, editing_task],\n    verbose=True\n)\n\nresult = crew.kickoff()\nprint(result)\n```\n\n---\n\n## 7. Architecture Patterns\n\n### ReAct (Reasoning + Acting)\n\nThe most popular agent pattern. Combines reasoning traces with actions.\n\n```\nThought: I need to find the population of France\nAction: search(\"population of France 2024\")\nObservation: France has approximately 68.4 million people\nThought: Now I need to compare it to Germany\nAction: search(\"population of Germany 2024\")  \nObservation: Germany has approximately 84.5 million people\nThought: I have both numbers, I can now answer\nAction: respond(\"Germany (84.5M) has a larger population than \nFrance (68.4M)\")\n```\n\n### Plan-and-Execute\n\nCreate a plan first, then execute each step.\n\n```\nStep 1: PLANNING\n  User: \"Create a marketing campaign for our new product\"\n  \n  Plan:\n  1. Research target audience\n  2. Analyze competitor campaigns\n  3. Develop key messaging\n  4. Create content calendar\n  5. Draft campaign assets\n  6. Review and finalize\n\nStep 2: EXECUTION\n  Execute step 1 → results\n  Execute step 2 → results\n  Execute step 3 → results\n  ...\n```\n\n### Reflexion\n\nAgent reflects on its own performance and improves.\n\n```\nAttempt 1:\n  Action: Wrote code to solve the problem\n  Result: Test failed - off-by-one error\n\nReflection: I made an indexing mistake. I need to be more careful\nwith boundary conditions. Let me review the test cases first.\n\nAttempt 2:\n  Action: Reviewed test cases, rewrote code with careful indexing\n  Result: All tests pass!\n\nReflection: Success! The key was reviewing expectations before coding.\n```\n\n### Multi-Agent Collaboration\n\n```\n┌─────────────────────────────────────────────┐\n│              ORCHESTRATOR                     │\n│         (Decides who does what)              │\n└───────┬──────────────┬──────────────┬───────┘\n        │              │              │\n        ▼              ▼              ▼\n┌──────────────┐ ┌──────────────┐ ┌──────────────┐\n│  Research    │ │  Coding      │ │  Review      │\n│  Agent       │ │  Agent       │ │  Agent       │\n│              │ │              │ │              │\n│ Finds info,  │ │ Writes code, │ │ Reviews      │\n│ reads docs,  │ │ runs tests,  │ │ quality,     │\n│ analyzes     │ │ debugs       │ │ suggests     │\n│ data         │ │              │ │ improvements │\n└──────────────┘ └──────────────┘ └──────────────┘\n```\n\n---\n\n## 8. Building a Simple Agent\n\n### Complete ReAct Agent from Scratch\n\n```python\n\"\"\"\nA complete ReAct agent built from scratch.\nNo frameworks - just OpenAI API + Python.\n\"\"\"\n\nimport json\nimport os\nfrom openai import OpenAI\nfrom datetime import datetime\n\n\nclass SimpleAgent:\n    \"\"\"\n    A ReAct (Reasoning + Acting) agent built from scratch.\n    \n    Features:\n    - Tool use with automatic execution\n    - Conversation memory\n    - Error handling\n    - Step logging\n    \"\"\"\n    \n    def __init__(\n        self, \n        model: str = \"gpt-4o\",\n        system_prompt: str | None = None,\n        max_iterations: int = 10\n    ):\n        self.client = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n        self.model = model\n        self.max_iterations = max_iterations\n        self.messages = []\n        self.tools = {}\n        self.tool_schemas = []\n        self.step_log = []\n        \n        # Set default system prompt\n        if system_prompt is None:\n            system_prompt = (\n                \"You are a helpful AI assistant with access to \"\n                \"tools. Use tools when needed to complete tasks. \"\n                \"Think step by step before acting.\"\n            )\n        \n        self.messages.append({\n            \"role\": \"system\", \n            \"content\": system_prompt\n        })\n    \n    def register_tool(\n        self, \n        name: str, \n        description: str,\n        parameters: dict,\n        function: callable\n    ):\n        \"\"\"Register a tool the agent can use.\"\"\"\n        self.tools[name] = function\n        self.tool_schemas.append({\n            \"type\": \"function\",\n            \"function\": {\n                \"name\": name,\n                \"description\": description,\n                \"parameters\": parameters\n            }\n        })\n    \n    def think(self, user_input: str) -\u003e str:\n        \"\"\"\n        Core reasoning loop: observe, think, act.\n        Returns the final response.\n        \"\"\"\n        self.messages.append({\n            \"role\": \"user\", \n            \"content\": user_input\n        })\n        \n        for iteration in range(self.max_iterations):\n            # Call LLM\n            kwargs = {\n                \"model\": self.model,\n                \"messages\": self.messages,\n                \"temperature\": 0.2\n            }\n            \n            if self.tool_schemas:\n                kwargs[\"tools\"] = self.tool_schemas\n                kwargs[\"tool_choice\"] = \"auto\"\n            \n            response = self.client.chat.completions.create(**kwargs)\n            assistant_message = response.choices[0].message\n            \n            # Log the step\n            self.step_log.append({\n                \"iteration\": iteration + 1,\n                \"model\": self.model,\n                \"tool_calls\": len(\n                    assistant_message.tool_calls or []\n                ),\n                \"timestamp\": datetime.now().isoformat()\n            })\n            \n            # If no tool calls, return the text response\n            if not assistant_message.tool_calls:\n                self.messages.append({\n                    \"role\": \"assistant\",\n                    \"content\": assistant_message.content\n                })\n                return assistant_message.content\n            \n            # Process tool calls\n            self.messages.append({\n                \"role\": \"assistant\",\n                \"content\": assistant_message.content,\n                \"tool_calls\": [\n                    {\n                        \"id\": tc.id,\n                        \"type\": \"function\",\n                        \"function\": {\n                            \"name\": tc.function.name,\n                            \"arguments\": tc.function.arguments\n                        }\n                    }\n                    for tc in assistant_message.tool_calls\n                ]\n            })\n            \n            for tool_call in assistant_message.tool_calls:\n                name = tool_call.function.name\n                args = json.loads(tool_call.function.arguments)\n                \n                print(f\"  [Tool] {name}({json.dumps(args)[:80]})\")\n                \n                # Execute the tool\n                try:\n                    result = self.tools[name](**args)\n                    result_str = json.dumps(result) if isinstance(\n                        result, (dict, list)\n                    ) else str(result)\n                except Exception as e:\n                    result_str = f\"Error: {str(e)}\"\n                    print(f\"  [Error] {name}: {e}\")\n                \n                self.messages.append({\n                    \"role\": \"tool\",\n                    \"tool_call_id\": tool_call.id,\n                    \"content\": result_str\n                })\n        \n        return \"I've reached the maximum number of steps.\"\n    \n    def reset(self):\n        \"\"\"Clear conversation history.\"\"\"\n        self.messages = [self.messages[0]]  # Keep system prompt\n        self.step_log.clear()\n    \n    def get_stats(self) -\u003e dict:\n        \"\"\"Get statistics about the conversation.\"\"\"\n        return {\n            \"total_steps\": len(self.step_log),\n            \"total_tool_calls\": sum(\n                s[\"tool_calls\"] for s in self.step_log\n            ),\n            \"total_messages\": len(self.messages),\n            \"model\": self.model\n        }\n\n\n# === Define Tools ===\n\ndef web_search(query: str) -\u003e dict:\n    \"\"\"Search the web (simulated).\"\"\"\n    # In production, use a real search API\n    return {\n        \"query\": query,\n        \"results\": [\n            {\"title\": f\"Result for: {query}\", \n             \"snippet\": \"Relevant information...\"},\n        ]\n    }\n\n\ndef calculator(expression: str) -\u003e dict:\n    \"\"\"Calculate a math expression.\"\"\"\n    try:\n        # Safe evaluation for math\n        allowed = set(\"0123456789+-*/(). %\")\n        if all(c in allowed for c in expression):\n            result = eval(expression)\n            return {\"expression\": expression, \"result\": result}\n        return {\"error\": \"Invalid characters in expression\"}\n    except Exception as e:\n        return {\"error\": str(e)}\n\n\ndef get_current_time() -\u003e dict:\n    \"\"\"Get the current date and time.\"\"\"\n    now = datetime.now()\n    return {\n        \"date\": now.strftime(\"%Y-%m-%d\"),\n        \"time\": now.strftime(\"%H:%M:%S\"),\n        \"day\": now.strftime(\"%A\")\n    }\n\n\ndef read_file(filepath: str) -\u003e dict:\n    \"\"\"Read a file's contents.\"\"\"\n    try:\n        with open(filepath, \"r\") as f:\n            content = f.read()\n        return {\"filepath\": filepath, \"content\": content[:5000]}\n    except FileNotFoundError:\n        return {\"error\": f\"File not found: {filepath}\"}\n    except Exception as e:\n        return {\"error\": str(e)}\n\n\n# === Create and Use the Agent ===\n\nagent = SimpleAgent(\n    system_prompt=\"\"\"You are a helpful assistant that can:\n    - Search the web for information\n    - Perform calculations\n    - Get the current time\n    - Read files\n    \n    Think step by step before answering complex questions.\n    Use tools when you need real data.\"\"\"\n)\n\n# Register tools\nagent.register_tool(\n    name=\"web_search\",\n    description=\"Search the web for current information\",\n    parameters={\n        \"type\": \"object\",\n        \"properties\": {\n            \"query\": {\n                \"type\": \"string\",\n                \"description\": \"Search query\"\n            }\n        },\n        \"required\": [\"query\"]\n    },\n    function=web_search\n)\n\nagent.register_tool(\n    name=\"calculator\",\n    description=\"Calculate a mathematical expression\",\n    parameters={\n        \"type\": \"object\",\n        \"properties\": {\n            \"expression\": {\n                \"type\": \"string\",\n                \"description\": \"Math expression to evaluate\"\n            }\n        },\n        \"required\": [\"expression\"]\n    },\n    function=calculator\n)\n\nagent.register_tool(\n    name=\"get_current_time\",\n    description=\"Get the current date and time\",\n    parameters={\n        \"type\": \"object\",\n        \"properties\": {},\n        \"required\": []\n    },\n    function=get_current_time\n)\n\n# Test the agent\nprint(\"=\" * 60)\nprint(\"Test 1: Simple question\")\nprint(\"=\" * 60)\nresponse = agent.think(\"What time is it right now?\")\nprint(f\"Agent: {response}\\n\")\n\nprint(\"=\" * 60)\nprint(\"Test 2: Calculation\")\nprint(\"=\" * 60)\nresponse = agent.think(\n    \"What's 15% of 2847? Use the calculator.\"\n)\nprint(f\"Agent: {response}\\n\")\n\nprint(\"=\" * 60)\nprint(\"Test 3: Multi-step reasoning\")\nprint(\"=\" * 60)\nresponse = agent.think(\n    \"I have a budget of $10,000. If I need to buy 15 licenses \"\n    \"at $599 each, how much will I have left? Use the calculator.\"\n)\nprint(f\"Agent: {response}\\n\")\n\n# Show stats\nprint(\"Agent Stats:\", agent.get_stats())\n```\n\n---\n\n## 9. Building an Agent with Memory\n\n### Agent with Full Memory Integration\n\n```python\n\"\"\"\nAgent with short-term, long-term, and working memory.\n\"\"\"\n\nimport json\nimport os\nfrom datetime import datetime\nfrom openai import OpenAI\n\n\nclass MemoryAgent:\n    \"\"\"\n    AI Agent with three types of memory:\n    1. Short-term: conversation buffer\n    2. Long-term: persistent vector store\n    3. Working: scratchpad for current task\n    \"\"\"\n    \n    def __init__(self, model: str = \"gpt-4o\"):\n        self.client = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n        self.model = model\n        \n        # Memory systems\n        self.conversation_history = []  # Short-term\n        self.long_term_store = []       # Simplified vector store\n        self.working_memory = {}        # Scratchpad\n        \n        # Tools\n        self.tools = {}\n        self.tool_schemas = []\n    \n    def _search_long_term(self, query: str, k: int = 3) -\u003e list[str]:\n        \"\"\"Simple similarity search in long-term memory.\"\"\"\n        if not self.long_term_store:\n            return []\n        \n        # Simple keyword matching (replace with real embedding \n        # search in production)\n        results = []\n        query_words = set(query.lower().split())\n        \n        for entry in self.long_term_store:\n            entry_words = set(entry[\"content\"].lower().split())\n            overlap = len(query_words \u0026 entry_words)\n            if overlap \u003e 0:\n                results.append((overlap, entry[\"content\"]))\n        \n        results.sort(reverse=True, key=lambda x: x[0])\n        return [content for _, content in results[:k]]\n    \n    def _store_long_term(self, content: str, \n                          category: str = \"general\"):\n        \"\"\"Store information in long-term memory.\"\"\"\n        self.long_term_store.append({\n            \"content\": content,\n            \"category\": category,\n            \"timestamp\": datetime.now().isoformat()\n        })\n    \n    def _build_context(self, user_input: str) -\u003e str:\n        \"\"\"Build context from all memory sources.\"\"\"\n        context_parts = []\n        \n        # Add relevant long-term memories\n        relevant = self._search_long_term(user_input)\n        if relevant:\n            context_parts.append(\n                \"Relevant memories:\\n\" + \n                \"\\n\".join(f\"- {m}\" for m in relevant)\n            )\n        \n        # Add working memory if available\n        if self.working_memory:\n            context_parts.append(\n                \"Current task context:\\n\" + \n                json.dumps(self.working_memory, indent=2)\n            )\n        \n        return \"\\n\\n\".join(context_parts)\n    \n    def think(self, user_input: str) -\u003e str:\n        \"\"\"Process user input through the agent loop.\"\"\"\n        \n        # Build context from memories\n        context = self._build_context(user_input)\n        \n        # Add user message with context\n        if context:\n            enhanced_input = (\n                f\"{user_input}\\n\\n\"\n                f\"[Context from memory]:\\n{context}\"\n            )\n        else:\n            enhanced_input = user_input\n        \n        self.conversation_history.append({\n            \"role\": \"user\", \n            \"content\": enhanced_input\n        })\n        \n        # Build messages for API call\n        messages = [\n            {\"role\": \"system\", \"content\": (\n                \"You are a helpful assistant with memory. \"\n                \"Remember important facts about the user. \"\n                \"Use the [context from memory] when relevant.\"\n            )},\n            *self.conversation_history[-10:]  # Last 10 messages\n        ]\n        \n        # Call LLM\n        response = self.client.chat.completions.create(\n            model=self.model,\n            messages=messages,\n            temperature=0.3\n        )\n        \n        assistant_response = response.choices[0].message.content\n        \n        self.conversation_history.append({\n            \"role\": \"assistant\",\n            \"content\": assistant_response\n        })\n        \n        # Extract and store important information\n        self._extract_and_store(user_input, assistant_response)\n        \n        return assistant_response\n    \n    def _extract_and_store(self, user_input: str, \n                           response: str):\n        \"\"\"Automatically extract important info to long-term memory.\"\"\"\n        \n        # Simple heuristic: store if user shares personal info\n        personal_keywords = [\n            \"my name is\", \"i live in\", \"i work at\",\n            \"i prefer\", \"i like\", \"i don't like\",\n            \"my favorite\", \"i need\"\n        ]\n        \n        for keyword in personal_keywords:\n            if keyword in user_input.lower():\n                self._store_long_term(\n                    user_input, category=\"user_info\"\n                )\n                break\n    \n    def learn(self, fact: str, category: str = \"learned\"):\n        \"\"\"Explicitly learn and store a fact.\"\"\"\n        self._store_long_term(fact, category)\n        return f\"Learned: {fact}\"\n    \n    def recall(self, query: str) -\u003e list[str]:\n        \"\"\"Search long-term memories.\"\"\"\n        return self._search_long_term(query)\n    \n    def set_task(self, task: str):\n        \"\"\"Set the current task in working memory.\"\"\"\n        self.working_memory[\"task\"] = task\n        self.working_memory[\"started\"] = (\n            datetime.now().isoformat()\n        )\n    \n    def update_task(self, **kwargs):\n        \"\"\"Update working memory for current task.\"\"\"\n        self.working_memory.update(kwargs)\n    \n    def forget_conversation(self):\n        \"\"\"Clear short-term memory.\"\"\"\n        self.conversation_history.clear()\n\n\n# === Usage ===\n\nagent = MemoryAgent()\n\n# First conversation\nprint(\"--- Session 1 ---\")\nprint(agent.think(\"Hi! My name is Alice and I work at TechCorp.\"))\nprint()\nprint(agent.think(\"I prefer Python over JavaScript.\"))\nprint()\n\n# Explicit learning\nagent.learn(\"Alice is working on a customer support chatbot\")\nagent.learn(\"The chatbot should handle refunds automatically\")\n\n# Second conversation (simulating new session with memory)\nprint(\"\\n--- Session 2 (with memory) ---\")\nagent.forget_conversation()  # Clear conversation but keep long-term\n\nprint(agent.think(\"What do you remember about me?\"))\nprint()\nprint(agent.think(\"What project am I working on?\"))\nprint()\n\n# Working memory for a specific task\nprint(\"\\n--- Task Mode ---\")\nagent.set_task(\"Build a refund chatbot\")\nagent.update_task(\n    step=\"Design refund flow\",\n    status=\"in_progress\"\n)\nprint(agent.think(\"Help me design the refund flow for my chatbot\"))\n```\n\n---\n\n## 10. Key Takeaways\n\n1. **Agents differ from chatbots** in their ability to **take actions** — they don't just answer questions, they solve problems by using tools and interacting with external systems.\n\n2. **The Agent Loop** (Observe → Think → Act → Repeat) is the fundamental pattern behind all AI agents.\n\n3. **Tool Use / Function Calling** extends agents beyond text generation. OpenAI, Claude, and other providers all support structured tool calling.\n\n4. **Memory Systems** give agents the ability to remember:\n   - Short-term: Conversation history\n   - Long-term: Persistent knowledge\n   - Working: Task-specific scratchpad\n\n5. **Planning** enables agents to handle complex, multi-step tasks by breaking them into manageable pieces.\n\n6. **Architecture Patterns** (ReAct, Plan-and-Execute, Reflexion) provide proven templates for building effective agents.\n\n7. **Agent Frameworks** (LangChain, CrewAI, etc.) provide ready-made infrastructure but understanding the underlying patterns is essential.\n\n8. **Build from scratch first**, then adopt frameworks — you'll understand what's happening under the hood.\n\n---\n\n## 11. Try It Yourself\n\n### Exercise 1: Basic ReAct Agent\nBuild a ReAct agent from scratch (no frameworks) that:\n- Has at least 3 tools (calculator, web search, file reader)\n- Implements the full observe-think-act loop\n- Logs every step of its reasoning\n- Handles errors gracefully\n\n### Exercise 2: Agent with Memory\nExtend your agent with:\n- Conversation memory (keep last 10 messages)\n- Long-term memory (store user preferences automatically)\n- Working memory (track current task progress)\n- A \"remember\" command that explicitly stores facts\n\n### Exercise 3: Plan-and-Execute Agent\nBuild an agent that:\n- Takes a complex task as input\n- Creates a step-by-step plan first\n- Executes each step sequentially\n- Reports progress after each step\n- Handles step failures with replanning\n\n### Exercise 4: Multi-Tool Agent\nCreate an agent with these tools:\n- Calculator (eval math expressions)\n- File I/O (read/write files)\n- Database query (SQLite)\n- HTTP request (fetch URLs)\n- Send email (via SMTP)\n\nTest it with: \"Read the sales data from data.csv, calculate the total revenue, and save a summary to report.txt\"\n\n### Exercise 5: Agent with Self-Reflection\nBuild an agent that:\n- Attempts tasks\n- Evaluates its own output quality\n- Retries with improvements if quality is low\n- Keeps a log of attempts and what went wrong\n\n---\n\n\u003e **Next Chapter**: In [Chapter 4: Customer Support Agents](./chapter-04-customer-support-agents.md), we'll build our first real-world agent — an intelligent customer support system.\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"div\",null,{\"children\":[\"$\",\"$Lf\",null,{\"content\":\"$10\",\"currentChapter\":{\"id\":\"agents-ch-03\",\"number\":3,\"title\":\"Introduction to AI Agents\",\"subtitle\":\"What Makes an Agent Different from a Chatbot\",\"description\":\"Understand agent loops, tool use, memory, planning, and the frameworks powering modern AI agents.\",\"slug\":\"introduction-to-ai-agents\",\"part\":\"Part I: Foundations\",\"estimatedPages\":18,\"topics\":[\"Agent vs chatbot\",\"Observe-Think-Act loop\",\"Tool use\",\"Memory systems\",\"Planning\",\"Frameworks (LangChain, CrewAI)\"],\"icon\":\"🤖\",\"bookId\":\"ai-agents\"}}]}]\n"])</script><script>self.__next_f.push([1,"a:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"7:null\nc:[[\"$\",\"title\",\"0\",{\"children\":\"AI Agents: The Complete Guide\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi\"}],[\"$\",\"meta\",\"2\",{\"name\":\"author\",\"content\":\"Manjunath Kalburgi\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi\"}]]\n"])</script></body></html>

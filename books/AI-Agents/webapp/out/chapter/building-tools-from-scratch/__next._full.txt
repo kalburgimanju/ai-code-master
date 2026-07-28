@@ -1,0 +1,2325 @@
+1:"$Sreact.fragment"
+2:I[78892,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default"]
+3:I[11359,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default"]
+5:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+9:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"ViewportBoundary"]
+b:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"MetadataBoundary"]
+d:I[65125,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default",1]
+:HL["/_next/static/chunks/157per-6rfej7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","chapter","building-tools-from-scratch"],"q":"","i":false,"f":[[["",{"children":["chapter",{"children":[["slug","building-tools-from-scratch","d",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/157per-6rfej7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3j2brc7c8hat8.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/05b0208rfh8ys.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased","children":["$","body",null,{"className":"min-h-full flex flex-col","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","script","script-0",{"src":"/_next/static/chunks/16vgld9iclosn.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/2rb1230i-fez-.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$@8"]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/157per-6rfej7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"WpHiBD4DjnzuprdEnivdA"}
+e:[]
+8:"$We"
+f:I[89587,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js","/_next/static/chunks/16vgld9iclosn.js","/_next/static/chunks/2rb1230i-fez-.js"],"default"]
+10:T1164a,# Chapter 9: Building Tools from Scratch
+
+## Creating Custom Agent Capabilities
+
+---
+
+> *"An agent without tools is like a chef without a kitchen — it can describe what it wants to make, but it cannot actually cook anything."*
+
+---
+
+## Table of Contents
+
+1. [What Are Tools and Why Do Agents Need Them?](#what-are-tools-and-why-do-agents-need-them)
+2. [How Function Calling Works](#how-function-calling-works)
+3. [Tool Design Principles](#tool-design-principles)
+4. [Building API Integration Tools](#building-api-integration-tools)
+5. [Web Scraping Agents](#web-scraping-agents)
+6. [Database Agents](#database-agents)
+7. [File System Agents](#file-system-agents)
+8. [Custom Tool Registration](#custom-tool-registration)
+9. [Tool Description Best Practices](#tool-description-best-practices)
+10. [Building 5 Different Tools](#building-5-different-tools)
+11. [The Tool Registry Pattern](#the-tool-registry-pattern)
+12. [Security Considerations](#security-considerations)
+13. [Key Takeaways](#key-takeaways)
+14. [Try It Yourself](#try-it-yourself)
+
+---
+
+## What Are Tools and Why Do Agents Need Them?
+
+### The Core Idea
+
+Tools are functions or capabilities that an agent can call to interact with the outside world. Without tools, a language model can only generate text. With tools, it can:
+
+- **Search the web** for real-time information
+- **Query databases** to retrieve specific data
+- **Send emails** or messages
+- **Control software** like spreadsheets or browsers
+- **Access APIs** to interact with external services
+- **Read and write files** on your computer
+- **Execute code** to perform calculations
+
+Think of tools as the hands of an agent. The language model is the brain — it decides *what* to do — and tools are the hands that actually *do* it.
+
+### Why Not Just Use a Language Model Alone?
+
+Language models have several limitations that tools solve:
+
+| Limitation | Without Tools | With Tools |
+|-----------|--------------|------------|
+| Knowledge cutoff | Cannot know today's news | Can search the web in real-time |
+| No computation | Cannot calculate complex math | Can run Python or call a calculator |
+| No persistence | Cannot remember across sessions | Can read/write files and databases |
+| No external actions | Cannot send emails or call APIs | Can interact with any system |
+| No verification | Cannot fact-check itself | Can look up sources and verify claims |
+
+### Anatomy of a Tool
+
+Every tool has three parts:
+
+```
+┌─────────────────────────────────────────┐
+│               TOOL                      │
+├─────────────────────────────────────────┤
+│  1. Name       → "search_web"           │
+│  2. Description → "Search the internet" │
+│  3. Parameters → {"query": "string"}    │
+│  4. Function   → The actual code        │
+└─────────────────────────────────────────┘
+```
+
+The language model reads the name and description to decide when to use a tool. It then fills in the parameters based on the user's request. Finally, your code executes the function and returns the result back to the model.
+
+### A Simple Mental Model
+
+```
+User: "What's the weather in Tokyo?"
+
+Agent Brain (LLM):
+  → Sees tool: get_weather(city: str) -> str
+  → Decides: I need to call get_weather("Tokyo")
+  → Generates tool call
+
+Tool Execution:
+  → get_weather("Tokyo") runs
+  → Returns: "Tokyo: 22°C, sunny"
+
+Agent Brain (LLM):
+  → Receives tool result
+  → Generates: "The weather in Tokyo is 22°C and sunny."
+```
+
+---
+
+## How Function Calling Works
+
+### The Basic Flow
+
+Function calling is the mechanism that allows a language model to request the execution of a specific function. Here is how it works step by step:
+
+```python
+# Step 1: You define tools as JSON schemas
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "get_weather",
+            "description": "Get current weather for a city",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "city": {
+                        "type": "string",
+                        "description": "City name, e.g. 'Tokyo'"
+                    },
+                    "units": {
+                        "type": "string",
+                        "enum": ["celsius", "fahrenheit"],
+                        "description": "Temperature units"
+                    }
+                },
+                "required": ["city"]
+            }
+        }
+    }
+]
+
+# Step 2: You send the message with tools to the model
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    messages=[{"role": "user", "content": "What's the weather in Tokyo?"}],
+    tools=tools
+)
+
+# Step 3: The model responds with a tool call
+# response.content might look like:
+# [ToolUseBlock(type='tool_use', name='get_weather',
+#               input={'city': 'Tokyo', 'units': 'celsius'})]
+
+# Step 4: You execute the function and return the result
+weather_result = get_weather("Tokyo", "celsius")
+
+# Step 5: Send the result back to the model
+final_response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    messages=[
+        {"role": "user", "content": "What's the weather in Tokyo?"},
+        {"role": "assistant", "content": response.content},
+        {"role": "user", "content": [
+            {"type": "tool_result", "tool_use_id": "toolu_xxx",
+             "content": weather_result}
+        ]}
+    ]
+)
+```
+
+### Single Tool vs. Multiple Tools
+
+A model can choose to call multiple tools in sequence or even in parallel:
+
+```python
+tools = [
+    {"type": "function", "function": {
+        "name": "get_weather",
+        "description": "Get weather for a city",
+        "parameters": {"type": "object", "properties": {
+            "city": {"type": "string"}
+        }, "required": ["city"]}
+    }},
+    {"type": "function", "function": {
+        "name": "get_population",
+        "description": "Get population of a city",
+        "parameters": {"type": "object", "properties": {
+            "city": {"type": "string"}
+        }, "required": ["city"]}
+    }},
+    {"type": "function", "function": {
+        "name": "get_time_zone",
+        "description": "Get time zone of a city",
+        "parameters": {"type": "object", "properties": {
+            "city": {"type": "string"}
+        }, "required": ["city"]}
+    }}
+]
+
+# User asks about two cities
+# Model might call get_weather("Tokyo") and get_weather("Paris")
+# in the same response
+```
+
+### Tool Call Results
+
+The model returns structured output that you must parse and execute:
+
+```python
+def handle_tool_calls(response, available_tools):
+    """Process tool calls from the model and return results."""
+    tool_results = []
+
+    for block in response.content:
+        if block.type == "tool_use":
+            # Find the matching tool
+            tool_func = available_tools.get(block.name)
+
+            if tool_func is None:
+                result = f"Error: Unknown tool '{block.name}'"
+            else:
+                try:
+                    result = tool_func(**block.input)
+                except Exception as e:
+                    result = f"Error executing {block.name}: {str(e)}"
+
+            tool_results.append({
+                "type": "tool_result",
+                "tool_use_id": block.id,
+                "content": str(result)
+            })
+
+    return tool_results
+```
+
+---
+
+## Tool Design Principles
+
+### The Golden Rules
+
+Follow these principles when building tools:
+
+**1. One Tool, One Job**
+
+Each tool should do exactly one thing. Do not build a tool that searches the web AND sends emails AND writes files.
+
+```python
+# Bad — too many responsibilities
+def do_everything(action, **kwargs):
+    if action == "search":
+        return search_web(kwargs["query"])
+    elif action == "email":
+        return send_email(kwargs["to"], kwargs["body"])
+    elif action == "write":
+        return write_file(kwargs["path"], kwargs["content"])
+
+# Good — focused tools
+def search_web(query: str) -> str:
+    """Search the web for a query and return results."""
+    ...
+
+def send_email(to: str, subject: str, body: str) -> str:
+    """Send an email to the specified recipient."""
+    ...
+
+def write_file(path: str, content: str) -> str:
+    """Write content to a file at the given path."""
+    ...
+```
+
+**2. Clear, Descriptive Names**
+
+The model reads your tool name to decide when to use it.
+
+```python
+# Bad — vague
+def process(data):
+    ...
+
+def do_thing(query):
+    ...
+
+# Good — clear and specific
+def search_product_database(query: str) -> str:
+    ...
+
+def convert_currency(amount: float, from_currency: str, to_currency: str) -> str:
+    ...
+```
+
+**3. Explicit Parameters with Types**
+
+Always declare parameter types and provide helpful descriptions.
+
+```python
+# Schema with good parameter descriptions
+{
+    "name": "schedule_meeting",
+    "description": "Schedule a meeting in the calendar",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "title": {
+                "type": "string",
+                "description": "The title or subject of the meeting"
+            },
+            "date": {
+                "type": "string",
+                "description": "Date in YYYY-MM-DD format"
+            },
+            "time": {
+                "type": "string",
+                "description": "Start time in HH:MM format (24-hour)"
+            },
+            "duration_minutes": {
+                "type": "integer",
+                "description": "Duration in minutes, default 60",
+                "default": 60
+            },
+            "attendees": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "List of email addresses of attendees"
+            }
+        },
+        "required": ["title", "date", "time"]
+    }
+}
+```
+
+**4. Return Useful Error Messages**
+
+Never let tools crash silently. Always return structured error messages.
+
+```python
+def get_stock_price(symbol: str) -> str:
+    """Get the current stock price for a ticker symbol."""
+    try:
+        response = requests.get(
+            f"https://api.example.com/stock/{symbol}",
+            timeout=5
+        )
+        if response.status_code == 200:
+            data = response.json()
+            return f"${symbol}: ${data['price']:.2f} ({data['change']:+.2f}%)"
+        elif response.status_code == 404:
+            return f"Error: Stock symbol '{symbol}' not found. Please check the ticker."
+        else:
+            return f"Error: API returned status {response.status_code}"
+    except requests.Timeout:
+        return "Error: Stock API timed out. Please try again."
+    except requests.ConnectionError:
+        return "Error: Could not connect to stock API."
+```
+
+**5. Keep Outputs Concise**
+
+Tool results are sent back to the model. Long outputs waste tokens and slow down responses.
+
+```python
+# Bad — dumps entire raw JSON
+def get_user_profile(user_id: str) -> dict:
+    return requests.get(f"/api/users/{user_id}").json()
+
+# Good — returns a concise, formatted summary
+def get_user_profile(user_id: str) -> str:
+    data = requests.get(f"/api/users/{user_id}").json()
+    return (
+        f"Name: {data['name']}\n"
+        f"Email: {data['email']}\n"
+        f"Role: {data['role']}\n"
+        f"Active: {data['is_active']}"
+    )
+```
+
+---
+
+## Building API Integration Tools
+
+### REST API Tool
+
+Here is a complete tool for calling REST APIs:
+
+```python
+import requests
+from typing import Any
+
+
+class RESTAPITool:
+    """A reusable tool for making REST API calls."""
+
+    def __init__(self, base_url: str, headers: dict = None):
+        self.base_url = base_url.rstrip("/")
+        self.headers = headers or {}
+        self.session = requests.Session()
+        self.session.headers.update(self.headers)
+
+    def call(
+        self,
+        method: str,
+        endpoint: str,
+        params: dict = None,
+        json_body: dict = None,
+        timeout: int = 30
+    ) -> str:
+        """
+        Make a REST API call.
+
+        Args:
+            method: HTTP method (GET, POST, PUT, DELETE, PATCH)
+            endpoint: API endpoint path
+            params: Query parameters
+            json_body: JSON request body
+            timeout: Request timeout in seconds
+
+        Returns:
+            Formatted string with the API response
+        """
+        url = f"{self.base_url}/{endpoint.lstrip('/')}"
+
+        try:
+            response = self.session.request(
+                method=method.upper(),
+                url=url,
+                params=params,
+                json=json_body,
+                timeout=timeout
+            )
+
+            status = response.status_code
+            body = response.text[:2000]  # Limit output size
+
+            if status < 400:
+                try:
+                    data = response.json()
+                    # Count items if it's a list
+                    if isinstance(data, list):
+                        return f"Success ({status}): Returned {len(data)} items"
+                    elif isinstance(data, dict):
+                        keys = list(data.keys())[:10]
+                        return f"Success ({status}): Keys: {keys}"
+                    else:
+                        return f"Success ({status}): {str(data)[:500]}"
+                except ValueError:
+                    return f"Success ({status}): {body}"
+            else:
+                return f"Error ({status}): {body}"
+
+        except requests.Timeout:
+            return f"Error: Request to {url} timed out after {timeout}s"
+        except requests.ConnectionError:
+            return f"Error: Could not connect to {url}"
+        except Exception as e:
+            return f"Error: {type(e).__name__}: {str(e)}"
+
+
+# Usage as a tool for an agent
+github_api = RESTAPITool(
+    base_url="https://api.github.com",
+    headers={
+        "Accept": "application/vnd.github.v3+json",
+        "Authorization": "token YOUR_GITHUB_TOKEN"
+    }
+)
+
+
+def github_search_repositories(query: str, sort: str = "stars") -> str:
+    """Search GitHub repositories by query string."""
+    result = github_api.call(
+        method="GET",
+        endpoint="/search/repositories",
+        params={"q": query, "sort": sort, "per_page": 5}
+    )
+    return result
+
+
+def github_get_repository(owner: str, repo: str) -> str:
+    """Get details about a specific GitHub repository."""
+    result = github_api.call(
+        method="GET",
+        endpoint=f"/repos/{owner}/{repo}"
+    )
+    return result
+
+
+def github_list_issues(owner: str, repo: str, state: str = "open") -> str:
+    """List issues in a GitHub repository."""
+    result = github_api.call(
+        method="GET",
+        endpoint=f"/repos/{owner}/{repo}/issues",
+        params={"state": state, "per_page": 10}
+    )
+    return result
+```
+
+### GraphQL API Tool
+
+```python
+import requests
+from typing import Any
+
+
+class GraphQLTool:
+    """A tool for making GraphQL API calls."""
+
+    def __init__(self, endpoint: str, headers: dict = None):
+        self.endpoint = endpoint
+        self.headers = headers or {}
+        self.headers.setdefault("Content-Type", "application/json")
+
+    def query(
+        self,
+        query: str,
+        variables: dict = None,
+        operation_name: str = None
+    ) -> str:
+        """
+        Execute a GraphQL query or mutation.
+
+        Args:
+            query: The GraphQL query string
+            variables: Query variables
+            operation_name: Name of the operation (for multi-operation docs)
+
+        Returns:
+            Formatted result string
+        """
+        payload = {"query": query}
+        if variables:
+            payload["variables"] = variables
+        if operation_name:
+            payload["operationName"] = operation_name
+
+        try:
+            response = requests.post(
+                self.endpoint,
+                json=payload,
+                headers=self.headers,
+                timeout=30
+            )
+
+            if response.status_code == 200:
+                data = response.json()
+                if "errors" in data:
+                    errors = "; ".join(
+                        e.get("message", "Unknown error")
+                        for e in data["errors"]
+                    )
+                    return f"GraphQL Errors: {errors}"
+                return str(data.get("data", {}))[:2000]
+            else:
+                return f"HTTP Error ({response.status_code}): {response.text[:500]}"
+
+        except Exception as e:
+            return f"Error: {type(e).__name__}: {str(e)}"
+
+
+# Usage
+github_graphql = GraphQLTool(
+    endpoint="https://api.github.com/graphql",
+    headers={"Authorization": "bearer YOUR_GITHUB_TOKEN"}
+)
+
+
+def github_search_repos_graphql(query: str) -> str:
+    """Search GitHub repositories using GraphQL."""
+    gql_query = """
+    query SearchRepos($query: String!) {
+      search(query: $query, type: REPOSITORY, first: 5) {
+        repositoryCount
+        edges {
+          node {
+            ... on Repository {
+              nameWithOwner
+              description
+              stargazerCount
+              primaryLanguage { name }
+            }
+          }
+        }
+      }
+    }
+    """
+    return github_graphql.query(gql_query, variables={"query": query})
+```
+
+### API Tool with Rate Limiting
+
+```python
+import time
+import threading
+from collections import deque
+
+
+class RateLimitedAPITool:
+    """API tool with built-in rate limiting."""
+
+    def __init__(self, base_url: str, requests_per_minute: int = 60):
+        self.base_url = base_url
+        self.rpm = requests_per_minute
+        self.timestamps = deque()
+        self.lock = threading.Lock()
+
+    def _wait_if_needed(self):
+        """Block if we would exceed the rate limit."""
+        with self.lock:
+            now = time.time()
+            # Remove timestamps older than 60 seconds
+            while self.timestamps and self.timestamps[0] < now - 60:
+                self.timestamps.popleft()
+
+            if len(self.timestamps) >= self.rpm:
+                # Wait until the oldest request is 60 seconds old
+                wait_time = 60 - (now - self.timestamps[0]) + 0.1
+                time.sleep(wait_time)
+
+            self.timestamps.append(time.time())
+
+    def call(self, method: str, endpoint: str, **kwargs) -> str:
+        """Make a rate-limited API call."""
+        self._wait_if_needed()
+        url = f"{self.base_url}/{endpoint.lstrip('/')}"
+
+        try:
+            response = requests.request(
+                method=method,
+                url=url,
+                timeout=30,
+                **kwargs
+            )
+            return f"Status: {response.status_code} | {response.text[:1500]}"
+        except Exception as e:
+            return f"Error: {str(e)}"
+```
+
+---
+
+## Web Scraping Agents
+
+### BeautifulSoup Scraper Tool
+
+```python
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin, urlparse
+
+
+class WebScraperTool:
+    """A tool for scraping web pages and extracting information."""
+
+    def __init__(self):
+        self.session = requests.Session()
+        self.session.headers.update({
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/120.0.0.0 Safari/537.36"
+            )
+        })
+
+    def scrape_page(self, url: str) -> str:
+        """
+        Scrape a web page and return its text content.
+
+        Args:
+            url: The URL to scrape
+
+        Returns:
+            Extracted text content of the page
+        """
+        try:
+            response = self.session.get(url, timeout=15)
+            response.raise_for_status()
+
+            soup = BeautifulSoup(response.text, "html.parser")
+
+            # Remove script and style elements
+            for element in soup(["script", "style", "nav", "footer"]):
+                element.decompose()
+
+            # Get text content
+            text = soup.get_text(separator="\n", strip=True)
+
+            # Clean up whitespace
+            lines = [line.strip() for line in text.splitlines() if line.strip()]
+            content = "\n".join(lines)
+
+            # Limit to reasonable size
+            if len(content) > 5000:
+                content = content[:5000] + "\n... [truncated]"
+
+            return f"Page content from {url}:\n\n{content}"
+
+        except requests.HTTPError as e:
+            return f"Error: HTTP {e.response.status_code} when accessing {url}"
+        except requests.ConnectionError:
+            return f"Error: Could not connect to {url}"
+        except Exception as e:
+            return f"Error scraping {url}: {str(e)}"
+
+    def extract_links(self, url: str) -> str:
+        """Extract all links from a web page."""
+        try:
+            response = self.session.get(url, timeout=15)
+            soup = BeautifulSoup(response.text, "html.parser")
+
+            links = []
+            for a_tag in soup.find_all("a", href=True):
+                href = urljoin(url, a_tag["href"])
+                text = a_tag.get_text(strip=True)[:100]
+                if text:
+                    links.append(f"- [{text}]({href})")
+
+            if not links:
+                return f"No links found on {url}"
+
+            result = f"Found {len(links)} links on {url}:\n\n"
+            result += "\n".join(links[:20])  # Limit to first 20
+
+            if len(links) > 20:
+                result += f"\n\n... and {len(links) - 20} more links"
+
+            return result
+
+        except Exception as e:
+            return f"Error extracting links from {url}: {str(e)}"
+
+    def extract_tables(self, url: str) -> str:
+        """Extract all tables from a web page."""
+        try:
+            response = self.session.get(url, timeout=15)
+            soup = BeautifulSoup(response.text, "html.parser")
+
+            tables = soup.find_all("table")
+            if not tables:
+                return f"No tables found on {url}"
+
+            results = []
+            for i, table in enumerate(tables[:5]):  # Max 5 tables
+                rows = table.find_all("tr")
+                table_data = []
+                for row in rows:
+                    cells = row.find_all(["th", "td"])
+                    cell_text = [cell.get_text(strip=True) for cell in cells]
+                    table_data.append(" | ".join(cell_text))
+
+                results.append(f"Table {i + 1} ({len(rows)} rows):\n" +
+                              "\n".join(table_data))
+
+            return f"Tables from {url}:\n\n" + "\n\n".join(results)
+
+        except Exception as e:
+            return f"Error extracting tables: {str(e)}"
+
+    def search_page(self, url: str, keyword: str) -> str:
+        """Search for a keyword within a page's content."""
+        try:
+            response = self.session.get(url, timeout=15)
+            soup = BeautifulSoup(response.text, "html.parser")
+
+            text = soup.get_text()
+            lower_text = text.lower()
+            keyword_lower = keyword.lower()
+
+            # Find all occurrences
+            occurrences = []
+            start = 0
+            while True:
+                pos = lower_text.find(keyword_lower, start)
+                if pos == -1:
+                    break
+
+                # Get surrounding context (100 chars before and after)
+                context_start = max(0, pos - 100)
+                context_end = min(len(text), pos + len(keyword) + 100)
+                context = text[context_start:context_end].strip()
+                occurrences.append(context)
+                start = pos + len(keyword)
+
+            if not occurrences:
+                return f"Keyword '{keyword}' not found on {url}"
+
+            result = f"Found {len(occurrences)} occurrences of '{keyword}' on {url}:\n\n"
+            for i, occ in enumerate(occurrences[:5]):
+                result += f"{i + 1}. ...{occ}...\n\n"
+
+            return result
+
+        except Exception as e:
+            return f"Error searching page: {str(e)}"
+
+
+# Create tool instance and register functions
+scraper = WebScraperTool()
+
+# Register as agent tools
+SCRAPE_TOOLS = {
+    "scrape_page": scraper.scrape_page,
+    "extract_links": scraper.extract_links,
+    "extract_tables": scraper.extract_tables,
+    "search_page": scraper.search_page,
+}
+```
+
+### Playwright Browser Tool (Dynamic Pages)
+
+```python
+# For pages that require JavaScript rendering
+# pip install playwright && playwright install
+
+class BrowserTool:
+    """Tool for scraping JavaScript-rendered pages using Playwright."""
+
+    def __init__(self):
+        self.browser = None
+
+    async def start(self):
+        """Start the browser instance."""
+        from playwright.async_api import async_playwright
+        self.playwright = await async_playwright().start()
+        self.browser = await self.playwright.chromium.launch(headless=True)
+
+    async def stop(self):
+        """Close the browser."""
+        if self.browser:
+            await self.browser.close()
+        if hasattr(self, 'playwright'):
+            await self.playwright.stop()
+
+    async def scrape_js_page(self, url: str, wait_selector: str = None) -> str:
+        """
+        Scrape a page that requires JavaScript rendering.
+
+        Args:
+            url: URL to scrape
+            wait_selector: CSS selector to wait for before extracting
+        """
+        if not self.browser:
+            await self.start()
+
+        page = await self.browser.new_page()
+
+        try:
+            await page.goto(url, timeout=30000, wait_until="networkidle")
+
+            if wait_selector:
+                try:
+                    await page.wait_for_selector(wait_selector, timeout=10000)
+                except Exception:
+                    pass  # Continue even if selector not found
+
+            # Get the rendered HTML
+            content = await page.content()
+
+            # Extract text
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(content, "html.parser")
+            for tag in soup(["script", "style"]):
+                tag.decompose()
+
+            text = soup.get_text(separator="\n", strip=True)
+            lines = [line.strip() for line in text.splitlines() if line.strip()]
+            result = "\n".join(lines)[:5000]
+
+            return f"Rendered content from {url}:\n\n{result}"
+
+        except Exception as e:
+            return f"Error rendering {url}: {str(e)}"
+        finally:
+            await page.close()
+
+    async def take_screenshot(self, url: str, save_path: str) -> str:
+        """Take a screenshot of a page."""
+        if not self.browser:
+            await self.start()
+
+        page = await self.browser.new_page()
+
+        try:
+            await page.goto(url, timeout=30000)
+            await page.screenshot(path=save_path, full_page=False)
+            return f"Screenshot saved to {save_path}"
+        except Exception as e:
+            return f"Error taking screenshot: {str(e)}"
+        finally:
+            await page.close()
+```
+
+---
+
+## Database Agents
+
+### SQL Database Tool
+
+```python
+import sqlite3
+from typing import Optional
+
+
+class DatabaseTool:
+    """Tool for querying SQL databases safely."""
+
+    def __init__(self, db_path: str):
+        self.db_path = db_path
+
+    def _get_connection(self):
+        """Get a database connection."""
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row  # Enable column access by name
+        return conn
+
+    def query(self, sql: str, max_rows: int = 50) -> str:
+        """
+        Execute a read-only SQL query and return results.
+
+        Args:
+            sql: SQL query to execute
+            max_rows: Maximum number of rows to return
+
+        Returns:
+            Query results as a formatted string
+        """
+        # Safety check — only allow SELECT statements
+        normalized = sql.strip().upper()
+        if not normalized.startswith("SELECT"):
+            return "Error: Only SELECT queries are allowed for safety."
+
+        # Dangerous keywords check
+        dangerous = ["DROP", "DELETE", "UPDATE", "INSERT", "ALTER", "TRUNCATE"]
+        for word in dangerous:
+            if f" {word} " in f" {normalized} ":
+                return f"Error: {word} statements are not allowed."
+
+        conn = self._get_connection()
+        try:
+            cursor = conn.execute(sql)
+            rows = cursor.fetchmany(max_rows + 1)
+
+            if not rows:
+                return "Query returned no results."
+
+            # Get column names
+            columns = [desc[0] for desc in cursor.description]
+
+            # Format as table
+            result_lines = []
+            header = " | ".join(f"{col:15}" for col in columns)
+            separator = "-+-".join("-" * 15 for _ in columns)
+            result_lines.append(header)
+            result_lines.append(separator)
+
+            total_rows = len(rows)
+            for row in rows[:max_rows]:
+                line = " | ".join(
+                    f"{str(val)[:15]:15}" for val in row
+                )
+                result_lines.append(line)
+
+            result = "\n".join(result_lines)
+
+            if total_rows > max_rows:
+                result += f"\n\n... ({total_rows - 1} rows shown, more available)"
+
+            return f"Query results ({min(total_rows, max_rows)} rows):\n\n{result}"
+
+        except Exception as e:
+            return f"SQL Error: {str(e)}"
+        finally:
+            conn.close()
+
+    def get_schema(self) -> str:
+        """Get the database schema (tables and columns)."""
+        conn = self._get_connection()
+        try:
+            cursor = conn.execute(
+                "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"
+            )
+            tables = [row[0] for row in cursor.fetchall()]
+
+            if not tables:
+                return "Database has no tables."
+
+            schema_parts = []
+            for table in tables:
+                cursor = conn.execute(f"PRAGMA table_info({table})")
+                columns = cursor.fetchall()
+                col_info = ", ".join(
+                    f"{col[1]} ({col[2]})" for col in columns
+                )
+                schema_parts.append(f"TABLE: {table}\n  Columns: {col_info}")
+
+            return "Database Schema:\n\n" + "\n\n".join(schema_parts)
+
+        except Exception as e:
+            return f"Error getting schema: {str(e)}"
+        finally:
+            conn.close()
+
+    def describe_table(self, table_name: str) -> str:
+        """Get detailed info about a specific table."""
+        conn = self._get_connection()
+        try:
+            cursor = conn.execute(f"PRAGMA table_info({table_name})")
+            columns = cursor.fetchall()
+
+            if not columns:
+                return f"Table '{table_name}' not found."
+
+            cursor = conn.execute(f"SELECT COUNT(*) FROM {table_name}")
+            count = cursor.fetchone()[0]
+
+            lines = [f"Table: {table_name} ({count} rows)\n"]
+            lines.append("Columns:")
+            for col in columns:
+                pk = " (PRIMARY KEY)" if col[5] else ""
+                nullable = "NULL" if col[3] else "NOT NULL"
+                default = f" DEFAULT {col[4]}" if col[4] else ""
+                lines.append(
+                    f"  {col[1]}: {col[2]} {nullable}{default}{pk}"
+                )
+
+            return "\n".join(lines)
+
+        except Exception as e:
+            return f"Error: {str(e)}"
+        finally:
+            conn.close()
+
+
+# Register as agent tools
+db_tool = DatabaseTool("my_database.db")
+
+DATABASE_TOOLS = {
+    "query_database": db_tool.query,
+    "get_database_schema": db_tool.get_schema,
+    "describe_table": db_tool.describe_table,
+}
+```
+
+---
+
+## File System Agents
+
+```python
+import os
+import json
+from pathlib import Path
+from typing import Optional
+
+
+class FileSystemTool:
+    """Tool for safe file system operations."""
+
+    def __init__(self, base_directory: str = "."):
+        self.base_dir = Path(base_directory).resolve()
+
+    def _safe_path(self, relative_path: str) -> Optional[Path]:
+        """Ensure the path is within the base directory (prevent path traversal)."""
+        target = (self.base_dir / relative_path).resolve()
+        if not str(target).startswith(str(self.base_dir)):
+            return None  # Path traversal attempt
+        return target
+
+    def read_file(self, file_path: str, max_lines: int = 200) -> str:
+        """
+        Read the contents of a file.
+
+        Args:
+            file_path: Path relative to the base directory
+            max_lines: Maximum number of lines to read
+        """
+        target = self._safe_path(file_path)
+        if target is None:
+            return "Error: Path not allowed (path traversal detected)"
+
+        if not target.exists():
+            return f"Error: File '{file_path}' not found"
+
+        if not target.is_file():
+            return f"Error: '{file_path}' is not a file"
+
+        # Check file size
+        size = target.stat().st_size
+        if size > 1_000_000:  # 1MB limit
+            return f"Error: File too large ({size} bytes). Max 1MB."
+
+        try:
+            content = target.read_text(encoding="utf-8")
+            lines = content.splitlines()
+
+            if len(lines) > max_lines:
+                content = "\n".join(lines[:max_lines])
+                content += f"\n\n... [{len(lines) - max_lines} more lines]"
+
+            return f"Contents of {file_path}:\n\n{content}"
+
+        except UnicodeDecodeError:
+            return f"Error: '{file_path}' is not a text file"
+        except Exception as e:
+            return f"Error reading {file_path}: {str(e)}"
+
+    def write_file(self, file_path: str, content: str) -> str:
+        """Write content to a file."""
+        target = self._safe_path(file_path)
+        if target is None:
+            return "Error: Path not allowed"
+
+        try:
+            # Create parent directories if needed
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(content, encoding="utf-8")
+            return f"Successfully wrote {len(content)} characters to {file_path}"
+
+        except Exception as e:
+            return f"Error writing to {file_path}: {str(e)}"
+
+    def list_directory(self, directory: str = ".", show_hidden: bool = False) -> str:
+        """List files and folders in a directory."""
+        target = self._safe_path(directory)
+        if target is None:
+            return "Error: Path not allowed"
+
+        if not target.exists():
+            return f"Error: Directory '{directory}' not found"
+
+        if not target.is_dir():
+            return f"Error: '{directory}' is not a directory"
+
+        items = []
+        for item in sorted(target.iterdir()):
+            if not show_hidden and item.name.startswith("."):
+                continue
+
+            if item.is_dir():
+                items.append(f"  [DIR]  {item.name}/")
+            else:
+                size = item.stat().st_size
+                items.append(f"  [FILE] {item.name} ({size:,} bytes)")
+
+        if not items:
+            return f"Directory '{directory}' is empty"
+
+        return f"Contents of {directory}:\n\n" + "\n".join(items[:50])
+
+    def search_files(
+        self,
+        pattern: str,
+        directory: str = "."
+    ) -> str:
+        """Search for files matching a pattern."""
+        target = self._safe_path(directory)
+        if target is None:
+            return "Error: Path not allowed"
+
+        matches = list(target.glob(pattern))
+
+        if not matches:
+            return f"No files matching '{pattern}' found in {directory}"
+
+        results = [f"Found {len(matches)} files matching '{pattern}':\n"]
+        for match in matches[:30]:
+            relative = match.relative_to(self.base_dir)
+            size = match.stat().st_size if match.is_file() else 0
+            if match.is_dir():
+                results.append(f"  {relative}/")
+            else:
+                results.append(f"  {relative} ({size:,} bytes)")
+
+        return "\n".join(results)
+
+    def get_file_info(self, file_path: str) -> str:
+        """Get metadata about a file or directory."""
+        target = self._safe_path(file_path)
+        if target is None:
+            return "Error: Path not allowed"
+
+        if not target.exists():
+            return f"Error: '{file_path}' not found"
+
+        stat = target.stat()
+        info = {
+            "path": str(target.relative_to(self.base_dir)),
+            "type": "directory" if target.is_dir() else "file",
+            "size_bytes": stat.st_size,
+            "modified": stat.st_mtime,
+        }
+
+        if target.is_file():
+            info["extension"] = target.suffix
+            info["name"] = target.name
+
+        return json.dumps(info, indent=2, default=str)
+
+
+# Register as agent tools
+fs_tool = FileSystemTool("./workspace")
+
+FILE_SYSTEM_TOOLS = {
+    "read_file": fs_tool.read_file,
+    "write_file": fs_tool.write_file,
+    "list_directory": fs_tool.list_directory,
+    "search_files": fs_tool.search_files,
+    "get_file_info": fs_tool.get_file_info,
+}
+```
+
+---
+
+## Custom Tool Registration
+
+### The Tool Registry Pattern
+
+A tool registry is a central place where all tools are registered and managed:
+
+```python
+from typing import Callable, Any
+import inspect
+
+
+class ToolRegistry:
+    """
+    Central registry for managing agent tools.
+
+    Tools are registered with metadata and can be looked up,
+    listed, and converted to API-compatible schemas.
+    """
+
+    def __init__(self):
+        self._tools: dict[str, dict] = {}
+
+    def register(
+        self,
+        name: str,
+        func: Callable,
+        description: str = None,
+        tags: list[str] = None,
+    ):
+        """
+        Register a tool with the registry.
+
+        Args:
+            name: Unique tool name
+            func: The function to execute
+            description: Human-readable description
+            tags: Optional tags for categorization
+        """
+        if name in self._tools:
+            raise ValueError(f"Tool '{name}' is already registered")
+
+        # Use function docstring if no description provided
+        if description is None:
+            description = func.__doc__ or "No description provided"
+
+        self._tools[name] = {
+            "name": name,
+            "function": func,
+            "description": description.strip(),
+            "tags": tags or [],
+        }
+
+    def unregister(self, name: str):
+        """Remove a tool from the registry."""
+        if name in self._tools:
+            del self._tools[name]
+
+    def get(self, name: str) -> Callable:
+        """Get a tool function by name."""
+        if name not in self._tools:
+            raise KeyError(f"Tool '{name}' not found")
+        return self._tools[name]["function"]
+
+    def list_tools(self, tag: str = None) -> list[dict]:
+        """List all registered tools, optionally filtered by tag."""
+        tools = []
+        for name, info in self._tools.items():
+            if tag and tag not in info["tags"]:
+                continue
+            tools.append({
+                "name": info["name"],
+                "description": info["description"],
+                "tags": info["tags"],
+            })
+        return tools
+
+    def to_api_schema(self) -> list[dict]:
+        """
+        Convert all registered tools to the API schema format
+        compatible with Claude/OpenAI function calling.
+        """
+        import json
+
+        schemas = []
+        for name, info in self._tools.items():
+            func = info["function"]
+            sig = inspect.signature(func)
+
+            properties = {}
+            required = []
+
+            for param_name, param in sig.parameters.items():
+                prop = {"type": "string"}  # Default to string
+
+                # Try to infer type from annotation
+                if param.annotation != inspect.Parameter.empty:
+                    type_map = {
+                        str: "string",
+                        int: "integer",
+                        float: "number",
+                        bool: "boolean",
+                        list: "array",
+                        dict: "object",
+                    }
+                    prop["type"] = type_map.get(param.annotation, "string")
+
+                prop["description"] = f"Parameter: {param_name}"
+                properties[param_name] = prop
+
+                if param.default == inspect.Parameter.empty:
+                    required.append(param_name)
+
+            schema = {
+                "type": "function",
+                "function": {
+                    "name": name,
+                    "description": info["description"],
+                    "parameters": {
+                        "type": "object",
+                        "properties": properties,
+                        "required": required,
+                    }
+                }
+            }
+            schemas.append(schema)
+
+        return schemas
+
+    def execute(self, name: str, **kwargs) -> str:
+        """Execute a registered tool by name."""
+        func = self.get(name)
+        try:
+            result = func(**kwargs)
+            return str(result)
+        except Exception as e:
+            return f"Tool execution error ({name}): {type(e).__name__}: {str(e)}"
+
+
+# ============================================================
+# Example: Using the Tool Registry
+# ============================================================
+
+registry = ToolRegistry()
+
+# Register tools
+registry.register(
+    name="calculate",
+    func=lambda expression: str(eval(expression)),
+    description="Evaluate a mathematical expression",
+    tags=["math"]
+)
+
+registry.register(
+    name="get_current_time",
+    func=lambda: __import__("datetime").datetime.now().isoformat(),
+    description="Get the current date and time",
+    tags=["utility"]
+)
+
+registry.register(
+    name="word_count",
+    func=lambda text: str(len(text.split())),
+    description="Count the number of words in text",
+    tags=["text"]
+)
+
+# List all tools
+print("=== Available Tools ===")
+for tool in registry.list_tools():
+    print(f"  {tool['name']}: {tool['description']}")
+
+# Convert to API schema
+print("\n=== API Schema ===")
+import json
+print(json.dumps(registry.to_api_schema(), indent=2))
+
+# Execute a tool
+result = registry.execute("calculate", expression="2 + 2 * 3")
+print(f"\nResult: {result}")
+```
+
+### Dynamic Tool Loading
+
+```python
+import importlib
+import os
+
+
+class DynamicToolLoader:
+    """Load tools dynamically from Python modules or configuration files."""
+
+    def __init__(self, registry: ToolRegistry):
+        self.registry = registry
+
+    def load_from_module(self, module_path: str):
+        """
+        Load all functions from a Python module as tools.
+
+        Functions starting with 'tool_' are registered automatically.
+        """
+        module = importlib.import_module(module_path)
+
+        for name in dir(module):
+            if name.startswith("tool_"):
+                func = getattr(module, name)
+                if callable(func):
+                    tool_name = name[5:]  # Remove 'tool_' prefix
+                    self.registry.register(
+                        name=tool_name,
+                        func=func,
+                        description=func.__doc__,
+                        tags=["dynamic"]
+                    )
+                    print(f"  Loaded tool: {tool_name}")
+
+    def load_from_config(self, config_path: str):
+        """
+        Load tool configurations from a JSON file.
+
+        Config format:
+        [
+            {
+                "name": "my_tool",
+                "module": "my_tools",
+                "function": "my_function",
+                "description": "Does something useful"
+            }
+        ]
+        """
+        import json
+
+        with open(config_path) as f:
+            tools_config = json.load(f)
+
+        for tool_def in tools_config:
+            try:
+                module = importlib.import_module(tool_def["module"])
+                func = getattr(module, tool_def["function"])
+
+                self.registry.register(
+                    name=tool_def["name"],
+                    func=func,
+                    description=tool_def.get("description", func.__doc__),
+                    tags=tool_def.get("tags", [])
+                )
+                print(f"  Loaded tool: {tool_def['name']}")
+
+            except (ImportError, AttributeError) as e:
+                print(f"  Failed to load {tool_def['name']}: {e}")
+```
+
+---
+
+## Tool Description Best Practices
+
+### Writing Descriptions That Help the Model
+
+The model uses your tool descriptions to decide when and how to use each tool. Bad descriptions lead to wrong tool selection or incorrect parameter filling.
+
+```python
+# ============================================================
+# BAD vs GOOD descriptions
+# ============================================================
+
+# BAD descriptions
+{
+    "name": "proc",
+    "description": "Process data",  # Too vague
+    "parameters": {"x": {"type": "string"}}  # Parameter name meaningless
+}
+
+{
+    "name": "api_call",
+    "description": "Makes an API call to somewhere",  # Which API?
+    "parameters": {"data": {"type": "string"}}  # What data?
+}
+
+# GOOD descriptions
+{
+    "name": "process_order",
+    "description": (
+        "Submit a new customer order to the e-commerce system. "
+        "Returns an order confirmation with order ID and estimated "
+        "delivery date. Fails if the product is out of stock."
+    ),
+    "parameters": {
+        "product_id": {
+            "type": "string",
+            "description": "The SKU of the product (e.g., 'SHOE-BLK-42')"
+        },
+        "quantity": {
+            "type": "integer",
+            "description": "Number of units to order (1-100)"
+        },
+        "shipping_address": {
+            "type": "string",
+            "description": "Full shipping address including city and zip code"
+        }
+    }
+}
+```
+
+### Description Template
+
+Follow this template for every tool description:
+
+```
+[What the tool does]. [When to use it]. [What it returns]. [Important limitations].
+```
+
+**Example:**
+
+```
+Searches the company product database for items matching a keyword.
+Use this when the user asks about products, pricing, or availability.
+Returns a list of up to 10 matching products with name, price, and stock status.
+Only searches active products; discontinued items are not included.
+```
+
+### Parameter Description Tips
+
+```python
+# Always include:
+# 1. What the parameter is
+# 2. The expected format
+# 3. Examples where helpful
+# 4. Constraints
+
+"parameters": {
+    "date": {
+        "type": "string",
+        "description": (
+            "Date in ISO 8601 format (YYYY-MM-DD). "
+            "Must be a future date. Example: '2025-01-15'"
+        )
+    },
+    "email": {
+        "type": "string",
+        "description": (
+            "Recipient email address. Must be a valid email format. "
+            "Example: 'user@company.com'"
+        )
+    },
+    "priority": {
+        "type": "string",
+        "enum": ["low", "medium", "high", "urgent"],
+        "description": (
+            "Task priority level. 'urgent' triggers immediate notifications."
+        )
+    }
+}
+```
+
+---
+
+## Building 5 Different Tools
+
+Here is a complete example building 5 practical tools:
+
+```python
+import requests
+import hashlib
+import json
+import re
+from datetime import datetime
+
+
+# ============================================================
+# Tool 1: URL Shortener
+# ============================================================
+
+def shorten_url(long_url: str) -> str:
+    """
+    Shorten a long URL using a free URL shortening service.
+
+    Use this when the user wants to create a shorter, more
+    manageable version of a URL.
+    """
+    # Simple hash-based shortener (for demo purposes)
+    url_hash = hashlib.md5(long_url.encode()).hexdigest()[:8]
+    short_url = f"https://sho.rt/{url_hash}"
+
+    return (
+        f"Shortened URL: {short_url}\n"
+        f"Original: {long_url}\n"
+        f"Hash: {url_hash}"
+    )
+
+
+# ============================================================
+# Tool 2: Text Summarizer
+# ============================================================
+
+def summarize_text(text: str, max_sentences: int = 3) -> str:
+    """
+    Summarize a piece of text by extracting the most important sentences.
+
+    Use this when the user wants a quick summary of a long text.
+    Returns the top sentences ranked by importance.
+    """
+    # Split into sentences
+    sentences = re.split(r'(?<=[.!?])\s+', text.strip())
+
+    if len(sentences) <= max_sentences:
+        return f"Summary:\n{text.strip()}"
+
+    # Simple scoring: sentences with certain keywords rank higher
+    important_keywords = {
+        "important", "significant", "key", "main", "primary",
+        "conclusion", "result", "finding", "therefore", "however"
+    }
+
+    scored = []
+    for i, sentence in enumerate(sentences):
+        words = set(sentence.lower().split())
+        score = len(words & important_keywords)
+        # Earlier sentences get a slight boost
+        score += max(0, (len(sentences) - i) / len(sentences)) * 0.5
+        scored.append((score, i, sentence))
+
+    # Sort by score and take top N
+    scored.sort(reverse=True)
+    top = sorted(scored[:max_sentences], key=lambda x: x[1])
+
+    summary = " ".join(item[2] for item in top)
+    return f"Summary ({len(sentences)} sentences → {max_sentences}):\n\n{summary}"
+
+
+# ============================================================
+# Tool 3: JSON Formatter
+# ============================================================
+
+def format_json(json_string: str, indent: int = 2) -> str:
+    """
+    Parse and pretty-print JSON data with syntax highlighting.
+
+    Use this when the user has messy or minified JSON and wants
+    it formatted for readability.
+    """
+    try:
+        parsed = json.loads(json_string)
+        formatted = json.dumps(parsed, indent=indent, sort_keys=False)
+
+        # Count elements
+        if isinstance(parsed, list):
+            count_info = f"Array with {len(parsed)} items"
+        elif isinstance(parsed, dict):
+            count_info = f"Object with {len(parsed)} keys"
+        else:
+            count_info = f"Value: {type(parsed).__name__}"
+
+        return f"{count_info}:\n\n{formatted}"
+
+    except json.JSONDecodeError as e:
+        return f"Invalid JSON: {str(e)}\n\nPlease check the JSON syntax."
+
+
+# ============================================================
+# Tool 4: Unit Converter
+# ============================================================
+
+def convert_unit(value: float, from_unit: str, to_unit: str) -> str:
+    """
+    Convert a measurement from one unit to another.
+
+    Supported unit categories:
+    - Length: mm, cm, m, km, inch, ft, yd, mi
+    - Weight: mg, g, kg, lb, oz
+    - Temperature: celsius, fahrenheit, kelvin
+
+    Use this when the user wants to convert between measurement units.
+    """
+    conversions = {
+        # Length to meters
+        "mm": 0.001, "cm": 0.01, "m": 1.0, "km": 1000.0,
+        "inch": 0.0254, "ft": 0.3048, "yd": 0.9144, "mi": 1609.344,
+        # Weight to grams
+        "mg": 0.001, "g": 1.0, "kg": 1000.0,
+        "lb": 453.592, "oz": 28.3495,
+    }
+
+    from_lower = from_unit.lower()
+    to_lower = to_unit.lower()
+
+    # Handle temperature separately
+    temp_units = {"celsius", "fahrenheit", "kelvin"}
+    if from_lower in temp_units and to_lower in temp_units:
+        return _convert_temperature(value, from_lower, to_lower)
+
+    # Regular conversions
+    if from_lower not in conversions:
+        return f"Error: Unknown unit '{from_unit}'"
+    if to_lower not in conversions:
+        return f"Error: Unknown unit '{to_unit}'"
+
+    # Convert to base unit, then to target
+    base_value = value * conversions[from_lower]
+    result = base_value / conversions[to_lower]
+
+    return f"{value} {from_unit} = {result:.4f} {to_unit}"
+
+
+def _convert_temperature(value: float, from_unit: str, to_unit: str) -> str:
+    """Convert between temperature units."""
+    # Convert to Celsius first
+    if from_unit == "celsius":
+        celsius = value
+    elif from_unit == "fahrenheit":
+        celsius = (value - 32) * 5 / 9
+    else:  # kelvin
+        celsius = value - 273.15
+
+    # Convert from Celsius to target
+    if to_unit == "celsius":
+        result = celsius
+    elif to_unit == "fahrenheit":
+        result = celsius * 9 / 5 + 32
+    else:  # kelvin
+        result = celsius + 273.15
+
+    return f"{value} {from_unit} = {result:.2f} {to_unit}"
+
+
+# ============================================================
+# Tool 5: Regex Tester
+# ============================================================
+
+def test_regex(pattern: str, test_string: str) -> str:
+    """
+    Test a regular expression pattern against a string.
+
+    Returns all matches with their positions and groups.
+
+    Use this when the user wants to validate or test a regex pattern.
+    """
+    try:
+        regex = re.compile(pattern)
+        matches = list(regex.finditer(test_string))
+
+        if not matches:
+            return (
+                f"Pattern: {pattern}\n"
+                f"Test string: {test_string}\n"
+                f"Result: No matches found"
+            )
+
+        results = [
+            f"Pattern: {pattern}",
+            f"Test string: {test_string}",
+            f"Found {len(matches)} match(es):\n"
+        ]
+
+        for i, match in enumerate(matches, 1):
+            groups = ""
+            if match.groups():
+                groups = f"\n  Groups: {match.groups()}"
+                for j, group in enumerate(match.groups(), 1):
+                    groups += f"\n    Group {j}: {group}"
+
+            results.append(
+                f"  Match {i}: '{match.group()}' "
+                f"(position {match.start()}-{match.end()})"
+                f"{groups}"
+            )
+
+        return "\n".join(results)
+
+    except re.error as e:
+        return f"Invalid regex pattern: {str(e)}"
+
+
+# ============================================================
+# Register all tools
+# ============================================================
+
+demo_registry = ToolRegistry()
+demo_registry.register("shorten_url", shorten_url, tags=["web"])
+demo_registry.register("summarize_text", summarize_text, tags=["text"])
+demo_registry.register("format_json", format_json, tags=["data"])
+demo_registry.register("convert_unit", convert_unit, tags=["math"])
+demo_registry.register("test_regex", test_regex, tags=["text", "dev"])
+```
+
+---
+
+## The Tool Registry Pattern
+
+### Complete Implementation
+
+Here is the full tool registry with error handling, logging, and execution:
+
+```python
+import time
+import logging
+from typing import Callable, Any
+from dataclasses import dataclass, field
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("ToolRegistry")
+
+
+@dataclass
+class ToolResult:
+    """Structured result from tool execution."""
+    success: bool
+    output: str
+    tool_name: str
+    execution_time_ms: float
+    error: str = None
+
+
+class AgentToolRegistry:
+    """
+    Production-ready tool registry for AI agents.
+
+    Features:
+    - Tool registration with metadata
+    - Automatic API schema generation
+    - Execution with timing and error handling
+    - Tool call logging and auditing
+    - Permission levels for tools
+    """
+
+    def __init__(self):
+        self._tools: dict[str, dict] = {}
+        self._call_history: list[dict] = []
+        self._max_history = 1000
+
+    def register(
+        self,
+        name: str,
+        func: Callable,
+        description: str = None,
+        tags: list[str] = None,
+        permission_level: str = "standard",
+        max_retries: int = 0,
+    ):
+        """Register a tool with full metadata."""
+        if name in self._tools:
+            raise ValueError(f"Tool '{name}' already registered")
+
+        self._tools[name] = {
+            "function": func,
+            "description": description or func.__doc__ or "",
+            "tags": tags or [],
+            "permission_level": permission_level,
+            "max_retries": max_retries,
+            "call_count": 0,
+            "error_count": 0,
+            "total_time_ms": 0,
+        }
+
+        logger.info(f"Registered tool: {name} (tags={tags})")
+
+    def get_tools_for_prompt(self, tags: list[str] = None) -> list[dict]:
+        """Get tool schemas for inclusion in a prompt."""
+        schemas = []
+        for name, info in self._tools.items():
+            if tags and not any(t in info["tags"] for t in tags):
+                continue
+            schemas.append({
+                "name": name,
+                "description": info["description"],
+            })
+        return schemas
+
+    def to_api_schema(self) -> list[dict]:
+        """Convert to API-compatible function calling schema."""
+        import inspect
+        schemas = []
+
+        for name, info in self._tools.items():
+            func = info["function"]
+            sig = inspect.signature(func)
+
+            properties = {}
+            required = []
+
+            for param_name, param in sig.parameters.items():
+                prop = {"type": "string"}
+                if param.annotation != inspect.Parameter.empty:
+                    type_map = {
+                        str: "string", int: "integer",
+                        float: "number", bool: "boolean",
+                        list: "array", dict: "object",
+                    }
+                    prop["type"] = type_map.get(param.annotation, "string")
+
+                prop["description"] = f"Parameter: {param_name}"
+                properties[param_name] = prop
+
+                if param.default == inspect.Parameter.empty:
+                    required.append(param_name)
+
+            schemas.append({
+                "type": "function",
+                "function": {
+                    "name": name,
+                    "description": info["description"],
+                    "parameters": {
+                        "type": "object",
+                        "properties": properties,
+                        "required": required,
+                    }
+                }
+            })
+
+        return schemas
+
+    def execute(self, name: str, **kwargs) -> ToolResult:
+        """Execute a tool with full error handling and logging."""
+        start_time = time.time()
+
+        if name not in self._tools:
+            return ToolResult(
+                success=False,
+                output="",
+                tool_name=name,
+                execution_time_ms=0,
+                error=f"Tool '{name}' not found"
+            )
+
+        info = self._tools[name]
+        retries = 0
+        max_retries = info["max_retries"]
+
+        while retries <= max_retries:
+            try:
+                result = info["function"](**kwargs)
+                elapsed = (time.time() - start_time) * 1000
+
+                info["call_count"] += 1
+                info["total_time_ms"] += elapsed
+
+                tool_result = ToolResult(
+                    success=True,
+                    output=str(result),
+                    tool_name=name,
+                    execution_time_ms=elapsed
+                )
+
+                self._log_call(tool_result, kwargs)
+                return tool_result
+
+            except Exception as e:
+                retries += 1
+                if retries > max_retries:
+                    elapsed = (time.time() - start_time) * 1000
+                    info["error_count"] += 1
+
+                    tool_result = ToolResult(
+                        success=False,
+                        output="",
+                        tool_name=name,
+                        execution_time_ms=elapsed,
+                        error=f"{type(e).__name__}: {str(e)}"
+                    )
+
+                    self._log_call(tool_result, kwargs)
+                    return tool_result
+
+                logger.warning(
+                    f"Tool {name} failed (retry {retries}/{max_retries}): {e}"
+                )
+
+        # Should not reach here, but just in case
+        return ToolResult(
+            success=False, output="", tool_name=name,
+            execution_time_ms=0, error="Unexpected error"
+        )
+
+    def _log_call(self, result: ToolResult, args: dict):
+        """Log a tool call for auditing."""
+        entry = {
+            "tool": result.tool_name,
+            "success": result.success,
+            "time_ms": result.execution_time_ms,
+            "args": {k: str(v)[:100] for k, v in args.items()},
+        }
+        if result.error:
+            entry["error"] = result.error
+
+        self._call_history.append(entry)
+        if len(self._call_history) > self._max_history:
+            self._call_history = self._call_history[-self._max_history:]
+
+    def get_stats(self) -> dict:
+        """Get usage statistics for all tools."""
+        stats = {}
+        for name, info in self._tools.items():
+            avg_time = (
+                info["total_time_ms"] / info["call_count"]
+                if info["call_count"] > 0 else 0
+            )
+            stats[name] = {
+                "calls": info["call_count"],
+                "errors": info["error_count"],
+                "error_rate": (
+                    f"{info['error_count']/info['call_count']*100:.1f}%"
+                    if info["call_count"] > 0 else "N/A"
+                ),
+                "avg_time_ms": f"{avg_time:.1f}",
+            }
+        return stats
+
+
+# ============================================================
+# Usage Example
+# ============================================================
+
+# Create registry
+agent_tools = AgentToolRegistry()
+
+# Register tools
+agent_tools.register(
+    "search_products",
+    search_products_func,  # Your actual function
+    description="Search product catalog by keyword",
+    tags=["commerce", "search"],
+    permission_level="standard",
+    max_retries=2,
+)
+
+agent_tools.register(
+    "process_payment",
+    process_payment_func,
+    description="Process a payment for an order",
+    tags=["commerce", "payment"],
+    permission_level="admin",  # Higher permission needed
+    max_retries=0,  # Don't retry payments
+)
+
+# Execute a tool
+result = agent_tools.execute("search_products", query="laptop")
+if result.success:
+    print(f"Result: {result.output}")
+    print(f"Time: {result.execution_time_ms:.0f}ms")
+else:
+    print(f"Error: {result.error}")
+
+# Get statistics
+print(json.dumps(agent_tools.get_stats(), indent=2))
+```
+
+---
+
+## Security Considerations
+
+### Common Threats
+
+| Threat | Description | Prevention |
+|--------|-------------|------------|
+| **Code Injection** | User input containing executable code | Input sanitization, no `eval()` |
+| **Path Traversal** | Accessing files outside allowed directory | Path validation, sandboxing |
+| **SSRF** | Making requests to internal services | URL allowlisting |
+| **Data Exfiltration** | Sending sensitive data to external endpoints | Output filtering, network restrictions |
+| **Privilege Escalation** | Using tools meant for higher permission levels | Permission checks |
+
+### Input Validation
+
+```python
+import re
+import html
+from urllib.parse import urlparse
+
+
+class InputValidator:
+    """Validate and sanitize tool inputs."""
+
+    @staticmethod
+    def sanitize_string(value: str, max_length: int = 1000) -> str:
+        """Sanitize a string input."""
+        # Remove control characters
+        value = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', value)
+        # Escape HTML
+        value = html.escape(value)
+        # Truncate
+        value = value[:max_length]
+        return value.strip()
+
+    @staticmethod
+    def validate_url(url: str, allowed_domains: list[str] = None) -> str | None:
+        """Validate a URL and check against allowed domains."""
+        try:
+            parsed = urlparse(url)
+
+            # Only allow http/https
+            if parsed.scheme not in ("http", "https"):
+                return None
+
+            # Check domain allowlist
+            if allowed_domains:
+                hostname = parsed.hostname or ""
+                if not any(
+                    hostname == d or hostname.endswith(f".{d}")
+                    for d in allowed_domains
+                ):
+                    return None
+
+            # Block internal IPs
+            blocked = ["localhost", "127.0.0.1", "0.0.0.0", "169.254"]
+            if parsed.hostname in blocked:
+                return None
+            # Block 10.x, 172.16-31.x, 192.168.x
+            if parsed.hostname:
+                if re.match(r'^(10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.)', parsed.hostname):
+                    return None
+
+            return url
+
+        except Exception:
+            return None
+
+    @staticmethod
+    def validate_sql(sql: str) -> tuple[bool, str]:
+        """Check if a SQL query is safe (SELECT only)."""
+        normalized = sql.strip().upper()
+
+        # Block non-SELECT queries
+        if not normalized.startswith("SELECT"):
+            return False, "Only SELECT queries are allowed"
+
+        # Block dangerous keywords
+        dangerous = [
+            "DROP", "DELETE", "UPDATE", "INSERT", "ALTER",
+            "TRUNCATE", "EXEC", "EXECUTE", "UNION ALL"
+        ]
+        for keyword in dangerous:
+            if keyword in normalized:
+                return False, f"Keyword '{keyword}' is not allowed"
+
+        # Block comment injection
+        if "--" in sql or "/*" in sql:
+            return False, "SQL comments are not allowed"
+
+        return True, "OK"
+
+
+class SecurityMiddleware:
+    """Middleware for adding security checks to tool execution."""
+
+    def __init__(self, registry: AgentToolRegistry):
+        self.registry = registry
+        self.validator = InputValidator()
+        self.blocked_patterns = [
+            r'eval\s*\(', r'exec\s*\(', r'__import__',
+            r'os\.system', r'subprocess',
+        ]
+
+    def check_input(self, tool_name: str, kwargs: dict) -> tuple[bool, str]:
+        """Check if tool input is safe to execute."""
+        for key, value in kwargs.items():
+            if isinstance(value, str):
+                # Check for code injection patterns
+                for pattern in self.blocked_patterns:
+                    if re.search(pattern, value):
+                        return False, (
+                            f"Blocked potentially dangerous input "
+                            f"in parameter '{key}'"
+                        )
+
+        return True, "OK"
+
+    def wrapped_execute(self, tool_name: str, **kwargs) -> ToolResult:
+        """Execute a tool with security checks."""
+        # Input validation
+        safe, message = self.check_input(tool_name, kwargs)
+        if not safe:
+            return ToolResult(
+                success=False,
+                output="",
+                tool_name=tool_name,
+                execution_time_ms=0,
+                error=f"Security check failed: {message}"
+            )
+
+        # Sanitize string inputs
+        sanitized = {}
+        for key, value in kwargs.items():
+            if isinstance(value, str):
+                sanitized[key] = self.validator.sanitize_string(value)
+            else:
+                sanitized[key] = value
+
+        # Execute
+        return self.registry.execute(tool_name, **sanitized)
+```
+
+---
+
+## Key Takeaways
+
+1. **Tools give agents superpowers** — they let language models interact with the real world beyond just generating text.
+
+2. **Function calling** is the bridge between the model's decisions and actual code execution. The model generates structured tool calls, and your code executes them.
+
+3. **Follow the single-responsibility principle** — each tool should do one thing well. This makes tools easier to use, test, and debug.
+
+4. **Clear descriptions are critical** — the model relies on your tool names and descriptions to decide when and how to use each tool. Invest time in writing good descriptions.
+
+5. **Always validate inputs** — never trust user-provided data. Sanitize strings, validate URLs, check SQL queries, and prevent path traversal.
+
+6. **Return concise outputs** — tool results go back to the model. Long outputs waste tokens and reduce response quality.
+
+7. **Use a registry pattern** — centralize tool management for easier registration, lookup, schema generation, and usage tracking.
+
+8. **Security is not optional** — every tool is a potential attack surface. Implement input validation, output filtering, and permission checks from the start.
+
+9. **Build tools incrementally** — start with simple tools and add complexity as needed. A simple tool that works is better than a complex tool that breaks.
+
+10. **Test your tools thoroughly** — tools interact with external systems. Test error handling, edge cases, and timeout behavior.
+
+---
+
+## Try It Yourself
+
+### Exercise 1: Build a Calculator Tool
+
+Build a calculator tool that handles basic arithmetic, parentheses, and common math functions (sqrt, pow, abs, round).
+
+```python
+# Starter code
+def calculator(expression: str) -> str:
+    """
+    Evaluate a mathematical expression safely.
+
+    Supports: +, -, *, /, **, %, sqrt(), abs(), round()
+    Example: "sqrt(144) + 3**2" → "15.0"
+    """
+    # Your implementation here
+    # Remember: NEVER use eval() with user input!
+    # Parse and evaluate safely
+    pass
+```
+
+### Exercise 2: Build a Weather Tool
+
+Create a weather tool that calls a free weather API (like Open-Meteo) and returns formatted weather data.
+
+```python
+# Starter code
+def get_weather(latitude: float, longitude: float) -> str:
+    """
+    Get current weather for a location using Open-Meteo API.
+
+    Args:
+        latitude: Location latitude
+        longitude: Location longitude
+
+    Returns:
+        Formatted weather string
+    """
+    # API: https://api.open-meteo.com/v1/forecast
+    # Your implementation here
+    pass
+```
+
+### Exercise 3: Extend the Registry
+
+Add these features to the `AgentToolRegistry`:
+
+1. **Tool versioning** — Allow multiple versions of the same tool
+2. **Async execution** — Support `async def` functions
+3. **Caching** — Cache tool results based on parameters
+4. **Rate limiting** — Limit how often each tool can be called
+
+### Exercise 4: Build a File Converter Tool
+
+Create tools that convert between file formats:
+
+```python
+def convert_csv_to_json(csv_content: str) -> str:
+    """Convert CSV text to JSON format."""
+    pass
+
+def convert_markdown_to_html(markdown: str) -> str:
+    """Convert Markdown text to HTML."""
+    pass
+
+def extract_text_from_pdf(pdf_path: str) -> str:
+    """Extract text content from a PDF file."""
+    pass
+```
+
+### Exercise 5: Security Audit
+
+Review the tools in this chapter and write security tests:
+
+```python
+# Test cases to implement
+def test_sql_injection():
+    """Verify SQL injection attempts are blocked."""
+    pass
+
+def test_path_traversal():
+    """Verify path traversal is prevented."""
+    pass
+
+def test_code_injection():
+    """Verify code injection in parameters is caught."""
+    pass
+
+def test_ssrf():
+    """Verify requests to internal IPs are blocked."""
+    pass
+```
+
+---
+
+> **Next Chapter:** In Chapter 10, we'll explore building your own LLM pipeline — fine-tuning, serving, and optimizing models for your specific agent use cases.
+4:["$","div",null,{"children":["$","$Lf",null,{"content":"$10","currentChapter":{"id":"agents-ch-09","number":9,"title":"Building Tools from Scratch","subtitle":"Creating Custom Agent Capabilities","description":"Build function calling, API integrations, web scrapers, database agents, and file system tools from the ground up.","slug":"building-tools-from-scratch","part":"Part III: Build from Scratch","estimatedPages":20,"topics":["Function calling","API integrations","Web scraping agents","Database agents","File system agents","Tool registration"],"icon":"🔧","bookId":"ai-agents"}}]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+c:[["$","title","0",{"children":"AI Agents: The Complete Guide"}],["$","meta","1",{"name":"description","content":"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"}],["$","meta","2",{"name":"author","content":"Manjunath Kalburgi"}],["$","meta","3",{"name":"keywords","content":"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"}]]

@@ -1,0 +1,49 @@
+{
+  "provider": "kokoro",
+  "speed": 1,
+  "lines": [
+    {
+      "id": "01",
+      "text": "What if one platform could handle everything — from finding your dream home to planning the finances?"
+    },
+    {
+      "id": "02",
+      "text": "Meet FinPlanner. Your smart financial navigator. The dashboard gives you instant access to properties, financial tools, and AI-powered insights — all in one place."
+    },
+    {
+      "id": "03",
+      "text": "Browse premium properties across Hubli, Bangalore, and Mysore. Filter by city, budget, and configuration — every listing is RERA verified."
+    },
+    {
+      "id": "04",
+      "text": "Dive deep into any property. See photos, amenities, pricing, and a built-in cost calculator — all before you even make a call."
+    },
+    {
+      "id": "05",
+      "text": "Plan your finances with precision. Calculate EMIs, compare loan options, and see the true cost of your investment — down to the last rupee."
+    },
+    {
+      "id": "06",
+      "text": "Our AI agents work for you — analyzing market trends, comparing properties, and giving you personalized investment advice."
+    },
+    {
+      "id": "07",
+      "text": "Manage leads, run marketing campaigns, and track performance — whether you're a buyer, agent, or builder."
+    },
+    {
+      "id": "08",
+      "text": "Buy, sell, and connect. The marketplace brings buyers and sellers together, while the community keeps you informed."
+    },
+    {
+      "id": "09",
+      "text": "FinPlanner. Your smart financial navigator. Start exploring today."
+    }
+  ],
+  "bgm": {
+    "mode": "retrieve",
+    "query": "upbeat-corporate",
+    "blob": "FinPlanner is the all-in-one AI-powered platform for real estate discovery and financial planning in Karnataka.",
+    "arc": "Demo Loop — question → product intro → demo cycle → trust → CTA"
+  },
+  "voice": "am_michael"
+}

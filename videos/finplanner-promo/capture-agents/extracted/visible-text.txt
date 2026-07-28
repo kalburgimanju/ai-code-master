@@ -1,0 +1,73 @@
+[span] FinPlanner
+[span] Real Estate & Finance
+[a] Dashboard
+[a] Properties
+[a] Financial Planner
+[a] AI Agents
+[a] Marketing
+[a] Marketplace
+[a] Community
+[a] Sign In
+[span] Welcome
+[span] Hubli • Bangalore • Mysore
+[h1] AI Agent Agency
+[p] Intelligent agents to help you with finance, legal, marketing, and more
+[h2] Your Personal AI Agency
+[p] Our AI agents are powered by OpenRouter. Each agent specializes in a specific domain — from financial planning to property analysis. Chat with any agent for expert advice, then use their insights across the platform.
+[a] Financial Advisor
+[a] Legal Expert
+[h3] Financial Planner
+[p] Personal Finance Advisor
+[p] Plan your finances, budget for your dream home, and achieve savings goals with AI-powered insights.
+[span] Budget Planning
+[span] Goal Setting
+[span] EMI Calculation
+[span] Tax Planning
+[div] Start Chatting
+[h3] Investment Advisor
+[p] Smart Investment Guide
+[p] Get personalized investment advice, compare options, and build a portfolio aligned with your risk tolerance.
+[span] Mutual Funds
+[span] Stocks
+[span] Fixed Deposits
+[span] Real Estate
+[div] Start Chatting
+[h3] Legal Expert
+[p] Property Legal Advisor
+[p] Get legal opinions on property documents, RERA compliance, title deeds, and registration processes.
+[span] Title Deeds
+[span] RERA Compliance
+[span] Registration
+[span] Due Diligence
+[div] Start Chatting
+[h3] Marketing Guru
+[p] Real Estate Marketing Strategist
+[p] Plan marketing campaigns, budget allocation, lead generation strategies, and ROI optimization.
+[span] Campaign Planning
+[span] Budget Allocation
+[span] Lead Gen
+[span] ROI Analysis
+[div] Start Chatting
+[h3] Lead Qualifier
+[p] AI Lead Scoring & Follow-up
+[p] Automatically score leads, schedule follow-ups, and prioritize high-intent buyers for your team.
+[span] Lead Scoring
+[span] Follow-up Automation
+[span] Priority Ranking
+[span] Conversion
+[div] Start Chatting
+[h3] Property Analyst
+[p] Real Estate Market Analyst
+[p] Analyze property values, market trends, ROI potential, and compare projects across cities.
+[span] Market Analysis
+[span] Price Trends
+[span] ROI Calculator
+[span] City Comparison
+[div] Start Chatting
+[h2] How It Works
+[h4] Choose an Agent
+[p] Select from 6 specialized AI agents for your specific need.
+[h4] Describe Your Situation
+[p] Tell the agent about your requirements in natural language.
+[h4] Get AI-Powered Advice
+[p] Receive detailed analysis, recommendations, and actionable steps.

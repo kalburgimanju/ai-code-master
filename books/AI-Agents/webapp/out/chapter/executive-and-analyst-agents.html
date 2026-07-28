@@ -1,0 +1,861 @@
+<!DOCTYPE html><html lang="en" class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/chunks/157per-6rfej7.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/3s_ssfmklbvuh.js"/><script src="/_next/static/chunks/3h0oyn0exvw0m.js" async=""></script><script src="/_next/static/chunks/0gy5uo_6oz9q4.js" async=""></script><script src="/_next/static/chunks/2n-c2rhkbzx6r.js" async=""></script><script src="/_next/static/chunks/turbopack-10u0tugcn5e6r.js" async=""></script><script src="/_next/static/chunks/3j2brc7c8hat8.js" async=""></script><script src="/_next/static/chunks/05b0208rfh8ys.js" async=""></script><script src="/_next/static/chunks/16vgld9iclosn.js" async=""></script><script src="/_next/static/chunks/2rb1230i-fez-.js" async=""></script><meta name="next-size-adjust" content=""/><title>AI Agents: The Complete Guide</title><meta name="description" content="A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"/><meta name="author" content="Manjunath Kalburgi"/><meta name="keywords" content="AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"/><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body class="min-h-full flex flex-col"><div hidden=""><!--$--><!--/$--></div><div><div class="reading-progress" style="width:0%"></div><nav class="fixed top-0 left-0 right-0 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border-color)] z-40 no-print"><div class="flex items-center justify-between px-4 py-2 max-w-full"><div class="flex items-center gap-3"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Toggle sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h14M3 10h14M3 15h14"></path></svg></button><a class="text-sm font-semibold text-primary hover:underline hidden sm:inline" href="/">AI Agents Book</a></div><div class="flex items-center gap-2 text-sm text-[var(--foreground)] opacity-60"><span class="hidden md:inline">Chapter <!-- -->5</span><span class="hidden md:inline">•</span><span class="hidden lg:inline">Executive &amp; Analyst Agents</span><span class="lg:hidden">📊</span></div><div class="flex items-center gap-2"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12V4M4 7l4-4 4 4"></path></svg></button></div></div></nav><div class="flex pt-12 min-h-screen"><aside class="fixed left-0 top-12 bottom-0 w-72 bg-[var(--surface)] border-r border-[var(--border-color)] overflow-y-auto transition-transform duration-300 z-30 no-print translate-x-0"><div class="p-4"><div class="mb-6 pb-4 border-b border-[var(--border-color)]"><span class="text-xs font-medium text-primary uppercase tracking-wide">Chapter <!-- -->5</span><h2 class="text-lg font-bold text-[var(--foreground)] mt-1">Executive &amp; Analyst Agents</h2><p class="text-xs text-[var(--foreground)] opacity-60 mt-1">~<!-- -->18<!-- --> pages • <!-- -->Part II: Building Agents</p></div><div class="mb-6"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">On this page</h3><div class="space-y-1"><a href="#chapter-5-executive-analyst-agents" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chapter 5: Executive &amp; Analyst Agents</a><a href="#5-1-what-executive-agents-do" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5.1 What Executive Agents Do</a><a href="#the-problem-they-solve" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Problem They Solve</a><a href="#key-capabilities" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Key Capabilities</a><a href="#5-2-report-generation" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5.2 Report Generation</a><a href="#from-data-to-narrative" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">From Data to Narrative</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Usage ===</a><a href="#sample-data" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Sample data</a><a href="#5-3-data-analysis-pipelines" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5.3 Data Analysis Pipelines</a><a href="#sql-agent-for-business-queries" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">SQL Agent for Business Queries</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Usage ===</a><a href="#5-4-kpi-monitoring" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5.4 KPI Monitoring</a><a href="#automated-metric-tracking" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Automated Metric Tracking</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Usage ===</a><a href="#register-kpis" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Register KPIs</a><a href="#check-all-kpis" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Check all KPIs</a><a href="#5-5-meeting-summarization" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5.5 Meeting Summarization</a><a href="#extracting-action-items-automatically" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Extracting Action Items Automatically</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Usage ===</a><a href="#5-6-email-drafting" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5.6 Email Drafting</a><a href="#professional-communication-assistance" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Professional Communication Assistance</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Usage ===</a><a href="#5-7-decision-support-systems" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5.7 Decision Support Systems</a><a href="#data-driven-recommendations" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Data-Driven Recommendations</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Usage ===</a><a href="#5-8-architecture-overview" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5.8 Architecture Overview</a><a href="#5-9-key-takeaways" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5.9 Key Takeaways</a><a href="#5-10-try-it-yourself" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5.10 Try It Yourself</a><a href="#exercise-1-build-a-mini-report-generator" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 1: Build a Mini Report Generator</a><a href="#exercise-2-kpi-dashboard" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 2: KPI Dashboard</a><a href="#exercise-3-meeting-summarizer" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 3: Meeting Summarizer</a><a href="#exercise-4-email-drafter" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 4: Email Drafter</a></div></div><div class="border-t border-[var(--border-color)] pt-4"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">Chapters</h3><div class="space-y-1"><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/llms-and-genai-fundamentals"><span class="text-base">🧠</span><span class="truncate">LLMs &amp; GenAI Fundamentals</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/rag-and-knowledge-systems"><span class="text-base">🔍</span><span class="truncate">RAG &amp; Knowledge Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/introduction-to-ai-agents"><span class="text-base">🤖</span><span class="truncate">Introduction to AI Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/customer-support-agents"><span class="text-base">💬</span><span class="truncate">Customer Support Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all bg-primary/10 text-primary font-medium" href="/chapter/executive-and-analyst-agents"><span class="text-base">📊</span><span class="truncate">Executive &amp; Analyst Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/developer-and-coder-agents"><span class="text-base">👨‍💻</span><span class="truncate">Developer &amp; Coder Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/designer-and-creative-agents"><span class="text-base">🎨</span><span class="truncate">Designer &amp; Creative Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/multi-agent-systems"><span class="text-base">🔗</span><span class="truncate">Multi-Agent Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-tools-from-scratch"><span class="text-base">🔧</span><span class="truncate">Building Tools from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-your-own-llm-pipeline"><span class="text-base">⚙️</span><span class="truncate">Building Your Own LLM Pipeline</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-rag-from-scratch"><span class="text-base">🏗️</span><span class="truncate">Building RAG from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/complete-project-deployment"><span class="text-base">🚀</span><span class="truncate">Complete Project: End to End</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/security-and-safety"><span class="text-base">🛡️</span><span class="truncate">Security, Safety &amp; Guardrails</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/observability-and-scalability"><span class="text-base">📈</span><span class="truncate">Observability &amp; Scalability</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/authenticity-and-future"><span class="text-base">🌍</span><span class="truncate">Authenticity &amp; The Future</span></a></div></div></div></aside><main class="flex-1 transition-all duration-300 ml-72 max-w-4xl px-6 md:px-12 py-12"><div class="mb-10 pb-8 border-b-2 border-primary/20"><span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">Part II: Building Agents</span><h1 class="text-4xl md:text-5xl font-extrabold mb-2 bg-gradient-to-r from-primary via-emerald-400 to-teal-400 -webkit-background-clip-text text-transparent bg-clip-text">Chapter <!-- -->5<!-- -->: <!-- -->Executive &amp; Analyst Agents</h1><p class="text-xl text-[var(--foreground)] opacity-70">AI Agents for Business Intelligence</p></div><article class="prose-book"><h1 class="text-4xl font-extrabold mt-12 mb-4">Chapter 5: Executive &amp; Analyst Agents</h1>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><em class="italic">&quot;In God we trust. All others must bring data.&quot;</em> — W. Edwards Deming</p>
+</blockquote>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5.1 What Executive Agents Do</h2>
+<p class="mb-4 text-justify">Executive agents are AI systems designed to help business leaders make better decisions faster. They analyze data, generate reports, summarize meetings, and provide actionable insights — all automatically.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Problem They Solve</h3>
+<p class="mb-4 text-justify">Executives spend hours each week on:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Reading through lengthy reports</li>
+<li class="text-[var(--foreground)]">Analyzing spreadsheets</li>
+<li class="text-[var(--foreground)]">Summarizing meeting notes</li>
+<li class="text-[var(--foreground)]">Drafting emails and presentations</li>
+<li class="text-[var(--foreground)]">Tracking KPIs across departments</li>
+</ul>
+<p class="mb-4 text-justify">An executive agent automates these tasks, freeing up time for strategic thinking.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Key Capabilities</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Capability</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">What It Does</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Time Saved</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Report Generation</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Turns raw data into executive summaries</td><td class="px-4 py-3 border border-[var(--border-color)]">2-4 hours/week</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Data Analysis</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Queries databases and generates insights</td><td class="px-4 py-3 border border-[var(--border-color)]">3-5 hours/week</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">KPI Monitoring</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Tracks metrics and alerts on anomalies</td><td class="px-4 py-3 border border-[var(--border-color)]">1-2 hours/week</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Meeting Summarization</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Extracts action items from recordings</td><td class="px-4 py-3 border border-[var(--border-color)]">2-3 hours/week</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Email Drafting</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Writes professional communications</td><td class="px-4 py-3 border border-[var(--border-color)]">1-2 hours/week</td></tr></tbody></table></div>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5.2 Report Generation</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">From Data to Narrative</h3>
+<p class="mb-4 text-justify">The key challenge isn&#x27;t generating text — it&#x27;s understanding what the data means and communicating it clearly.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Executive Report Generator Agent
+Turns raw data into clear, actionable executive summaries.
+&quot;&quot;&quot;
+
+from openai import OpenAI
+from dataclasses import dataclass
+from datetime import datetime
+import json
+
+
+@dataclass
+class ReportSection:
+    title: str
+    data: dict
+    narrative: str
+
+
+class ExecutiveReportAgent:
+    &quot;&quot;&quot;Generates executive reports from raw business data.&quot;&quot;&quot;
+    
+    def __init__(self, api_key: str | None = None):
+        self.client = OpenAI(api_key=api_key)
+        self.model = &quot;gpt-4o&quot;
+    
+    def analyze_data(self, data: dict) -&gt; str:
+        &quot;&quot;&quot;Analyze raw data and generate executive narrative.&quot;&quot;&quot;
+        
+        prompt = f&quot;&quot;&quot;You are a senior business analyst writing for a CEO.
+        
+Analyze this data and write a clear, concise executive summary.
+Focus on:
+1. Key findings (what does the data show?)
+2. Trends (what&#x27;s changing?)
+3. Risks (what could go wrong?)
+4. Recommendations (what should we do?)
+
+Data:
+{json.dumps(data, indent=2, default=str)}
+
+Write in a professional but accessible tone. Use bullet points for clarity.
+Keep it under 500 words.&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are an expert business analyst.&quot;},
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+            ],
+            temperature=0.3
+        )
+        
+        return response.choices[0].message.content
+    
+    def generate_full_report(
+        self, 
+        company_name: str,
+        period: str,
+        sections: list[dict]
+    ) -&gt; str:
+        &quot;&quot;&quot;Generate a complete executive report.&quot;&quot;&quot;
+        
+        report_parts = [
+            f&quot;# Executive Report: {company_name}&quot;,
+            f&quot;**Period:** {period}&quot;,
+            f&quot;**Generated:** {datetime.now().strftime(&#x27;%Y-%m-%d %H:%M&#x27;)}&quot;,
+            &quot;&quot;,
+            &quot;---&quot;,
+            &quot;&quot;
+        ]
+        
+        for section in sections:
+            title = section[&quot;title&quot;]
+            data = section[&quot;data&quot;]
+            
+            # Analyze each section
+            narrative = self.analyze_data(data)
+            
+            report_parts.extend([
+                f&quot;## {title}&quot;,
+                &quot;&quot;,
+                narrative,
+                &quot;&quot;,
+                &quot;---&quot;,
+                &quot;&quot;
+            ])
+        
+        # Generate overall summary
+        all_data = {s[&quot;title&quot;]: s[&quot;data&quot;] for s in sections}
+        summary = self.generate_overall_summary(all_data)
+        
+        report_parts.extend([
+            &quot;## Overall Assessment&quot;,
+            &quot;&quot;,
+            summary,
+            &quot;&quot;,
+            &quot;---&quot;,
+            f&quot;*Report generated by Executive Report Agent*&quot;
+        ])
+        
+        return &quot;\n&quot;.join(report_parts)
+    
+    def generate_overall_summary(self, all_data: dict) -&gt; str:
+        &quot;&quot;&quot;Generate an overall business summary.&quot;&quot;&quot;
+        
+        prompt = f&quot;&quot;&quot;Based on these business metrics, provide a 2-paragraph 
+executive overview covering overall business health, key priorities, 
+and strategic recommendations.
+
+{json.dumps(all_data, indent=2, default=str)}&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+            ],
+            temperature=0.3
+        )
+        
+        return response.choices[0].message.content
+
+
+# === Usage ===
+agent = ExecutiveReportAgent()
+
+# Sample data
+sections = [
+    {
+        &quot;title&quot;: &quot;Revenue Performance&quot;,
+        &quot;data&quot;: {
+            &quot;total_revenue&quot;: 2450000,
+            &quot;growth_rate&quot;: 0.12,
+            &quot;by_product&quot;: {
+                &quot;Enterprise&quot;: 1500000,
+                &quot;SMB&quot;: 650000,
+                &quot;Self-serve&quot;: 300000
+            },
+            &quot;churn_rate&quot;: 0.05
+        }
+    },
+    {
+        &quot;title&quot;: &quot;Customer Metrics&quot;,
+        &quot;data&quot;: {
+            &quot;total_customers&quot;: 1250,
+            &quot;new_customers&quot;: 180,
+            &quot;nps_score&quot;: 72,
+            &quot;support_tickets&quot;: 340,
+            &quot;avg_resolution_time_hours&quot;: 4.2
+        }
+    }
+]
+
+report = agent.generate_full_report(
+    company_name=&quot;Acme Corp&quot;,
+    period=&quot;Q4 2025&quot;,
+    sections=sections
+)
+
+print(report)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5.3 Data Analysis Pipelines</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">SQL Agent for Business Queries</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+SQL Data Analysis Agent
+Natural language to SQL, with automatic visualization.
+&quot;&quot;&quot;
+
+import sqlite3
+from openai import OpenAI
+from dataclasses import dataclass
+import json
+
+
+@dataclass
+class AnalysisResult:
+    question: str
+    sql_query: str
+    results: list[dict]
+    insight: str
+
+
+class DataAnalysisAgent:
+    &quot;&quot;&quot;Converts natural language questions to SQL and analyzes results.&quot;&quot;&quot;
+    
+    def __init__(self, db_path: str, api_key: str | None = None):
+        self.db_path = db_path
+        self.client = OpenAI(api_key=api_key)
+        self.conn = sqlite3.connect(db_path)
+        self.conn.row_factory = sqlite3.Row
+    
+    def get_schema(self) -&gt; str:
+        &quot;&quot;&quot;Get database schema for context.&quot;&quot;&quot;
+        cursor = self.conn.execute(
+            &quot;SELECT name FROM sqlite_master WHERE type=&#x27;table&#x27;&quot;
+        )
+        tables = [row[0] for row in cursor.fetchall()]
+        
+        schema_parts = []
+        for table in tables:
+            cursor = self.conn.execute(f&quot;PRAGMA table_info({table})&quot;)
+            columns = [(row[1], row[2]) for row in cursor.fetchall()]
+            col_str = &quot;, &quot;.join(f&quot;{name} ({dtype})&quot; for name, dtype in columns)
+            schema_parts.append(f&quot;Table: {table}\nColumns: {col_str}&quot;)
+        
+        return &quot;\n\n&quot;.join(schema_parts)
+    
+    def nl_to_sql(self, question: str) -&gt; str:
+        &quot;&quot;&quot;Convert natural language question to SQL.&quot;&quot;&quot;
+        
+        schema = self.get_schema()
+        
+        prompt = f&quot;&quot;&quot;Convert this natural language question to a SQL query.
+
+Database Schema:
+{schema}
+
+Question: {question}
+
+Return ONLY the SQL query, no explanation. Use SQLite syntax.&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+            ],
+            temperature=0.0
+        )
+        
+        sql = response.choices[0].message.content.strip()
+        # Clean up markdown code blocks
+        if sql.startswith(&quot;```&quot;):
+            sql = sql.split(&quot;\n&quot;, 1)[1].rsplit(&quot;```&quot;, 1)[0]
+        
+        return sql
+    
+    def execute_query(self, sql: str) -&gt; list[dict]:
+        &quot;&quot;&quot;Execute SQL query and return results.&quot;&quot;&quot;
+        try:
+            cursor = self.conn.execute(sql)
+            columns = [desc[0] for desc in cursor.description]
+            rows = cursor.fetchall()
+            return [dict(zip(columns, row)) for row in rows]
+        except Exception as e:
+            return [{&quot;error&quot;: str(e)}]
+    
+    def analyze(self, question: str) -&gt; AnalysisResult:
+        &quot;&quot;&quot;Full analysis pipeline: question → SQL → results → insight.&quot;&quot;&quot;
+        
+        # Generate SQL
+        sql = self.nl_to_sql(question)
+        
+        # Execute
+        results = self.execute_query(sql)
+        
+        # Generate insight
+        prompt = f&quot;&quot;&quot;Given this business question and SQL results, provide 
+a clear, actionable insight in 2-3 sentences.
+
+Question: {question}
+SQL: {sql}
+Results: {json.dumps(results, default=str)}
+
+Focus on what the data means for business decisions.&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}],
+            temperature=0.3
+        )
+        
+        return AnalysisResult(
+            question=question,
+            sql_query=sql,
+            results=results,
+            insight=response.choices[0].message.content
+        )
+
+
+# === Usage ===
+agent = DataAnalysisAgent(&quot;business_data.db&quot;)
+result = agent.analyze(&quot;What were our top 5 customers by revenue last quarter?&quot;)
+print(f&quot;SQL: {result.sql_query}&quot;)
+print(f&quot;Insight: {result.insight}&quot;)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5.4 KPI Monitoring</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Automated Metric Tracking</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+KPI Monitoring Agent
+Tracks key metrics and alerts when thresholds are breached.
+&quot;&quot;&quot;
+
+from dataclasses import dataclass
+from datetime import datetime
+from enum import Enum
+
+
+class AlertSeverity(Enum):
+    INFO = &quot;info&quot;
+    WARNING = &quot;warning&quot;
+    CRITICAL = &quot;critical&quot;
+
+
+@dataclass
+class KPI:
+    name: str
+    current_value: float
+    target: float
+    threshold_warning: float  # % below target to trigger warning
+    threshold_critical: float  # % below target to trigger critical
+    trend: str  # &quot;up&quot;, &quot;down&quot;, &quot;stable&quot;
+
+
+@dataclass
+class KPIAlert:
+    kpi: KPI
+    severity: AlertSeverity
+    message: str
+    recommendation: str
+
+
+class KPIMonitoringAgent:
+    &quot;&quot;&quot;Monitors KPIs and generates alerts with recommendations.&quot;&quot;&quot;
+    
+    def __init__(self):
+        self.kpis: dict[str, KPI] = {}
+        self.history: list[dict] = []
+    
+    def register_kpi(self, kpi: KPI):
+        &quot;&quot;&quot;Register a KPI to monitor.&quot;&quot;&quot;
+        self.kpis[kpi.name] = kpi
+    
+    def check_kpi(self, kpi: KPI) -&gt; KPIAlert | None:
+        &quot;&quot;&quot;Check if a KPI needs attention.&quot;&quot;&quot;
+        
+        if kpi.current_value &gt;= kpi.target:
+            return None  # KPI is on target
+        
+        deviation = (kpi.target - kpi.current_value) / kpi.target
+        
+        if deviation &gt;= kpi.threshold_critical:
+            severity = AlertSeverity.CRITICAL
+            message = f&quot;CRITICAL: {kpi.name} is {deviation:.1%} below target&quot;
+        elif deviation &gt;= kpi.threshold_warning:
+            severity = AlertSeverity.WARNING
+            message = f&quot;WARNING: {kpi.name} is {deviation:.1%} below target&quot;
+        else:
+            return None
+        
+        # Generate recommendation based on KPI type
+        recommendation = self._generate_recommendation(kpi, severity)
+        
+        return KPIAlert(
+            kpi=kpi,
+            severity=severity,
+            message=message,
+            recommendation=recommendation
+        )
+    
+    def _generate_recommendation(self, kpi: KPI, severity: AlertSeverity) -&gt; str:
+        &quot;&quot;&quot;Generate actionable recommendation for a KPI alert.&quot;&quot;&quot;
+        
+        recommendations = {
+            &quot;revenue&quot;: &quot;Review sales pipeline and marketing spend. Consider promotional campaigns.&quot;,
+            &quot;churn&quot;: &quot;Analyze churn reasons. Implement retention campaigns for at-risk customers.&quot;,
+            &quot;nps&quot;: &quot;Survey recent detractors. Address top complaints immediately.&quot;,
+            &quot;conversion&quot;: &quot;Review funnel drop-off points. A/B test landing pages.&quot;,
+            &quot;support_time&quot;: &quot;Add support staff or implement AI triage for faster resolution.&quot;,
+        }
+        
+        for key, rec in recommendations.items():
+            if key in kpi.name.lower():
+                return rec
+        
+        return f&quot;Investigate root cause for {kpi.name} and develop action plan.&quot;
+    
+    def run_check(self) -&gt; list[KPIAlert]:
+        &quot;&quot;&quot;Check all registered KPIs and return alerts.&quot;&quot;&quot;
+        alerts = []
+        
+        for kpi in self.kpis.values():
+            alert = self.check_kpi(kpi)
+            if alert:
+                alerts.append(alert)
+        
+        # Sort by severity
+        severity_order = {
+            AlertSeverity.CRITICAL: 0,
+            AlertSeverity.WARNING: 1,
+            AlertSeverity.INFO: 2
+        }
+        alerts.sort(key=lambda a: severity_order[a.severity])
+        
+        return alerts
+
+
+# === Usage ===
+monitor = KPIMonitoringAgent()
+
+# Register KPIs
+monitor.register_kpi(KPI(
+    name=&quot;monthly_revenue&quot;,
+    current_value=180000,
+    target=200000,
+    threshold_warning=0.05,
+    threshold_critical=0.15,
+    trend=&quot;down&quot;
+))
+
+monitor.register_kpi(KPI(
+    name=&quot;customer_churn_rate&quot;,
+    current_value=0.08,
+    target=0.05,
+    threshold_warning=0.2,
+    threshold_critical=0.5,
+    trend=&quot;up&quot;
+))
+
+# Check all KPIs
+alerts = monitor.run_check()
+for alert in alerts:
+    print(f&quot;\n{alert.severity.value.upper()}: {alert.message}&quot;)
+    print(f&quot;Recommendation: {alert.recommendation}&quot;)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5.5 Meeting Summarization</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Extracting Action Items Automatically</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Meeting Summarization Agent
+Processes meeting transcripts and extracts key information.
+&quot;&quot;&quot;
+
+from openai import OpenAI
+from dataclasses import dataclass
+
+
+@dataclass
+class MeetingSummary:
+    topic: str
+    summary: str
+    decisions: list[str]
+    action_items: list[dict]  # [{&quot;task&quot;: ..., &quot;owner&quot;: ..., &quot;deadline&quot;: ...}]
+    open_questions: list[str]
+
+
+class MeetingSummaryAgent:
+    &quot;&quot;&quot;Summarizes meetings and extracts action items.&quot;&quot;&quot;
+    
+    def __init__(self, api_key: str | None = None):
+        self.client = OpenAI(api_key=api_key)
+    
+    def summarize(self, transcript: str) -&gt; MeetingSummary:
+        &quot;&quot;&quot;Process a meeting transcript and extract key information.&quot;&quot;&quot;
+        
+        prompt = f&quot;&quot;&quot;Analyze this meeting transcript and extract:
+
+1. **Topic**: One-line summary of what the meeting was about
+2. **Summary**: 3-5 sentence executive summary
+3. **Decisions Made**: List of concrete decisions
+4. **Action Items**: Tasks with assigned owners and deadlines
+5. **Open Questions**: Unresolved items needing follow-up
+
+Transcript:
+{transcript}
+
+Return as JSON with these exact keys:
+topic, summary, decisions, action_items, open_questions&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a meeting analyst.&quot;},
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+            ],
+            temperature=0.2,
+            response_format={&quot;type&quot;: &quot;json_object&quot;}
+        )
+        
+        import json
+        data = json.loads(response.choices[0].message.content)
+        
+        return MeetingSummary(
+            topic=data.get(&quot;topic&quot;, &quot;&quot;),
+            summary=data.get(&quot;summary&quot;, &quot;&quot;),
+            decisions=data.get(&quot;decisions&quot;, []),
+            action_items=data.get(&quot;action_items&quot;, []),
+            open_questions=data.get(&quot;open_questions&quot;, [])
+        )
+    
+    def format_summary(self, summary: MeetingSummary) -&gt; str:
+        &quot;&quot;&quot;Format summary as a clean report.&quot;&quot;&quot;
+        
+        lines = [
+            f&quot;# Meeting Summary: {summary.topic}&quot;,
+            &quot;&quot;,
+            &quot;## Summary&quot;,
+            summary.summary,
+            &quot;&quot;,
+            &quot;## Decisions Made&quot;,
+        ]
+        
+        for decision in summary.decisions:
+            lines.append(f&quot;- {decision}&quot;)
+        
+        lines.extend([&quot;&quot;, &quot;## Action Items&quot;])
+        
+        for item in summary.action_items:
+            task = item.get(&quot;task&quot;, &quot;&quot;)
+            owner = item.get(&quot;owner&quot;, &quot;Unassigned&quot;)
+            deadline = item.get(&quot;deadline&quot;, &quot;No deadline&quot;)
+            lines.append(f&quot;- [ ] {task} — **{owner}** (due: {deadline})&quot;)
+        
+        if summary.open_questions:
+            lines.extend([&quot;&quot;, &quot;## Open Questions&quot;])
+            for q in summary.open_questions:
+                lines.append(f&quot;- {q}&quot;)
+        
+        return &quot;\n&quot;.join(lines)
+
+
+# === Usage ===
+agent = MeetingSummaryAgent()
+
+transcript = &quot;&quot;&quot;
+John: Let&#x27;s review the Q4 numbers. Revenue is up 12% but churn increased.
+Sarah: The enterprise segment is strong. SMB is where we&#x27;re losing people.
+Mike: I think we need to improve onboarding. New users drop off after day 3.
+John: Good point. Mike, can you audit the onboarding flow?
+Sarah: I&#x27;ll put together a churn analysis report by Friday.
+John: Decisions: We&#x27;re investing in onboarding improvements. Budget approved for Q1.
+Mike: I&#x27;ll have the audit done by next Wednesday.
+&quot;&quot;&quot;
+
+summary = agent.summarize(transcript)
+print(agent.format_summary(summary))
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5.6 Email Drafting</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Professional Communication Assistance</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Email Drafting Agent
+Generates professional emails based on context and intent.
+&quot;&quot;&quot;
+
+from openai import OpenAI
+
+
+class EmailDraftingAgent:
+    &quot;&quot;&quot;Drafts professional emails based on context.&quot;&quot;&quot;
+    
+    def __init__(self, api_key: str | None = None):
+        self.client = OpenAI(api_key=api_key)
+    
+    def draft_email(
+        self,
+        recipient: str,
+        context: str,
+        intent: str,
+        tone: str = &quot;professional&quot;,
+        length: str = &quot;medium&quot;
+    ) -&gt; str:
+        &quot;&quot;&quot;Draft an email based on context and intent.&quot;&quot;&quot;
+        
+        length_guide = {
+            &quot;short&quot;: &quot;3-4 sentences&quot;,
+            &quot;medium&quot;: &quot;1 paragraph, 5-7 sentences&quot;,
+            &quot;long&quot;: &quot;2-3 paragraphs&quot;
+        }
+        
+        prompt = f&quot;&quot;&quot;Draft a {tone} email.
+
+To: {recipient}
+Context: {context}
+Intent: {intent}
+Length: {length_guide.get(length, &#x27;medium&#x27;)}
+
+Write only the email body. No subject line. No greeting like &#x27;Dear X&#x27; 
+(use a natural opening). No signature block.&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+            ],
+            temperature=0.7
+        )
+        
+        return response.choices[0].message.content
+    
+    def reply_to_email(
+        self,
+        original_email: str,
+        desired_response: str,
+        tone: str = &quot;professional&quot;
+    ) -&gt; str:
+        &quot;&quot;&quot;Draft a reply to an existing email.&quot;&quot;&quot;
+        
+        prompt = f&quot;&quot;&quot;Draft a reply to this email.
+
+Original email:
+{original_email}
+
+Desired response intent: {desired_response}
+Tone: {tone}
+
+Write only the reply body.&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}],
+            temperature=0.7
+        )
+        
+        return response.choices[0].message.content
+
+
+# === Usage ===
+agent = EmailDraftingAgent()
+
+email = agent.draft_email(
+    recipient=&quot;engineering team&quot;,
+    context=&quot;We need to migrate from the old database to PostgreSQL by end of Q1&quot;,
+    intent=&quot;Inform about migration timeline and ask for volunteer leads&quot;,
+    tone=&quot;professional but friendly&quot;
+)
+
+print(email)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5.7 Decision Support Systems</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Data-Driven Recommendations</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Decision Support Agent
+Helps executives evaluate options and make informed decisions.
+&quot;&quot;&quot;
+
+from openai import OpenAI
+from dataclasses import dataclass
+
+
+@dataclass
+class DecisionOption:
+    name: str
+    pros: list[str]
+    cons: list[str]
+    cost: str
+    timeline: str
+    risk_level: str
+
+
+class DecisionSupportAgent:
+    &quot;&quot;&quot;Analyzes decisions and provides structured recommendations.&quot;&quot;&quot;
+    
+    def __init__(self, api_key: str | None = None):
+        self.client = OpenAI(api_key=api_key)
+    
+    def analyze_options(
+        self,
+        decision: str,
+        options: list[str],
+        constraints: list[str]
+    ) -&gt; str:
+        &quot;&quot;&quot;Analyze multiple options for a decision.&quot;&quot;&quot;
+        
+        prompt = f&quot;&quot;&quot;Analyze this business decision.
+
+Decision: {decision}
+
+Options:
+{chr(10).join(f&#x27;{i+1}. {opt}&#x27; for i, opt in enumerate(options))}
+
+Constraints:
+{chr(10).join(f&#x27;- {c}&#x27; for c in constraints)}
+
+For each option, provide:
+- Pros (2-3)
+- Cons (2-3)
+- Estimated cost
+- Timeline
+- Risk level (low/medium/high)
+
+Then give your recommendation with reasoning.
+
+Format as structured markdown.&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a strategic business advisor.&quot;},
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+            ],
+            temperature=0.3
+        )
+        
+        return response.choices[0].message.content
+
+
+# === Usage ===
+agent = DecisionSupportAgent()
+
+analysis = agent.analyze_options(
+    decision=&quot;Choose a cloud provider for our AI infrastructure&quot;,
+    options=[
+        &quot;AWS SageMaker&quot;,
+        &quot;Google Vertex AI&quot;,
+        &quot;Azure ML&quot;,
+        &quot;Self-hosted with vLLM&quot;
+    ],
+    constraints=[
+        &quot;Budget: $50k/month max&quot;,
+        &quot;Must support GPU instances&quot;,
+        &quot;Need SOC2 compliance&quot;,
+        &quot;Team has AWS experience&quot;
+    ]
+)
+
+print(analysis)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5.8 Architecture Overview</h2>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────────────────┐
+│                 Executive Agent System                │
+├─────────────────────────────────────────────────────┤
+│                                                      │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐          │
+│  │  Report   │  │   Data   │  │   KPI    │          │
+│  │ Generator │  │ Analyzer │  │ Monitor  │          │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘          │
+│       │              │              │                │
+│       ▼              ▼              ▼                │
+│  ┌──────────────────────────────────────────┐       │
+│  │           Data Integration Layer          │       │
+│  │  (Databases, APIs, Spreadsheets, etc.)   │       │
+│  └──────────────────────────────────────────┘       │
+│       │              │              │                │
+│       ▼              ▼              ▼                │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐          │
+│  │ Meeting  │  │  Email   │  │ Decision │          │
+│  │ Summary  │  │  Draft   │  │ Support  │          │
+│  └──────────┘  └──────────┘  └──────────┘          │
+│                                                      │
+│  ┌──────────────────────────────────────────┐       │
+│  │              Output Layer                 │       │
+│  │  (Email, Slack, Dashboard, Reports)      │       │
+│  └──────────────────────────────────────────┘       │
+│                                                      │
+└─────────────────────────────────────────────────────┘
+</code></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5.9 Key Takeaways</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Executive agents save 10+ hours per week</strong> by automating reports, analysis, and communication.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Report generation</strong> transforms raw data into actionable narratives that executives can act on immediately.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">SQL agents</strong> let anyone query databases using natural language — no SQL knowledge required.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">KPI monitoring</strong> provides proactive alerts before problems become crises.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Meeting summarization</strong> extracts decisions and action items, ensuring nothing falls through the cracks.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Decision support</strong> provides structured analysis of options, helping leaders make informed choices.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">The key is integration</strong> — connecting to real data sources makes these agents genuinely useful.</p>
+</li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5.10 Try It Yourself</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 1: Build a Mini Report Generator</h3>
+<p class="mb-4 text-justify">Create an agent that takes a CSV file and generates a 1-paragraph executive summary. Test it with sales data.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 2: KPI Dashboard</h3>
+<p class="mb-4 text-justify">Build a simple KPI monitoring system that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Tracks 5 metrics</li>
+<li class="text-[var(--foreground)]">Alerts when thresholds are breached</li>
+<li class="text-[var(--foreground)]">Sends notifications to Slack or email</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 3: Meeting Summarizer</h3>
+<p class="mb-4 text-justify">Record a 10-minute meeting (or use a transcript) and build an agent that extracts:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">3 key decisions</li>
+<li class="text-[var(--foreground)]">Action items with owners</li>
+<li class="text-[var(--foreground)]">Follow-up questions</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 4: Email Drafter</h3>
+<p class="mb-4 text-justify">Build an email agent that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Takes a bullet-point list of what you want to say</li>
+<li class="text-[var(--foreground)]">Drafts a professional email</li>
+<li class="text-[var(--foreground)]">Can adjust tone (formal, friendly, urgent)</li>
+</ul>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Next Chapter</strong>: In <a href="./chapter-06-developer-and-coder-agents.md" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Chapter 6: Developer &amp; Coder Agents</a>, we&#x27;ll explore how AI is transforming software development — from code generation to automated testing.</p>
+</blockquote></article><div class="mt-16 pt-8 border-t-2 border-[var(--border-color)]"><div class="flex justify-between items-stretch gap-4"><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group" href="/chapter/customer-support-agents"><span class="text-xs text-[var(--foreground)] opacity-50">← Previous</span><div class="flex items-center gap-2 mt-1"><span class="text-xl">💬</span><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Customer Support Agents</span></div></a><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group text-right" href="/chapter/developer-and-coder-agents"><span class="text-xs text-[var(--foreground)] opacity-50">Next →</span><div class="flex items-center justify-end gap-2 mt-1"><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Developer &amp; Coder Agents</span><span class="text-xl">👨‍💻</span></div></a></div></div></main></div></div><!--$--><!--/$--><script src="/_next/static/chunks/3s_ssfmklbvuh.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[78892,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n3:I[11359,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n5:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"OutletBoundary\"]\n6:\"$Sreact.suspense\"\n9:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"ViewportBoundary\"]\nb:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"MetadataBoundary\"]\nd:I[65125,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/157per-6rfej7.css\",\"style\"]\n:HL[\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"chapter\",\"executive-and-analyst-agents\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"chapter\",{\"children\":[[\"slug\",\"executive-and-analyst-agents\",\"d\",null],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3j2brc7c8hat8.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/05b0208rfh8ys.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-full flex flex-col\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/16vgld9iclosn.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/2rb1230i-fez-.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@7\"}]}]]}],{},null,false,null]},null,false,\"$@8\"]},null,false,\"$@8\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L9\",null,{\"children\":\"$La\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Lc\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$d\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"WpHiBD4DjnzuprdEnivdA\"}\n"])</script><script>self.__next_f.push([1,"e:[]\n8:\"$We\"\n"])</script><script>self.__next_f.push([1,"f:I[89587,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\",\"/_next/static/chunks/16vgld9iclosn.js\",\"/_next/static/chunks/2rb1230i-fez-.js\"],\"default\"]\n10:T643a,"])</script><script>self.__next_f.push([1,"# Chapter 5: Executive \u0026 Analyst Agents\n\n\u003e *\"In God we trust. All others must bring data.\"* — W. Edwards Deming\n\n---\n\n## 5.1 What Executive Agents Do\n\nExecutive agents are AI systems designed to help business leaders make better decisions faster. They analyze data, generate reports, summarize meetings, and provide actionable insights — all automatically.\n\n### The Problem They Solve\n\nExecutives spend hours each week on:\n- Reading through lengthy reports\n- Analyzing spreadsheets\n- Summarizing meeting notes\n- Drafting emails and presentations\n- Tracking KPIs across departments\n\nAn executive agent automates these tasks, freeing up time for strategic thinking.\n\n### Key Capabilities\n\n| Capability | What It Does | Time Saved |\n|-----------|-------------|-----------|\n| **Report Generation** | Turns raw data into executive summaries | 2-4 hours/week |\n| **Data Analysis** | Queries databases and generates insights | 3-5 hours/week |\n| **KPI Monitoring** | Tracks metrics and alerts on anomalies | 1-2 hours/week |\n| **Meeting Summarization** | Extracts action items from recordings | 2-3 hours/week |\n| **Email Drafting** | Writes professional communications | 1-2 hours/week |\n\n---\n\n## 5.2 Report Generation\n\n### From Data to Narrative\n\nThe key challenge isn't generating text — it's understanding what the data means and communicating it clearly.\n\n```python\n\"\"\"\nExecutive Report Generator Agent\nTurns raw data into clear, actionable executive summaries.\n\"\"\"\n\nfrom openai import OpenAI\nfrom dataclasses import dataclass\nfrom datetime import datetime\nimport json\n\n\n@dataclass\nclass ReportSection:\n    title: str\n    data: dict\n    narrative: str\n\n\nclass ExecutiveReportAgent:\n    \"\"\"Generates executive reports from raw business data.\"\"\"\n    \n    def __init__(self, api_key: str | None = None):\n        self.client = OpenAI(api_key=api_key)\n        self.model = \"gpt-4o\"\n    \n    def analyze_data(self, data: dict) -\u003e str:\n        \"\"\"Analyze raw data and generate executive narrative.\"\"\"\n        \n        prompt = f\"\"\"You are a senior business analyst writing for a CEO.\n        \nAnalyze this data and write a clear, concise executive summary.\nFocus on:\n1. Key findings (what does the data show?)\n2. Trends (what's changing?)\n3. Risks (what could go wrong?)\n4. Recommendations (what should we do?)\n\nData:\n{json.dumps(data, indent=2, default=str)}\n\nWrite in a professional but accessible tone. Use bullet points for clarity.\nKeep it under 500 words.\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=self.model,\n            messages=[\n                {\"role\": \"system\", \"content\": \"You are an expert business analyst.\"},\n                {\"role\": \"user\", \"content\": prompt}\n            ],\n            temperature=0.3\n        )\n        \n        return response.choices[0].message.content\n    \n    def generate_full_report(\n        self, \n        company_name: str,\n        period: str,\n        sections: list[dict]\n    ) -\u003e str:\n        \"\"\"Generate a complete executive report.\"\"\"\n        \n        report_parts = [\n            f\"# Executive Report: {company_name}\",\n            f\"**Period:** {period}\",\n            f\"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M')}\",\n            \"\",\n            \"---\",\n            \"\"\n        ]\n        \n        for section in sections:\n            title = section[\"title\"]\n            data = section[\"data\"]\n            \n            # Analyze each section\n            narrative = self.analyze_data(data)\n            \n            report_parts.extend([\n                f\"## {title}\",\n                \"\",\n                narrative,\n                \"\",\n                \"---\",\n                \"\"\n            ])\n        \n        # Generate overall summary\n        all_data = {s[\"title\"]: s[\"data\"] for s in sections}\n        summary = self.generate_overall_summary(all_data)\n        \n        report_parts.extend([\n            \"## Overall Assessment\",\n            \"\",\n            summary,\n            \"\",\n            \"---\",\n            f\"*Report generated by Executive Report Agent*\"\n        ])\n        \n        return \"\\n\".join(report_parts)\n    \n    def generate_overall_summary(self, all_data: dict) -\u003e str:\n        \"\"\"Generate an overall business summary.\"\"\"\n        \n        prompt = f\"\"\"Based on these business metrics, provide a 2-paragraph \nexecutive overview covering overall business health, key priorities, \nand strategic recommendations.\n\n{json.dumps(all_data, indent=2, default=str)}\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=self.model,\n            messages=[\n                {\"role\": \"user\", \"content\": prompt}\n            ],\n            temperature=0.3\n        )\n        \n        return response.choices[0].message.content\n\n\n# === Usage ===\nagent = ExecutiveReportAgent()\n\n# Sample data\nsections = [\n    {\n        \"title\": \"Revenue Performance\",\n        \"data\": {\n            \"total_revenue\": 2450000,\n            \"growth_rate\": 0.12,\n            \"by_product\": {\n                \"Enterprise\": 1500000,\n                \"SMB\": 650000,\n                \"Self-serve\": 300000\n            },\n            \"churn_rate\": 0.05\n        }\n    },\n    {\n        \"title\": \"Customer Metrics\",\n        \"data\": {\n            \"total_customers\": 1250,\n            \"new_customers\": 180,\n            \"nps_score\": 72,\n            \"support_tickets\": 340,\n            \"avg_resolution_time_hours\": 4.2\n        }\n    }\n]\n\nreport = agent.generate_full_report(\n    company_name=\"Acme Corp\",\n    period=\"Q4 2025\",\n    sections=sections\n)\n\nprint(report)\n```\n\n---\n\n## 5.3 Data Analysis Pipelines\n\n### SQL Agent for Business Queries\n\n```python\n\"\"\"\nSQL Data Analysis Agent\nNatural language to SQL, with automatic visualization.\n\"\"\"\n\nimport sqlite3\nfrom openai import OpenAI\nfrom dataclasses import dataclass\nimport json\n\n\n@dataclass\nclass AnalysisResult:\n    question: str\n    sql_query: str\n    results: list[dict]\n    insight: str\n\n\nclass DataAnalysisAgent:\n    \"\"\"Converts natural language questions to SQL and analyzes results.\"\"\"\n    \n    def __init__(self, db_path: str, api_key: str | None = None):\n        self.db_path = db_path\n        self.client = OpenAI(api_key=api_key)\n        self.conn = sqlite3.connect(db_path)\n        self.conn.row_factory = sqlite3.Row\n    \n    def get_schema(self) -\u003e str:\n        \"\"\"Get database schema for context.\"\"\"\n        cursor = self.conn.execute(\n            \"SELECT name FROM sqlite_master WHERE type='table'\"\n        )\n        tables = [row[0] for row in cursor.fetchall()]\n        \n        schema_parts = []\n        for table in tables:\n            cursor = self.conn.execute(f\"PRAGMA table_info({table})\")\n            columns = [(row[1], row[2]) for row in cursor.fetchall()]\n            col_str = \", \".join(f\"{name} ({dtype})\" for name, dtype in columns)\n            schema_parts.append(f\"Table: {table}\\nColumns: {col_str}\")\n        \n        return \"\\n\\n\".join(schema_parts)\n    \n    def nl_to_sql(self, question: str) -\u003e str:\n        \"\"\"Convert natural language question to SQL.\"\"\"\n        \n        schema = self.get_schema()\n        \n        prompt = f\"\"\"Convert this natural language question to a SQL query.\n\nDatabase Schema:\n{schema}\n\nQuestion: {question}\n\nReturn ONLY the SQL query, no explanation. Use SQLite syntax.\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o\",\n            messages=[\n                {\"role\": \"user\", \"content\": prompt}\n            ],\n            temperature=0.0\n        )\n        \n        sql = response.choices[0].message.content.strip()\n        # Clean up markdown code blocks\n        if sql.startswith(\"```\"):\n            sql = sql.split(\"\\n\", 1)[1].rsplit(\"```\", 1)[0]\n        \n        return sql\n    \n    def execute_query(self, sql: str) -\u003e list[dict]:\n        \"\"\"Execute SQL query and return results.\"\"\"\n        try:\n            cursor = self.conn.execute(sql)\n            columns = [desc[0] for desc in cursor.description]\n            rows = cursor.fetchall()\n            return [dict(zip(columns, row)) for row in rows]\n        except Exception as e:\n            return [{\"error\": str(e)}]\n    \n    def analyze(self, question: str) -\u003e AnalysisResult:\n        \"\"\"Full analysis pipeline: question → SQL → results → insight.\"\"\"\n        \n        # Generate SQL\n        sql = self.nl_to_sql(question)\n        \n        # Execute\n        results = self.execute_query(sql)\n        \n        # Generate insight\n        prompt = f\"\"\"Given this business question and SQL results, provide \na clear, actionable insight in 2-3 sentences.\n\nQuestion: {question}\nSQL: {sql}\nResults: {json.dumps(results, default=str)}\n\nFocus on what the data means for business decisions.\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o\",\n            messages=[{\"role\": \"user\", \"content\": prompt}],\n            temperature=0.3\n        )\n        \n        return AnalysisResult(\n            question=question,\n            sql_query=sql,\n            results=results,\n            insight=response.choices[0].message.content\n        )\n\n\n# === Usage ===\nagent = DataAnalysisAgent(\"business_data.db\")\nresult = agent.analyze(\"What were our top 5 customers by revenue last quarter?\")\nprint(f\"SQL: {result.sql_query}\")\nprint(f\"Insight: {result.insight}\")\n```\n\n---\n\n## 5.4 KPI Monitoring\n\n### Automated Metric Tracking\n\n```python\n\"\"\"\nKPI Monitoring Agent\nTracks key metrics and alerts when thresholds are breached.\n\"\"\"\n\nfrom dataclasses import dataclass\nfrom datetime import datetime\nfrom enum import Enum\n\n\nclass AlertSeverity(Enum):\n    INFO = \"info\"\n    WARNING = \"warning\"\n    CRITICAL = \"critical\"\n\n\n@dataclass\nclass KPI:\n    name: str\n    current_value: float\n    target: float\n    threshold_warning: float  # % below target to trigger warning\n    threshold_critical: float  # % below target to trigger critical\n    trend: str  # \"up\", \"down\", \"stable\"\n\n\n@dataclass\nclass KPIAlert:\n    kpi: KPI\n    severity: AlertSeverity\n    message: str\n    recommendation: str\n\n\nclass KPIMonitoringAgent:\n    \"\"\"Monitors KPIs and generates alerts with recommendations.\"\"\"\n    \n    def __init__(self):\n        self.kpis: dict[str, KPI] = {}\n        self.history: list[dict] = []\n    \n    def register_kpi(self, kpi: KPI):\n        \"\"\"Register a KPI to monitor.\"\"\"\n        self.kpis[kpi.name] = kpi\n    \n    def check_kpi(self, kpi: KPI) -\u003e KPIAlert | None:\n        \"\"\"Check if a KPI needs attention.\"\"\"\n        \n        if kpi.current_value \u003e= kpi.target:\n            return None  # KPI is on target\n        \n        deviation = (kpi.target - kpi.current_value) / kpi.target\n        \n        if deviation \u003e= kpi.threshold_critical:\n            severity = AlertSeverity.CRITICAL\n            message = f\"CRITICAL: {kpi.name} is {deviation:.1%} below target\"\n        elif deviation \u003e= kpi.threshold_warning:\n            severity = AlertSeverity.WARNING\n            message = f\"WARNING: {kpi.name} is {deviation:.1%} below target\"\n        else:\n            return None\n        \n        # Generate recommendation based on KPI type\n        recommendation = self._generate_recommendation(kpi, severity)\n        \n        return KPIAlert(\n            kpi=kpi,\n            severity=severity,\n            message=message,\n            recommendation=recommendation\n        )\n    \n    def _generate_recommendation(self, kpi: KPI, severity: AlertSeverity) -\u003e str:\n        \"\"\"Generate actionable recommendation for a KPI alert.\"\"\"\n        \n        recommendations = {\n            \"revenue\": \"Review sales pipeline and marketing spend. Consider promotional campaigns.\",\n            \"churn\": \"Analyze churn reasons. Implement retention campaigns for at-risk customers.\",\n            \"nps\": \"Survey recent detractors. Address top complaints immediately.\",\n            \"conversion\": \"Review funnel drop-off points. A/B test landing pages.\",\n            \"support_time\": \"Add support staff or implement AI triage for faster resolution.\",\n        }\n        \n        for key, rec in recommendations.items():\n            if key in kpi.name.lower():\n                return rec\n        \n        return f\"Investigate root cause for {kpi.name} and develop action plan.\"\n    \n    def run_check(self) -\u003e list[KPIAlert]:\n        \"\"\"Check all registered KPIs and return alerts.\"\"\"\n        alerts = []\n        \n        for kpi in self.kpis.values():\n            alert = self.check_kpi(kpi)\n            if alert:\n                alerts.append(alert)\n        \n        # Sort by severity\n        severity_order = {\n            AlertSeverity.CRITICAL: 0,\n            AlertSeverity.WARNING: 1,\n            AlertSeverity.INFO: 2\n        }\n        alerts.sort(key=lambda a: severity_order[a.severity])\n        \n        return alerts\n\n\n# === Usage ===\nmonitor = KPIMonitoringAgent()\n\n# Register KPIs\nmonitor.register_kpi(KPI(\n    name=\"monthly_revenue\",\n    current_value=180000,\n    target=200000,\n    threshold_warning=0.05,\n    threshold_critical=0.15,\n    trend=\"down\"\n))\n\nmonitor.register_kpi(KPI(\n    name=\"customer_churn_rate\",\n    current_value=0.08,\n    target=0.05,\n    threshold_warning=0.2,\n    threshold_critical=0.5,\n    trend=\"up\"\n))\n\n# Check all KPIs\nalerts = monitor.run_check()\nfor alert in alerts:\n    print(f\"\\n{alert.severity.value.upper()}: {alert.message}\")\n    print(f\"Recommendation: {alert.recommendation}\")\n```\n\n---\n\n## 5.5 Meeting Summarization\n\n### Extracting Action Items Automatically\n\n```python\n\"\"\"\nMeeting Summarization Agent\nProcesses meeting transcripts and extracts key information.\n\"\"\"\n\nfrom openai import OpenAI\nfrom dataclasses import dataclass\n\n\n@dataclass\nclass MeetingSummary:\n    topic: str\n    summary: str\n    decisions: list[str]\n    action_items: list[dict]  # [{\"task\": ..., \"owner\": ..., \"deadline\": ...}]\n    open_questions: list[str]\n\n\nclass MeetingSummaryAgent:\n    \"\"\"Summarizes meetings and extracts action items.\"\"\"\n    \n    def __init__(self, api_key: str | None = None):\n        self.client = OpenAI(api_key=api_key)\n    \n    def summarize(self, transcript: str) -\u003e MeetingSummary:\n        \"\"\"Process a meeting transcript and extract key information.\"\"\"\n        \n        prompt = f\"\"\"Analyze this meeting transcript and extract:\n\n1. **Topic**: One-line summary of what the meeting was about\n2. **Summary**: 3-5 sentence executive summary\n3. **Decisions Made**: List of concrete decisions\n4. **Action Items**: Tasks with assigned owners and deadlines\n5. **Open Questions**: Unresolved items needing follow-up\n\nTranscript:\n{transcript}\n\nReturn as JSON with these exact keys:\ntopic, summary, decisions, action_items, open_questions\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o\",\n            messages=[\n                {\"role\": \"system\", \"content\": \"You are a meeting analyst.\"},\n                {\"role\": \"user\", \"content\": prompt}\n            ],\n            temperature=0.2,\n            response_format={\"type\": \"json_object\"}\n        )\n        \n        import json\n        data = json.loads(response.choices[0].message.content)\n        \n        return MeetingSummary(\n            topic=data.get(\"topic\", \"\"),\n            summary=data.get(\"summary\", \"\"),\n            decisions=data.get(\"decisions\", []),\n            action_items=data.get(\"action_items\", []),\n            open_questions=data.get(\"open_questions\", [])\n        )\n    \n    def format_summary(self, summary: MeetingSummary) -\u003e str:\n        \"\"\"Format summary as a clean report.\"\"\"\n        \n        lines = [\n            f\"# Meeting Summary: {summary.topic}\",\n            \"\",\n            \"## Summary\",\n            summary.summary,\n            \"\",\n            \"## Decisions Made\",\n        ]\n        \n        for decision in summary.decisions:\n            lines.append(f\"- {decision}\")\n        \n        lines.extend([\"\", \"## Action Items\"])\n        \n        for item in summary.action_items:\n            task = item.get(\"task\", \"\")\n            owner = item.get(\"owner\", \"Unassigned\")\n            deadline = item.get(\"deadline\", \"No deadline\")\n            lines.append(f\"- [ ] {task} — **{owner}** (due: {deadline})\")\n        \n        if summary.open_questions:\n            lines.extend([\"\", \"## Open Questions\"])\n            for q in summary.open_questions:\n                lines.append(f\"- {q}\")\n        \n        return \"\\n\".join(lines)\n\n\n# === Usage ===\nagent = MeetingSummaryAgent()\n\ntranscript = \"\"\"\nJohn: Let's review the Q4 numbers. Revenue is up 12% but churn increased.\nSarah: The enterprise segment is strong. SMB is where we're losing people.\nMike: I think we need to improve onboarding. New users drop off after day 3.\nJohn: Good point. Mike, can you audit the onboarding flow?\nSarah: I'll put together a churn analysis report by Friday.\nJohn: Decisions: We're investing in onboarding improvements. Budget approved for Q1.\nMike: I'll have the audit done by next Wednesday.\n\"\"\"\n\nsummary = agent.summarize(transcript)\nprint(agent.format_summary(summary))\n```\n\n---\n\n## 5.6 Email Drafting\n\n### Professional Communication Assistance\n\n```python\n\"\"\"\nEmail Drafting Agent\nGenerates professional emails based on context and intent.\n\"\"\"\n\nfrom openai import OpenAI\n\n\nclass EmailDraftingAgent:\n    \"\"\"Drafts professional emails based on context.\"\"\"\n    \n    def __init__(self, api_key: str | None = None):\n        self.client = OpenAI(api_key=api_key)\n    \n    def draft_email(\n        self,\n        recipient: str,\n        context: str,\n        intent: str,\n        tone: str = \"professional\",\n        length: str = \"medium\"\n    ) -\u003e str:\n        \"\"\"Draft an email based on context and intent.\"\"\"\n        \n        length_guide = {\n            \"short\": \"3-4 sentences\",\n            \"medium\": \"1 paragraph, 5-7 sentences\",\n            \"long\": \"2-3 paragraphs\"\n        }\n        \n        prompt = f\"\"\"Draft a {tone} email.\n\nTo: {recipient}\nContext: {context}\nIntent: {intent}\nLength: {length_guide.get(length, 'medium')}\n\nWrite only the email body. No subject line. No greeting like 'Dear X' \n(use a natural opening). No signature block.\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o\",\n            messages=[\n                {\"role\": \"user\", \"content\": prompt}\n            ],\n            temperature=0.7\n        )\n        \n        return response.choices[0].message.content\n    \n    def reply_to_email(\n        self,\n        original_email: str,\n        desired_response: str,\n        tone: str = \"professional\"\n    ) -\u003e str:\n        \"\"\"Draft a reply to an existing email.\"\"\"\n        \n        prompt = f\"\"\"Draft a reply to this email.\n\nOriginal email:\n{original_email}\n\nDesired response intent: {desired_response}\nTone: {tone}\n\nWrite only the reply body.\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o\",\n            messages=[{\"role\": \"user\", \"content\": prompt}],\n            temperature=0.7\n        )\n        \n        return response.choices[0].message.content\n\n\n# === Usage ===\nagent = EmailDraftingAgent()\n\nemail = agent.draft_email(\n    recipient=\"engineering team\",\n    context=\"We need to migrate from the old database to PostgreSQL by end of Q1\",\n    intent=\"Inform about migration timeline and ask for volunteer leads\",\n    tone=\"professional but friendly\"\n)\n\nprint(email)\n```\n\n---\n\n## 5.7 Decision Support Systems\n\n### Data-Driven Recommendations\n\n```python\n\"\"\"\nDecision Support Agent\nHelps executives evaluate options and make informed decisions.\n\"\"\"\n\nfrom openai import OpenAI\nfrom dataclasses import dataclass\n\n\n@dataclass\nclass DecisionOption:\n    name: str\n    pros: list[str]\n    cons: list[str]\n    cost: str\n    timeline: str\n    risk_level: str\n\n\nclass DecisionSupportAgent:\n    \"\"\"Analyzes decisions and provides structured recommendations.\"\"\"\n    \n    def __init__(self, api_key: str | None = None):\n        self.client = OpenAI(api_key=api_key)\n    \n    def analyze_options(\n        self,\n        decision: str,\n        options: list[str],\n        constraints: list[str]\n    ) -\u003e str:\n        \"\"\"Analyze multiple options for a decision.\"\"\"\n        \n        prompt = f\"\"\"Analyze this business decision.\n\nDecision: {decision}\n\nOptions:\n{chr(10).join(f'{i+1}. {opt}' for i, opt in enumerate(options))}\n\nConstraints:\n{chr(10).join(f'- {c}' for c in constraints)}\n\nFor each option, provide:\n- Pros (2-3)\n- Cons (2-3)\n- Estimated cost\n- Timeline\n- Risk level (low/medium/high)\n\nThen give your recommendation with reasoning.\n\nFormat as structured markdown.\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o\",\n            messages=[\n                {\"role\": \"system\", \"content\": \"You are a strategic business advisor.\"},\n                {\"role\": \"user\", \"content\": prompt}\n            ],\n            temperature=0.3\n        )\n        \n        return response.choices[0].message.content\n\n\n# === Usage ===\nagent = DecisionSupportAgent()\n\nanalysis = agent.analyze_options(\n    decision=\"Choose a cloud provider for our AI infrastructure\",\n    options=[\n        \"AWS SageMaker\",\n        \"Google Vertex AI\",\n        \"Azure ML\",\n        \"Self-hosted with vLLM\"\n    ],\n    constraints=[\n        \"Budget: $50k/month max\",\n        \"Must support GPU instances\",\n        \"Need SOC2 compliance\",\n        \"Team has AWS experience\"\n    ]\n)\n\nprint(analysis)\n```\n\n---\n\n## 5.8 Architecture Overview\n\n```\n┌─────────────────────────────────────────────────────┐\n│                 Executive Agent System                │\n├─────────────────────────────────────────────────────┤\n│                                                      │\n│  ┌──────────┐  ┌──────────┐  ┌──────────┐          │\n│  │  Report   │  │   Data   │  │   KPI    │          │\n│  │ Generator │  │ Analyzer │  │ Monitor  │          │\n│  └────┬─────┘  └────┬─────┘  └────┬─────┘          │\n│       │              │              │                │\n│       ▼              ▼              ▼                │\n│  ┌──────────────────────────────────────────┐       │\n│  │           Data Integration Layer          │       │\n│  │  (Databases, APIs, Spreadsheets, etc.)   │       │\n│  └──────────────────────────────────────────┘       │\n│       │              │              │                │\n│       ▼              ▼              ▼                │\n│  ┌──────────┐  ┌──────────┐  ┌──────────┐          │\n│  │ Meeting  │  │  Email   │  │ Decision │          │\n│  │ Summary  │  │  Draft   │  │ Support  │          │\n│  └──────────┘  └──────────┘  └──────────┘          │\n│                                                      │\n│  ┌──────────────────────────────────────────┐       │\n│  │              Output Layer                 │       │\n│  │  (Email, Slack, Dashboard, Reports)      │       │\n│  └──────────────────────────────────────────┘       │\n│                                                      │\n└─────────────────────────────────────────────────────┘\n```\n\n---\n\n## 5.9 Key Takeaways\n\n1. **Executive agents save 10+ hours per week** by automating reports, analysis, and communication.\n\n2. **Report generation** transforms raw data into actionable narratives that executives can act on immediately.\n\n3. **SQL agents** let anyone query databases using natural language — no SQL knowledge required.\n\n4. **KPI monitoring** provides proactive alerts before problems become crises.\n\n5. **Meeting summarization** extracts decisions and action items, ensuring nothing falls through the cracks.\n\n6. **Decision support** provides structured analysis of options, helping leaders make informed choices.\n\n7. **The key is integration** — connecting to real data sources makes these agents genuinely useful.\n\n---\n\n## 5.10 Try It Yourself\n\n### Exercise 1: Build a Mini Report Generator\nCreate an agent that takes a CSV file and generates a 1-paragraph executive summary. Test it with sales data.\n\n### Exercise 2: KPI Dashboard\nBuild a simple KPI monitoring system that:\n- Tracks 5 metrics\n- Alerts when thresholds are breached\n- Sends notifications to Slack or email\n\n### Exercise 3: Meeting Summarizer\nRecord a 10-minute meeting (or use a transcript) and build an agent that extracts:\n- 3 key decisions\n- Action items with owners\n- Follow-up questions\n\n### Exercise 4: Email Drafter\nBuild an email agent that:\n- Takes a bullet-point list of what you want to say\n- Drafts a professional email\n- Can adjust tone (formal, friendly, urgent)\n\n---\n\n\u003e **Next Chapter**: In [Chapter 6: Developer \u0026 Coder Agents](./chapter-06-developer-and-coder-agents.md), we'll explore how AI is transforming software development — from code generation to automated testing.\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"div\",null,{\"children\":[\"$\",\"$Lf\",null,{\"content\":\"$10\",\"currentChapter\":{\"id\":\"agents-ch-05\",\"number\":5,\"title\":\"Executive \u0026 Analyst Agents\",\"subtitle\":\"AI Agents for Business Intelligence\",\"description\":\"Create agents that generate reports, analyze data, monitor KPIs, summarize meetings, and support executive decision-making.\",\"slug\":\"executive-and-analyst-agents\",\"part\":\"Part II: Building Agents\",\"estimatedPages\":18,\"topics\":[\"Report generation\",\"Data analysis pipelines\",\"KPI monitoring\",\"Meeting summarization\",\"Email drafting\",\"Decision support\"],\"icon\":\"📊\",\"bookId\":\"ai-agents\"}}]}]\n"])</script><script>self.__next_f.push([1,"a:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"7:null\nc:[[\"$\",\"title\",\"0\",{\"children\":\"AI Agents: The Complete Guide\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi\"}],[\"$\",\"meta\",\"2\",{\"name\":\"author\",\"content\":\"Manjunath Kalburgi\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi\"}]]\n"])</script></body></html>

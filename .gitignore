@@ -53,3 +53,18 @@ books/*/webapp/node_modules/
 # Exclude all large compiled binary files that exceed GitHub limits
 *.pack
 *.node
+
+# Local Netlify folder
+.netlify
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules

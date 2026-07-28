@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; }
+    .clip { visibility: hidden; }
+    .scene {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 60px 80px;
+    }
+    .header-label {
+      font-family: "Nunito", sans-serif;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      font-size: 13px; font-weight: 600;
+      color: #10B981; margin-bottom: 8px; opacity: 0;
+    }
+    .header-title {
+      font-family: "Nunito", sans-serif;
+      font-size: 34px; font-weight: 700;
+      color: #fff; margin-bottom: 32px; opacity: 0;
+    }
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      width: 100%; max-width: 1500px;
+    }
+    .scene-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(16,185,129,0.15);
+      border-radius: 10px;
+      padding: 14px 12px;
+      text-align: center; opacity: 0; transform: translateY(15px);
+    }
+    .scene-num {
+      font-family: "Nunito", sans-serif;
+      font-size: 11px; font-weight: 700;
+      color: #10B981; display: block; margin-bottom: 4px;
+    }
+    .scene-type {
+      font-family: "Nunito", sans-serif;
+      font-size: 13px; font-weight: 600;
+      color: #E2E8F0; display: block; margin-bottom: 4px;
+    }
+    .scene-desc {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 12px; color: #94A3B8; line-height: 1.4;
+    }
+    .scene-card:nth-child(1) { border-color: rgba(79,70,229,0.4); }
+    .scene-card:nth-child(2) { border-color: rgba(6,147,227,0.4); }
+    .scene-card:nth-child(3) { border-color: rgba(249,115,22,0.4); }
+    .scene-card:nth-child(4) { border-color: rgba(236,173,10,0.4); }
+    .scene-card:nth-child(5) { border-color: rgba(16,185,129,0.4); }
+    .scene-card:nth-child(6) { border-color: rgba(99,102,241,0.4); }
+    .scene-card:nth-child(7) { border-color: rgba(236,173,10,0.4); }
+    .scene-card:nth-child(8) { border-color: rgba(79,70,229,0.4); }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" data-composition-id="04-scene-by-scene" data-start="21" data-duration="12" data-width="1920" data-height="1080">
+    <div class="scene">
+      <div id="label" class="header-label clip" data-start="0" data-duration="12" data-track-index="0">Maximum Control</div>
+      <div id="title" class="header-title clip" data-start="0" data-duration="12" data-track-index="0">8-Scene Product Launch Structure</div>
+      <div class="scenes-grid">
+        <div class="scene-card clip" data-start="0" data-duration="12" data-track-index="1">
+          <span class="scene-num">1</span>
+          <span class="scene-type">Intro</span>
+          <span class="scene-desc">Motion graphics logo reveal</span>
+        </div>
+        <div class="scene-card clip" data-start="0" data-duration="12" data-track-index="2">
+          <span class="scene-num">2</span>
+          <span class="scene-type">Hook</span>
+          <span class="scene-desc">Avatar + text overlay</span>
+        </div>
+        <div class="scene-card clip" data-start="0" data-duration="12" data-track-index="3">
+          <span class="scene-num">3</span>
+          <span class="scene-type">Problem</span>
+          <span class="scene-desc">Stock media B-roll</span>
+        </div>
+        <div class="scene-card clip" data-start="0" data-duration="12" data-track-index="4">
+          <span class="scene-num">4</span>
+          <span class="scene-type">Solution</span>
+          <span class="scene-desc">Avatar + motion graphics</span>
+        </div>
+        <div class="scene-card clip" data-start="0" data-duration="12" data-track-index="5">
+          <span class="scene-num">5</span>
+          <span class="scene-type">Features</span>
+          <span class="scene-desc">Motion graphics showcase</span>
+        </div>
+        <div class="scene-card clip" data-start="0" data-duration="12" data-track-index="6">
+          <span class="scene-num">6</span>
+          <span class="scene-type">Benefits</span>
+          <span class="scene-desc">Icons + animated list</span>
+        </div>
+        <div class="scene-card clip" data-start="0" data-duration="12" data-track-index="7">
+          <span class="scene-num">7</span>
+          <span class="scene-type">CTA</span>
+          <span class="scene-desc">Avatar with call to action</span>
+        </div>
+        <div class="scene-card clip" data-start="0" data-duration="12" data-track-index="8">
+          <span class="scene-num">8</span>
+          <span class="scene-type">End Card</span>
+          <span class="scene-desc">Logo, tagline, URL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#label", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0);
+    tl.fromTo("#title", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+    const cards = document.querySelectorAll(".scene-card");
+    cards.forEach((c, i) => {
+      tl.fromTo(c, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.8 + i * 0.08);
+    });
+
+    window.__timelines["04-scene-by-scene"] = tl;
+  </script>
+</body>
+</html>

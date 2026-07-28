@@ -1,0 +1,79 @@
+[span] FinPlanner
+[span] Real Estate & Finance
+[a] Dashboard
+[a] Properties
+[a] Financial Planner
+[a] AI Agents
+[a] Marketing
+[a] Marketplace
+[a] Community
+[a] Sign In
+[span] Welcome
+[span] Hubli • Bangalore • Mysore
+[h1] Your Smart Financial Navigator
+[p] Analyze real estate projects in Hubli, Bangalore & Mysore. Get AI-powered financial planning, investment advice, and property management — all in one place.
+[a] Browse Properties
+[a] Financial Planner
+[a] Sign In for Full Access
+[div] Total Projects
+[div] 8 cities
+[div] ₹0.005L-₹47.0Cr
+[div] Price Range
+[div] Across all cities
+[div] Active Leads
+[div] 5 total leads
+[div] Campaign ROI
+[div] 133 leads generated
+[h2] Projects by City
+[span] Hubli
+[span] Bangalore
+[span] Mysore
+[span] Mandya
+[span] Bengaluru Urban
+[span] Dharwad
+[span] Chikkaballapura
+[span] Bangalore Rural
+[h2] Quick Actions
+[span] AI Advisor
+[span] Legal Help
+[span] Marketing
+[span] Community
+[span] Call Logs
+[span] Analytics
+[h2] Featured Projects
+[a] View All
+[span] Hubli
+[h3] Sobha City
+[p] Sobha Ltd
+[p] ₹35 L - ₹65 L
+[span] 2, 3 BHK
+[span] 980 - 1650 sqft
+[span] Ready to Move
+[span] Hubli
+[h3] Prestige Enclave
+[p] Prestige Group
+[p] ₹42 L - ₹78 L
+[span] 2, 3, 4 BHK
+[span] 1100 - 1800 sqft
+[span] Under Construction
+[span] Hubli
+[h3] Brigade Heights
+[p] Brigade Group
+[p] ₹28 L - ₹55 L
+[span] 2, 3 BHK
+[span] 850 - 1450 sqft
+[span] Ready to Move
+[span] Hubli
+[h3] DLF Garden City
+[p] DLF Ltd
+[p] ₹85 L - ₹1.8 Cr
+[span] 3, 4 BHK
+[span] 1800 - 3200 sqft
+[span] Under Construction
+[h2] Browse by City
+[h3] Hubli
+[p] 5 projects • Affordable • Growing
+[h3] Bangalore
+[p] 6 projects • Premium • IT Hub
+[h3] Mysore
+[p] 5 projects • Heritage • Value

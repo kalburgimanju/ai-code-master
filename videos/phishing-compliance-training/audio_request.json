@@ -1,0 +1,43 @@
+{
+  "provider": "auto",
+  "voice": "af_heart",
+  "lang": "en",
+  "speed": 1.0,
+  "lines": [
+    { "id": "intro", "text": "Phishing: Spot It. Stop It. — A Cybersecurity Compliance Training." },
+    { "id": "s1-1", "text": "Every day, over 3.4 billion phishing emails are sent worldwide. And it only takes one click to compromise an entire organization." },
+    { "id": "s1-2", "text": "Phishing isn't just the most common cyber attack — it's also the most effective. Ninety-one percent of all data breaches begin with a phishing email." },
+    { "id": "s1-3", "text": "These aren't random attempts by amateurs. Sophisticated attackers craft convincing messages designed to bypass every security filter and trick even vigilant employees." },
+    { "id": "s1-4", "text": "The good news? With the right knowledge, you can spot a phish before it ever reaches your inbox, or before you take the bait." },
+    { "id": "s2-1", "text": "So, what exactly is phishing? At its core, phishing is a type of social engineering attack where cybercriminals impersonate a trusted entity to steal sensitive information — passwords, credit card numbers, or access credentials." },
+    { "id": "s2-2", "text": "Think of it as digital bait. The attacker sends a lure — an email, text message, or phone call that looks legitimate — designed to hook you into clicking a malicious link, downloading an infected attachment, or revealing confidential data." },
+    { "id": "s2-3", "text": "The term 'phishing' is a play on 'fishing' — because attackers are casting a line and waiting for someone to bite. And while some attacks are broad and untargeted, others are highly specific." },
+    { "id": "s3-1", "text": "Phishing comes in many forms. Let's break down the most common ones you'll encounter." },
+    { "id": "s3-2", "text": "First, email phishing — the classic. You receive an urgent message that appears to be from your bank, IT department, or a trusted vendor. It asks you to verify your account, reset your password, or take immediate action. The link in the email leads to a fake login page designed to capture your credentials." },
+    { "id": "s3-3", "text": "Next, spear phishing. Unlike broad email phishing, spear phishing targets you personally. The attacker researches your role, your team, or your projects to craft a message that feels legitimate and relevant. That makes it far more dangerous." },
+    { "id": "s3-4", "text": "Then there's smishing, or SMS text message phishing. And vishing, or voice phishing. Whaling targets senior executives. And business email compromise involves attackers posing as a CEO or vendor to request urgent wire transfers." },
+    { "id": "s4-1", "text": "Let's look at what a phishing email actually looks like. Watch for these telltale signs." },
+    { "id": "s4-2", "text": "The sender address doesn't match the organization it claims to be from. It might be off by a single character." },
+    { "id": "s4-3", "text": "The greeting is generic — Dear Customer or Dear User — instead of using your name." },
+    { "id": "s4-4", "text": "The message creates urgency. Your account will be suspended within 24 hours. Fear and time pressure are the phisher's best tools." },
+    { "id": "s4-5", "text": "The email includes a suspicious link or attachment. Hover over any link without clicking — the actual URL rarely matches what the text claims." },
+    { "id": "s4-6", "text": "And finally, there are often grammatical errors, awkward phrasing, or unusual formatting. Legitimate organizations proofread their communications." },
+    { "id": "s5-1", "text": "Here are the top five red flags to watch for every time you check your inbox." },
+    { "id": "s5-2", "text": "Number one: Unexpected requests for sensitive information. No legitimate organization will ask for your password, PIN, or social security number via email." },
+    { "id": "s5-3", "text": "Number two: Emotional manipulation. Urgency, fear, curiosity, or excitement — phishers exploit your emotions to override your critical thinking." },
+    { "id": "s5-4", "text": "Number three: Mismatched URLs. The text says one thing, but the actual link goes somewhere else. Always hover to verify." },
+    { "id": "s5-5", "text": "Number four: Unsolicited attachments. If you weren't expecting a document or invoice, don't open it. That's how ransomware gets in." },
+    { "id": "s5-6", "text": "Number five: Too good to be true. A prize you didn't enter, a refund you didn't request, a deal nobody else got — if it sounds too good to be true, it is." },
+    { "id": "s6-1", "text": "So what should you do when you spot a phishing attempt?" },
+    { "id": "s6-2", "text": "First, do not click, reply, or open any attachments. Not even to unsubscribe." },
+    { "id": "s6-3", "text": "Second, report it immediately. Use your company's phishing reporting button or forward the email to your security team. Every report helps protect your colleagues." },
+    { "id": "s6-4", "text": "Third, delete the message after reporting it. Don't forward it to coworkers or try to investigate it yourself." },
+    { "id": "s6-5", "text": "And remember — if you do accidentally click, don't panic. Immediately notify your IT security team. Quick action can contain the damage and prevent a full breach." },
+    { "id": "s6-6", "text": "At our organization, security is everyone's responsibility. When you stay vigilant, you protect not just yourself — but everyone around you." },
+    { "id": "outro", "text": "Phishing: Spot it. Stop it. Thank you for doing your part to keep us secure." }
+  ],
+  "bgm": {
+    "mode": "generate",
+    "query": "corporate professional background underscore for training video, calm and subtle"
+  }
+}

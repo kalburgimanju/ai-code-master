@@ -1,0 +1,7 @@
+courses:
+  default_template: "ai-course-template"
+  max_lessons_per_course: 50
+  max_presentations_per_lesson: 1
+  default_media_quality: "1080p"
+  certificate_enabled: true
+  progress_tracking: true

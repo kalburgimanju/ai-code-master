@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; }
+    .clip { visibility: hidden; }
+    .scene {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 80px;
+    }
+    .destination {
+      font-family: "Nunito", sans-serif;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      font-size: 14px; font-weight: 600;
+      color: #787670; margin-bottom: 12px; opacity: 0;
+    }
+    .title {
+      font-family: "Nunito", sans-serif;
+      font-size: 56px; font-weight: 900;
+      color: #fff; margin-bottom: 20px; opacity: 0;
+    }
+    .desc {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 22px; color: #94A3B8;
+      max-width: 700px; line-height: 1.6;
+      margin-bottom: 40px; opacity: 0;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 20px 64px;
+      background: linear-gradient(135deg, #0693e3, #4F46E5);
+      color: #fff;
+      font-family: "Nunito", sans-serif;
+      font-size: 22px; font-weight: 700;
+      border-radius: 100px;
+      text-decoration: none;
+      opacity: 0; transform: scale(0.8);
+      box-shadow: 0 0 40px rgba(6,147,227,0.4);
+    }
+    .checklist {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 16px; margin-top: 40px; opacity: 0;
+    }
+    .checklist span {
+      display: flex; align-items: center; gap: 6px;
+      font-family: "Nunito", sans-serif;
+      font-size: 14px; color: #787670;
+    }
+    .checklist .check { color: #10B981; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" data-composition-id="05-cta" data-start="24" data-duration="5" data-width="1920" data-height="1080">
+    <div class="scene">
+      <div id="destination" class="destination clip" data-start="0" data-duration="5" data-track-index="0">The Destination</div>
+      <div id="title" class="title clip" data-start="0" data-duration="5" data-track-index="0">Proficient AI Engineer</div>
+      <div id="desc" class="desc clip" data-start="0" data-duration="5" data-track-index="0">Complete all six milestones, build and deploy real-world AI projects</div>
+      <a id="cta" class="cta-btn clip" href="#" data-start="0" data-duration="5" data-track-index="0">Enroll Today</a>
+      <div id="checklist" class="checklist clip" data-start="0" data-duration="5" data-track-index="0">
+        <span><span class="check">✓</span> AI Builder</span>
+        <span><span class="check">✓</span> AI Coder</span>
+        <span><span class="check">✓</span> AI Leader</span>
+        <span><span class="check">✓</span> Core Track</span>
+        <span><span class="check">✓</span> Agentic Track</span>
+        <span><span class="check">✓</span> Production Track</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#destination", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0);
+    tl.fromTo("#title", { opacity: 0, y: 30, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out" }, 0.4);
+    tl.fromTo("#desc", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.0);
+    tl.fromTo("#cta", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }, 1.8);
+    tl.to("#cta", { scale: 1.05, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 2 }, 2.6);
+    tl.fromTo("#checklist", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 2.8);
+
+    window.__timelines["05-cta"] = tl;
+  </script>
+</body>
+</html>

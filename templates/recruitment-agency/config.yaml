@@ -1,0 +1,455 @@
+# Recruitment Agency Autonomous Agents Platform Configuration
+
+# ============================================================
+# AGENT CONFIGURATIONS
+# ============================================================
+
+agents:
+  discovery:
+    enabled: true
+    schedule: "0 8 * * 1"  # Monday 8 AM UTC
+    sources:
+      - "apify_linkedin"
+      - "crunchbase"
+    filters:
+      company_size: "10-500"
+      industries:
+        - "SaaS"
+        - "Fintech"
+        - "Healthtech"
+        - "AI/ML"
+        - "DevTools"
+        - "B2B Software"
+      locations:
+        - "US"
+        - "Remote"
+        - "Canada"
+      funding_stage:
+        - "Series A"
+        - "Series B"
+        - "Series C"
+        - "Series D"
+      hiring_signals:
+        - "engineering"
+        - "backend"
+        - "platform"
+        - "infrastructure"
+        - "data"
+        - "ai"
+        - "ml"
+    max_companies_per_run: 50
+    min_employee_count: 10
+    max_employee_count: 500
+
+  research:
+    enabled: true
+    depth: "deep"  # basic, standard, deep
+    sources:
+      - "website"
+      - "linkedin"
+      - "crunchbase"
+      - "news"
+      - "glassdoor"
+      - "github"
+    extract:
+      - "hiring_needs"
+      - "team_structure"
+      - "tech_stack"
+      - "pain_points"
+      - "decision_makers"
+      - "recent_funding"
+      - "growth_signals"
+      - "competitors"
+    max_companies_per_run: 20
+    research_timeout_seconds: 120
+
+  outreach:
+    enabled: true
+    email_provider: "sendgrid"  # sendgrid, ses, mailgun
+    from_email: "recruiting@yourdomain.com"
+    from_name: "Your Name"
+    reply_to: "recruiting@yourdomain.com"
+    daily_limit: 50
+    delay_between_emails_seconds: 30
+    batch_size: 10
+    tracking_enabled: true
+    unsubscribe_link_required: true
+    templates_dir: "templates/outreach"
+
+  followup:
+    enabled: true
+    sequences:
+      - name: "standard_3_touch"
+        description: "Standard 3-touch follow-up sequence"
+        steps:
+          - delay_days: 3
+            template: "followup_1_value_add"
+            condition: "no_reply"
+          - delay_days: 7
+            template: "followup_2_case_study"
+            condition: "no_reply"
+          - delay_days: 14
+            template: "followup_3_breakup"
+            condition: "no_reply"
+      - name: "saas_4_touch"
+        description: "SaaS-focused 4-touch sequence"
+        steps:
+          - delay_days: 2
+            template: "saas_followup_1_tech_challenge"
+            condition: "no_reply"
+          - delay_days: 5
+            template: "saas_followup_2_relevant_case"
+            condition: "no_reply"
+          - delay_days: 10
+            template: "saas_followup_3_peer_reference"
+            condition: "no_reply"
+          - delay_days: 21
+            template: "saas_followup_4_last_attempt"
+            condition: "no_reply"
+      - name: "engaged_2_touch"
+        description: "For prospects who opened/clicked but didn't reply"
+        steps:
+          - delay_days: 2
+            template: "engaged_followup_1"
+            condition: "opened_or_clicked"
+          - delay_days: 5
+            template: "engaged_followup_2"
+            condition: "opened_or_clicked"
+
+  scheduler:
+    enabled: true
+    calendar_provider: "calcom"  # calcom, calendly
+    booking_link: "https://cal.com/your-link/30min"
+    event_type_id: ""
+    timezone: "UTC"
+    meeting_duration_minutes: 30
+    buffer_minutes: 15
+    reminder_schedule:
+      - "24h"
+      - "1h"
+      - "15m"
+    auto_confirm: true
+    collect_phone: true
+
+  pipeline:
+    enabled: true
+    crm_provider: "hubspot"  # hubspot, close, pipedrive, salesforce
+    stages:
+      - name: "discovered"
+        order: 1
+        probability: 5
+      - name: "researched"
+        order: 2
+        probability: 15
+      - name: "contacted"
+        order: 3
+        probability: 25
+      - name: "replied"
+        order: 4
+        probability: 40
+      - name: "call_booked"
+        order: 5
+        probability: 60
+      - name: "qualified"
+        order: 6
+        probability: 75
+      - name: "proposal_sent"
+        order: 7
+        probability: 90
+      - name: "closed_won"
+        order: 8
+        probability: 100
+      - name: "closed_lost"
+        order: 9
+        probability: 0
+    auto_advance_on_reply: true
+    sync_interval_minutes: 60
+
+# ============================================================
+# LLM CONFIGURATION
+# ============================================================
+
+llm:
+  provider: "openrouter"
+  model: "qwen/qwen3-coder:free"
+  fallback_model: "meta-llama/llama-3.3-70b-instruct:free"
+  models:
+    - "qwen/qwen3-coder:free"
+    - "nvidia/nemotron-3-ultra-550b-a55b:free"
+    - "nvidia/nemotron-3-super-120b-a12b:free"
+    - "meta-llama/llama-3.3-70b-instruct:free"
+    - "nousresearch/hermes-3-llama-3.1-405b:free"
+    - "google/gemma-4-31b-it:free"
+    - "google/gemma-4-26b-a4b-it:free"
+    - "tencent/hy3:free"
+    - "openai/gpt-oss-20b:free"
+    - "qwen/qwen3-next-80b-a3b-instruct:free"
+    - "cohere/north-mini-code:free"
+    - "nvidia/nemotron-3-nano-30b-a3b:free"
+  temperature: 0.7
+  max_tokens: 4000
+  top_p: 0.9
+  request_timeout_seconds: 60
+  max_retries: 3
+  retry_delay_seconds: 2
+
+# ============================================================
+# EXTERNAL API CONFIGURATIONS
+# ============================================================
+
+apis:
+  apify:
+    token: "${APIFY_API_TOKEN}"
+    linkedin_jobs_actor: "apify/linkedin-jobs-scraper"
+    linkedin_company_actor: "apify/linkedin-company-scraper"
+    linkedin_people_actor: "apify/linkedin-people-search"
+    crunchbase_actor: "apify/crunchbase-scraper"
+    timeout_seconds: 120
+    max_items_per_run: 100
+    memory_mbytes: 1024
+
+  sendgrid:
+    api_key: "${SENDGRID_API_KEY}"
+    from_email: "recruiting@yourdomain.com"
+    from_name: "Your Name"
+    reply_to: "recruiting@yourdomain.com"
+    tracking_settings:
+      click_tracking: true
+      open_tracking: true
+      subscription_tracking: true
+
+  calcom:
+    api_key: "${CALCOM_API_KEY}"
+    base_url: "https://api.cal.com/v1"
+    event_type_id: "${CALCOM_EVENT_TYPE_ID}"
+    username: "${CALCOM_USERNAME}"
+    timezone: "UTC"
+
+  hubspot:
+    api_key: "${HUBSPOT_API_KEY}"
+    portal_id: "${HUBSPOT_PORTAL_ID}"
+    base_url: "https://api.hubapi.com"
+    sync_contacts: true
+    sync_deals: true
+    sync_companies: true
+    custom_properties:
+      - "recruitment_agent_source"
+      - "recruitment_agent_name"
+      - "recruitment_research_summary"
+
+  crunchbase:
+    api_key: "${CRUNCHBASE_API_KEY}"
+    base_url: "https://api.crunchbase.com/v4"
+
+# ============================================================
+# DATABASE CONFIGURATION
+# ============================================================
+
+database:
+  url: "${DATABASE_URL}"  # sqlite:///./data/agency.db or postgresql://...
+  echo: false
+  pool_size: 5
+  max_overflow: 10
+  pool_timeout: 30
+  pool_recycle: 3600
+
+# ============================================================
+# DASHBOARD CONFIGURATION
+# ============================================================
+
+dashboard:
+  host: "0.0.0.0"
+  port: 5173
+  api_proxy: "/api"
+  cors_origins:
+    - "http://localhost:5173"
+    - "http://localhost:3000"
+    - "https://yourdomain.com"
+  websocket_enabled: true
+  realtime_updates: true
+
+# ============================================================
+# SCHEDULER CONFIGURATION
+# ============================================================
+
+scheduler:
+  timezone: "UTC"
+  jobs:
+    - name: "discovery_run"
+      trigger: "cron"
+      hour: 8
+      day_of_week: "mon"
+      enabled: true
+    - name: "research_batch"
+      trigger: "cron"
+      hour: 10
+      day_of_week: "mon"
+      enabled: true
+    - name: "followup_check"
+      trigger: "interval"
+      hours: 4
+      enabled: true
+    - name: "pipeline_sync"
+      trigger: "interval"
+      hours: 1
+      enabled: true
+    - name: "email_bounce_check"
+      trigger: "interval"
+      hours: 6
+      enabled: true
+    - name: "analytics_rollup"
+      trigger: "cron"
+      hour: 2
+      day_of_week: "*"
+      enabled: true
+
+# ============================================================
+# EMAIL TEMPLATES CONFIGURATION
+# ============================================================
+
+templates:
+  outreach_dir: "templates/outreach"
+  default_tone: "professional_peer"
+  tones:
+    professional_peer:
+      description: "Senior peer reaching out professionally"
+      style_guide: "Direct, respectful, value-first, no fluff"
+    friendly_consultant:
+      description: "Helpful consultant offering guidance"
+      style_guide: "Warm, curious, question-led, educational"
+    executive_brief:
+      description: "C-level to C-level concise communication"
+      style_guide: "Ultra-short, strategic, outcome-focused"
+  personalization_fields:
+    - "company.name"
+    - "company.industry"
+    - "company.size"
+    - "company.tech_stack"
+    - "company.hiring_needs"
+    - "company.pain_points"
+    - "contact.first_name"
+    - "contact.title"
+    - "contact.linkedin"
+    - "research.recent_funding"
+    - "research.growth_signals"
+    - "agent.value_prop"
+    - "agent.case_study"
+    - "agent.specialization"
+
+# ============================================================
+# AGENT PERSONA CONFIGS (referenced by agent create command)
+# ============================================================
+
+agent_personas:
+  saas_hunter:
+    name: "SaaS Hunter"
+    description: "Targets Series A-C SaaS companies hiring engineers"
+    persona: "Senior Technical Recruiter specializing in SaaS"
+    specialization: "SaaS Engineering Talent"
+    value_prop: "I place senior engineers at high-growth SaaS companies. My candidates have shipped products at scale."
+    case_study: "Recently placed a Staff Backend Engineer at a Series B devtools company - they reduced API latency by 40% in month 1."
+    discovery:
+      industries: ["SaaS", "B2B Software", "DevTools", "API Platforms"]
+      company_size: "50-500"
+      hiring_signals: ["engineering", "backend", "platform", "infrastructure", "api"]
+    research:
+      depth: "deep"
+      focus_areas: ["tech_stack", "team_structure", "hiring_plan", "scaling_challenges"]
+    outreach:
+      tone: "professional_peer"
+      templates_dir: "templates/outreach/saas_hunter"
+    followup:
+      sequence: "saas_4_touch"
+    scheduler:
+      meeting_type: "discovery_call"
+      duration: 30
+
+  fintech_recruiter:
+    name: "FinTech Recruiter"
+    description: "Targets FinTech companies needing compliant engineering talent"
+    persona: "FinTech Talent Specialist with regulatory expertise"
+    specialization: "FinTech Engineering & Compliance"
+    value_prop: "I understand the unique hiring challenges in FinTech - regulatory compliance, security, and scale."
+    case_study: "Placed a Lead Security Engineer at a Series C payments company - they passed SOC2 Type II in 60 days."
+    discovery:
+      industries: ["FinTech", "Payments", "Banking", "InsurTech", "RegTech"]
+      company_size: "50-1000"
+      hiring_signals: ["security", "compliance", "payments", "ledger", "risk", "fraud"]
+    research:
+      depth: "deep"
+      focus_areas: ["tech_stack", "compliance_requirements", "team_structure", "regulatory_landscape"]
+    outreach:
+      tone: "executive_brief"
+      templates_dir: "templates/outreach/fintech_recruiter"
+    followup:
+      sequence: "standard_3_touch"
+    scheduler:
+      meeting_type: "compliance_intro_call"
+      duration: 30
+
+  ai_ml_specialist:
+    name: "AI/ML Specialist"
+    description: "Targets AI/ML companies hiring research and applied engineers"
+    persona: "AI Talent Partner working with frontier labs and applied AI teams"
+    specialization: "AI/ML Research & Applied Engineering"
+    value_prop: "I work with researchers from top labs and engineers who've deployed LLMs in production."
+    case_study: "Placed a Senior ML Engineer at a generative AI startup - they optimized inference latency by 3x."
+    discovery:
+      industries: ["AI/ML", "Generative AI", "LLM Applications", "Computer Vision", "NLP"]
+      company_size: "10-500"
+      hiring_signals: ["ml", "llm", "generative", "pytorch", "tensorflow", "transformers", "rag", "fine-tuning"]
+    research:
+      depth: "deep"
+      focus_areas: ["tech_stack", "model_architecture", "deployment_infrastructure", "research_vs_applied"]
+    outreach:
+      tone: "professional_peer"
+      templates_dir: "templates/outreach/ai_ml_specialist"
+    followup:
+      sequence: "saas_4_touch"
+    scheduler:
+      meeting_type: "tech_deep_dive"
+      duration: 45
+
+# ============================================================
+# MONITORING & ALERTING
+# ============================================================
+
+monitoring:
+  log_level: "INFO"
+  log_format: "json"
+  sentry_dsn: "${SENTRY_DSN}"
+  alert_channels:
+    slack_webhook: "${SLACK_WEBHOOK_URL}"
+    email: "alerts@yourdomain.com"
+  alerts:
+    - name: "high_bounce_rate"
+      condition: "bounce_rate > 0.05"
+      severity: "warning"
+    - name: "low_reply_rate"
+      condition: "reply_rate < 0.02"
+      severity: "warning"
+    - name: "api_error_spike"
+      condition: "error_rate > 0.1"
+      severity: "critical"
+    - name: "quota_exceeded"
+      condition: "quota_used > 0.9"
+      severity: "critical"
+    - name: "no_discoveries"
+      condition: "discovered_companies == 0"
+      severity: "warning"
+
+# ============================================================
+# FEATURE FLAGS
+# ============================================================
+
+features:
+  enable_ai_research: true
+  enable_auto_outreach: true
+  enable_auto_followup: true
+  enable_auto_scheduling: true
+  enable_crm_sync: true
+  enable_analytics: true
+  enable_ab_testing: true
+  enable_multi_agent: true
+  enable_human_review: false  # Set true for human-in-the-loop mode
+  dry_run_mode: false  # Set true to test without sending emails

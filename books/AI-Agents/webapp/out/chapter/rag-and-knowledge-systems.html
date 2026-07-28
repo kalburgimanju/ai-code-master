@@ -1,0 +1,1771 @@
+<!DOCTYPE html><html lang="en" class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/chunks/157per-6rfej7.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/3s_ssfmklbvuh.js"/><script src="/_next/static/chunks/3h0oyn0exvw0m.js" async=""></script><script src="/_next/static/chunks/0gy5uo_6oz9q4.js" async=""></script><script src="/_next/static/chunks/2n-c2rhkbzx6r.js" async=""></script><script src="/_next/static/chunks/turbopack-10u0tugcn5e6r.js" async=""></script><script src="/_next/static/chunks/3j2brc7c8hat8.js" async=""></script><script src="/_next/static/chunks/05b0208rfh8ys.js" async=""></script><script src="/_next/static/chunks/16vgld9iclosn.js" async=""></script><script src="/_next/static/chunks/2rb1230i-fez-.js" async=""></script><meta name="next-size-adjust" content=""/><title>AI Agents: The Complete Guide</title><meta name="description" content="A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"/><meta name="author" content="Manjunath Kalburgi"/><meta name="keywords" content="AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"/><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body class="min-h-full flex flex-col"><div hidden=""><!--$--><!--/$--></div><div><div class="reading-progress" style="width:0%"></div><nav class="fixed top-0 left-0 right-0 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border-color)] z-40 no-print"><div class="flex items-center justify-between px-4 py-2 max-w-full"><div class="flex items-center gap-3"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Toggle sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h14M3 10h14M3 15h14"></path></svg></button><a class="text-sm font-semibold text-primary hover:underline hidden sm:inline" href="/">AI Agents Book</a></div><div class="flex items-center gap-2 text-sm text-[var(--foreground)] opacity-60"><span class="hidden md:inline">Chapter <!-- -->2</span><span class="hidden md:inline">•</span><span class="hidden lg:inline">RAG &amp; Knowledge Systems</span><span class="lg:hidden">🔍</span></div><div class="flex items-center gap-2"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12V4M4 7l4-4 4 4"></path></svg></button></div></div></nav><div class="flex pt-12 min-h-screen"><aside class="fixed left-0 top-12 bottom-0 w-72 bg-[var(--surface)] border-r border-[var(--border-color)] overflow-y-auto transition-transform duration-300 z-30 no-print translate-x-0"><div class="p-4"><div class="mb-6 pb-4 border-b border-[var(--border-color)]"><span class="text-xs font-medium text-primary uppercase tracking-wide">Chapter <!-- -->2</span><h2 class="text-lg font-bold text-[var(--foreground)] mt-1">RAG &amp; Knowledge Systems</h2><p class="text-xs text-[var(--foreground)] opacity-60 mt-1">~<!-- -->20<!-- --> pages • <!-- -->Part I: Foundations</p></div><div class="mb-6"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">On this page</h3><div class="space-y-1"><a href="#chapter-2-rag-knowledge-systems" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chapter 2: RAG &amp; Knowledge Systems</a><a href="#giving-agents-access-to-your-data" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Giving Agents Access to Your Data</a><a href="#table-of-contents" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Table of Contents</a><a href="#1-what-is-rag" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">1. What Is RAG?</a><a href="#the-problem-with-pure-llms" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Problem with Pure LLMs</a><a href="#rag-the-solution" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">RAG: The Solution</a><a href="#when-to-use-rag" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">When to Use RAG</a><a href="#2-the-rag-pipeline" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">2. The RAG Pipeline</a><a href="#overview" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Overview</a><a href="#stage-1-ingestion" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Stage 1: Ingestion</a><a href="#example-usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Example usage</a><a href="#stage-2-embedding" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Stage 2: Embedding</a><a href="#stage-3-storage" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Stage 3: Storage</a><a href="#stage-4-retrieval" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Stage 4: Retrieval</a><a href="#stage-5-generation" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Stage 5: Generation</a><a href="#3-embeddings-the-language-of-meaning" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">3. Embeddings: The Language of Meaning</a><a href="#what-are-embeddings" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What Are Embeddings?</a><a href="#how-embeddings-work" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">How Embeddings Work</a><a href="#popular-embedding-models" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Popular Embedding Models</a><a href="#code-generating-embeddings" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Code: Generating Embeddings</a><a href="#method-1-openai-embeddings" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Method 1: OpenAI Embeddings ===</a><a href="#example" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Example</a><a href="#method-2-sentence-transformers-local" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Method 2: Sentence Transformers (Local) ===</a><a href="#load-model-downloads-on-first-run" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Load model (downloads on first run)</a><a href="#batch-processing" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Batch processing</a><a href="#output-4-384-4-texts-384-dimensions-each" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Output: (4, 384) - 4 texts, 384 dimensions each</a><a href="#understanding-embedding-space" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Understanding Embedding Space</a><a href="#create-embeddings-for-related-sentences" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Create embeddings for related sentences</a><a href="#compute-similarity-matrix" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Compute similarity matrix</a><a href="#output-demonstrates" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Output demonstrates:</a><a href="#high-similarity-between-cat-mat-and-feline-rug-0-7" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">- High similarity between cat/mat and feline/rug (≈0.7)</a><a href="#low-similarity-between-cat-and-pizza-0-1" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">- Low similarity between cat and pizza (≈0.1)</a><a href="#moderate-similarity-between-cat-and-dog-0-3" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">- Moderate similarity between cat and dog (≈0.3)</a><a href="#4-vector-databases" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">4. Vector Databases</a><a href="#what-are-vector-databases" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What Are Vector Databases?</a><a href="#why-regular-databases-aren-t-enough" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Why Regular Databases Aren&#x27;t Enough</a><a href="#vector-database-comparison" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Vector Database Comparison</a><a href="#chroma-quick-start-best-for-prototyping" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chroma: Quick Start (Best for Prototyping)</a><a href="#create-a-client-data-persists-to-disk" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Create a client (data persists to disk)</a><a href="#create-a-collection-like-a-table" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Create a collection (like a table)</a><a href="#add-documents-with-embeddings" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Add documents with embeddings</a><a href="#chroma-can-generate-embeddings-automatically" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chroma can generate embeddings automatically</a><a href="#query-for-similar-documents" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Query for similar documents</a><a href="#output-should-include-the-return-policy-document" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Output should include the return policy document</a><a href="#pinecone-production-grade" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Pinecone: Production-Grade</a><a href="#initialize" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Initialize</a><a href="#create-index" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Create index</a><a href="#connect-to-index" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Connect to index</a><a href="#upsert-vectors" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Upsert vectors</a><a href="#query" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Query</a><a href="#faiss-high-performance-local" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">FAISS: High-Performance Local</a><a href="#create-index" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Create index</a><a href="#add-vectors-must-be-numpy-arrays" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Add vectors (must be numpy arrays)</a><a href="#search" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Search</a><a href="#5-chunking-strategies" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5. Chunking Strategies</a><a href="#why-chunking-matters" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Why Chunking Matters</a><a href="#strategy-1-fixed-size-chunking" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Strategy 1: Fixed-Size Chunking</a><a href="#example" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Example</a><a href="#strategy-2-recursive-character-splitting" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Strategy 2: Recursive Character Splitting</a><a href="#strategy-3-semantic-chunking" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Strategy 3: Semantic Chunking</a><a href="#strategy-4-document-structure-aware" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Strategy 4: Document-Structure-Aware</a><a href="#chunking-strategy-comparison" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chunking Strategy Comparison</a><a href="#chunk-size-guidelines" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chunk Size Guidelines</a><a href="#6-similarity-search" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">6. Similarity Search</a><a href="#how-similarity-search-works" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">How Similarity Search Works</a><a href="#distance-metrics" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Distance Metrics</a><a href="#example" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Example</a><a href="#when-to-use-each-metric" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">When to Use Each Metric</a><a href="#7-hybrid-search" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">7. Hybrid Search</a><a href="#combining-keyword-semantic-search" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Combining Keyword + Semantic Search</a><a href="#implementation" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Implementation</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Usage ===</a><a href="#add-documents" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Add documents</a><a href="#search-with-different-queries" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Search with different queries</a><a href="#reciprocal-rank-fusion-rrf" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Reciprocal Rank Fusion (RRF)</a><a href="#example-usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Example usage</a><a href="#8-building-a-rag-pipeline" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8. Building a RAG Pipeline</a><a href="#complete-production-ready-rag-system" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Complete Production-Ready RAG System</a><a href="#usage-example" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Usage Example ===</a><a href="#async-version-for-production" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Async Version for Production</a><a href="#9-evaluating-rag-quality" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">9. Evaluating RAG Quality</a><a href="#rag-evaluation-metrics" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">RAG Evaluation Metrics</a><a href="#evaluation-framework" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Evaluation Framework</a><a href="#run-evaluation" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Run Evaluation ===</a><a href="#define-test-cases" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Define test cases</a><a href="#evaluator-ragevaluator-rag-pipeline" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">evaluator = RAGEvaluator(ragpipeline)</a><a href="#results-evaluator-evaluate-test-cases" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">results = evaluator.evaluate(testcases)</a><a href="#print-f-context-precision-results-avg-precision-2" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">print(f&quot;Context Precision: {results[&#x27;avgprecision&#x27;]:.2%}&quot;)</a><a href="#print-f-faithfulness-results-avg-faithfulness-2" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">print(f&quot;Faithfulness: {results[&#x27;avgfaithfulness&#x27;]:.2%}&quot;)</a><a href="#print-f-answer-relevancy-results-avg-relevancy-2" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">print(f&quot;Answer Relevancy: {results[&#x27;avgrelevancy&#x27;]:.2%}&quot;)</a><a href="#evaluation-best-practices" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Evaluation Best Practices</a><a href="#10-key-takeaways" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">10. Key Takeaways</a><a href="#11-try-it-yourself" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11. Try It Yourself</a><a href="#exercise-1-build-a-document-q-a-system" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 1: Build a Document Q&amp;A System</a><a href="#exercise-2-compare-chunking-strategies" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 2: Compare Chunking Strategies</a><a href="#exercise-3-build-a-hybrid-search-engine" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 3: Build a Hybrid Search Engine</a><a href="#exercise-4-rag-evaluation-pipeline" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 4: RAG Evaluation Pipeline</a><a href="#exercise-5-production-hardening" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 5: Production Hardening</a></div></div><div class="border-t border-[var(--border-color)] pt-4"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">Chapters</h3><div class="space-y-1"><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/llms-and-genai-fundamentals"><span class="text-base">🧠</span><span class="truncate">LLMs &amp; GenAI Fundamentals</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all bg-primary/10 text-primary font-medium" href="/chapter/rag-and-knowledge-systems"><span class="text-base">🔍</span><span class="truncate">RAG &amp; Knowledge Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/introduction-to-ai-agents"><span class="text-base">🤖</span><span class="truncate">Introduction to AI Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/customer-support-agents"><span class="text-base">💬</span><span class="truncate">Customer Support Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/executive-and-analyst-agents"><span class="text-base">📊</span><span class="truncate">Executive &amp; Analyst Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/developer-and-coder-agents"><span class="text-base">👨‍💻</span><span class="truncate">Developer &amp; Coder Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/designer-and-creative-agents"><span class="text-base">🎨</span><span class="truncate">Designer &amp; Creative Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/multi-agent-systems"><span class="text-base">🔗</span><span class="truncate">Multi-Agent Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-tools-from-scratch"><span class="text-base">🔧</span><span class="truncate">Building Tools from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-your-own-llm-pipeline"><span class="text-base">⚙️</span><span class="truncate">Building Your Own LLM Pipeline</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-rag-from-scratch"><span class="text-base">🏗️</span><span class="truncate">Building RAG from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/complete-project-deployment"><span class="text-base">🚀</span><span class="truncate">Complete Project: End to End</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/security-and-safety"><span class="text-base">🛡️</span><span class="truncate">Security, Safety &amp; Guardrails</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/observability-and-scalability"><span class="text-base">📈</span><span class="truncate">Observability &amp; Scalability</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/authenticity-and-future"><span class="text-base">🌍</span><span class="truncate">Authenticity &amp; The Future</span></a></div></div></div></aside><main class="flex-1 transition-all duration-300 ml-72 max-w-4xl px-6 md:px-12 py-12"><div class="mb-10 pb-8 border-b-2 border-primary/20"><span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">Part I: Foundations</span><h1 class="text-4xl md:text-5xl font-extrabold mb-2 bg-gradient-to-r from-primary via-emerald-400 to-teal-400 -webkit-background-clip-text text-transparent bg-clip-text">Chapter <!-- -->2<!-- -->: <!-- -->RAG &amp; Knowledge Systems</h1><p class="text-xl text-[var(--foreground)] opacity-70">Giving Agents Access to Your Data</p></div><article class="prose-book"><h1 class="text-4xl font-extrabold mt-12 mb-4">Chapter 2: RAG &amp; Knowledge Systems</h1>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Giving Agents Access to Your Data</h2>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><em class="italic">&quot;An LLM without context is like a genius with amnesia — brilliant, but unable to help with your specific problems.&quot;</em></p>
+</blockquote>
+<p class="mb-4 text-justify">Large Language Models are trained on general internet data, but they don&#x27;t know about <strong class="font-bold text-primary">your</strong> company&#x27;s documentation, <strong class="font-bold text-primary">your</strong> product details, or <strong class="font-bold text-primary">your</strong> internal processes. <strong class="font-bold text-primary">Retrieval-Augmented Generation (RAG)</strong> solves this by giving LLMs access to your specific knowledge — and it&#x27;s the foundation of most production AI agent systems.</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Table of Contents</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><a href="#1-what-is-rag" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">What Is RAG?</a></li>
+<li class="text-[var(--foreground)]"><a href="#2-the-rag-pipeline" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">The RAG Pipeline</a></li>
+<li class="text-[var(--foreground)]"><a href="#3-embeddings-the-language-of-meaning" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Embeddings: The Language of Meaning</a></li>
+<li class="text-[var(--foreground)]"><a href="#4-vector-databases" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Vector Databases</a></li>
+<li class="text-[var(--foreground)]"><a href="#5-chunking-strategies" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Chunking Strategies</a></li>
+<li class="text-[var(--foreground)]"><a href="#6-similarity-search" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Similarity Search</a></li>
+<li class="text-[var(--foreground)]"><a href="#7-hybrid-search" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Hybrid Search</a></li>
+<li class="text-[var(--foreground)]"><a href="#8-building-a-rag-pipeline" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Building a RAG Pipeline</a></li>
+<li class="text-[var(--foreground)]"><a href="#9-evaluating-rag-quality" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Evaluating RAG Quality</a></li>
+<li class="text-[var(--foreground)]"><a href="#10-key-takeaways" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Key Takeaways</a></li>
+<li class="text-[var(--foreground)]"><a href="#11-try-it-yourself" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Try It Yourself</a></li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">1. What Is RAG?</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Problem with Pure LLMs</h3>
+<p class="mb-4 text-justify">LLMs have several limitations when it comes to real-world applications:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────────────────┐
+│              PROBLEMS WITH PURE LLMs                 │
+├─────────────────────────────────────────────────────┤
+│                                                      │
+│  1. Knowledge Cutoff                                 │
+│     &quot;What&#x27;s the latest iPhone model?&quot;                │
+│     → LLM trained in 2023 doesn&#x27;t know about         │
+│       iPhone 16 released in 2024                     │
+│                                                      │
+│  2. No Private Data Access                           │
+│     &quot;What&#x27;s our company&#x27;s refund policy?&quot;            │
+│     → LLM has never seen your internal docs          │
+│                                                      │
+│  3. Hallucination                                    │
+│     &quot;What&#x27;s the exact price of Product X?&quot;           │
+│     → LLM might invent a plausible but wrong price   │
+│                                                      │
+│  4. No Real-Time Information                         │
+│     &quot;What&#x27;s our current inventory level?&quot;            │
+│     → LLM can&#x27;t access your database                 │
+│                                                      │
+└─────────────────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">RAG: The Solution</h3>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Retrieval-Augmented Generation (RAG)</strong> enhances LLMs by:</p>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Retrieving</strong> relevant information from your data sources</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Augmenting</strong> the LLM prompt with that information</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Generating</strong> a response that&#x27;s grounded in real data</li>
+</ol>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Without RAG:                    With RAG:
+                                
+User: &quot;What&#x27;s our      User: &quot;What&#x27;s our
+return policy?&quot;          return policy?&quot;
+    ↓                         ↓
+LLM: &quot;I don&#x27;t know     → Search company docs
+your return policy.&quot;    → Find return policy
+                         → Include it in prompt
+                         → LLM reads &amp; responds
+                         ↓
+                         &quot;Based on your company&#x27;s
+                         policy, returns are accepted
+                         within 30 days with original
+                         receipt...&quot;
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">When to Use RAG</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Scenario</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Use RAG?</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Why</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Answering questions about your docs</td><td class="px-4 py-3 border border-[var(--border-color)]">✅ Yes</td><td class="px-4 py-3 border border-[var(--border-color)]">LLM doesn&#x27;t have your data</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Summarizing internal reports</td><td class="px-4 py-3 border border-[var(--border-color)]">✅ Yes</td><td class="px-4 py-3 border border-[var(--border-color)]">Reports are private</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Customer support with product knowledge</td><td class="px-4 py-3 border border-[var(--border-color)]">✅ Yes</td><td class="px-4 py-3 border border-[var(--border-color)]">Product info changes often</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">General knowledge questions</td><td class="px-4 py-3 border border-[var(--border-color)]">❌ No</td><td class="px-4 py-3 border border-[var(--border-color)]">LLM already knows</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Creative writing</td><td class="px-4 py-3 border border-[var(--border-color)]">❌ No</td><td class="px-4 py-3 border border-[var(--border-color)]">No need for external data</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Simple classification tasks</td><td class="px-4 py-3 border border-[var(--border-color)]">❌ No</td><td class="px-4 py-3 border border-[var(--border-color)]">LLM handles this directly</td></tr></tbody></table></div>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">2. The RAG Pipeline</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Overview</h3>
+<p class="mb-4 text-justify">A RAG pipeline has five main stages:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+│  INGEST  │───▶│  EMBED   │───▶│  STORE   │───▶│ RETRIEVE │───▶│GENERATE  │
+│          │    │          │    │          │    │          │    │          │
+│ Load     │    │ Convert  │    │ Save to  │    │ Search   │    │ LLM uses │
+│ documents│    │ text to  │    │ vector   │    │ for      │    │ retrieved│
+│ &amp; split  │    │ vectors  │    │ database │    │ relevant │    │ context  │
+│ into     │    │          │    │          │    │ chunks   │    │ to answer│
+│ chunks   │    │          │    │          │    │          │    │          │
+└──────────┘    └──────────┘    └──────────┘    └──────────┘    └──────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Stage 1: Ingestion</h3>
+<p class="mb-4 text-justify">Loading documents and splitting them into manageable chunks.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Stage 1: Document Ingestion &amp; Chunking
+&quot;&quot;&quot;
+import os
+from pathlib import Path
+
+def load_documents(directory: str) -&gt; list[dict]:
+    &quot;&quot;&quot;Load all text documents from a directory.&quot;&quot;&quot;
+    documents = []
+    
+    for file_path in Path(directory).rglob(&quot;*&quot;):
+        if file_path.suffix in [&quot;.txt&quot;, &quot;.md&quot;, &quot;.pdf&quot;]:
+            content = file_path.read_text(encoding=&quot;utf-8&quot;)
+            documents.append({
+                &quot;content&quot;: content,
+                &quot;metadata&quot;: {
+                    &quot;source&quot;: str(file_path),
+                    &quot;filename&quot;: file_path.name,
+                    &quot;type&quot;: file_path.suffix
+                }
+            })
+    
+    return documents
+
+
+def chunk_text(
+    text: str, 
+    chunk_size: int = 500, 
+    overlap: int = 50
+) -&gt; list[str]:
+    &quot;&quot;&quot;Split text into overlapping chunks.&quot;&quot;&quot;
+    chunks = []
+    words = text.split()
+    
+    for i in range(0, len(words), chunk_size - overlap):
+        chunk = &quot; &quot;.join(words[i:i + chunk_size])
+        chunks.append(chunk)
+    
+    return chunks
+
+
+# Example usage
+docs = load_documents(&quot;./company_docs&quot;)
+all_chunks = []
+
+for doc in docs:
+    chunks = chunk_text(doc[&quot;content&quot;])
+    for chunk in chunks:
+        all_chunks.append({
+            &quot;content&quot;: chunk,
+            &quot;metadata&quot;: doc[&quot;metadata&quot;]
+        })
+
+print(f&quot;Loaded {len(docs)} documents&quot;)
+print(f&quot;Created {len(all_chunks)} chunks&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Stage 2: Embedding</h3>
+<p class="mb-4 text-justify">Converting text chunks into numerical vectors.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Stage 3: Storage</h3>
+<p class="mb-4 text-justify">Saving vectors in a vector database for fast retrieval.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Stage 4: Retrieval</h3>
+<p class="mb-4 text-justify">Searching for relevant chunks when a query arrives.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Stage 5: Generation</h3>
+<p class="mb-4 text-justify">Using retrieved chunks to inform the LLM&#x27;s response.</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">3. Embeddings: The Language of Meaning</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What Are Embeddings?</h3>
+<p class="mb-4 text-justify">An <strong class="font-bold text-primary">embedding</strong> is a numerical representation of text that captures its <strong class="font-bold text-primary">meaning</strong>. Similar meanings produce similar vectors, even if the words are completely different.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">&quot;happy&quot;   → [0.82, -0.15, 0.43, ..., 0.21]  (768 numbers)
+&quot;joyful&quot;  → [0.79, -0.12, 0.41, ..., 0.23]  (similar!)
+&quot;angry&quot;   → [-0.65, 0.31, -0.18, ..., -0.44] (different!)
+&quot;car&quot;     → [0.12, 0.55, -0.33, ..., 0.08]   (very different!)
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">How Embeddings Work</h3>
+<p class="mb-4 text-justify">Embedding models are trained on large text datasets to learn semantic relationships:</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Training objective:
+  &quot;The cat sat on the mat&quot; ≈ &quot;A feline rested on the rug&quot;
+  (These should have similar embeddings because they mean 
+   similar things)
+
+Result:
+  - Synonyms are close in vector space
+  - Related concepts are nearby  
+  - Unrelated concepts are far apart
+  - Mathematical relationships emerge:
+    King - Man + Woman ≈ Queen
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Popular Embedding Models</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Model</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Provider</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Dimensions</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Speed</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Quality</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">text-embedding-3-small</td><td class="px-4 py-3 border border-[var(--border-color)]">OpenAI</td><td class="px-4 py-3 border border-[var(--border-color)]">1536</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Good</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">text-embedding-3-large</td><td class="px-4 py-3 border border-[var(--border-color)]">OpenAI</td><td class="px-4 py-3 border border-[var(--border-color)]">3072</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">all-MiniLM-L6-v2</td><td class="px-4 py-3 border border-[var(--border-color)]">Sentence Transformers</td><td class="px-4 py-3 border border-[var(--border-color)]">384</td><td class="px-4 py-3 border border-[var(--border-color)]">Very Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Good</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">all-mpnet-base-v2</td><td class="px-4 py-3 border border-[var(--border-color)]">Sentence Transformers</td><td class="px-4 py-3 border border-[var(--border-color)]">768</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Very Good</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">BAAI/bge-large-en-v1.5</td><td class="px-4 py-3 border border-[var(--border-color)]">BAAI</td><td class="px-4 py-3 border border-[var(--border-color)]">1024</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Cohere embed-v3</td><td class="px-4 py-3 border border-[var(--border-color)]">Cohere</td><td class="px-4 py-3 border border-[var(--border-color)]">1024</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Code: Generating Embeddings</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Generate embeddings using OpenAI and Sentence Transformers.
+&quot;&quot;&quot;
+
+# === Method 1: OpenAI Embeddings ===
+import os
+from openai import OpenAI
+
+client = OpenAI(api_key=os.getenv(&quot;OPENAI_API_KEY&quot;))
+
+def get_openai_embedding(text: str) -&gt; list[float]:
+    &quot;&quot;&quot;Generate embedding using OpenAI&#x27;s API.&quot;&quot;&quot;
+    response = client.embeddings.create(
+        model=&quot;text-embedding-3-small&quot;,
+        input=text
+    )
+    return response.data[0].embedding
+
+
+def get_openai_embeddings_batch(
+    texts: list[str]
+) -&gt; list[list[float]]:
+    &quot;&quot;&quot;Generate embeddings for multiple texts.&quot;&quot;&quot;
+    response = client.embeddings.create(
+        model=&quot;text-embedding-3-small&quot;,
+        input=texts
+    )
+    return [item.embedding for item in response.data]
+
+
+# Example
+texts = [
+    &quot;How to reset your password&quot;,
+    &quot;Steps to recover account access&quot;,
+    &quot;Product pricing and plans&quot;,
+    &quot;How much does the pro plan cost?&quot;
+]
+
+embeddings = get_openai_embeddings_batch(texts)
+print(f&quot;Generated {len(embeddings)} embeddings&quot;)
+print(f&quot;Each embedding has {len(embeddings[0])} dimensions&quot;)
+
+
+# === Method 2: Sentence Transformers (Local) ===
+from sentence_transformers import SentenceTransformer
+
+# Load model (downloads on first run)
+model = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)
+
+def get_local_embedding(text: str) -&gt; list[float]:
+    &quot;&quot;&quot;Generate embedding using local model.&quot;&quot;&quot;
+    return model.encode(text).tolist()
+
+
+# Batch processing
+local_embeddings = model.encode(texts)
+print(f&quot;\nLocal embeddings shape: {local_embeddings.shape}&quot;)
+# Output: (4, 384) - 4 texts, 384 dimensions each
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Understanding Embedding Space</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import numpy as np
+from sentence_transformers import SentenceTransformer
+
+model = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)
+
+# Create embeddings for related sentences
+sentences = [
+    &quot;The cat is sitting on the mat&quot;,
+    &quot;A feline is resting on the rug&quot;,
+    &quot;The dog is playing in the park&quot;,
+    &quot;I love eating pizza with friends&quot;,
+]
+
+embeddings = model.encode(sentences)
+
+# Compute similarity matrix
+def cosine_similarity(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+print(&quot;Similarity Matrix:&quot;)
+print(&quot;=&quot; * 60)
+for i, s1 in enumerate(sentences):
+    for j, s2 in enumerate(sentences):
+        sim = cosine_similarity(embeddings[i], embeddings[j])
+        print(f&quot;  {s1[:30]:30} ↔ {s2[:30]:30} = {sim:.3f}&quot;)
+
+# Output demonstrates:
+# - High similarity between cat/mat and feline/rug (≈0.7)
+# - Low similarity between cat and pizza (≈0.1)
+# - Moderate similarity between cat and dog (≈0.3)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">4. Vector Databases</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What Are Vector Databases?</h3>
+<p class="mb-4 text-justify">Vector databases are specialized data stores designed to efficiently index, store, and query high-dimensional vectors (embeddings). They enable fast similarity search across millions or billions of vectors.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Why Regular Databases Aren&#x27;t Enough</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Traditional Database (SQL):          Vector Database:
+                                     
+SELECT * FROM documents              Find documents similar to:
+WHERE content LIKE &#x27;%machine%&#x27;       [0.12, -0.45, 0.78, ...]
+                                     
+Exact text match only     →          Semantic similarity search
+Slow on full-text scans   →          Fast approximate nearest neighbor
+No meaning understanding  →          Understands meaning &amp; context
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Vector Database Comparison</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Database</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Type</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Best For</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Speed</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Scalability</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Pricing</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Chroma</td><td class="px-4 py-3 border border-[var(--border-color)]">Embedded</td><td class="px-4 py-3 border border-[var(--border-color)]">Prototyping</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Free (open-source)</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Pinecone</td><td class="px-4 py-3 border border-[var(--border-color)]">Managed</td><td class="px-4 py-3 border border-[var(--border-color)]">Production</td><td class="px-4 py-3 border border-[var(--border-color)]">Very Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td><td class="px-4 py-3 border border-[var(--border-color)]">$70/mo+</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Weaviate</td><td class="px-4 py-3 border border-[var(--border-color)]">Self-hosted/Cloud</td><td class="px-4 py-3 border border-[var(--border-color)]">Complex queries</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td><td class="px-4 py-3 border border-[var(--border-color)]">Free/Cloud pricing</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">FAISS</td><td class="px-4 py-3 border border-[var(--border-color)]">Library</td><td class="px-4 py-3 border border-[var(--border-color)]">Research/High-perf</td><td class="px-4 py-3 border border-[var(--border-color)]">Very Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">High</td><td class="px-4 py-3 border border-[var(--border-color)]">Free (Meta)</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Milvus</td><td class="px-4 py-3 border border-[var(--border-color)]">Self-hosted</td><td class="px-4 py-3 border border-[var(--border-color)]">Large-scale</td><td class="px-4 py-3 border border-[var(--border-color)]">Very Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td><td class="px-4 py-3 border border-[var(--border-color)]">Free (open-source)</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">pgvector</td><td class="px-4 py-3 border border-[var(--border-color)]">PostgreSQL ext</td><td class="px-4 py-3 border border-[var(--border-color)]">Existing PG users</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td><td class="px-4 py-3 border border-[var(--border-color)]">Free (ext)</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Qdrant</td><td class="px-4 py-3 border border-[var(--border-color)]">Self-hosted/Cloud</td><td class="px-4 py-3 border border-[var(--border-color)]">Balanced features</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">Excellent</td><td class="px-4 py-3 border border-[var(--border-color)]">Free/Cloud pricing</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Chroma: Quick Start (Best for Prototyping)</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+ChromaDB - Simplest vector database for getting started.
+&quot;&quot;&quot;
+
+import chromadb
+
+# Create a client (data persists to disk)
+client = chromadb.PersistentClient(path=&quot;./chroma_db&quot;)
+
+# Create a collection (like a table)
+collection = client.get_or_create_collection(
+    name=&quot;company_docs&quot;,
+    metadata={&quot;description&quot;: &quot;Company documentation&quot;}
+)
+
+# Add documents with embeddings
+documents = [
+    &quot;Our return policy allows returns within 30 days of purchase.&quot;,
+    &quot;Free shipping is available on orders over $50.&quot;,
+    &quot;Contact support@company.com for account issues.&quot;,
+    &quot;The pro plan costs $29/month and includes all features.&quot;,
+]
+
+# Chroma can generate embeddings automatically
+collection.add(
+    documents=documents,
+    ids=[f&quot;doc_{i}&quot; for i in range(len(documents))],
+    metadatas=[{&quot;source&quot;: &quot;faq&quot;} for _ in documents]
+)
+
+# Query for similar documents
+results = collection.query(
+    query_texts=[&quot;How do I get a refund?&quot;],
+    n_results=2
+)
+
+print(&quot;Query: &#x27;How do I get a refund?&#x27;&quot;)
+print(f&quot;Results: {results[&#x27;documents&#x27;][0]}&quot;)
+print(f&quot;Distances: {results[&#x27;distances&#x27;][0]}&quot;)
+# Output should include the return policy document
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Pinecone: Production-Grade</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Pinecone - Managed vector database for production.
+&quot;&quot;&quot;
+
+from pinecone import Pinecone, ServerlessSpec
+
+# Initialize
+pc = Pinecone(api_key=os.getenv(&quot;PINECONE_API_KEY&quot;))
+
+# Create index
+index_name = &quot;company-docs&quot;
+if index_name not in pc.list_indexes().names():
+    pc.create_index(
+        name=index_name,
+        dimension=1536,  # Match your embedding model
+        metric=&quot;cosine&quot;,
+        spec=ServerlessSpec(
+            cloud=&quot;aws&quot;,
+            region=&quot;us-east-1&quot;
+        )
+    )
+
+# Connect to index
+index = pc.Index(index_name)
+
+# Upsert vectors
+vectors = [
+    {
+        &quot;id&quot;: &quot;doc_001&quot;,
+        &quot;values&quot;: embedding_1,  # From embedding model
+        &quot;metadata&quot;: {
+            &quot;text&quot;: &quot;Our return policy allows returns within 30 days&quot;,
+            &quot;source&quot;: &quot;policy&quot;,
+            &quot;category&quot;: &quot;returns&quot;
+        }
+    },
+    # ... more vectors
+]
+
+index.upsert(vectors=vectors)
+
+# Query
+results = index.query(
+    vector=query_embedding,
+    top_k=5,
+    include_metadata=True,
+    filter={&quot;category&quot;: &quot;returns&quot;}  # Metadata filtering!
+)
+
+for match in results[&quot;matches&quot;]:
+    print(f&quot;Score: {match[&#x27;score&#x27;]:.3f}&quot;)
+    print(f&quot;Text: {match[&#x27;metadata&#x27;][&#x27;text&#x27;]}&quot;)
+    print()
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">FAISS: High-Performance Local</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+FAISS - Facebook AI Similarity Search.
+Best for: High-performance local similarity search.
+&quot;&quot;&quot;
+
+import faiss
+import numpy as np
+
+# Create index
+dimension = 384  # all-MiniLM-L6-v2 output dimension
+index = faiss.IndexFlatIP(dimension)  # Inner product (cosine with 
+                                       # normalized vectors)
+
+# Add vectors (must be numpy arrays)
+vectors = np.array(embeddings).astype(&quot;float32&quot;)
+faiss.normalize_L2(vectors)  # Normalize for cosine similarity
+index.add(vectors)
+
+# Search
+query = np.array([query_embedding]).astype(&quot;float32&quot;)
+faiss.normalize_L2(query)
+
+k = 3  # Number of results
+distances, indices = index.search(query, k)
+
+print(f&quot;Top {k} results:&quot;)
+for i, (dist, idx) in enumerate(zip(distances[0], indices[0])):
+    print(f&quot;  {i+1}. Score: {dist:.3f} | Index: {idx}&quot;)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5. Chunking Strategies</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Why Chunking Matters</h3>
+<p class="mb-4 text-justify">LLMs have limited context windows, and even with large windows, stuffing entire documents into a prompt is inefficient. <strong class="font-bold text-primary">Chunking</strong> splits documents into smaller, focused pieces that can be retrieved individually.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Bad Chunking:                      Good Chunking:
+                                   
+┌─────────────────────┐           ┌──────────────┐
+│                     │           │ Chunk 1:      │
+│ ENTIRE 50-PAGE      │           │ Return Policy │
+│ DOCUMENT IN ONE     │           │ (focused,     │
+│ CHUNK               │           │  complete)    │
+│                     │           └──────────────┘
+│ Too much noise      │           ┌──────────────┐
+│ Hard to retrieve    │           │ Chunk 2:      │
+│ Wastes tokens       │           │ Shipping Info │
+│                     │           │ (focused,     │
+│                     │           │  complete)    │
+│                     │           └──────────────┘
+└─────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Strategy 1: Fixed-Size Chunking</h3>
+<p class="mb-4 text-justify">Split at every N characters or tokens, with optional overlap.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def fixed_size_chunk(
+    text: str, 
+    chunk_size: int = 500, 
+    overlap: int = 50
+) -&gt; list[str]:
+    &quot;&quot;&quot;Split text into fixed-size chunks with overlap.&quot;&quot;&quot;
+    chunks = []
+    start = 0
+    
+    while start &lt; len(text):
+        end = start + chunk_size
+        chunk = text[start:end]
+        chunks.append(chunk)
+        start = end - overlap  # Overlap for context continuity
+    
+    return chunks
+
+# Example
+text = &quot;A&quot; * 1000
+chunks = fixed_size_chunk(text, chunk_size=200, overlap=50)
+print(f&quot;Created {len(chunks)} chunks&quot;)  # ~6 chunks
+</code></pre></pre>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Pros</strong>: Simple, fast, predictable
+<strong class="font-bold text-primary">Cons</strong>: Can split mid-sentence, ignores document structure</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Strategy 2: Recursive Character Splitting</h3>
+<p class="mb-4 text-justify">Respects document structure by splitting on paragraph → sentence → word boundaries.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import re
+
+def recursive_split(
+    text: str,
+    chunk_size: int = 500,
+    separators: list[str] = None
+) -&gt; list[str]:
+    &quot;&quot;&quot;Recursively split text using hierarchical separators.&quot;&quot;&quot;
+    if separators is None:
+        separators = [&quot;\n\n&quot;, &quot;\n&quot;, &quot;. &quot;, &quot; &quot;, &quot;&quot;]
+    
+    chunks = []
+    
+    def split_recursive(text: str, sep_idx: int):
+        if len(text) &lt;= chunk_size:
+            chunks.append(text)
+            return
+        
+        if sep_idx &gt;= len(separators):
+            # Last resort: hard split
+            chunks.append(text[:chunk_size])
+            if len(text) &gt; chunk_size:
+                split_recursive(text[chunk_size:], 0)
+            return
+        
+        separator = separators[sep_idx]
+        if separator == &quot;&quot;:
+            # Character-level split
+            parts = [text[i:i+chunk_size] 
+                     for i in range(0, len(text), chunk_size)]
+        else:
+            parts = text.split(separator)
+        
+        current_chunk = &quot;&quot;
+        for part in parts:
+            test_chunk = current_chunk + separator + part if current_chunk else part
+            if len(test_chunk) &lt;= chunk_size:
+                current_chunk = test_chunk
+            else:
+                if current_chunk:
+                    chunks.append(current_chunk)
+                current_chunk = part
+        
+        if current_chunk:
+            if len(current_chunk) &lt;= chunk_size:
+                chunks.append(current_chunk)
+            else:
+                split_recursive(current_chunk, sep_idx + 1)
+    
+    split_recursive(text, 0)
+    return chunks
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Strategy 3: Semantic Chunking</h3>
+<p class="mb-4 text-justify">Split based on meaning — when the topic changes, start a new chunk.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">from sentence_transformers import SentenceTransformer
+import numpy as np
+
+def semantic_chunk(
+    text: str, 
+    threshold: float = 0.5
+) -&gt; list[str]:
+    &quot;&quot;&quot;Split text at semantic boundaries.&quot;&quot;&quot;
+    model = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)
+    
+    # Split into sentences
+    sentences = re.split(r&#x27;(?&lt;=[.!?])\s+&#x27;, text)
+    
+    if len(sentences) &lt;= 1:
+        return [text]
+    
+    # Get embeddings for each sentence
+    embeddings = model.encode(sentences)
+    
+    # Compute similarity between consecutive sentences
+    chunks = []
+    current_chunk = [sentences[0]]
+    
+    for i in range(1, len(sentences)):
+        similarity = np.dot(embeddings[i], embeddings[i-1]) / (
+            np.linalg.norm(embeddings[i]) * 
+            np.linalg.norm(embeddings[i-1])
+        )
+        
+        if similarity &lt; threshold:
+            # Topic change detected — start new chunk
+            chunks.append(&quot; &quot;.join(current_chunk))
+            current_chunk = [sentences[i]]
+        else:
+            current_chunk.append(sentences[i])
+    
+    # Don&#x27;t forget the last chunk
+    if current_chunk:
+        chunks.append(&quot; &quot;.join(current_chunk))
+    
+    return chunks
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Strategy 4: Document-Structure-Aware</h3>
+<p class="mb-4 text-justify">Respects natural document boundaries like headers, sections, and paragraphs.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def structure_aware_chunk(
+    text: str, 
+    max_chunk_size: int = 1000
+) -&gt; list[str]:
+    &quot;&quot;&quot;Split respecting markdown or document structure.&quot;&quot;&quot;
+    chunks = []
+    current_chunk = &quot;&quot;
+    
+    # Split by markdown headers
+    sections = re.split(r&#x27;(?m)^#{1,3}\s+&#x27;, text)
+    
+    for section in sections:
+        if not section.strip():
+            continue
+        
+        # If section fits, add to current chunk
+        if len(current_chunk) + len(section) &lt; max_chunk_size:
+            current_chunk += section + &quot;\n\n&quot;
+        else:
+            # Save current chunk and start new one
+            if current_chunk:
+                chunks.append(current_chunk.strip())
+            
+            # If section itself is too large, recursively split
+            if len(section) &gt; max_chunk_size:
+                sub_chunks = fixed_size_chunk(section, max_chunk_size)
+                chunks.extend(sub_chunks)
+                current_chunk = &quot;&quot;
+            else:
+                current_chunk = section + &quot;\n\n&quot;
+    
+    if current_chunk:
+        chunks.append(current_chunk.strip())
+    
+    return chunks
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Chunking Strategy Comparison</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Strategy</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Best For</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Speed</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Quality</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Complexity</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Fixed-size</td><td class="px-4 py-3 border border-[var(--border-color)]">Quick prototyping</td><td class="px-4 py-3 border border-[var(--border-color)]">⚡ Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">★★☆☆☆</td><td class="px-4 py-3 border border-[var(--border-color)]">Simple</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Recursive</td><td class="px-4 py-3 border border-[var(--border-color)]">General documents</td><td class="px-4 py-3 border border-[var(--border-color)]">⚡ Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">★★★☆☆</td><td class="px-4 py-3 border border-[var(--border-color)]">Simple</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Semantic</td><td class="px-4 py-3 border border-[var(--border-color)]">Topic-focused retrieval</td><td class="px-4 py-3 border border-[var(--border-color)]">🐌 Slow</td><td class="px-4 py-3 border border-[var(--border-color)]">★★★★☆</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Structure-aware</td><td class="px-4 py-3 border border-[var(--border-color)]">Well-formatted docs</td><td class="px-4 py-3 border border-[var(--border-color)]">⚡ Fast</td><td class="px-4 py-3 border border-[var(--border-color)]">★★★★☆</td><td class="px-4 py-3 border border-[var(--border-color)]">Medium</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Agentic</td><td class="px-4 py-3 border border-[var(--border-color)]">Complex analysis</td><td class="px-4 py-3 border border-[var(--border-color)]">🐌 Slow</td><td class="px-4 py-3 border border-[var(--border-color)]">★★★★★</td><td class="px-4 py-3 border border-[var(--border-color)]">Complex</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Chunk Size Guidelines</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Chunk Size Impact:
+
+Small (100-300 tokens):              Large (1000-2000 tokens):
+├── More precise retrieval           ├── More context per chunk
+├── Higher recall                    ├── Less retrieval needed
+├── More chunks to store             ├── Fewer chunks total
+├── Better for specific questions    ├── Better for broad questions
+└── More API calls to LLM            └── More token usage
+
+Sweet spot for most applications: 300-800 tokens with 50-100 overlap
+</code></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">6. Similarity Search</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">How Similarity Search Works</h3>
+<p class="mb-4 text-justify">When a user asks a question, we need to find the most relevant chunks from our knowledge base.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Query: &quot;How do I return a product?&quot;
+
+Step 1: Embed the query
+  &quot;How do I return a product?&quot; → [0.23, -0.67, 0.45, ...]
+
+Step 2: Compare with all stored embeddings
+  Doc chunk 1 (return policy):    similarity = 0.92  ← Best match!
+  Doc chunk 2 (shipping info):    similarity = 0.45
+  Doc chunk 3 (pricing):          similarity = 0.12
+  Doc chunk 4 (contact info):     similarity = 0.38
+
+Step 3: Return top-k results
+  → Chunk 1 (return policy) with 0.92 similarity
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Distance Metrics</h3>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Cosine Similarity (Most Common)</h4>
+<p class="mb-4 text-justify">Measures the <strong class="font-bold text-primary">angle</strong> between vectors. Best for text similarity.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import numpy as np
+
+def cosine_similarity(a: np.ndarray, b: np.ndarray) -&gt; float:
+    &quot;&quot;&quot;Compute cosine similarity between two vectors.&quot;&quot;&quot;
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+# Example
+vec1 = np.array([0.8, 0.2, 0.5])
+vec2 = np.array([0.7, 0.3, 0.6])
+vec3 = np.array([-0.5, 0.1, -0.8])
+
+print(f&quot;vec1 vs vec2: {cosine_similarity(vec1, vec2):.3f}&quot;)  # ~0.95
+print(f&quot;vec1 vs vec3: {cosine_similarity(vec1, vec3):.3f}&quot;)  # ~-0.02
+</code></pre></pre>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Dot Product</h4>
+<p class="mb-4 text-justify">Measures <strong class="font-bold text-primary">magnitude and direction</strong>. Use when vector magnitude matters.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def dot_product_similarity(a: np.ndarray, b: np.ndarray) -&gt; float:
+    &quot;&quot;&quot;Compute dot product similarity.&quot;&quot;&quot;
+    return np.dot(a, b)
+</code></pre></pre>
+<h4 class="text-lg font-semibold mt-6 mb-2 text-primary-light">Euclidean Distance</h4>
+<p class="mb-4 text-justify">Measures <strong class="font-bold text-primary">physical distance</strong> in vector space. Lower = more similar.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def euclidean_distance(a: np.ndarray, b: np.ndarray) -&gt; float:
+    &quot;&quot;&quot;Compute Euclidean distance (lower = more similar).&quot;&quot;&quot;
+    return np.linalg.norm(a - b)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">When to Use Each Metric</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Metric</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">When to Use</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Pros</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Cons</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Cosine</td><td class="px-4 py-3 border border-[var(--border-color)]">Text similarity (most cases)</td><td class="px-4 py-3 border border-[var(--border-color)]">Handles different magnitudes well</td><td class="px-4 py-3 border border-[var(--border-color)]">Doesn&#x27;t capture magnitude</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Dot Product</td><td class="px-4 py-3 border border-[var(--border-color)]">When magnitude matters</td><td class="px-4 py-3 border border-[var(--border-color)]">Fast computation</td><td class="px-4 py-3 border border-[var(--border-color)]">Sensitive to vector length</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Euclidean</td><td class="px-4 py-3 border border-[var(--border-color)]">Clustering, anomaly detection</td><td class="px-4 py-3 border border-[var(--border-color)]">Intuitive distance</td><td class="px-4 py-3 border border-[var(--border-color)]">Sensitive to high dimensions</td></tr></tbody></table></div>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">7. Hybrid Search</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Combining Keyword + Semantic Search</h3>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Semantic search</strong> (embeddings) understands meaning but might miss exact terms.
+<strong class="font-bold text-primary">Keyword search</strong> (BM25) finds exact matches but misses meaning.</p>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Hybrid search</strong> combines both for the best results.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Query: &quot;Python error 404 not found&quot;
+
+Semantic search might find:
+  → &quot;Debugging common web application issues&quot; (related concept)
+
+Keyword search might find:
+  → &quot;HTTP 404: The requested URL was not found on this server&quot; (exact match)
+
+Hybrid search finds BOTH and ranks them together!
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Implementation</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Hybrid search combining BM25 (keyword) + semantic (vector) search.
+&quot;&quot;&quot;
+
+from rank_bm25 import BM25Okapi
+from sentence_transformers import SentenceTransformer
+import numpy as np
+from typing import Any
+
+
+class HybridSearchEngine:
+    &quot;&quot;&quot;Combines BM25 and vector search for better results.&quot;&quot;&quot;
+    
+    def __init__(self):
+        self.model = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)
+        self.documents: list[str] = []
+        self.metadata: list[dict] = []
+        self.embeddings: np.ndarray | None = None
+        self.bm25: BM25Okapi | None = None
+    
+    def add_documents(
+        self, 
+        documents: list[str], 
+        metadata: list[dict] | None = None
+    ):
+        &quot;&quot;&quot;Index documents for hybrid search.&quot;&quot;&quot;
+        self.documents.extend(documents)
+        
+        if metadata:
+            self.metadata.extend(metadata)
+        else:
+            self.metadata.extend([{} for _ in documents])
+        
+        # Build BM25 index (keyword search)
+        tokenized = [doc.lower().split() for doc in self.documents]
+        self.bm25 = BM25Okapi(tokenized)
+        
+        # Build vector index (semantic search)
+        new_embeddings = self.model.encode(documents)
+        if self.embeddings is None:
+            self.embeddings = new_embeddings
+        else:
+            self.embeddings = np.vstack(
+                [self.embeddings, new_embeddings]
+            )
+    
+    def search(
+        self, 
+        query: str, 
+        top_k: int = 5,
+        semantic_weight: float = 0.7,
+        keyword_weight: float = 0.3
+    ) -&gt; list[dict[str, Any]]:
+        &quot;&quot;&quot;
+        Hybrid search combining semantic and keyword matching.
+        
+        Args:
+            query: Search query
+            top_k: Number of results to return
+            semantic_weight: Weight for semantic search (0-1)
+            keyword_weight: Weight for keyword search (0-1)
+        &quot;&quot;&quot;
+        # Semantic search
+        query_embedding = self.model.encode([query])[0]
+        semantic_scores = np.dot(
+            self.embeddings, query_embedding
+        )
+        
+        # Normalize to 0-1 range
+        if semantic_scores.max() &gt; 0:
+            semantic_scores = semantic_scores / semantic_scores.max()
+        
+        # Keyword search (BM25)
+        tokenized_query = query.lower().split()
+        keyword_scores = self.bm25.get_scores(tokenized_query)
+        
+        # Normalize to 0-1 range
+        if keyword_scores.max() &gt; 0:
+            keyword_scores = keyword_scores / keyword_scores.max()
+        
+        # Combine scores
+        combined_scores = (
+            semantic_weight * semantic_scores + 
+            keyword_weight * keyword_scores
+        )
+        
+        # Get top-k results
+        top_indices = np.argsort(combined_scores)[::-1][:top_k]
+        
+        results = []
+        for idx in top_indices:
+            results.append({
+                &quot;content&quot;: self.documents[idx],
+                &quot;score&quot;: float(combined_scores[idx]),
+                &quot;semantic_score&quot;: float(semantic_scores[idx]),
+                &quot;keyword_score&quot;: float(keyword_scores[idx]),
+                &quot;metadata&quot;: self.metadata[idx]
+            })
+        
+        return results
+
+
+# === Usage ===
+engine = HybridSearchEngine()
+
+# Add documents
+docs = [
+    &quot;Our return policy allows returns within 30 days of purchase.&quot;,
+    &quot;Free shipping on orders over $50 within the US.&quot;,
+    &quot;Contact support@company.com for account-related issues.&quot;,
+    &quot;The Pro plan includes unlimited API calls and priority support.&quot;,
+    &quot;To reset your password, visit the login page and click &#x27;Forgot Password&#x27;.&quot;,
+    &quot;Enterprise customers receive dedicated account management.&quot;,
+]
+
+engine.add_documents(docs)
+
+# Search with different queries
+queries = [
+    &quot;How do I get my money back?&quot;,
+    &quot;Can I get free delivery?&quot;,
+    &quot;I need help with my account login&quot;,
+]
+
+for query in queries:
+    print(f&quot;\nQuery: &#x27;{query}&#x27;&quot;)
+    print(&quot;-&quot; * 50)
+    results = engine.search(query, top_k=2)
+    for r in results:
+        print(f&quot;  [{r[&#x27;score&#x27;]:.3f}] {r[&#x27;content&#x27;][:80]}...&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Reciprocal Rank Fusion (RRF)</h3>
+<p class="mb-4 text-justify">A popular technique for combining results from multiple search engines:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def reciprocal_rank_fusion(
+    result_lists: list[list[dict]], 
+    k: int = 60
+) -&gt; list[dict]:
+    &quot;&quot;&quot;
+    Combine multiple ranked lists using RRF.
+    
+    k is a constant that determines how much lower-ranked 
+    results are penalized. k=60 is standard.
+    &quot;&quot;&quot;
+    # Collect all unique document IDs and their ranks
+    doc_scores = {}
+    
+    for results in result_lists:
+        for rank, result in enumerate(results):
+            doc_id = result[&quot;content&quot;][:50]  # Use content as ID
+            
+            if doc_id not in doc_scores:
+                doc_scores[doc_id] = {
+                    &quot;content&quot;: result[&quot;content&quot;],
+                    &quot;score&quot;: 0,
+                    &quot;ranks&quot;: []
+                }
+            
+            # RRF formula: 1 / (k + rank)
+            doc_scores[doc_id][&quot;score&quot;] += 1 / (k + rank + 1)
+            doc_scores[doc_id][&quot;ranks&quot;].append(rank + 1)
+    
+    # Sort by combined score
+    ranked = sorted(
+        doc_scores.values(), 
+        key=lambda x: x[&quot;score&quot;], 
+        reverse=True
+    )
+    
+    return ranked
+
+# Example usage
+semantic_results = [
+    {&quot;content&quot;: &quot;Return policy: 30 days&quot;, &quot;score&quot;: 0.92},
+    {&quot;content&quot;: &quot;Shipping: Free over $50&quot;, &quot;score&quot;: 0.65},
+    {&quot;content&quot;: &quot;Contact: support@company.com&quot;, &quot;score&quot;: 0.58},
+]
+
+keyword_results = [
+    {&quot;content&quot;: &quot;Return policy: 30 days&quot;, &quot;score&quot;: 0.85},
+    {&quot;content&quot;: &quot;Contact: support@company.com&quot;, &quot;score&quot;: 0.72},
+    {&quot;content&quot;: &quot;Account: forgot password steps&quot;, &quot;score&quot;: 0.45},
+]
+
+combined = reciprocal_rank_fusion(
+    [semantic_results, keyword_results]
+)
+
+print(&quot;Combined Results (RRF):&quot;)
+for i, result in enumerate(combined[:3]):
+    print(f&quot;  {i+1}. Score: {result[&#x27;score&#x27;]:.4f}&quot;)
+    print(f&quot;     Source ranks: {result[&#x27;ranks&#x27;]}&quot;)
+    print(f&quot;     Content: {result[&#x27;content&#x27;]}&quot;)
+    print()
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8. Building a RAG Pipeline</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Complete Production-Ready RAG System</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Complete RAG pipeline with all components.
+&quot;&quot;&quot;
+
+import os
+from dataclasses import dataclass, field
+from pathlib import Path
+from openai import OpenAI
+import chromadb
+
+
+@dataclass
+class RAGConfig:
+    &quot;&quot;&quot;Configuration for the RAG pipeline.&quot;&quot;&quot;
+    embedding_model: str = &quot;text-embedding-3-small&quot;
+    llm_model: str = &quot;gpt-4o&quot;
+    chunk_size: int = 500
+    chunk_overlap: int = 50
+    top_k: int = 5
+    collection_name: str = &quot;knowledge_base&quot;
+    db_path: str = &quot;./rag_database&quot;
+
+
+class RAGPipeline:
+    &quot;&quot;&quot;
+    Production RAG pipeline combining:
+    - Document ingestion and chunking
+    - Vector storage with ChromaDB
+    - Retrieval with metadata filtering
+    - LLM-powered generation with citations
+    &quot;&quot;&quot;
+    
+    def __init__(self, config: RAGConfig | None = None):
+        self.config = config or RAGConfig()
+        self.client = OpenAI(api_key=os.getenv(&quot;OPENAI_API_KEY&quot;))
+        
+        # Initialize vector database
+        self.db = chromadb.PersistentClient(
+            path=self.config.db_path
+        )
+        self.collection = self.db.get_or_create_collection(
+            name=self.config.collection_name,
+            metadata={&quot;hnsw:space&quot;: &quot;cosine&quot;}
+        )
+    
+    def chunk_text(self, text: str) -&gt; list[str]:
+        &quot;&quot;&quot;Split text into overlapping chunks.&quot;&quot;&quot;
+        words = text.split()
+        chunks = []
+        
+        for i in range(
+            0, len(words), 
+            self.config.chunk_size - self.config.chunk_overlap
+        ):
+            chunk = &quot; &quot;.join(
+                words[i:i + self.config.chunk_size]
+            )
+            chunks.append(chunk)
+        
+        return chunks
+    
+    def get_embedding(self, text: str) -&gt; list[float]:
+        &quot;&quot;&quot;Get embedding for a single text.&quot;&quot;&quot;
+        response = self.client.embeddings.create(
+            model=self.config.embedding_model,
+            input=text
+        )
+        return response.data[0].embedding
+    
+    def ingest_document(
+        self, 
+        content: str, 
+        metadata: dict | None = None
+    ) -&gt; int:
+        &quot;&quot;&quot;Ingest a document into the knowledge base.&quot;&quot;&quot;
+        chunks = self.chunk_text(content)
+        base_metadata = metadata or {}
+        
+        # Prepare data for ChromaDB
+        ids = []
+        documents = []
+        metadatas = []
+        
+        for i, chunk in enumerate(chunks):
+            chunk_id = f&quot;{base_metadata.get(&#x27;source&#x27;, &#x27;doc&#x27;)}_{i}&quot;
+            ids.append(chunk_id)
+            documents.append(chunk)
+            
+            chunk_metadata = {
+                **base_metadata,
+                &quot;chunk_index&quot;: i,
+                &quot;total_chunks&quot;: len(chunks)
+            }
+            metadatas.append(chunk_metadata)
+        
+        # Add to collection
+        self.collection.add(
+            ids=ids,
+            documents=documents,
+            metadatas=metadatas
+        )
+        
+        return len(chunks)
+    
+    def ingest_directory(self, directory: str) -&gt; int:
+        &quot;&quot;&quot;Ingest all documents from a directory.&quot;&quot;&quot;
+        total_chunks = 0
+        
+        for file_path in Path(directory).rglob(&quot;*&quot;):
+            if file_path.suffix in [&quot;.txt&quot;, &quot;.md&quot;]:
+                content = file_path.read_text(encoding=&quot;utf-8&quot;)
+                chunks = self.ingest_document(
+                    content,
+                    metadata={
+                        &quot;source&quot;: str(file_path),
+                        &quot;filename&quot;: file_path.name
+                    }
+                )
+                total_chunks += chunks
+                print(f&quot;Ingested {file_path.name}: {chunks} chunks&quot;)
+        
+        return total_chunks
+    
+    def retrieve(
+        self, 
+        query: str, 
+        top_k: int | None = None,
+        filter_metadata: dict | None = None
+    ) -&gt; list[dict]:
+        &quot;&quot;&quot;Retrieve relevant chunks for a query.&quot;&quot;&quot;
+        k = top_k or self.config.top_k
+        
+        # Query ChromaDB
+        query_params = {
+            &quot;query_texts&quot;: [query],
+            &quot;n_results&quot;: k,
+            &quot;include&quot;: [&quot;documents&quot;, &quot;metadatas&quot;, &quot;distances&quot;]
+        }
+        
+        if filter_metadata:
+            query_params[&quot;where&quot;] = filter_metadata
+        
+        results = self.collection.query(**query_params)
+        
+        # Format results
+        retrieved = []
+        for i in range(len(results[&quot;ids&quot;][0])):
+            retrieved.append({
+                &quot;content&quot;: results[&quot;documents&quot;][0][i],
+                &quot;metadata&quot;: results[&quot;metadatas&quot;][0][i],
+                &quot;relevance_score&quot;: 1 - results[&quot;distances&quot;][0][i]
+            })
+        
+        return retrieved
+    
+    def generate_answer(
+        self, 
+        query: str, 
+        retrieved_chunks: list[dict],
+        system_prompt: str | None = None
+    ) -&gt; str:
+        &quot;&quot;&quot;Generate an answer using retrieved context.&quot;&quot;&quot;
+        
+        # Build context from retrieved chunks
+        context_parts = []
+        for i, chunk in enumerate(retrieved_chunks, 1):
+            source = chunk[&quot;metadata&quot;].get(&quot;filename&quot;, &quot;Unknown&quot;)
+            context_parts.append(
+                f&quot;[Source {i}: {source}]\n{chunk[&#x27;content&#x27;]}&quot;
+            )
+        
+        context = &quot;\n\n---\n\n&quot;.join(context_parts)
+        
+        # Default system prompt
+        if system_prompt is None:
+            system_prompt = &quot;&quot;&quot;You are a helpful assistant that answers 
+            questions based on the provided context documents.
+            
+            Guidelines:
+            - Only use information from the provided context
+            - If the context doesn&#x27;t contain the answer, say so
+            - Always cite your sources using [Source N]
+            - Be concise and direct
+            
+            Context:
+            {context}&quot;&quot;&quot;
+        
+        system_prompt = system_prompt.format(context=context)
+        
+        # Generate response
+        response = self.client.chat.completions.create(
+            model=self.config.llm_model,
+            messages=[
+                {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: system_prompt},
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: query}
+            ],
+            temperature=0.3,
+            max_tokens=1000
+        )
+        
+        return response.choices[0].message.content
+    
+    def query(
+        self, 
+        question: str,
+        system_prompt: str | None = None
+    ) -&gt; dict:
+        &quot;&quot;&quot;
+        Full RAG query: retrieve → generate → return answer 
+        with sources.
+        &quot;&quot;&quot;
+        # Retrieve relevant chunks
+        chunks = self.retrieve(question)
+        
+        # Generate answer
+        answer = self.generate_answer(
+            question, chunks, system_prompt
+        )
+        
+        return {
+            &quot;answer&quot;: answer,
+            &quot;sources&quot;: [
+                {
+                    &quot;content&quot;: c[&quot;content&quot;][:200] + &quot;...&quot;,
+                    &quot;metadata&quot;: c[&quot;metadata&quot;],
+                    &quot;score&quot;: c[&quot;relevance_score&quot;]
+                }
+                for c in chunks
+            ],
+            &quot;num_chunks_used&quot;: len(chunks)
+        }
+
+
+# === Usage Example ===
+
+def main():
+    # Initialize pipeline
+    rag = RAGPipeline()
+    
+    # Ingest documents
+    print(&quot;Ingesting documents...&quot;)
+    num_chunks = rag.ingest_directory(&quot;./company_docs&quot;)
+    print(f&quot;Total chunks indexed: {num_chunks}&quot;)
+    
+    # Query
+    questions = [
+        &quot;What is the return policy?&quot;,
+        &quot;How much does the Pro plan cost?&quot;,
+        &quot;How do I reset my password?&quot;,
+    ]
+    
+    for question in questions:
+        print(f&quot;\n{&#x27;=&#x27;*60}&quot;)
+        print(f&quot;Question: {question}&quot;)
+        print(f&quot;{&#x27;=&#x27;*60}&quot;)
+        
+        result = rag.query(question)
+        
+        print(f&quot;\nAnswer: {result[&#x27;answer&#x27;]}&quot;)
+        print(f&quot;\nSources used: {result[&#x27;num_chunks_used&#x27;]}&quot;)
+        for source in result[&quot;sources&quot;]:
+            print(f&quot;  - [{source[&#x27;score&#x27;]:.3f}] {source[&#x27;content&#x27;][:80]}...&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Async Version for Production</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Async RAG pipeline for production use.
+&quot;&quot;&quot;
+
+import asyncio
+from openai import AsyncOpenAI
+
+
+class AsyncRAGPipeline(RAGPipeline):
+    &quot;&quot;&quot;Async version for high-throughput applications.&quot;&quot;&quot;
+    
+    def __init__(self, config: RAGConfig | None = None):
+        super().__init__(config)
+        self.async_client = AsyncOpenAI(
+            api_key=os.getenv(&quot;OPENAI_API_KEY&quot;)
+        )
+    
+    async def get_embedding_async(self, text: str) -&gt; list[float]:
+        &quot;&quot;&quot;Async embedding generation.&quot;&quot;&quot;
+        response = await self.async_client.embeddings.create(
+            model=self.config.embedding_model,
+            input=text
+        )
+        return response.data[0].embedding
+    
+    async def get_embeddings_batch(
+        self, texts: list[str]
+    ) -&gt; list[list[float]]:
+        &quot;&quot;&quot;Batch embedding generation.&quot;&quot;&quot;
+        response = await self.async_client.embeddings.create(
+            model=self.config.embedding_model,
+            input=texts
+        )
+        return [item.embedding for item in response.data]
+    
+    async def generate_answer_async(
+        self, query: str, context: str
+    ) -&gt; str:
+        &quot;&quot;&quot;Async answer generation.&quot;&quot;&quot;
+        response = await self.async_client.chat.completions.create(
+            model=self.config.llm_model,
+            messages=[
+                {
+                    &quot;role&quot;: &quot;system&quot;, 
+                    &quot;content&quot;: f&quot;Answer based on context:\n{context}&quot;
+                },
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: query}
+            ],
+            temperature=0.3
+        )
+        return response.choices[0].message.content
+    
+    async def query_async(self, question: str) -&gt; dict:
+        &quot;&quot;&quot;Async full RAG query.&quot;&quot;&quot;
+        # Retrieve (ChromaDB is sync, but fast)
+        chunks = self.retrieve(question)
+        
+        # Build context
+        context = &quot;\n\n&quot;.join(
+            c[&quot;content&quot;] for c in chunks
+        )
+        
+        # Generate (async)
+        answer = await self.generate_answer_async(question, context)
+        
+        return {
+            &quot;answer&quot;: answer,
+            &quot;sources&quot;: chunks,
+            &quot;num_chunks_used&quot;: len(chunks)
+        }
+    
+    async def query_batch(
+        self, questions: list[str]
+    ) -&gt; list[dict]:
+        &quot;&quot;&quot;Process multiple queries concurrently.&quot;&quot;&quot;
+        tasks = [self.query_async(q) for q in questions]
+        return await asyncio.gather(*tasks)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">9. Evaluating RAG Quality</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">RAG Evaluation Metrics</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Metric</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">What It Measures</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">How to Compute</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Context Precision</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Are retrieved chunks relevant?</td><td class="px-4 py-3 border border-[var(--border-color)]">% of retrieved chunks that are useful</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Context Recall</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Did we retrieve all relevant info?</td><td class="px-4 py-3 border border-[var(--border-color)]">% of relevant chunks retrieved</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Faithfulness</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Does the answer use the context?</td><td class="px-4 py-3 border border-[var(--border-color)]">LLM-judged: is every claim supported?</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Answer Relevancy</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Does the answer address the question?</td><td class="px-4 py-3 border border-[var(--border-color)]">LLM-judged: is it relevant?</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Answer Correctness</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Is the answer factually correct?</td><td class="px-4 py-3 border border-[var(--border-color)]">Compare with ground truth</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Evaluation Framework</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+RAG Evaluation Framework
+&quot;&quot;&quot;
+
+from dataclasses import dataclass
+
+
+@dataclass
+class RAGEvaluationCase:
+    &quot;&quot;&quot;A single evaluation test case.&quot;&quot;&quot;
+    question: str
+    expected_answer: str
+    relevant_doc_ids: list[str]  # Ground truth documents
+
+
+class RAGEvaluator:
+    &quot;&quot;&quot;Evaluates RAG pipeline quality.&quot;&quot;&quot;
+    
+    def __init__(self, rag_pipeline):
+        self.rag = rag_pipeline
+        self.client = OpenAI(api_key=os.getenv(&quot;OPENAI_API_KEY&quot;))
+    
+    def evaluate_context_precision(
+        self, 
+        question: str, 
+        retrieved_chunks: list[dict]
+    ) -&gt; float:
+        &quot;&quot;&quot;What fraction of retrieved chunks are relevant?&quot;&quot;&quot;
+        if not retrieved_chunks:
+            return 0.0
+        
+        relevance_prompt = f&quot;&quot;&quot;Given a question and a document chunk, 
+        determine if the chunk is relevant to answering the question.
+        
+        Question: {question}
+        
+        For each chunk, respond with ONLY &quot;relevant&quot; or &quot;not_relevant&quot;.
+        
+        Chunks:
+        {chr(10).join(f&#x27;Chunk {i+1}: {c[&quot;content&quot;][:200]}&#x27; 
+                       for i, c in enumerate(retrieved_chunks))}
+        &quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o-mini&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: relevance_prompt}
+            ],
+            temperature=0.0
+        )
+        
+        results = response.choices[0].message.content.lower()
+        relevant_count = results.count(&quot;relevant&quot;)
+        
+        return relevant_count / len(retrieved_chunks)
+    
+    def evaluate_faithfulness(
+        self, 
+        question: str, 
+        answer: str, 
+        context: str
+    ) -&gt; float:
+        &quot;&quot;&quot;Does the answer faithfully use only the provided context?&quot;&quot;&quot;
+        
+        faithfulness_prompt = f&quot;&quot;&quot;Evaluate if the answer is faithful 
+        to the provided context.
+        
+        Question: {question}
+        Context: {context}
+        Answer: {answer}
+        
+        Score the faithfulness from 1 to 5:
+        1 - Completely hallucinated, not based on context
+        2 - Mostly hallucinated with some context use
+        3 - Mixed - some from context, some invented
+        4 - Mostly faithful with minor additions
+        5 - Completely faithful to context
+        
+        Respond with ONLY the number.&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o-mini&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: faithfulness_prompt}
+            ],
+            temperature=0.0
+        )
+        
+        score = int(response.choices[0].message.content.strip())
+        return score / 5.0
+    
+    def evaluate_answer_relevancy(
+        self, 
+        question: str, 
+        answer: str
+    ) -&gt; float:
+        &quot;&quot;&quot;Does the answer address the question?&quot;&quot;&quot;
+        
+        relevancy_prompt = f&quot;&quot;&quot;Evaluate if the answer addresses the 
+        question.
+        
+        Question: {question}
+        Answer: {answer}
+        
+        Score the relevancy from 1 to 5:
+        1 - Completely off-topic
+        2 - Barely related
+        3 - Partially relevant
+        4 - Mostly relevant
+        5 - Directly answers the question
+        
+        Respond with ONLY the number.&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o-mini&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: relevancy_prompt}
+            ],
+            temperature=0.0
+        )
+        
+        score = int(response.choices[0].message.content.strip())
+        return score / 5.0
+    
+    def evaluate(
+        self, 
+        test_cases: list[RAGEvaluationCase]
+    ) -&gt; dict:
+        &quot;&quot;&quot;Run full evaluation on test cases.&quot;&quot;&quot;
+        
+        results = {
+            &quot;precision_scores&quot;: [],
+            &quot;faithfulness_scores&quot;: [],
+            &quot;relevancy_scores&quot;: [],
+        }
+        
+        for case in test_cases:
+            # Retrieve
+            chunks = self.rag.retrieve(case.question)
+            
+            # Generate answer
+            answer = self.rag.generate_answer(
+                case.question, chunks
+            )
+            
+            # Build context string
+            context = &quot;\n&quot;.join(c[&quot;content&quot;] for c in chunks)
+            
+            # Evaluate
+            precision = self.evaluate_context_precision(
+                case.question, chunks
+            )
+            faithfulness = self.evaluate_faithfulness(
+                case.question, answer, context
+            )
+            relevancy = self.evaluate_answer_relevancy(
+                case.question, answer
+            )
+            
+            results[&quot;precision_scores&quot;].append(precision)
+            results[&quot;faithfulness_scores&quot;].append(faithfulness)
+            results[&quot;relevancy_scores&quot;].append(relevancy)
+        
+        # Compute averages
+        return {
+            &quot;avg_precision&quot;: sum(results[&quot;precision_scores&quot;]) / 
+                           len(results[&quot;precision_scores&quot;]),
+            &quot;avg_faithfulness&quot;: sum(results[&quot;faithfulness_scores&quot;]) / 
+                              len(results[&quot;faithfulness_scores&quot;]),
+            &quot;avg_relevancy&quot;: sum(results[&quot;relevancy_scores&quot;]) / 
+                           len(results[&quot;relevancy_scores&quot;]),
+            &quot;num_cases&quot;: len(test_cases),
+        }
+
+
+# === Run Evaluation ===
+
+# Define test cases
+test_cases = [
+    RAGEvaluationCase(
+        question=&quot;What is the return policy?&quot;,
+        expected_answer=&quot;Returns accepted within 30 days with receipt&quot;,
+        relevant_doc_ids=[&quot;returns_policy.md&quot;]
+    ),
+    RAGEvaluationCase(
+        question=&quot;How much does the Pro plan cost?&quot;,
+        expected_answer=&quot;The Pro plan costs $29/month&quot;,
+        relevant_doc_ids=[&quot;pricing.md&quot;]
+    ),
+    # ... more test cases
+]
+
+# evaluator = RAGEvaluator(rag_pipeline)
+# results = evaluator.evaluate(test_cases)
+# print(f&quot;Context Precision: {results[&#x27;avg_precision&#x27;]:.2%}&quot;)
+# print(f&quot;Faithfulness: {results[&#x27;avg_faithfulness&#x27;]:.2%}&quot;)
+# print(f&quot;Answer Relevancy: {results[&#x27;avg_relevancy&#x27;]:.2%}&quot;)
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Evaluation Best Practices</h3>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Create a golden test set</strong>: 50-100 question-answer pairs covering common scenarios</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Test edge cases</strong>: Ambiguous questions, questions with no answer, multi-part questions</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Track metrics over time</strong>: Set up automated evaluation in your CI/CD pipeline</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Human evaluation</strong>: Supplement automated metrics with periodic human review</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">A/B testing</strong>: Compare different chunking strategies, embedding models, and retrieval methods</li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">10. Key Takeaways</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">RAG bridges the gap</strong> between general LLMs and domain-specific knowledge, enabling grounded, accurate responses.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">The RAG pipeline</strong> has five stages: Ingest → Embed → Store → Retrieve → Generate. Each stage can be optimized independently.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Embeddings capture meaning</strong>: Text with similar meaning produces similar vectors, enabling semantic search beyond keyword matching.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Vector databases</strong> (Chroma, Pinecone, FAISS) enable fast similarity search across millions of documents.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Chunking strategy matters</strong>: Fixed-size for simplicity, semantic for quality, structure-aware for well-formatted documents.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Hybrid search</strong> combining keyword + semantic retrieval often outperforms either method alone.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Evaluation is critical</strong>: Measure context precision, faithfulness, and answer relevancy to maintain quality.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Production RAG</strong> needs error handling, caching, monitoring, and async processing for scale.</p>
+</li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11. Try It Yourself</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 1: Build a Document Q&amp;A System</h3>
+<p class="mb-4 text-justify">Using ChromaDB and OpenAI embeddings, build a system that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Ingests a directory of markdown files</li>
+<li class="text-[var(--foreground)]">Allows natural language queries</li>
+<li class="text-[var(--foreground)]">Returns answers with source citations</li>
+<li class="text-[var(--foreground)]">Handles follow-up questions using conversation history</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 2: Compare Chunking Strategies</h3>
+<p class="mb-4 text-justify">Create a test document and implement all four chunking strategies (fixed-size, recursive, semantic, structure-aware). Run the same 10 queries against each and measure which strategy retrieves the most relevant chunks.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 3: Build a Hybrid Search Engine</h3>
+<p class="mb-4 text-justify">Implement the hybrid search engine from this chapter, then:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Index 50+ documents from different domains</li>
+<li class="text-[var(--foreground)]">Compare pure semantic, pure keyword, and hybrid results</li>
+<li class="text-[var(--foreground)]">Experiment with different weight combinations (0.5/0.5, 0.7/0.3, 0.3/0.7)</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 4: RAG Evaluation Pipeline</h3>
+<p class="mb-4 text-justify">Build an evaluation pipeline that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Creates 20 test questions from your documents</li>
+<li class="text-[var(--foreground)]">Runs them through your RAG system</li>
+<li class="text-[var(--foreground)]">Measures context precision, faithfulness, and relevancy</li>
+<li class="text-[var(--foreground)]">Generates a quality report</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 5: Production Hardening</h3>
+<p class="mb-4 text-justify">Add the following to your RAG system:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Caching for frequently asked questions</li>
+<li class="text-[var(--foreground)]">Rate limiting for API calls</li>
+<li class="text-[var(--foreground)]">Logging and monitoring</li>
+<li class="text-[var(--foreground)]">Graceful error handling when the vector DB is unavailable</li>
+<li class="text-[var(--foreground)]">A/B testing capability to compare different configurations</li>
+</ul>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Next Chapter</strong>: In <a href="./chapter-03-introduction-to-ai-agents.md" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Chapter 3: Introduction to AI Agents</a>, we&#x27;ll learn what makes agents fundamentally different from chatbots — they don&#x27;t just talk, they <strong class="font-bold text-primary">act</strong>.</p>
+</blockquote></article><div class="mt-16 pt-8 border-t-2 border-[var(--border-color)]"><div class="flex justify-between items-stretch gap-4"><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group" href="/chapter/llms-and-genai-fundamentals"><span class="text-xs text-[var(--foreground)] opacity-50">← Previous</span><div class="flex items-center gap-2 mt-1"><span class="text-xl">🧠</span><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">LLMs &amp; GenAI Fundamentals</span></div></a><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group text-right" href="/chapter/introduction-to-ai-agents"><span class="text-xs text-[var(--foreground)] opacity-50">Next →</span><div class="flex items-center justify-end gap-2 mt-1"><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Introduction to AI Agents</span><span class="text-xl">🤖</span></div></a></div></div></main></div></div><!--$--><!--/$--><script src="/_next/static/chunks/3s_ssfmklbvuh.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[78892,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n3:I[11359,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n5:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"OutletBoundary\"]\n6:\"$Sreact.suspense\"\n9:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"ViewportBoundary\"]\nb:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"MetadataBoundary\"]\nd:I[65125,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/157per-6rfej7.css\",\"style\"]\n:HL[\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"chapter\",\"rag-and-knowledge-systems\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"chapter\",{\"children\":[[\"slug\",\"rag-and-knowledge-systems\",\"d\",null],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3j2brc7c8hat8.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/05b0208rfh8ys.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-full flex flex-col\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/16vgld9iclosn.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/2rb1230i-fez-.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@7\"}]}]]}],{},null,false,null]},null,false,\"$@8\"]},null,false,\"$@8\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L9\",null,{\"children\":\"$La\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Lc\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$d\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"WpHiBD4DjnzuprdEnivdA\"}\n"])</script><script>self.__next_f.push([1,"e:[]\n8:\"$We\"\n"])</script><script>self.__next_f.push([1,"f:I[89587,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\",\"/_next/static/chunks/16vgld9iclosn.js\",\"/_next/static/chunks/2rb1230i-fez-.js\"],\"default\"]\n10:Tccab,"])</script><script>self.__next_f.push([1,"# Chapter 2: RAG \u0026 Knowledge Systems\n\n## Giving Agents Access to Your Data\n\n---\n\n\u003e *\"An LLM without context is like a genius with amnesia — brilliant, but unable to help with your specific problems.\"*\n\nLarge Language Models are trained on general internet data, but they don't know about **your** company's documentation, **your** product details, or **your** internal processes. **Retrieval-Augmented Generation (RAG)** solves this by giving LLMs access to your specific knowledge — and it's the foundation of most production AI agent systems.\n\n---\n\n## Table of Contents\n\n1. [What Is RAG?](#1-what-is-rag)\n2. [The RAG Pipeline](#2-the-rag-pipeline)\n3. [Embeddings: The Language of Meaning](#3-embeddings-the-language-of-meaning)\n4. [Vector Databases](#4-vector-databases)\n5. [Chunking Strategies](#5-chunking-strategies)\n6. [Similarity Search](#6-similarity-search)\n7. [Hybrid Search](#7-hybrid-search)\n8. [Building a RAG Pipeline](#8-building-a-rag-pipeline)\n9. [Evaluating RAG Quality](#9-evaluating-rag-quality)\n10. [Key Takeaways](#10-key-takeaways)\n11. [Try It Yourself](#11-try-it-yourself)\n\n---\n\n## 1. What Is RAG?\n\n### The Problem with Pure LLMs\n\nLLMs have several limitations when it comes to real-world applications:\n\n```\n┌─────────────────────────────────────────────────────┐\n│              PROBLEMS WITH PURE LLMs                 │\n├─────────────────────────────────────────────────────┤\n│                                                      │\n│  1. Knowledge Cutoff                                 │\n│     \"What's the latest iPhone model?\"                │\n│     → LLM trained in 2023 doesn't know about         │\n│       iPhone 16 released in 2024                     │\n│                                                      │\n│  2. No Private Data Access                           │\n│     \"What's our company's refund policy?\"            │\n│     → LLM has never seen your internal docs          │\n│                                                      │\n│  3. Hallucination                                    │\n│     \"What's the exact price of Product X?\"           │\n│     → LLM might invent a plausible but wrong price   │\n│                                                      │\n│  4. No Real-Time Information                         │\n│     \"What's our current inventory level?\"            │\n│     → LLM can't access your database                 │\n│                                                      │\n└─────────────────────────────────────────────────────┘\n```\n\n### RAG: The Solution\n\n**Retrieval-Augmented Generation (RAG)** enhances LLMs by:\n1. **Retrieving** relevant information from your data sources\n2. **Augmenting** the LLM prompt with that information\n3. **Generating** a response that's grounded in real data\n\n```\nWithout RAG:                    With RAG:\n                                \nUser: \"What's our      User: \"What's our\nreturn policy?\"          return policy?\"\n    ↓                         ↓\nLLM: \"I don't know     → Search company docs\nyour return policy.\"    → Find return policy\n                         → Include it in prompt\n                         → LLM reads \u0026 responds\n                         ↓\n                         \"Based on your company's\n                         policy, returns are accepted\n                         within 30 days with original\n                         receipt...\"\n```\n\n### When to Use RAG\n\n| Scenario | Use RAG? | Why |\n|----------|----------|-----|\n| Answering questions about your docs | ✅ Yes | LLM doesn't have your data |\n| Summarizing internal reports | ✅ Yes | Reports are private |\n| Customer support with product knowledge | ✅ Yes | Product info changes often |\n| General knowledge questions | ❌ No | LLM already knows |\n| Creative writing | ❌ No | No need for external data |\n| Simple classification tasks | ❌ No | LLM handles this directly |\n\n---\n\n## 2. The RAG Pipeline\n\n### Overview\n\nA RAG pipeline has five main stages:\n\n```\n┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐\n│  INGEST  │───▶│  EMBED   │───▶│  STORE   │───▶│ RETRIEVE │───▶│GENERATE  │\n│          │    │          │    │          │    │          │    │          │\n│ Load     │    │ Convert  │    │ Save to  │    │ Search   │    │ LLM uses │\n│ documents│    │ text to  │    │ vector   │    │ for      │    │ retrieved│\n│ \u0026 split  │    │ vectors  │    │ database │    │ relevant │    │ context  │\n│ into     │    │          │    │          │    │ chunks   │    │ to answer│\n│ chunks   │    │          │    │          │    │          │    │          │\n└──────────┘    └──────────┘    └──────────┘    └──────────┘    └──────────┘\n```\n\n### Stage 1: Ingestion\n\nLoading documents and splitting them into manageable chunks.\n\n```python\n\"\"\"\nStage 1: Document Ingestion \u0026 Chunking\n\"\"\"\nimport os\nfrom pathlib import Path\n\ndef load_documents(directory: str) -\u003e list[dict]:\n    \"\"\"Load all text documents from a directory.\"\"\"\n    documents = []\n    \n    for file_path in Path(directory).rglob(\"*\"):\n        if file_path.suffix in [\".txt\", \".md\", \".pdf\"]:\n            content = file_path.read_text(encoding=\"utf-8\")\n            documents.append({\n                \"content\": content,\n                \"metadata\": {\n                    \"source\": str(file_path),\n                    \"filename\": file_path.name,\n                    \"type\": file_path.suffix\n                }\n            })\n    \n    return documents\n\n\ndef chunk_text(\n    text: str, \n    chunk_size: int = 500, \n    overlap: int = 50\n) -\u003e list[str]:\n    \"\"\"Split text into overlapping chunks.\"\"\"\n    chunks = []\n    words = text.split()\n    \n    for i in range(0, len(words), chunk_size - overlap):\n        chunk = \" \".join(words[i:i + chunk_size])\n        chunks.append(chunk)\n    \n    return chunks\n\n\n# Example usage\ndocs = load_documents(\"./company_docs\")\nall_chunks = []\n\nfor doc in docs:\n    chunks = chunk_text(doc[\"content\"])\n    for chunk in chunks:\n        all_chunks.append({\n            \"content\": chunk,\n            \"metadata\": doc[\"metadata\"]\n        })\n\nprint(f\"Loaded {len(docs)} documents\")\nprint(f\"Created {len(all_chunks)} chunks\")\n```\n\n### Stage 2: Embedding\n\nConverting text chunks into numerical vectors.\n\n### Stage 3: Storage\n\nSaving vectors in a vector database for fast retrieval.\n\n### Stage 4: Retrieval\n\nSearching for relevant chunks when a query arrives.\n\n### Stage 5: Generation\n\nUsing retrieved chunks to inform the LLM's response.\n\n---\n\n## 3. Embeddings: The Language of Meaning\n\n### What Are Embeddings?\n\nAn **embedding** is a numerical representation of text that captures its **meaning**. Similar meanings produce similar vectors, even if the words are completely different.\n\n```\n\"happy\"   → [0.82, -0.15, 0.43, ..., 0.21]  (768 numbers)\n\"joyful\"  → [0.79, -0.12, 0.41, ..., 0.23]  (similar!)\n\"angry\"   → [-0.65, 0.31, -0.18, ..., -0.44] (different!)\n\"car\"     → [0.12, 0.55, -0.33, ..., 0.08]   (very different!)\n```\n\n### How Embeddings Work\n\nEmbedding models are trained on large text datasets to learn semantic relationships:\n\n```\nTraining objective:\n  \"The cat sat on the mat\" ≈ \"A feline rested on the rug\"\n  (These should have similar embeddings because they mean \n   similar things)\n\nResult:\n  - Synonyms are close in vector space\n  - Related concepts are nearby  \n  - Unrelated concepts are far apart\n  - Mathematical relationships emerge:\n    King - Man + Woman ≈ Queen\n```\n\n### Popular Embedding Models\n\n| Model | Provider | Dimensions | Speed | Quality |\n|-------|----------|-----------|-------|---------|\n| text-embedding-3-small | OpenAI | 1536 | Fast | Good |\n| text-embedding-3-large | OpenAI | 3072 | Medium | Excellent |\n| all-MiniLM-L6-v2 | Sentence Transformers | 384 | Very Fast | Good |\n| all-mpnet-base-v2 | Sentence Transformers | 768 | Fast | Very Good |\n| BAAI/bge-large-en-v1.5 | BAAI | 1024 | Medium | Excellent |\n| Cohere embed-v3 | Cohere | 1024 | Fast | Excellent |\n\n### Code: Generating Embeddings\n\n```python\n\"\"\"\nGenerate embeddings using OpenAI and Sentence Transformers.\n\"\"\"\n\n# === Method 1: OpenAI Embeddings ===\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n\ndef get_openai_embedding(text: str) -\u003e list[float]:\n    \"\"\"Generate embedding using OpenAI's API.\"\"\"\n    response = client.embeddings.create(\n        model=\"text-embedding-3-small\",\n        input=text\n    )\n    return response.data[0].embedding\n\n\ndef get_openai_embeddings_batch(\n    texts: list[str]\n) -\u003e list[list[float]]:\n    \"\"\"Generate embeddings for multiple texts.\"\"\"\n    response = client.embeddings.create(\n        model=\"text-embedding-3-small\",\n        input=texts\n    )\n    return [item.embedding for item in response.data]\n\n\n# Example\ntexts = [\n    \"How to reset your password\",\n    \"Steps to recover account access\",\n    \"Product pricing and plans\",\n    \"How much does the pro plan cost?\"\n]\n\nembeddings = get_openai_embeddings_batch(texts)\nprint(f\"Generated {len(embeddings)} embeddings\")\nprint(f\"Each embedding has {len(embeddings[0])} dimensions\")\n\n\n# === Method 2: Sentence Transformers (Local) ===\nfrom sentence_transformers import SentenceTransformer\n\n# Load model (downloads on first run)\nmodel = SentenceTransformer(\"all-MiniLM-L6-v2\")\n\ndef get_local_embedding(text: str) -\u003e list[float]:\n    \"\"\"Generate embedding using local model.\"\"\"\n    return model.encode(text).tolist()\n\n\n# Batch processing\nlocal_embeddings = model.encode(texts)\nprint(f\"\\nLocal embeddings shape: {local_embeddings.shape}\")\n# Output: (4, 384) - 4 texts, 384 dimensions each\n```\n\n### Understanding Embedding Space\n\n```python\nimport numpy as np\nfrom sentence_transformers import SentenceTransformer\n\nmodel = SentenceTransformer(\"all-MiniLM-L6-v2\")\n\n# Create embeddings for related sentences\nsentences = [\n    \"The cat is sitting on the mat\",\n    \"A feline is resting on the rug\",\n    \"The dog is playing in the park\",\n    \"I love eating pizza with friends\",\n]\n\nembeddings = model.encode(sentences)\n\n# Compute similarity matrix\ndef cosine_similarity(a, b):\n    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))\n\nprint(\"Similarity Matrix:\")\nprint(\"=\" * 60)\nfor i, s1 in enumerate(sentences):\n    for j, s2 in enumerate(sentences):\n        sim = cosine_similarity(embeddings[i], embeddings[j])\n        print(f\"  {s1[:30]:30} ↔ {s2[:30]:30} = {sim:.3f}\")\n\n# Output demonstrates:\n# - High similarity between cat/mat and feline/rug (≈0.7)\n# - Low similarity between cat and pizza (≈0.1)\n# - Moderate similarity between cat and dog (≈0.3)\n```\n\n---\n\n## 4. Vector Databases\n\n### What Are Vector Databases?\n\nVector databases are specialized data stores designed to efficiently index, store, and query high-dimensional vectors (embeddings). They enable fast similarity search across millions or billions of vectors.\n\n### Why Regular Databases Aren't Enough\n\n```\nTraditional Database (SQL):          Vector Database:\n                                     \nSELECT * FROM documents              Find documents similar to:\nWHERE content LIKE '%machine%'       [0.12, -0.45, 0.78, ...]\n                                     \nExact text match only     →          Semantic similarity search\nSlow on full-text scans   →          Fast approximate nearest neighbor\nNo meaning understanding  →          Understands meaning \u0026 context\n```\n\n### Vector Database Comparison\n\n| Database | Type | Best For | Speed | Scalability | Pricing |\n|----------|------|----------|-------|-------------|---------|\n| Chroma | Embedded | Prototyping | Fast | Medium | Free (open-source) |\n| Pinecone | Managed | Production | Very Fast | Excellent | $70/mo+ |\n| Weaviate | Self-hosted/Cloud | Complex queries | Fast | Excellent | Free/Cloud pricing |\n| FAISS | Library | Research/High-perf | Very Fast | High | Free (Meta) |\n| Milvus | Self-hosted | Large-scale | Very Fast | Excellent | Free (open-source) |\n| pgvector | PostgreSQL ext | Existing PG users | Medium | Medium | Free (ext) |\n| Qdrant | Self-hosted/Cloud | Balanced features | Fast | Excellent | Free/Cloud pricing |\n\n### Chroma: Quick Start (Best for Prototyping)\n\n```python\n\"\"\"\nChromaDB - Simplest vector database for getting started.\n\"\"\"\n\nimport chromadb\n\n# Create a client (data persists to disk)\nclient = chromadb.PersistentClient(path=\"./chroma_db\")\n\n# Create a collection (like a table)\ncollection = client.get_or_create_collection(\n    name=\"company_docs\",\n    metadata={\"description\": \"Company documentation\"}\n)\n\n# Add documents with embeddings\ndocuments = [\n    \"Our return policy allows returns within 30 days of purchase.\",\n    \"Free shipping is available on orders over $50.\",\n    \"Contact support@company.com for account issues.\",\n    \"The pro plan costs $29/month and includes all features.\",\n]\n\n# Chroma can generate embeddings automatically\ncollection.add(\n    documents=documents,\n    ids=[f\"doc_{i}\" for i in range(len(documents))],\n    metadatas=[{\"source\": \"faq\"} for _ in documents]\n)\n\n# Query for similar documents\nresults = collection.query(\n    query_texts=[\"How do I get a refund?\"],\n    n_results=2\n)\n\nprint(\"Query: 'How do I get a refund?'\")\nprint(f\"Results: {results['documents'][0]}\")\nprint(f\"Distances: {results['distances'][0]}\")\n# Output should include the return policy document\n```\n\n### Pinecone: Production-Grade\n\n```python\n\"\"\"\nPinecone - Managed vector database for production.\n\"\"\"\n\nfrom pinecone import Pinecone, ServerlessSpec\n\n# Initialize\npc = Pinecone(api_key=os.getenv(\"PINECONE_API_KEY\"))\n\n# Create index\nindex_name = \"company-docs\"\nif index_name not in pc.list_indexes().names():\n    pc.create_index(\n        name=index_name,\n        dimension=1536,  # Match your embedding model\n        metric=\"cosine\",\n        spec=ServerlessSpec(\n            cloud=\"aws\",\n            region=\"us-east-1\"\n        )\n    )\n\n# Connect to index\nindex = pc.Index(index_name)\n\n# Upsert vectors\nvectors = [\n    {\n        \"id\": \"doc_001\",\n        \"values\": embedding_1,  # From embedding model\n        \"metadata\": {\n            \"text\": \"Our return policy allows returns within 30 days\",\n            \"source\": \"policy\",\n            \"category\": \"returns\"\n        }\n    },\n    # ... more vectors\n]\n\nindex.upsert(vectors=vectors)\n\n# Query\nresults = index.query(\n    vector=query_embedding,\n    top_k=5,\n    include_metadata=True,\n    filter={\"category\": \"returns\"}  # Metadata filtering!\n)\n\nfor match in results[\"matches\"]:\n    print(f\"Score: {match['score']:.3f}\")\n    print(f\"Text: {match['metadata']['text']}\")\n    print()\n```\n\n### FAISS: High-Performance Local\n\n```python\n\"\"\"\nFAISS - Facebook AI Similarity Search.\nBest for: High-performance local similarity search.\n\"\"\"\n\nimport faiss\nimport numpy as np\n\n# Create index\ndimension = 384  # all-MiniLM-L6-v2 output dimension\nindex = faiss.IndexFlatIP(dimension)  # Inner product (cosine with \n                                       # normalized vectors)\n\n# Add vectors (must be numpy arrays)\nvectors = np.array(embeddings).astype(\"float32\")\nfaiss.normalize_L2(vectors)  # Normalize for cosine similarity\nindex.add(vectors)\n\n# Search\nquery = np.array([query_embedding]).astype(\"float32\")\nfaiss.normalize_L2(query)\n\nk = 3  # Number of results\ndistances, indices = index.search(query, k)\n\nprint(f\"Top {k} results:\")\nfor i, (dist, idx) in enumerate(zip(distances[0], indices[0])):\n    print(f\"  {i+1}. Score: {dist:.3f} | Index: {idx}\")\n```\n\n---\n\n## 5. Chunking Strategies\n\n### Why Chunking Matters\n\nLLMs have limited context windows, and even with large windows, stuffing entire documents into a prompt is inefficient. **Chunking** splits documents into smaller, focused pieces that can be retrieved individually.\n\n```\nBad Chunking:                      Good Chunking:\n                                   \n┌─────────────────────┐           ┌──────────────┐\n│                     │           │ Chunk 1:      │\n│ ENTIRE 50-PAGE      │           │ Return Policy │\n│ DOCUMENT IN ONE     │           │ (focused,     │\n│ CHUNK               │           │  complete)    │\n│                     │           └──────────────┘\n│ Too much noise      │           ┌──────────────┐\n│ Hard to retrieve    │           │ Chunk 2:      │\n│ Wastes tokens       │           │ Shipping Info │\n│                     │           │ (focused,     │\n│                     │           │  complete)    │\n│                     │           └──────────────┘\n└─────────────────────┘\n```\n\n### Strategy 1: Fixed-Size Chunking\n\nSplit at every N characters or tokens, with optional overlap.\n\n```python\ndef fixed_size_chunk(\n    text: str, \n    chunk_size: int = 500, \n    overlap: int = 50\n) -\u003e list[str]:\n    \"\"\"Split text into fixed-size chunks with overlap.\"\"\"\n    chunks = []\n    start = 0\n    \n    while start \u003c len(text):\n        end = start + chunk_size\n        chunk = text[start:end]\n        chunks.append(chunk)\n        start = end - overlap  # Overlap for context continuity\n    \n    return chunks\n\n# Example\ntext = \"A\" * 1000\nchunks = fixed_size_chunk(text, chunk_size=200, overlap=50)\nprint(f\"Created {len(chunks)} chunks\")  # ~6 chunks\n```\n\n**Pros**: Simple, fast, predictable\n**Cons**: Can split mid-sentence, ignores document structure\n\n### Strategy 2: Recursive Character Splitting\n\nRespects document structure by splitting on paragraph → sentence → word boundaries.\n\n```python\nimport re\n\ndef recursive_split(\n    text: str,\n    chunk_size: int = 500,\n    separators: list[str] = None\n) -\u003e list[str]:\n    \"\"\"Recursively split text using hierarchical separators.\"\"\"\n    if separators is None:\n        separators = [\"\\n\\n\", \"\\n\", \". \", \" \", \"\"]\n    \n    chunks = []\n    \n    def split_recursive(text: str, sep_idx: int):\n        if len(text) \u003c= chunk_size:\n            chunks.append(text)\n            return\n        \n        if sep_idx \u003e= len(separators):\n            # Last resort: hard split\n            chunks.append(text[:chunk_size])\n            if len(text) \u003e chunk_size:\n                split_recursive(text[chunk_size:], 0)\n            return\n        \n        separator = separators[sep_idx]\n        if separator == \"\":\n            # Character-level split\n            parts = [text[i:i+chunk_size] \n                     for i in range(0, len(text), chunk_size)]\n        else:\n            parts = text.split(separator)\n        \n        current_chunk = \"\"\n        for part in parts:\n            test_chunk = current_chunk + separator + part if current_chunk else part\n            if len(test_chunk) \u003c= chunk_size:\n                current_chunk = test_chunk\n            else:\n                if current_chunk:\n                    chunks.append(current_chunk)\n                current_chunk = part\n        \n        if current_chunk:\n            if len(current_chunk) \u003c= chunk_size:\n                chunks.append(current_chunk)\n            else:\n                split_recursive(current_chunk, sep_idx + 1)\n    \n    split_recursive(text, 0)\n    return chunks\n```\n\n### Strategy 3: Semantic Chunking\n\nSplit based on meaning — when the topic changes, start a new chunk.\n\n```python\nfrom sentence_transformers import SentenceTransformer\nimport numpy as np\n\ndef semantic_chunk(\n    text: str, \n    threshold: float = 0.5\n) -\u003e list[str]:\n    \"\"\"Split text at semantic boundaries.\"\"\"\n    model = SentenceTransformer(\"all-MiniLM-L6-v2\")\n    \n    # Split into sentences\n    sentences = re.split(r'(?\u003c=[.!?])\\s+', text)\n    \n    if len(sentences) \u003c= 1:\n        return [text]\n    \n    # Get embeddings for each sentence\n    embeddings = model.encode(sentences)\n    \n    # Compute similarity between consecutive sentences\n    chunks = []\n    current_chunk = [sentences[0]]\n    \n    for i in range(1, len(sentences)):\n        similarity = np.dot(embeddings[i], embeddings[i-1]) / (\n            np.linalg.norm(embeddings[i]) * \n            np.linalg.norm(embeddings[i-1])\n        )\n        \n        if similarity \u003c threshold:\n            # Topic change detected — start new chunk\n            chunks.append(\" \".join(current_chunk))\n            current_chunk = [sentences[i]]\n        else:\n            current_chunk.append(sentences[i])\n    \n    # Don't forget the last chunk\n    if current_chunk:\n        chunks.append(\" \".join(current_chunk))\n    \n    return chunks\n```\n\n### Strategy 4: Document-Structure-Aware\n\nRespects natural document boundaries like headers, sections, and paragraphs.\n\n```python\ndef structure_aware_chunk(\n    text: str, \n    max_chunk_size: int = 1000\n) -\u003e list[str]:\n    \"\"\"Split respecting markdown or document structure.\"\"\"\n    chunks = []\n    current_chunk = \"\"\n    \n    # Split by markdown headers\n    sections = re.split(r'(?m)^#{1,3}\\s+', text)\n    \n    for section in sections:\n        if not section.strip():\n            continue\n        \n        # If section fits, add to current chunk\n        if len(current_chunk) + len(section) \u003c max_chunk_size:\n            current_chunk += section + \"\\n\\n\"\n        else:\n            # Save current chunk and start new one\n            if current_chunk:\n                chunks.append(current_chunk.strip())\n            \n            # If section itself is too large, recursively split\n            if len(section) \u003e max_chunk_size:\n                sub_chunks = fixed_size_chunk(section, max_chunk_size)\n                chunks.extend(sub_chunks)\n                current_chunk = \"\"\n            else:\n                current_chunk = section + \"\\n\\n\"\n    \n    if current_chunk:\n        chunks.append(current_chunk.strip())\n    \n    return chunks\n```\n\n### Chunking Strategy Comparison\n\n| Strategy | Best For | Speed | Quality | Complexity |\n|----------|----------|-------|---------|------------|\n| Fixed-size | Quick prototyping | ⚡ Fast | ★★☆☆☆ | Simple |\n| Recursive | General documents | ⚡ Fast | ★★★☆☆ | Simple |\n| Semantic | Topic-focused retrieval | 🐌 Slow | ★★★★☆ | Medium |\n| Structure-aware | Well-formatted docs | ⚡ Fast | ★★★★☆ | Medium |\n| Agentic | Complex analysis | 🐌 Slow | ★★★★★ | Complex |\n\n### Chunk Size Guidelines\n\n```\nChunk Size Impact:\n\nSmall (100-300 tokens):              Large (1000-2000 tokens):\n├── More precise retrieval           ├── More context per chunk\n├── Higher recall                    ├── Less retrieval needed\n├── More chunks to store             ├── Fewer chunks total\n├── Better for specific questions    ├── Better for broad questions\n└── More API calls to LLM            └── More token usage\n\nSweet spot for most applications: 300-800 tokens with 50-100 overlap\n```\n\n---\n\n## 6. Similarity Search\n\n### How Similarity Search Works\n\nWhen a user asks a question, we need to find the most relevant chunks from our knowledge base.\n\n```\nQuery: \"How do I return a product?\"\n\nStep 1: Embed the query\n  \"How do I return a product?\" → [0.23, -0.67, 0.45, ...]\n\nStep 2: Compare with all stored embeddings\n  Doc chunk 1 (return policy):    similarity = 0.92  ← Best match!\n  Doc chunk 2 (shipping info):    similarity = 0.45\n  Doc chunk 3 (pricing):          similarity = 0.12\n  Doc chunk 4 (contact info):     similarity = 0.38\n\nStep 3: Return top-k results\n  → Chunk 1 (return policy) with 0.92 similarity\n```\n\n### Distance Metrics\n\n#### Cosine Similarity (Most Common)\n\nMeasures the **angle** between vectors. Best for text similarity.\n\n```python\nimport numpy as np\n\ndef cosine_similarity(a: np.ndarray, b: np.ndarray) -\u003e float:\n    \"\"\"Compute cosine similarity between two vectors.\"\"\"\n    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))\n\n# Example\nvec1 = np.array([0.8, 0.2, 0.5])\nvec2 = np.array([0.7, 0.3, 0.6])\nvec3 = np.array([-0.5, 0.1, -0.8])\n\nprint(f\"vec1 vs vec2: {cosine_similarity(vec1, vec2):.3f}\")  # ~0.95\nprint(f\"vec1 vs vec3: {cosine_similarity(vec1, vec3):.3f}\")  # ~-0.02\n```\n\n#### Dot Product\n\nMeasures **magnitude and direction**. Use when vector magnitude matters.\n\n```python\ndef dot_product_similarity(a: np.ndarray, b: np.ndarray) -\u003e float:\n    \"\"\"Compute dot product similarity.\"\"\"\n    return np.dot(a, b)\n```\n\n#### Euclidean Distance\n\nMeasures **physical distance** in vector space. Lower = more similar.\n\n```python\ndef euclidean_distance(a: np.ndarray, b: np.ndarray) -\u003e float:\n    \"\"\"Compute Euclidean distance (lower = more similar).\"\"\"\n    return np.linalg.norm(a - b)\n```\n\n### When to Use Each Metric\n\n| Metric | When to Use | Pros | Cons |\n|--------|-------------|------|------|\n| Cosine | Text similarity (most cases) | Handles different magnitudes well | Doesn't capture magnitude |\n| Dot Product | When magnitude matters | Fast computation | Sensitive to vector length |\n| Euclidean | Clustering, anomaly detection | Intuitive distance | Sensitive to high dimensions |\n\n---\n\n## 7. Hybrid Search\n\n### Combining Keyword + Semantic Search\n\n**Semantic search** (embeddings) understands meaning but might miss exact terms.\n**Keyword search** (BM25) finds exact matches but misses meaning.\n\n**Hybrid search** combines both for the best results.\n\n```\nQuery: \"Python error 404 not found\"\n\nSemantic search might find:\n  → \"Debugging common web application issues\" (related concept)\n\nKeyword search might find:\n  → \"HTTP 404: The requested URL was not found on this server\" (exact match)\n\nHybrid search finds BOTH and ranks them together!\n```\n\n### Implementation\n\n```python\n\"\"\"\nHybrid search combining BM25 (keyword) + semantic (vector) search.\n\"\"\"\n\nfrom rank_bm25 import BM25Okapi\nfrom sentence_transformers import SentenceTransformer\nimport numpy as np\nfrom typing import Any\n\n\nclass HybridSearchEngine:\n    \"\"\"Combines BM25 and vector search for better results.\"\"\"\n    \n    def __init__(self):\n        self.model = SentenceTransformer(\"all-MiniLM-L6-v2\")\n        self.documents: list[str] = []\n        self.metadata: list[dict] = []\n        self.embeddings: np.ndarray | None = None\n        self.bm25: BM25Okapi | None = None\n    \n    def add_documents(\n        self, \n        documents: list[str], \n        metadata: list[dict] | None = None\n    ):\n        \"\"\"Index documents for hybrid search.\"\"\"\n        self.documents.extend(documents)\n        \n        if metadata:\n            self.metadata.extend(metadata)\n        else:\n            self.metadata.extend([{} for _ in documents])\n        \n        # Build BM25 index (keyword search)\n        tokenized = [doc.lower().split() for doc in self.documents]\n        self.bm25 = BM25Okapi(tokenized)\n        \n        # Build vector index (semantic search)\n        new_embeddings = self.model.encode(documents)\n        if self.embeddings is None:\n            self.embeddings = new_embeddings\n        else:\n            self.embeddings = np.vstack(\n                [self.embeddings, new_embeddings]\n            )\n    \n    def search(\n        self, \n        query: str, \n        top_k: int = 5,\n        semantic_weight: float = 0.7,\n        keyword_weight: float = 0.3\n    ) -\u003e list[dict[str, Any]]:\n        \"\"\"\n        Hybrid search combining semantic and keyword matching.\n        \n        Args:\n            query: Search query\n            top_k: Number of results to return\n            semantic_weight: Weight for semantic search (0-1)\n            keyword_weight: Weight for keyword search (0-1)\n        \"\"\"\n        # Semantic search\n        query_embedding = self.model.encode([query])[0]\n        semantic_scores = np.dot(\n            self.embeddings, query_embedding\n        )\n        \n        # Normalize to 0-1 range\n        if semantic_scores.max() \u003e 0:\n            semantic_scores = semantic_scores / semantic_scores.max()\n        \n        # Keyword search (BM25)\n        tokenized_query = query.lower().split()\n        keyword_scores = self.bm25.get_scores(tokenized_query)\n        \n        # Normalize to 0-1 range\n        if keyword_scores.max() \u003e 0:\n            keyword_scores = keyword_scores / keyword_scores.max()\n        \n        # Combine scores\n        combined_scores = (\n            semantic_weight * semantic_scores + \n            keyword_weight * keyword_scores\n        )\n        \n        # Get top-k results\n        top_indices = np.argsort(combined_scores)[::-1][:top_k]\n        \n        results = []\n        for idx in top_indices:\n            results.append({\n                \"content\": self.documents[idx],\n                \"score\": float(combined_scores[idx]),\n                \"semantic_score\": float(semantic_scores[idx]),\n                \"keyword_score\": float(keyword_scores[idx]),\n                \"metadata\": self.metadata[idx]\n            })\n        \n        return results\n\n\n# === Usage ===\nengine = HybridSearchEngine()\n\n# Add documents\ndocs = [\n    \"Our return policy allows returns within 30 days of purchase.\",\n    \"Free shipping on orders over $50 within the US.\",\n    \"Contact support@company.com for account-related issues.\",\n    \"The Pro plan includes unlimited API calls and priority support.\",\n    \"To reset your password, visit the login page and click 'Forgot Password'.\",\n    \"Enterprise customers receive dedicated account management.\",\n]\n\nengine.add_documents(docs)\n\n# Search with different queries\nqueries = [\n    \"How do I get my money back?\",\n    \"Can I get free delivery?\",\n    \"I need help with my account login\",\n]\n\nfor query in queries:\n    print(f\"\\nQuery: '{query}'\")\n    print(\"-\" * 50)\n    results = engine.search(query, top_k=2)\n    for r in results:\n        print(f\"  [{r['score']:.3f}] {r['content'][:80]}...\")\n```\n\n### Reciprocal Rank Fusion (RRF)\n\nA popular technique for combining results from multiple search engines:\n\n```python\ndef reciprocal_rank_fusion(\n    result_lists: list[list[dict]], \n    k: int = 60\n) -\u003e list[dict]:\n    \"\"\"\n    Combine multiple ranked lists using RRF.\n    \n    k is a constant that determines how much lower-ranked \n    results are penalized. k=60 is standard.\n    \"\"\"\n    # Collect all unique document IDs and their ranks\n    doc_scores = {}\n    \n    for results in result_lists:\n        for rank, result in enumerate(results):\n            doc_id = result[\"content\"][:50]  # Use content as ID\n            \n            if doc_id not in doc_scores:\n                doc_scores[doc_id] = {\n                    \"content\": result[\"content\"],\n                    \"score\": 0,\n                    \"ranks\": []\n                }\n            \n            # RRF formula: 1 / (k + rank)\n            doc_scores[doc_id][\"score\"] += 1 / (k + rank + 1)\n            doc_scores[doc_id][\"ranks\"].append(rank + 1)\n    \n    # Sort by combined score\n    ranked = sorted(\n        doc_scores.values(), \n        key=lambda x: x[\"score\"], \n        reverse=True\n    )\n    \n    return ranked\n\n# Example usage\nsemantic_results = [\n    {\"content\": \"Return policy: 30 days\", \"score\": 0.92},\n    {\"content\": \"Shipping: Free over $50\", \"score\": 0.65},\n    {\"content\": \"Contact: support@company.com\", \"score\": 0.58},\n]\n\nkeyword_results = [\n    {\"content\": \"Return policy: 30 days\", \"score\": 0.85},\n    {\"content\": \"Contact: support@company.com\", \"score\": 0.72},\n    {\"content\": \"Account: forgot password steps\", \"score\": 0.45},\n]\n\ncombined = reciprocal_rank_fusion(\n    [semantic_results, keyword_results]\n)\n\nprint(\"Combined Results (RRF):\")\nfor i, result in enumerate(combined[:3]):\n    print(f\"  {i+1}. Score: {result['score']:.4f}\")\n    print(f\"     Source ranks: {result['ranks']}\")\n    print(f\"     Content: {result['content']}\")\n    print()\n```\n\n---\n\n## 8. Building a RAG Pipeline\n\n### Complete Production-Ready RAG System\n\n```python\n\"\"\"\nComplete RAG pipeline with all components.\n\"\"\"\n\nimport os\nfrom dataclasses import dataclass, field\nfrom pathlib import Path\nfrom openai import OpenAI\nimport chromadb\n\n\n@dataclass\nclass RAGConfig:\n    \"\"\"Configuration for the RAG pipeline.\"\"\"\n    embedding_model: str = \"text-embedding-3-small\"\n    llm_model: str = \"gpt-4o\"\n    chunk_size: int = 500\n    chunk_overlap: int = 50\n    top_k: int = 5\n    collection_name: str = \"knowledge_base\"\n    db_path: str = \"./rag_database\"\n\n\nclass RAGPipeline:\n    \"\"\"\n    Production RAG pipeline combining:\n    - Document ingestion and chunking\n    - Vector storage with ChromaDB\n    - Retrieval with metadata filtering\n    - LLM-powered generation with citations\n    \"\"\"\n    \n    def __init__(self, config: RAGConfig | None = None):\n        self.config = config or RAGConfig()\n        self.client = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n        \n        # Initialize vector database\n        self.db = chromadb.PersistentClient(\n            path=self.config.db_path\n        )\n        self.collection = self.db.get_or_create_collection(\n            name=self.config.collection_name,\n            metadata={\"hnsw:space\": \"cosine\"}\n        )\n    \n    def chunk_text(self, text: str) -\u003e list[str]:\n        \"\"\"Split text into overlapping chunks.\"\"\"\n        words = text.split()\n        chunks = []\n        \n        for i in range(\n            0, len(words), \n            self.config.chunk_size - self.config.chunk_overlap\n        ):\n            chunk = \" \".join(\n                words[i:i + self.config.chunk_size]\n            )\n            chunks.append(chunk)\n        \n        return chunks\n    \n    def get_embedding(self, text: str) -\u003e list[float]:\n        \"\"\"Get embedding for a single text.\"\"\"\n        response = self.client.embeddings.create(\n            model=self.config.embedding_model,\n            input=text\n        )\n        return response.data[0].embedding\n    \n    def ingest_document(\n        self, \n        content: str, \n        metadata: dict | None = None\n    ) -\u003e int:\n        \"\"\"Ingest a document into the knowledge base.\"\"\"\n        chunks = self.chunk_text(content)\n        base_metadata = metadata or {}\n        \n        # Prepare data for ChromaDB\n        ids = []\n        documents = []\n        metadatas = []\n        \n        for i, chunk in enumerate(chunks):\n            chunk_id = f\"{base_metadata.get('source', 'doc')}_{i}\"\n            ids.append(chunk_id)\n            documents.append(chunk)\n            \n            chunk_metadata = {\n                **base_metadata,\n                \"chunk_index\": i,\n                \"total_chunks\": len(chunks)\n            }\n            metadatas.append(chunk_metadata)\n        \n        # Add to collection\n        self.collection.add(\n            ids=ids,\n            documents=documents,\n            metadatas=metadatas\n        )\n        \n        return len(chunks)\n    \n    def ingest_directory(self, directory: str) -\u003e int:\n        \"\"\"Ingest all documents from a directory.\"\"\"\n        total_chunks = 0\n        \n        for file_path in Path(directory).rglob(\"*\"):\n            if file_path.suffix in [\".txt\", \".md\"]:\n                content = file_path.read_text(encoding=\"utf-8\")\n                chunks = self.ingest_document(\n                    content,\n                    metadata={\n                        \"source\": str(file_path),\n                        \"filename\": file_path.name\n                    }\n                )\n                total_chunks += chunks\n                print(f\"Ingested {file_path.name}: {chunks} chunks\")\n        \n        return total_chunks\n    \n    def retrieve(\n        self, \n        query: str, \n        top_k: int | None = None,\n        filter_metadata: dict | None = None\n    ) -\u003e list[dict]:\n        \"\"\"Retrieve relevant chunks for a query.\"\"\"\n        k = top_k or self.config.top_k\n        \n        # Query ChromaDB\n        query_params = {\n            \"query_texts\": [query],\n            \"n_results\": k,\n            \"include\": [\"documents\", \"metadatas\", \"distances\"]\n        }\n        \n        if filter_metadata:\n            query_params[\"where\"] = filter_metadata\n        \n        results = self.collection.query(**query_params)\n        \n        # Format results\n        retrieved = []\n        for i in range(len(results[\"ids\"][0])):\n            retrieved.append({\n                \"content\": results[\"documents\"][0][i],\n                \"metadata\": results[\"metadatas\"][0][i],\n                \"relevance_score\": 1 - results[\"distances\"][0][i]\n            })\n        \n        return retrieved\n    \n    def generate_answer(\n        self, \n        query: str, \n        retrieved_chunks: list[dict],\n        system_prompt: str | None = None\n    ) -\u003e str:\n        \"\"\"Generate an answer using retrieved context.\"\"\"\n        \n        # Build context from retrieved chunks\n        context_parts = []\n        for i, chunk in enumerate(retrieved_chunks, 1):\n            source = chunk[\"metadata\"].get(\"filename\", \"Unknown\")\n            context_parts.append(\n                f\"[Source {i}: {source}]\\n{chunk['content']}\"\n            )\n        \n        context = \"\\n\\n---\\n\\n\".join(context_parts)\n        \n        # Default system prompt\n        if system_prompt is None:\n            system_prompt = \"\"\"You are a helpful assistant that answers \n            questions based on the provided context documents.\n            \n            Guidelines:\n            - Only use information from the provided context\n            - If the context doesn't contain the answer, say so\n            - Always cite your sources using [Source N]\n            - Be concise and direct\n            \n            Context:\n            {context}\"\"\"\n        \n        system_prompt = system_prompt.format(context=context)\n        \n        # Generate response\n        response = self.client.chat.completions.create(\n            model=self.config.llm_model,\n            messages=[\n                {\"role\": \"system\", \"content\": system_prompt},\n                {\"role\": \"user\", \"content\": query}\n            ],\n            temperature=0.3,\n            max_tokens=1000\n        )\n        \n        return response.choices[0].message.content\n    \n    def query(\n        self, \n        question: str,\n        system_prompt: str | None = None\n    ) -\u003e dict:\n        \"\"\"\n        Full RAG query: retrieve → generate → return answer \n        with sources.\n        \"\"\"\n        # Retrieve relevant chunks\n        chunks = self.retrieve(question)\n        \n        # Generate answer\n        answer = self.generate_answer(\n            question, chunks, system_prompt\n        )\n        \n        return {\n            \"answer\": answer,\n            \"sources\": [\n                {\n                    \"content\": c[\"content\"][:200] + \"...\",\n                    \"metadata\": c[\"metadata\"],\n                    \"score\": c[\"relevance_score\"]\n                }\n                for c in chunks\n            ],\n            \"num_chunks_used\": len(chunks)\n        }\n\n\n# === Usage Example ===\n\ndef main():\n    # Initialize pipeline\n    rag = RAGPipeline()\n    \n    # Ingest documents\n    print(\"Ingesting documents...\")\n    num_chunks = rag.ingest_directory(\"./company_docs\")\n    print(f\"Total chunks indexed: {num_chunks}\")\n    \n    # Query\n    questions = [\n        \"What is the return policy?\",\n        \"How much does the Pro plan cost?\",\n        \"How do I reset my password?\",\n    ]\n    \n    for question in questions:\n        print(f\"\\n{'='*60}\")\n        print(f\"Question: {question}\")\n        print(f\"{'='*60}\")\n        \n        result = rag.query(question)\n        \n        print(f\"\\nAnswer: {result['answer']}\")\n        print(f\"\\nSources used: {result['num_chunks_used']}\")\n        for source in result[\"sources\"]:\n            print(f\"  - [{source['score']:.3f}] {source['content'][:80]}...\")\n\n\nif __name__ == \"__main__\":\n    main()\n```\n\n### Async Version for Production\n\n```python\n\"\"\"\nAsync RAG pipeline for production use.\n\"\"\"\n\nimport asyncio\nfrom openai import AsyncOpenAI\n\n\nclass AsyncRAGPipeline(RAGPipeline):\n    \"\"\"Async version for high-throughput applications.\"\"\"\n    \n    def __init__(self, config: RAGConfig | None = None):\n        super().__init__(config)\n        self.async_client = AsyncOpenAI(\n            api_key=os.getenv(\"OPENAI_API_KEY\")\n        )\n    \n    async def get_embedding_async(self, text: str) -\u003e list[float]:\n        \"\"\"Async embedding generation.\"\"\"\n        response = await self.async_client.embeddings.create(\n            model=self.config.embedding_model,\n            input=text\n        )\n        return response.data[0].embedding\n    \n    async def get_embeddings_batch(\n        self, texts: list[str]\n    ) -\u003e list[list[float]]:\n        \"\"\"Batch embedding generation.\"\"\"\n        response = await self.async_client.embeddings.create(\n            model=self.config.embedding_model,\n            input=texts\n        )\n        return [item.embedding for item in response.data]\n    \n    async def generate_answer_async(\n        self, query: str, context: str\n    ) -\u003e str:\n        \"\"\"Async answer generation.\"\"\"\n        response = await self.async_client.chat.completions.create(\n            model=self.config.llm_model,\n            messages=[\n                {\n                    \"role\": \"system\", \n                    \"content\": f\"Answer based on context:\\n{context}\"\n                },\n                {\"role\": \"user\", \"content\": query}\n            ],\n            temperature=0.3\n        )\n        return response.choices[0].message.content\n    \n    async def query_async(self, question: str) -\u003e dict:\n        \"\"\"Async full RAG query.\"\"\"\n        # Retrieve (ChromaDB is sync, but fast)\n        chunks = self.retrieve(question)\n        \n        # Build context\n        context = \"\\n\\n\".join(\n            c[\"content\"] for c in chunks\n        )\n        \n        # Generate (async)\n        answer = await self.generate_answer_async(question, context)\n        \n        return {\n            \"answer\": answer,\n            \"sources\": chunks,\n            \"num_chunks_used\": len(chunks)\n        }\n    \n    async def query_batch(\n        self, questions: list[str]\n    ) -\u003e list[dict]:\n        \"\"\"Process multiple queries concurrently.\"\"\"\n        tasks = [self.query_async(q) for q in questions]\n        return await asyncio.gather(*tasks)\n```\n\n---\n\n## 9. Evaluating RAG Quality\n\n### RAG Evaluation Metrics\n\n| Metric | What It Measures | How to Compute |\n|--------|-----------------|----------------|\n| **Context Precision** | Are retrieved chunks relevant? | % of retrieved chunks that are useful |\n| **Context Recall** | Did we retrieve all relevant info? | % of relevant chunks retrieved |\n| **Faithfulness** | Does the answer use the context? | LLM-judged: is every claim supported? |\n| **Answer Relevancy** | Does the answer address the question? | LLM-judged: is it relevant? |\n| **Answer Correctness** | Is the answer factually correct? | Compare with ground truth |\n\n### Evaluation Framework\n\n```python\n\"\"\"\nRAG Evaluation Framework\n\"\"\"\n\nfrom dataclasses import dataclass\n\n\n@dataclass\nclass RAGEvaluationCase:\n    \"\"\"A single evaluation test case.\"\"\"\n    question: str\n    expected_answer: str\n    relevant_doc_ids: list[str]  # Ground truth documents\n\n\nclass RAGEvaluator:\n    \"\"\"Evaluates RAG pipeline quality.\"\"\"\n    \n    def __init__(self, rag_pipeline):\n        self.rag = rag_pipeline\n        self.client = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n    \n    def evaluate_context_precision(\n        self, \n        question: str, \n        retrieved_chunks: list[dict]\n    ) -\u003e float:\n        \"\"\"What fraction of retrieved chunks are relevant?\"\"\"\n        if not retrieved_chunks:\n            return 0.0\n        \n        relevance_prompt = f\"\"\"Given a question and a document chunk, \n        determine if the chunk is relevant to answering the question.\n        \n        Question: {question}\n        \n        For each chunk, respond with ONLY \"relevant\" or \"not_relevant\".\n        \n        Chunks:\n        {chr(10).join(f'Chunk {i+1}: {c[\"content\"][:200]}' \n                       for i, c in enumerate(retrieved_chunks))}\n        \"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o-mini\",\n            messages=[\n                {\"role\": \"user\", \"content\": relevance_prompt}\n            ],\n            temperature=0.0\n        )\n        \n        results = response.choices[0].message.content.lower()\n        relevant_count = results.count(\"relevant\")\n        \n        return relevant_count / len(retrieved_chunks)\n    \n    def evaluate_faithfulness(\n        self, \n        question: str, \n        answer: str, \n        context: str\n    ) -\u003e float:\n        \"\"\"Does the answer faithfully use only the provided context?\"\"\"\n        \n        faithfulness_prompt = f\"\"\"Evaluate if the answer is faithful \n        to the provided context.\n        \n        Question: {question}\n        Context: {context}\n        Answer: {answer}\n        \n        Score the faithfulness from 1 to 5:\n        1 - Completely hallucinated, not based on context\n        2 - Mostly hallucinated with some context use\n        3 - Mixed - some from context, some invented\n        4 - Mostly faithful with minor additions\n        5 - Completely faithful to context\n        \n        Respond with ONLY the number.\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o-mini\",\n            messages=[\n                {\"role\": \"user\", \"content\": faithfulness_prompt}\n            ],\n            temperature=0.0\n        )\n        \n        score = int(response.choices[0].message.content.strip())\n        return score / 5.0\n    \n    def evaluate_answer_relevancy(\n        self, \n        question: str, \n        answer: str\n    ) -\u003e float:\n        \"\"\"Does the answer address the question?\"\"\"\n        \n        relevancy_prompt = f\"\"\"Evaluate if the answer addresses the \n        question.\n        \n        Question: {question}\n        Answer: {answer}\n        \n        Score the relevancy from 1 to 5:\n        1 - Completely off-topic\n        2 - Barely related\n        3 - Partially relevant\n        4 - Mostly relevant\n        5 - Directly answers the question\n        \n        Respond with ONLY the number.\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o-mini\",\n            messages=[\n                {\"role\": \"user\", \"content\": relevancy_prompt}\n            ],\n            temperature=0.0\n        )\n        \n        score = int(response.choices[0].message.content.strip())\n        return score / 5.0\n    \n    def evaluate(\n        self, \n        test_cases: list[RAGEvaluationCase]\n    ) -\u003e dict:\n        \"\"\"Run full evaluation on test cases.\"\"\"\n        \n        results = {\n            \"precision_scores\": [],\n            \"faithfulness_scores\": [],\n            \"relevancy_scores\": [],\n        }\n        \n        for case in test_cases:\n            # Retrieve\n            chunks = self.rag.retrieve(case.question)\n            \n            # Generate answer\n            answer = self.rag.generate_answer(\n                case.question, chunks\n            )\n            \n            # Build context string\n            context = \"\\n\".join(c[\"content\"] for c in chunks)\n            \n            # Evaluate\n            precision = self.evaluate_context_precision(\n                case.question, chunks\n            )\n            faithfulness = self.evaluate_faithfulness(\n                case.question, answer, context\n            )\n            relevancy = self.evaluate_answer_relevancy(\n                case.question, answer\n            )\n            \n            results[\"precision_scores\"].append(precision)\n            results[\"faithfulness_scores\"].append(faithfulness)\n            results[\"relevancy_scores\"].append(relevancy)\n        \n        # Compute averages\n        return {\n            \"avg_precision\": sum(results[\"precision_scores\"]) / \n                           len(results[\"precision_scores\"]),\n            \"avg_faithfulness\": sum(results[\"faithfulness_scores\"]) / \n                              len(results[\"faithfulness_scores\"]),\n            \"avg_relevancy\": sum(results[\"relevancy_scores\"]) / \n                           len(results[\"relevancy_scores\"]),\n            \"num_cases\": len(test_cases),\n        }\n\n\n# === Run Evaluation ===\n\n# Define test cases\ntest_cases = [\n    RAGEvaluationCase(\n        question=\"What is the return policy?\",\n        expected_answer=\"Returns accepted within 30 days with receipt\",\n        relevant_doc_ids=[\"returns_policy.md\"]\n    ),\n    RAGEvaluationCase(\n        question=\"How much does the Pro plan cost?\",\n        expected_answer=\"The Pro plan costs $29/month\",\n        relevant_doc_ids=[\"pricing.md\"]\n    ),\n    # ... more test cases\n]\n\n# evaluator = RAGEvaluator(rag_pipeline)\n# results = evaluator.evaluate(test_cases)\n# print(f\"Context Precision: {results['avg_precision']:.2%}\")\n# print(f\"Faithfulness: {results['avg_faithfulness']:.2%}\")\n# print(f\"Answer Relevancy: {results['avg_relevancy']:.2%}\")\n```\n\n### Evaluation Best Practices\n\n1. **Create a golden test set**: 50-100 question-answer pairs covering common scenarios\n2. **Test edge cases**: Ambiguous questions, questions with no answer, multi-part questions\n3. **Track metrics over time**: Set up automated evaluation in your CI/CD pipeline\n4. **Human evaluation**: Supplement automated metrics with periodic human review\n5. **A/B testing**: Compare different chunking strategies, embedding models, and retrieval methods\n\n---\n\n## 10. Key Takeaways\n\n1. **RAG bridges the gap** between general LLMs and domain-specific knowledge, enabling grounded, accurate responses.\n\n2. **The RAG pipeline** has five stages: Ingest → Embed → Store → Retrieve → Generate. Each stage can be optimized independently.\n\n3. **Embeddings capture meaning**: Text with similar meaning produces similar vectors, enabling semantic search beyond keyword matching.\n\n4. **Vector databases** (Chroma, Pinecone, FAISS) enable fast similarity search across millions of documents.\n\n5. **Chunking strategy matters**: Fixed-size for simplicity, semantic for quality, structure-aware for well-formatted documents.\n\n6. **Hybrid search** combining keyword + semantic retrieval often outperforms either method alone.\n\n7. **Evaluation is critical**: Measure context precision, faithfulness, and answer relevancy to maintain quality.\n\n8. **Production RAG** needs error handling, caching, monitoring, and async processing for scale.\n\n---\n\n## 11. Try It Yourself\n\n### Exercise 1: Build a Document Q\u0026A System\nUsing ChromaDB and OpenAI embeddings, build a system that:\n- Ingests a directory of markdown files\n- Allows natural language queries\n- Returns answers with source citations\n- Handles follow-up questions using conversation history\n\n### Exercise 2: Compare Chunking Strategies\nCreate a test document and implement all four chunking strategies (fixed-size, recursive, semantic, structure-aware). Run the same 10 queries against each and measure which strategy retrieves the most relevant chunks.\n\n### Exercise 3: Build a Hybrid Search Engine\nImplement the hybrid search engine from this chapter, then:\n- Index 50+ documents from different domains\n- Compare pure semantic, pure keyword, and hybrid results\n- Experiment with different weight combinations (0.5/0.5, 0.7/0.3, 0.3/0.7)\n\n### Exercise 4: RAG Evaluation Pipeline\nBuild an evaluation pipeline that:\n- Creates 20 test questions from your documents\n- Runs them through your RAG system\n- Measures context precision, faithfulness, and relevancy\n- Generates a quality report\n\n### Exercise 5: Production Hardening\nAdd the following to your RAG system:\n- Caching for frequently asked questions\n- Rate limiting for API calls\n- Logging and monitoring\n- Graceful error handling when the vector DB is unavailable\n- A/B testing capability to compare different configurations\n\n---\n\n\u003e **Next Chapter**: In [Chapter 3: Introduction to AI Agents](./chapter-03-introduction-to-ai-agents.md), we'll learn what makes agents fundamentally different from chatbots — they don't just talk, they **act**.\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"div\",null,{\"children\":[\"$\",\"$Lf\",null,{\"content\":\"$10\",\"currentChapter\":{\"id\":\"agents-ch-02\",\"number\":2,\"title\":\"RAG \u0026 Knowledge Systems\",\"subtitle\":\"Giving Agents Access to Your Data\",\"description\":\"Learn Retrieval-Augmented Generation, embeddings, vector databases, chunking strategies, and build your first RAG pipeline.\",\"slug\":\"rag-and-knowledge-systems\",\"part\":\"Part I: Foundations\",\"estimatedPages\":20,\"topics\":[\"What is RAG\",\"Embeddings \u0026 vectors\",\"Chunking strategies\",\"Hybrid search\",\"RAG pipeline\",\"Evaluation \u0026 testing\"],\"icon\":\"🔍\",\"bookId\":\"ai-agents\"}}]}]\n"])</script><script>self.__next_f.push([1,"a:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"7:null\nc:[[\"$\",\"title\",\"0\",{\"children\":\"AI Agents: The Complete Guide\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi\"}],[\"$\",\"meta\",\"2\",{\"name\":\"author\",\"content\":\"Manjunath Kalburgi\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi\"}]]\n"])</script></body></html>

@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+/* Custom component styles that extend Tailwind's generated classes */
+.nav-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-btn-primary {
+  composes: nav-btn;
+  background-color: #FF8100;
+  color: white;
+}
+
+.nav-btn-primary:hover {
+  background-color: #E66E00;
+}
+
+.nav-btn-secondary {
+  composes: nav-btn;
+  background-color: white;
+  color: #991B1B;
+  border: 2px solid #F59E0B;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.nav-btn-secondary:hover {
+  background-color: #FEF3C7;
+}
+
+.card {
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

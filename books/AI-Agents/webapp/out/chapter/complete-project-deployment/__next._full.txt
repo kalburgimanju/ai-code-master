@@ -1,0 +1,1954 @@
+1:"$Sreact.fragment"
+2:I[78892,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default"]
+3:I[11359,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default"]
+5:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+9:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"ViewportBoundary"]
+b:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"MetadataBoundary"]
+d:I[65125,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default",1]
+:HL["/_next/static/chunks/157per-6rfej7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","chapter","complete-project-deployment"],"q":"","i":false,"f":[[["",{"children":["chapter",{"children":[["slug","complete-project-deployment","d",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/157per-6rfej7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3j2brc7c8hat8.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/05b0208rfh8ys.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased","children":["$","body",null,{"className":"min-h-full flex flex-col","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","script","script-0",{"src":"/_next/static/chunks/16vgld9iclosn.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/2rb1230i-fez-.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$@8"]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/157per-6rfej7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"WpHiBD4DjnzuprdEnivdA"}
+e:[]
+8:"$We"
+f:I[89587,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js","/_next/static/chunks/16vgld9iclosn.js","/_next/static/chunks/2rb1230i-fez-.js"],"default"]
+10:T109a4,# Chapter 12: Complete Project: End to End
+
+## From Zero to Production — One Complete Build
+
+---
+
+> "The best way to understand a system is to build one."
+
+---
+
+Throughout this book, we have explored individual concepts — prompts, tools, memory, RAG, and more. Now it is time to put them all together. This chapter walks you through building **AgentAssist**, a complete AI customer support agent, from the first line of code to a production deployment.
+
+This is not a toy example. This is a real architecture you can adapt for any production use case.
+
+---
+
+## Table of Contents
+
+1. [Project Overview](#121-project-overview)
+2. [Requirements Gathering](#122-requirements-gathering)
+3. [System Architecture](#123-system-architecture)
+4. [Step 1: Project Setup](#124-step-1-project-setup)
+5. [Step 2: API Design](#125-step-2-api-design)
+6. [Step 3: Agent Core](#126-step-3-agent-core)
+7. [Step 4: RAG Integration](#127-step-4-rag-integration)
+8. [Step 5: Tool Integration](#128-step-5-tool-integration)
+9. [Step 6: Frontend Chat UI](#129-step-6-frontend-chat-ui)
+10. [Step 7: Docker](#1210-step-7-docker)
+11. [Step 8: Cloud Deployment](#1211-step-8-cloud-deployment)
+12. [Step 9: Monitoring](#1212-step-9-monitoring)
+13. [Complete Project Code](#1213-complete-project-code)
+14. [Full System Architecture Diagram](#1214-full-system-architecture-diagram)
+15. [Deployment Checklist](#1215-deployment-checklist)
+16. [Key Takeaways](#1216-key-takeaways)
+
+---
+
+## 12.1 Project Overview
+
+### What We Are Building
+
+**AgentAssist** is an AI-powered customer support agent that can:
+
+- Answer questions from a knowledge base (RAG)
+- Look up order status via API calls (Tools)
+- Remember conversation context (Memory)
+- Escalate to a human when needed (Guardrails)
+- Run in production with monitoring and logging
+
+### User Stories
+
+```
+As a customer, I want to:
+├── Ask questions about products and get accurate answers
+├── Check my order status without calling support
+├── Get help 24/7 without waiting for a human agent
+└── Be transferred to a human when the AI can't help
+
+As a support manager, I want to:
+├── See all conversations and AI performance metrics
+├── Know which questions the AI couldn't answer
+├── Update the knowledge base without redeploying
+└── Monitor costs and latency in real time
+
+As a developer, I want to:
+├── Deploy the system with one command
+├── Scale horizontally when traffic increases
+├── Debug issues with structured logs and traces
+└── Test the system with automated evaluation
+```
+
+### Technology Stack
+
+| Layer | Technology | Why |
+|-------|-----------|-----|
+| Agent Framework | Custom (Python) | Full control, no vendor lock-in |
+| LLM | Claude / OpenAI GPT-4 | High-quality reasoning |
+| Vector Store | Chroma (dev) / Pinecone (prod) | Fast, scalable |
+| Embeddings | OpenAI text-embedding-3-small | Good quality, low cost |
+| Backend API | FastAPI | Async, fast, well-documented |
+| Frontend | React + Vite | Modern, fast builds |
+| Database | PostgreSQL | Conversation history, metadata |
+| Cache | Redis | Session caching, rate limiting |
+| Container | Docker + Docker Compose | Consistent environments |
+| Deployment | AWS ECS / GCP Cloud Run | Managed containers |
+
+---
+
+## 12.2 Requirements Gathering
+
+### Functional Requirements
+
+```
+FR-01: Chat Interface
+  - Users can send messages and receive responses
+  - Responses stream in real-time (WebSocket or SSE)
+  - Conversation history is preserved
+
+FR-02: Knowledge Base (RAG)
+  - Agent can answer questions from uploaded documents
+  - Supports PDF, Markdown, and plain text
+  - Responses include source citations
+
+FR-03: Tool Integration
+  - Agent can look up order status by order ID
+  - Agent can check product availability
+  - Agent can create support tickets
+
+FR-04: Escalation
+  - Agent transfers to human when confidence is low
+  - Full conversation context is passed to human agent
+
+FR-05: Admin Dashboard
+  - View all conversations
+  - See AI performance metrics
+  - Upload new documents to knowledge base
+```
+
+### Non-Functional Requirements
+
+```
+NFR-01: Latency
+  - First token response: < 1 second
+  - Full response: < 5 seconds
+
+NFR-02: Availability
+  - 99.9% uptime
+  - Graceful degradation if LLM is down
+
+NFR-03: Security
+  - All API calls authenticated (JWT)
+  - No PII stored without consent
+  - Rate limiting on all endpoints
+
+NFR-04: Scalability
+  - Handle 1000 concurrent conversations
+  - Horizontal scaling with load balancer
+```
+
+---
+
+## 12.3 System Architecture
+
+### High-Level Architecture Diagram
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                        FULL SYSTEM ARCHITECTURE                      │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ┌──────────┐     ┌──────────────┐     ┌──────────────────────┐     │
+│  │  React   │────▶│  FastAPI      │────▶│  Agent Core          │     │
+│  │  Chat UI │◀────│  Gateway      │◀────│  (Python)            │     │
+│  └──────────┘     └──────────────┘     └──────────┬───────────┘     │
+│       │                   │                        │                  │
+│       │              ┌────▼─────┐          ┌───────▼────────┐       │
+│       │              │  Redis   │          │   RAG Engine   │       │
+│       │              │  Cache   │          │   ┌─────────┐  │       │
+│       │              └──────────┘          │   │ Vector  │  │       │
+│       │                                    │   │ Store   │  │       │
+│       │                                    │   └─────────┘  │       │
+│       │                                    └───────┬────────┘       │
+│       │                                            │                 │
+│  ┌────▼────────────┐                     ┌────────▼────────┐       │
+│  │  PostgreSQL     │                     │  Tool Services  │       │
+│  │  ┌───────────┐  │                     │  ┌───────────┐  │       │
+│  │  │Conversations│ │                    │  │ Order API │  │       │
+│  │  │  Messages  │  │                    │  │ Product DB│  │       │
+│  │  │  Users     │  │                    │  │ Ticket Svc│  │       │
+│  │  └───────────┘  │                     │  └───────────┘  │       │
+│  └─────────────────┘                     └────────────────┘       │
+│                                                                      │
+│  ┌──────────────────────────────────────────────────────────────┐   │
+│  │                     Monitoring Layer                          │   │
+│  │  ┌─────────┐  ┌──────────┐  ┌──────────┐  ┌──────────────┐ │   │
+│  │  │ Logs    │  │ Metrics  │  │ Traces   │  │ Cost Tracker │ │   │
+│  │  │(Loki)   │  │(Prometheus)│ │(Jaeger)  │  │ (Custom)     │ │   │
+│  │  └─────────┘  └──────────┘  └──────────┘  └──────────────┘ │   │
+│  └──────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Data Flow
+
+```
+User sends message
+        │
+        ▼
+┌───────────────┐
+│ FastAPI       │──── Authenticate user (JWT)
+│ Gateway       │──── Rate limit check
+└───────┬───────┘──── Log request
+        │
+        ▼
+┌───────────────┐
+│ Agent Core    │──── Load conversation history (Redis/PostgreSQL)
+│               │──── Build context
+└───────┬───────┘──── Decide: RAG query? Tool call? Direct answer?
+        │
+        ├────── RAG Query ──────► Retrieve docs ──► Generate answer
+        │
+        ├────── Tool Call ──────► Execute tool ──► Process result ──► Generate answer
+        │
+        └────── Direct ─────────► Generate answer
+        │
+        ▼
+┌───────────────┐
+│ Response      │──── Stream tokens to client
+│               │──── Save to database
+└───────────────┘──── Update metrics
+```
+
+---
+
+## 12.4 Step 1: Project Setup
+
+### Directory Structure
+
+```
+agent-assist/
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py              # FastAPI app entry point
+│   │   ├── config.py            # Settings and configuration
+│   │   ├── models.py            # Database models (SQLAlchemy)
+│   │   ├── schemas.py           # Pydantic request/response models
+│   │   ├── agent/
+│   │   │   ├── __init__.py
+│   │   │   ├── core.py          # Main agent logic
+│   │   │   ├── prompts.py       # System prompts
+│   │   │   └── memory.py        # Conversation memory
+│   │   ├── rag/
+│   │   │   ├── __init__.py
+│   │   │   ├── embeddings.py    # Embedding functions
+│   │   │   ├── vector_store.py  # Vector store operations
+│   │   │   ├── chunking.py      # Document chunking
+│   │   │   └── retriever.py     # Retrieval logic
+│   │   ├── tools/
+│   │   │   ├── __init__.py
+│   │   │   ├── order_status.py  # Order lookup tool
+│   │   │   ├── products.py      # Product search tool
+│   │   │   └── tickets.py       # Support ticket tool
+│   │   ├── api/
+│   │   │   ├── __init__.py
+│   │   │   ├── chat.py          # Chat endpoints
+│   │   │   ├── admin.py         # Admin endpoints
+│   │   │   └── auth.py          # Authentication
+│   │   └── core/
+│   │       ├── __init__.py
+│   │       ├── logging.py       # Structured logging
+│   │       ├── metrics.py       # Metrics collection
+│   │       └── security.py      # Security middleware
+│   ├── tests/
+│   │   ├── test_agent.py
+│   │   ├── test_rag.py
+│   │   └── test_tools.py
+│   ├── requirements.txt
+│   └── Dockerfile
+├── frontend/
+│   ├── src/
+│   │   ├── App.tsx
+│   │   ├── components/
+│   │   │   ├── ChatWindow.tsx
+│   │   │   ├── MessageBubble.tsx
+│   │   │   └── SourceCitation.tsx
+│   │   └── hooks/
+│   │       └── useChat.ts
+│   ├── package.json
+│   └── Dockerfile
+├── docker-compose.yml
+├── .env.example
+└── README.md
+```
+
+### Environment Configuration
+
+```python
+# backend/app/config.py
+from pydantic_settings import BaseSettings
+from functools import lru_cache
+
+class Settings(BaseSettings):
+    # Application
+    APP_NAME: str = "AgentAssist"
+    DEBUG: bool = False
+    SECRET_KEY: str = "change-me-in-production"
+
+    # LLM
+    LLM_PROVIDER: str = "openai"  # or "anthropic"
+    OPENAI_API_KEY: str = ""
+    ANTHROPIC_API_KEY: str = ""
+    LLM_MODEL: str = "gpt-4o"
+    LLM_TEMPERATURE: float = 0.1
+    LLM_MAX_TOKENS: int = 4096
+
+    # Embeddings
+    EMBEDDING_MODEL: str = "text-embedding-3-small"
+    EMBEDDING_DIMENSION: int = 1536
+
+    # Vector Store
+    VECTOR_STORE_TYPE: str = "chroma"  # or "pinecone"
+    CHROMA_PATH: str = "./chroma_db"
+    PINECONE_API_KEY: str = ""
+    PINECONE_INDEX: str = "agent-assist"
+
+    # Database
+    DATABASE_URL: str = "postgresql://user:pass@localhost/agentassist"
+    REDIS_URL: str = "redis://localhost:6379"
+
+    # RAG
+    CHUNK_SIZE: int = 500
+    CHUNK_OVERLAP: int = 50
+    RETRIEVAL_TOP_K: int = 5
+    RERANK_ENABLED: bool = True
+
+    # Security
+    RATE_LIMIT_PER_MINUTE: int = 60
+    JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRY_MINUTES: int = 60
+
+    model_config = {"env_file": ".env"}
+
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()
+```
+
+### Dependencies
+
+```txt
+# backend/requirements.txt
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+pydantic==2.9.0
+pydantic-settings==2.5.0
+sqlalchemy==2.0.35
+asyncpg==0.29.0
+redis[hiredis]==5.1.0
+openai==1.50.0
+anthropic==0.34.0
+sentence-transformers==3.2.0
+chromadb==0.5.0
+pymupdf==1.24.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+structlog==24.4.0
+prometheus-client==0.21.0
+httpx==0.27.0
+python-multipart==0.0.9
+```
+
+---
+
+## 12.5 Step 2: API Design
+
+### API Endpoints
+
+```
+POST   /api/v1/chat              Send a message, get response
+POST   /api/v1/chat/stream       Send a message, stream response
+GET    /api/v1/conversations      List user's conversations
+GET    /api/v1/conversations/{id} Get conversation with messages
+DELETE /api/v1/conversations/{id} Delete a conversation
+
+POST   /api/v1/admin/documents   Upload documents to knowledge base
+DELETE /api/v1/admin/documents/{id} Remove a document
+GET    /api/v1/admin/metrics     Get system metrics
+GET    /api/v1/admin/conversations All conversations (admin view)
+
+POST   /api/v1/auth/login        Authenticate, get JWT
+POST   /api/v1/auth/register     Register new user
+```
+
+### Request/Response Schemas
+
+```python
+# backend/app/schemas.py
+from pydantic import BaseModel, Field
+from datetime import datetime
+from enum import Enum
+
+class MessageRole(str, Enum):
+    USER = "user"
+    ASSISTANT = "assistant"
+    SYSTEM = "system"
+
+class ChatRequest(BaseModel):
+    message: str = Field(..., min_length=1, max_length=10000)
+    conversation_id: str | None = None
+
+class SourceCitation(BaseModel):
+    text: str
+    source: str
+    page: int | None = None
+    relevance_score: float
+
+class ChatResponse(BaseModel):
+    response: str
+    conversation_id: str
+    message_id: str
+    sources: list[SourceCitation] = []
+    model_used: str
+    tokens_used: int
+    latency_ms: float
+
+class StreamChunk(BaseModel):
+    type: str  # "token", "sources", "done", "error"
+    content: str | None = None
+    sources: list[SourceCitation] | None = None
+
+class Message(BaseModel):
+    id: str
+    role: MessageRole
+    content: str
+    sources: list[SourceCitation] = []
+    created_at: datetime
+    tokens_used: int = 0
+
+class Conversation(BaseModel):
+    id: str
+    title: str
+    messages: list[Message] = []
+    created_at: datetime
+    updated_at: datetime
+
+class DocumentUploadResponse(BaseModel):
+    document_id: str
+    filename: str
+    chunks_created: int
+    status: str
+
+class MetricsResponse(BaseModel):
+    total_conversations: int
+    total_messages: int
+    avg_response_time_ms: float
+    total_tokens_used: int
+    top_questions: list[dict]
+```
+
+### Chat Endpoint
+
+```python
+# backend/app/api/chat.py
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import StreamingResponse
+from app.schemas import ChatRequest, ChatResponse
+from app.agent.core import AgentCore
+from app.core.security import get_current_user
+from app.config import get_settings
+import time
+import uuid
+
+router = APIRouter(prefix="/api/v1/chat", tags=["chat"])
+
+@router.post("", response_model=ChatResponse)
+async def chat(
+    request: ChatRequest,
+    user=Depends(get_current_user),
+    agent: AgentCore = Depends(),
+):
+    """Send a message and get a complete response."""
+    start_time = time.time()
+
+    # Create or get conversation
+    conversation_id = request.conversation_id or str(uuid.uuid4())
+
+    # Get conversation history
+    history = await agent.get_history(conversation_id)
+
+    # Process message
+    result = await agent.process_message(
+        message=request.message,
+        history=history,
+        user_id=user.id,
+    )
+
+    # Save to database
+    await agent.save_message(
+        conversation_id=conversation_id,
+        role="user",
+        content=request.message,
+        user_id=user.id,
+    )
+    await agent.save_message(
+        conversation_id=conversation_id,
+        role="assistant",
+        content=result["response"],
+        sources=result.get("sources", []),
+        tokens_used=result.get("tokens", 0),
+    )
+
+    latency_ms = (time.time() - start_time) * 1000
+
+    return ChatResponse(
+        response=result["response"],
+        conversation_id=conversation_id,
+        message_id=str(uuid.uuid4()),
+        sources=result.get("sources", []),
+        model_used=result.get("model", "unknown"),
+        tokens_used=result.get("tokens", 0),
+        latency_ms=latency_ms,
+    )
+
+@router.post("/stream")
+async def chat_stream(
+    request: ChatRequest,
+    user=Depends(get_current_user),
+    agent: AgentCore = Depends(),
+):
+    """Send a message and stream the response."""
+    conversation_id = request.conversation_id or str(uuid.uuid4())
+
+    async def event_generator():
+        async for chunk in agent.stream_message(
+            message=request.message,
+            conversation_id=conversation_id,
+            user_id=user.id,
+        ):
+            yield f"data: {chunk.json()}\n\n"
+        yield "data: [DONE]\n\n"
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+    )
+```
+
+---
+
+## 12.6 Step 3: Agent Core
+
+The agent core is the brain. It decides what to do with each user message.
+
+```python
+# backend/app/agent/core.py
+from app.config import get_settings
+from app.agent.prompts import SYSTEM_PROMPT, RAG_PROMPT, TOOL_PROMPT
+from app.agent.memory import ConversationMemory
+from app.rag.retriever import Retriever
+from app.tools.order_status import OrderStatusTool
+from app.tools.products import ProductSearchTool
+from app.tools.tickets import TicketTool
+from openai import AsyncOpenAI
+import json
+
+class AgentCore:
+    def __init__(self):
+        self.settings = get_settings()
+        self.client = AsyncOpenAI(api_key=self.settings.OPENAI_API_KEY)
+        self.memory = ConversationMemory()
+        self.retriever = Retriever()
+        self.tools = {
+            "lookup_order": OrderStatusTool(),
+            "search_products": ProductSearchTool(),
+            "create_ticket": TicketTool(),
+        }
+        self.tool_definitions = self._build_tool_definitions()
+
+    def _build_tool_definitions(self) -> list[dict]:
+        """Convert tools to OpenAI function calling format."""
+        return [
+            {
+                "type": "function",
+                "function": {
+                    "name": name,
+                    "description": tool.description,
+                    "parameters": tool.parameters,
+                },
+            }
+            for name, tool in self.tools.items()
+        ]
+
+    async def process_message(
+        self,
+        message: str,
+        history: list[dict],
+        user_id: str,
+    ) -> dict:
+        """Process a user message and return a response."""
+
+        # Step 1: Retrieve relevant context
+        rag_context = await self.retriever.retrieve(message)
+
+        # Step 2: Build the system prompt with context
+        system = SYSTEM_PROMPT
+        if rag_context:
+            system += f"\n\nRelevant knowledge:\n{rag_context}"
+
+        # Step 3: Call the LLM with tool definitions
+        messages = [
+            {"role": "system", "content": system},
+            *history,
+            {"role": "user", "content": message},
+        ]
+
+        response = await self.client.chat.completions.create(
+            model=self.settings.LLM_MODEL,
+            messages=messages,
+            tools=self.tool_definitions,
+            tool_choice="auto",
+            temperature=self.settings.LLM_TEMPERATURE,
+            max_tokens=self.settings.LLM_MAX_TOKENS,
+        )
+
+        assistant_message = response.choices[0].message
+
+        # Step 4: Handle tool calls if any
+        if assistant_message.tool_calls:
+            return await self._handle_tool_calls(
+                assistant_message,
+                messages,
+                user_id,
+            )
+
+        # Step 5: Return the final response
+        sources = self._extract_sources(rag_context)
+
+        return {
+            "response": assistant_message.content,
+            "sources": sources,
+            "model": self.settings.LLM_MODEL,
+            "tokens": response.usage.total_tokens,
+        }
+
+    async def _handle_tool_calls(
+        self,
+        assistant_message,
+        messages: list[dict],
+        user_id: str,
+    ) -> dict:
+        """Execute tool calls and continue the conversation."""
+        # Add the assistant's message with tool calls
+        messages.append({
+            "role": "assistant",
+            "content": assistant_message.content,
+            "tool_calls": [
+                {
+                    "id": tc.id,
+                    "type": "function",
+                    "function": {
+                        "name": tc.function.name,
+                        "arguments": tc.function.arguments,
+                    },
+                }
+                for tc in assistant_message.tool_calls
+            ],
+        })
+
+        # Execute each tool call
+        for tool_call in assistant_message.tool_calls:
+            tool_name = tool_call.function.name
+            tool_args = json.loads(tool_call.function.arguments)
+
+            tool = self.tools.get(tool_name)
+            if tool:
+                result = await tool.execute(**tool_args, user_id=user_id)
+            else:
+                result = {"error": f"Unknown tool: {tool_name}"}
+
+            messages.append({
+                "role": "tool",
+                "tool_call_id": tool_call.id,
+                "content": json.dumps(result),
+            })
+
+        # Call LLM again with tool results
+        final_response = await self.client.chat.completions.create(
+            model=self.settings.LLM_MODEL,
+            messages=messages,
+            temperature=self.settings.LLM_TEMPERATURE,
+            max_tokens=self.settings.LLM_MAX_TOKENS,
+        )
+
+        final_message = final_response.choices[0].message
+
+        return {
+            "response": final_message.content,
+            "sources": [],
+            "model": self.settings.LLM_MODEL,
+            "tokens": final_response.usage.total_tokens,
+        }
+
+    def _extract_sources(self, rag_context: str) -> list[dict]:
+        """Parse RAG context into structured sources."""
+        if not rag_context:
+            return []
+        # Simple parsing - in production, track sources through retrieval
+        return [{"text": rag_context[:200], "source": "knowledge_base"}]
+
+    async def stream_message(
+        self,
+        message: str,
+        conversation_id: str,
+        user_id: str,
+    ):
+        """Stream response tokens to the client."""
+        history = await self.memory.get_history(conversation_id)
+        rag_context = await self.retriever.retrieve(message)
+
+        system = SYSTEM_PROMPT
+        if rag_context:
+            system += f"\n\nRelevant knowledge:\n{rag_context}"
+
+        messages = [
+            {"role": "system", "content": system},
+            *history,
+            {"role": "user", "content": message},
+        ]
+
+        stream = await self.client.chat.completions.create(
+            model=self.settings.LLM_MODEL,
+            messages=messages,
+            stream=True,
+            temperature=self.settings.LLM_TEMPERATURE,
+            max_tokens=self.settings.LLM_MAX_TOKENS,
+        )
+
+        async for chunk in stream:
+            if chunk.choices[0].delta.content:
+                yield {"type": "token", "content": chunk.choices[0].delta.content}
+
+        yield {"type": "done"}
+```
+
+### System Prompts
+
+```python
+# backend/app/agent/prompts.py
+
+SYSTEM_PROMPT = """You are AgentAssist, a helpful and professional customer support agent.
+
+Your role:
+- Answer customer questions accurately using the knowledge base
+- Look up order status when asked
+- Search for products when customers need recommendations
+- Create support tickets when issues need human attention
+- Be empathetic, clear, and concise
+
+Guidelines:
+- Always cite your sources when answering from the knowledge base
+- If you are not sure about something, say so — never make up information
+- For complex issues, offer to create a support ticket
+- Keep responses under 200 words unless the customer asks for detail
+- Use a friendly but professional tone
+
+Escalation rules:
+- If the customer is angry or frustrated, acknowledge their feelings and offer to connect with a human
+- If the question is outside your knowledge, create a support ticket
+- If you detect a billing dispute or legal issue, escalate immediately
+
+You have access to the following tools:
+- lookup_order: Check order status by order ID
+- search_products: Search products by name or category
+- create_ticket: Create a support ticket for issues requiring human attention
+"""
+
+RAG_PROMPT = """Based on the following context, answer the user's question.
+Always cite the source when possible.
+
+Context:
+{context}
+
+Question: {question}
+"""
+```
+
+---
+
+## 12.7 Step 4: RAG Integration
+
+### Document Ingestion Service
+
+```python
+# backend/app/rag/ingestion.py
+from pathlib import Path
+from app.rag.chunking import chunk_text
+from app.rag.embeddings import embed_batch
+from app.rag.vector_store import VectorStore
+from app.config import get_settings
+import fitz  # PyMuPDF
+
+class DocumentIngestion:
+    def __init__(self):
+        self.settings = get_settings()
+        self.vector_store = VectorStore()
+
+    async def ingest_file(self, file_path: str, metadata: dict = None) -> dict:
+        """Ingest a single file into the knowledge base."""
+        path = Path(file_path)
+        suffix = path.suffix.lower()
+
+        # Extract text based on format
+        if suffix == ".pdf":
+            text = self._extract_pdf(file_path)
+        elif suffix in (".md", ".txt"):
+            text = path.read_text(encoding="utf-8")
+        else:
+            raise ValueError(f"Unsupported format: {suffix}")
+
+        # Chunk the text
+        chunks = chunk_text(
+            text,
+            chunk_size=self.settings.CHUNK_SIZE,
+            chunk_overlap=self.settings.CHUNK_OVERLAP,
+        )
+
+        # Embed all chunks
+        embeddings = await embed_batch(chunks)
+
+        # Store in vector database
+        chunk_metadata = [
+            {
+                **(metadata or {}),
+                "source": str(path),
+                "chunk_index": i,
+                "total_chunks": len(chunks),
+            }
+            for i in range(len(chunks))
+        ]
+
+        ids = await self.vector_store.add(
+            texts=chunks,
+            embeddings=embeddings,
+            metadata=chunk_metadata,
+        )
+
+        return {
+            "filename": path.name,
+            "chunks_created": len(chunks),
+            "document_id": ids[0].split("_chunk")[0] if ids else None,
+        }
+
+    def _extract_pdf(self, file_path: str) -> str:
+        """Extract text from PDF."""
+        doc = fitz.open(file_path)
+        text_parts = []
+        for page in doc:
+            text_parts.append(page.get_text())
+        doc.close()
+        return "\n\n".join(text_parts)
+```
+
+### Retriever
+
+```python
+# backend/app/rag/retriever.py
+from app.rag.embeddings import embed_text
+from app.rag.vector_store import VectorStore
+from app.config import get_settings
+
+class Retriever:
+    def __init__(self):
+        self.settings = get_settings()
+        self.vector_store = VectorStore()
+
+    async def retrieve(self, query: str, top_k: int = None) -> str:
+        """Retrieve relevant context for a query."""
+        top_k = top_k or self.settings.RETRIEVAL_TOP_K
+
+        # Embed the query
+        query_embedding = await embed_text(query)
+
+        # Search vector store
+        results = await self.vector_store.search(
+            embedding=query_embedding,
+            top_k=top_k,
+        )
+
+        # Format results as context
+        if not results:
+            return ""
+
+        context_parts = []
+        for i, result in enumerate(results, 1):
+            source = result["metadata"].get("source", "Unknown")
+            text = result["text"]
+            context_parts.append(
+                f"[{i}] Source: {source}\n{text}"
+            )
+
+        return "\n\n".join(context_parts)
+```
+
+---
+
+## 12.8 Step 5: Tool Integration
+
+### Order Status Tool
+
+```python
+# backend/app/tools/order_status.py
+import httpx
+from app.config import get_settings
+
+class OrderStatusTool:
+    description = "Look up the status and details of a customer order by order ID."
+    parameters = {
+        "type": "object",
+        "properties": {
+            "order_id": {
+                "type": "string",
+                "description": "The order ID to look up (e.g., 'ORD-12345')",
+            },
+        },
+        "required": ["order_id"],
+    }
+
+    def __init__(self):
+        self.settings = get_settings()
+        self.base_url = self.settings.ORDER_API_URL  # Your order service
+
+    async def execute(self, order_id: str, user_id: str = None) -> dict:
+        """Fetch order status from the order service."""
+        try:
+            async with httpx.AsyncClient() as client:
+                response = await client.get(
+                    f"{self.base_url}/orders/{order_id}",
+                    headers={"Authorization": f"Bearer {self.settings.ORDER_API_KEY}"},
+                    timeout=10.0,
+                )
+                response.raise_for_status()
+
+                order = response.json()
+                return {
+                    "order_id": order["id"],
+                    "status": order["status"],
+                    "items": order["items"],
+                    "total": order["total"],
+                    "estimated_delivery": order.get("estimated_delivery"),
+                    "tracking_url": order.get("tracking_url"),
+                }
+
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code == 404:
+                return {"error": f"Order {order_id} not found."}
+            return {"error": f"Failed to look up order: {e}"}
+        except Exception as e:
+            return {"error": f"Service error: {str(e)}"}
+```
+
+### Product Search Tool
+
+```python
+# backend/app/tools/products.py
+import httpx
+from app.config import get_settings
+
+class ProductSearchTool:
+    description = "Search for products by name, category, or keyword."
+    parameters = {
+        "type": "object",
+        "properties": {
+            "query": {
+                "type": "string",
+                "description": "Search query for products",
+            },
+            "category": {
+                "type": "string",
+                "description": "Optional category filter",
+            },
+        },
+        "required": ["query"],
+    }
+
+    def __init__(self):
+        self.settings = get_settings()
+
+    async def execute(self, query: str, category: str = None) -> dict:
+        """Search products from the product catalog."""
+        try:
+            async with httpx.AsyncClient() as client:
+                params = {"q": query, "limit": 5}
+                if category:
+                    params["category"] = category
+
+                response = await client.get(
+                    f"{self.settings.PRODUCT_API_URL}/search",
+                    params=params,
+                    timeout=10.0,
+                )
+                response.raise_for_status()
+
+                products = response.json()["products"]
+                return {
+                    "products": [
+                        {
+                            "name": p["name"],
+                            "price": p["price"],
+                            "in_stock": p["in_stock"],
+                            "description": p["description"][:200],
+                        }
+                        for p in products
+                    ],
+                    "total_results": len(products),
+                }
+
+        except Exception as e:
+            return {"error": f"Product search failed: {str(e)}"}
+```
+
+### Support Ticket Tool
+
+```python
+# backend/app/tools/tickets.py
+from app.config import get_settings
+import uuid
+
+class TicketTool:
+    description = "Create a support ticket for issues that require human attention."
+    parameters = {
+        "type": "object",
+        "properties": {
+            "subject": {
+                "type": "string",
+                "description": "Brief subject line for the ticket",
+            },
+            "description": {
+                "type": "string",
+                "description": "Detailed description of the issue",
+            },
+            "priority": {
+                "type": "string",
+                "enum": ["low", "medium", "high", "urgent"],
+                "description": "Priority level",
+            },
+        },
+        "required": ["subject", "description"],
+    }
+
+    def __init__(self):
+        self.settings = get_settings()
+
+    async def execute(
+        self,
+        subject: str,
+        description: str,
+        priority: str = "medium",
+        user_id: str = None,
+    ) -> dict:
+        """Create a support ticket."""
+        ticket_id = f"TKT-{uuid.uuid4().hex[:8].upper()}"
+
+        # In production: save to database and notify support team
+        return {
+            "ticket_id": ticket_id,
+            "subject": subject,
+            "priority": priority,
+            "status": "created",
+            "message": f"Support ticket {ticket_id} has been created. Our team will respond within 24 hours.",
+        }
+```
+
+---
+
+## 12.9 Step 6: Frontend Chat UI
+
+### React Chat Component
+
+```tsx
+// frontend/src/components/ChatWindow.tsx
+import { useState, useRef, useEffect } from 'react';
+
+interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  sources?: Array<{ text: string; source: string }>;
+  timestamp: Date;
+}
+
+export default function ChatWindow() {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [conversationId, setConversationId] = useState<string | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(scrollToBottom, [messages]);
+
+  const sendMessage = async () => {
+    if (!input.trim() || isLoading) return;
+
+    const userMessage: Message = {
+      id: crypto.randomUUID(),
+      role: 'user',
+      content: input,
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInput('');
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/v1/chat/stream', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${getAuthToken()}`,
+        },
+        body: JSON.stringify({
+          message: input,
+          conversation_id: conversationId,
+        }),
+      });
+
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      let assistantContent = '';
+
+      // Create placeholder for assistant message
+      const assistantId = crypto.randomUUID();
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: assistantId,
+          role: 'assistant',
+          content: '',
+          timestamp: new Date(),
+        },
+      ]);
+
+      while (reader) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const text = decoder.decode(value);
+        const lines = text.split('\n');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6);
+            if (data === '[DONE]') break;
+
+            try {
+              const chunk = JSON.parse(data);
+              if (chunk.type === 'token') {
+                assistantContent += chunk.content;
+                setMessages((prev) =>
+                  prev.map((m) =>
+                    m.id === assistantId
+                      ? { ...m, content: assistantContent }
+                      : m
+                  )
+                );
+              } else if (chunk.type === 'sources') {
+                setMessages((prev) =>
+                  prev.map((m) =>
+                    m.id === assistantId
+                      ? { ...m, sources: chunk.sources }
+                      : m
+                  )
+                );
+              }
+            } catch {
+              // Skip malformed JSON
+            }
+          }
+        }
+      }
+
+      if (!conversationId) {
+        // Extract conversation ID from first response
+        const idMatch = messages[messages.length - 1]?.id;
+        if (idMatch) setConversationId(idMatch);
+      }
+    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: 'assistant',
+          content: 'Sorry, something went wrong. Please try again.',
+          timestamp: new Date(),
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-col h-screen max-w-2xl mx-auto">
+      {/* Header */}
+      <div className="p-4 border-b bg-white shadow-sm">
+        <h1 className="text-xl font-semibold">AgentAssist</h1>
+        <p className="text-sm text-gray-500">
+          AI-powered support · Always available
+        </p>
+      </div>
+
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {messages.length === 0 && (
+          <div className="text-center text-gray-400 mt-20">
+            <p className="text-lg">How can I help you today?</p>
+            <p className="text-sm mt-2">
+              Ask about orders, products, or anything else
+            </p>
+          </div>
+        )}
+
+        {messages.map((msg) => (
+          <div
+            key={msg.id}
+            className={`flex ${
+              msg.role === 'user' ? 'justify-end' : 'justify-start'
+            }`}
+          >
+            <div
+              className={`max-w-[80%] rounded-lg p-3 ${
+                msg.role === 'user'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-900'
+              }`}
+            >
+              <p className="whitespace-pre-wrap">{msg.content}</p>
+              {msg.sources && msg.sources.length > 0 && (
+                <div className="mt-2 pt-2 border-t border-gray-200 text-xs text-gray-500">
+                  <p className="font-medium">Sources:</p>
+                  {msg.sources.map((s, i) => (
+                    <p key={i}>📄 {s.source}</p>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+
+        {isLoading && messages[messages.length - 1]?.content === '' && (
+          <div className="flex justify-start">
+            <div className="bg-gray-100 rounded-lg p-3">
+              <div className="flex space-x-1">
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-75" />
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-150" />
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Input */}
+      <div className="p-4 border-t bg-white">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            sendMessage();
+          }}
+          className="flex gap-2"
+        >
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Type your message..."
+            className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={isLoading}
+          />
+          <button
+            type="submit"
+            disabled={isLoading || !input.trim()}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+          >
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function getAuthToken(): string {
+  return localStorage.getItem('token') || '';
+}
+```
+
+---
+
+## 12.10 Step 7: Docker
+
+### Backend Dockerfile
+
+```dockerfile
+# backend/Dockerfile
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Create non-root user
+RUN useradd --create-home appuser
+USER appuser
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+### Frontend Dockerfile
+
+```dockerfile
+# frontend/Dockerfile
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+```
+
+### Docker Compose
+
+```yaml
+# docker-compose.yml
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/agentassist
+      - REDIS_URL=redis://redis:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - CHROMA_PATH=/data/chroma
+    volumes:
+      - chroma_data:/data/chroma
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_DB=agentassist
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  chroma_data:
+```
+
+---
+
+## 12.11 Step 8: Cloud Deployment
+
+### AWS ECS Deployment
+
+```bash
+# Step 1: Build and push Docker images
+aws ecr get-login-password --region us-east-1 | \
+  docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-east-1.amazonaws.com
+
+docker build -t agent-assist-backend ./backend
+docker tag agent-assist-backend:latest <account-id>.dkr.ecr.us-east-1.amazonaws.com/agent-assist-backend:latest
+docker push <account-id>.dkr.ecr.us-east-1.amazonaws.com/agent-assist-backend:latest
+
+# Step 2: Create ECS cluster
+aws ecs create-cluster --cluster-name agent-assist
+
+# Step 3: Register task definition
+aws ecs register-task-definition --cli-input-json file://task-definition.json
+
+# Step 4: Create service
+aws ecs create-service \
+  --cluster agent-assist \
+  --service-name agent-assist-service \
+  --task-definition agent-assist:1 \
+  --desired-count 2 \
+  --launch-type FARGATE \
+  --network-configuration "awsvpcConfiguration={subnets=[subnet-xxx],securityGroups=[sg-xxx],assignPublicIp=ENABLED}" \
+  --load-balancers "targetGroupArn=arn:aws:...,containerName=backend,containerPort=8000"
+```
+
+### GCP Cloud Run Deployment
+
+```bash
+# Build and deploy backend
+gcloud builds submit --tag gcr.io/PROJECT_ID/agent-assist-backend ./backend
+
+gcloud run deploy agent-assist-backend \
+  --image gcr.io/PROJECT_ID/agent-assist-backend \
+  --platform managed \
+  --region us-central1 \
+  --memory 2Gi \
+  --min-instances 1 \
+  --max-instances 10 \
+  --set-env-vars "OPENAI_API_KEY=${OPENAI_API_KEY},DATABASE_URL=${DATABASE_URL}"
+
+# Build and deploy frontend
+gcloud builds submit --tag gcr.io/PROJECT_ID/agent-assist-frontend ./frontend
+
+gcloud run deploy agent-assist-frontend \
+  --image gcr.io/PROJECT_ID/agent-assist-frontend \
+  --platform managed \
+  --region us-central1 \
+  --memory 512Mi
+```
+
+---
+
+## 12.12 Step 9: Monitoring
+
+### Structured Logging
+
+```python
+# backend/app/core/logging.py
+import structlog
+import sys
+
+def setup_logging():
+    structlog.configure(
+        processors=[
+            structlog.processors.TimeStamper(fmt="iso"),
+            structlog.processors.add_log_level,
+            structlog.processors.StackInfoRenderer(),
+            structlog.processors.format_exc_info,
+            structlog.processors.JSONRenderer(),
+        ],
+        wrapper_class=structlog.BoundLogger,
+        context_class=dict,
+        logger_factory=structlog.PrintLoggerFactory(file=sys.stdout),
+    )
+
+# Usage
+logger = structlog.get_logger()
+
+logger.info(
+    "chat_request",
+    user_id="user_123",
+    message_length=42,
+    conversation_id="conv_456",
+)
+
+logger.info(
+    "chat_response",
+    user_id="user_123",
+    tokens_used=350,
+    latency_ms=1200,
+    model="gpt-4o",
+    tool_calls=[],
+)
+```
+
+### Prometheus Metrics
+
+```python
+# backend/app/core/metrics.py
+from prometheus_client import Counter, Histogram, Gauge
+
+# Request metrics
+REQUEST_COUNT = Counter(
+    "agent_assist_requests_total",
+    "Total number of chat requests",
+    ["method", "status"],
+)
+
+REQUEST_LATENCY = Histogram(
+    "agent_assist_request_duration_seconds",
+    "Request latency in seconds",
+    ["endpoint"],
+    buckets=[0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 10.0],
+)
+
+# Token metrics
+TOKENS_USED = Counter(
+    "agent_assist_tokens_total",
+    "Total tokens consumed",
+    ["model", "type"],  # type: prompt or completion
+)
+
+# RAG metrics
+RETRIEVAL_LATENCY = Histogram(
+    "agent_assist_retrieval_duration_seconds",
+    "RAG retrieval latency",
+    buckets=[0.05, 0.1, 0.25, 0.5, 1.0],
+)
+
+CHUNKS_RETRIEVED = Histogram(
+    "agent_assist_chunks_retrieved",
+    "Number of chunks retrieved per query",
+    buckets=[1, 3, 5, 10, 20],
+)
+
+# Tool metrics
+TOOL_CALLS = Counter(
+    "agent_assist_tool_calls_total",
+    "Total tool invocations",
+    ["tool_name", "status"],
+)
+
+# Active conversations
+ACTIVE_CONVERSATIONS = Gauge(
+    "agent_assist_active_conversations",
+    "Number of active conversations",
+)
+```
+
+### Health Check Endpoint
+
+```python
+# backend/app/main.py
+from fastapi import FastAPI
+from app.core.logging import setup_logging
+from app.core.metrics import REQUEST_COUNT
+
+app = FastAPI(title="AgentAssist", version="1.0.0")
+setup_logging()
+
+@app.get("/health")
+async def health_check():
+    """Health check for load balancers."""
+    return {"status": "healthy", "version": "1.0.0"}
+
+@app.get("/metrics")
+async def metrics():
+    """Prometheus metrics endpoint."""
+    from prometheus_client import generate_latest
+    from fastapi.responses import Response
+    return Response(
+        content=generate_latest(),
+        media_type="text/plain",
+    )
+```
+
+---
+
+## 12.13 Complete Project Code
+
+Here is the minimal but complete version of the entire backend in one file. This shows all the pieces working together:
+
+```python
+"""AgentAssist - Complete Backend (Single File Version)."""
+
+import json
+import uuid
+import time
+from pathlib import Path
+
+import fitz
+import chromadb
+import numpy as np
+from openai import AsyncOpenAI
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse, JSONResponse
+from pydantic import BaseModel
+
+# ═══════════════════════════════════════════════════════════════
+#  Configuration
+# ═══════════════════════════════════════════════════════════════
+
+OPENAI_API_KEY = "your-key-here"
+LLM_MODEL = "gpt-4o"
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 50
+TOP_K = 5
+
+# ═══════════════════════════════════════════════════════════════
+#  Initialize
+# ═══════════════════════════════════════════════════════════════
+
+app = FastAPI(title="AgentAssist")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+client = AsyncOpenAI(api_key=OPENAI_API_KEY)
+chroma = chromadb.PersistentClient(path="./chroma_db")
+collection = chroma.get_or_create_collection(
+    name="knowledge",
+    metadata={"hnsw:space": "cosine"},
+)
+
+# In-memory conversation store (use DB in production)
+conversations: dict[str, list[dict]] = {}
+
+# ═══════════════════════════════════════════════════════════════
+#  Embedding
+# ═══════════════════════════════════════════════════════════════
+
+def get_embeddings(texts: list[str]) -> list[list[float]]:
+    response = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=texts,
+    )
+    return [item.embedding for item in response.data]
+
+# ═══════════════════════════════════════════════════════════════
+#  RAG
+# ═══════════════════════════════════════════════════════════════
+
+def chunk_text(text: str) -> list[str]:
+    words = text.split()
+    return [
+        " ".join(words[i:i + CHUNK_SIZE])
+        for i in range(0, len(words), CHUNK_SIZE - CHUNK_OVERLAP)
+        if words[i:i + CHUNK_SIZE]
+    ]
+
+def ingest_document(file_path: str) -> dict:
+    doc = fitz.open(file_path)
+    text = "\n".join(page.get_text() for page in doc)
+    doc.close()
+
+    chunks = chunk_text(text)
+    embeddings = get_embeddings(chunks)
+
+    ids = [f"{Path(file_path).stem}_{i}" for i in range(len(chunks))]
+    metadatas = [{"source": str(file_path)} for _ in chunks]
+
+    collection.add(
+        documents=chunks,
+        embeddings=embeddings,
+        ids=ids,
+        metadatas=metadatas,
+    )
+
+    return {"chunks": len(chunks), "source": file_path}
+
+def retrieve(query: str, top_k: int = TOP_K) -> list[dict]:
+    query_emb = get_embeddings([query])[0]
+    results = collection.query(
+        query_embeddings=[query_emb],
+        n_results=top_k,
+        include=["documents", "metadatas", "distances"],
+    )
+    return [
+        {"text": doc, "source": meta["source"], "score": 1 - dist}
+        for doc, meta, dist in zip(
+            results["documents"][0],
+            results["metadatas"][0],
+            results["distances"][0],
+        )
+    ]
+
+# ═══════════════════════════════════════════════════════════════
+#  Agent
+# ═══════════════════════════════════════════════════════════════
+
+SYSTEM_PROMPT = """You are AgentAssist, a helpful customer support agent.
+Answer questions using the provided context. Be concise and cite sources.
+If unsure, say so. Never make up information."""
+
+async def agent_respond(message: str, conversation_id: str) -> dict:
+    start = time.time()
+
+    # Get history
+    history = conversations.get(conversation_id, [])
+
+    # Retrieve context
+    docs = retrieve(message)
+    context = "\n\n".join(
+        f"[{i+1}] {d['text']}" for i, d in enumerate(docs)
+    )
+
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT + f"\n\nContext:\n{context}"},
+        *history,
+        {"role": "user", "content": message},
+    ]
+
+    response = await client.chat.completions.create(
+        model=LLM_MODEL,
+        messages=messages,
+        temperature=0.1,
+        max_tokens=1024,
+    )
+
+    answer = response.choices[0].message.content
+    tokens = response.usage.total_tokens
+
+    # Save to history
+    history.append({"role": "user", "content": message})
+    history.append({"role": "assistant", "content": answer})
+    conversations[conversation_id] = history
+
+    return {
+        "response": answer,
+        "sources": [{"text": d["text"][:200], "source": d["source"]} for d in docs],
+        "tokens": tokens,
+        "latency_ms": (time.time() - start) * 1000,
+    }
+
+# ═══════════════════════════════════════════════════════════════
+#  Endpoints
+# ═══════════════════════════════════════════════════════════════
+
+class ChatRequest(BaseModel):
+    message: str
+    conversation_id: str | None = None
+
+@app.post("/api/v1/chat")
+async def chat(request: ChatRequest):
+    conv_id = request.conversation_id or str(uuid.uuid4())
+    result = await agent_respond(request.message, conv_id)
+    return {**result, "conversation_id": conv_id}
+
+@app.post("/api/v1/ingest")
+async def ingest(file_path: str):
+    return ingest_document(file_path)
+
+@app.get("/health")
+async def health():
+    return {"status": "healthy"}
+
+# ═══════════════════════════════════════════════════════════════
+#  Run
+# ═══════════════════════════════════════════════════════════════
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+```
+
+---
+
+## 12.14 Full System Architecture Diagram
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         AgentAssist - Full Architecture                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│   CLIENT LAYER                                                               │
+│   ┌─────────────────────────────────────────────────────┐                   │
+│   │  Browser / Mobile App                                │                   │
+│   │  ┌──────────────┐  ┌──────────────┐                 │                   │
+│   │  │  Chat UI     │  │  Admin Panel │                 │                   │
+│   │  │  (React)     │  │  (React)     │                 │                   │
+│   │  └──────┬───────┘  └──────┬───────┘                 │                   │
+│   └─────────┼──────────────────┼────────────────────────┘                   │
+│             │ SSE / WebSocket  │ HTTP                                        │
+│             ▼                  ▼                                             │
+│   ────────────────────────────────────────────────────────────              │
+│   API GATEWAY LAYER                                                         │
+│   ┌─────────────────────────────────────────────────────┐                   │
+│   │  FastAPI + Nginx                                     │                   │
+│   │  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────────┐   │                   │
+│   │  │ JWT    │ │ Rate   │ │ CORS   │ │ Request    │   │                   │
+│   │  │ Auth   │ │ Limit  │ │ Config │ │ Logging    │   │                   │
+│   │  └────────┘ └────────┘ └────────┘ └────────────┘   │                   │
+│   └──────────────────────┬──────────────────────────────┘                   │
+│                          │                                                   │
+│   ────────────────────────────────────────────────────────────              │
+│   AGENT LAYER                                                                │
+│   ┌─────────────────────────────────────────────────────┐                   │
+│   │  Agent Core (Python)                                 │                   │
+│   │  ┌──────────────┐  ┌──────────────┐                 │                   │
+│   │  │  Planner     │  │  Executor    │                 │                   │
+│   │  │  (LLM calls) │  │  (Tool calls)│                 │                   │
+│   │  └──────┬───────┘  └──────┬───────┘                 │                   │
+│   │         │                  │                          │                   │
+│   │  ┌──────▼──────────────────▼───────┐                 │                   │
+│   │  │  Memory Manager                  │                 │                   │
+│   │  │  • Short-term (Redis)           │                 │                   │
+│   │  │  • Long-term (PostgreSQL)       │                 │                   │
+│   │  └─────────────────────────────────┘                 │                   │
+│   └──────┬──────────────┬──────────────┬────────────────┘                   │
+│          │              │              │                                     │
+│   ───────┼──────────────┼──────────────┼─────────────────────              │
+│          │              │              │                                     │
+│   DATA LAYER            │              │                                     │
+│   ┌──────▼──┐  ┌────────▼──┐  ┌───────▼──────┐                            │
+│   │  RAG    │  │  Tools    │  │  Storage     │                            │
+│   │ Engine  │  │  ┌──────┐ │  │  ┌────────┐  │                            │
+│   │ ┌─────┐ │  │  │Order │ │  │  │PostgreSQL│ │                            │
+│   │ │Embed│ │  │  │API   │ │  │  │Conversa-│ │                            │
+│   │ └─────┘ │  │  ├──────┤ │  │  │tions    │ │                            │
+│   │ ┌─────┐ │  │  │Prod- │ │  │  ├────────┤ │                            │
+│   │ │Vec- │ │  │  │ucts  │ │  │  │Users   │ │                            │
+│   │ │tor  │ │  │  ├──────┤ │  │  ├────────┤ │                            │
+│   │ │DB   │ │  │  │Ticke-│ │  │  │Docu-   │ │                            │
+│   │ └─────┘ │  │  │ts    │ │  │  │ments   │ │                            │
+│   └─────────┘  │  └──────┘ │  └──────────┘ │                            │
+│                └───────────┘  └──────────────┘                            │
+│                                                                             │
+│   ────────────────────────────────────────────────────────────              │
+│   OBSERVABILITY LAYER                                                       │
+│   ┌─────────────────────────────────────────────────────┐                   │
+│   │  ┌──────────┐ ┌──────────┐ ┌──────────┐            │                   │
+│   │  │ Structured│ │Prometheus│ │ Sentry   │            │                   │
+│   │  │ Logging  │ │ Metrics  │ │ Errors   │            │                   │
+│   │  └──────────┘ └──────────┘ └──────────┘            │                   │
+│   └─────────────────────────────────────────────────────┘                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 12.15 Deployment Checklist
+
+### Pre-Deployment
+
+```
+□ All tests passing (unit + integration)
+□ Environment variables configured for production
+□ API keys rotated (not shared with development)
+□ Database migrations applied
+□ Docker images built and pushed to registry
+□ Health check endpoint working
+□ Structured logging configured
+□ Error tracking (Sentry) configured
+□ Rate limiting configured
+□ CORS origins set to production domain
+□ HTTPS enabled (SSL certificates)
+```
+
+### Infrastructure
+
+```
+□ Load balancer configured
+□ Auto-scaling rules set (min: 2, max: 10)
+□ Database backups scheduled (daily)
+□ Redis persistence configured
+□ Vector store persistence configured
+□ DNS records configured
+□ CDN configured for static assets
+```
+
+### Security
+
+```
+□ All secrets in environment variables (not in code)
+□ JWT secret is cryptographically random
+□ API keys have minimum required permissions
+□ Input validation on all endpoints
+□ SQL injection prevention (parameterized queries)
+□ Rate limiting per user and global
+□ CORS restricted to production origins
+□ Content Security Policy headers set
+□ Vulnerability scan completed (Trivy/Snyk)
+```
+
+### Monitoring
+
+```
+□ Structured logs flowing to log aggregator
+□ Metrics dashboard created
+□ Alerting rules configured:
+  - Error rate > 5%
+  - P99 latency > 5 seconds
+  - CPU > 80% sustained
+  - Memory > 85%
+  - LLM API errors > 1%
+□ On-call rotation configured
+□ Runbook for common issues documented
+```
+
+### Post-Deployment
+
+```
+□ Smoke test all endpoints
+□ Verify RAG retrieval quality
+□ Monitor first 100 conversations
+□ Check cost per conversation
+□ Validate streaming responses
+□ Test escalation flow end-to-end
+□ Load test with expected traffic
+□ Document any post-deploy issues
+```
+
+---
+
+## 12.16 Key Takeaways
+
+1. **Start with requirements, not code**. Define what you are building and why before writing a single line. User stories and non-functional requirements guide every architectural decision.
+
+2. **Architecture is layers**. Separate the API gateway, agent logic, RAG engine, tools, and data storage. Each layer can be developed, tested, and scaled independently.
+
+3. **The agent core is a router**. It receives a message, decides what to do (RAG query, tool call, or direct answer), and returns a response. Keep this logic clean and testable.
+
+4. **RAG is not just retrieval**. Ingestion, chunking, embedding, retrieval, and reranking are all separate concerns. Build and optimize each one independently.
+
+5. **Tools extend the agent's capabilities**. Wrap external APIs as tools with clear descriptions and parameter schemas. The LLM decides when to use them.
+
+6. **Streaming is essential for UX**. Users expect real-time responses, not a loading spinner. Implement server-sent events from the start.
+
+7. **Docker makes deployment reproducible**. Containerize everything. Docker Compose for development, ECS/Cloud Run for production.
+
+8. **Monitor from day one**. Structured logging, Prometheus metrics, and error tracking are not optional. You cannot fix what you cannot see.
+
+9. **Security is not a feature**. JWT auth, rate limiting, input validation, and secrets management are foundational. Do not bolt them on later.
+
+10. **Ship, then iterate**. The single-file version in this chapter is a working system. Start there, then decompose into microservices as scale demands.
+
+---
+
+> **Next Chapter**: We will address the elephant in the room — security. How do you protect your agents from prompt injection, jailbreaks, and data leaks?
+4:["$","div",null,{"children":["$","$Lf",null,{"content":"$10","currentChapter":{"id":"agents-ch-12","number":12,"title":"Complete Project: End to End","subtitle":"From Zero to Production — One Complete Build","description":"Build a full AI agent project from architecture to deployment — API, frontend, Docker, cloud, and monitoring.","slug":"complete-project-deployment","part":"Part III: Build from Scratch","estimatedPages":22,"topics":["Full project architecture","Step-by-step build","API design","Frontend integration","Docker & cloud deployment","Monitoring setup"],"icon":"🚀","bookId":"ai-agents"}}]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+c:[["$","title","0",{"children":"AI Agents: The Complete Guide"}],["$","meta","1",{"name":"description","content":"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"}],["$","meta","2",{"name":"author","content":"Manjunath Kalburgi"}],["$","meta","3",{"name":"keywords","content":"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"}]]

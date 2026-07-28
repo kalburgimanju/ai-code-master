@@ -1,0 +1,189 @@
+# ATS Resume Analyzer Configuration
+
+# Scoring weights for different analysis components
+scoring_weights:
+  keywords: 0.3        # Importance of keyword matching
+  skills: 0.25         # Importance of skills alignment
+  experience: 0.25     # Importance of experience matching
+  education: 0.1       # Importance of education matching
+  grammar: 0.05        # Importance of text quality
+  completeness: 0.05   # Importance of resume completeness
+
+# Minimum thresholds for different components
+minimum_thresholds:
+  keywords: 20         # Minimum keywords required (percentage)
+  skills: 15            # Minimum skills match (percentage)
+  experience: 12        # Minimum experience alignment (percentage)
+  education: 10         # Minimum education match (percentage)
+  overall: 50           # Minimum overall ATS score
+
+# Analysis settings
+analysis_settings:
+  max_text_length: 50000    # Maximum characters to process from resumes
+  max_keywords_count: 100    # Maximum number of keywords to extract
+  max_skills_count: 50       # Maximum number of skills to extract
+  experience_years_threshold: 3  # Minimum experience for senior roles
+  industry_specific: true    # Enable industry-specific analysis
+
+# Supported file formats and their configurations
+file_formats:
+  pdf:
+    enabled: true
+    max_size_mb: 10
+    ocr_supported: true
+    extract_metadata: true
+  doc:
+    enabled: true
+    max_size_mb: 10
+    ocr_supported: false
+    extract_metadata: true
+  docx:
+    enabled: true
+    max_size_mb: 10
+    ocr_supported: false
+    extract_metadata: true
+  txt:
+    enabled: true
+    max_size_mb: 5
+    ocr_supported: false
+    extract_metadata: false
+  image:
+    enabled: true
+    max_size_mb: 5
+    ocr_supported: true
+    ocr_languages: ["en"]
+
+# Position levels and their characteristics
+position_levels:
+  auto:
+    description: "Automatically determine from resume"
+    priority_keywords: []
+  junior:
+    description: "Entry-level or less than 3 years experience"
+    priority_keywords: ["fresh Graduate", "Entry Level", "Junior", "Trainee"]
+  mid:
+    description: "Mid-level or 3-8 years experience"
+    priority_keywords: ["Mid-Level", "Intermediate", "5+ years", "8 years"]
+  senior:
+    description: "Senior-level or 8+ years experience"
+    priority_keywords: ["Senior", "Lead", "Principal", "10+ years"]
+  director:
+    description: "Director level or 15+ years experience"
+    priority_keywords: ["Director", "VP", "Vice President", "15+ years"]
+  executive:
+    description: "Executive level or 20+ years experience"
+    priority_keywords: ["CEO", "CTO", "Founder", "C-Suite"]
+
+# Industry-specific configurations
+industries:
+  technology:
+    priority_skills: ["Python", "JavaScript", "React", "AWS", "Docker", "Kubernetes", "Machine Learning", "Git"]
+    priority_keywords: ["technical", "development", "engineering", "programming", "software", "systems"]
+    education_level: ["Computer Science", "Computer Engineering", "Information Technology"]
+
+  finance:
+    priority_skills: ["Financial Analysis", "Excel", "SQL", "Bloomberg", "Risk Management", "CFA"]
+    priority_keywords: ["financial", "accounting", "analysis", "reporting", "investment", "banking"]
+    education_level: ["Finance", "Accounting", "Economics", "Business Administration"]
+
+  healthcare:
+    priority_skills: ["Medical Terminology", "HIPAA", "Patient Care", "EMR", "Clinical", "Healthcare"]
+    priority_keywords: ["medical", "clinical", "patient", "healthcare", "hospital", "medical records"]
+    education_level: ["Medicine", "Nursing", "Healthcare Administration", "Biology"]
+
+  marketing:
+    priority_skills: ["Marketing Strategy", "Digital Marketing", "SEO", "Content Marketing", "Analytics", "Social Media"]
+    priority_keywords: ["marketing", "advertising", "branding", "sales", "customer", "market research"]
+    education_level: ["Marketing", "Business", "Communications", "Psychology"]
+
+  education:
+    priority_skills: ["Teaching", "Curriculum Development", "Classroom Management", "Lesson Planning", "Assessment"]
+    priority_keywords: ["teaching", "education", "learning", "classroom", "students", " curriculum"]
+    education_level: ["Education", "Teaching", "Pedagogy", "Instructional Design"]
+
+# Enterprise settings
+enterprise_settings:
+  api_rate_limits:
+    requests_per_minute: 60
+    requests_per_hour: 1000
+    concurrent_analyses: 5
+
+  security:
+    enable_audit_logging: true
+    enable_rate_limiting: true
+    enable_ip_whitelist: false
+    data_retention_days: 90
+
+  quality_control:
+    enable_automated_quality_checks: true
+    minimum_confidence_threshold: 0.7
+    require_human_review_for_low_scores: true
+
+# Analytics and tracking
+analytics:
+  enable_usage_tracking: true
+  enable_error_tracking: true
+  enable_performance_monitoring: true
+  anonymized_user_id: true
+
+# External integrations
+integrations:
+  openai:
+    api_key: ""  # Set via environment variable
+    model: "gpt-4-turbo"
+    max_tokens: 1000
+    temperature: 0.3
+
+  anthropic:
+    api_key: ""  # Set via environment variable
+    model: "claude-2"
+    max_tokens: 1000
+    temperature: 0.3
+
+  storage:
+    temp_dir: "temp_uploads"
+    max_temp_file_age_days: 7
+    cleanup_interval_hours: 24
+
+  cache:
+    enabled: true
+    ttl_seconds: 3600
+    max_entries: 1000
+
+# Monitoring and logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/app.log"
+  max_file_size_mb: 10
+  backup_count: 5
+
+  log_analytics:
+    enable_request_logging: true
+    enable_error_logging: true
+    enable_performance_logging: true
+    log_anonymized_data: true
+
+# Notification settings
+notifications:
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    sender_email: ""
+    sender_password: ""
+
+  webhook:
+    enabled: false
+    url: ""
+    secret_key: ""
+    events: ["analysis_completed", "analysis_failed"]
+
+# Backup and recovery
+backup:
+  enabled: true
+  provider: "local"  # local, s3, google_cloud
+  path: "./backups"
+  frequency_hours: 24
+  retention_days: 30
+  compression: true

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0a0a0f; font-family: "Source Serif 4", Georgia, serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; }
+    .scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .clip { visibility: hidden; }
+  </style>
+</head>
+<body>
+  <div
+    id="root"
+    data-composition-id="main"
+    data-start="0"
+    data-duration="38"
+    data-width="1920"
+    data-height="1080"
+  >
+    <!-- SCENE 1: Hero (0-5s) -->
+    <div
+      id="el-01-hero"
+      class="scene"
+      data-composition-id="01-hero"
+      data-composition-src="compositions/frames/01-hero.html"
+      data-start="0"
+      data-duration="5"
+      data-track-index="1"
+    ></div>
+    <audio
+      id="el-01-hero-voice"
+      src="assets/voice/01.wav"
+      data-start="0"
+      data-duration="5"
+      data-track-index="10"
+      data-volume="1"
+    ></audio>
+
+    <!-- SCENE 2: Basic Prompts (5-14s) -->
+    <div
+      id="el-02-basic"
+      class="scene"
+      data-composition-id="02-basic-prompts"
+      data-composition-src="compositions/frames/02-basic-prompts.html"
+      data-start="5"
+      data-duration="9"
+      data-track-index="1"
+    ></div>
+    <audio
+      id="el-02-basic-voice"
+      src="assets/voice/02.wav"
+      data-start="5"
+      data-duration="9"
+      data-track-index="10"
+      data-volume="1"
+    ></audio>
+
+    <!-- SCENE 3: Advanced Prompts (14-21s) -->
+    <div
+      id="el-03-advanced"
+      class="scene"
+      data-composition-id="03-advanced-prompts"
+      data-composition-src="compositions/frames/03-advanced-prompts.html"
+      data-start="14"
+      data-duration="7"
+      data-track-index="1"
+    ></div>
+    <audio
+      id="el-03-advanced-voice"
+      src="assets/voice/03.wav"
+      data-start="14"
+      data-duration="7"
+      data-track-index="10"
+      data-volume="1"
+    ></audio>
+
+    <!-- SCENE 4: Scene-by-Scene (21-33s) -->
+    <div
+      id="el-04-scenes"
+      class="scene"
+      data-composition-id="04-scene-by-scene"
+      data-composition-src="compositions/frames/04-scene-by-scene.html"
+      data-start="21"
+      data-duration="12"
+      data-track-index="1"
+    ></div>
+    <audio
+      id="el-04-scenes-voice"
+      src="assets/voice/04.wav"
+      data-start="21"
+      data-duration="12"
+      data-track-index="10"
+      data-volume="1"
+    ></audio>
+
+    <!-- SCENE 5: CTA (33-38s) -->
+    <div
+      id="el-05-cta"
+      class="scene"
+      data-composition-id="05-cta"
+      data-composition-src="compositions/frames/05-cta.html"
+      data-start="33"
+      data-duration="5"
+      data-track-index="1"
+    ></div>
+    <audio
+      id="el-05-cta-voice"
+      src="assets/voice/05.wav"
+      data-start="33"
+      data-duration="5"
+      data-track-index="10"
+      data-volume="1"
+    ></audio>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = gsap.timeline({ paused: true });
+  </script>
+</body>
+</html>

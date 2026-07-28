@@ -1,0 +1,255 @@
+[span] FinPlanner
+[span] Real Estate & Finance
+[a] Dashboard
+[a] Properties
+[a] Financial Planner
+[a] AI Agents
+[a] Marketing
+[a] Marketplace
+[a] Community
+[a] Sign In
+[span] Welcome
+[span] Hubli • Bangalore • Mysore
+[h1] Real Estate Projects
+[p] Explore properties in Hubli, Bangalore & Mysore
+[button] All Cities
+[button] Hubli
+[button] Bangalore
+[button] Mysore
+[button] All
+[button] Apartment
+[button] Villa
+[button] Plot
+[button] All Budgets
+[button] Under ₹50L
+[button] ₹50L-₹1.5Cr
+[button] Above ₹1.5Cr
+[span] Hubli
+[span] Ready to Move
+[span] Premium
+[h3] Sobha City
+[p] Sobha Ltd
+[span] 4.3
+[div] Gokul Road
+[span] ₹35 L - ₹65 L
+[span] 980 - 1650 sqft
+[button] View Details
+[span] Hubli
+[span] Under Construction
+[span] Under Construction
+[h3] Prestige Enclave
+[p] Prestige Group
+[span] 4.5
+[div] Vidyanagar
+[span] ₹42 L - ₹78 L
+[span] 1100 - 1800 sqft
+[button] View Details
+[span] Hubli
+[span] Ready to Move
+[span] Affordable
+[h3] Brigade Heights
+[p] Brigade Group
+[span] 4.1
+[div] Mallikarjun Colony
+[span] ₹28 L - ₹55 L
+[span] 850 - 1450 sqft
+[button] View Details
+[span] Hubli
+[span] Under Construction
+[span] Luxury
+[h3] DLF Garden City
+[p] DLF Ltd
+[span] 4.6
+[div] Unkal Lake Area
+[span] ₹85 L - ₹1.8 Cr
+[span] 1800 - 3200 sqft
+[button] View Details
+[span] Bangalore
+[span] Ready to Move
+[span] IT Corridor
+[h3] Prestige Falcon City
+[p] Prestige Group
+[span] 4.4
+[div] Electronic City
+[span] ₹65 L - ₹1.2 Cr
+[span] 1025 - 1980 sqft
+[button] View Details
+[span] Bangalore
+[span] Under Construction
+[span] Luxury
+[h3] Sobha Neopolis
+[p] Sobha Ltd
+[span] 4.7
+[div] Sarjapur Road
+[span] ₹1.2 Cr - ₹2.5 Cr
+[span] 1450 - 2850 sqft
+[button] View Details
+[span] Bangalore
+[span] Ready to Move
+[span] Villa
+[h3] Brigade Meadows
+[p] Brigade Group
+[span] 4.5
+[div] Whitefield
+[span] ₹1.5 Cr - ₹3.2 Cr
+[span] 2000 - 4000 sqft
+[button] View Details
+[span] Bangalore
+[span] Pre-Launch
+[span] Pre-Launch
+[h3] DLF Park Place
+[p] DLF Ltd
+[span] 4.2
+[div] Yelahanka
+[span] ₹45 L - ₹85 L
+[span] 950 - 1650 sqft
+[button] View Details
+[span] Bangalore
+[span] Under Construction
+[span] Unique
+[h3] Godrej Waterside
+[p] Godrej Properties
+[span] 4.6
+[div] Kanakapura Road
+[span] ₹80 L - ₹1.6 Cr
+[span] 1200 - 2200 sqft
+[button] View Details
+[span] Mysore
+[span] Ready to Move
+[span] Highway
+[h3] Prestige Mysore
+[p] Prestige Group
+[span] 4.3
+[div] Mysore-Bangalore Highway
+[span] ₹38 L - ₹72 L
+[span] 960 - 1720 sqft
+[button] View Details
+[span] Mysore
+[span] Under Construction
+[span] Villa
+[h3] Brigade Sanctuary
+[p] Brigade Group
+[span] 4.4
+[div] Kuvempunagar
+[span] ₹65 L - ₹1.4 Cr
+[span] 1650 - 3000 sqft
+[button] View Details
+[span] Mysore
+[span] Ready to Move
+[span] Affordable
+[h3] Sobha Opal
+[p] Sobha Ltd
+[div] Hootagalli
+[span] ₹25 L - ₹48 L
+[span] 780 - 1350 sqft
+[button] View Details
+[span] Mysore
+[span] Pre-Launch
+[span] Plot
+[h3] DLF MyTown
+[p] DLF Ltd
+[span] 4.1
+[div] Ring Road
+[span] ₹15 L - ₹45 L
+[span] 600 - 2400 sqft
+[button] View Details
+[span] Hubli
+[span] Under Construction
+[span] Eco-friendly
+[h3] Godrej Greens
+[p] Godrej Properties
+[span] 4.2
+[div] Desur Road
+[span] ₹30 L - ₹52 L
+[span] 890 - 1420 sqft
+[button] View Details
+[span] Bangalore
+[span] Featured
+[span] Featured
+[h3] ASSETS VM – SRIVARI CITY
+[p] Assets Square Builders & Developers LLP
+[span] 4.3
+[div] Kolar–Srinivasapura Road
+[span] ₹27.59 L
+[span] 1200 sqft
+[button] View Details
+[span] Mysore
+[span] Verified
+[span] Featured
+[h3] Tallur Circle Project Dhanya's Aashraya
+[p] Owner: Rajesh (via Onyx Propcare)
+[span] 4.2
+[div] Tallur circle near TVS factory, Nanjungud
+[span] ₹24 L
+[span] 5 acres
+[button] View Details
+[span] Mandya
+[span] Verified
+[span] Featured
+[h3] Premium red soil Farm land near Kanakapura, 3Acres
+[p] Naveen Kumar E N (Property Owner)
+[span] 4.4
+[div] Nelligere, Doddaboovalli, Kanakapura
+[span] ₹4 Cr
+[span] 134.98 guntha (3 Acres 15 Guntas)
+[button] View Details
+[span] Bengaluru Urban
+[span] Verified
+[span] Featured
+[h3] 6 acre conversion land BBM A khata Pattandur Agrahara
+[p] Onyx Propcare
+[span] 4.5
+[div] Whitefield Road, Belathur, Pattandur Agrahara
+[span] ₹47 Cr
+[span] 6 acres
+[button] View Details
+[span] Dharwad
+[span] Verified
+[span] Featured
+[h3] Premium Sites available for Sale near Amargol, opp APMC
+[p] Owner: Manjunath Kal (via Onyx Propcare)
+[span] 4.3
+[div] EswarNagar, Hubballi, near APMC, Kia Showroom
+[span] ₹45 L
+[span] 1053 sqft
+[button] View Details
+[span] Dharwad
+[span] Verified
+[span] Featured
+[h3] Premium red soil farmland for sale
+[p] SYZSA Infra in JV with B. Mahendra & Bros. (BMB Lifespaces)
+[span] 4.4
+[div] Parasapura, Hubballi Taluku
+[span] ₹43.52 L
+[span] 1 guntha
+[button] View Details
+[span] Dharwad
+[span] Verified
+[span] Featured
+[h3] Premium Sites available at Tadasinakoppa
+[p] Owner: Manjunath Kal (via Onyx Propcare)
+[span] 4.2
+[div] Tadasinakoppa, Dharawada Taluku, near KHB Colony, IIT, SDM College
+[span] ₹37 L
+[span] 1053 sqft
+[button] View Details
+[span] Chikkaballapura
+[span] Featured
+[span] Featured
+[h3] Neralu farms
+[p] Abhilash Neralu (Property Owner)
+[span] 4.1
+[div] Neralu Korlaparthi Farms, Chinthamani
+[span] ₹495
+[span] 31.99 acres
+[button] View Details
+[span] Bangalore Rural
+[span] Featured
+[span] Featured
+[h3] ORAIYAN VATAVARANA
+[p] Owner: Chithra Mahadev (via Onyx Propcare)
+[span] 4.2
+[div] Ramohalli
+[span] ₹72 L
+[span] 1200 sqft
+[button] View Details

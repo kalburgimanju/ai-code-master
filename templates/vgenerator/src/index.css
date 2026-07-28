@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-finance-50: #eef2ff;
+  --color-finance-100: #e0e7ff;
+  --color-finance-200: #c7d2fe;
+  --color-finance-300: #a5b4fc;
+  --color-finance-400: #818cf8;
+  --color-finance-500: #6366f1;
+  --color-finance-600: #4f46e5;
+  --color-finance-700: #4338ca;
+  --color-finance-800: #3730a3;
+  --color-finance-900: #312e81;
+  --color-prop-500: #06b6d4;
+  --color-prop-600: #0891b2;
+  --color-dark-50: #f8fafc;
+  --color-dark-100: #f1f5f9;
+  --color-dark-200: #e2e8f0;
+  --color-dark-300: #cbd5e1;
+  --color-dark-400: #94a3b8;
+  --color-dark-500: #64748b;
+  --color-dark-600: #475569;
+  --color-dark-700: #334155;
+  --color-dark-800: #1e293b;
+  --color-dark-900: #0f172a;
+  --color-dark-950: #020617;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--color-dark-950);
+  color: var(--color-dark-200);
+}
+
+/* Video preview aspect ratio */
+.aspect-9\/16 {
+  aspect-ratio: 9/16;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-700);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-600);
+}
+
+/* Animation */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.6); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}

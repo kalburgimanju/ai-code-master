@@ -1,0 +1,1856 @@
+1:"$Sreact.fragment"
+2:I[89587,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js","/_next/static/chunks/16vgld9iclosn.js","/_next/static/chunks/2rb1230i-fez-.js"],"default"]
+7:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"OutletBoundary"]
+8:"$Sreact.suspense"
+3:Tde01,# Chapter 3: Introduction to AI Agents
+
+## What Makes an Agent Different from a Chatbot
+
+---
+
+> *"A chatbot answers your question. An agent solves your problem."*
+
+This chapter marks the turning point of our journey. We've covered LLMs and RAG — the building blocks. Now we assemble them into something far more powerful: an **AI Agent** that can reason, plan, and take actions in the real world.
+
+---
+
+## Table of Contents
+
+1. [Chatbot vs Agent: The Key Difference](#1-chatbot-vs-agent-the-key-difference)
+2. [The Agent Loop](#2-the-agent-loop)
+3. [Tool Use / Function Calling](#3-tool-use--function-calling)
+4. [Memory Systems](#4-memory-systems)
+5. [Planning](#5-planning)
+6. [Agent Frameworks Overview](#6-agent-frameworks-overview)
+7. [Architecture Patterns](#7-architecture-patterns)
+8. [Building a Simple Agent](#8-building-a-simple-agent)
+9. [Building an Agent with Memory](#9-building-an-agent-with-memory)
+10. [Key Takeaways](#10-key-takeaways)
+11. [Try It Yourself](#11-try-it-yourself)
+
+---
+
+## 1. Chatbot vs Agent: The Key Difference
+
+### The Spectrum of AI Systems
+
+```
+Simple                                                     Complex
+│                                                            │
+▼                                                            ▼
+┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+│  Basic   │  │  Smart   │  │  RAG-    │  │  Tool-   │  │  Full    │
+│  Chatbot │→ │ Chatbot  │→ │  Augmented│→ │  Using   │→ │  Agent   │
+│          │  │          │  │  Chatbot  │  │  Agent   │  │          │
+│ Single   │  │ Multi-   │  │ Accesses │  │ Can call │  │ Plans,   │
+│ turn,    │  │ turn,    │  │ external │  │ APIs &   │  │ reasons, │
+│ no state │  │ has      │  │ docs     │  │ tools    │  │ acts     │
+│          │  │ memory   │  │          │  │          │  │ autonomously│
+└──────────┘  └──────────┘  └──────────┘  └──────────┘  └──────────┘
+```
+
+### Comparison Table
+
+| Feature | Chatbot | RAG Chatbot | AI Agent |
+|---------|---------|-------------|----------|
+| **Responds to questions** | ✅ | ✅ | ✅ |
+| **Maintains conversation** | ✅ | ✅ | ✅ |
+| **Accesses external data** | ❌ | ✅ | ✅ |
+| **Uses external tools** | ❌ | ❌ | ✅ |
+| **Takes autonomous actions** | ❌ | ❌ | ✅ |
+| **Plans multi-step tasks** | ❌ | ❌ | ✅ |
+| **Self-corrects errors** | ❌ | ❌ | ✅ |
+| **Interacts with APIs** | ❌ | ❌ | ✅ |
+| **Handles complex workflows** | ❌ | ❌ | ✅ |
+
+### The "Action" Difference
+
+The defining characteristic of an agent is **taking action**:
+
+```
+User: "Book me a flight from NYC to London next Tuesday"
+
+Chatbot:
+  "I'd recommend checking Expedia or Google Flights for 
+   flights from NYC to London. Prices typically range from 
+   $400-$800 round trip."
+  (Provides advice but CANNOT book the flight)
+
+Agent:
+  1. Searches available flights on Tuesday
+  2. Filters by user preferences (economy, non-stop)
+  3. Selects best option based on price and time
+  4. Books the flight using the airline API
+  5. Sends confirmation to user's email
+  (Takes ACTION and completes the task)
+```
+
+### Real-World Agent Capabilities
+
+```python
+# What an agent can DO vs what a chatbot can do
+
+chatbot_capabilities = {
+    "answer_questions": True,
+    "have_conversations": True,
+    "provide_explanations": True,
+    "summarize_text": True,
+    "translate": True,
+}
+
+agent_capabilities = {
+    **chatbot_capabilities,
+    "search_the_web": True,
+    "read_and_write_files": True,
+    "execute_code": True,
+    "call_apis": True,
+    "send_emails": True,
+    "manage_databases": True,
+    "browse_websites": True,
+    "make_decisions": True,
+    "learn_from_feedback": True,
+    "collaborate_with_other_agents": True,
+}
+```
+
+---
+
+## 2. The Agent Loop
+
+### The Core Cycle
+
+Every AI agent operates on a fundamental loop:
+
+```
+                    ┌─────────────────┐
+                    │                 │
+                    ▼                 │
+            ┌──────────────┐         │
+            │   OBSERVE    │         │
+            │              │         │
+            │ Receive user │         │
+            │ input or     │         │
+            │ environment  │         │
+            │ feedback     │         │
+            └──────┬───────┘         │
+                   │                  │
+                   ▼                  │
+            ┌──────────────┐         │
+            │    THINK     │         │
+            │              │         │
+            │ Reason about │         │
+            │ what to do   │         │
+            │ next         │         │
+            └──────┬───────┘         │
+                   │                  │
+                   ▼                  │
+            ┌──────────────┐         │
+            │     ACT      │         │
+            │              │         │
+            │ Execute tool │         │
+            │ or generate  │         │
+            │ response     │─────────┘
+            └──────────────┘
+
+         Repeat until task is complete
+```
+
+### Step-by-Step Walkthrough
+
+Let's trace through a real agent interaction:
+
+```
+User: "Find the top 3 restaurants near me and make a reservation 
+       at the best one for 7pm tonight"
+
+ITERATION 1:
+  Observe: User wants restaurant recommendations + reservation
+  Think:   Need to (1) find restaurants (2) pick best (3) book
+  Act:     Call Google Maps API: search_restaurants(
+             location="user_location", 
+             cuisine="any",
+             open_now=True
+           )
+
+ITERATION 2:
+  Observe: Got list of 20 restaurants
+  Think:   Need to filter to top 3 by rating and reviews
+  Act:     Process results: filter and rank by rating + reviews
+           → Top 3: [Sakura (4.8), Pasta House (4.7), 
+                      Taco Loco (4.6)]
+
+ITERATION 3:
+  Observe: Have top 3 restaurants identified
+  Think:   Sakura has highest rating, should book there
+  Act:     Call OpenTable API: make_reservation(
+             restaurant="Sakura",
+             time="19:00",
+             date="today",
+             party_size=user.party_size
+           )
+
+ITERATION 4:
+  Observe: Reservation confirmed (Confirmation #R4521)
+  Think:   Task complete! Summarize for user
+  Act:     Respond: "I found the top 3 restaurants: Sakura 
+           (4.8★), Pasta House (4.7★), and Taco Loco (4.6★).
+           I've booked a table at Sakura for 7pm tonight. 
+           Confirmation #R4521. You'll receive a confirmation 
+           email shortly."
+```
+
+### The Loop in Code
+
+```python
+"""
+The fundamental agent loop pattern.
+"""
+
+from enum import Enum
+from dataclasses import dataclass
+
+
+class AgentState(Enum):
+    """Possible states of the agent loop."""
+    OBSERVING = "observing"
+    THINKING = "thinking"
+    ACTING = "acting"
+    DONE = "done"
+    ERROR = "error"
+
+
+@dataclass
+class AgentStep:
+    """Represents one step in the agent loop."""
+    iteration: int
+    state: AgentState
+    observation: str
+    thought: str
+    action: str
+    action_result: str
+
+
+class AgentLoop:
+    """
+    Base class implementing the core agent loop.
+    Subclass this and override the methods for specific agents.
+    """
+    
+    def __init__(self, name: str = "Agent"):
+        self.name = name
+        self.state = AgentState.OBSERVING
+        self.history: list[AgentStep] = []
+        self.max_iterations = 10
+    
+    def observe(self, input_data: str) -> str:
+        """
+        Process input from user or environment.
+        Override this for custom observation logic.
+        """
+        return input_data
+    
+    def think(self, observation: str) -> tuple[str, str]:
+        """
+        Decide what action to take.
+        Returns (thought, action_description).
+        Override this with your LLM reasoning logic.
+        """
+        raise NotImplementedError("Subclass must implement think()")
+    
+    def act(self, action: str) -> str:
+        """
+        Execute the decided action.
+        Returns the result of the action.
+        Override this with your tool execution logic.
+        """
+        raise NotImplementedError("Subclass must implement act()")
+    
+    def is_done(self, step: AgentStep) -> bool:
+        """
+        Determine if the agent should stop.
+        Override this for custom termination conditions.
+        """
+        return "DONE" in step.action_result.upper()
+    
+    def run(self, user_input: str) -> list[AgentStep]:
+        """
+        Execute the full agent loop.
+        """
+        self.state = AgentState.OBSERVING
+        
+        for iteration in range(self.max_iterations):
+            # OBSERVE
+            observation = self.observe(user_input)
+            self.state = AgentState.THINKING
+            
+            # THINK
+            thought, action = self.think(observation)
+            self.state = AgentState.ACTING
+            
+            # ACT
+            try:
+                action_result = self.act(action)
+            except Exception as e:
+                action_result = f"Error: {str(e)}"
+                self.state = AgentState.ERROR
+            
+            # Record step
+            step = AgentStep(
+                iteration=iteration + 1,
+                state=self.state,
+                observation=observation if iteration == 0 
+                    else self.history[-1].action_result,
+                thought=thought,
+                action=action,
+                action_result=action_result
+            )
+            self.history.append(step)
+            
+            # Check if done
+            if self.is_done(step):
+                self.state = AgentState.DONE
+                break
+        
+        return self.history
+```
+
+---
+
+## 3. Tool Use / Function Calling
+
+### What Are Tools?
+
+**Tools** are external functions, APIs, or capabilities that an agent can call upon. They extend the agent beyond text generation into the real world.
+
+```
+Without tools:                    With tools:
+                                 
+LLM: "I think the               LLM: "Let me check the
+weather is probably              weather for you."
+nice today."                     
+                                  → Calls weather_api("NYC")
+LLM: Can't verify               
+LLM: Might be wrong             Weather API: {"temp": 72, 
+                                     "condition": "Sunny"}
+                                 
+                                 LLM: "It's 72°F and sunny 
+                                 in NYC today!"
+```
+
+### Function Calling with OpenAI
+
+```python
+"""
+Function Calling - The foundation of agent tool use.
+"""
+
+from openai import OpenAI
+import json
+
+client = OpenAI()
+
+# Define tools the agent can use
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "get_weather",
+            "description": "Get the current weather for a location",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "City name (e.g., 'New York')"
+                    },
+                    "unit": {
+                        "type": "string",
+                        "enum": ["celsius", "fahrenheit"],
+                        "description": "Temperature unit"
+                    }
+                },
+                "required": ["location"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "search_database",
+            "description": "Search the product database",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "Search query"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Product category filter"
+                    },
+                    "max_price": {
+                        "type": "number",
+                        "description": "Maximum price filter"
+                    }
+                },
+                "required": ["query"]
+            }
+        }
+    }
+]
+
+
+def get_weather(location: str, unit: str = "fahrenheit") -> dict:
+    """Simulated weather API call."""
+    # In production, call a real weather API
+    return {
+        "location": location,
+        "temperature": 72 if unit == "fahrenheit" else 22,
+        "condition": "Sunny",
+        "humidity": 45,
+        "wind_speed": 8
+    }
+
+
+def search_database(
+    query: str, 
+    category: str = None, 
+    max_price: float = None
+) -> list[dict]:
+    """Simulated database search."""
+    # In production, query your actual database
+    products = [
+        {"name": "Wireless Headphones", "price": 79.99, 
+         "category": "electronics"},
+        {"name": "Running Shoes", "price": 129.99, 
+         "category": "footwear"},
+        {"name": "Coffee Maker", "price": 49.99, 
+         "category": "kitchen"},
+    ]
+    
+    results = [
+        p for p in products
+        if query.lower() in p["name"].lower()
+        and (not category or p["category"] == category)
+        and (not max_price or p["price"] <= max_price)
+    ]
+    return results
+
+
+# Map function names to actual implementations
+available_functions = {
+    "get_weather": get_weather,
+    "search_database": search_database,
+}
+
+
+def run_agent(user_message: str) -> str:
+    """
+    Run the agent with tool use.
+    Handles the full observe-think-act loop.
+    """
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant "
+         "with access to weather and product search tools."},
+        {"role": "user", "content": user_message}
+    ]
+    
+    # Agent loop: keep going until no more tool calls needed
+    while True:
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=messages,
+            tools=tools,
+            tool_choice="auto"  # Let model decide when to use tools
+        )
+        
+        response_message = response.choices[0].message
+        
+        # If no tool calls, return the text response
+        if not response_message.tool_calls:
+            return response_message.content
+        
+        # Process tool calls
+        messages.append(response_message)
+        
+        for tool_call in response_message.tool_calls:
+            function_name = tool_call.function.name
+            function_args = json.loads(
+                tool_call.function.arguments
+            )
+            
+            print(f"  Tool: {function_name}({function_args})")
+            
+            # Execute the function
+            function_result = available_functions[function_name](
+                **function_args
+            )
+            
+            # Add tool result to messages
+            messages.append({
+                "tool_call_id": tool_call.id,
+                "role": "tool",
+                "name": function_name,
+                "content": json.dumps(function_result)
+            })
+    
+    return "Max iterations reached"
+
+
+# === Test the agent ===
+print("Agent:", run_agent(
+    "What's the weather in London? And do you have any electronics "
+    "under $100?"
+))
+```
+
+### Anthropic Claude Tool Use
+
+```python
+"""
+Tool use with Claude (Anthropic's API).
+"""
+
+import anthropic
+import json
+
+client = anthropic.Anthropic()
+
+# Define tools for Claude
+tools = [
+    {
+        "name": "get_weather",
+        "description": "Get current weather for a location",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "City name"
+                }
+            },
+            "required": ["location"]
+        }
+    }
+]
+
+
+def run_claude_agent(user_message: str) -> str:
+    """Run agent using Claude's tool use."""
+    
+    messages = [{"role": "user", "content": user_message}]
+    
+    while True:
+        # Call Claude
+        response = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            tools=tools,
+            messages=messages
+        )
+        
+        # Check if Claude wants to use a tool
+        if response.stop_reason == "tool_use":
+            # Process tool calls
+            tool_results = []
+            
+            for block in response.content:
+                if block.type == "tool_use":
+                    print(f"  Claude calls: {block.name}"
+                          f"({block.input})")
+                    
+                    # Execute tool
+                    result = get_weather(**block.input)
+                    
+                    tool_results.append({
+                        "type": "tool_result",
+                        "tool_use_id": block.id,
+                        "content": json.dumps(result)
+                    })
+            
+            # Add to conversation and continue
+            messages.append({"role": "assistant", 
+                           "content": response.content})
+            messages.append({"role": "user", 
+                           "content": tool_results})
+        else:
+            # No more tool use - return final response
+            return response.content[0].text
+    
+    return "Max iterations reached"
+```
+
+---
+
+## 4. Memory Systems
+
+### Types of Agent Memory
+
+```
+┌─────────────────────────────────────────────────────┐
+│                    AGENT MEMORY                       │
+│                                                       │
+│  ┌─────────────────┐  ┌─────────────────┐            │
+│  │  SHORT-TERM     │  │  LONG-TERM      │            │
+│  │  (Conversation  │  │  (Persistent    │            │
+│  │   Buffer)       │  │   Storage)      │            │
+│  │                 │  │                 │            │
+│  │ Last N messages │  │ Vector store of │            │
+│  │ in conversation │  │ past interactions│           │
+│  │                 │  │ & learned facts │            │
+│  │ Context window  │  │                 │            │
+│  │ limits this     │  │ Grows over time │            │
+│  └─────────────────┘  └─────────────────┘            │
+│                                                       │
+│  ┌─────────────────┐  ┌─────────────────┐            │
+│  │  WORKING        │  │  EPISODIC       │            │
+│  │  MEMORY         │  │  MEMORY         │            │
+│  │  (Scratchpad)   │  │  (Task History) │            │
+│  │                 │  │                 │            │
+│  │ Intermediate    │  │ Record of past  │            │
+│  │ results, plans, │  │ tasks and their │            │
+│  │ scratch notes   │  │ outcomes        │            │
+│  │                 │  │                 │            │
+│  │ Current task    │  │ "Last time I    │            │
+│  │ state           │  │  tried X, it    │            │
+│  │                 │  │  failed because │            │
+│  └─────────────────┘  │  of Y"          │            │
+│                       └─────────────────┘            │
+└─────────────────────────────────────────────────────┘
+```
+
+### Short-Term Memory (Conversation Buffer)
+
+```python
+"""
+Short-term memory: managing conversation history.
+"""
+
+from collections import deque
+
+
+class ConversationMemory:
+    """
+    Manages conversation history within context window limits.
+    """
+    
+    def __init__(self, max_messages: int = 20, 
+                 system_prompt: str = ""):
+        self.max_messages = max_messages
+        self.system_prompt = system_prompt
+        self.messages: deque = deque(maxlen=max_messages)
+    
+    def add_message(self, role: str, content: str):
+        """Add a message to the conversation."""
+        self.messages.append({"role": role, "content": content})
+    
+    def get_messages(self) -> list[dict]:
+        """Get messages for API call."""
+        result = []
+        if self.system_prompt:
+            result.append({
+                "role": "system", 
+                "content": self.system_prompt
+            })
+        result.extend(list(self.messages))
+        return result
+    
+    def summarize_old_messages(self, keep_recent: int = 10) -> str:
+        """
+        Summarize older messages to save context space.
+        Useful when conversation gets very long.
+        """
+        if len(self.messages) <= keep_recent:
+            return ""
+        
+        old_messages = list(self.messages)[:-keep_recent]
+        
+        # In production, use LLM to summarize
+        summary = "Previous conversation summary: "
+        summary += f"Discussed {len(old_messages)} messages about "
+        topics = set()
+        for msg in old_messages:
+            if msg["role"] == "user":
+                topics.add(msg["content"][:50])
+        summary += ", ".join(list(topics)[:3])
+        
+        return summary
+    
+    def clear(self):
+        """Clear conversation history."""
+        self.messages.clear()
+
+
+# Usage
+memory = ConversationMemory(
+    max_messages=20,
+    system_prompt="You are a helpful coding assistant."
+)
+
+# Simulate a conversation
+memory.add_message("user", "How do I sort a list in Python?")
+memory.add_message("assistant", "Use sorted() or list.sort().")
+memory.add_message("user", "What about sorting dictionaries?")
+memory.add_message("assistant", 
+    "Use sorted(d.items(), key=lambda x: x[1]).")
+
+# Get messages for API call
+api_messages = memory.get_messages()
+print(f"Messages in context: {len(api_messages)}")
+```
+
+### Long-Term Memory (Vector Store)
+
+```python
+"""
+Long-term memory: persistent knowledge across sessions.
+"""
+
+from chromadb import Client
+from datetime import datetime
+
+
+class LongTermMemory:
+    """
+    Persistent memory using vector database.
+    Stores important information for future retrieval.
+    """
+    
+    def __init__(self, db_path: str = "./agent_memory"):
+        self.client = Client(path=db_path)
+        self.collection = self.client.get_or_create_collection(
+            name="long_term_memory"
+        )
+    
+    def store(
+        self, 
+        content: str, 
+        memory_type: str = "fact",
+        metadata: dict | None = None
+    ):
+        """Store a piece of information."""
+        entry_metadata = {
+            "type": memory_type,
+            "timestamp": datetime.now().isoformat(),
+            **(metadata or {})
+        }
+        
+        # Generate unique ID
+        entry_id = f"mem_{datetime.now().timestamp()}"
+        
+        self.collection.add(
+            ids=[entry_id],
+            documents=[content],
+            metadatas=[entry_metadata]
+        )
+    
+    def recall(
+        self, 
+        query: str, 
+        n_results: int = 5,
+        memory_type: str | None = None
+    ) -> list[dict]:
+        """Recall relevant memories."""
+        query_params = {
+            "query_texts": [query],
+            "n_results": n_results
+        }
+        
+        if memory_type:
+            query_params["where"] = {"type": memory_type}
+        
+        results = self.collection.query(**query_params)
+        
+        memories = []
+        for i in range(len(results["ids"][0])):
+            memories.append({
+                "content": results["documents"][0][i],
+                "metadata": results["metadatas"][0][i],
+                "relevance": 1 - results["distances"][0][i]
+            })
+        
+        return memories
+    
+    def store_user_preference(self, preference: str):
+        """Store a user preference."""
+        self.store(
+            content=preference,
+            memory_type="preference",
+            metadata={"category": "user_preference"}
+        )
+    
+    def store_task_outcome(
+        self, task: str, outcome: str, success: bool
+    ):
+        """Store the outcome of a task for future reference."""
+        self.store(
+            content=f"Task: {task}\nOutcome: {outcome}",
+            memory_type="task_outcome",
+            metadata={
+                "success": success,
+                "category": "task_history"
+            }
+        )
+    
+    def get_user_preferences(self) -> list[str]:
+        """Retrieve all stored user preferences."""
+        results = self.collection.query(
+            query_texts=["user preferences"],
+            n_results=100,
+            where={"type": "preference"}
+        )
+        return results["documents"][0] if results["documents"] else []
+
+
+# Usage
+memory = LongTermMemory()
+
+# Store preferences
+memory.store_user_preference(
+    "User prefers dark mode in all applications"
+)
+memory.store_user_preference(
+    "User's timezone is PST (UTC-8)"
+)
+memory.store_user_preference(
+    "User prefers concise responses under 100 words"
+)
+
+# Store task outcomes
+memory.store_task_outcome(
+    task="Deploy web app to AWS",
+    outcome="Successfully deployed using ECS Fargate",
+    success=True
+)
+
+# Recall memories
+relevant = memory.recall("user interface preferences")
+for mem in relevant:
+    print(f"  [{mem['relevance']:.2f}] {mem['content']}")
+```
+
+### Working Memory (Scratchpad)
+
+```python
+"""
+Working memory: intermediate state for current task.
+"""
+
+from dataclasses import dataclass, field
+
+
+@dataclass
+class WorkingMemory:
+    """
+    Temporary storage for the current task.
+    Acts as a scratchpad for the agent's reasoning.
+    """
+    
+    task_description: str = ""
+    plan: list[str] = field(default_factory=list)
+    current_step: int = 0
+    intermediate_results: dict = field(default_factory=dict)
+    errors: list[str] = field(default_factory=list)
+    notes: list[str] = field(default_factory=list)
+    
+    def add_plan_step(self, step: str):
+        """Add a step to the plan."""
+        self.plan.append(step)
+    
+    def record_result(self, key: str, value):
+        """Store an intermediate result."""
+        self.intermediate_results[key] = value
+    
+    def record_error(self, error: str):
+        """Record an error for debugging."""
+        self.errors.append(error)
+    
+    def add_note(self, note: str):
+        """Add a scratch note."""
+        self.notes.append(note)
+    
+    def get_summary(self) -> str:
+        """Get a summary of current working state."""
+        summary_parts = [
+            f"Task: {self.task_description}",
+            f"Progress: Step {self.current_step + 1}/"
+            f"{len(self.plan)}",
+            f"Current plan: {self.plan[self.current_step] if self.plan else 'None'}",
+            f"Results so far: {list(self.intermediate_results.keys())}",
+        ]
+        if self.errors:
+            summary_parts.append(f"Errors: {len(self.errors)}")
+        return "\n".join(summary_parts)
+
+
+# Usage in agent loop
+working = WorkingMemory(task_description="Analyze sales data")
+
+# Plan the task
+working.add_plan_step("Load sales data from CSV")
+working.add_plan_step("Clean and validate data")
+working.add_plan_step("Calculate key metrics")
+working.add_plan_step("Generate visualization")
+working.add_plan_step("Write summary report")
+
+# Record progress
+working.current_step = 0
+working.record_result("row_count", 10000)
+working.record_result("date_range", "2024-01-01 to 2024-12-31")
+
+print(working.get_summary())
+```
+
+---
+
+## 5. Planning
+
+### Why Planning Matters
+
+Without planning, agents struggle with complex tasks. Planning breaks down complex requests into manageable steps.
+
+```
+Without Planning:                  With Planning:
+                                   
+User: "Analyze our                User: "Analyze our
+Q4 sales and create               Q4 sales and create
+a report with                     a report with
+recommendations"                  recommendations"
+                                   
+Agent: (Confused,                Agent: (Plans first)
+tries to do everything           1. Load Q4 sales data
+at once, misses steps,           2. Calculate key metrics
+produces incomplete              3. Identify trends
+output)                          4. Generate charts
+                                 5. Write recommendations
+                                 6. Assemble report
+                                 7. Review and finalize
+                                   
+                                 Then executes each step
+                                 systematically
+```
+
+### Plan-and-Execute Pattern
+
+```python
+"""
+Plan-and-Execute agent pattern.
+First creates a plan, then executes each step.
+"""
+
+from openai import OpenAI
+import json
+
+client = OpenAI()
+
+
+def create_plan(task: str) -> list[str]:
+    """Create a step-by-step plan for a task."""
+    
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": """You are a task planner.
+            Given a task, create a step-by-step plan.
+            
+            Return ONLY a JSON array of step descriptions.
+            Each step should be specific and actionable.
+            
+            Example: ["Step 1 description", "Step 2 description"]"""},
+            {"role": "user", "content": f"Create a plan for: {task}"}
+        ],
+        temperature=0.0,
+        response_format={"type": "json_object"}
+    )
+    
+    result = json.loads(response.choices[0].message.content)
+    return result.get("steps", result.get("plan", []))
+
+
+def execute_step(
+    step: str, 
+    context: dict
+) -> str:
+    """Execute a single step of the plan."""
+    
+    context_str = json.dumps(context, indent=2)
+    
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": f"""Execute this step of 
+            a plan. Use the provided context from previous steps.
+            
+            Context from previous steps:
+            {context_str}
+            
+            Provide the specific output for this step."""},
+            {"role": "user", "content": f"Execute: {step}"}
+        ],
+        temperature=0.2
+    )
+    
+    return response.choices[0].message.content
+
+
+def plan_and_execute(task: str) -> dict:
+    """
+    Complete plan-and-execute agent.
+    """
+    # Step 1: Create plan
+    print(f"Task: {task}")
+    print("=" * 50)
+    
+    plan = create_plan(task)
+    print(f"\nPlan ({len(plan)} steps):")
+    for i, step in enumerate(plan, 1):
+        print(f"  {i}. {step}")
+    
+    # Step 2: Execute each step
+    context = {}
+    results = []
+    
+    for i, step in enumerate(plan, 1):
+        print(f"\n--- Executing Step {i} ---")
+        print(f"  {step}")
+        
+        result = execute_step(step, context)
+        results.append({
+            "step": i,
+            "description": step,
+            "result": result
+        })
+        
+        context[f"step_{i}"] = result
+        print(f"  Result: {result[:100]}...")
+    
+    return {
+        "task": task,
+        "plan": plan,
+        "results": results
+    }
+
+
+# Usage
+output = plan_and_execute(
+    "Analyze our website's user engagement metrics for last month "
+    "and create a 5-slide presentation outline with key findings"
+)
+```
+
+---
+
+## 6. Agent Frameworks Overview
+
+### Popular Frameworks Comparison
+
+| Framework | Language | Strengths | Best For |
+|-----------|----------|-----------|----------|
+| **LangChain** | Python/JS | Large ecosystem, many integrations | General-purpose agents |
+| **LlamaIndex** | Python | Data-focused, excellent RAG | Knowledge-intensive agents |
+| **CrewAI** | Python | Multi-agent, role-based | Collaborative agent teams |
+| **AutoGen** | Python | Multi-agent conversations | Research & complex tasks |
+| **Semantic Kernel** | C#/Python | Enterprise, Microsoft integration | Enterprise applications |
+| **Haystack** | Python | Pipeline-based, modular | Production RAG systems |
+| **Pydantic AI** | Python | Type-safe, minimal | Clean, testable agents |
+
+### LangChain Example
+
+```python
+"""
+Simple agent using LangChain.
+"""
+
+from langchain_openai import ChatOpenAI
+from langchain.agents import create_tool_calling_agent, AgentExecutor
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.tools import tool
+
+
+# Define tools
+@tool
+def search_web(query: str) -> str:
+    """Search the web for information."""
+    # In production, use a real search API
+    return f"Search results for '{query}': [relevant results here]"
+
+
+@tool
+def calculate(expression: str) -> str:
+    """Calculate a mathematical expression safely."""
+    try:
+        # Only allow safe math operations
+        allowed_chars = set("0123456789+-*/.(). ")
+        if all(c in allowed_chars for c in expression):
+            result = eval(expression)
+            return str(result)
+        return "Error: Invalid expression"
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+
+# Create agent
+llm = ChatOpenAI(model="gpt-4o", temperature=0)
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant. Use tools when needed."),
+    ("human", "{input}"),
+    ("placeholder", "{agent_scratchpad}")
+])
+
+tools = [search_web, calculate]
+agent = create_tool_calling_agent(llm, tools, prompt)
+executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+# Run
+result = executor.invoke({
+    "input": "What's the population of Tokyo divided by 3?"
+})
+print(result["output"])
+```
+
+### CrewAI Example
+
+```python
+"""
+Multi-agent system using CrewAI.
+"""
+
+from crewai import Agent, Task, Crew
+from langchain_openai import ChatOpenAI
+
+# Define agents with specific roles
+researcher = Agent(
+    role="Research Analyst",
+    goal="Find comprehensive information about the given topic",
+    backstory="Expert researcher with 10 years of experience",
+    llm=ChatOpenAI(model="gpt-4o"),
+    verbose=True
+)
+
+writer = Agent(
+    role="Content Writer",
+    goal="Write engaging, accurate content based on research",
+    backstory="Professional writer with expertise in tech topics",
+    llm=ChatOpenAI(model="gpt-4o"),
+    verbose=True
+)
+
+editor = Agent(
+    role="Editor",
+    goal="Review and polish content for accuracy and clarity",
+    backstory="Experienced editor with eye for detail",
+    llm=ChatOpenAI(model="gpt-4o"),
+    verbose=True
+)
+
+# Define tasks
+research_task = Task(
+    description="Research the latest developments in AI agents",
+    expected_output="Comprehensive research notes with sources",
+    agent=researcher
+)
+
+writing_task = Task(
+    description="Write a 500-word article based on the research",
+    expected_output="A well-structured 500-word article",
+    agent=writer,
+    context=[research_task]
+)
+
+editing_task = Task(
+    description="Review and polish the article",
+    expected_output="A final, publication-ready article",
+    agent=editor,
+    context=[writing_task]
+)
+
+# Create crew and run
+crew = Crew(
+    agents=[researcher, writer, editor],
+    tasks=[research_task, writing_task, editing_task],
+    verbose=True
+)
+
+result = crew.kickoff()
+print(result)
+```
+
+---
+
+## 7. Architecture Patterns
+
+### ReAct (Reasoning + Acting)
+
+The most popular agent pattern. Combines reasoning traces with actions.
+
+```
+Thought: I need to find the population of France
+Action: search("population of France 2024")
+Observation: France has approximately 68.4 million people
+Thought: Now I need to compare it to Germany
+Action: search("population of Germany 2024")  
+Observation: Germany has approximately 84.5 million people
+Thought: I have both numbers, I can now answer
+Action: respond("Germany (84.5M) has a larger population than 
+France (68.4M)")
+```
+
+### Plan-and-Execute
+
+Create a plan first, then execute each step.
+
+```
+Step 1: PLANNING
+  User: "Create a marketing campaign for our new product"
+  
+  Plan:
+  1. Research target audience
+  2. Analyze competitor campaigns
+  3. Develop key messaging
+  4. Create content calendar
+  5. Draft campaign assets
+  6. Review and finalize
+
+Step 2: EXECUTION
+  Execute step 1 → results
+  Execute step 2 → results
+  Execute step 3 → results
+  ...
+```
+
+### Reflexion
+
+Agent reflects on its own performance and improves.
+
+```
+Attempt 1:
+  Action: Wrote code to solve the problem
+  Result: Test failed - off-by-one error
+
+Reflection: I made an indexing mistake. I need to be more careful
+with boundary conditions. Let me review the test cases first.
+
+Attempt 2:
+  Action: Reviewed test cases, rewrote code with careful indexing
+  Result: All tests pass!
+
+Reflection: Success! The key was reviewing expectations before coding.
+```
+
+### Multi-Agent Collaboration
+
+```
+┌─────────────────────────────────────────────┐
+│              ORCHESTRATOR                     │
+│         (Decides who does what)              │
+└───────┬──────────────┬──────────────┬───────┘
+        │              │              │
+        ▼              ▼              ▼
+┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+│  Research    │ │  Coding      │ │  Review      │
+│  Agent       │ │  Agent       │ │  Agent       │
+│              │ │              │ │              │
+│ Finds info,  │ │ Writes code, │ │ Reviews      │
+│ reads docs,  │ │ runs tests,  │ │ quality,     │
+│ analyzes     │ │ debugs       │ │ suggests     │
+│ data         │ │              │ │ improvements │
+└──────────────┘ └──────────────┘ └──────────────┘
+```
+
+---
+
+## 8. Building a Simple Agent
+
+### Complete ReAct Agent from Scratch
+
+```python
+"""
+A complete ReAct agent built from scratch.
+No frameworks - just OpenAI API + Python.
+"""
+
+import json
+import os
+from openai import OpenAI
+from datetime import datetime
+
+
+class SimpleAgent:
+    """
+    A ReAct (Reasoning + Acting) agent built from scratch.
+    
+    Features:
+    - Tool use with automatic execution
+    - Conversation memory
+    - Error handling
+    - Step logging
+    """
+    
+    def __init__(
+        self, 
+        model: str = "gpt-4o",
+        system_prompt: str | None = None,
+        max_iterations: int = 10
+    ):
+        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self.model = model
+        self.max_iterations = max_iterations
+        self.messages = []
+        self.tools = {}
+        self.tool_schemas = []
+        self.step_log = []
+        
+        # Set default system prompt
+        if system_prompt is None:
+            system_prompt = (
+                "You are a helpful AI assistant with access to "
+                "tools. Use tools when needed to complete tasks. "
+                "Think step by step before acting."
+            )
+        
+        self.messages.append({
+            "role": "system", 
+            "content": system_prompt
+        })
+    
+    def register_tool(
+        self, 
+        name: str, 
+        description: str,
+        parameters: dict,
+        function: callable
+    ):
+        """Register a tool the agent can use."""
+        self.tools[name] = function
+        self.tool_schemas.append({
+            "type": "function",
+            "function": {
+                "name": name,
+                "description": description,
+                "parameters": parameters
+            }
+        })
+    
+    def think(self, user_input: str) -> str:
+        """
+        Core reasoning loop: observe, think, act.
+        Returns the final response.
+        """
+        self.messages.append({
+            "role": "user", 
+            "content": user_input
+        })
+        
+        for iteration in range(self.max_iterations):
+            # Call LLM
+            kwargs = {
+                "model": self.model,
+                "messages": self.messages,
+                "temperature": 0.2
+            }
+            
+            if self.tool_schemas:
+                kwargs["tools"] = self.tool_schemas
+                kwargs["tool_choice"] = "auto"
+            
+            response = self.client.chat.completions.create(**kwargs)
+            assistant_message = response.choices[0].message
+            
+            # Log the step
+            self.step_log.append({
+                "iteration": iteration + 1,
+                "model": self.model,
+                "tool_calls": len(
+                    assistant_message.tool_calls or []
+                ),
+                "timestamp": datetime.now().isoformat()
+            })
+            
+            # If no tool calls, return the text response
+            if not assistant_message.tool_calls:
+                self.messages.append({
+                    "role": "assistant",
+                    "content": assistant_message.content
+                })
+                return assistant_message.content
+            
+            # Process tool calls
+            self.messages.append({
+                "role": "assistant",
+                "content": assistant_message.content,
+                "tool_calls": [
+                    {
+                        "id": tc.id,
+                        "type": "function",
+                        "function": {
+                            "name": tc.function.name,
+                            "arguments": tc.function.arguments
+                        }
+                    }
+                    for tc in assistant_message.tool_calls
+                ]
+            })
+            
+            for tool_call in assistant_message.tool_calls:
+                name = tool_call.function.name
+                args = json.loads(tool_call.function.arguments)
+                
+                print(f"  [Tool] {name}({json.dumps(args)[:80]})")
+                
+                # Execute the tool
+                try:
+                    result = self.tools[name](**args)
+                    result_str = json.dumps(result) if isinstance(
+                        result, (dict, list)
+                    ) else str(result)
+                except Exception as e:
+                    result_str = f"Error: {str(e)}"
+                    print(f"  [Error] {name}: {e}")
+                
+                self.messages.append({
+                    "role": "tool",
+                    "tool_call_id": tool_call.id,
+                    "content": result_str
+                })
+        
+        return "I've reached the maximum number of steps."
+    
+    def reset(self):
+        """Clear conversation history."""
+        self.messages = [self.messages[0]]  # Keep system prompt
+        self.step_log.clear()
+    
+    def get_stats(self) -> dict:
+        """Get statistics about the conversation."""
+        return {
+            "total_steps": len(self.step_log),
+            "total_tool_calls": sum(
+                s["tool_calls"] for s in self.step_log
+            ),
+            "total_messages": len(self.messages),
+            "model": self.model
+        }
+
+
+# === Define Tools ===
+
+def web_search(query: str) -> dict:
+    """Search the web (simulated)."""
+    # In production, use a real search API
+    return {
+        "query": query,
+        "results": [
+            {"title": f"Result for: {query}", 
+             "snippet": "Relevant information..."},
+        ]
+    }
+
+
+def calculator(expression: str) -> dict:
+    """Calculate a math expression."""
+    try:
+        # Safe evaluation for math
+        allowed = set("0123456789+-*/(). %")
+        if all(c in allowed for c in expression):
+            result = eval(expression)
+            return {"expression": expression, "result": result}
+        return {"error": "Invalid characters in expression"}
+    except Exception as e:
+        return {"error": str(e)}
+
+
+def get_current_time() -> dict:
+    """Get the current date and time."""
+    now = datetime.now()
+    return {
+        "date": now.strftime("%Y-%m-%d"),
+        "time": now.strftime("%H:%M:%S"),
+        "day": now.strftime("%A")
+    }
+
+
+def read_file(filepath: str) -> dict:
+    """Read a file's contents."""
+    try:
+        with open(filepath, "r") as f:
+            content = f.read()
+        return {"filepath": filepath, "content": content[:5000]}
+    except FileNotFoundError:
+        return {"error": f"File not found: {filepath}"}
+    except Exception as e:
+        return {"error": str(e)}
+
+
+# === Create and Use the Agent ===
+
+agent = SimpleAgent(
+    system_prompt="""You are a helpful assistant that can:
+    - Search the web for information
+    - Perform calculations
+    - Get the current time
+    - Read files
+    
+    Think step by step before answering complex questions.
+    Use tools when you need real data."""
+)
+
+# Register tools
+agent.register_tool(
+    name="web_search",
+    description="Search the web for current information",
+    parameters={
+        "type": "object",
+        "properties": {
+            "query": {
+                "type": "string",
+                "description": "Search query"
+            }
+        },
+        "required": ["query"]
+    },
+    function=web_search
+)
+
+agent.register_tool(
+    name="calculator",
+    description="Calculate a mathematical expression",
+    parameters={
+        "type": "object",
+        "properties": {
+            "expression": {
+                "type": "string",
+                "description": "Math expression to evaluate"
+            }
+        },
+        "required": ["expression"]
+    },
+    function=calculator
+)
+
+agent.register_tool(
+    name="get_current_time",
+    description="Get the current date and time",
+    parameters={
+        "type": "object",
+        "properties": {},
+        "required": []
+    },
+    function=get_current_time
+)
+
+# Test the agent
+print("=" * 60)
+print("Test 1: Simple question")
+print("=" * 60)
+response = agent.think("What time is it right now?")
+print(f"Agent: {response}\n")
+
+print("=" * 60)
+print("Test 2: Calculation")
+print("=" * 60)
+response = agent.think(
+    "What's 15% of 2847? Use the calculator."
+)
+print(f"Agent: {response}\n")
+
+print("=" * 60)
+print("Test 3: Multi-step reasoning")
+print("=" * 60)
+response = agent.think(
+    "I have a budget of $10,000. If I need to buy 15 licenses "
+    "at $599 each, how much will I have left? Use the calculator."
+)
+print(f"Agent: {response}\n")
+
+# Show stats
+print("Agent Stats:", agent.get_stats())
+```
+
+---
+
+## 9. Building an Agent with Memory
+
+### Agent with Full Memory Integration
+
+```python
+"""
+Agent with short-term, long-term, and working memory.
+"""
+
+import json
+import os
+from datetime import datetime
+from openai import OpenAI
+
+
+class MemoryAgent:
+    """
+    AI Agent with three types of memory:
+    1. Short-term: conversation buffer
+    2. Long-term: persistent vector store
+    3. Working: scratchpad for current task
+    """
+    
+    def __init__(self, model: str = "gpt-4o"):
+        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self.model = model
+        
+        # Memory systems
+        self.conversation_history = []  # Short-term
+        self.long_term_store = []       # Simplified vector store
+        self.working_memory = {}        # Scratchpad
+        
+        # Tools
+        self.tools = {}
+        self.tool_schemas = []
+    
+    def _search_long_term(self, query: str, k: int = 3) -> list[str]:
+        """Simple similarity search in long-term memory."""
+        if not self.long_term_store:
+            return []
+        
+        # Simple keyword matching (replace with real embedding 
+        # search in production)
+        results = []
+        query_words = set(query.lower().split())
+        
+        for entry in self.long_term_store:
+            entry_words = set(entry["content"].lower().split())
+            overlap = len(query_words & entry_words)
+            if overlap > 0:
+                results.append((overlap, entry["content"]))
+        
+        results.sort(reverse=True, key=lambda x: x[0])
+        return [content for _, content in results[:k]]
+    
+    def _store_long_term(self, content: str, 
+                          category: str = "general"):
+        """Store information in long-term memory."""
+        self.long_term_store.append({
+            "content": content,
+            "category": category,
+            "timestamp": datetime.now().isoformat()
+        })
+    
+    def _build_context(self, user_input: str) -> str:
+        """Build context from all memory sources."""
+        context_parts = []
+        
+        # Add relevant long-term memories
+        relevant = self._search_long_term(user_input)
+        if relevant:
+            context_parts.append(
+                "Relevant memories:\n" + 
+                "\n".join(f"- {m}" for m in relevant)
+            )
+        
+        # Add working memory if available
+        if self.working_memory:
+            context_parts.append(
+                "Current task context:\n" + 
+                json.dumps(self.working_memory, indent=2)
+            )
+        
+        return "\n\n".join(context_parts)
+    
+    def think(self, user_input: str) -> str:
+        """Process user input through the agent loop."""
+        
+        # Build context from memories
+        context = self._build_context(user_input)
+        
+        # Add user message with context
+        if context:
+            enhanced_input = (
+                f"{user_input}\n\n"
+                f"[Context from memory]:\n{context}"
+            )
+        else:
+            enhanced_input = user_input
+        
+        self.conversation_history.append({
+            "role": "user", 
+            "content": enhanced_input
+        })
+        
+        # Build messages for API call
+        messages = [
+            {"role": "system", "content": (
+                "You are a helpful assistant with memory. "
+                "Remember important facts about the user. "
+                "Use the [context from memory] when relevant."
+            )},
+            *self.conversation_history[-10:]  # Last 10 messages
+        ]
+        
+        # Call LLM
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+            temperature=0.3
+        )
+        
+        assistant_response = response.choices[0].message.content
+        
+        self.conversation_history.append({
+            "role": "assistant",
+            "content": assistant_response
+        })
+        
+        # Extract and store important information
+        self._extract_and_store(user_input, assistant_response)
+        
+        return assistant_response
+    
+    def _extract_and_store(self, user_input: str, 
+                           response: str):
+        """Automatically extract important info to long-term memory."""
+        
+        # Simple heuristic: store if user shares personal info
+        personal_keywords = [
+            "my name is", "i live in", "i work at",
+            "i prefer", "i like", "i don't like",
+            "my favorite", "i need"
+        ]
+        
+        for keyword in personal_keywords:
+            if keyword in user_input.lower():
+                self._store_long_term(
+                    user_input, category="user_info"
+                )
+                break
+    
+    def learn(self, fact: str, category: str = "learned"):
+        """Explicitly learn and store a fact."""
+        self._store_long_term(fact, category)
+        return f"Learned: {fact}"
+    
+    def recall(self, query: str) -> list[str]:
+        """Search long-term memories."""
+        return self._search_long_term(query)
+    
+    def set_task(self, task: str):
+        """Set the current task in working memory."""
+        self.working_memory["task"] = task
+        self.working_memory["started"] = (
+            datetime.now().isoformat()
+        )
+    
+    def update_task(self, **kwargs):
+        """Update working memory for current task."""
+        self.working_memory.update(kwargs)
+    
+    def forget_conversation(self):
+        """Clear short-term memory."""
+        self.conversation_history.clear()
+
+
+# === Usage ===
+
+agent = MemoryAgent()
+
+# First conversation
+print("--- Session 1 ---")
+print(agent.think("Hi! My name is Alice and I work at TechCorp."))
+print()
+print(agent.think("I prefer Python over JavaScript."))
+print()
+
+# Explicit learning
+agent.learn("Alice is working on a customer support chatbot")
+agent.learn("The chatbot should handle refunds automatically")
+
+# Second conversation (simulating new session with memory)
+print("\n--- Session 2 (with memory) ---")
+agent.forget_conversation()  # Clear conversation but keep long-term
+
+print(agent.think("What do you remember about me?"))
+print()
+print(agent.think("What project am I working on?"))
+print()
+
+# Working memory for a specific task
+print("\n--- Task Mode ---")
+agent.set_task("Build a refund chatbot")
+agent.update_task(
+    step="Design refund flow",
+    status="in_progress"
+)
+print(agent.think("Help me design the refund flow for my chatbot"))
+```
+
+---
+
+## 10. Key Takeaways
+
+1. **Agents differ from chatbots** in their ability to **take actions** — they don't just answer questions, they solve problems by using tools and interacting with external systems.
+
+2. **The Agent Loop** (Observe → Think → Act → Repeat) is the fundamental pattern behind all AI agents.
+
+3. **Tool Use / Function Calling** extends agents beyond text generation. OpenAI, Claude, and other providers all support structured tool calling.
+
+4. **Memory Systems** give agents the ability to remember:
+   - Short-term: Conversation history
+   - Long-term: Persistent knowledge
+   - Working: Task-specific scratchpad
+
+5. **Planning** enables agents to handle complex, multi-step tasks by breaking them into manageable pieces.
+
+6. **Architecture Patterns** (ReAct, Plan-and-Execute, Reflexion) provide proven templates for building effective agents.
+
+7. **Agent Frameworks** (LangChain, CrewAI, etc.) provide ready-made infrastructure but understanding the underlying patterns is essential.
+
+8. **Build from scratch first**, then adopt frameworks — you'll understand what's happening under the hood.
+
+---
+
+## 11. Try It Yourself
+
+### Exercise 1: Basic ReAct Agent
+Build a ReAct agent from scratch (no frameworks) that:
+- Has at least 3 tools (calculator, web search, file reader)
+- Implements the full observe-think-act loop
+- Logs every step of its reasoning
+- Handles errors gracefully
+
+### Exercise 2: Agent with Memory
+Extend your agent with:
+- Conversation memory (keep last 10 messages)
+- Long-term memory (store user preferences automatically)
+- Working memory (track current task progress)
+- A "remember" command that explicitly stores facts
+
+### Exercise 3: Plan-and-Execute Agent
+Build an agent that:
+- Takes a complex task as input
+- Creates a step-by-step plan first
+- Executes each step sequentially
+- Reports progress after each step
+- Handles step failures with replanning
+
+### Exercise 4: Multi-Tool Agent
+Create an agent with these tools:
+- Calculator (eval math expressions)
+- File I/O (read/write files)
+- Database query (SQLite)
+- HTTP request (fetch URLs)
+- Send email (via SMTP)
+
+Test it with: "Read the sales data from data.csv, calculate the total revenue, and save a summary to report.txt"
+
+### Exercise 5: Agent with Self-Reflection
+Build an agent that:
+- Attempts tasks
+- Evaluates its own output quality
+- Retries with improvements if quality is low
+- Keeps a log of attempts and what went wrong
+
+---
+
+> **Next Chapter**: In [Chapter 4: Customer Support Agents](./chapter-04-customer-support-agents.md), we'll build our first real-world agent — an intelligent customer support system.
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"children":["$","$L2",null,{"content":"$3","currentChapter":{"id":"agents-ch-03","number":3,"title":"Introduction to AI Agents","subtitle":"What Makes an Agent Different from a Chatbot","description":"Understand agent loops, tool use, memory, planning, and the frameworks powering modern AI agents.","slug":"introduction-to-ai-agents","part":"Part I: Foundations","estimatedPages":18,"topics":["Agent vs chatbot","Observe-Think-Act loop","Tool use","Memory systems","Planning","Frameworks (LangChain, CrewAI)"],"icon":"🤖","bookId":"ai-agents"}}]}],["$L4","$L5"],"$L6"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"WpHiBD4DjnzuprdEnivdA"}
+4:["$","script","script-0",{"src":"/_next/static/chunks/16vgld9iclosn.js","async":true}]
+5:["$","script","script-1",{"src":"/_next/static/chunks/2rb1230i-fez-.js","async":true}]
+6:["$","$L7",null,{"children":["$","$8",null,{"name":"Next.MetadataOutlet","children":"$@9"}]}]
+9:null

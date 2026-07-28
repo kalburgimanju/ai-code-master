@@ -1,0 +1,1762 @@
+1:"$Sreact.fragment"
+2:I[89587,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js","/_next/static/chunks/16vgld9iclosn.js","/_next/static/chunks/2rb1230i-fez-.js"],"default"]
+7:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"OutletBoundary"]
+8:"$Sreact.suspense"
+3:Tf758,# Chapter 14: Observability & Scalability
+
+## Monitoring, Scaling, and Optimizing Agent Systems
+
+---
+
+> "You cannot optimize what you cannot measure. You cannot trust what you cannot see."
+
+---
+
+Building an agent is step one. Running it in production is step two. **Knowing what it is doing and why** is step three — and it is the step most teams skip until something breaks at 3 AM.
+
+Observability is the ability to understand the internal state of your system by examining its external outputs. For AI agents, this means tracking every decision, every token, every dollar, and every failure in real time.
+
+Scalability is the ability to handle increasing load without degrading performance. For agents, this means handling 10 users or 10,000 users with the same reliability.
+
+This chapter covers both, with practical code you can add to your agents today.
+
+---
+
+## Table of Contents
+
+1. [Why Observability Is Critical](#141-why-observability-is-critical)
+2. [Logging Best Practices](#142-logging-best-practices)
+3. [Distributed Tracing](#143-distributed-tracing)
+4. [Metrics That Matter](#144-metrics-that-matter)
+5. [Cost Tracking](#145-cost-tracking)
+6. [LangSmith Integration](#146-langsmith-integration)
+7. [LangFuse: Open-Source Observability](#147-langfuse-open-source-observability)
+8. [Latency Optimization](#148-latency-optimization)
+9. [Caching Strategies](#149-caching-strategies)
+10. [Rate Limiting](#1410-rate-limiting)
+11. [Horizontal Scaling](#1411-horizontal-scaling)
+12. [Auto-Scaling](#1412-auto-scaling)
+13. [Adding Tracing to an Agent](#1413-adding-tracing-to-an-agent)
+14. [Caching Layer Implementation](#1414-caching-layer-implementation)
+15. [Monitoring Dashboard Design](#1415-monitoring-dashboard-design)
+16. [Key Takeaways](#1416-key-takeaways)
+17. [Try It Yourself](#1417-try-it-yourself)
+
+---
+
+## 14.1 Why Observability Is Critical
+
+### The Three Pillars of Observability
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  OBSERVABILITY FOR AI AGENTS                  │
+├───────────────┬───────────────────┬─────────────────────────┤
+│    LOGGING    │     METRICS       │       TRACING           │
+│               │                   │                         │
+│  "What        │  "How much /      │  "Where did the         │
+│   happened?"  │   how fast?"      │   request go?"          │
+│               │                   │                         │
+│  Structured   │  Latency, tokens, │  Request flow through   │
+│  event data   │  errors, costs    │  agent components       │
+│               │                   │                         │
+│  Every LLM    │  Aggregated over  │  End-to-end journey     │
+│  call, tool   │  time windows     │  from input to output   │
+│  use, error   │                   │                         │
+└───────────────┴───────────────────┴─────────────────────────┘
+```
+
+### Why AI Agents Are Hard to Monitor
+
+AI agents are harder to monitor than traditional software:
+
+| Traditional Software | AI Agent |
+|---------------------|----------|
+| Deterministic outputs | Non-deterministic outputs |
+| Same input = same output | Same input = different outputs |
+| Clear error types | "Wrong but plausible" answers |
+| Fixed latency | Variable latency (LLM calls) |
+| Predictable costs | Unpredictable token usage |
+| Simple request/response | Multi-step reasoning chains |
+
+### What Can Go Wrong
+
+```
+WITHOUT OBSERVABILITY:
+┌─────────────────────────────────────────────────┐
+│  User: "My order hasn't arrived"                 │
+│  Agent: "Your order is on the way!"             │
+│                                                  │
+│  But actually:                                   │
+│  - RAG retrieved wrong document (score: 0.45)   │
+│  - Agent hallucinated the shipping status        │
+│  - Tool call to order API failed silently        │
+│  - Agent fabricated the answer                   │
+│  - User got wrong information                    │
+│  - Nobody knows until user complains             │
+└─────────────────────────────────────────────────┘
+
+WITH OBSERVABILITY:
+┌─────────────────────────────────────────────────┐
+│  [TRACE] req_abc123                              │
+│  ├─ [RETRIEVAL] 45ms, 5 chunks, max_score=0.45  │  ← Alert: low score
+│  ├─ [LLM_CALL] gpt-4o, 350 tokens, 1200ms      │
+│  ├─ [TOOL_CALL] order_api → FAILED (timeout)    │  ← Alert: tool failure
+│  ├─ [LLM_CALL] gpt-4o, 200 tokens, 800ms       │
+│  └─ [RESPONSE] 350 chars                        │
+│                                                  │
+│  Dashboard shows:                                │
+│  - Tool failure rate: 12% (was 2% yesterday)    │  ← Action needed
+│  - Avg retrieval score dropped from 0.75 to 0.55│  ← Knowledge gap
+│  - Hallucination risk: HIGH (low confidence)     │
+└─────────────────────────────────────────────────┘
+```
+
+---
+
+## 14.2 Logging Best Practices
+
+### What to Log
+
+```python
+# The logging checklist for AI agents:
+
+LOGGING_CHECKLIST = {
+    "input": [
+        "User message",
+        "User ID / session ID",
+        "Timestamp",
+        "Request metadata (device, IP, etc.)",
+    ],
+    "processing": [
+        "RAG retrieval results (chunks, scores, latency)",
+        "LLM calls (model, tokens, latency, cost)",
+        "Tool calls (tool name, parameters, results, latency)",
+        "Decision points (which path the agent took)",
+        "System prompt used (hash, not full text)",
+    ],
+    "output": [
+        "Agent response",
+        "Sources cited",
+        "Total latency",
+        "Total tokens used",
+        "Estimated cost",
+    ],
+    "errors": [
+        "LLM errors (rate limits, timeouts, refusals)",
+        "Tool failures",
+        "Retrieval failures",
+        "Validation failures",
+        "Guardrail triggers",
+    ],
+}
+```
+
+### Structured Logging Implementation
+
+```python
+"""Production-grade structured logging for AI agents."""
+
+import structlog
+import time
+import uuid
+from contextlib import contextmanager
+from dataclasses import dataclass, field
+from typing import Any
+
+def setup_logging(log_level: str = "INFO"):
+    """Configure structured logging."""
+    structlog.configure(
+        processors=[
+            structlog.contextvars.merge_contextvars,
+            structlog.processors.add_log_level,
+            structlog.processors.TimeStamper(fmt="iso"),
+            structlog.processors.StackInfoRenderer(),
+            structlog.processors.format_exc_info,
+            structlog.processors.JSONRenderer(),
+        ],
+        wrapper_class=structlog.make_filtering_bound_logger(
+            getattr(__import__("logging"), log_level.upper())
+        ),
+        context_class=dict,
+        logger_factory=structlog.PrintLoggerFactory(),
+        cache_logger_on_first_use=True,
+    )
+
+logger = structlog.get_logger()
+
+@dataclass
+class AgentTrace:
+    """Trace a single agent interaction."""
+    request_id: str = field(default_factory=lambda: str(uuid.uuid4())[:12])
+    user_id: str = ""
+    start_time: float = field(default_factory=time.time)
+
+    # RAG
+    rag_chunks_retrieved: int = 0
+    rag_top_score: float = 0.0
+    rag_latency_ms: float = 0.0
+
+    # LLM
+    llm_model: str = ""
+    llm_prompt_tokens: int = 0
+    llm_completion_tokens: int = 0
+    llm_latency_ms: float = 0.0
+    llm_cost_usd: float = 0.0
+
+    # Tools
+    tool_calls: list[dict] = field(default_factory=list)
+
+    # Output
+    response_length: int = 0
+    sources_cited: int = 0
+    total_latency_ms: float = 0.0
+
+    # Errors
+    errors: list[dict] = field(default_factory=list)
+    guardrail_triggers: list[str] = field(default_factory=list)
+
+    def log_start(self):
+        logger.info(
+            "agent_request_started",
+            request_id=self.request_id,
+            user_id=self.user_id,
+        )
+
+    def log_rag(self, chunks: int, top_score: float, latency_ms: float):
+        self.rag_chunks_retrieved = chunks
+        self.rag_top_score = top_score
+        self.rag_latency_ms = latency_ms
+        logger.info(
+            "rag_retrieval",
+            request_id=self.request_id,
+            chunks=chunks,
+            top_score=f"{top_score:.3f}",
+            latency_ms=f"{latency_ms:.0f}",
+        )
+        if top_score < 0.5:
+            logger.warning(
+                "low_retrieval_score",
+                request_id=self.request_id,
+                score=f"{top_score:.3f}",
+                message="Retrieval quality is below threshold",
+            )
+
+    def log_llm(self, model: str, prompt_tokens: int, completion_tokens: int,
+                latency_ms: float, cost_usd: float):
+        self.llm_model = model
+        self.llm_prompt_tokens = prompt_tokens
+        self.llm_completion_tokens = completion_tokens
+        self.llm_latency_ms = latency_ms
+        self.llm_cost_usd = cost_usd
+        logger.info(
+            "llm_call",
+            request_id=self.request_id,
+            model=model,
+            prompt_tokens=prompt_tokens,
+            completion_tokens=completion_tokens,
+            latency_ms=f"{latency_ms:.0f}",
+            cost_usd=f"{cost_usd:.6f}",
+        )
+
+    def log_tool(self, tool_name: str, params: dict, result: str,
+                 latency_ms: float, success: bool):
+        self.tool_calls.append({
+            "tool": tool_name,
+            "latency_ms": latency_ms,
+            "success": success,
+        })
+        logger.info(
+            "tool_call",
+            request_id=self.request_id,
+            tool=tool_name,
+            params=str(params)[:200],
+            result_preview=result[:100] if result else "",
+            latency_ms=f"{latency_ms:.0f}",
+            success=success,
+        )
+        if not success:
+            logger.error(
+                "tool_call_failed",
+                request_id=self.request_id,
+                tool=tool_name,
+                params=str(params)[:200],
+            )
+
+    def log_error(self, error_type: str, message: str):
+        self.errors.append({"type": error_type, "message": message})
+        logger.error(
+            "agent_error",
+            request_id=self.request_id,
+            error_type=error_type,
+            message=message,
+        )
+
+    def log_completion(self, response_length: int, sources_cited: int):
+        total_ms = (time.time() - self.start_time) * 1000
+        self.total_latency_ms = total_ms
+        self.response_length = response_length
+        self.sources_cited = sources_cited
+
+        total_cost = self.llm_cost_usd
+        for tool in self.tool_calls:
+            total_cost += tool.get("cost_usd", 0)
+
+        logger.info(
+            "agent_request_completed",
+            request_id=self.request_id,
+            total_latency_ms=f"{total_ms:.0f}",
+            llm_latency_ms=f"{self.llm_latency_ms:.0f}",
+            rag_latency_ms=f"{self.rag_latency_ms:.0f}",
+            total_tokens=self.llm_prompt_tokens + self.llm_completion_tokens,
+            total_cost_usd=f"{total_cost:.6f}",
+            tool_calls=len(self.tool_calls),
+            errors=len(self.errors),
+            response_length=response_length,
+            sources_cited=sources_cited,
+        )
+```
+
+### Using the Trace
+
+```python
+async def process_message_with_trace(message: str, user_id: str) -> dict:
+    """Process a message with full observability."""
+    trace = AgentTrace(user_id=user_id)
+    trace.log_start()
+
+    try:
+        # RAG retrieval
+        start = time.time()
+        docs = await retriever.retrieve(message)
+        rag_latency = (time.time() - start) * 1000
+        top_score = docs[0]["score"] if docs else 0
+        trace.log_rag(chunks=len(docs), top_score=top_score, latency_ms=rag_latency)
+
+        # LLM call
+        start = time.time()
+        response = await llm.generate(
+            query=message,
+            context=docs,
+            model="gpt-4o",
+        )
+        llm_latency = (time.time() - start) * 1000
+
+        cost = calculate_cost(
+            model="gpt-4o",
+            prompt_tokens=response.usage.prompt_tokens,
+            completion_tokens=response.usage.completion_tokens,
+        )
+        trace.log_llm(
+            model="gpt-4o",
+            prompt_tokens=response.usage.prompt_tokens,
+            completion_tokens=response.usage.completion_tokens,
+            latency_ms=llm_latency,
+            cost_usd=cost,
+        )
+
+        # Completion
+        trace.log_completion(
+            response_length=len(response.text),
+            sources_cited=len(docs),
+        )
+
+        return {"response": response.text, "trace_id": trace.request_id}
+
+    except Exception as e:
+        trace.log_error(type(e).__name__, str(e))
+        raise
+```
+
+---
+
+## 14.3 Distributed Tracing
+
+### What Is Distributed Tracing?
+
+When an agent makes multiple API calls, retrieves documents, and generates a response, you need to see the entire journey as one coherent trace.
+
+```
+DISTRIBUTED TRACE: req_abc123
+
+│├─ HTTP Request (150ms)
+│ │
+│ ├─▶ Auth Middleware (5ms)
+│ │
+│ ├─▶ Rate Limiter Check (2ms)
+│ │
+│ ├─▶ Agent Core
+│ │   │
+│ │   ├─▶ RAG Retrieval
+│ │   │   ├─▶ Embed Query (45ms)
+│ │   │   ├─▶ Vector Search (20ms)
+│ │   │   └─▶ Reranking (35ms)
+│ │   │   Total: 100ms
+│ │   │
+│ │   ├─▶ LLM Call #1 (function calling)
+│ │   │   Model: gpt-4o
+│ │   │   Tokens: 1200 in / 150 out
+│ │   │   Latency: 1200ms
+│ │   │
+│ │   ├─▶ Tool Call: order_api
+│ │   │   URL: /api/orders/ORD-12345
+│ │   │   Status: 200 OK
+│ │   │   Latency: 200ms
+│ │   │
+│ │   ├─▶ LLM Call #2 (final answer)
+│ │   │   Model: gpt-4o
+│ │   │   Tokens: 1500 in / 200 out
+│ │   │   Latency: 900ms
+│ │   │
+│ │   Total: 2400ms
+│ │
+│ ├─▶ Response Serialization (1ms)
+│ │
+└─ Total: 2508ms
+```
+
+### Implementation with OpenTelemetry
+
+```python
+"""Distributed tracing with OpenTelemetry."""
+
+from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.resources import Resource
+
+# Setup
+resource = Resource.create({"service.name": "agent-assist"})
+provider = TracerProvider(resource=resource)
+exporter = OTLPSpanExporter(endpoint="http://localhost:4317")
+provider.add_span_processor(BatchSpanProcessor(exporter))
+trace.set_tracer_provider(provider)
+
+tracer = trace.get_tracer("agent-assist")
+
+# Usage
+async def process_message(message: str) -> dict:
+    with tracer.start_as_current_span("process_message") as span:
+        span.set_attribute("user.message_length", len(message))
+
+        # RAG retrieval
+        with tracer.start_as_current_span("rag_retrieval") as rag_span:
+            docs = await retriever.retrieve(message)
+            rag_span.set_attribute("rag.chunks_found", len(docs))
+            if docs:
+                rag_span.set_attribute("rag.top_score", docs[0]["score"])
+
+        # LLM call
+        with tracer.start_as_current_span("llm_call") as llm_span:
+            llm_span.set_attribute("llm.model", "gpt-4o")
+            response = await llm.generate(message, docs)
+            llm_span.set_attribute("llm.tokens", response.usage.total_tokens)
+
+        span.set_attribute("response.length", len(response.text))
+        return {"response": response.text}
+```
+
+---
+
+## 14.4 Metrics That Matter
+
+### The Agent Metrics Dashboard
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    AGENT METRICS DASHBOARD                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ┌─── REQUESTS ─────────────────────────────────────────────────┐   │
+│  │  Total Requests: 12,847 (24h)    │  Active: 23              │   │
+│  │  Success Rate: 98.2%             │  Queued: 0               │   │
+│  │  Errors: 231 (1.8%)              │  P99 Latency: 4.2s       │   │
+│  └──────────────────────────────────┴──────────────────────────┘   │
+│                                                                      │
+│  ┌─── LLM METRICS ─────────────────────────────────────────────┐   │
+│  │  Total Tokens: 4.2M (24h)        │  Avg Tokens/Request: 327 │   │
+│  │  Prompt Tokens: 3.1M             │  Completion: 1.1M        │   │
+│  │  Cost (24h): $42.30              │  Avg Cost/Request: $0.003│   │
+│  └──────────────────────────────────┴──────────────────────────┘   │
+│                                                                      │
+│  ┌─── RAG METRICS ─────────────────────────────────────────────┐   │
+│  │  Retrieval Hit Rate: 87%         │  Avg Score: 0.72         │   │
+│  │  Low Score Queries: 312 (2.4%)  │  Avg Chunks: 4.2         │   │
+│  └──────────────────────────────────┴──────────────────────────┘   │
+│                                                                      │
+│  ┌─── TOOL METRICS ────────────────────────────────────────────┐   │
+│  │  order_lookup: 3,421 calls (99.1% success)                 │   │
+│  │  product_search: 2,156 calls (97.8% success)               │   │
+│  │  create_ticket: 892 calls (100% success)                   │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Key Metrics to Track
+
+| Category | Metric | Alert Threshold | Why It Matters |
+|----------|--------|----------------|----------------|
+| **Latency** | P50 response time | > 2s | User experience |
+| | P95 response time | > 5s | Tail latency |
+| | P99 response time | > 10s | Worst case |
+| **Throughput** | Requests per minute | < 10 (if expecting 100+) | Capacity |
+| **Errors** | Error rate | > 5% | Reliability |
+| | LLM error rate | > 2% | Provider issues |
+| | Tool error rate | > 5% | Integration health |
+| **Cost** | Cost per request | > $0.05 | Budget control |
+| | Daily total cost | > $100 | Budget alerts |
+| | Cost trend | Increasing 20%+ week-over-week | Regression |
+| **Quality** | Retrieval score | < 0.5 avg | RAG quality |
+| | Hallucination rate | > 5% | Answer quality |
+| | User satisfaction | < 3/5 stars | Product quality |
+| **Tokens** | Tokens per request | > 5000 | Efficiency |
+| | Context window usage | > 80% | Headroom |
+
+### Prometheus Metrics Setup
+
+```python
+from prometheus_client import Counter, Histogram, Gauge, Summary
+
+# Request metrics
+REQUEST_COUNT = Counter(
+    "agent_requests_total",
+    "Total agent requests",
+    ["status", "model"],
+)
+
+REQUEST_LATENCY = Histogram(
+    "agent_request_duration_seconds",
+    "Request latency",
+    ["endpoint"],
+    buckets=[0.5, 1.0, 2.0, 3.0, 5.0, 10.0, 30.0],
+)
+
+# Token metrics
+TOKEN_USAGE = Counter(
+    "agent_tokens_total",
+    "Total tokens used",
+    ["model", "type"],  # type: prompt or completion
+)
+
+TOKEN_COST = Counter(
+    "agent_cost_dollars_total",
+    "Total cost in USD",
+    ["model"],
+)
+
+# RAG metrics
+RETRIEVAL_SCORE = Histogram(
+    "agent_retrieval_score",
+    "RAG retrieval scores",
+    buckets=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+)
+
+RETRIEVAL_LATENCY = Histogram(
+    "agent_retrieval_latency_seconds",
+    "RAG retrieval latency",
+    buckets=[0.05, 0.1, 0.25, 0.5, 1.0, 2.0],
+)
+
+# Tool metrics
+TOOL_CALL_COUNT = Counter(
+    "agent_tool_calls_total",
+    "Total tool calls",
+    ["tool_name", "status"],
+)
+
+TOOL_LATENCY = Histogram(
+    "agent_tool_latency_seconds",
+    "Tool call latency",
+    ["tool_name"],
+    buckets=[0.1, 0.25, 0.5, 1.0, 2.0, 5.0],
+)
+
+# Quality metrics
+QUALITY_SCORE = Gauge(
+    "agent_quality_score",
+    "Quality score for responses",
+    ["metric"],  # faithfulness, relevance, etc.
+)
+
+ACTIVE_REQUESTS = Gauge(
+    "agent_active_requests",
+    "Number of active requests being processed",
+)
+
+# Usage in your agent
+def track_request(func):
+    """Decorator to track request metrics."""
+    async def wrapper(*args, **kwargs):
+        ACTIVE_REQUESTS.inc()
+        start = time.time()
+        try:
+            result = await func(*args, **kwargs)
+            REQUEST_COUNT.labels(status="success", model="gpt-4o").inc()
+            return result
+        except Exception as e:
+            REQUEST_COUNT.labels(status="error", model="gpt-4o").inc()
+            raise
+        finally:
+            duration = time.time() - start
+            REQUEST_LATENCY.labels(endpoint="chat").observe(duration)
+            ACTIVE_REQUESTS.dec()
+    return wrapper
+```
+
+---
+
+## 14.5 Cost Tracking
+
+### Token Pricing Reference
+
+| Model | Input (per 1M tokens) | Output (per 1M tokens) | Avg Cost/Request |
+|-------|----------------------|------------------------|-----------------|
+| GPT-4o | $2.50 | $10.00 | $0.005 - $0.02 |
+| GPT-4o-mini | $0.15 | $0.60 | $0.0002 - $0.001 |
+| Claude 3.5 Sonnet | $3.00 | $15.00 | $0.005 - $0.03 |
+| Claude 3.5 Haiku | $0.25 | $1.25 | $0.0003 - $0.002 |
+| text-embedding-3-small | $0.02 | - | $0.00001 |
+
+### Cost Tracker
+
+```python
+"""Cost tracking for AI agents."""
+
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+import json
+from pathlib import Path
+
+@dataclass
+class CostEntry:
+    timestamp: datetime
+    model: str
+    prompt_tokens: int
+    completion_tokens: int
+    cost_usd: float
+    request_id: str
+    user_id: str
+
+class CostTracker:
+    """Track and report AI agent costs."""
+
+    # Pricing per 1M tokens
+    PRICING = {
+        "gpt-4o": {"input": 2.50, "output": 10.00},
+        "gpt-4o-mini": {"input": 0.15, "output": 0.60},
+        "claude-3-5-sonnet": {"input": 3.00, "output": 15.00},
+        "claude-3-5-haiku": {"input": 0.25, "output": 1.25},
+        "text-embedding-3-small": {"input": 0.02, "output": 0},
+        "text-embedding-3-large": {"input": 0.13, "output": 0},
+    }
+
+    def __init__(self, log_path: str = "cost_log.jsonl"):
+        self.log_path = Path(log_path)
+        self.entries: list[CostEntry] = []
+
+    def calculate_cost(self, model: str, prompt_tokens: int,
+                       completion_tokens: int) -> float:
+        """Calculate the cost of an LLM call."""
+        pricing = self.PRICING.get(model)
+        if not pricing:
+            return 0.0
+
+        input_cost = (prompt_tokens / 1_000_000) * pricing["input"]
+        output_cost = (completion_tokens / 1_000_000) * pricing["output"]
+        return input_cost + output_cost
+
+    def log(self, model: str, prompt_tokens: int, completion_tokens: int,
+            request_id: str, user_id: str = ""):
+        """Log a cost entry."""
+        cost = self.calculate_cost(model, prompt_tokens, completion_tokens)
+
+        entry = CostEntry(
+            timestamp=datetime.now(),
+            model=model,
+            prompt_tokens=prompt_tokens,
+            completion_tokens=completion_tokens,
+            cost_usd=cost,
+            request_id=request_id,
+            user_id=user_id,
+        )
+        self.entries.append(entry)
+
+        # Append to log file
+        with open(self.log_path, "a") as f:
+            f.write(json.dumps({
+                "timestamp": entry.timestamp.isoformat(),
+                "model": model,
+                "prompt_tokens": prompt_tokens,
+                "completion_tokens": completion_tokens,
+                "cost_usd": cost,
+                "request_id": request_id,
+                "user_id": user_id,
+            }) + "\n")
+
+        return cost
+
+    def report(self, period: timedelta = timedelta(hours=24)) -> dict:
+        """Generate a cost report for the given period."""
+        cutoff = datetime.now() - period
+        recent = [e for e in self.entries if e.timestamp >= cutoff]
+
+        if not recent:
+            return {"total_cost": 0, "requests": 0}
+
+        total_cost = sum(e.cost_usd for e in recent)
+        total_prompt = sum(e.prompt_tokens for e in recent)
+        total_completion = sum(e.completion_tokens for e in recent)
+
+        # Cost by model
+        by_model = {}
+        for entry in recent:
+            if entry.model not in by_model:
+                by_model[entry.model] = {"cost": 0, "requests": 0}
+            by_model[entry.model]["cost"] += entry.cost_usd
+            by_model[entry.model]["requests"] += 1
+
+        # Cost by user
+        by_user = {}
+        for entry in recent:
+            if entry.user_id not in by_user:
+                by_user[entry.user_id] = 0
+            by_user[entry.user_id] += entry.cost_usd
+
+        return {
+            "period_hours": period.total_seconds() / 3600,
+            "total_cost_usd": round(total_cost, 4),
+            "total_requests": len(recent),
+            "avg_cost_per_request": round(total_cost / len(recent), 6),
+            "total_prompt_tokens": total_prompt,
+            "total_completion_tokens": total_completion,
+            "by_model": by_model,
+            "top_users_by_cost": dict(
+                sorted(by_user.items(), key=lambda x: x[1], reverse=True)[:10]
+            ),
+        }
+
+    def check_budget(self, daily_budget: float = 100.0) -> dict:
+        """Check if we're within budget."""
+        report = self.report(timedelta(hours=24))
+        cost = report["total_cost_usd"]
+        return {
+            "budget_usd": daily_budget,
+            "spent_usd": cost,
+            "remaining_usd": round(daily_budget - cost, 4),
+            "percent_used": round((cost / daily_budget) * 100, 1),
+            "on_track": cost < daily_budget,
+        }
+
+# Usage
+tracker = CostTracker()
+
+# During LLM calls
+cost = tracker.log(
+    model="gpt-4o",
+    prompt_tokens=1200,
+    completion_tokens=200,
+    request_id="req_abc123",
+    user_id="user_456",
+)
+print(f"This call cost: ${cost:.6f}")
+
+# Generate report
+print(json.dumps(tracker.report(), indent=2))
+print(json.dumps(tracker.check_budget(), indent=2))
+```
+
+---
+
+## 14.6 LangSmith Integration
+
+LangSmith is the leading observability platform for LLM applications.
+
+```python
+"""LangSmith integration for agent tracing."""
+
+import os
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_API_KEY"] = "your-langsmith-api-key"
+os.environ["LANGCHAIN_PROJECT"] = "agent-assist"
+
+from langsmith import traceable
+from langchain_core.runnables import RunnableConfig
+
+@traceable(
+    name="agent_process_message",
+    run_type="chain",
+    tags=["production", "v1.0"],
+)
+async def process_message(message: str, user_id: str) -> dict:
+    """Process a message with LangSmith tracing."""
+
+    # RAG retrieval (automatically traced)
+    docs = await traceable(
+        name="rag_retrieval",
+        run_type="retriever",
+    )(retrieve_docs)(message)
+
+    # LLM call (automatically traced)
+    response = await traceable(
+        name="llm_generation",
+        run_type="llm",
+        metadata={"model": "gpt-4o"},
+    )(generate_response)(message, docs)
+
+    return {"response": response, "docs": docs}
+
+def retrieve_docs(query: str) -> list[dict]:
+    """Retrieve documents for RAG."""
+    # Your retrieval logic
+    return []
+
+def generate_response(query: str, docs: list[dict]) -> str:
+    """Generate a response."""
+    # Your generation logic
+    return ""
+
+# Adding feedback
+from langsmith import Client
+
+client = Client()
+
+def record_feedback(run_id: str, score: int, comment: str = ""):
+    """Record user feedback on a response."""
+    client.create_feedback(
+        run_id=run_id,
+        key="user_rating",
+        score=score,  # 1-5
+        comment=comment,
+    )
+```
+
+---
+
+## 14.7 LangFuse: Open-Source Observability
+
+```python
+"""LangFuse integration - open-source alternative to LangSmith."""
+
+from langfuse import Langfuse
+from langfuse.decorators import observe
+
+# Initialize
+langfuse = Langfuse(
+    public_key="your-public-key",
+    secret_key="your-secret-key",
+    host="https://cloud.langfuse.com",  # or self-hosted
+)
+
+@observe(as_type="generation")
+def call_llm(messages: list[dict], model: str = "gpt-4o") -> dict:
+    """LLM call with LangFuse tracing."""
+    import openai
+    client = openai.OpenAI()
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+    )
+    return response
+
+@observe()  # Automatically creates a trace
+async def process_message(message: str) -> dict:
+    """Process message with full LangFuse tracing."""
+    # RAG
+    docs = retrieve_docs(message)
+
+    # LLM
+    response = call_llm([
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": message},
+    ])
+
+    # Update trace with metadata
+    langfuse.trace(
+        user_id="user_123",
+        metadata={"docs_retrieved": len(docs)},
+        tags=["production"],
+    )
+
+    return {"response": response.choices[0].message.content}
+
+# Score responses
+def score_response(trace_id: str, score: float, name: str = "quality"):
+    """Score a trace for quality monitoring."""
+    langfuse.score(
+        trace_id=trace_id,
+        name=name,
+        value=score,
+        comment="Automated quality score",
+    )
+```
+
+---
+
+## 14.8 Latency Optimization
+
+### Where Time Is Spent
+
+```
+TYPICAL AGENT REQUEST TIMELINE (3.5 seconds total):
+
+0ms        50ms       150ms                 1200ms                2200ms      3500ms
+│──────────│──────────│─────────────────────│─────────────────────│───────────│
+│ Auth     │ Retrieve │ RAG + Rerank        │ LLM Call #1         │ LLM #2    │
+│ (50ms)   │ Embed    │ (100ms)             │ (1000ms)            │ (1300ms)  │
+│          │ (50ms)   │                     │                     │           │
+│          │          │                     │                     │           │
+│ OPTIMIZE │ OPTIMIZE │                     │ OPTIMIZE            │ OPTIMIZE  │
+│ Cache    │ Cache    │                     │ Stream, Cache       │ Fewer     │
+│          │          │                     │                     │ rounds    │
+```
+
+### Optimization Strategies
+
+```python
+"""Latency optimization strategies for AI agents."""
+
+import time
+from functools import lru_cache
+
+# Strategy 1: Embedding Cache
+# Cache query embeddings to avoid re-embedding repeated queries
+embedding_cache = {}
+
+async def get_cached_embedding(text: str) -> list[float]:
+    """Get embedding with caching."""
+    cache_key = hash(text)
+    if cache_key in embedding_cache:
+        return embedding_cache[cache_key]
+
+    embedding = await embed_text(text)
+    embedding_cache[cache_key] = embedding
+    return embedding
+
+# Strategy 2: Response Streaming
+# Start sending tokens to the user immediately
+async def stream_response(messages: list[dict]):
+    """Stream LLM response for perceived speed."""
+    stream = await client.chat.completions.create(
+        model="gpt-4o",
+        messages=messages,
+        stream=True,  # Enable streaming
+    )
+    async for chunk in stream:
+        if chunk.choices[0].delta.content:
+            yield chunk.choices[0].delta.content
+
+# Strategy 3: Async Tool Calls
+# Execute independent tool calls in parallel
+import asyncio
+
+async def execute_tools_parallel(tool_calls: list[dict]) -> list[dict]:
+    """Execute multiple tool calls concurrently."""
+    tasks = []
+    for call in tool_calls:
+        tool = get_tool(call["name"])
+        tasks.append(tool.execute(**call["args"]))
+
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+
+    return [
+        {"tool": call["name"], "result": result}
+        for call, result in zip(tool_calls, results)
+    ]
+
+# Strategy 4: Predictive Prefetch
+# Start RAG retrieval before the user finishes typing
+class PrefetchManager:
+    """Prefetch likely RAG results."""
+
+    def __init__(self):
+        self.cache = {}
+
+    async def prefetch(self, partial_query: str):
+        """Prefetch results for common query prefixes."""
+        # Map common prefixes to full queries
+        common_prefixes = {
+            "how do i": ["how do i reset my password", "how do i track my order"],
+            "what is": ["what is your return policy", "what is your shipping time"],
+            "where": ["where is my order", "where are you located"],
+        }
+
+        for prefix, queries in common_prefixes.items():
+            if partial_query.lower().startswith(prefix):
+                for query in queries:
+                    if query not in self.cache:
+                        self.cache[query] = await self._retrieve(query)
+
+    async def get_prefetched(self, query: str) -> list[dict] | None:
+        return self.cache.get(query)
+```
+
+---
+
+## 14.9 Caching Strategies
+
+### Semantic Caching
+
+```python
+"""Semantic caching - cache based on meaning, not exact text."""
+
+import numpy as np
+from sentence_transformers import SentenceTransformer
+
+class SemanticCache:
+    """Cache responses based on query similarity."""
+
+    def __init__(self, similarity_threshold: float = 0.92):
+        self.model = SentenceTransformer("all-MiniLM-L6-v2")
+        self.cache: list[dict] = []
+        self.threshold = similarity_threshold
+
+    def _embed(self, text: str) -> list[float]:
+        return self.model.encode([text])[0].tolist()
+
+    def _similarity(self, a: list[float], b: list[float]) -> float:
+        a, b = np.array(a), np.array(b)
+        return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+
+    def get(self, query: str) -> dict | None:
+        """Find a cached response for a semantically similar query."""
+        query_embedding = self._embed(query)
+
+        for entry in self.cache:
+            sim = self._similarity(query_embedding, entry["embedding"])
+            if sim >= self.threshold:
+                return {
+                    "response": entry["response"],
+                    "cached": True,
+                    "similarity": sim,
+                    "original_query": entry["query"],
+                }
+
+        return None
+
+    def set(self, query: str, response: str):
+        """Cache a query-response pair."""
+        self.cache.append({
+            "query": query,
+            "response": response,
+            "embedding": self._embed(query),
+            "timestamp": time.time(),
+        })
+
+    def clear_old(self, max_age_seconds: int = 3600):
+        """Remove stale cache entries."""
+        cutoff = time.time() - max_age_seconds
+        self.cache = [e for e in self.cache if e["timestamp"] > cutoff]
+
+# Usage
+cache = SemanticCache(similarity_threshold=0.90)
+
+async def cached_agent(query: str) -> dict:
+    """Agent with semantic caching."""
+    # Check cache
+    cached = cache.get(query)
+    if cached:
+        return {
+            "response": cached["response"],
+            "source": "cache",
+            "latency_ms": 1,  # Near-instant
+        }
+
+    # Cache miss - generate response
+    response = await agent.generate(query)
+    cache.set(query, response)
+
+    return {
+        "response": response,
+        "source": "llm",
+        "latency_ms": 1200,
+    }
+```
+
+### Response Caching with Redis
+
+```python
+import redis
+import hashlib
+import json
+
+class ResponseCache:
+    """Redis-based response cache with TTL."""
+
+    def __init__(self, redis_url: str = "redis://localhost:6379"):
+        self.redis = redis.from_url(redis_url)
+        self.default_ttl = 3600  # 1 hour
+
+    def _key(self, query: str, model: str) -> str:
+        content = f"{model}:{query}"
+        return f"rag_cache:{hashlib.sha256(content.encode()).hexdigest()}"
+
+    def get(self, query: str, model: str) -> dict | None:
+        """Get cached response."""
+        key = self._key(query, model)
+        cached = self.redis.get(key)
+        if cached:
+            return json.loads(cached)
+        return None
+
+    def set(self, query: str, model: str, response: dict, ttl: int = None):
+        """Cache a response."""
+        key = self._key(query, model)
+        self.redis.setex(
+            key,
+            ttl or self.default_ttl,
+            json.dumps(response),
+        )
+
+    def invalidate(self, pattern: str = "rag_cache:*"):
+        """Invalidate cache entries matching pattern."""
+        keys = self.redis.keys(pattern)
+        if keys:
+            self.redis.delete(*keys)
+
+    def stats(self) -> dict:
+        """Get cache statistics."""
+        keys = self.redis.keys("rag_cache:*")
+        return {
+            "total_entries": len(keys),
+            "memory_used": self.redis.info("memory")["used_memory_human"],
+        }
+```
+
+---
+
+## 14.10 Rate Limiting
+
+```python
+"""Rate limiting for AI agents."""
+
+import time
+from collections import defaultdict
+
+class RateLimiter:
+    """Token bucket rate limiter."""
+
+    def __init__(self, max_requests: int, window_seconds: int = 60):
+        self.max_requests = max_requests
+        self.window = window_seconds
+        self.requests: dict[str, list[float]] = defaultdict(list)
+
+    def allow(self, identifier: str) -> dict:
+        """Check if a request is allowed."""
+        now = time.time()
+        window_start = now - self.window
+
+        # Clean old entries
+        self.requests[identifier] = [
+            t for t in self.requests[identifier] if t > window_start
+        ]
+
+        current = len(self.requests[identifier])
+
+        if current >= self.max_requests:
+            retry_after = self.requests[identifier][0] + self.window - now
+            return {
+                "allowed": False,
+                "remaining": 0,
+                "retry_after_seconds": max(0, retry_after),
+            }
+
+        self.requests[identifier].append(now)
+        return {
+            "allowed": True,
+            "remaining": self.max_requests - current - 1,
+            "retry_after_seconds": 0,
+        }
+
+class CostRateLimiter:
+    """Rate limit based on API cost, not just request count."""
+
+    def __init__(self, daily_budget: float = 50.0):
+        self.daily_budget = daily_budget
+        self.spent_today: dict[str, float] = defaultdict(float)
+        self.reset_date = time.strftime("%Y-%m-%d")
+
+    def check_budget(self, user_id: str, estimated_cost: float) -> dict:
+        """Check if user is within their budget."""
+        # Reset daily
+        today = time.strftime("%Y-%m-%d")
+        if today != self.reset_date:
+            self.spent_today.clear()
+            self.reset_date = today
+
+        current_spend = self.spent_today[user_id]
+        if current_spend + estimated_cost > self.daily_budget:
+            return {
+                "allowed": False,
+                "reason": "daily_budget_exceeded",
+                "current_spend": current_spend,
+                "budget": self.daily_budget,
+            }
+
+        self.spent_today[user_id] += estimated_cost
+        return {
+            "allowed": True,
+            "current_spend": self.spent_today[user_id],
+            "budget": self.daily_budget,
+        }
+```
+
+---
+
+## 14.11 Horizontal Scaling
+
+### Scaling Architecture
+
+```
+HORIZONTAL SCALING:
+
+┌──────────┐
+│  Users   │
+└────┬─────┘
+     │
+     ▼
+┌──────────────┐
+│ Load Balancer│
+│  (Round Robin)│
+└──┬───┬───┬───┘
+   │   │   │
+   ▼   ▼   ▼
+┌───┐┌───┐┌───┐
+│ A1││ A2││ A3│  Agent Instances (stateless)
+└─┬─┘└─┬─┘└─┬─┘
+  │    │    │
+  └────┼────┘
+       │
+   ┌───▼───┐
+   │Shared │
+   │  Data │
+   │ Layer │
+   │┌─────┐│
+   ││Redis││  (Session cache)
+   │├─────┤│
+   ││ Post ││  (Conversation history)
+   ││gres  ││
+   │├─────┤│
+   ││Chroma││  (Vector store)
+   │└─────┘│
+   └───────┘
+```
+
+### Stateless Agent Design
+
+```python
+"""Stateless agent design for horizontal scaling."""
+
+class StatelessAgent:
+    """Agent that stores no state locally - all state is external."""
+
+    def __init__(self):
+        self.redis = redis.from_url("redis://redis:6379")
+        self.db = PostgreSQL("postgresql://db:5432/agentassist")
+        self.vector_store = Chroma("chroma:8000")
+
+    async def process(self, message: str, conversation_id: str) -> dict:
+        """Process a message using only external state."""
+        # Load state from Redis/DB
+        history = await self._load_history(conversation_id)
+
+        # Process (no local state mutation)
+        response = await self._generate(message, history)
+
+        # Save state to Redis/DB
+        await self._save_history(conversation_id, message, response)
+
+        return response
+
+    async def _load_history(self, conversation_id: str) -> list[dict]:
+        """Load conversation history from Redis."""
+        cached = self.redis.get(f"conv:{conversation_id}")
+        if cached:
+            return json.loads(cached)
+        # Fall back to database
+        return await self.db.get_messages(conversation_id)
+
+    async def _save_history(self, conversation_id: str, user_msg: str,
+                           assistant_msg: str):
+        """Save to both Redis (fast) and database (persistent)."""
+        # Save to database
+        await self.db.save_message(conversation_id, "user", user_msg)
+        await self.db.save_message(conversation_id, "assistant", assistant_msg)
+
+        # Update Redis cache
+        history = await self._load_history(conversation_id)
+        history.append({"role": "user", "content": user_msg})
+        history.append({"role": "assistant", "content": assistant_msg})
+        self.redis.setex(
+            f"conv:{conversation_id}",
+            3600,  # 1 hour TTL
+            json.dumps(history),
+        )
+```
+
+---
+
+## 14.12 Auto-Scaling
+
+```python
+"""Auto-scaling configuration for agent systems."""
+
+# Kubernetes HPA (Horizontal Pod Autoscaler)
+HPA_CONFIG = """
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: agent-assist-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: agent-assist
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+    - type: Pods
+      pods:
+        metric:
+          name: agent_active_requests
+        target:
+          type: AverageValue
+          averageValue: "20"
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Pods
+          value: 2
+          periodSeconds: 60
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Percent
+          value: 10
+          periodSeconds: 60
+"""
+
+# GCP Cloud Run auto-scaling
+CLOUD_RUN_CONFIG = """
+gcloud run deploy agent-assist \
+  --min-instances=1 \
+  --max-instances=50 \
+  --concurrency=80 \
+  --cpu=2 \
+  --memory=4Gi \
+  --autoscaling-window=60s
+"""
+```
+
+---
+
+## 14.13 Adding Tracing to an Agent
+
+Here is the complete tracing implementation to add to any agent:
+
+```python
+"""Complete tracing implementation for AI agents."""
+
+import time
+import uuid
+import json
+from dataclasses import dataclass, field, asdict
+from typing import Any
+from contextlib import asynccontextmanager
+
+@dataclass
+class Span:
+    """A single span in a trace."""
+    name: str
+    start_time: float = field(default_factory=time.time)
+    end_time: float = 0.0
+    attributes: dict[str, Any] = field(default_factory=dict)
+    status: str = "ok"
+    children: list["Span"] = field(default_factory=list)
+
+    def finish(self, status: str = "ok"):
+        self.end_time = time.time()
+        self.status = status
+
+    @property
+    def duration_ms(self) -> float:
+        if self.end_time == 0:
+            return (time.time() - self.start_time) * 1000
+        return (self.end_time - self.start_time) * 1000
+
+    def to_dict(self) -> dict:
+        return {
+            "name": self.name,
+            "duration_ms": round(self.duration_ms, 2),
+            "status": self.status,
+            "attributes": self.attributes,
+            "children": [c.to_dict() for c in self.children],
+        }
+
+@dataclass
+class Trace:
+    """A complete trace of an agent interaction."""
+    trace_id: str = field(default_factory=lambda: str(uuid.uuid4())[:12])
+    start_time: float = field(default_factory=time.time)
+    spans: list[Span] = field(default_factory=list)
+    attributes: dict[str, Any] = field(default_factory=dict)
+
+    @asynccontextmanager
+    async def span(self, name: str, **attributes):
+        """Context manager for creating spans."""
+        s = Span(name=name, attributes=attributes)
+        self.spans.append(s)
+        try:
+            yield s
+        except Exception as e:
+            s.finish(status="error")
+            s.attributes["error"] = str(e)
+            raise
+        else:
+            s.finish()
+
+    @property
+    def total_duration_ms(self) -> float:
+        return (time.time() - self.start_time) * 1000
+
+    def to_dict(self) -> dict:
+        return {
+            "trace_id": self.trace_id,
+            "total_duration_ms": round(self.total_duration_ms, 2),
+            "attributes": self.attributes,
+            "spans": [s.to_dict() for s in self.spans],
+        }
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict(), indent=2)
+
+    def log_summary(self):
+        """Print a summary of the trace."""
+        print(f"\n{'='*60}")
+        print(f"TRACE {self.trace_id}")
+        print(f"{'='*60}")
+        for span in self.spans:
+            status_icon = "OK" if span.status == "ok" else "ERR"
+            print(f"  [{status_icon}] {span.name}: {span.duration_ms:.0f}ms")
+            for key, value in span.attributes.items():
+                print(f"       {key}: {value}")
+        print(f"  TOTAL: {self.total_duration_ms:.0f}ms")
+        print(f"{'='*60}\n")
+
+
+# Usage in your agent
+async def traced_agent_process(message: str, user_id: str) -> dict:
+    """Process a message with full tracing."""
+    trace = Trace(attributes={"user_id": user_id, "message_length": len(message)})
+
+    # RAG retrieval
+    async with trace.span("rag_retrieval") as s:
+        docs = await retriever.retrieve(message)
+        s.attributes["chunks"] = len(docs)
+        s.attributes["top_score"] = docs[0]["score"] if docs else 0
+
+    # LLM call
+    async with trace.span("llm_call", model="gpt-4o") as s:
+        response = await llm.generate(message, docs)
+        s.attributes["prompt_tokens"] = response.usage.prompt_tokens
+        s.attributes["completion_tokens"] = response.usage.completion_tokens
+        s.attributes["cost_usd"] = calculate_cost(
+            "gpt-4o",
+            response.usage.prompt_tokens,
+            response.usage.completion_tokens,
+        )
+
+    trace.log_summary()
+
+    return {
+        "response": response.text,
+        "trace": trace.to_dict(),
+    }
+```
+
+---
+
+## 14.14 Caching Layer Implementation
+
+Here is a complete, production-ready caching layer:
+
+```python
+"""Complete caching layer for RAG systems."""
+
+import hashlib
+import json
+import time
+import numpy as np
+from sentence_transformers import SentenceTransformer
+
+class RAGCacheLayer:
+    """Multi-level caching for RAG pipelines."""
+
+    def __init__(self, redis_client=None, similarity_threshold: float = 0.92):
+        self.redis = redis_client
+        self.similarity_threshold = similarity_threshold
+        self.embed_model = SentenceTransformer("all-MiniLM-L6-v2")
+
+        # In-memory cache as L1 (fastest)
+        self.l1_cache: dict[str, dict] = {}
+        self.l1_max_size = 1000
+
+        # Statistics
+        self.stats = {"hits": 0, "misses": 0, "l1_hits": 0, "l2_hits": 0}
+
+    async def get(self, query: str) -> dict | None:
+        """Try to find a cached response."""
+        # L1: Exact match (in-memory)
+        exact_key = self._exact_key(query)
+        if exact_key in self.l1_cache:
+            entry = self.l1_cache[exact_key]
+            if not self._is_expired(entry):
+                self.stats["hits"] += 1
+                self.stats["l1_hits"] += 1
+                return {**entry["response"], "cache_level": "L1_exact"}
+
+        # L2: Semantic match (in-memory)
+        query_emb = self.embed_model.encode([query])[0]
+        for key, entry in self.l1_cache.items():
+            if not self._is_expired(entry):
+                sim = self._similarity(query_emb, entry["embedding"])
+                if sim >= self.similarity_threshold:
+                    self.stats["hits"] += 1
+                    self.stats["l1_hits"] += 1
+                    return {
+                        **entry["response"],
+                        "cache_level": "L1_semantic",
+                        "similarity": sim,
+                    }
+
+        # L3: Redis cache (if available)
+        if self.redis:
+            redis_result = self._redis_get(query)
+            if redis_result:
+                self.stats["hits"] += 1
+                self.stats["l2_hits"] += 1
+                return {**redis_result, "cache_level": "L2_redis"}
+
+        self.stats["misses"] += 1
+        return None
+
+    async def set(self, query: str, response: dict, ttl: int = 3600):
+        """Cache a query-response pair."""
+        entry = {
+            "query": query,
+            "response": response,
+            "embedding": self.embed_model.encode([query])[0].tolist(),
+            "timestamp": time.time(),
+            "ttl": ttl,
+        }
+
+        # Store in L1
+        if len(self.l1_cache) >= self.l1_max_size:
+            # Evict oldest
+            oldest_key = min(self.l1_cache, key=lambda k: self.l1_cache[k]["timestamp"])
+            del self.l1_cache[oldest_key]
+
+        self.l1_cache[self._exact_key(query)] = entry
+
+        # Store in L2 (Redis)
+        if self.redis:
+            self._redis_set(query, response, ttl)
+
+    def _exact_key(self, query: str) -> str:
+        return hashlib.sha256(query.lower().strip().encode()).hexdigest()
+
+    def _similarity(self, a: np.ndarray, b: list[float]) -> float:
+        b = np.array(b)
+        return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+
+    def _is_expired(self, entry: dict) -> bool:
+        return time.time() - entry["timestamp"] > entry.get("ttl", 3600)
+
+    def _redis_get(self, query: str) -> dict | None:
+        key = f"rag:{self._exact_key(query)}"
+        cached = self.redis.get(key)
+        return json.loads(cached) if cached else None
+
+    def _redis_set(self, query: str, response: dict, ttl: int):
+        key = f"rag:{self._exact_key(query)}"
+        self.redis.setex(key, ttl, json.dumps(response))
+
+    def get_stats(self) -> dict:
+        total = self.stats["hits"] + self.stats["misses"]
+        return {
+            **self.stats,
+            "hit_rate": f"{(self.stats['hits']/total*100):.1f}%" if total > 0 else "0%",
+            "l1_entries": len(self.l1_cache),
+        }
+```
+
+---
+
+## 14.15 Monitoring Dashboard Design
+
+### Dashboard Layout
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  AGENT MONITORING DASHBOARD                                  Last 24 Hours │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌─── TOP ROW: Key Numbers ─────────────────────────────────────────────┐  │
+│  │                                                                       │  │
+│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  │  │
+│  │  │ 12,847  │  │  98.2%  │  │  $42.30 │  │  2.1s   │  │  4.2M   │  │  │
+│  │  │Requests │  │  Uptime │  │  Cost   │  │Avg Lat  │  │ Tokens  │  │  │
+│  │  │  +12%   │  │  +0.1%  │  │  -8%    │  │  -15%   │  │  +5%    │  │  │
+│  │  └─────────┘  └─────────┘  └─────────┘  └─────────┘  └─────────┘  │  │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+│  ┌─── MIDDLE ROW: Time Series ─────────────────────────────────────────┐   │
+│  │                                                                       │   │
+│  │  Requests/min ────────────────  Latency (P50/P95/P99) ────────────  │   │
+│  │  ┌──────────────────────┐     ┌──────────────────────┐              │   │
+│  │  │  ▁▁▂▂▃▃▂▂▁▁▂▃▅▃▂▁  │     │  ──P50──P95──P99──  │              │   │
+│  │  │                      │     │  ────2s──4s──8s────  │              │   │
+│  │  │  120/min avg         │     │                      │              │   │
+│  │  └──────────────────────┘     └──────────────────────┘              │   │
+│  │                                                                       │   │
+│  │  Error Rate ─────────────────  Cost/Hour ─────────────────────────  │   │
+│  │  ┌──────────────────────┐     ┌──────────────────────┐              │   │
+│  │  │  ▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁  │     │  ▁▂▃▅▇█▇▅▃▂▁▁▂▃▅  │              │   │
+│  │  │  1.8% avg            │     │  $1.76/hr avg         │              │   │
+│  │  └──────────────────────┘     └──────────────────────┘              │   │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+│  ┌─── BOTTOM ROW: Breakdowns ──────────────────────────────────────────┐   │
+│  │                                                                       │   │
+│  │  Top Queries ────────────────  Tool Usage ────────────────────────  │   │
+│  │  1. "track my order" (342)    │  order_lookup:  ████████░░ 3421   │   │
+│  │  2. "return policy" (287)     │  product_search: █████░░░░░ 2156  │   │
+│  │  3. "reset password" (198)    │  create_ticket:  ██░░░░░░░░  892  │   │
+│  │  4. "shipping time" (156)     │                                    │   │
+│  │  5. "cancel order" (134)      │  Success Rate: 98.7%              │   │
+│  │                                                                       │   │
+│  │  Model Usage ────────────────  Cache Hit Rate ────────────────────  │   │
+│  │  gpt-4o:     65%              │  L1 (exact):    45%               │   │
+│  │  gpt-4o-mini: 30%             │  L2 (semantic): 25%               │   │
+│  │  claude:      5%              │  Miss:          30%               │   │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Grafana Dashboard Config (JSON)
+
+```json
+{
+  "dashboard": {
+    "title": "AgentAssist Monitoring",
+    "panels": [
+      {
+        "title": "Requests per Minute",
+        "type": "timeseries",
+        "targets": [{
+          "expr": "rate(agent_requests_total[5m])",
+          "legendFormat": "{{status}}"
+        }]
+      },
+      {
+        "title": "Response Latency P95",
+        "type": "timeseries",
+        "targets": [{
+          "expr": "histogram_quantile(0.95, rate(agent_request_duration_seconds_bucket[5m]))",
+          "legendFormat": "P95"
+        }]
+      },
+      {
+        "title": "Token Usage",
+        "type": "timeseries",
+        "targets": [{
+          "expr": "rate(agent_tokens_total[5m])",
+          "legendFormat": "{{model}}/{{type}}"
+        }]
+      },
+      {
+        "title": "Cost per Hour",
+        "type": "timeseries",
+        "targets": [{
+          "expr": "rate(agent_cost_dollars_total[1h])",
+          "legendFormat": "{{model}}"
+        }]
+      },
+      {
+        "title": "Error Rate",
+        "type": "gauge",
+        "targets": [{
+          "expr": "rate(agent_requests_total{status='error'}[5m]) / rate(agent_requests_total[5m])",
+          "legendFormat": "Error %"
+        }]
+      }
+    ]
+  }
+}
+```
+
+---
+
+## 14.16 Key Takeaways
+
+1. **Observability is not optional**. You cannot debug what you cannot see. Add logging, metrics, and tracing from day one.
+
+2. **Log everything that matters**. User inputs, RAG retrieval scores, LLM calls, tool invocations, errors, and costs. Use structured logging (JSON), not plain text.
+
+3. **Distributed tracing reveals the full picture**. When a request flows through RAG, LLM, tools, and back, you need to see the entire journey. Use OpenTelemetry or LangSmith.
+
+4. **Track costs relentlessly**. LLM costs can spiral. Track per-request, per-user, per-model costs. Set budget alerts.
+
+5. **Cache aggressively**. Semantic caching, response caching, and embedding caching can reduce costs by 50%+ and latency by 90%+.
+
+6. **Stream responses**. Users perceive streaming as instant. Never make them wait for the full response.
+
+7. **Rate limit by cost, not just count**. One expensive GPT-4o call costs more than 100 GPT-4o-mini calls. Limit by budget.
+
+8. **Scale statelessly**. Store all state externally (Redis, PostgreSQL, vector store). Any instance can handle any request.
+
+9. **Auto-scale on the right metrics**. CPU and memory are good. Active requests per instance is better for AI workloads.
+
+10. **Build dashboards for action**. Every number on your dashboard should trigger a decision: scale up, investigate, or celebrate.
+
+---
+
+## 14.17 Try It Yourself
+
+### Exercise 1: Add Tracing to Your Agent
+Take the tracing implementation from Section 14.13 and add it to your agent. Run 10 requests and analyze the trace output. Where is time being spent?
+
+### Exercise 2: Cost Calculator
+Build a cost calculator that estimates the cost of your agent for different usage levels (100, 1000, 10000 requests/day). What is the monthly cost?
+
+### Exercise 3: Semantic Cache Test
+Implement semantic caching (Section 14.9). Run 50 queries, of which 20 are near-duplicates. Measure the cache hit rate and cost savings.
+
+### Exercise 4: Rate Limiter
+Build a cost-based rate limiter that limits each user to $1/day. Test it with 10 requests of varying costs.
+
+### Exercise 5: Design a Dashboard
+Design a monitoring dashboard for your agent using the layout in Section 14.15. What metrics would you prioritize? What alerts would you set?
+
+---
+
+> **Next Chapter**: We explore the future of AI agents — authenticity, trust, the agent economy, and what it all means for your career.
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"children":["$","$L2",null,{"content":"$3","currentChapter":{"id":"agents-ch-14","number":14,"title":"Observability & Scalability","subtitle":"Monitoring, Scaling, and Optimizing Agent Systems","description":"Implement logging, tracing, cost tracking, caching, and horizontal scaling for production agent systems.","slug":"observability-and-scalability","part":"Part IV: Production","estimatedPages":20,"topics":["Logging & tracing","Cost tracking","Latency optimization","Caching strategies","Rate limiting","Horizontal scaling"],"icon":"📈","bookId":"ai-agents"}}]}],["$L4","$L5"],"$L6"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"WpHiBD4DjnzuprdEnivdA"}
+4:["$","script","script-0",{"src":"/_next/static/chunks/16vgld9iclosn.js","async":true}]
+5:["$","script","script-1",{"src":"/_next/static/chunks/2rb1230i-fez-.js","async":true}]
+6:["$","$L7",null,{"children":["$","$8",null,{"name":"Next.MetadataOutlet","children":"$@9"}]}]
+9:null

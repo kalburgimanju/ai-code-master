@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; font-family: "Inter", sans-serif; }
+    .clip { visibility: hidden; }
+    .bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%); }
+    .title { position: absolute; width: 100%; text-align: center; top: 50%; transform: translateY(-50%); opacity: 0; }
+    .title h1 { font-size: 72px; font-weight: 700; color: #E2E8F0; line-height: 1.2; margin-bottom: 20px; }
+    .title .accent { color: #4F46E5; }
+    .title .green { color: #10B981; }
+    .subtitle { font-size: 28px; color: #818CF8; margin-top: 40px; opacity: 0; }
+    .logo { position: absolute; bottom: 80px; width: 100%; text-align: center; opacity: 0; }
+    .logo-text { font-size: 36px; font-weight: 800; color: #4F46E5; letter-spacing: 4px; }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" id="root" data-composition-id="01-hook" data-start="0" data-duration="6.379" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-bg" id="bg" class="bg clip" data-start="0" data-duration="6.379" data-track-index="0"></div>
+    <div data-hf-id="hf-title" id="title" class="title clip" data-start="0" data-duration="6.379" data-track-index="1">
+      <h1>What if one platform could handle<br><span class="accent">everything</span> — from finding your<br><span class="green">dream home</span> to planning the <span class="green">finances</span>?</h1>
+    </div>
+    <div data-hf-id="hf-logo" id="logo" class="logo clip" data-start="4" data-duration="2.379" data-track-index="2">
+      <div class="logo-text">FINPLANNER</div>
+      <div class="subtitle">Your Smart Financial Navigator</div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    tl.to("#bg", { opacity: 1, duration: 0 }, 0);
+    tl.fromTo("#title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }, 0.5);
+    tl.fromTo("#title .accent", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 1.5);
+    tl.fromTo("#title .green", { opacity: 0 }, { opacity: 1, duration: 0.8, stagger: 0.3 }, 2.5);
+    tl.fromTo("#logo", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, 4.5);
+    tl.fromTo(".subtitle", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 5);
+    window.__timelines["01-hook"] = tl;
+  </script>
+</body>
+</html>

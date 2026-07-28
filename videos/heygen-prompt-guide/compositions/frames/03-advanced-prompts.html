@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; }
+    .clip { visibility: hidden; }
+    .scene {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 60px 80px;
+    }
+    .header-label {
+      font-family: "Nunito", sans-serif;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      font-size: 13px; font-weight: 600;
+      color: #4F46E5; margin-bottom: 8px; opacity: 0;
+    }
+    .header-title {
+      font-family: "Nunito", sans-serif;
+      font-size: 36px; font-weight: 700;
+      color: #fff; margin-bottom: 36px; opacity: 0;
+    }
+    .grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; width: 100%; max-width: 1400px;
+    }
+    .panel {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 28px;
+      text-align: left; opacity: 0; transform: translateY(20px);
+    }
+    .panel:nth-child(1) { border-color: rgba(6,147,227,0.3); }
+    .panel:nth-child(2) { border-color: rgba(236,173,10,0.3); }
+    .panel-icon { font-size: 28px; display: inline-block; margin-bottom: 12px; }
+    .panel-title { font-family: "Nunito", sans-serif; font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .panel-desc { font-family: "Source Serif 4", Georgia, serif; font-size: 14px; color: #94A3B8; line-height: 1.5; margin-bottom: 12px; }
+    .code-block {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: "Nunito", sans-serif;
+      font-size: 12px;
+      color: #A5B4FC;
+      line-height: 1.7;
+    }
+    .code-block .hl { color: #10B981; }
+    .code-block .lab { color: #F59E0B; }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" data-composition-id="03-advanced-prompts" data-start="14" data-duration="7" data-width="1920" data-height="1080">
+    <div class="scene">
+      <div id="label" class="header-label clip" data-start="0" data-duration="7" data-track-index="0">Pro Techniques</div>
+      <div id="title" class="header-title clip" data-start="0" data-duration="7" data-track-index="0">Level Up Your Prompts</div>
+      <div class="grid">
+        <div class="panel clip" data-start="0" data-duration="7" data-track-index="1">
+          <span class="panel-icon">🎨</span>
+          <div class="panel-title">Advanced Style Prompts</div>
+          <div class="panel-desc">Define visual style with hex codes, fonts, and motion graphics settings</div>
+          <div class="code-block">
+            <span class="lab">Color:</span> <span class="hl">#1E40AF</span> primary · <span class="hl">#F8FAFC</span> bg<br>
+            <span class="lab">Font:</span> Inter · clean minimal · blue/black/white<br>
+            <span class="lab">Motion:</span> overlays for b-roll · chapter breaks
+          </div>
+        </div>
+        <div class="panel clip" data-start="0" data-duration="7" data-track-index="2">
+          <span class="panel-icon">📎</span>
+          <div class="panel-title">Full Script & Attachments</div>
+          <div class="panel-desc">Paste a complete script with scene labels, or upload PDFs and images with instructions</div>
+          <div class="code-block">
+            "Use the attached product screenshots as B-roll<br>
+            when discussing features"<br>
+            <span class="hl">→ The agent follows scene-by-scene</span><br>
+            <span class="hl">→ Improves flow, timing, and visuals</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#label", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0);
+    tl.fromTo("#title", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.4);
+    const panels = document.querySelectorAll(".panel");
+    panels.forEach((p, i) => {
+      tl.fromTo(p, { opacity: 0, x: i === 0 ? -25 : 25, scale: 0.95 }, { opacity: 1, x: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 0.9 + i * 0.15);
+    });
+
+    window.__timelines["03-advanced-prompts"] = tl;
+  </script>
+</body>
+</html>

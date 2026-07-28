@@ -1,0 +1,29 @@
+[project]
+name = "ats-resume-analyzer"
+version = "0.1.0"
+authors = [
+    {name = "AI Resume Analyzer Team"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+
+[project.dependencies]
+python = "^3.11"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["backend"]
+
+[tool.ruff]
+select = ["E", "F", "I", "N", "T"]
+line-length = 88
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests/"]
+addopts = ["-v", "--tb=short"]

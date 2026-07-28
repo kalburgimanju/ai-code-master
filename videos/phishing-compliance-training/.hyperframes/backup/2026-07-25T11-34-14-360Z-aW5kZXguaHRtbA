@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { margin: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #0C1B33; --accent: #00C9A7; --warn: #FFB347; --danger: #FF4757; }
+    body { font-family: 'Inter', sans-serif; }
+    code, pre, .monospace { font-family: 'JetBrains Mono', monospace; }
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 30% 20%, #1A3263 0%, #0C1B33 70%);
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 160px;
+    }
+
+    .scene-left {
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .safe-zone { width: 1600px; max-width: 1600px; }
+
+    .headline-xl { font-weight: 800; font-size: 72px; color: #FFFFFF; line-height: 1.1; letter-spacing: -0.02em; }
+    .headline-lg { font-weight: 700; font-size: 56px; color: #FFFFFF; line-height: 1.15; letter-spacing: -0.01em; }
+    .headline-md { font-weight: 700; font-size: 40px; color: #FFFFFF; line-height: 1.2; }
+    .headline-sm { font-weight: 600; font-size: 30px; color: #FFFFFF; line-height: 1.3; }
+
+    .body-lg { font-weight: 400; font-size: 24px; color: #B0BEC5; line-height: 1.6; }
+    .body-md { font-weight: 400; font-size: 20px; color: #B0BEC5; line-height: 1.5; }
+
+    .accent-text { color: var(--accent, #00C9A7); }
+    .warn-text { color: var(--warn, #FFB347); }
+    .danger-text { color: var(--danger, #FF4757); }
+    .glow-accent { text-shadow: 0 0 30px rgba(0,201,167,0.4); }
+    .glow-warn { text-shadow: 0 0 30px rgba(255,179,71,0.4); }
+    .glow-danger { text-shadow: 0 0 30px rgba(255,71,87,0.4); }
+
+    .mt-8 { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mt-48 { margin-top: 48px; }
+    .mt-64 { margin-top: 64px; }
+
+    .card {
+      background: rgba(26,50,99,0.7);
+      border-radius: 12px;
+      padding: 28px 32px;
+      border-left: 4px solid var(--accent, #00C9A7);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .card-warn { border-left-color: var(--warn, #FFB347); }
+    .card-danger { border-left-color: var(--danger, #FF4757); }
+
+    .stat-row { display: flex; justify-content: center; gap: 64px; }
+    .stat-item { text-align: center; }
+    .stat-number { font-weight: 800; font-size: 72px; line-height: 1; color: #FFFFFF; }
+    .stat-label { font-weight: 500; font-size: 18px; color: #A0B4C8; margin-top: 8px; }
+
+    .email-mockup {
+      background: #0C1B33; border: 1px solid #1A3263; border-radius: 12px;
+      width: 1000px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+    .email-header { background: #1A3263; padding: 16px 24px; display: flex; align-items: center; gap: 12px; }
+    .email-body { padding: 24px 32px; }
+    .email-field { display: flex; padding: 6px 0; font-size: 16px; color: #B0BEC5; }
+    .email-field-label { color: #A0B4C8; width: 80px; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .email-field-value { color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .email-field-value.suspicious { color: #FF4757; }
+    .email-divider { height: 1px; background: #1A3263; margin: 12px 0; }
+    .email-subject { font-weight: 700; font-size: 20px; color: #FFFFFF; margin-bottom: 12px; }
+    .email-content { font-size: 16px; color: #B0BEC5; line-height: 1.6; }
+    .email-btn { display: inline-block; background: #1A3263; color: #FFFFFF; padding: 12px 32px; border-radius: 8px; font-weight: 600; font-size: 16px; margin-top: 16px; }
+
+    .type-grid { display: flex; flex-wrap: wrap; gap: 16px; width: 1600px; }
+    .type-card {
+      width: 380px; background: rgba(26,50,99,0.6); border-radius: 12px;
+      padding: 24px; border-top: 3px solid var(--accent, #00C9A7); backdrop-filter: blur(4px);
+    }
+    .type-card.warn-card { border-top-color: var(--warn, #FFB347); }
+    .type-card.danger-card { border-top-color: var(--danger, #FF4757); }
+    .type-card-icon {
+      width: 44px; height: 44px; background: rgba(0,201,167,0.12); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 12px;
+    }
+    .type-card.warn-card .type-card-icon { background: rgba(255,179,71,0.12); }
+    .type-card.danger-card .type-card-icon { background: rgba(255,71,87,0.12); }
+    .type-card-name { font-weight: 700; font-size: 20px; color: #FFFFFF; margin-bottom: 6px; }
+    .type-card-desc { font-size: 15px; color: #B0BEC5; line-height: 1.5; }
+
+    .watchlist { width: 1400px; }
+    .watchlist-item {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .watchlist-number {
+      width: 40px; min-width: 40px; height: 40px;
+      background: rgba(0,201,167,0.15); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 18px; color: var(--accent, #00C9A7);
+    }
+    .watchlist-number.danger { background: rgba(255,71,87,0.15); color: var(--danger, #FF4757); }
+    .watchlist-number.warn { background: rgba(255,179,71,0.15); color: var(--warn, #FFB347); }
+    .watchlist-content { flex: 1; }
+    .watchlist-title { font-weight: 700; font-size: 22px; color: #FFFFFF; }
+    .watchlist-desc { font-size: 18px; color: #B0BEC5; margin-top: 4px; }
+
+    .action-step { display: flex; align-items: center; gap: 32px; padding: 20px; max-width: 1400px; }
+    .action-icon {
+      width: 64px; height: 64px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; flex-shrink: 0;
+    }
+    .action-icon.dont-icon { background: rgba(255,71,87,0.12); color: #FF4757; }
+    .action-icon.do-icon { background: rgba(0,201,167,0.12); color: #00C9A7; }
+
+    .end-lockup { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .brand-mark {
+      width: 80px; height: 80px; background: var(--accent, #00C9A7); border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; font-weight: 800; color: #0C1B33;
+    }
+
+    .accent-line { width: 60px; height: 4px; background: var(--accent, #00C9A7); border-radius: 2px; margin: 16px 0; }
+    .danger-line { width: 60px; height: 4px; background: var(--danger, #FF4757); border-radius: 2px; margin: 16px 0; }
+
+    .deco-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .deco-dot {
+      position: absolute; width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(0,201,167,0.15); pointer-events: none;
+    }
+
+    .section-indicator {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px;
+    }
+    .section-dot { width: 48px; height: 3px; border-radius: 2px; background: rgba(255,255,255,0.15); }
+    .section-dot.active { background: var(--accent, #00C9A7); }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-dwqw" id="root" data-composition-id="root" data-start="0" data-width="1920" data-height="1080" data-duration="276">
+    <!-- Background decorations -->
+    <div data-hf-id="hf-ccxc" class="deco-grid"></div>
+    <div data-hf-id="hf-76oy" class="deco-dot" style="top:10%;left:5%"></div>
+    <div data-hf-id="hf-xsrd" class="deco-dot" style="top:20%;right:8%"></div>
+    <div data-hf-id="hf-t1vx" class="deco-dot" style="bottom:15%;left:12%"></div>
+    <div data-hf-id="hf-2exy" class="deco-dot" style="bottom:25%;right:15%"></div>
+
+    <!-- ============================================================
+         SCENE 0 — Title / Brand Intro (0–10s)
+         ============================================================ -->
+    <section data-hf-id="hf-hh1h" id="scene-0" class="clip scene" data-composition-id="scene-0" data-start="0" data-duration="6" data-track-index="1">
+      <div data-hf-id="hf-wn9e" class="end-lockup" style="gap:24px">
+        <div data-hf-id="hf-0tef" class="brand-mark" id="brand-mark-0">CG</div>
+        <div data-hf-id="hf-e0wi" class="headline-xl glow-accent" id="title-main-0">Phishing: Spot It. Stop It.</div>
+        <div data-hf-id="hf-gnbp" class="accent-line" id="title-line-0"></div>
+        <div data-hf-id="hf-7qtr" class="body-lg" id="title-sub-0" style="color:#607D8B;letter-spacing:0.08em;text-transform:uppercase;font-weight:600">
+          A Cybersecurity Compliance Training
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCENE 1 — The Scale of the Threat (10–60s)
+         ============================================================ -->
+    <section data-hf-id="hf-ozgw" id="scene-1" class="clip scene scene-left" data-composition-id="scene-1" data-start="6" data-duration="40" data-track-index="2">
+      <div data-hf-id="hf-kw6m" class="safe-zone" style="gap:24px">
+        <div data-hf-id="hf-vr2g" class="stat-row" id="stats-row-1" style="opacity:0">
+          <div data-hf-id="hf-wccq" class="stat-item">
+            <div data-hf-id="hf-hynk" class="stat-number accent-text glow-accent" id="stat-3-4b">3.4B</div>
+            <div data-hf-id="hf-q0or" class="stat-label">Phishing emails sent daily</div>
+          </div>
+          <div data-hf-id="hf-e5hq" class="stat-item">
+            <div data-hf-id="hf-x5eh" class="stat-number warn-text glow-warn" id="stat-91pct">91%</div>
+            <div data-hf-id="hf-5gu5" class="stat-label">of breaches start with phish</div>
+          </div>
+          <div data-hf-id="hf-ejsr" class="stat-item">
+            <div data-hf-id="hf-8om3" class="stat-number danger-text glow-danger" id="stat-1click">1</div>
+            <div data-hf-id="hf-ufif" class="stat-label">click = full compromise</div>
+          </div>
+        </div>
+        <div data-hf-id="hf-lpzb" class="headline-lg" id="scene1-headline" style="opacity:0;max-width:1400px">
+          Every day, over <span data-hf-id="hf-ikt9" class="accent-text">3.4 billion</span> phishing emails are sent worldwide.
+        </div>
+        <div data-hf-id="hf-84ej" class="body-lg" id="scene1-body-1" style="opacity:0;max-width:1300px">
+          And it only takes <strong data-hf-id="hf-qzmi" style="color:#FF4757">one click</strong> to compromise an entire organization.
+        </div>
+        <div data-hf-id="hf-yivq" class="body-lg" id="scene1-body-2" style="opacity:0;max-width:1300px;margin-top:8px">
+          Phishing isn't just the most common cyber attack — it's also the most effective.
+          <strong data-hf-id="hf-uja0" style="color:#FFB347">Ninety-one percent</strong> of all data breaches begin with a phishing email.
+        </div>
+        <div data-hf-id="hf-6gwi" class="body-lg" id="scene1-body-3" style="opacity:0;max-width:1300px;margin-top:8px">
+          Sophisticated attackers craft convincing messages designed to bypass every security filter —
+          and trick even vigilant employees.
+        </div>
+        <div data-hf-id="hf-rmds" class="headline-sm" id="scene1-optimism" style="opacity:0;color:var(--accent, #00C9A7);margin-top:16px">
+          The good news? With the right knowledge, you can spot a phish before you take the bait.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCENE 2 — What Is Phishing? (60–105s)
+         ============================================================ -->
+    <section data-hf-id="hf-qmh0" id="scene-2" class="clip scene scene-left" data-composition-id="scene-2" data-start="46" data-duration="45" data-track-index="3">
+      <div data-hf-id="hf-yv4a" class="safe-zone" style="gap:20px">
+        <div data-hf-id="hf-8gvv" class="headline-lg" id="scene2-title" style="opacity:0">
+          <span data-hf-id="hf-zkjy" class="danger-text">What</span> Is Phishing?
+        </div>
+        <div data-hf-id="hf-ahhp" class="accent-line" id="scene2-line" style="opacity:0"></div>
+        <div data-hf-id="hf-k9tc" class="body-lg" id="scene2-definition" style="opacity:0;max-width:1400px">
+          At its core, phishing is a type of <strong data-hf-id="hf-6vmt" style="color:#FFB347">social engineering attack</strong>
+          where cybercriminals impersonate a trusted entity to steal sensitive information —
+          <span data-hf-id="hf-k3ej" class="accent-text">passwords, credit card numbers, or access credentials</span>.
+        </div>
+        <div data-hf-id="hf-qdut" class="card" id="scene2-analogy-card" style="opacity:0;width:1400px;margin-top:16px;display:flex;align-items:center;gap:24px;border-left-color:#FFB347">
+          <div data-hf-id="hf-f6ca" style="font-size:48px;min-width:60px;text-align:center">🎣</div>
+          <div data-hf-id="hf-yeow">
+            <div data-hf-id="hf-fgi2" class="headline-sm" style="font-size:24px;color:#FFB347;margin-bottom:8px">
+              Think of it as digital bait
+            </div>
+            <div data-hf-id="hf-g3lj" class="body-md" style="max-width:1260px">
+              The attacker sends a lure — an email, text, or call that looks legitimate —
+              designed to <strong data-hf-id="hf-0e5t" style="color:#FF4757">hook</strong> you into clicking a malicious link,
+              downloading an infected attachment, or revealing confidential data.
+            </div>
+          </div>
+        </div>
+        <div data-hf-id="hf-d72d" class="body-lg" id="scene2-origin" style="opacity:0;max-width:1400px;margin-top:8px">
+          The term "phishing" is a play on <strong data-hf-id="hf-r466" style="color:#B0BEC5">fishing</strong> —
+          because attackers are casting a line and waiting for someone to bite.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCENE 3 — Common Types of Phishing (105–175s)
+         ============================================================ -->
+    <section data-hf-id="hf-s83t" id="scene-3" class="clip scene scene-left" data-composition-id="scene-3" data-start="91" data-duration="65" data-track-index="4">
+      <div data-hf-id="hf-2jep" class="safe-zone" style="gap:16px">
+        <div data-hf-id="hf-5ubh" class="headline-lg" id="scene3-title" style="opacity:0">
+          Common <span data-hf-id="hf-ztgc" class="warn-text">Types</span> of Phishing
+        </div>
+        <div data-hf-id="hf-o5d6" class="accent-line" id="scene3-line" style="opacity:0"></div>
+        <div data-hf-id="hf-4125" class="type-grid" id="scene3-grid" style="margin-top:8px">
+          <div data-hf-id="hf-ghnf" class="type-card" id="type-card-email">
+            <div data-hf-id="hf-z3ff" class="type-card-icon">📧</div>
+            <div data-hf-id="hf-vart" class="type-card-name">Email Phishing</div>
+            <div data-hf-id="hf-0ea7" class="type-card-desc">Mass emails impersonating trusted entities with fake login pages, urgent password resets, or account verification requests.</div>
+          </div>
+          <div data-hf-id="hf-wuht" class="type-card warn-card" id="type-card-spear">
+            <div data-hf-id="hf-yo62" class="type-card-icon">🎯</div>
+            <div data-hf-id="hf-xfr2" class="type-card-name">Spear Phishing</div>
+            <div data-hf-id="hf-zhsj" class="type-card-desc">Targeted attacks using personal research about your role, team, or projects to craft convincing, relevant messages.</div>
+          </div>
+          <div data-hf-id="hf-jxbh" class="type-card" id="type-card-smishing">
+            <div data-hf-id="hf-32hp" class="type-card-icon">📱</div>
+            <div data-hf-id="hf-re4x" class="type-card-name">Smishing</div>
+            <div data-hf-id="hf-td4d" class="type-card-desc">SMS text message phishing with fraudulent links to malicious websites or malware downloads.</div>
+          </div>
+          <div data-hf-id="hf-xi6w" class="type-card warn-card" id="type-card-vishing">
+            <div data-hf-id="hf-s9b4" class="type-card-icon">📞</div>
+            <div data-hf-id="hf-0byl" class="type-card-name">Vishing</div>
+            <div data-hf-id="hf-nkda" class="type-card-desc">Voice phishing — scammers call impersonating IT help desk, vendors, or executives asking for sensitive info.</div>
+          </div>
+          <div data-hf-id="hf-6ded" class="type-card danger-card" id="type-card-whaling">
+            <div data-hf-id="hf-uh9r" class="type-card-icon">🐋</div>
+            <div data-hf-id="hf-h7e1" class="type-card-name">Whaling</div>
+            <div data-hf-id="hf-k9k3" class="type-card-desc">Highly targeted attacks on senior executives involving acquisitions, legal matters, or financial transactions.</div>
+          </div>
+          <div data-hf-id="hf-tapt" class="type-card danger-card" id="type-card-bec">
+            <div data-hf-id="hf-swei" class="type-card-icon">💰</div>
+            <div data-hf-id="hf-tvr5" class="type-card-name">BEC</div>
+            <div data-hf-id="hf-mokm" class="type-card-desc">Business Email Compromise — attackers pose as CEO or vendor to request urgent, fraudulent wire transfers.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCENE 4 — Anatomy of a Phishing Email (175–235s)
+         ============================================================ -->
+    <section data-hf-id="hf-o9v6" id="scene-4" class="clip scene scene-left" data-composition-id="scene-4" data-start="156" data-duration="50" data-track-index="5">
+      <div data-hf-id="hf-iuad" class="safe-zone" style="gap:16px">
+        <div data-hf-id="hf-fph1" class="headline-md" id="scene4-title" style="opacity:0">
+          Anatomy of a <span data-hf-id="hf-xn3w" class="danger-text">Phishing Email</span>
+        </div>
+        <div data-hf-id="hf-fpw4" class="danger-line" id="scene4-line" style="opacity:0"></div>
+        <div data-hf-id="hf-9d00" class="email-mockup" id="scene4-email" style="opacity:0">
+          <div data-hf-id="hf-8oo2" class="email-header">
+            <div data-hf-id="hf-g6ju" style="width:12px;height:12px;border-radius:50%;background:#FF4757"></div>
+            <div data-hf-id="hf-xdjj" style="width:12px;height:12px;border-radius:50%;background:#FFB347"></div>
+            <div data-hf-id="hf-4fih" style="width:12px;height:12px;border-radius:50%;background:#2ED573"></div>
+            <div data-hf-id="hf-bodh" style="color:#607D8B;font-size:14px;margin-left:12px;font-family:'JetBrains Mono',monospace">Suspicious Email Preview</div>
+          </div>
+          <div data-hf-id="hf-8x8d" class="email-body">
+            <div data-hf-id="hf-wwa3" class="email-field">
+              <span data-hf-id="hf-f8q9" class="email-field-label">From:</span>
+              <span data-hf-id="hf-smgz" class="email-field-value suspicious" id="email-from">security@secure-update.corn</span>
+            </div>
+            <div data-hf-id="hf-5op7" class="email-field">
+              <span data-hf-id="hf-683a" class="email-field-label">To:</span>
+              <span data-hf-id="hf-dq7f" class="email-field-value">you@company.com</span>
+            </div>
+            <div data-hf-id="hf-5ae6" class="email-field">
+              <span data-hf-id="hf-1xor" class="email-field-label">Subject:</span>
+              <span data-hf-id="hf-m2gz" class="email-field-value">URGENT: Your account will be suspended</span>
+            </div>
+            <div data-hf-id="hf-pxtg" class="email-divider"></div>
+            <div data-hf-id="hf-6tdu" class="email-subject">⚠️ Action Required: Verify Your Account</div>
+            <div data-hf-id="hf-xva1" class="email-content">
+              Dear Customer,<br data-hf-id="hf-x5px"><br data-hf-id="hf-rsrt">
+              We detected unusual activity on your account.
+              <strong data-hf-id="hf-dzwh">Your access will be suspended within 24 hours</strong>
+              if you do not verify your credentials immediately.<br data-hf-id="hf-szow"><br data-hf-id="hf-sldv">
+              <a data-hf-id="hf-bxmm" href="#" style="color:#FF4757;text-decoration:underline">Click here to verify your account →</a><br data-hf-id="hf-qluq"><br data-hf-id="hf-q7jp">
+              Thank you,<br data-hf-id="hf-regs">
+              Security Team
+            </div>
+            <div data-hf-id="hf-1u1l" class="email-btn">Verify Account</div>
+          </div>
+        </div>
+      </div>
+      <div data-hf-id="hf-nfm4" id="scene4-flags" style="position:absolute;right:100px;top:380px;display:flex;flex-direction:column;gap:12px;opacity:0">
+        <div data-hf-id="hf-22rq" class="card card-danger" style="padding:12px 20px;width:360px">
+          <div data-hf-id="hf-0d5o" style="font-weight:700;font-size:16px;color:#FF4757">⚠️ Suspicious Sender</div>
+          <div data-hf-id="hf-4alf" style="font-size:14px;color:#B0BEC5;margin-top:2px">"secure-update.corn" — not the real domain</div>
+        </div>
+        <div data-hf-id="hf-6idf" class="card card-warn" style="padding:12px 20px;width:360px">
+          <div data-hf-id="hf-yzlr" style="font-weight:700;font-size:16px;color:#FFB347">⚠️ Generic Greeting</div>
+          <div data-hf-id="hf-5wwn" style="font-size:14px;color:#B0BEC5;margin-top:2px">"Dear Customer" — not your name</div>
+        </div>
+        <div data-hf-id="hf-c2oa" class="card card-danger" style="padding:12px 20px;width:360px">
+          <div data-hf-id="hf-gf9g" style="font-weight:700;font-size:16px;color:#FF4757">⚠️ False Urgency</div>
+          <div data-hf-id="hf-g3mn" style="font-size:14px;color:#B0BEC5;margin-top:2px">"Suspended within 24 hours" — time pressure</div>
+        </div>
+        <div data-hf-id="hf-o4xv" class="card card-warn" style="padding:12px 20px;width:360px">
+          <div data-hf-id="hf-7cm8" style="font-weight:700;font-size:16px;color:#FFB347">⚠️ Suspicious Link</div>
+          <div data-hf-id="hf-jpjt" style="font-size:14px;color:#B0BEC5;margin-top:2px">Hover shows a different, malicious URL</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCENE 5 — Top Watch-Outs / Red Flags (235–290s)
+         ============================================================ -->
+    <section data-hf-id="hf-6vqn" id="scene-5" class="clip scene scene-left" data-composition-id="scene-5" data-start="206" data-duration="50" data-track-index="6">
+      <div data-hf-id="hf-ux0l" class="safe-zone" style="gap:12px">
+        <div data-hf-id="hf-1u1s" class="headline-lg" id="scene5-title" style="opacity:0">
+          <span data-hf-id="hf-adi6" class="warn-text">Top</span> Red Flags to Watch For
+        </div>
+        <div data-hf-id="hf-i2ew" class="accent-line" id="scene5-line" style="opacity:0"></div>
+        <div data-hf-id="hf-7siz" class="body-md" id="scene5-intro" style="opacity:0;color:#607D8B;margin-bottom:8px">
+          Every time you check your inbox, watch for these warning signs.
+        </div>
+        <div data-hf-id="hf-gh4u" class="watchlist" id="scene5-list" style="opacity:0">
+          <div data-hf-id="hf-1ub6" class="watchlist-item" id="wl-1">
+            <div data-hf-id="hf-kpvt" class="watchlist-number danger">1</div>
+            <div data-hf-id="hf-mczd" class="watchlist-content">
+              <div data-hf-id="hf-cf82" class="watchlist-title danger-text">Requests for Sensitive Info</div>
+              <div data-hf-id="hf-330b" class="watchlist-desc">No legitimate organization asks for your password, PIN, or SSN via email.</div>
+            </div>
+          </div>
+          <div data-hf-id="hf-xw75" class="watchlist-item" id="wl-2">
+            <div data-hf-id="hf-lwsw" class="watchlist-number danger">2</div>
+            <div data-hf-id="hf-rx1p" class="watchlist-content">
+              <div data-hf-id="hf-q8x2" class="watchlist-title danger-text">Emotional Manipulation</div>
+              <div data-hf-id="hf-1ga5" class="watchlist-desc">Urgency, fear, curiosity — phishers exploit your emotions to bypass critical thinking.</div>
+            </div>
+          </div>
+          <div data-hf-id="hf-x4jc" class="watchlist-item" id="wl-3">
+            <div data-hf-id="hf-uhb4" class="watchlist-number warn">3</div>
+            <div data-hf-id="hf-t3ys" class="watchlist-content">
+              <div data-hf-id="hf-x8nd" class="watchlist-title warn-text">Mismatched URLs</div>
+              <div data-hf-id="hf-2kju" class="watchlist-desc">The text says one thing, but the actual link goes somewhere else. Always hover first.</div>
+            </div>
+          </div>
+          <div data-hf-id="hf-t6fb" class="watchlist-item" id="wl-4">
+            <div data-hf-id="hf-rp5x" class="watchlist-number warn">4</div>
+            <div data-hf-id="hf-spnr" class="watchlist-content">
+              <div data-hf-id="hf-3qdx" class="watchlist-title warn-text">Unsolicited Attachments</div>
+              <div data-hf-id="hf-vvwr" class="watchlist-desc">Unexpected invoices or documents often deliver ransomware. Don't open them.</div>
+            </div>
+          </div>
+          <div data-hf-id="hf-n0pi" class="watchlist-item" id="wl-5">
+            <div data-hf-id="hf-j4np" class="watchlist-number danger">5</div>
+            <div data-hf-id="hf-twku" class="watchlist-content">
+              <div data-hf-id="hf-e13m" class="watchlist-title danger-text">Too Good to Be True</div>
+              <div data-hf-id="hf-8w90" class="watchlist-desc">A prize you didn't enter, a refund you didn't request — if it sounds too good, it is.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCENE 6 — What To Do / Action Plan (290–340s)
+         ============================================================ -->
+    <section data-hf-id="hf-cpkt" id="scene-6" class="clip scene scene-left" data-composition-id="scene-6" data-start="256" data-duration="45" data-track-index="7">
+      <div data-hf-id="hf-k17g" class="safe-zone" style="gap:16px">
+        <div data-hf-id="hf-is5t" class="headline-lg" id="scene6-title" style="opacity:0">
+          Your <span data-hf-id="hf-trxe" class="accent-text">Action Plan</span>
+        </div>
+        <div data-hf-id="hf-c5ux" class="accent-line" id="scene6-line" style="opacity:0"></div>
+        <div data-hf-id="hf-wgl9" class="headline-sm" id="scene6-dont-title" style="opacity:0;font-size:28px;color:#FF4757;margin-top:8px">
+          ✗ Don't
+        </div>
+        <div data-hf-id="hf-vau1" class="action-step" id="dont-1" style="opacity:0">
+          <div data-hf-id="hf-6sim" class="action-icon dont-icon">✗</div>
+          <div data-hf-id="hf-y7yw">
+            <div data-hf-id="hf-h2sx" class="headline-sm" style="font-size:22px;color:#FF4757">Don't click, reply, or open attachments</div>
+            <div data-hf-id="hf-iba4" class="body-md" style="margin-top:4px">Not even to "unsubscribe" — that confirms your email is active.</div>
+          </div>
+        </div>
+        <div data-hf-id="hf-azvw" class="headline-sm" id="scene6-do-title" style="opacity:0;font-size:28px;color:var(--accent, #00C9A7);margin-top:16px">
+          ✓ Do
+        </div>
+        <div data-hf-id="hf-rp2z" class="action-step" id="do-1" style="opacity:0">
+          <div data-hf-id="hf-39j8" class="action-icon do-icon">✓</div>
+          <div data-hf-id="hf-x11t">
+            <div data-hf-id="hf-j7d6" class="headline-sm" style="font-size:22px;color:#00C9A7">Report it immediately</div>
+            <div data-hf-id="hf-erwt" class="body-md" style="margin-top:4px">Use the phishing reporting button or forward to your security team.</div>
+          </div>
+        </div>
+        <div data-hf-id="hf-ccrc" class="action-step" id="do-2" style="opacity:0">
+          <div data-hf-id="hf-0q4c" class="action-icon do-icon">✓</div>
+          <div data-hf-id="hf-xfcu">
+            <div data-hf-id="hf-xnfe" class="headline-sm" style="font-size:22px;color:#00C9A7">Delete after reporting</div>
+            <div data-hf-id="hf-uj4j" class="body-md" style="margin-top:4px">Don't forward it or investigate it yourself — leave that to the experts.</div>
+          </div>
+        </div>
+        <div data-hf-id="hf-m8l5" class="action-step" id="do-3" style="opacity:0">
+          <div data-hf-id="hf-zj79" class="action-icon do-icon">✓</div>
+          <div data-hf-id="hf-w8fr">
+            <div data-hf-id="hf-f720" class="headline-sm" style="font-size:22px;color:#00C9A7">If you clicked, notify IT immediately</div>
+            <div data-hf-id="hf-3b2s" class="body-md" style="margin-top:4px">Quick action can contain the damage. Security is everyone's responsibility.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCENE 7 — Close / Outro (340–350s)
+         ============================================================ -->
+    <section data-hf-id="hf-smu0" id="scene-7" class="clip scene" data-composition-id="scene-7" data-start="301" data-duration="8" data-track-index="8">
+      <div data-hf-id="hf-o8iu" class="end-lockup" style="gap:24px">
+        <div data-hf-id="hf-inlk" class="brand-mark" id="brand-mark-7" style="width:100px;height:100px;border-radius:24px;font-size:44px">CG</div>
+        <div data-hf-id="hf-s38q" class="headline-xl glow-accent" id="outro-title">
+          Spot It. <span data-hf-id="hf-p8ws" class="accent-text">Stop It.</span>
+        </div>
+        <div data-hf-id="hf-v9kj" class="accent-line" id="outro-line"></div>
+        <div data-hf-id="hf-6yfd" class="body-lg" id="outro-text" style="color:#B0BEC5;margin-top:8px">
+          Thank you for doing your part to keep us secure.
+        </div>
+      </div>
+    </section>
+
+    <!-- Audio tracks -->
+    <audio data-hf-id="hf-lh3q" id="voiceover" class="clip" data-start="0" data-duration="276" data-track-index="0" src="assets/voiceover.wav" muted playsinline></audio>
+    <audio data-hf-id="hf-vs8b" id="bgm" class="clip" data-start="0" data-duration="276" data-track-index="9" src="assets/bgm/track.wav" muted playsinline></audio>
+
+    <!-- Section indicator dots -->
+    <div data-hf-id="hf-eewp" class="section-indicator" id="section-dots">
+      <div data-hf-id="hf-mktv" class="section-dot" data-scene="0"></div>
+      <div data-hf-id="hf-impu" class="section-dot" data-scene="1"></div>
+      <div data-hf-id="hf-eolt" class="section-dot" data-scene="2"></div>
+      <div data-hf-id="hf-dwy0" class="section-dot" data-scene="3"></div>
+      <div data-hf-id="hf-9ytz" class="section-dot" data-scene="4"></div>
+      <div data-hf-id="hf-3t46" class="section-dot" data-scene="5"></div>
+      <div data-hf-id="hf-zv05" class="section-dot" data-scene="6"></div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+
+    // ============================================================
+    // SCENE 0 — Title intro (0–10s)
+    // ============================================================
+    (function() {
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["scene-0"] = tl;
+      tl.fromTo("#brand-mark-0", { scale: 0, opacity: 0, rotation: -30 },
+        { scale: 1, opacity: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)" }, 0.5);
+      tl.fromTo("#title-main-0", { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 1.5);
+      tl.fromTo("#title-line-0", { scaleX: 0, transformOrigin: "left center" },
+        { scaleX: 1, duration: 0.6, ease: "power2.out" }, 2.5);
+      tl.fromTo("#title-sub-0", { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" }, 3.3);
+      tl.set("#section-dots .section-dot", { opacity: 0.15 }, 0);
+      tl.set("#section-dots [data-scene='0']", { opacity: 1, backgroundColor: "#00C9A7" }, 0.5);
+    })();
+
+    // ============================================================
+    // SCENE 1 — Scale of the Threat (10–60s)
+    // ============================================================
+    (function() {
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["scene-1"] = tl;
+      tl.set("#section-dots .section-dot", { opacity: 0.15, backgroundColor: "rgba(255,255,255,0.15)" }, 0);
+      tl.set("#section-dots [data-scene='1']", { opacity: 1, backgroundColor: "#00C9A7" }, 0.3);
+      tl.set("#stats-row-1", { opacity: 0, y: -30 }, 0);
+      tl.to("#stats-row-1", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.5);
+      tl.to("#stat-3-4b", { scale: 1.1, duration: 0.3, ease: "power2.out" }, 1.3);
+      tl.to("#stat-3-4b", { scale: 1, duration: 0.3, ease: "power2.out" }, 1.6);
+      tl.to("#stat-91pct", { scale: 1.1, duration: 0.3, ease: "power2.out" }, 2.0);
+      tl.to("#stat-91pct", { scale: 1, duration: 0.3, ease: "power2.out" }, 2.3);
+      tl.to("#stat-1click", { scale: 1.15, duration: 0.3, ease: "back.out(2)" }, 2.7);
+      tl.to("#stat-1click", { scale: 1, duration: 0.3, ease: "power2.out" }, 3.0);
+      tl.fromTo("#scene1-headline", { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" }, 3.5);
+      tl.fromTo("#scene1-body-1", { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 8);
+      tl.fromTo("#scene1-body-2", { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 16);
+      tl.fromTo("#scene1-body-3", { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 26);
+      tl.fromTo("#scene1-optimism", { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 36);
+    })();
+
+    // ============================================================
+    // SCENE 2 — What Is Phishing? (60–105s)
+    // ============================================================
+    (function() {
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["scene-2"] = tl;
+      tl.set("#section-dots .section-dot", { opacity: 0.15, backgroundColor: "rgba(255,255,255,0.15)" }, 0);
+      tl.set("#section-dots [data-scene='2']", { opacity: 1, backgroundColor: "#00C9A7" }, 0.3);
+      tl.fromTo("#scene2-title", { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" }, 0.5);
+      tl.fromTo("#scene2-line", { scaleX: 0, transformOrigin: "left center" },
+        { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.4);
+      tl.fromTo("#scene2-definition", { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" }, 2.2);
+      tl.fromTo("#scene2-analogy-card", { x: -60, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 13);
+      tl.fromTo("#scene2-origin", { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 28);
+    })();
+
+    // ============================================================
+    // SCENE 3 — Common Types (105–175s)
+    // ============================================================
+    (function() {
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["scene-3"] = tl;
+      tl.set("#section-dots .section-dot", { opacity: 0.15, backgroundColor: "rgba(255,255,255,0.15)" }, 0);
+      tl.set("#section-dots [data-scene='3']", { opacity: 1, backgroundColor: "#00C9A7" }, 0.3);
+      tl.fromTo("#scene3-title", { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" }, 0.5);
+      tl.fromTo("#scene3-line", { scaleX: 0, transformOrigin: "left center" },
+        { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.4);
+      tl.set("#scene3-grid", { opacity: 1 }, 2.0);
+      const cards = gsap.utils.toArray("#scene3-grid > .type-card");
+      tl.fromTo(cards,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.12, ease: "power2.out" }, 2.0);
+    })();
+
+    // ============================================================
+    // SCENE 4 — Anatomy (175–235s)
+    // ============================================================
+    (function() {
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["scene-4"] = tl;
+      tl.set("#section-dots .section-dot", { opacity: 0.15, backgroundColor: "rgba(255,255,255,0.15)" }, 0);
+      tl.set("#section-dots [data-scene='4']", { opacity: 1, backgroundColor: "#00C9A7" }, 0.3);
+      tl.fromTo("#scene4-title", { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" }, 0.5);
+      tl.fromTo("#scene4-line", { scaleX: 0, transformOrigin: "left center" },
+        { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.4);
+      tl.fromTo("#scene4-email", { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 2.0);
+      tl.fromTo("#scene4-flags", { x: 60, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 6);
+      tl.to("#email-from", { color: "#FF4757", duration: 0.3 }, 7);
+      tl.to("#email-from", { color: "#FF6B6B", duration: 0.3 }, 7.5);
+      tl.to("#email-from", { color: "#FF4757", duration: 0.3 }, 8);
+    })();
+
+    // ============================================================
+    // SCENE 5 — Top Watch-Outs (235–290s)
+    // ============================================================
+    (function() {
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["scene-5"] = tl;
+      tl.set("#section-dots .section-dot", { opacity: 0.15, backgroundColor: "rgba(255,255,255,0.15)" }, 0);
+      tl.set("#section-dots [data-scene='5']", { opacity: 1, backgroundColor: "#FFB347" }, 0.3);
+      tl.fromTo("#scene5-title", { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" }, 0.5);
+      tl.fromTo("#scene5-line", { scaleX: 0, transformOrigin: "left center" },
+        { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.4);
+      tl.fromTo("#scene5-intro", { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 2.0);
+      const items = gsap.utils.toArray("#scene5-list > .watchlist-item");
+      tl.fromTo(items, { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, stagger: 0.35, ease: "power2.out" }, 3.0);
+    })();
+
+    // ============================================================
+    // SCENE 6 — Action Plan (290–340s)
+    // ============================================================
+    (function() {
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["scene-6"] = tl;
+      tl.set("#section-dots .section-dot", { opacity: 0.15, backgroundColor: "rgba(255,255,255,0.15)" }, 0);
+      tl.set("#section-dots [data-scene='6']", { opacity: 1, backgroundColor: "#00C9A7" }, 0.3);
+      tl.fromTo("#scene6-title", { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" }, 0.5);
+      tl.fromTo("#scene6-line", { scaleX: 0, transformOrigin: "left center" },
+        { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.4);
+      tl.fromTo("#scene6-dont-title", { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 2.0);
+      tl.fromTo("#dont-1", { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 3.0);
+      tl.fromTo("#scene6-do-title", { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 12);
+      tl.fromTo("#do-1", { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 13);
+      tl.fromTo("#do-2", { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 22);
+      tl.fromTo("#do-3", { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 33);
+    })();
+
+    // ============================================================
+    // SCENE 7 — Close/Outro (340–350s)
+    // ============================================================
+    (function() {
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["scene-7"] = tl;
+      tl.set("#section-dots .section-dot", { opacity: 0.15, backgroundColor: "rgba(255,255,255,0.15)" }, 0);
+      tl.set("#section-dots [data-scene='7']", { opacity: 1, backgroundColor: "#00C9A7" }, 0.3);
+      tl.fromTo("#brand-mark-7", { scale: 0, opacity: 0, rotation: -30 },
+        { scale: 1, opacity: 1, rotation: 0, duration: 0.9, ease: "back.out(1.7)" }, 0.5);
+      tl.fromTo("#outro-title", { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 1.8);
+      tl.fromTo("#outro-line", { scaleX: 0, transformOrigin: "left center" },
+        { scaleX: 1, duration: 0.6, ease: "power2.out" }, 2.8);
+      tl.fromTo("#outro-text", { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" }, 3.6);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+platforms:
+  youtube:
+    api_key: "your-youtube-api-key"
+    upload_folder: "./uploads/youtube"
+    video_privacy: "unlisted"
+    auto_publish: false
+
+  facebook:
+    app_id: "your-facebook-app-id"
+    page_id: "your-facebook-page-id"
+
+  twitter:
+    api_key: "your-twitter-api-key"
+    api_secret: "your-twitter-api-secret"
+
+  linkedin:
+    client_id: "your-linkedin-client-id"
+    client_secret: "your-linkedin-client-secret"
+
+  telegram:
+    bot_token: "your-telegram-bot-token"
+    channel_id: "your-telegram-channel-id"
+
+  slack:
+    workspace_name: "your-workspace-name"
+    bot_token: "your-slack-bot-token"
+    channel_id: "your-slack-channel-id"
+
+  discord:
+    bot_token: "your-discord-bot-token"
+    channel_id: "your-discord-channel-id"
+
+  instagram:
+    client_id: "your-instagram-client-id"
+    client_secret: "your-instagram-client-secret"
+
+  twitch:
+    client_id: "your-twitch-client-id"
+    client_secret: "your-twitch-client-secret"
+
+  pinterest:
+    client_id: "your-pinterest-client-id"
+    client_secret: "your-pinterest-client-secret"
+
+  reddit:
+    client_id: "your-reddit-client-id"
+    client_secret: "your-reddit-client-secret"
+    user_agent: "your-reddit-user-agent"
+
+  mastodon:
+    instance_url: "your-mastodon-instance-url"
+    bot_token: "your-mastodon-bot-token"
+    visibility: "public"

@@ -1,0 +1,121 @@
+# AI Product Manager Learning Platform Configuration
+
+# Platform-wide settings
+platform_settings:
+  name: "AI Product Manager Learning Platform"
+  version: "0.1.0"
+  description: "A comprehensive learning platform for AI Product Managers, featuring resume analysis, prompt engineering tools, and industry insights"
+  base_url: "https://your-username.github.io/ai-pm-lesson-platform"
+
+scoring_weights:
+  technical_skills: 0.25
+  product_management: 0.30
+  ai_ml_expertise: 0.25
+  leadership_skills: 0.20
+
+# Course structure and lessons
+course_modules:
+  module_1:
+    title: "Foundations of AI Product Management"
+    lessons: ["lesson_1_1", "lesson_1_2", "lesson_1_3"]
+    description: "Core principles and fundamentals of AI PM"
+
+  module_2:
+    title: "Technical Skills & Architecture"
+    lessons: ["lesson_2_1", "lesson_2_2", "lesson_2_3"]
+    description: "Deep dive into AI technologies and product architecture"
+
+  module_3:
+    title: "Prompt Engineering & LLM Integration"
+    lessons: ["lesson_3_1", "lesson_3_2", "lesson_3_3"]
+    description: "Master prompt design and LLM integration strategies"
+
+  module_4:
+    title: "Product Strategy & Leadership"
+    lessons: ["lesson_4_1", "lesson_4_2", "lesson_4_3"]
+    description: "Advanced product strategy and team leadership"
+
+  module_5:
+    title: "GTM Strategies for AI Products"
+    lessons: ["lesson_5_1", "lesson_5_2", "lesson_5_3"]
+    description: "Go-to-market strategies specifically for AI products"
+
+# Content configuration
+content_config:
+  video_platform: "youtube"
+  downloadable_assets: true
+  interactive_exercises: true
+  certification_enabled: true
+  progress_tracking: true
+
+# Resume analysis settings
+resume_analysis:
+  template_path: "/templates/ai-pm-lesson-platform/components/resume-analyzer.vue"
+  api_endpoint: "/api/analyze-pm-resume"
+  supported_formats: ["pdf", "docx", "txt"]
+
+# Prompt engineering tools
+prompt_tools:
+  template_gallery: true
+  examples_section: true
+  testing_environment: true
+  history_tracking: true
+
+# Industry insights
+industry_insights:
+  current_trends: true
+  competitive_analysis: true
+  salary_benchmarks: true
+  company_profiles: true
+
+# User experience
+ux_config:
+  dark_mode: true
+  progress_indicators: true
+  learning_paths: true
+  mentorship_options: true
+  community_features: true
+
+# External integrations
+integrations:
+  openrouter_api:
+    model: "openrouter/free"
+    api_key: "sk-or-v1-your-key-here"
+    max_tokens: 1000
+    temperature: 0.3
+  analytics:
+    platform: "plausible"
+    script_src: "https://plausible.io/js/script.js"
+    domain: "ai-pm-lesson-platform.netlify.app"
+  sharing:
+    twitter_card: true
+    og_image: true
+    structured_data: true
+
+# Performance
+performance:
+  enable_cache: true
+  cache_ttl: 3600
+  compression: true
+  lazy_loading: true
+
+# Security
+security:
+  enable_rate_limiting: true
+  max_file_upload_size: 10485760
+  allowed_file_types: ["application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "text/plain"]
+  enable_cors: true
+
+# Analytics
+analytics:
+  enable_tracking: true
+  track_progress: true
+  track_completion: true
+  track_engagement: true
+
+# Contact and support
+contact:
+  email: "support@yourdomain.com"
+  github_repo: "https://github.com/your-username/ai-pm-lesson-platform"
+  discord_server: "https://discord.gg/your-server"
+  support_email: "support@yourdomain.com"

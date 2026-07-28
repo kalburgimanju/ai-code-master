@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0F172A; font-family: "Inter", sans-serif; }
+    .clip { visibility: hidden; }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 1600px;
+    }
+    .section-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #4F46E5;
+      margin-bottom: 40px;
+      opacity: 0;
+    }
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .amenity-card {
+      background: rgba(79, 70, 229, 0.04);
+      border: 1.5px solid rgba(79, 70, 229, 0.2);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+    .amenity-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .amenity-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #E2E8F0;
+    }
+    .amenity-card.premium {
+      border-color: rgba(16, 185, 129, 0.5);
+      background: rgba(16, 185, 129, 0.06);
+    }
+    .amenity-card.premium .amenity-name {
+      color: #10B981;
+    }
+    .amenity-card.security {
+      border-color: rgba(249, 115, 22, 0.5);
+      background: rgba(249, 115, 22, 0.06);
+    }
+    .amenity-card.security .amenity-name {
+      color: #F97316;
+    }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-root" id="root" data-composition-id="03-amenities" data-start="16" data-duration="8" data-width="1920" data-height="1080">
+    <div class="container clip" data-start="0" data-duration="8" data-track-index="1">
+      <div id="section-title" class="section-title">Premium Amenities & Features</div>
+      <div class="amenities-grid">
+        <div class="amenity-card premium">
+          <span class="amenity-icon">🏛️</span>
+          <span class="amenity-name">Clubhouse</span>
+        </div>
+        <div class="amenity-card premium">
+          <span class="amenity-icon">🏊</span>
+          <span class="amenity-name">Swimming Pool</span>
+        </div>
+        <div class="amenity-card premium">
+          <span class="amenity-icon">🏋️</span>
+          <span class="amenity-name">Gym</span>
+        </div>
+        <div class="amenity-card premium">
+          <span class="amenity-icon">🎮</span>
+          <span class="amenity-name">Children's Park</span>
+        </div>
+        <div class="amenity-card">
+          <span class="amenity-icon">🏃</span>
+          <span class="amenity-name">Jogging Track</span>
+        </div>
+        <div class="amenity-card security">
+          <span class="amenity-icon">🛡️</span>
+          <span class="amenity-name">24x7 Security</span>
+        </div>
+        <div class="amenity-card">
+          <span class="amenity-icon">⚡</span>
+          <span class="amenity-name">Power Backup</span>
+        </div>
+        <div class="amenity-card security">
+          <span class="amenity-icon">🌧️</span>
+          <span class="amenity-name">Rainwater Harvesting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#section-title",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+      0.5
+    );
+
+    const cards = document.querySelectorAll(".amenity-card");
+    cards.forEach((card, i) => {
+      tl.fromTo(card,
+        { opacity: 0, y: 30, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" },
+        1.0 + i * 0.12
+      );
+    });
+
+    window.__timelines["03-amenities"] = tl;
+  </script>
+</body>
+</html>

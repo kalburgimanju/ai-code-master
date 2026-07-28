@@ -1,0 +1,62 @@
+[span] FinPlanner
+[span] Real Estate & Finance
+[a] Dashboard
+[a] Properties
+[a] Financial Planner
+[a] AI Agents
+[a] Marketing
+[a] Marketplace
+[a] Community
+[a] Sign In
+[span] Welcome
+[span] Hubli • Bangalore • Mysore
+[h1] Leads & CRM
+[p] Manage leads, track calls, and follow up with agents
+[button] Add Lead
+[button] leads
+[button] calls
+[button] agents
+[div] New
+[div] Contacted
+[div] Qualified
+[div] Visit Scheduled
+[div] Negotiation
+[div] Closed
+[button] All
+[button] New
+[button] Contacted
+[button] Qualified
+[button] Visit Scheduled
+[button] Negotiation
+[button] Closed
+[button] Lost
+[span] Anita Sharma
+[span] Qualified
+[div] Website
+[div] 3BHK Apartment, Bangalore
+[div] ₹80L-₹1.2Cr
+[div] 2025-02-15
+[span] Venkatesh Rao
+[span] New
+[div] Facebook Ad
+[div] 2BHK, Hubli
+[div] ₹30L-₹45L
+[div] 2025-03-01
+[span] Kavitha Nair
+[span] Visit Scheduled
+[div] Referral
+[div] Villa, Mysore
+[div] ₹1Cr-₹1.5Cr
+[div] 2025-02-28
+[span] Mohan Kumar
+[span] Negotiation
+[div] Google Search
+[div] Investment Plot, Mysore
+[div] ₹20L-₹35L
+[div] 2025-03-02
+[span] Lakshmi Devi
+[span] Contacted
+[div] Instagram
+[div] 3BHK, Bangalore Electronic City
+[div] ₹60L-₹90L
+[div] 2025-03-03

@@ -1,3 +1,18 @@
 {
-  "/_not-found/page": "app/_not-found/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/openrouter/route": "app/api/openrouter/route.js",
+  "/legal/page": "app/legal/page.js",
+  "/agents/page": "app/agents/page.js",
+  "/leads/page": "app/leads/page.js",
+  "/api/save-template/route": "app/api/save-template/route.js",
+  "/chat/page": "app/chat/page.js",
+  "/marketplace/page": "app/marketplace/page.js",
+  "/marketing/flow/page": "app/marketing/flow/page.js",
+  "/login/page": "app/login/page.js",
+  "/marketing/page": "app/marketing/page.js",
+  "/page": "app/page.js",
+  "/planner/page": "app/planner/page.js",
+  "/properties/page": "app/properties/page.js",
+  "/agents/[type]/page": "app/agents/[type]/page.js",
+  "/properties/[id]/page": "app/properties/[id]/page.js"
 }

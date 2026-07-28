@@ -1,0 +1,237 @@
+{
+  "typography": [
+    {
+      "role": "display",
+      "fontFamily": "Inter",
+      "fontSize": "30px",
+      "fontWeight": "700",
+      "lineHeight": "36px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Your Smart Financial Navigator"
+    },
+    {
+      "role": "heading",
+      "fontFamily": "Inter",
+      "fontSize": "18px",
+      "fontWeight": "600",
+      "lineHeight": "28px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Projects by City"
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "Inter",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Hubli"
+    },
+    {
+      "role": "body",
+      "fontFamily": "Inter",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "#94A3B8",
+      "sampleText": "Analyze real estate projects in Hubli, Bangalore & Mysore. G"
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "Inter",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Sobha City"
+    },
+    {
+      "role": "link",
+      "fontFamily": "Inter",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "#818CF8",
+      "sampleText": "Dashboard"
+    },
+    {
+      "role": "label",
+      "fontFamily": "Inter",
+      "fontSize": "10px",
+      "fontWeight": "500",
+      "lineHeight": "16px",
+      "letterSpacing": "normal",
+      "color": "#818CF8",
+      "sampleText": "Hubli"
+    }
+  ],
+  "spacing": {
+    "observed": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      16,
+      20,
+      24,
+      32
+    ],
+    "baseUnit": 4
+  },
+  "radius": [
+    "12px",
+    "16px",
+    "9999px"
+  ],
+  "shadows": [],
+  "buttons": [
+    {
+      "label": "Sign In",
+      "background": "#4F46E5",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "10px 20px",
+      "borderRadius": "12px",
+      "border": "0px solid rgb(30, 41, 59)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "height": "40px"
+    },
+    {
+      "label": "button",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#94A3B8",
+      "padding": "8px",
+      "borderRadius": "8px",
+      "border": "0px solid rgb(30, 41, 59)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "32px"
+    },
+    {
+      "label": "Financial Planner",
+      "background": "#1E293B",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#E2E8F0",
+      "padding": "10px 20px",
+      "borderRadius": "12px",
+      "border": "1px solid rgb(51, 65, 85)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "500",
+      "height": "46px"
+    }
+  ],
+  "cards": [
+    {
+      "label": "card",
+      "background": "#0F172A",
+      "backgroundImage": "",
+      "backdropFilter": "blur(4px)",
+      "color": "#E2E8F0",
+      "padding": "20px",
+      "borderRadius": "16px",
+      "border": "1px solid rgb(30, 41, 59)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "103px"
+    }
+  ],
+  "nav": {
+    "label": "navigation",
+    "background": "transparent",
+    "backgroundImage": "",
+    "backdropFilter": "",
+    "color": "#E2E8F0",
+    "padding": "12px",
+    "borderRadius": "0px",
+    "border": "0px solid rgb(30, 41, 59)",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "951px"
+  },
+  "chips": [
+    {
+      "label": "Hubli",
+      "background": "#6366F1",
+      "color": "#818CF8",
+      "padding": "2px 10px",
+      "borderRadius": "9999px",
+      "border": "0px solid rgb(30, 41, 59)",
+      "boxShadow": "none",
+      "fontSize": "10px",
+      "fontWeight": "500",
+      "height": "20px"
+    }
+  ],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [
+    {
+      "value": "linear-gradient(to right bottom, rgb(2, 6, 23), rgb(15, 23, 42), rgb(2, 6, 23))",
+      "area": 2073600
+    },
+    {
+      "value": "linear-gradient(to right bottom, rgba(49, 46, 129, 0.4), rgb(15, 23, 42), rgba(20, 83, 45, 0.4))",
+      "area": 361984
+    },
+    {
+      "value": "linear-gradient(to right bottom, rgba(79, 70, 229, 0.3), rgba(22, 163, 74, 0.3))",
+      "area": 194304
+    },
+    {
+      "value": "linear-gradient(to top, rgba(15, 23, 42, 0.8), rgba(0, 0, 0, 0))",
+      "area": 194304
+    },
+    {
+      "value": "linear-gradient(to right bottom, rgba(245, 158, 11, 0.2), rgba(234, 88, 12, 0.2))",
+      "area": 43176
+    },
+    {
+      "value": "linear-gradient(to right bottom, rgba(59, 130, 246, 0.2), rgba(79, 70, 229, 0.2))",
+      "area": 43176
+    }
+  ],
+  "glass": [
+    {
+      "backdropFilter": "blur(4px)",
+      "background": "rgba(15, 23, 42, 0.8)",
+      "border": "1px solid rgb(30, 41, 59)",
+      "borderRadius": "16px",
+      "boxShadow": "",
+      "area": 2033294
+    },
+    {
+      "backdropFilter": "blur(12px)",
+      "background": "rgba(15, 23, 42, 0.9)",
+      "border": "",
+      "borderRadius": "0px",
+      "boxShadow": "",
+      "area": 276480
+    },
+    {
+      "backdropFilter": "blur(12px)",
+      "background": "rgba(15, 23, 42, 0.6)",
+      "border": "",
+      "borderRadius": "0px",
+      "boxShadow": "",
+      "area": 106496
+    }
+  ]
+}

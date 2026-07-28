@@ -1,0 +1,1945 @@
+1:"$Sreact.fragment"
+2:I[78892,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default"]
+3:I[11359,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default"]
+5:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+9:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"ViewportBoundary"]
+b:I[48804,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"MetadataBoundary"]
+d:I[65125,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js"],"default",1]
+:HL["/_next/static/chunks/157per-6rfej7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","chapter","building-your-own-llm-pipeline"],"q":"","i":false,"f":[[["",{"children":["chapter",{"children":[["slug","building-your-own-llm-pipeline","d",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/157per-6rfej7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3j2brc7c8hat8.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/05b0208rfh8ys.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased","children":["$","body",null,{"className":"min-h-full flex flex-col","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","script","script-0",{"src":"/_next/static/chunks/16vgld9iclosn.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/2rb1230i-fez-.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$@8"]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/157per-6rfej7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"WpHiBD4DjnzuprdEnivdA"}
+e:[]
+8:"$We"
+f:I[89587,["/_next/static/chunks/3j2brc7c8hat8.js","/_next/static/chunks/05b0208rfh8ys.js","/_next/static/chunks/16vgld9iclosn.js","/_next/static/chunks/2rb1230i-fez-.js"],"default"]
+10:Tef15,# Chapter 10: Building Your Own LLM Pipeline
+
+## Fine-Tuning, Serving, and Optimizing Models
+
+---
+
+> *"The most powerful AI agents don't just use off-the-shelf models — they use models that have been trained specifically for their tasks."*
+
+---
+
+## Table of Contents
+
+1. [Why Build Your Own Pipeline?](#why-build-your-own-pipeline)
+2. [Fine-Tuning Basics](#fine-tuning-basics)
+3. [LoRA and QLoRA Explained Simply](#lora-and-qlora-explained-simply)
+4. [Data Preparation for Fine-Tuning](#data-preparation-for-fine-tuning)
+5. [Code Example: Fine-Tuning with LoRA](#code-example-fine-tuning-with-lora)
+6. [vLLM for Serving](#vllm-for-serving)
+7. [Code Example: Setting Up vLLM Server](#code-example-setting-up-vllm-server)
+8. [Local Model Deployment](#local-model-deployment)
+9. [Prompt Optimization](#prompt-optimization)
+10. [Model Evaluation Metrics](#model-evaluation-metrics)
+11. [Quantization](#quantization)
+12. [Cost Comparison: API vs Self-Hosted](#cost-comparison-api-vs-self-hosted)
+13. [Building the Complete Pipeline](#building-the-complete-pipeline)
+14. [Key Takeaways](#key-takeaways)
+15. [Try It Yourself](#try-it-yourself)
+
+---
+
+## Why Build Your Own Pipeline?
+
+### The Three Options
+
+When deploying AI agents, you have three options for the language model:
+
+| Option | Pros | Cons | Best For |
+|--------|------|------|----------|
+| **API (OpenAI, Anthropic, etc.)** | Easy setup, no infrastructure, always updated | Expensive at scale, data leaves your servers, rate limits | Prototyping, low-volume apps |
+| **Self-Hosted Open Source** | Full control, data privacy, no per-token cost | Requires GPU infrastructure, model maintenance | Production apps with privacy needs |
+| **Fine-Tuned Custom Model** | Best performance on specific tasks, can be smaller and faster | Requires training data, expertise, ongoing maintenance | Domain-specific high-volume tasks |
+
+### When to Build Your Own Pipeline
+
+Consider building your own pipeline when:
+
+1. **Cost** — You are spending more than $1,000/month on API calls and the volume keeps growing
+2. **Privacy** — Your data cannot leave your infrastructure (healthcare, finance, government)
+3. **Latency** — You need sub-100ms response times that API round-trips cannot guarantee
+4. **Specialization** — You need a model that performs exceptionally well on a narrow domain
+5. **Reliability** — You cannot depend on third-party API availability
+
+### The Pipeline Architecture
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   LLM PIPELINE                          │
+│                                                         │
+│  ┌──────────┐   ┌──────────┐   ┌──────────┐            │
+│  │   Data   │──▶│ Training │──▶│  Model   │            │
+│  │ Prep     │   │ (LoRA)   │   │ Registry │            │
+│  └──────────┘   └──────────┘   └────┬─────┘            │
+│                                      │                  │
+│  ┌──────────┐   ┌──────────┐   ┌────▼─────┐            │
+│  │Monitoring│◀──│  Prompt  │◀──│ Serving  │            │
+│  │Dashboard │   │  Tuning  │   │  (vLLM)  │            │
+│  └──────────┘   └──────────┘   └──────────┘            │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Fine-Tuning Basics
+
+### What Is Fine-Tuning?
+
+Fine-tuning is the process of taking a pre-trained language model and continuing the training on your specific data. Instead of teaching the model language from scratch, you teach it your specific task.
+
+Think of it like this:
+
+```
+Pre-training:  Teaching an English person to speak French
+               (massive amount of general French education)
+
+Fine-tuning:   Teaching that French speaker to be a chef
+               (focused training on culinary vocabulary and recipes)
+```
+
+### Types of Fine-Tuning
+
+```
+┌─────────────────────────────────────────────────┐
+│              FINE-TUNING SPECTRUM                │
+│                                                 │
+│  Full Fine-Tune ◀─────────────────▶ LoRA/QLoRA  │
+│                                                 │
+│  • Updates ALL weights        • Updates small    │
+│  • Needs massive GPU           subset of weights │
+│  • Best performance           • Needs less GPU   │
+│  • Most expensive             • Near-best perf   │
+│  • Risk of catastrophic       • Much cheaper     │
+│    forgetting                 • Faster training  │
+│                                                 │
+│  Use when: $$$$$$            Use when: $$       │
+│  (rare, research)            (most production)  │
+└─────────────────────────────────────────────────┘
+```
+
+### What You Need
+
+| Requirement | Minimum | Recommended |
+|-------------|---------|-------------|
+| GPU VRAM | 8 GB (QLoRA) | 24-48 GB |
+| Training Data | 100 examples | 1,000-100,000 examples |
+| Training Time | Minutes (small data) | Hours to days |
+| Skills | Python basics | ML fundamentals |
+
+### Common Fine-Tuning Tasks
+
+```python
+# Fine-tuning tasks for agents
+
+tasks = {
+    "classification": {
+        "description": "Classify user intent",
+        "example": {
+            "input": "I want to return the shoes I bought yesterday",
+            "output": "return_request"
+        }
+    },
+    "extraction": {
+        "description": "Extract structured data from text",
+        "example": {
+            "input": "John Smith lives at 123 Main St, Chicago IL 60601",
+            "output": '{"name": "John Smith", "address": "123 Main St", "city": "Chicago", "state": "IL", "zip": "60601"}'
+        }
+    },
+    "summarization": {
+        "description": "Summarize long documents",
+        "example": {
+            "input": "A 500-word article about climate change...",
+            "output": "Climate change is accelerating with global temperatures rising..."
+        }
+    },
+    "code_generation": {
+        "description": "Generate code in a specific language/framework",
+        "example": {
+            "input": "Write a Python function to validate email addresses",
+            "output": "def validate_email(email): return bool(re.match(r'^[\\w.-]+@[\\w.-]+\\.\\w+$', email))"
+        }
+    },
+    "conversation": {
+        "description": "Role-play as a specific character or assistant",
+        "example": {
+            "input": "What can you help me with?",
+            "output": "I'm your banking assistant. I can help you check balances, transfer funds, or report a lost card."
+        }
+    }
+}
+```
+
+---
+
+## LoRA and QLoRA Explained Simply
+
+### LoRA (Low-Rank Adaptation)
+
+LoRA works by adding small trainable layers to the model while keeping the original weights frozen.
+
+```
+Original Model (frozen):
+┌──────────────────────────────────┐
+│  Weight Matrix W (4096 × 4096)   │
+│  = 16,777,216 parameters        │
+│  ❄️ FROZEN — not updated        │
+└──────────────────────────────────┘
+
+LoRA Adaptation (trainable):
+┌──────────────────────────────────┐
+│  Matrix A (4096 × 16) = 65,536  │
+│  Matrix B (16 × 4096) = 65,536  │
+│  Total = 131,072 parameters     │
+│  🔥 TRAINABLE — updated during  │
+│     fine-tuning                 │
+└──────────────────────────────────┘
+
+Instead of training 16M parameters,
+you train only 131K parameters!
+That's 128x fewer parameters to update.
+```
+
+### QLoRA (Quantized LoRA)
+
+QLoRA takes LoRA further by loading the base model in 4-bit precision:
+
+```
+Full Precision (FP16):    1 model = 14 GB (for 7B model)
+4-bit Quantization (QLoRA): 1 model = 3.5 GB (for 7B model)
+
+┌──────────────────────────────────────────────┐
+│              QLoRA Process                    │
+│                                              │
+│  1. Load base model in 4-bit (QLoRA4)        │
+│     → Uses 3.5 GB instead of 14 GB          │
+│                                              │
+│  2. Add LoRA adapters (trainable)            │
+│     → Small overhead (~100 MB)               │
+│                                              │
+│  3. Fine-tune only the LoRA adapters         │
+│     → Fits on a single consumer GPU!         │
+│                                              │
+│  4. Merge LoRA weights back for serving      │
+│     → Back to full precision for inference   │
+└──────────────────────────────────────────────┘
+```
+
+### Rank: The Key Hyperparameter
+
+The "rank" determines how many parameters the LoRA adapter has:
+
+| Rank | Parameters (7B model) | Quality | Speed | VRAM |
+|------|----------------------|---------|-------|------|
+| 4 | ~2M | Basic | Fastest | ~4 GB |
+| 8 | ~4M | Good | Fast | ~4 GB |
+| 16 | ~8M | Great | Medium | ~5 GB |
+| 32 | ~16M | Excellent | Slower | ~6 GB |
+| 64 | ~32M | Best | Slowest | ~7 GB |
+
+Rule of thumb: Start with rank 16 and increase if you need better quality.
+
+---
+
+## Data Preparation for Fine-Tuning
+
+### Data Formats
+
+Different fine-tuning approaches expect different formats:
+
+```python
+# ============================================================
+# Format 1: Instruction Format (most common for chat models)
+# ============================================================
+
+instruction_format = [
+    {
+        "messages": [
+            {"role": "system", "content": "You are a helpful customer service agent."},
+            {"role": "user", "content": "How do I return a product?"},
+            {"role": "assistant", "content": "To return a product, you can..."}
+        ]
+    }
+]
+
+# ============================================================
+# Format 2: Alpaca Format
+# ============================================================
+
+alpaca_format = [
+    {
+        "instruction": "Summarize the following text",
+        "input": "The quick brown fox jumps over the lazy dog...",
+        "output": "A sentence containing all 26 English letters."
+    }
+]
+
+# ============================================================
+# Format 3: Conversation Format (for chat fine-tuning)
+# ============================================================
+
+conversation_format = [
+    {
+        "conversations": [
+            {"from": "human", "value": "What is machine learning?"},
+            {"from": "gpt", "value": "Machine learning is a subset of AI..."},
+            {"from": "human", "value": "How does it differ from deep learning?"},
+            {"from": "gpt", "value": "Deep learning is a subset of ML..."}
+        ]
+    }
+]
+```
+
+### Data Quality Checklist
+
+```python
+class DataQualityChecker:
+    """Check and improve training data quality."""
+
+    def __init__(self):
+        self.issues = []
+
+    def check_dataset(self, data: list[dict]) -> dict:
+        """Run all quality checks on the dataset."""
+        self.issues = []
+
+        self._check_size(data)
+        self._check_format(data)
+        self._check_duplicates(data)
+        self._check_length(data)
+        self._check_balance(data)
+        self._check_language(data)
+
+        return {
+            "total_examples": len(data),
+            "issues_found": len(self.issues),
+            "issues": self.issues,
+            "score": max(0, 100 - len(self.issues) * 10),
+        }
+
+    def _check_size(self, data):
+        if len(data) < 100:
+            self.issues.append({
+                "severity": "warning",
+                "message": f"Dataset has only {len(data)} examples. "
+                          f"Recommend at least 100."
+            })
+        if len(data) > 100000:
+            self.issues.append({
+                "severity": "info",
+                "message": f"Large dataset ({len(data)} examples). "
+                          f"Consider sampling for faster iteration."
+            })
+
+    def _check_format(self, data):
+        for i, example in enumerate(data[:10]):  # Check first 10
+            if "messages" not in example:
+                self.issues.append({
+                    "severity": "error",
+                    "message": f"Example {i} missing 'messages' field"
+                })
+                continue
+
+            messages = example["messages"]
+            if not messages:
+                self.issues.append({
+                    "severity": "error",
+                    "message": f"Example {i} has empty messages"
+                })
+                continue
+
+            last_role = None
+            for msg in messages:
+                if "role" not in msg or "content" not in msg:
+                    self.issues.append({
+                        "severity": "error",
+                        "message": f"Example {i}: message missing role/content"
+                    })
+                if last_role == "user" and msg.get("role") == "user":
+                    self.issues.append({
+                        "severity": "warning",
+                        "message": f"Example {i}: consecutive user messages"
+                    })
+                last_role = msg.get("role")
+
+    def _check_duplicates(self, data):
+        seen = set()
+        duplicates = 0
+        for example in data:
+            key = json.dumps(example, sort_keys=True)
+            if key in seen:
+                duplicates += 1
+            seen.add(key)
+
+        if duplicates > 0:
+            self.issues.append({
+                "severity": "warning",
+                "message": f"Found {duplicates} duplicate examples. "
+                          f"Remove them for better training."
+            })
+
+    def _check_length(self, data):
+        lengths = []
+        for example in data:
+            total_chars = sum(
+                len(msg.get("content", ""))
+                for msg in example.get("messages", [])
+            )
+            lengths.append(total_chars)
+
+        if lengths:
+            avg = sum(lengths) / len(lengths)
+            short = sum(1 for l in lengths if l < 50)
+            long = sum(1 for l in lengths if l > 10000)
+
+            if short > len(data) * 0.1:
+                self.issues.append({
+                    "severity": "warning",
+                    "message": f"{short} examples are very short (<50 chars)"
+                })
+
+            if long > len(data) * 0.1:
+                self.issues.append({
+                    "severity": "warning",
+                    "message": f"{long} examples are very long (>10K chars)"
+                })
+
+    def _check_balance(self, data):
+        """Check if assistant responses are well-distributed."""
+        response_lengths = []
+        for example in data:
+            messages = example.get("messages", [])
+            assistant_msgs = [
+                m for m in messages if m.get("role") == "assistant"
+            ]
+            if assistant_msgs:
+                response_lengths.append(len(assistant_msgs[0]["content"]))
+
+        if response_lengths:
+            avg = sum(response_lengths) / len(response_lengths)
+            if avg < 20:
+                self.issues.append({
+                    "severity": "warning",
+                    "message": "Assistant responses are very short on average"
+                })
+
+    def _check_language(self, data):
+        """Basic language consistency check."""
+        from collections import Counter
+        # Simple heuristic: check if most text is ASCII
+        non_ascii = 0
+        for example in data:
+            for msg in example.get("messages", []):
+                content = msg.get("content", "")
+                non_ascii_ratio = sum(
+                    1 for c in content if ord(c) > 127
+                ) / max(len(content), 1)
+                if non_ascii_ratio > 0.3:
+                    non_ascii += 1
+                    break
+
+        if non_ascii > len(data) * 0.3:
+            self.issues.append({
+                "severity": "info",
+                "message": f"{non_ascii} examples contain significant "
+                          f"non-ASCII characters"
+            })
+```
+
+---
+
+## Code Example: Fine-Tuning with LoRA
+
+### Complete Training Script
+
+```python
+# fine_tune.py
+# Requirements: pip install torch transformers peft datasets accelerate bitsandbytes
+
+import torch
+from datasets import load_dataset
+from transformers import (
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    TrainingArguments,
+    Trainer,
+    BitsAndBytesConfig,
+)
+from peft import (
+    LoraConfig,
+    get_peft_model,
+    prepare_model_for_kbit_training,
+    TaskType,
+)
+
+
+def load_model(model_name: str, use_qlora: bool = True):
+    """
+    Load a pre-trained model with optional 4-bit quantization.
+
+    Args:
+        model_name: HuggingFace model name or path
+        use_qlora: Whether to use QLoRA (4-bit quantization)
+    """
+    print(f"Loading model: {model_name}")
+
+    # Quantization config for QLoRA
+    if use_qlora:
+        bnb_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_use_double_quant=True,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.bfloat16,
+        )
+    else:
+        bnb_config = None
+
+    # Load model
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        quantization_config=bnb_config,
+        device_map="auto",
+        trust_remote_code=True,
+        torch_dtype=torch.bfloat16,
+    )
+
+    # Load tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_name,
+        trust_remote_code=True,
+    )
+
+    # Ensure tokenizer has a pad token
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+
+    return model, tokenizer
+
+
+def create_lora_config(
+    rank: int = 16,
+    alpha: int = 32,
+    dropout: float = 0.05,
+    target_modules: list[str] = None,
+):
+    """
+    Create a LoRA configuration.
+
+    Args:
+        rank: LoRA rank (higher = more capacity)
+        alpha: LoRA alpha scaling factor
+        dropout: Dropout rate for LoRA layers
+        target_modules: Which layers to apply LoRA to
+    """
+    if target_modules is None:
+        # Common targets for most transformer models
+        target_modules = [
+            "q_proj", "k_proj", "v_proj", "o_proj",
+            "gate_proj", "up_proj", "down_proj",
+        ]
+
+    return LoraConfig(
+        task_type=TaskType.CAUSAL_LM,
+        r=rank,
+        lora_alpha=alpha,
+        lora_dropout=dropout,
+        target_modules=target_modules,
+        bias="none",
+        modules_to_save=None,  # Set this to ["embed_tokens", "lm_head"]
+        # if you want to also train embedding layers
+    )
+
+
+def prepare_dataset(tokenizer, data_path: str = None, max_length: int = 2048):
+    """Load and prepare the training dataset."""
+
+    # Load your custom dataset
+    # Supports JSON, JSONL, CSV, or Parquet
+    if data_path:
+        if data_path.endswith(".json") or data_path.endswith(".jsonl"):
+            dataset = load_dataset("json", data_files=data_path)
+        elif data_path.endswith(".csv"):
+            dataset = load_dataset("csv", data_files=data_path)
+        else:
+            dataset = load_dataset(data_path)
+    else:
+        # Demo dataset (replace with your own data)
+        demo_data = [
+            {
+                "messages": [
+                    {"role": "system", "content": "You are a helpful coding assistant."},
+                    {"role": "user", "content": "Write a Python function to find prime numbers."},
+                    {"role": "assistant", "content": "Here's a Python function to find prime numbers up to n:\n\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\ndef primes_up_to(n):\n    return [x for x in range(2, n + 1) if is_prime(x)]"}
+                ]
+            }
+        ] * 100  # Repeat for demo purposes
+        dataset = {"train": demo_data}
+
+    def format_and_tokenize(examples):
+        """Format messages into model input format."""
+        texts = []
+        for messages in examples["messages"]:
+            # Apply chat template
+            text = tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=False,
+            )
+            texts.append(text)
+
+        # Tokenize
+        tokenized = tokenizer(
+            texts,
+            truncation=True,
+            max_length=max_length,
+            padding="max_length",
+        )
+
+        # For causal LM, labels = input_ids
+        tokenized["labels"] = tokenized["input_ids"].copy()
+
+        return tokenized
+
+    # Process dataset
+    if isinstance(dataset, dict):
+        dataset = dataset["train"]
+
+    processed_dataset = dataset.map(
+        format_and_tokenize,
+        batched=True,
+        remove_columns=dataset.column_names,
+        desc="Tokenizing",
+    )
+
+    return processed_dataset
+
+
+def train(
+    model_name: str = "meta-llama/Llama-3.2-3B",
+    data_path: str = None,
+    output_dir: str = "./output",
+    num_epochs: int = 3,
+    batch_size: int = 4,
+    learning_rate: float = 2e-4,
+    lora_rank: int = 16,
+    use_qlora: bool = True,
+    warmup_ratio: float = 0.1,
+):
+    """Run the complete fine-tuning pipeline."""
+
+    print("=" * 60)
+    print("  LLM Fine-Tuning with LoRA/QLoRA")
+    print("=" * 60)
+
+    # Step 1: Load model
+    print("\n[1/5] Loading model...")
+    model, tokenizer = load_model(model_name, use_qlora=use_qlora)
+
+    if use_qlora:
+        model = prepare_model_for_kbit_training(model)
+
+    # Step 2: Configure LoRA
+    print("[2/5] Configuring LoRA...")
+    lora_config = create_lora_config(rank=lora_rank)
+    model = get_peft_model(model, lora_config)
+
+    # Print trainable parameters
+    trainable, total = model.get_nb_trainable_parameters()
+    print(f"  Trainable: {trainable:,} / {total:,} "
+          f"({100 * trainable / total:.2f}%)")
+
+    # Step 3: Prepare dataset
+    print("[3/5] Preparing dataset...")
+    train_dataset = prepare_dataset(tokenizer, data_path)
+    print(f"  Examples: {len(train_dataset)}")
+
+    # Step 4: Training arguments
+    print("[4/5] Setting up training...")
+    training_args = TrainingArguments(
+        output_dir=output_dir,
+        num_train_epochs=num_epochs,
+        per_device_train_batch_size=batch_size,
+        gradient_accumulation_steps=max(1, 16 // batch_size),
+        learning_rate=learning_rate,
+        warmup_ratio=warmup_ratio,
+        lr_scheduler_type="cosine",
+        logging_steps=10,
+        save_strategy="epoch",
+        bf16=True,
+        optim="paged_adamw_8bit",
+        gradient_checkpointing=True,
+        report_to="none",  # Set to "wandb" for tracking
+        max_grad_norm=0.3,
+    )
+
+    # Step 5: Train
+    print("[5/5] Starting training...")
+    trainer = Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=train_dataset,
+        tokenizer=tokenizer,
+    )
+
+    trainer.train()
+
+    # Save the LoRA adapter
+    adapter_path = f"{output_dir}/adapter"
+    model.save_pretrained(adapter_path)
+    tokenizer.save_pretrained(adapter_path)
+
+    print(f"\n✓ Training complete!")
+    print(f"  Adapter saved to: {adapter_path}")
+    print(f"  Trainable params: {trainable:,}")
+
+    return model, tokenizer
+
+
+def merge_and_export(adapter_path: str, base_model: str, output_path: str):
+    """Merge LoRA adapter with base model for deployment."""
+    from peft import PeftModel
+
+    # Load base model
+    base = AutoModelForCausalLM.from_pretrained(
+        base_model,
+        torch_dtype=torch.bfloat16,
+        device_map="auto",
+    )
+
+    # Load LoRA adapter
+    model = PeftModel.from_pretrained(base, adapter_path)
+
+    # Merge weights
+    model = model.merge_and_unload()
+
+    # Save merged model
+    model.save_pretrained(output_path)
+
+    tokenizer = AutoTokenizer.from_pretrained(adapter_path)
+    tokenizer.save_pretrained(output_path)
+
+    print(f"Merged model saved to: {output_path}")
+
+
+# ============================================================
+# Run training
+# ============================================================
+
+if __name__ == "__main__":
+    model, tokenizer = train(
+        model_name="meta-llama/Llama-3.2-3B",
+        data_path="./training_data.json",
+        output_dir="./my_model",
+        num_epochs=3,
+        batch_size=4,
+        lora_rank=16,
+        use_qlora=True,
+    )
+```
+
+---
+
+## vLLM for Serving
+
+### What Is vLLM?
+
+vLLM is a high-performance serving engine for language models. It is much faster than standard HuggingFace inference because of:
+
+- **PagedAttention** — Efficient memory management for multiple requests
+- **Continuous Batching** — Process multiple requests simultaneously
+- **Optimized CUDA Kernels** — Fast GPU operations
+
+```
+Standard Serving (HuggingFace):
+  Request 1: ────────────────────▶ Done
+  Request 2:     wait... ────────────────────────▶ Done
+  Request 3:         wait...     wait... ───────────────▶ Done
+
+vLLM Serving:
+  Request 1: ────────────────▶ Done
+  Request 2: ────────────────▶ Done
+  Request 3: ────────────────▶ Done
+  (All process in parallel!)
+```
+
+### Performance Comparison
+
+| Metric | HuggingFace | vLLM | Improvement |
+|--------|------------|------|-------------|
+| Throughput (req/s) | 5 | 30-50 | 6-10x |
+| Latency (p50) | 2000ms | 300ms | 6x faster |
+| Latency (p99) | 8000ms | 800ms | 10x faster |
+| Memory efficiency | 40% | 85% | 2x better |
+| Concurrent users | 10-20 | 100+ | 5-10x |
+
+---
+
+## Code Example: Setting Up vLLM Server
+
+### Basic vLLM Setup
+
+```python
+# install: pip install vllm
+
+# ============================================================
+# Option 1: Start vLLM as an OpenAI-compatible server
+# ============================================================
+
+# In terminal, run:
+# python -m vllm.entrypoints.openai.api_server \
+#     --model meta-llama/Llama-3.2-3B \
+#     --host 0.0.0.0 \
+#     --port 8000 \
+#     --max-model-len 4096 \
+#     --gpu-memory-utilization 0.9
+
+# This creates an OpenAI-compatible API at http://localhost:8000
+
+# ============================================================
+# Option 2: Programmatic vLLM setup
+# ============================================================
+
+from vllm import LLM, SamplingParams
+
+
+class VLLMServer:
+    """Wrapper around vLLM for easy serving."""
+
+    def __init__(
+        self,
+        model_name: str,
+        max_model_len: int = 4096,
+        gpu_memory_utilization: float = 0.9,
+        tensor_parallel_size: int = 1,
+    ):
+        self.llm = LLM(
+            model=model_name,
+            max_model_len=max_model_len,
+            gpu_memory_utilization=gpu_memory_utilization,
+            tensor_parallel_size=tensor_parallel_size,
+            dtype="bfloat16",
+        )
+        print(f"Model loaded: {model_name}")
+
+    def generate(
+        self,
+        prompts: list[str],
+        max_tokens: int = 512,
+        temperature: float = 0.7,
+        top_p: float = 0.9,
+        stop: list[str] = None,
+    ) -> list[str]:
+        """
+        Generate responses for one or more prompts.
+
+        Args:
+            prompts: List of input prompts
+            max_tokens: Maximum tokens to generate
+            temperature: Sampling temperature
+            top_p: Nucleus sampling parameter
+            stop: Stop sequences
+
+        Returns:
+            List of generated texts
+        """
+        sampling_params = SamplingParams(
+            max_tokens=max_tokens,
+            temperature=temperature,
+            top_p=top_p,
+            stop=stop,
+        )
+
+        outputs = self.llm.generate(prompts, sampling_params)
+
+        results = []
+        for output in outputs:
+            generated = output.outputs[0].text
+            results.append(generated)
+
+        return results
+
+    def generate_with_metrics(
+        self,
+        prompt: str,
+        **kwargs
+    ) -> dict:
+        """Generate with detailed metrics."""
+        import time
+
+        start = time.time()
+        results = self.generate([prompt], **kwargs)
+        elapsed = time.time() - start
+
+        output = results[0]
+        token_count = len(output.split())  # Approximate
+
+        return {
+            "text": output,
+            "latency_ms": elapsed * 1000,
+            "estimated_tokens": token_count,
+            "tokens_per_second": token_count / elapsed,
+        }
+
+
+# Usage
+server = VLLMServer("meta-llama/Llama-3.2-3B")
+
+# Single prompt
+result = server.generate_with_metrics(
+    "Explain what an AI agent is in simple terms."
+)
+print(f"Response: {result['text']}")
+print(f"Latency: {result['latency_ms']:.0f}ms")
+print(f"Speed: {result['tokens_per_second']:.0f} tokens/sec")
+
+# Batch processing
+prompts = [
+    "What is machine learning?",
+    "What is deep learning?",
+    "What is reinforcement learning?",
+]
+results = server.generate(prompts, max_tokens=200)
+for prompt, response in zip(prompts, results):
+    print(f"\nQ: {prompt}")
+    print(f"A: {response[:200]}...")
+```
+
+### vLLM with OpenAI-Compatible API
+
+```python
+import requests
+import json
+
+
+class OpenAICompatibleClient:
+    """Client for vLLM's OpenAI-compatible API."""
+
+    def __init__(self, base_url: str = "http://localhost:8000"):
+        self.base_url = base_url.rstrip("/")
+
+    def chat_completion(
+        self,
+        messages: list[dict],
+        model: str = "default",
+        max_tokens: int = 512,
+        temperature: float = 0.7,
+        stream: bool = False,
+    ) -> dict:
+        """Send a chat completion request."""
+        payload = {
+            "model": model,
+            "messages": messages,
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+            "stream": stream,
+        }
+
+        response = requests.post(
+            f"{self.base_url}/v1/chat/completions",
+            json=payload,
+            headers={"Content-Type": "application/json"},
+            timeout=60,
+        )
+
+        return response.json()
+
+    def completion(
+        self,
+        prompt: str,
+        model: str = "default",
+        max_tokens: int = 512,
+    ) -> dict:
+        """Send a text completion request."""
+        payload = {
+            "model": model,
+            "prompt": prompt,
+            "max_tokens": max_tokens,
+        }
+
+        response = requests.post(
+            f"{self.base_url}/v1/completions",
+            json=payload,
+            timeout=60,
+        )
+
+        return response.json()
+
+    def list_models(self) -> list[str]:
+        """List available models."""
+        response = requests.get(f"{self.base_url}/v1/models")
+        data = response.json()
+        return [m["id"] for m in data.get("data", [])]
+
+
+# Usage — works the same as OpenAI's API!
+client = OpenAICompatibleClient("http://localhost:8000")
+
+response = client.chat_completion(
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Hello! What can you help me with?"}
+    ],
+    max_tokens=200,
+)
+
+print(response["choices"][0]["message"]["content"])
+```
+
+---
+
+## Local Model Deployment
+
+### Hardware Requirements
+
+```
+┌────────────────────────────────────────────────────────────┐
+│              GPU VRAM Requirements                          │
+├────────────────────────────────────────────────────────────┤
+│                                                            │
+│  Model Size    FP16    INT8    INT4 (GPTQ)   INT4 (AWQ)   │
+│  ──────────    ────    ────    ────────────   ──────────   │
+│  1.5B          3 GB    2 GB    1.5 GB         1.5 GB      │
+│  3B            6 GB    3 GB    2 GB           2 GB        │
+│  7B            14 GB   7 GB    4 GB           4 GB        │
+│  13B           26 GB   13 GB   8 GB           8 GB        │
+│  34B           68 GB   34 GB   18 GB          18 GB       │
+│  70B           140 GB  70 GB   36 GB          36 GB       │
+│                                                            │
+│  Consumer GPUs:                                            │
+│  • RTX 4060 Ti (8GB)  → 3B INT4, 1.5B FP16              │
+│  • RTX 4090 (24GB)    → 7B FP16, 13B INT4               │
+│  • RTX 5090 (32GB)    → 13B FP16, 34B INT4              │
+│                                                            │
+│  Cloud Options:                                            │
+│  • A100 (40GB)        → 13B FP16, 34B INT4               │
+│  • A100 (80GB)        → 34B FP16, 70B INT4               │
+│  • H100 (80GB)        → 70B FP16                         │
+└────────────────────────────────────────────────────────────┘
+```
+
+### Docker Deployment
+
+```yaml
+# docker-compose.yml for vLLM
+version: '3.8'
+
+services:
+  vllm-server:
+    image: vllm/vllm-openai:latest
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    ports:
+      - "8000:8000"
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    command: >
+      --model meta-llama/Llama-3.2-3B
+      --host 0.0.0.0
+      --port 8000
+      --max-model-len 4096
+      --gpu-memory-utilization 0.9
+      --dtype bfloat16
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # Optional: Load balancer for multiple GPU instances
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - vllm-server
+```
+
+### Systemd Service
+
+```ini
+# /etc/systemd/system/vllm.service
+[Unit]
+Description=vLLM Model Server
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/vllm
+ExecStart=/opt/vllm/start.sh
+Restart=always
+RestartSec=10
+Environment=CUDA_VISIBLE_DEVICES=0
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+#!/bin/bash
+# start.sh
+source /opt/vllm/venv/bin/activate
+
+python -m vllm.entrypoints.openai.api_server \
+    --model meta-llama/Llama-3.2-3B \
+    --host 0.0.0.0 \
+    --port 8000 \
+    --max-model-len 4096 \
+    --gpu-memory-utilization 0.9 \
+    --dtype bfloat16 \
+    --served-model-name my-model
+```
+
+---
+
+## Prompt Optimization
+
+### Systematic Prompt Testing
+
+```python
+import json
+import time
+from dataclasses import dataclass
+
+
+@dataclass
+class PromptVariant:
+    """A variant of a prompt to test."""
+    name: str
+    system_prompt: str
+    temperature: float
+    max_tokens: int
+    examples: list[dict] = None
+
+
+class PromptOptimizer:
+    """Systematically test and optimize prompts."""
+
+    def __init__(self, client):
+        self.client = client
+        self.results = []
+
+    def add_variant(self, variant: PromptVariant):
+        """Add a prompt variant to test."""
+        self.results.append({
+            "variant": variant,
+            "scores": [],
+            "latencies": [],
+        })
+
+    def evaluate(
+        self,
+        test_cases: list[dict],
+        scoring_func: callable,
+    ) -> list[dict]:
+        """
+        Evaluate all variants against test cases.
+
+        Args:
+            test_cases: List of {"input": ..., "expected_output": ...}
+            scoring_func: Function that scores output quality (0-1)
+        """
+        for result in self.results:
+            variant = result["variant"]
+            print(f"\nTesting variant: {variant.name}")
+
+            for i, test in enumerate(test_cases):
+                # Build messages with examples
+                messages = []
+                if variant.examples:
+                    for ex in variant.examples:
+                        messages.append({"role": "user", "content": ex["input"]})
+                        messages.append({"role": "assistant", "content": ex["output"]})
+
+                messages.append({"role": "system", "content": variant.system_prompt})
+                messages.append({"role": "user", "content": test["input"]})
+
+                # Generate response
+                start = time.time()
+                response = self.client.chat_completion(
+                    messages=messages,
+                    temperature=variant.temperature,
+                    max_tokens=variant.max_tokens,
+                )
+                latency = (time.time() - start) * 1000
+
+                output = response["choices"][0]["message"]["content"]
+
+                # Score the response
+                score = scoring_func(output, test.get("expected_output", ""))
+
+                result["scores"].append(score)
+                result["latencies"].append(latency)
+
+                print(f"  Test {i+1}: score={score:.2f}, latency={latency:.0f}ms")
+
+        return self.get_rankings()
+
+    def get_rankings(self) -> list[dict]:
+        """Rank variants by average score and latency."""
+        rankings = []
+        for result in self.results:
+            variant = result["variant"]
+            avg_score = sum(result["scores"]) / len(result["scores"]) if result["scores"] else 0
+            avg_latency = sum(result["latencies"]) / len(result["latencies"]) if result["latencies"] else 0
+
+            rankings.append({
+                "name": variant.name,
+                "avg_score": avg_score,
+                "avg_latency_ms": avg_latency,
+                "total_tests": len(result["scores"]),
+            })
+
+        rankings.sort(key=lambda x: x["avg_score"], reverse=True)
+        return rankings
+
+
+# ============================================================
+# Example Usage
+# ============================================================
+
+# optimizer = PromptOptimizer(client)
+
+# Variant 1: Simple prompt
+# optimizer.add_variant(PromptVariant(
+#     name="simple",
+#     system_prompt="You are a helpful assistant.",
+#     temperature=0.7,
+#     max_tokens=200,
+# ))
+
+# Variant 2: Structured prompt
+# optimizer.add_variant(PromptVariant(
+#     name="structured",
+#     system_prompt=(
+#         "You are a customer service agent for TechCorp.\n"
+#         "Rules:\n"
+#         "1. Always be polite and professional\n"
+#         "2. Keep answers under 100 words\n"
+#         "3. If unsure, offer to connect with a human agent"
+#     ),
+#     temperature=0.5,
+#     max_tokens=200,
+# ))
+
+# rankings = optimizer.evaluate(test_cases, scoring_func)
+```
+
+---
+
+## Model Evaluation Metrics
+
+### BLEU Score
+
+BLEU measures how similar generated text is to reference text:
+
+```python
+from collections import Counter
+import math
+
+
+def compute_bleu(candidate: str, reference: str, max_n: int = 4) -> float:
+    """
+    Compute BLEU score between candidate and reference.
+
+    BLEU measures n-gram precision with a brevity penalty.
+    Score ranges from 0 (no match) to 1 (perfect match).
+    """
+    import re
+
+    # Tokenize
+    cand_tokens = re.findall(r'\w+', candidate.lower())
+    ref_tokens = re.findall(r'\w+', reference.lower())
+
+    if not cand_tokens:
+        return 0.0
+
+    scores = []
+
+    for n in range(1, max_n + 1):
+        # Get n-grams
+        cand_ngrams = [
+            tuple(cand_tokens[i:i+n])
+            for i in range(len(cand_tokens) - n + 1)
+        ]
+        ref_ngrams = [
+            tuple(ref_tokens[i:i+n])
+            for i in range(len(ref_tokens) - n + 1)
+        ]
+
+        if not cand_ngrams:
+            scores.append(0)
+            continue
+
+        ref_counts = Counter(ref_ngrams)
+        cand_counts = Counter(cand_ngrams)
+
+        # Count clipped matches
+        matches = 0
+        for ngram, count in cand_counts.items():
+            if ngram in ref_counts:
+                matches += min(count, ref_counts[ngram])
+
+        precision = matches / len(cand_ngrams) if cand_ngrams else 0
+        scores.append(precision)
+
+    # Geometric mean of precisions
+    if all(s > 0 for s in scores):
+        log_avg = sum(math.log(s) for s in scores) / len(scores)
+        geometric_mean = math.exp(log_avg)
+    else:
+        geometric_mean = 0
+
+    # Brevity penalty
+    bp = min(1.0, math.exp(1 - len(ref_tokens) / max(len(cand_tokens), 1)))
+
+    return bp * geometric_mean
+
+
+# Example
+candidate = "the cat sat on the mat"
+reference = "the cat is sitting on the mat"
+print(f"BLEU score: {compute_bleu(candidate, reference):.4f}")
+```
+
+### ROUGE Score
+
+ROUGE measures recall-oriented overlap with reference text:
+
+```python
+def compute_rouge_l(candidate: str, reference: str) -> float:
+    """
+    Compute ROUGE-L score using longest common subsequence.
+
+    ROUGE-L measures the longest common subsequence between
+    candidate and reference, which captures sentence structure.
+    """
+    cand_tokens = candidate.lower().split()
+    ref_tokens = reference.lower().split()
+
+    # LCS length
+    lcs_len = _lcs_length(cand_tokens, ref_tokens)
+
+    if lcs_len == 0:
+        return 0.0
+
+    precision = lcs_len / len(cand_tokens) if cand_tokens else 0
+    recall = lcs_len / len(ref_tokens) if ref_tokens else 0
+
+    if precision + recall == 0:
+        return 0.0
+
+    # F1 score
+    return 2 * precision * recall / (precision + recall)
+
+
+def _lcs_length(x: list, y: list) -> int:
+    """Compute length of longest common subsequence."""
+    m, n = len(x), len(y)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if x[i-1] == y[j-1]:
+                dp[i][j] = dp[i-1][j-1] + 1
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+
+    return dp[m][n]
+
+
+# Example
+candidate = "The cat sat on the mat and looked around"
+reference = "The cat is sitting on the mat"
+print(f"ROUGE-L: {compute_rouge_l(candidate, reference):.4f}")
+```
+
+### Evaluation Dashboard
+
+```python
+class ModelEvaluator:
+    """Comprehensive model evaluation tool."""
+
+    def __init__(self, client):
+        self.client = client
+
+    def evaluate(
+        self,
+        model_name: str,
+        test_data: list[dict],
+        metrics: list[str] = None,
+    ) -> dict:
+        """
+        Run a full evaluation suite.
+
+        test_data format: [{"prompt": ..., "reference": ..., "category": ...}]
+        """
+        if metrics is None:
+            metrics = ["bleu", "rouge_l", "latency", "length"]
+
+        results = {
+            "model": model_name,
+            "total_tests": len(test_data),
+            "metrics": {},
+            "category_scores": {},
+        }
+
+        all_outputs = []
+        all_latencies = []
+
+        for item in test_data:
+            start = time.time()
+            response = self.client.chat_completion(
+                messages=[{"role": "user", "content": item["prompt"]}],
+                max_tokens=300,
+            )
+            latency = (time.time() - start) * 1000
+
+            output = response["choices"][0]["message"]["content"]
+            all_outputs.append(output)
+            all_latencies.append(latency)
+
+        # Compute metrics
+        if "bleu" in metrics:
+            bleu_scores = [
+                compute_bleu(out, ref)
+                for out, ref in zip(all_outputs, [d["reference"] for d in test_data])
+            ]
+            results["metrics"]["bleu"] = {
+                "mean": sum(bleu_scores) / len(bleu_scores),
+                "min": min(bleu_scores),
+                "max": max(bleu_scores),
+            }
+
+        if "rouge_l" in metrics:
+            rouge_scores = [
+                compute_rouge_l(out, ref)
+                for out, ref in zip(all_outputs, [d["reference"] for d in test_data])
+            ]
+            results["metrics"]["rouge_l"] = {
+                "mean": sum(rouge_scores) / len(rouge_scores),
+                "min": min(rouge_scores),
+                "max": max(rouge_scores),
+            }
+
+        if "latency" in metrics:
+            results["metrics"]["latency"] = {
+                "mean_ms": sum(all_latencies) / len(all_latencies),
+                "p50_ms": sorted(all_latencies)[len(all_latencies) // 2],
+                "p95_ms": sorted(all_latencies)[int(len(all_latencies) * 0.95)],
+                "p99_ms": sorted(all_latencies)[int(len(all_latencies) * 0.99)],
+            }
+
+        return results
+
+    def print_report(self, results: dict):
+        """Print a formatted evaluation report."""
+        print("=" * 60)
+        print(f"  Evaluation Report: {results['model']}")
+        print(f"  Total tests: {results['total_tests']}")
+        print("=" * 60)
+
+        for metric, values in results["metrics"].items():
+            print(f"\n  {metric.upper()}:")
+            for key, value in values.items():
+                if isinstance(value, float):
+                    print(f"    {key}: {value:.4f}")
+                else:
+                    print(f"    {key}: {value}")
+```
+
+---
+
+## Quantization
+
+### What Is Quantization?
+
+Quantization reduces the precision of model weights from 32-bit floating point to lower bit formats:
+
+```
+Original (FP32):  0.7283918261...  →  4 bytes per weight
+Half (FP16):      0.7284            →  2 bytes per weight
+Int8 (INT8):      186               →  1 byte per weight
+Int4 (INT4):      11                →  0.5 bytes per weight
+
+7B parameter model:
+  FP32: 28 GB
+  FP16: 14 GB
+  INT8: 7 GB
+  INT4: 3.5 GB
+```
+
+### Quantization Methods
+
+| Method | Type | Quality | Speed | VRAM Savings |
+|--------|------|---------|-------|-------------|
+| **GPTQ** | Post-training | Good | Medium | 75% |
+| **AWQ** | Post-training | Best | Fast | 75% |
+| **GGUF** | Post-training | Good | Fast | 75% |
+| **BitsAndBytes** | On-the-fly | Good | Medium | 75% |
+| **GGML** | On-the-fly | Fair | Fastest | 75% |
+
+### GPTQ Quantization Example
+
+```python
+# pip install auto-gptq
+
+from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
+from transformers import AutoTokenizer
+
+
+def quantize_model(
+    model_path: str,
+    output_path: str,
+    calibration_dataset: list[str],
+    bits: int = 4,
+):
+    """
+    Quantize a model using GPTQ.
+
+    Args:
+        model_path: Path to the original model
+        output_path: Path to save quantized model
+        calibration_dataset: Sample texts for calibration
+        bits: Number of bits (4 or 8)
+    """
+    # Quantization config
+    quantize_config = BaseQuantizeConfig(
+        bits=bits,
+        group_size=128,
+        damp_percent=0.01,
+        desc_act=True,  # Better quality, slightly slower
+    )
+
+    # Load model and tokenizer
+    model = AutoGPTQForCausalLM.from_quantized(
+        model_path,
+        quantize_config,
+        device="cuda:0",
+        use_safetensors=True,
+    )
+    tokenizer = AutoTokenizer.from_pretrained(model_path)
+
+    # Prepare calibration data
+    calibration_texts = [
+        tokenizer(text, return_tensors="pt", max_length=2048, truncation=True)
+        for text in calibration_dataset
+    ]
+
+    # Quantize
+    print("Quantizing model...")
+    model.quantize(calibration_texts)
+
+    # Save
+    model.save_quantized(output_path)
+    tokenizer.save_pretrained(output_path)
+    print(f"Quantized model saved to {output_path}")
+
+
+def load_quantized_model(model_path: str):
+    """Load a GPTQ quantized model for inference."""
+    model = AutoGPTQForCausalLM.from_quantized(
+        model_path,
+        device="cuda:0",
+        use_safetensors=True,
+    )
+    tokenizer = AutoTokenizer.from_pretrained(model_path)
+    return model, tokenizer
+```
+
+---
+
+## Cost Comparison: API vs Self-Hosted
+
+### Detailed Cost Analysis
+
+```python
+def calculate_api_cost(
+    requests_per_day: int,
+    avg_input_tokens: int,
+    avg_output_tokens: int,
+    price_per_input_token: float,  # e.g., $0.003 / 1K tokens for GPT-4
+    price_per_output_token: float,  # e.g., $0.006 / 1K tokens for GPT-4
+) -> dict:
+    """Calculate API costs."""
+    daily_input_cost = (
+        requests_per_day * avg_input_tokens / 1000 * price_per_input_token
+    )
+    daily_output_cost = (
+        requests_per_day * avg_output_tokens / 1000 * price_per_output_token
+    )
+    daily_total = daily_input_cost + daily_output_cost
+
+    return {
+        "daily_input_cost": daily_input_cost,
+        "daily_output_cost": daily_output_cost,
+        "daily_total": daily_total,
+        "monthly_total": daily_total * 30,
+        "yearly_total": daily_total * 365,
+    }
+
+
+def calculate_self_hosted_cost(
+    gpu_type: str,
+    monthly_requests: int,
+    avg_tokens_per_request: int,
+) -> dict:
+    """Calculate self-hosted costs."""
+    # GPU hourly costs (cloud)
+    gpu_costs = {
+        "A100_40GB": {"hourly": 2.50, "tokens_per_sec": 3000},
+        "A100_80GB": {"hourly": 4.00, "tokens_per_sec": 4000},
+        "H100": {"hourly": 8.00, "tokens_per_sec": 6000},
+        "RTX_4090": {"hourly": 0.50, "tokens_per_sec": 1500},
+    }
+
+    gpu = gpu_costs.get(gpu_type, gpu_costs["A100_40GB"])
+
+    # Calculate GPU hours needed
+    total_tokens = monthly_requests * avg_tokens_per_request
+    total_seconds = total_tokens / gpu["tokens_per_sec"]
+    total_hours = total_seconds / 3600
+
+    # Add 30% overhead for batching and idle time
+    total_hours *= 1.3
+
+    monthly_cost = total_hours * gpu["hourly"]
+
+    # Add base infrastructure costs
+    infra_cost = 200  # Storage, networking, etc.
+    monthly_total = monthly_cost + infra_cost
+
+    return {
+        "gpu_hours": total_hours,
+        "gpu_monthly_cost": monthly_cost,
+        "infra_monthly_cost": infra_cost,
+        "monthly_total": monthly_total,
+        "yearly_total": monthly_total * 12,
+    }
+
+
+# ============================================================
+# Cost Comparison Example
+# ============================================================
+
+print("=" * 60)
+print("  API vs Self-Hosted Cost Comparison")
+print("=" * 60)
+
+scenarios = [
+    {"name": "Low (100 req/day)", "requests_per_day": 100},
+    {"name": "Medium (1K req/day)", "requests_per_day": 1000},
+    {"name": "High (10K req/day)", "requests_per_day": 10000},
+    {"name": "Very High (100K req/day)", "requests_per_day": 100000},
+]
+
+for scenario in scenarios:
+    rpd = scenario["requests_per_day"]
+
+    api = calculate_api_cost(
+        requests_per_day=rpd,
+        avg_input_tokens=200,
+        avg_output_tokens=300,
+        price_per_input_token=0.003,
+        price_per_output_token=0.006,
+    )
+
+    self_hosted = calculate_self_hosted_cost(
+        gpu_type="A100_40GB",
+        monthly_requests=rpd * 30,
+        avg_tokens_per_request=500,
+    )
+
+    breakeven = "API" if api["yearly_total"] < self_hosted["yearly_total"] else "Self-Hosted"
+
+    print(f"\n{scenario['name']}:")
+    print(f"  API: ${api['monthly_total']:,.0f}/month")
+    print(f"  Self-hosted: ${self_hosted['monthly_total']:,.0f}/month")
+    print(f"  Cheaper: {breakeven}")
+    print(f"  Savings: ${abs(api['yearly_total'] - self_hosted['yearly_total']):,.0f}/year")
+```
+
+### Cost Breakdown Table
+
+```
+┌──────────────────────────────────────────────────────────┐
+│          Monthly Cost Comparison (per 1M tokens)         │
+├──────────┬──────────┬──────────┬──────────┬──────────────┤
+│ Provider │  Input   │  Output  │  Total   │  Notes       │
+├──────────┼──────────┼──────────┼──────────┼──────────────┤
+│ GPT-4o   │  $2.50   │  $10.00  │  $12.50  │  Best quality│
+│ Claude   │  $3.00   │  $15.00  │  $18.00  │  Best safety │
+│ Llama3   │  $0.20   │  $0.20   │  $0.40   │  Via API     │
+│ Self 7B  │  $0.00   │  $0.00   │  ~$0.10  │  GPU cost    │
+│ Self 70B │  $0.00   │  $0.00   │  ~$0.50  │  GPU cost    │
+└──────────┴──────────┴──────────┴──────────┴──────────────┘
+```
+
+---
+
+## Building the Complete Pipeline
+
+### End-to-End Pipeline Code
+
+```python
+import json
+import time
+from pathlib import Path
+
+
+class LLMPipeline:
+    """Complete LLM pipeline from training to serving."""
+
+    def __init__(self, config: dict):
+        self.config = config
+        self.output_dir = Path(config.get("output_dir", "./pipeline_output"))
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+    def step1_prepare_data(self, raw_data_path: str, output_path: str = None):
+        """Step 1: Prepare and validate training data."""
+        print("\n[Step 1] Preparing training data...")
+
+        with open(raw_data_path) as f:
+            data = json.load(f)
+
+        # Validate
+        checker = DataQualityChecker()
+        report = checker.check_dataset(data)
+
+        print(f"  Total examples: {report['total_examples']}")
+        print(f"  Quality score: {report['score']}/100")
+        print(f"  Issues: {report['issues_found']}")
+
+        if report["issues_found"] > 0:
+            for issue in report["issues"]:
+                print(f"  [{issue['severity']}] {issue['message']}")
+
+        # Save processed data
+        if output_path is None:
+            output_path = self.output_dir / "processed_data.json"
+
+        with open(output_path, "w") as f:
+            json.dump(data, f, indent=2)
+
+        print(f"  Data saved to: {output_path}")
+        return output_path
+
+    def step2_train(self, data_path: str):
+        """Step 2: Fine-tune the model."""
+        print("\n[Step 2] Fine-tuning model...")
+
+        model, tokenizer = train(
+            model_name=self.config.get("base_model", "meta-llama/Llama-3.2-3B"),
+            data_path=data_path,
+            output_dir=str(self.output_dir / "model"),
+            num_epochs=self.config.get("epochs", 3),
+            batch_size=self.config.get("batch_size", 4),
+            lora_rank=self.config.get("lora_rank", 16),
+        )
+
+        return model, tokenizer
+
+    def step3_evaluate(self, model, tokenizer):
+        """Step 3: Evaluate the fine-tuned model."""
+        print("\n[Step 3] Evaluating model...")
+
+        eval_data = self.config.get("eval_data", [])
+        if not eval_data:
+            print("  No evaluation data provided, skipping.")
+            return
+
+        evaluator = ModelEvaluator(None)  # Pass your client
+        # Run evaluation
+        print(f"  Evaluating on {len(eval_data)} test cases...")
+
+    def step4_serve(self):
+        """Step 4: Start the vLLM server."""
+        print("\n[Step 4] Starting vLLM server...")
+
+        serve_config = {
+            "model": str(self.output_dir / "model/adapter"),
+            "host": "0.0.0.0",
+            "port": self.config.get("port", 8000),
+            "max_model_len": self.config.get("max_model_len", 4096),
+        }
+
+        print(f"  Server config: {json.dumps(serve_config, indent=2)}")
+        # In production, this would start vLLM as a subprocess
+        return serve_config
+
+    def step5_monitor(self):
+        """Step 5: Set up monitoring."""
+        print("\n[Step 5] Setting up monitoring...")
+
+        monitoring_config = {
+            "metrics_port": 9090,
+            "log_level": "INFO",
+            "alert_endpoints": self.config.get("alert_endpoints", []),
+        }
+
+        print(f"  Monitoring config: {json.dumps(monitoring_config, indent=2)}")
+        return monitoring_config
+
+    def run(self):
+        """Run the complete pipeline."""
+        print("=" * 60)
+        print("  LLM Pipeline Execution")
+        print("=" * 60)
+
+        start_time = time.time()
+
+        # Execute each step
+        data_path = self.config.get("training_data")
+        if data_path:
+            processed_path = self.step1_prepare_data(data_path)
+            self.step2_train(processed_path)
+
+        self.step3_evaluate(None, None)
+        serve_config = self.step4_serve()
+        self.step5_monitor()
+
+        elapsed = time.time() - start_time
+        print(f"\n{'=' * 60}")
+        print(f"  Pipeline complete! Total time: {elapsed:.0f}s")
+        print(f"{'=' * 60}")
+
+
+# ============================================================
+# Usage
+# ============================================================
+
+pipeline_config = {
+    "base_model": "meta-llama/Llama-3.2-3B",
+    "training_data": "./data/training.json",
+    "output_dir": "./pipeline_output",
+    "epochs": 3,
+    "batch_size": 4,
+    "lora_rank": 16,
+    "port": 8000,
+    "max_model_len": 4096,
+    "alert_endpoints": ["https://hooks.slack.com/..."],
+}
+
+# pipeline = LLMPipeline(pipeline_config)
+# pipeline.run()
+```
+
+---
+
+## Key Takeaways
+
+1. **API vs Self-Hosted** — Choose based on your scale, privacy needs, and budget. APIs are simpler; self-hosted gives you control.
+
+2. **Fine-tuning** transforms a general model into a specialist. You teach it your specific task with your specific data.
+
+3. **LoRA and QLoRA** make fine-tuning accessible. You can fine-tune a 7B model on a single consumer GPU with QLoRA.
+
+4. **Data quality matters more than quantity.** 100 well-crafted examples beat 10,000 noisy ones.
+
+5. **vLLM** is the standard for serving. It provides 6-10x throughput improvement over basic HuggingFace serving.
+
+6. **Quantization** makes large models accessible. INT4 quantization reduces VRAM by 75% with minimal quality loss.
+
+7. **Evaluation is critical.** Use BLEU, ROUGE, latency, and task-specific metrics to measure your model's performance.
+
+8. **The pipeline approach** ensures reproducibility. Document every step from data prep to deployment.
+
+9. **Cost analysis** should guide your architecture decisions. At scale, self-hosting becomes significantly cheaper than APIs.
+
+10. **Start small, iterate fast.** Fine-tune a small model first, evaluate, and scale up only when needed.
+
+---
+
+## Try It Yourself
+
+### Exercise 1: Fine-Tune a Small Model
+
+Take a base model and fine-tune it on a simple task:
+
+```python
+# Task: Create a sentiment classifier
+# 1. Prepare 200 labeled examples of positive/negative/neutral text
+# 2. Fine-tune a 1.5B model with LoRA
+# 3. Test it on new examples
+# 4. Measure accuracy
+```
+
+### Exercise 2: Set Up vLLM
+
+Deploy a model using vLLM:
+
+```bash
+# 1. Install vLLM
+pip install vllm
+
+# 2. Start a server with a small model
+python -m vllm.entrypoints.openai.api_server \
+    --model meta-llama/Llama-3.2-1B \
+    --port 8000
+
+# 3. Send test requests using curl
+curl http://localhost:8000/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -d '{"model": "default", "messages": [{"role": "user", "content": "Hello!"}]}'
+
+# 4. Measure throughput
+for i in {1..100}; do
+    curl -s http://localhost:8000/v1/completions \
+        -d '{"model":"default","prompt":"Hello","max_tokens":50}' > /dev/null &
+done
+wait
+```
+
+### Exercise 3: Build an Evaluation Suite
+
+```python
+# Create a comprehensive evaluation suite for your model:
+# 1. 50 test cases with known correct answers
+# 2. Measure accuracy, BLEU, ROUGE-L
+# 3. Measure latency (p50, p95, p99)
+# 4. Compare with baseline (no fine-tuning)
+# 5. Generate a report
+```
+
+### Exercise 4: Quantize a Model
+
+```python
+# 1. Take a 7B model in FP16
+# 2. Quantize it to INT4 using GPTQ
+# 3. Compare output quality
+# 4. Measure VRAM usage before and after
+# 5. Benchmark throughput improvement
+```
+
+### Exercise 5: Cost Calculator
+
+Build a cost calculator that recommends the best deployment option:
+
+```python
+def recommend_deployment(
+    daily_requests: int,
+    avg_tokens: int,
+    quality_requirements: str,  # "low", "medium", "high"
+    privacy_requirements: str,  # "none", "moderate", "strict"
+) -> dict:
+    """Recommend the best deployment option."""
+    # Your implementation
+    pass
+```
+
+---
+
+> **Next Chapter:** In Chapter 13, we'll cover security, safety, and guardrails to protect your agents from real-world threats.
+4:["$","div",null,{"children":["$","$Lf",null,{"content":"$10","currentChapter":{"id":"agents-ch-10","number":10,"title":"Building Your Own LLM Pipeline","subtitle":"Fine-Tuning, Serving, and Optimizing Models","description":"Fine-tune models with LoRA, serve them with vLLM, deploy locally, and optimize prompts for production.","slug":"building-your-own-llm-pipeline","part":"Part III: Build from Scratch","estimatedPages":22,"topics":["Fine-tuning basics","LoRA & QLoRA","vLLM serving","Local deployment","Prompt optimization","Model evaluation"],"icon":"⚙️","bookId":"ai-agents"}}]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+c:[["$","title","0",{"children":"AI Agents: The Complete Guide"}],["$","meta","1",{"name":"description","content":"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"}],["$","meta","2",{"name":"author","content":"Manjunath Kalburgi"}],["$","meta","3",{"name":"keywords","content":"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"}]]

@@ -1,0 +1,215 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/docs",
+      "regex": "^/docs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs(?:/)?$"
+    },
+    {
+      "page": "/docs/components",
+      "regex": "^/docs/components(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components(?:/)?$"
+    },
+    {
+      "page": "/docs/components/accordion",
+      "regex": "^/docs/components/accordion(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/accordion(?:/)?$"
+    },
+    {
+      "page": "/docs/components/alert",
+      "regex": "^/docs/components/alert(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/alert(?:/)?$"
+    },
+    {
+      "page": "/docs/components/avatar",
+      "regex": "^/docs/components/avatar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/avatar(?:/)?$"
+    },
+    {
+      "page": "/docs/components/badge",
+      "regex": "^/docs/components/badge(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/badge(?:/)?$"
+    },
+    {
+      "page": "/docs/components/breadcrumb",
+      "regex": "^/docs/components/breadcrumb(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/breadcrumb(?:/)?$"
+    },
+    {
+      "page": "/docs/components/button",
+      "regex": "^/docs/components/button(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/button(?:/)?$"
+    },
+    {
+      "page": "/docs/components/card",
+      "regex": "^/docs/components/card(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/card(?:/)?$"
+    },
+    {
+      "page": "/docs/components/checkbox",
+      "regex": "^/docs/components/checkbox(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/checkbox(?:/)?$"
+    },
+    {
+      "page": "/docs/components/drawer",
+      "regex": "^/docs/components/drawer(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/drawer(?:/)?$"
+    },
+    {
+      "page": "/docs/components/dropdown-menu",
+      "regex": "^/docs/components/dropdown\\-menu(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/dropdown\\-menu(?:/)?$"
+    },
+    {
+      "page": "/docs/components/input",
+      "regex": "^/docs/components/input(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/input(?:/)?$"
+    },
+    {
+      "page": "/docs/components/modal",
+      "regex": "^/docs/components/modal(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/modal(?:/)?$"
+    },
+    {
+      "page": "/docs/components/progress",
+      "regex": "^/docs/components/progress(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/progress(?:/)?$"
+    },
+    {
+      "page": "/docs/components/radio",
+      "regex": "^/docs/components/radio(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/radio(?:/)?$"
+    },
+    {
+      "page": "/docs/components/select",
+      "regex": "^/docs/components/select(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/select(?:/)?$"
+    },
+    {
+      "page": "/docs/components/spinner",
+      "regex": "^/docs/components/spinner(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/spinner(?:/)?$"
+    },
+    {
+      "page": "/docs/components/table",
+      "regex": "^/docs/components/table(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/table(?:/)?$"
+    },
+    {
+      "page": "/docs/components/tabs",
+      "regex": "^/docs/components/tabs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/tabs(?:/)?$"
+    },
+    {
+      "page": "/docs/components/textarea",
+      "regex": "^/docs/components/textarea(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/textarea(?:/)?$"
+    },
+    {
+      "page": "/docs/components/toast",
+      "regex": "^/docs/components/toast(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/toast(?:/)?$"
+    },
+    {
+      "page": "/docs/components/tooltip",
+      "regex": "^/docs/components/tooltip(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/components/tooltip(?:/)?$"
+    },
+    {
+      "page": "/docs/tokens",
+      "regex": "^/docs/tokens(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs/tokens(?:/)?$"
+    },
+    {
+      "page": "/portal",
+      "regex": "^/portal(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/portal(?:/)?$"
+    },
+    {
+      "page": "/portal/downloads",
+      "regex": "^/portal/downloads(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/portal/downloads(?:/)?$"
+    },
+    {
+      "page": "/portal/users",
+      "regex": "^/portal/users(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/portal/users(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

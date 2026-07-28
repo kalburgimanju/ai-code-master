@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 4 - Applying intelligent logic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+            color: #FAF9F5;
+            overflow: hidden;
+            width: 1080px;
+            height: 1080px;
+            position: relative;
+        }
+        .clip {
+            position: absolute;
+            width: 1080px;
+            height: 1080px;
+            clip-path: inset(0);
+        }
+        .dashboard {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 500px;
+        }
+        .screen {
+            position: absolute;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #00D4FF;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.5s ease;
+        }
+        .header {
+            background: rgba(0, 212, 255, 0.2);
+            border-bottom: 2px solid #00D4FF;
+            padding: 15px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 8px 8px 0 0;
+        }
+        .header h3 {
+            color: #00D4FF;
+            font-size: 20px;
+            text-align: center;
+        }
+        .data-panel {
+            left: 5%;
+            top: 20%;
+            width: 35%;
+            height: 40%;
+        }
+        .logic-panel {
+            right: 5%;
+            top: 20%;
+            width: 35%;
+            height: 40%;
+        }
+        .result-panel {
+            left: 5%;
+            bottom: 15%;
+            width: 85%;
+            height: 30%;
+        }
+        .data-stream {
+            position: absolute;
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0), rgba(0, 212, 255, 0.5), rgba(0, 212, 255, 0));
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            animation: horizontalFlow 3s linear infinite;
+        }
+        @keyframes horizontalFlow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .logic-arrow {
+            position: absolute;
+            stroke: #00FF94;
+            stroke-width: 3;
+            stroke-dasharray: 8, 4;
+            opacity: 0.8;
+        }
+        .data-item {
+            position: absolute;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00D4FF;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 14px;
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .logic-rule {
+            position: absolute;
+            background: rgba(255, 0, 255, 0.1);
+            border: 1px solid #FF00FF;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 14px;
+            transform: rotate(-5deg);
+        }
+        .active {
+            background: rgba(0, 255, 148, 0.2);
+            border-color: #00FF94;
+            box-shadow: 0 0 10px rgba(0, 255, 148, 0.5);
+        }
+        @media (prefers-color-scheme: light) {
+            body {
+                background: linear-gradient(135deg, #FFEB3B 0%, #FFE082 100%);
+                color: #141413;
+            }
+            .screen {
+                background: linear-gradient(135deg, #FFF9C4 0%, #FFECB3 100%);
+                border-color: #00D4FF;
+            }
+            .header {
+                background: rgba(0, 212, 255, 0.3);
+                border-color: #00D4FF;
+            }
+            .header h3 {
+                color: #00D4FF;
+            }
+        }
+    </style>
+</head>
+<body>\n    <div class="clip">
+        <div class="dashboard">
+            <!-- Data Panel -->
+            <div class="screen data-panel">
+                <div class="header">
+                    <h3>Real-time Data</h3>
+                </div>
+                <div class="data-stream"></div>
+                <!-- Data items -->
+                <div class="data-item" style="top: 20%; left: 10%;">Temperature: 72°F</div>
+                <div class="data-item" style="top: 50%; left: 50%; transform: translateX(-50%);">Humidity: 65%</div>
+                <div class="data-item" style="top: 80%; left: 30%;">Pressure: 1013 hPa</div>
+            </div>
+
+            <!-- Logic Panel -->
+            <div class="screen logic-panel">
+                <div class="header">
+                    <h3>Business Logic</h3>
+                </div>
+                <!-- Logic rules -->
+                <div class="logic-rule" style="top: 20%; right: 80%;">IF temp > 75°F</div>
+                <div class="logic-rule" style="top: 50%; right: 60%;">AND humid < 60%</div>
+                <div class="logic-rule" style="top: 80%; right: 20%;">THEN alert</div>
+
+                <!-- AI application arrow -->
+                <svg class="logic-arrow" width="100%" height="100%">
+                    <line x1="50%" y1="50%" x2="50%" y2="50%"/>
+                </svg>
+            </div>
+
+            <!-- Result Panel -->
+            <div class="screen result-panel">
+                <div class="header">
+                    <h3>Executed Actions</h3>
+                </div>
+                <div class="data-stream"></div>
+                <!-- Result items -->
+                <div class="data-item active" style="top: 30%; left: 10%;">System Alert ✅</div>
+                <div class="data-item active" style="top: 60%; left: 40%;">Auto Response ✅</div>
+                <div class="data-item active" style="top: 30%; right: 10%;">Optimized Process ✅</div>
+            </div>
+
+            <div style="position: absolute; bottom: 50px; left: 0; right: 0; text-align: center;">
+                <h1 style="font-size: 36px; font-weight: 700; color: #00D4FF; text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);">
+                    Intelligent Logic Application
+                </h1>
+                <p style="font-size: 20px; color: #FAF9F5; margin-top: 10px; opacity: 0.9;">Real-time Business Automation</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import gsap from 'https://esm.run/gsap';
+
+        window.__timelines = {};
+        window.__timelines["composition-04"] = gsap.timeline({ paused: true });
+
+        const tl = window.__timelines["composition-04"];
+
+        // Screens appear with staggered timing
+        tl.fromTo(
+            ".screen",
+            { opacity: 0, scale: 0.95, y: 30 },
+            {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power2.out",
+                stagger: 0.2
+            }
+        );
+
+        // Data streams appear
+        tl.fromTo(
+            ".data-stream",
+            { opacity: 0 },
+            {
+                opacity: 0.3,
+                duration: 1,
+                stagger: 0.1
+            },
+            "-=1.2"
+        );
+
+        // Data items float
+        gsap.utils.toArray(".data-item").forEach(item => {
+            gsap.to(item, {
+                y: -10,
+                duration: 2,
+                ease: "ease.inOut",
+                repeat: -1,
+                yoyo: true
+            });
+        });
+
+        // Logic rules appear with rotation
+        gsap.utils.toArray(".logic-rule").forEach((rule, index) => {
+            gsap.fromTo(
+                rule,
+                { opacity: 0, x: 50, rotate: -5 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    rotate: -5,
+                    duration: 1,
+                    ease: "power2.out"
+                }
+            );
+
+            // Activate rules in sequence
+            gsap.to(rule, {
+                backgroundColor: "rgba(0, 255, 148, 0.2)",
+                borderColor: "#00FF94",
+                boxShadow: "0 0 10px rgba(0, 255, 148, 0.5)",
+                duration: 0.5,
+                ease: "power2.out",
+                delay: 1 + index * 0.5,
+                repeat: 1,
+                yoyo: true,
+                repeatDelay: 2
+            });
+        });
+
+        // Data flows through arrow
+        tl.fromTo(
+            ".logic-arrow",
+            { strokeDashoffset: 30 },
+            {
+                strokeDashoffset: 0,
+                duration: 1.5,
+                ease: "power2.inOut"
+            },
+            "-=0.5"
+        );
+
+        // Header and title fade in
+        tl.fromTo(
+            ".header, h1, p",
+            { opacity: 0, y: 20 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out"
+            },
+            "-=1.5"
+        );
+    </script>
+</body>
+</html>

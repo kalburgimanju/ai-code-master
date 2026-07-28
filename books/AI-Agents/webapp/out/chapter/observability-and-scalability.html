@@ -1,0 +1,1788 @@
+<!DOCTYPE html><html lang="en" class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/chunks/157per-6rfej7.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/3s_ssfmklbvuh.js"/><script src="/_next/static/chunks/3h0oyn0exvw0m.js" async=""></script><script src="/_next/static/chunks/0gy5uo_6oz9q4.js" async=""></script><script src="/_next/static/chunks/2n-c2rhkbzx6r.js" async=""></script><script src="/_next/static/chunks/turbopack-10u0tugcn5e6r.js" async=""></script><script src="/_next/static/chunks/3j2brc7c8hat8.js" async=""></script><script src="/_next/static/chunks/05b0208rfh8ys.js" async=""></script><script src="/_next/static/chunks/16vgld9iclosn.js" async=""></script><script src="/_next/static/chunks/2rb1230i-fez-.js" async=""></script><meta name="next-size-adjust" content=""/><title>AI Agents: The Complete Guide</title><meta name="description" content="A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"/><meta name="author" content="Manjunath Kalburgi"/><meta name="keywords" content="AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"/><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body class="min-h-full flex flex-col"><div hidden=""><!--$--><!--/$--></div><div><div class="reading-progress" style="width:0%"></div><nav class="fixed top-0 left-0 right-0 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border-color)] z-40 no-print"><div class="flex items-center justify-between px-4 py-2 max-w-full"><div class="flex items-center gap-3"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Toggle sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h14M3 10h14M3 15h14"></path></svg></button><a class="text-sm font-semibold text-primary hover:underline hidden sm:inline" href="/">AI Agents Book</a></div><div class="flex items-center gap-2 text-sm text-[var(--foreground)] opacity-60"><span class="hidden md:inline">Chapter <!-- -->14</span><span class="hidden md:inline">•</span><span class="hidden lg:inline">Observability &amp; Scalability</span><span class="lg:hidden">📈</span></div><div class="flex items-center gap-2"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12V4M4 7l4-4 4 4"></path></svg></button></div></div></nav><div class="flex pt-12 min-h-screen"><aside class="fixed left-0 top-12 bottom-0 w-72 bg-[var(--surface)] border-r border-[var(--border-color)] overflow-y-auto transition-transform duration-300 z-30 no-print translate-x-0"><div class="p-4"><div class="mb-6 pb-4 border-b border-[var(--border-color)]"><span class="text-xs font-medium text-primary uppercase tracking-wide">Chapter <!-- -->14</span><h2 class="text-lg font-bold text-[var(--foreground)] mt-1">Observability &amp; Scalability</h2><p class="text-xs text-[var(--foreground)] opacity-60 mt-1">~<!-- -->20<!-- --> pages • <!-- -->Part IV: Production</p></div><div class="mb-6"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">On this page</h3><div class="space-y-1"><a href="#chapter-14-observability-scalability" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chapter 14: Observability &amp; Scalability</a><a href="#monitoring-scaling-and-optimizing-agent-systems" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Monitoring, Scaling, and Optimizing Agent Systems</a><a href="#table-of-contents" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Table of Contents</a><a href="#14-1-why-observability-is-critical" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.1 Why Observability Is Critical</a><a href="#the-three-pillars-of-observability" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Three Pillars of Observability</a><a href="#why-ai-agents-are-hard-to-monitor" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Why AI Agents Are Hard to Monitor</a><a href="#what-can-go-wrong" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What Can Go Wrong</a><a href="#14-2-logging-best-practices" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.2 Logging Best Practices</a><a href="#what-to-log" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What to Log</a><a href="#the-logging-checklist-for-ai-agents" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The logging checklist for AI agents:</a><a href="#structured-logging-implementation" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Structured Logging Implementation</a><a href="#using-the-trace" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Using the Trace</a><a href="#14-3-distributed-tracing" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.3 Distributed Tracing</a><a href="#what-is-distributed-tracing" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What Is Distributed Tracing?</a><a href="#implementation-with-opentelemetry" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Implementation with OpenTelemetry</a><a href="#setup" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Setup</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#14-4-metrics-that-matter" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.4 Metrics That Matter</a><a href="#the-agent-metrics-dashboard" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Agent Metrics Dashboard</a><a href="#key-metrics-to-track" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Key Metrics to Track</a><a href="#prometheus-metrics-setup" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Prometheus Metrics Setup</a><a href="#request-metrics" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Request metrics</a><a href="#token-metrics" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Token metrics</a><a href="#rag-metrics" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">RAG metrics</a><a href="#tool-metrics" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Tool metrics</a><a href="#quality-metrics" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Quality metrics</a><a href="#usage-in-your-agent" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage in your agent</a><a href="#14-5-cost-tracking" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.5 Cost Tracking</a><a href="#token-pricing-reference" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Token Pricing Reference</a><a href="#cost-tracker" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Cost Tracker</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#during-llm-calls" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">During LLM calls</a><a href="#generate-report" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Generate report</a><a href="#14-6-langsmith-integration" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.6 LangSmith Integration</a><a href="#adding-feedback" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Adding feedback</a><a href="#14-7-langfuse-open-source-observability" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.7 LangFuse: Open-Source Observability</a><a href="#initialize" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Initialize</a><a href="#score-responses" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Score responses</a><a href="#14-8-latency-optimization" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.8 Latency Optimization</a><a href="#where-time-is-spent" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Where Time Is Spent</a><a href="#optimization-strategies" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Optimization Strategies</a><a href="#strategy-1-embedding-cache" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Strategy 1: Embedding Cache</a><a href="#cache-query-embeddings-to-avoid-re-embedding-repeated-queries" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Cache query embeddings to avoid re-embedding repeated queries</a><a href="#strategy-2-response-streaming" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Strategy 2: Response Streaming</a><a href="#start-sending-tokens-to-the-user-immediately" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Start sending tokens to the user immediately</a><a href="#strategy-3-async-tool-calls" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Strategy 3: Async Tool Calls</a><a href="#execute-independent-tool-calls-in-parallel" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Execute independent tool calls in parallel</a><a href="#strategy-4-predictive-prefetch" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Strategy 4: Predictive Prefetch</a><a href="#start-rag-retrieval-before-the-user-finishes-typing" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Start RAG retrieval before the user finishes typing</a><a href="#14-9-caching-strategies" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.9 Caching Strategies</a><a href="#semantic-caching" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Semantic Caching</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage</a><a href="#response-caching-with-redis" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Response Caching with Redis</a><a href="#14-10-rate-limiting" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.10 Rate Limiting</a><a href="#14-11-horizontal-scaling" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.11 Horizontal Scaling</a><a href="#scaling-architecture" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Scaling Architecture</a><a href="#stateless-agent-design" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Stateless Agent Design</a><a href="#14-12-auto-scaling" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.12 Auto-Scaling</a><a href="#kubernetes-hpa-horizontal-pod-autoscaler" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Kubernetes HPA (Horizontal Pod Autoscaler)</a><a href="#gcp-cloud-run-auto-scaling" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">GCP Cloud Run auto-scaling</a><a href="#14-13-adding-tracing-to-an-agent" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.13 Adding Tracing to an Agent</a><a href="#usage-in-your-agent" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Usage in your agent</a><a href="#14-14-caching-layer-implementation" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.14 Caching Layer Implementation</a><a href="#14-15-monitoring-dashboard-design" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.15 Monitoring Dashboard Design</a><a href="#dashboard-layout" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Dashboard Layout</a><a href="#grafana-dashboard-config-json" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Grafana Dashboard Config (JSON)</a><a href="#14-16-key-takeaways" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.16 Key Takeaways</a><a href="#14-17-try-it-yourself" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">14.17 Try It Yourself</a><a href="#exercise-1-add-tracing-to-your-agent" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 1: Add Tracing to Your Agent</a><a href="#exercise-2-cost-calculator" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 2: Cost Calculator</a><a href="#exercise-3-semantic-cache-test" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 3: Semantic Cache Test</a><a href="#exercise-4-rate-limiter" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 4: Rate Limiter</a><a href="#exercise-5-design-a-dashboard" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 5: Design a Dashboard</a></div></div><div class="border-t border-[var(--border-color)] pt-4"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">Chapters</h3><div class="space-y-1"><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/llms-and-genai-fundamentals"><span class="text-base">🧠</span><span class="truncate">LLMs &amp; GenAI Fundamentals</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/rag-and-knowledge-systems"><span class="text-base">🔍</span><span class="truncate">RAG &amp; Knowledge Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/introduction-to-ai-agents"><span class="text-base">🤖</span><span class="truncate">Introduction to AI Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/customer-support-agents"><span class="text-base">💬</span><span class="truncate">Customer Support Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/executive-and-analyst-agents"><span class="text-base">📊</span><span class="truncate">Executive &amp; Analyst Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/developer-and-coder-agents"><span class="text-base">👨‍💻</span><span class="truncate">Developer &amp; Coder Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/designer-and-creative-agents"><span class="text-base">🎨</span><span class="truncate">Designer &amp; Creative Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/multi-agent-systems"><span class="text-base">🔗</span><span class="truncate">Multi-Agent Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-tools-from-scratch"><span class="text-base">🔧</span><span class="truncate">Building Tools from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-your-own-llm-pipeline"><span class="text-base">⚙️</span><span class="truncate">Building Your Own LLM Pipeline</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-rag-from-scratch"><span class="text-base">🏗️</span><span class="truncate">Building RAG from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/complete-project-deployment"><span class="text-base">🚀</span><span class="truncate">Complete Project: End to End</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/security-and-safety"><span class="text-base">🛡️</span><span class="truncate">Security, Safety &amp; Guardrails</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all bg-primary/10 text-primary font-medium" href="/chapter/observability-and-scalability"><span class="text-base">📈</span><span class="truncate">Observability &amp; Scalability</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/authenticity-and-future"><span class="text-base">🌍</span><span class="truncate">Authenticity &amp; The Future</span></a></div></div></div></aside><main class="flex-1 transition-all duration-300 ml-72 max-w-4xl px-6 md:px-12 py-12"><div class="mb-10 pb-8 border-b-2 border-primary/20"><span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">Part IV: Production</span><h1 class="text-4xl md:text-5xl font-extrabold mb-2 bg-gradient-to-r from-primary via-emerald-400 to-teal-400 -webkit-background-clip-text text-transparent bg-clip-text">Chapter <!-- -->14<!-- -->: <!-- -->Observability &amp; Scalability</h1><p class="text-xl text-[var(--foreground)] opacity-70">Monitoring, Scaling, and Optimizing Agent Systems</p></div><article class="prose-book"><h1 class="text-4xl font-extrabold mt-12 mb-4">Chapter 14: Observability &amp; Scalability</h1>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Monitoring, Scaling, and Optimizing Agent Systems</h2>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify">&quot;You cannot optimize what you cannot measure. You cannot trust what you cannot see.&quot;</p>
+</blockquote>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<p class="mb-4 text-justify">Building an agent is step one. Running it in production is step two. <strong class="font-bold text-primary">Knowing what it is doing and why</strong> is step three — and it is the step most teams skip until something breaks at 3 AM.</p>
+<p class="mb-4 text-justify">Observability is the ability to understand the internal state of your system by examining its external outputs. For AI agents, this means tracking every decision, every token, every dollar, and every failure in real time.</p>
+<p class="mb-4 text-justify">Scalability is the ability to handle increasing load without degrading performance. For agents, this means handling 10 users or 10,000 users with the same reliability.</p>
+<p class="mb-4 text-justify">This chapter covers both, with practical code you can add to your agents today.</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Table of Contents</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><a href="#141-why-observability-is-critical" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Why Observability Is Critical</a></li>
+<li class="text-[var(--foreground)]"><a href="#142-logging-best-practices" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Logging Best Practices</a></li>
+<li class="text-[var(--foreground)]"><a href="#143-distributed-tracing" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Distributed Tracing</a></li>
+<li class="text-[var(--foreground)]"><a href="#144-metrics-that-matter" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Metrics That Matter</a></li>
+<li class="text-[var(--foreground)]"><a href="#145-cost-tracking" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Cost Tracking</a></li>
+<li class="text-[var(--foreground)]"><a href="#146-langsmith-integration" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">LangSmith Integration</a></li>
+<li class="text-[var(--foreground)]"><a href="#147-langfuse-open-source-observability" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">LangFuse: Open-Source Observability</a></li>
+<li class="text-[var(--foreground)]"><a href="#148-latency-optimization" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Latency Optimization</a></li>
+<li class="text-[var(--foreground)]"><a href="#149-caching-strategies" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Caching Strategies</a></li>
+<li class="text-[var(--foreground)]"><a href="#1410-rate-limiting" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Rate Limiting</a></li>
+<li class="text-[var(--foreground)]"><a href="#1411-horizontal-scaling" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Horizontal Scaling</a></li>
+<li class="text-[var(--foreground)]"><a href="#1412-auto-scaling" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Auto-Scaling</a></li>
+<li class="text-[var(--foreground)]"><a href="#1413-adding-tracing-to-an-agent" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Adding Tracing to an Agent</a></li>
+<li class="text-[var(--foreground)]"><a href="#1414-caching-layer-implementation" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Caching Layer Implementation</a></li>
+<li class="text-[var(--foreground)]"><a href="#1415-monitoring-dashboard-design" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Monitoring Dashboard Design</a></li>
+<li class="text-[var(--foreground)]"><a href="#1416-key-takeaways" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Key Takeaways</a></li>
+<li class="text-[var(--foreground)]"><a href="#1417-try-it-yourself" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Try It Yourself</a></li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.1 Why Observability Is Critical</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Three Pillars of Observability</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────────────────────────┐
+│                  OBSERVABILITY FOR AI AGENTS                  │
+├───────────────┬───────────────────┬─────────────────────────┤
+│    LOGGING    │     METRICS       │       TRACING           │
+│               │                   │                         │
+│  &quot;What        │  &quot;How much /      │  &quot;Where did the         │
+│   happened?&quot;  │   how fast?&quot;      │   request go?&quot;          │
+│               │                   │                         │
+│  Structured   │  Latency, tokens, │  Request flow through   │
+│  event data   │  errors, costs    │  agent components       │
+│               │                   │                         │
+│  Every LLM    │  Aggregated over  │  End-to-end journey     │
+│  call, tool   │  time windows     │  from input to output   │
+│  use, error   │                   │                         │
+└───────────────┴───────────────────┴─────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Why AI Agents Are Hard to Monitor</h3>
+<p class="mb-4 text-justify">AI agents are harder to monitor than traditional software:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Traditional Software</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">AI Agent</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Deterministic outputs</td><td class="px-4 py-3 border border-[var(--border-color)]">Non-deterministic outputs</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Same input = same output</td><td class="px-4 py-3 border border-[var(--border-color)]">Same input = different outputs</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Clear error types</td><td class="px-4 py-3 border border-[var(--border-color)]">&quot;Wrong but plausible&quot; answers</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Fixed latency</td><td class="px-4 py-3 border border-[var(--border-color)]">Variable latency (LLM calls)</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Predictable costs</td><td class="px-4 py-3 border border-[var(--border-color)]">Unpredictable token usage</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Simple request/response</td><td class="px-4 py-3 border border-[var(--border-color)]">Multi-step reasoning chains</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What Can Go Wrong</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">WITHOUT OBSERVABILITY:
+┌─────────────────────────────────────────────────┐
+│  User: &quot;My order hasn&#x27;t arrived&quot;                 │
+│  Agent: &quot;Your order is on the way!&quot;             │
+│                                                  │
+│  But actually:                                   │
+│  - RAG retrieved wrong document (score: 0.45)   │
+│  - Agent hallucinated the shipping status        │
+│  - Tool call to order API failed silently        │
+│  - Agent fabricated the answer                   │
+│  - User got wrong information                    │
+│  - Nobody knows until user complains             │
+└─────────────────────────────────────────────────┘
+
+WITH OBSERVABILITY:
+┌─────────────────────────────────────────────────┐
+│  [TRACE] req_abc123                              │
+│  ├─ [RETRIEVAL] 45ms, 5 chunks, max_score=0.45  │  ← Alert: low score
+│  ├─ [LLM_CALL] gpt-4o, 350 tokens, 1200ms      │
+│  ├─ [TOOL_CALL] order_api → FAILED (timeout)    │  ← Alert: tool failure
+│  ├─ [LLM_CALL] gpt-4o, 200 tokens, 800ms       │
+│  └─ [RESPONSE] 350 chars                        │
+│                                                  │
+│  Dashboard shows:                                │
+│  - Tool failure rate: 12% (was 2% yesterday)    │  ← Action needed
+│  - Avg retrieval score dropped from 0.75 to 0.55│  ← Knowledge gap
+│  - Hallucination risk: HIGH (low confidence)     │
+└─────────────────────────────────────────────────┘
+</code></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.2 Logging Best Practices</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What to Log</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]"># The logging checklist for AI agents:
+
+LOGGING_CHECKLIST = {
+    &quot;input&quot;: [
+        &quot;User message&quot;,
+        &quot;User ID / session ID&quot;,
+        &quot;Timestamp&quot;,
+        &quot;Request metadata (device, IP, etc.)&quot;,
+    ],
+    &quot;processing&quot;: [
+        &quot;RAG retrieval results (chunks, scores, latency)&quot;,
+        &quot;LLM calls (model, tokens, latency, cost)&quot;,
+        &quot;Tool calls (tool name, parameters, results, latency)&quot;,
+        &quot;Decision points (which path the agent took)&quot;,
+        &quot;System prompt used (hash, not full text)&quot;,
+    ],
+    &quot;output&quot;: [
+        &quot;Agent response&quot;,
+        &quot;Sources cited&quot;,
+        &quot;Total latency&quot;,
+        &quot;Total tokens used&quot;,
+        &quot;Estimated cost&quot;,
+    ],
+    &quot;errors&quot;: [
+        &quot;LLM errors (rate limits, timeouts, refusals)&quot;,
+        &quot;Tool failures&quot;,
+        &quot;Retrieval failures&quot;,
+        &quot;Validation failures&quot;,
+        &quot;Guardrail triggers&quot;,
+    ],
+}
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Structured Logging Implementation</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Production-grade structured logging for AI agents.&quot;&quot;&quot;
+
+import structlog
+import time
+import uuid
+from contextlib import contextmanager
+from dataclasses import dataclass, field
+from typing import Any
+
+def setup_logging(log_level: str = &quot;INFO&quot;):
+    &quot;&quot;&quot;Configure structured logging.&quot;&quot;&quot;
+    structlog.configure(
+        processors=[
+            structlog.contextvars.merge_contextvars,
+            structlog.processors.add_log_level,
+            structlog.processors.TimeStamper(fmt=&quot;iso&quot;),
+            structlog.processors.StackInfoRenderer(),
+            structlog.processors.format_exc_info,
+            structlog.processors.JSONRenderer(),
+        ],
+        wrapper_class=structlog.make_filtering_bound_logger(
+            getattr(__import__(&quot;logging&quot;), log_level.upper())
+        ),
+        context_class=dict,
+        logger_factory=structlog.PrintLoggerFactory(),
+        cache_logger_on_first_use=True,
+    )
+
+logger = structlog.get_logger()
+
+@dataclass
+class AgentTrace:
+    &quot;&quot;&quot;Trace a single agent interaction.&quot;&quot;&quot;
+    request_id: str = field(default_factory=lambda: str(uuid.uuid4())[:12])
+    user_id: str = &quot;&quot;
+    start_time: float = field(default_factory=time.time)
+
+    # RAG
+    rag_chunks_retrieved: int = 0
+    rag_top_score: float = 0.0
+    rag_latency_ms: float = 0.0
+
+    # LLM
+    llm_model: str = &quot;&quot;
+    llm_prompt_tokens: int = 0
+    llm_completion_tokens: int = 0
+    llm_latency_ms: float = 0.0
+    llm_cost_usd: float = 0.0
+
+    # Tools
+    tool_calls: list[dict] = field(default_factory=list)
+
+    # Output
+    response_length: int = 0
+    sources_cited: int = 0
+    total_latency_ms: float = 0.0
+
+    # Errors
+    errors: list[dict] = field(default_factory=list)
+    guardrail_triggers: list[str] = field(default_factory=list)
+
+    def log_start(self):
+        logger.info(
+            &quot;agent_request_started&quot;,
+            request_id=self.request_id,
+            user_id=self.user_id,
+        )
+
+    def log_rag(self, chunks: int, top_score: float, latency_ms: float):
+        self.rag_chunks_retrieved = chunks
+        self.rag_top_score = top_score
+        self.rag_latency_ms = latency_ms
+        logger.info(
+            &quot;rag_retrieval&quot;,
+            request_id=self.request_id,
+            chunks=chunks,
+            top_score=f&quot;{top_score:.3f}&quot;,
+            latency_ms=f&quot;{latency_ms:.0f}&quot;,
+        )
+        if top_score &lt; 0.5:
+            logger.warning(
+                &quot;low_retrieval_score&quot;,
+                request_id=self.request_id,
+                score=f&quot;{top_score:.3f}&quot;,
+                message=&quot;Retrieval quality is below threshold&quot;,
+            )
+
+    def log_llm(self, model: str, prompt_tokens: int, completion_tokens: int,
+                latency_ms: float, cost_usd: float):
+        self.llm_model = model
+        self.llm_prompt_tokens = prompt_tokens
+        self.llm_completion_tokens = completion_tokens
+        self.llm_latency_ms = latency_ms
+        self.llm_cost_usd = cost_usd
+        logger.info(
+            &quot;llm_call&quot;,
+            request_id=self.request_id,
+            model=model,
+            prompt_tokens=prompt_tokens,
+            completion_tokens=completion_tokens,
+            latency_ms=f&quot;{latency_ms:.0f}&quot;,
+            cost_usd=f&quot;{cost_usd:.6f}&quot;,
+        )
+
+    def log_tool(self, tool_name: str, params: dict, result: str,
+                 latency_ms: float, success: bool):
+        self.tool_calls.append({
+            &quot;tool&quot;: tool_name,
+            &quot;latency_ms&quot;: latency_ms,
+            &quot;success&quot;: success,
+        })
+        logger.info(
+            &quot;tool_call&quot;,
+            request_id=self.request_id,
+            tool=tool_name,
+            params=str(params)[:200],
+            result_preview=result[:100] if result else &quot;&quot;,
+            latency_ms=f&quot;{latency_ms:.0f}&quot;,
+            success=success,
+        )
+        if not success:
+            logger.error(
+                &quot;tool_call_failed&quot;,
+                request_id=self.request_id,
+                tool=tool_name,
+                params=str(params)[:200],
+            )
+
+    def log_error(self, error_type: str, message: str):
+        self.errors.append({&quot;type&quot;: error_type, &quot;message&quot;: message})
+        logger.error(
+            &quot;agent_error&quot;,
+            request_id=self.request_id,
+            error_type=error_type,
+            message=message,
+        )
+
+    def log_completion(self, response_length: int, sources_cited: int):
+        total_ms = (time.time() - self.start_time) * 1000
+        self.total_latency_ms = total_ms
+        self.response_length = response_length
+        self.sources_cited = sources_cited
+
+        total_cost = self.llm_cost_usd
+        for tool in self.tool_calls:
+            total_cost += tool.get(&quot;cost_usd&quot;, 0)
+
+        logger.info(
+            &quot;agent_request_completed&quot;,
+            request_id=self.request_id,
+            total_latency_ms=f&quot;{total_ms:.0f}&quot;,
+            llm_latency_ms=f&quot;{self.llm_latency_ms:.0f}&quot;,
+            rag_latency_ms=f&quot;{self.rag_latency_ms:.0f}&quot;,
+            total_tokens=self.llm_prompt_tokens + self.llm_completion_tokens,
+            total_cost_usd=f&quot;{total_cost:.6f}&quot;,
+            tool_calls=len(self.tool_calls),
+            errors=len(self.errors),
+            response_length=response_length,
+            sources_cited=sources_cited,
+        )
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Using the Trace</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">async def process_message_with_trace(message: str, user_id: str) -&gt; dict:
+    &quot;&quot;&quot;Process a message with full observability.&quot;&quot;&quot;
+    trace = AgentTrace(user_id=user_id)
+    trace.log_start()
+
+    try:
+        # RAG retrieval
+        start = time.time()
+        docs = await retriever.retrieve(message)
+        rag_latency = (time.time() - start) * 1000
+        top_score = docs[0][&quot;score&quot;] if docs else 0
+        trace.log_rag(chunks=len(docs), top_score=top_score, latency_ms=rag_latency)
+
+        # LLM call
+        start = time.time()
+        response = await llm.generate(
+            query=message,
+            context=docs,
+            model=&quot;gpt-4o&quot;,
+        )
+        llm_latency = (time.time() - start) * 1000
+
+        cost = calculate_cost(
+            model=&quot;gpt-4o&quot;,
+            prompt_tokens=response.usage.prompt_tokens,
+            completion_tokens=response.usage.completion_tokens,
+        )
+        trace.log_llm(
+            model=&quot;gpt-4o&quot;,
+            prompt_tokens=response.usage.prompt_tokens,
+            completion_tokens=response.usage.completion_tokens,
+            latency_ms=llm_latency,
+            cost_usd=cost,
+        )
+
+        # Completion
+        trace.log_completion(
+            response_length=len(response.text),
+            sources_cited=len(docs),
+        )
+
+        return {&quot;response&quot;: response.text, &quot;trace_id&quot;: trace.request_id}
+
+    except Exception as e:
+        trace.log_error(type(e).__name__, str(e))
+        raise
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.3 Distributed Tracing</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What Is Distributed Tracing?</h3>
+<p class="mb-4 text-justify">When an agent makes multiple API calls, retrieves documents, and generates a response, you need to see the entire journey as one coherent trace.</p>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">DISTRIBUTED TRACE: req_abc123
+
+│├─ HTTP Request (150ms)
+│ │
+│ ├─▶ Auth Middleware (5ms)
+│ │
+│ ├─▶ Rate Limiter Check (2ms)
+│ │
+│ ├─▶ Agent Core
+│ │   │
+│ │   ├─▶ RAG Retrieval
+│ │   │   ├─▶ Embed Query (45ms)
+│ │   │   ├─▶ Vector Search (20ms)
+│ │   │   └─▶ Reranking (35ms)
+│ │   │   Total: 100ms
+│ │   │
+│ │   ├─▶ LLM Call #1 (function calling)
+│ │   │   Model: gpt-4o
+│ │   │   Tokens: 1200 in / 150 out
+│ │   │   Latency: 1200ms
+│ │   │
+│ │   ├─▶ Tool Call: order_api
+│ │   │   URL: /api/orders/ORD-12345
+│ │   │   Status: 200 OK
+│ │   │   Latency: 200ms
+│ │   │
+│ │   ├─▶ LLM Call #2 (final answer)
+│ │   │   Model: gpt-4o
+│ │   │   Tokens: 1500 in / 200 out
+│ │   │   Latency: 900ms
+│ │   │
+│ │   Total: 2400ms
+│ │
+│ ├─▶ Response Serialization (1ms)
+│ │
+└─ Total: 2508ms
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Implementation with OpenTelemetry</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Distributed tracing with OpenTelemetry.&quot;&quot;&quot;
+
+from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.resources import Resource
+
+# Setup
+resource = Resource.create({&quot;service.name&quot;: &quot;agent-assist&quot;})
+provider = TracerProvider(resource=resource)
+exporter = OTLPSpanExporter(endpoint=&quot;http://localhost:4317&quot;)
+provider.add_span_processor(BatchSpanProcessor(exporter))
+trace.set_tracer_provider(provider)
+
+tracer = trace.get_tracer(&quot;agent-assist&quot;)
+
+# Usage
+async def process_message(message: str) -&gt; dict:
+    with tracer.start_as_current_span(&quot;process_message&quot;) as span:
+        span.set_attribute(&quot;user.message_length&quot;, len(message))
+
+        # RAG retrieval
+        with tracer.start_as_current_span(&quot;rag_retrieval&quot;) as rag_span:
+            docs = await retriever.retrieve(message)
+            rag_span.set_attribute(&quot;rag.chunks_found&quot;, len(docs))
+            if docs:
+                rag_span.set_attribute(&quot;rag.top_score&quot;, docs[0][&quot;score&quot;])
+
+        # LLM call
+        with tracer.start_as_current_span(&quot;llm_call&quot;) as llm_span:
+            llm_span.set_attribute(&quot;llm.model&quot;, &quot;gpt-4o&quot;)
+            response = await llm.generate(message, docs)
+            llm_span.set_attribute(&quot;llm.tokens&quot;, response.usage.total_tokens)
+
+        span.set_attribute(&quot;response.length&quot;, len(response.text))
+        return {&quot;response&quot;: response.text}
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.4 Metrics That Matter</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Agent Metrics Dashboard</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────────────────────────────────┐
+│                    AGENT METRICS DASHBOARD                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ┌─── REQUESTS ─────────────────────────────────────────────────┐   │
+│  │  Total Requests: 12,847 (24h)    │  Active: 23              │   │
+│  │  Success Rate: 98.2%             │  Queued: 0               │   │
+│  │  Errors: 231 (1.8%)              │  P99 Latency: 4.2s       │   │
+│  └──────────────────────────────────┴──────────────────────────┘   │
+│                                                                      │
+│  ┌─── LLM METRICS ─────────────────────────────────────────────┐   │
+│  │  Total Tokens: 4.2M (24h)        │  Avg Tokens/Request: 327 │   │
+│  │  Prompt Tokens: 3.1M             │  Completion: 1.1M        │   │
+│  │  Cost (24h): $42.30              │  Avg Cost/Request: $0.003│   │
+│  └──────────────────────────────────┴──────────────────────────┘   │
+│                                                                      │
+│  ┌─── RAG METRICS ─────────────────────────────────────────────┐   │
+│  │  Retrieval Hit Rate: 87%         │  Avg Score: 0.72         │   │
+│  │  Low Score Queries: 312 (2.4%)  │  Avg Chunks: 4.2         │   │
+│  └──────────────────────────────────┴──────────────────────────┘   │
+│                                                                      │
+│  ┌─── TOOL METRICS ────────────────────────────────────────────┐   │
+│  │  order_lookup: 3,421 calls (99.1% success)                 │   │
+│  │  product_search: 2,156 calls (97.8% success)               │   │
+│  │  create_ticket: 892 calls (100% success)                   │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Key Metrics to Track</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Category</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Metric</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Alert Threshold</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Why It Matters</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Latency</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">P50 response time</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 2s</td><td class="px-4 py-3 border border-[var(--border-color)]">User experience</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"></td><td class="px-4 py-3 border border-[var(--border-color)]">P95 response time</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 5s</td><td class="px-4 py-3 border border-[var(--border-color)]">Tail latency</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"></td><td class="px-4 py-3 border border-[var(--border-color)]">P99 response time</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 10s</td><td class="px-4 py-3 border border-[var(--border-color)]">Worst case</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Throughput</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Requests per minute</td><td class="px-4 py-3 border border-[var(--border-color)]">&lt; 10 (if expecting 100+)</td><td class="px-4 py-3 border border-[var(--border-color)]">Capacity</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Errors</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Error rate</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 5%</td><td class="px-4 py-3 border border-[var(--border-color)]">Reliability</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"></td><td class="px-4 py-3 border border-[var(--border-color)]">LLM error rate</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 2%</td><td class="px-4 py-3 border border-[var(--border-color)]">Provider issues</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"></td><td class="px-4 py-3 border border-[var(--border-color)]">Tool error rate</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 5%</td><td class="px-4 py-3 border border-[var(--border-color)]">Integration health</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Cost</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Cost per request</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; $0.05</td><td class="px-4 py-3 border border-[var(--border-color)]">Budget control</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"></td><td class="px-4 py-3 border border-[var(--border-color)]">Daily total cost</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; $100</td><td class="px-4 py-3 border border-[var(--border-color)]">Budget alerts</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"></td><td class="px-4 py-3 border border-[var(--border-color)]">Cost trend</td><td class="px-4 py-3 border border-[var(--border-color)]">Increasing 20%+ week-over-week</td><td class="px-4 py-3 border border-[var(--border-color)]">Regression</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Quality</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Retrieval score</td><td class="px-4 py-3 border border-[var(--border-color)]">&lt; 0.5 avg</td><td class="px-4 py-3 border border-[var(--border-color)]">RAG quality</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"></td><td class="px-4 py-3 border border-[var(--border-color)]">Hallucination rate</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 5%</td><td class="px-4 py-3 border border-[var(--border-color)]">Answer quality</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"></td><td class="px-4 py-3 border border-[var(--border-color)]">User satisfaction</td><td class="px-4 py-3 border border-[var(--border-color)]">&lt; 3/5 stars</td><td class="px-4 py-3 border border-[var(--border-color)]">Product quality</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Tokens</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Tokens per request</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 5000</td><td class="px-4 py-3 border border-[var(--border-color)]">Efficiency</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"></td><td class="px-4 py-3 border border-[var(--border-color)]">Context window usage</td><td class="px-4 py-3 border border-[var(--border-color)]">&gt; 80%</td><td class="px-4 py-3 border border-[var(--border-color)]">Headroom</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Prometheus Metrics Setup</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">from prometheus_client import Counter, Histogram, Gauge, Summary
+
+# Request metrics
+REQUEST_COUNT = Counter(
+    &quot;agent_requests_total&quot;,
+    &quot;Total agent requests&quot;,
+    [&quot;status&quot;, &quot;model&quot;],
+)
+
+REQUEST_LATENCY = Histogram(
+    &quot;agent_request_duration_seconds&quot;,
+    &quot;Request latency&quot;,
+    [&quot;endpoint&quot;],
+    buckets=[0.5, 1.0, 2.0, 3.0, 5.0, 10.0, 30.0],
+)
+
+# Token metrics
+TOKEN_USAGE = Counter(
+    &quot;agent_tokens_total&quot;,
+    &quot;Total tokens used&quot;,
+    [&quot;model&quot;, &quot;type&quot;],  # type: prompt or completion
+)
+
+TOKEN_COST = Counter(
+    &quot;agent_cost_dollars_total&quot;,
+    &quot;Total cost in USD&quot;,
+    [&quot;model&quot;],
+)
+
+# RAG metrics
+RETRIEVAL_SCORE = Histogram(
+    &quot;agent_retrieval_score&quot;,
+    &quot;RAG retrieval scores&quot;,
+    buckets=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+)
+
+RETRIEVAL_LATENCY = Histogram(
+    &quot;agent_retrieval_latency_seconds&quot;,
+    &quot;RAG retrieval latency&quot;,
+    buckets=[0.05, 0.1, 0.25, 0.5, 1.0, 2.0],
+)
+
+# Tool metrics
+TOOL_CALL_COUNT = Counter(
+    &quot;agent_tool_calls_total&quot;,
+    &quot;Total tool calls&quot;,
+    [&quot;tool_name&quot;, &quot;status&quot;],
+)
+
+TOOL_LATENCY = Histogram(
+    &quot;agent_tool_latency_seconds&quot;,
+    &quot;Tool call latency&quot;,
+    [&quot;tool_name&quot;],
+    buckets=[0.1, 0.25, 0.5, 1.0, 2.0, 5.0],
+)
+
+# Quality metrics
+QUALITY_SCORE = Gauge(
+    &quot;agent_quality_score&quot;,
+    &quot;Quality score for responses&quot;,
+    [&quot;metric&quot;],  # faithfulness, relevance, etc.
+)
+
+ACTIVE_REQUESTS = Gauge(
+    &quot;agent_active_requests&quot;,
+    &quot;Number of active requests being processed&quot;,
+)
+
+# Usage in your agent
+def track_request(func):
+    &quot;&quot;&quot;Decorator to track request metrics.&quot;&quot;&quot;
+    async def wrapper(*args, **kwargs):
+        ACTIVE_REQUESTS.inc()
+        start = time.time()
+        try:
+            result = await func(*args, **kwargs)
+            REQUEST_COUNT.labels(status=&quot;success&quot;, model=&quot;gpt-4o&quot;).inc()
+            return result
+        except Exception as e:
+            REQUEST_COUNT.labels(status=&quot;error&quot;, model=&quot;gpt-4o&quot;).inc()
+            raise
+        finally:
+            duration = time.time() - start
+            REQUEST_LATENCY.labels(endpoint=&quot;chat&quot;).observe(duration)
+            ACTIVE_REQUESTS.dec()
+    return wrapper
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.5 Cost Tracking</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Token Pricing Reference</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Model</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Input (per 1M tokens)</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Output (per 1M tokens)</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Avg Cost/Request</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">GPT-4o</td><td class="px-4 py-3 border border-[var(--border-color)]">$2.50</td><td class="px-4 py-3 border border-[var(--border-color)]">$10.00</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.005 - $0.02</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">GPT-4o-mini</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.15</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.60</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.0002 - $0.001</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Claude 3.5 Sonnet</td><td class="px-4 py-3 border border-[var(--border-color)]">$3.00</td><td class="px-4 py-3 border border-[var(--border-color)]">$15.00</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.005 - $0.03</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">Claude 3.5 Haiku</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.25</td><td class="px-4 py-3 border border-[var(--border-color)]">$1.25</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.0003 - $0.002</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]">text-embedding-3-small</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.02</td><td class="px-4 py-3 border border-[var(--border-color)]">-</td><td class="px-4 py-3 border border-[var(--border-color)]">$0.00001</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Cost Tracker</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Cost tracking for AI agents.&quot;&quot;&quot;
+
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+import json
+from pathlib import Path
+
+@dataclass
+class CostEntry:
+    timestamp: datetime
+    model: str
+    prompt_tokens: int
+    completion_tokens: int
+    cost_usd: float
+    request_id: str
+    user_id: str
+
+class CostTracker:
+    &quot;&quot;&quot;Track and report AI agent costs.&quot;&quot;&quot;
+
+    # Pricing per 1M tokens
+    PRICING = {
+        &quot;gpt-4o&quot;: {&quot;input&quot;: 2.50, &quot;output&quot;: 10.00},
+        &quot;gpt-4o-mini&quot;: {&quot;input&quot;: 0.15, &quot;output&quot;: 0.60},
+        &quot;claude-3-5-sonnet&quot;: {&quot;input&quot;: 3.00, &quot;output&quot;: 15.00},
+        &quot;claude-3-5-haiku&quot;: {&quot;input&quot;: 0.25, &quot;output&quot;: 1.25},
+        &quot;text-embedding-3-small&quot;: {&quot;input&quot;: 0.02, &quot;output&quot;: 0},
+        &quot;text-embedding-3-large&quot;: {&quot;input&quot;: 0.13, &quot;output&quot;: 0},
+    }
+
+    def __init__(self, log_path: str = &quot;cost_log.jsonl&quot;):
+        self.log_path = Path(log_path)
+        self.entries: list[CostEntry] = []
+
+    def calculate_cost(self, model: str, prompt_tokens: int,
+                       completion_tokens: int) -&gt; float:
+        &quot;&quot;&quot;Calculate the cost of an LLM call.&quot;&quot;&quot;
+        pricing = self.PRICING.get(model)
+        if not pricing:
+            return 0.0
+
+        input_cost = (prompt_tokens / 1_000_000) * pricing[&quot;input&quot;]
+        output_cost = (completion_tokens / 1_000_000) * pricing[&quot;output&quot;]
+        return input_cost + output_cost
+
+    def log(self, model: str, prompt_tokens: int, completion_tokens: int,
+            request_id: str, user_id: str = &quot;&quot;):
+        &quot;&quot;&quot;Log a cost entry.&quot;&quot;&quot;
+        cost = self.calculate_cost(model, prompt_tokens, completion_tokens)
+
+        entry = CostEntry(
+            timestamp=datetime.now(),
+            model=model,
+            prompt_tokens=prompt_tokens,
+            completion_tokens=completion_tokens,
+            cost_usd=cost,
+            request_id=request_id,
+            user_id=user_id,
+        )
+        self.entries.append(entry)
+
+        # Append to log file
+        with open(self.log_path, &quot;a&quot;) as f:
+            f.write(json.dumps({
+                &quot;timestamp&quot;: entry.timestamp.isoformat(),
+                &quot;model&quot;: model,
+                &quot;prompt_tokens&quot;: prompt_tokens,
+                &quot;completion_tokens&quot;: completion_tokens,
+                &quot;cost_usd&quot;: cost,
+                &quot;request_id&quot;: request_id,
+                &quot;user_id&quot;: user_id,
+            }) + &quot;\n&quot;)
+
+        return cost
+
+    def report(self, period: timedelta = timedelta(hours=24)) -&gt; dict:
+        &quot;&quot;&quot;Generate a cost report for the given period.&quot;&quot;&quot;
+        cutoff = datetime.now() - period
+        recent = [e for e in self.entries if e.timestamp &gt;= cutoff]
+
+        if not recent:
+            return {&quot;total_cost&quot;: 0, &quot;requests&quot;: 0}
+
+        total_cost = sum(e.cost_usd for e in recent)
+        total_prompt = sum(e.prompt_tokens for e in recent)
+        total_completion = sum(e.completion_tokens for e in recent)
+
+        # Cost by model
+        by_model = {}
+        for entry in recent:
+            if entry.model not in by_model:
+                by_model[entry.model] = {&quot;cost&quot;: 0, &quot;requests&quot;: 0}
+            by_model[entry.model][&quot;cost&quot;] += entry.cost_usd
+            by_model[entry.model][&quot;requests&quot;] += 1
+
+        # Cost by user
+        by_user = {}
+        for entry in recent:
+            if entry.user_id not in by_user:
+                by_user[entry.user_id] = 0
+            by_user[entry.user_id] += entry.cost_usd
+
+        return {
+            &quot;period_hours&quot;: period.total_seconds() / 3600,
+            &quot;total_cost_usd&quot;: round(total_cost, 4),
+            &quot;total_requests&quot;: len(recent),
+            &quot;avg_cost_per_request&quot;: round(total_cost / len(recent), 6),
+            &quot;total_prompt_tokens&quot;: total_prompt,
+            &quot;total_completion_tokens&quot;: total_completion,
+            &quot;by_model&quot;: by_model,
+            &quot;top_users_by_cost&quot;: dict(
+                sorted(by_user.items(), key=lambda x: x[1], reverse=True)[:10]
+            ),
+        }
+
+    def check_budget(self, daily_budget: float = 100.0) -&gt; dict:
+        &quot;&quot;&quot;Check if we&#x27;re within budget.&quot;&quot;&quot;
+        report = self.report(timedelta(hours=24))
+        cost = report[&quot;total_cost_usd&quot;]
+        return {
+            &quot;budget_usd&quot;: daily_budget,
+            &quot;spent_usd&quot;: cost,
+            &quot;remaining_usd&quot;: round(daily_budget - cost, 4),
+            &quot;percent_used&quot;: round((cost / daily_budget) * 100, 1),
+            &quot;on_track&quot;: cost &lt; daily_budget,
+        }
+
+# Usage
+tracker = CostTracker()
+
+# During LLM calls
+cost = tracker.log(
+    model=&quot;gpt-4o&quot;,
+    prompt_tokens=1200,
+    completion_tokens=200,
+    request_id=&quot;req_abc123&quot;,
+    user_id=&quot;user_456&quot;,
+)
+print(f&quot;This call cost: ${cost:.6f}&quot;)
+
+# Generate report
+print(json.dumps(tracker.report(), indent=2))
+print(json.dumps(tracker.check_budget(), indent=2))
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.6 LangSmith Integration</h2>
+<p class="mb-4 text-justify">LangSmith is the leading observability platform for LLM applications.</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;LangSmith integration for agent tracing.&quot;&quot;&quot;
+
+import os
+os.environ[&quot;LANGCHAIN_TRACING_V2&quot;] = &quot;true&quot;
+os.environ[&quot;LANGCHAIN_API_KEY&quot;] = &quot;your-langsmith-api-key&quot;
+os.environ[&quot;LANGCHAIN_PROJECT&quot;] = &quot;agent-assist&quot;
+
+from langsmith import traceable
+from langchain_core.runnables import RunnableConfig
+
+@traceable(
+    name=&quot;agent_process_message&quot;,
+    run_type=&quot;chain&quot;,
+    tags=[&quot;production&quot;, &quot;v1.0&quot;],
+)
+async def process_message(message: str, user_id: str) -&gt; dict:
+    &quot;&quot;&quot;Process a message with LangSmith tracing.&quot;&quot;&quot;
+
+    # RAG retrieval (automatically traced)
+    docs = await traceable(
+        name=&quot;rag_retrieval&quot;,
+        run_type=&quot;retriever&quot;,
+    )(retrieve_docs)(message)
+
+    # LLM call (automatically traced)
+    response = await traceable(
+        name=&quot;llm_generation&quot;,
+        run_type=&quot;llm&quot;,
+        metadata={&quot;model&quot;: &quot;gpt-4o&quot;},
+    )(generate_response)(message, docs)
+
+    return {&quot;response&quot;: response, &quot;docs&quot;: docs}
+
+def retrieve_docs(query: str) -&gt; list[dict]:
+    &quot;&quot;&quot;Retrieve documents for RAG.&quot;&quot;&quot;
+    # Your retrieval logic
+    return []
+
+def generate_response(query: str, docs: list[dict]) -&gt; str:
+    &quot;&quot;&quot;Generate a response.&quot;&quot;&quot;
+    # Your generation logic
+    return &quot;&quot;
+
+# Adding feedback
+from langsmith import Client
+
+client = Client()
+
+def record_feedback(run_id: str, score: int, comment: str = &quot;&quot;):
+    &quot;&quot;&quot;Record user feedback on a response.&quot;&quot;&quot;
+    client.create_feedback(
+        run_id=run_id,
+        key=&quot;user_rating&quot;,
+        score=score,  # 1-5
+        comment=comment,
+    )
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.7 LangFuse: Open-Source Observability</h2>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;LangFuse integration - open-source alternative to LangSmith.&quot;&quot;&quot;
+
+from langfuse import Langfuse
+from langfuse.decorators import observe
+
+# Initialize
+langfuse = Langfuse(
+    public_key=&quot;your-public-key&quot;,
+    secret_key=&quot;your-secret-key&quot;,
+    host=&quot;https://cloud.langfuse.com&quot;,  # or self-hosted
+)
+
+@observe(as_type=&quot;generation&quot;)
+def call_llm(messages: list[dict], model: str = &quot;gpt-4o&quot;) -&gt; dict:
+    &quot;&quot;&quot;LLM call with LangFuse tracing.&quot;&quot;&quot;
+    import openai
+    client = openai.OpenAI()
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+    )
+    return response
+
+@observe()  # Automatically creates a trace
+async def process_message(message: str) -&gt; dict:
+    &quot;&quot;&quot;Process message with full LangFuse tracing.&quot;&quot;&quot;
+    # RAG
+    docs = retrieve_docs(message)
+
+    # LLM
+    response = call_llm([
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a helpful assistant.&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: message},
+    ])
+
+    # Update trace with metadata
+    langfuse.trace(
+        user_id=&quot;user_123&quot;,
+        metadata={&quot;docs_retrieved&quot;: len(docs)},
+        tags=[&quot;production&quot;],
+    )
+
+    return {&quot;response&quot;: response.choices[0].message.content}
+
+# Score responses
+def score_response(trace_id: str, score: float, name: str = &quot;quality&quot;):
+    &quot;&quot;&quot;Score a trace for quality monitoring.&quot;&quot;&quot;
+    langfuse.score(
+        trace_id=trace_id,
+        name=name,
+        value=score,
+        comment=&quot;Automated quality score&quot;,
+    )
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.8 Latency Optimization</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Where Time Is Spent</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">TYPICAL AGENT REQUEST TIMELINE (3.5 seconds total):
+
+0ms        50ms       150ms                 1200ms                2200ms      3500ms
+│──────────│──────────│─────────────────────│─────────────────────│───────────│
+│ Auth     │ Retrieve │ RAG + Rerank        │ LLM Call #1         │ LLM #2    │
+│ (50ms)   │ Embed    │ (100ms)             │ (1000ms)            │ (1300ms)  │
+│          │ (50ms)   │                     │                     │           │
+│          │          │                     │                     │           │
+│ OPTIMIZE │ OPTIMIZE │                     │ OPTIMIZE            │ OPTIMIZE  │
+│ Cache    │ Cache    │                     │ Stream, Cache       │ Fewer     │
+│          │          │                     │                     │ rounds    │
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Optimization Strategies</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Latency optimization strategies for AI agents.&quot;&quot;&quot;
+
+import time
+from functools import lru_cache
+
+# Strategy 1: Embedding Cache
+# Cache query embeddings to avoid re-embedding repeated queries
+embedding_cache = {}
+
+async def get_cached_embedding(text: str) -&gt; list[float]:
+    &quot;&quot;&quot;Get embedding with caching.&quot;&quot;&quot;
+    cache_key = hash(text)
+    if cache_key in embedding_cache:
+        return embedding_cache[cache_key]
+
+    embedding = await embed_text(text)
+    embedding_cache[cache_key] = embedding
+    return embedding
+
+# Strategy 2: Response Streaming
+# Start sending tokens to the user immediately
+async def stream_response(messages: list[dict]):
+    &quot;&quot;&quot;Stream LLM response for perceived speed.&quot;&quot;&quot;
+    stream = await client.chat.completions.create(
+        model=&quot;gpt-4o&quot;,
+        messages=messages,
+        stream=True,  # Enable streaming
+    )
+    async for chunk in stream:
+        if chunk.choices[0].delta.content:
+            yield chunk.choices[0].delta.content
+
+# Strategy 3: Async Tool Calls
+# Execute independent tool calls in parallel
+import asyncio
+
+async def execute_tools_parallel(tool_calls: list[dict]) -&gt; list[dict]:
+    &quot;&quot;&quot;Execute multiple tool calls concurrently.&quot;&quot;&quot;
+    tasks = []
+    for call in tool_calls:
+        tool = get_tool(call[&quot;name&quot;])
+        tasks.append(tool.execute(**call[&quot;args&quot;]))
+
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+
+    return [
+        {&quot;tool&quot;: call[&quot;name&quot;], &quot;result&quot;: result}
+        for call, result in zip(tool_calls, results)
+    ]
+
+# Strategy 4: Predictive Prefetch
+# Start RAG retrieval before the user finishes typing
+class PrefetchManager:
+    &quot;&quot;&quot;Prefetch likely RAG results.&quot;&quot;&quot;
+
+    def __init__(self):
+        self.cache = {}
+
+    async def prefetch(self, partial_query: str):
+        &quot;&quot;&quot;Prefetch results for common query prefixes.&quot;&quot;&quot;
+        # Map common prefixes to full queries
+        common_prefixes = {
+            &quot;how do i&quot;: [&quot;how do i reset my password&quot;, &quot;how do i track my order&quot;],
+            &quot;what is&quot;: [&quot;what is your return policy&quot;, &quot;what is your shipping time&quot;],
+            &quot;where&quot;: [&quot;where is my order&quot;, &quot;where are you located&quot;],
+        }
+
+        for prefix, queries in common_prefixes.items():
+            if partial_query.lower().startswith(prefix):
+                for query in queries:
+                    if query not in self.cache:
+                        self.cache[query] = await self._retrieve(query)
+
+    async def get_prefetched(self, query: str) -&gt; list[dict] | None:
+        return self.cache.get(query)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.9 Caching Strategies</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Semantic Caching</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Semantic caching - cache based on meaning, not exact text.&quot;&quot;&quot;
+
+import numpy as np
+from sentence_transformers import SentenceTransformer
+
+class SemanticCache:
+    &quot;&quot;&quot;Cache responses based on query similarity.&quot;&quot;&quot;
+
+    def __init__(self, similarity_threshold: float = 0.92):
+        self.model = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)
+        self.cache: list[dict] = []
+        self.threshold = similarity_threshold
+
+    def _embed(self, text: str) -&gt; list[float]:
+        return self.model.encode([text])[0].tolist()
+
+    def _similarity(self, a: list[float], b: list[float]) -&gt; float:
+        a, b = np.array(a), np.array(b)
+        return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+
+    def get(self, query: str) -&gt; dict | None:
+        &quot;&quot;&quot;Find a cached response for a semantically similar query.&quot;&quot;&quot;
+        query_embedding = self._embed(query)
+
+        for entry in self.cache:
+            sim = self._similarity(query_embedding, entry[&quot;embedding&quot;])
+            if sim &gt;= self.threshold:
+                return {
+                    &quot;response&quot;: entry[&quot;response&quot;],
+                    &quot;cached&quot;: True,
+                    &quot;similarity&quot;: sim,
+                    &quot;original_query&quot;: entry[&quot;query&quot;],
+                }
+
+        return None
+
+    def set(self, query: str, response: str):
+        &quot;&quot;&quot;Cache a query-response pair.&quot;&quot;&quot;
+        self.cache.append({
+            &quot;query&quot;: query,
+            &quot;response&quot;: response,
+            &quot;embedding&quot;: self._embed(query),
+            &quot;timestamp&quot;: time.time(),
+        })
+
+    def clear_old(self, max_age_seconds: int = 3600):
+        &quot;&quot;&quot;Remove stale cache entries.&quot;&quot;&quot;
+        cutoff = time.time() - max_age_seconds
+        self.cache = [e for e in self.cache if e[&quot;timestamp&quot;] &gt; cutoff]
+
+# Usage
+cache = SemanticCache(similarity_threshold=0.90)
+
+async def cached_agent(query: str) -&gt; dict:
+    &quot;&quot;&quot;Agent with semantic caching.&quot;&quot;&quot;
+    # Check cache
+    cached = cache.get(query)
+    if cached:
+        return {
+            &quot;response&quot;: cached[&quot;response&quot;],
+            &quot;source&quot;: &quot;cache&quot;,
+            &quot;latency_ms&quot;: 1,  # Near-instant
+        }
+
+    # Cache miss - generate response
+    response = await agent.generate(query)
+    cache.set(query, response)
+
+    return {
+        &quot;response&quot;: response,
+        &quot;source&quot;: &quot;llm&quot;,
+        &quot;latency_ms&quot;: 1200,
+    }
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Response Caching with Redis</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">import redis
+import hashlib
+import json
+
+class ResponseCache:
+    &quot;&quot;&quot;Redis-based response cache with TTL.&quot;&quot;&quot;
+
+    def __init__(self, redis_url: str = &quot;redis://localhost:6379&quot;):
+        self.redis = redis.from_url(redis_url)
+        self.default_ttl = 3600  # 1 hour
+
+    def _key(self, query: str, model: str) -&gt; str:
+        content = f&quot;{model}:{query}&quot;
+        return f&quot;rag_cache:{hashlib.sha256(content.encode()).hexdigest()}&quot;
+
+    def get(self, query: str, model: str) -&gt; dict | None:
+        &quot;&quot;&quot;Get cached response.&quot;&quot;&quot;
+        key = self._key(query, model)
+        cached = self.redis.get(key)
+        if cached:
+            return json.loads(cached)
+        return None
+
+    def set(self, query: str, model: str, response: dict, ttl: int = None):
+        &quot;&quot;&quot;Cache a response.&quot;&quot;&quot;
+        key = self._key(query, model)
+        self.redis.setex(
+            key,
+            ttl or self.default_ttl,
+            json.dumps(response),
+        )
+
+    def invalidate(self, pattern: str = &quot;rag_cache:*&quot;):
+        &quot;&quot;&quot;Invalidate cache entries matching pattern.&quot;&quot;&quot;
+        keys = self.redis.keys(pattern)
+        if keys:
+            self.redis.delete(*keys)
+
+    def stats(self) -&gt; dict:
+        &quot;&quot;&quot;Get cache statistics.&quot;&quot;&quot;
+        keys = self.redis.keys(&quot;rag_cache:*&quot;)
+        return {
+            &quot;total_entries&quot;: len(keys),
+            &quot;memory_used&quot;: self.redis.info(&quot;memory&quot;)[&quot;used_memory_human&quot;],
+        }
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.10 Rate Limiting</h2>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Rate limiting for AI agents.&quot;&quot;&quot;
+
+import time
+from collections import defaultdict
+
+class RateLimiter:
+    &quot;&quot;&quot;Token bucket rate limiter.&quot;&quot;&quot;
+
+    def __init__(self, max_requests: int, window_seconds: int = 60):
+        self.max_requests = max_requests
+        self.window = window_seconds
+        self.requests: dict[str, list[float]] = defaultdict(list)
+
+    def allow(self, identifier: str) -&gt; dict:
+        &quot;&quot;&quot;Check if a request is allowed.&quot;&quot;&quot;
+        now = time.time()
+        window_start = now - self.window
+
+        # Clean old entries
+        self.requests[identifier] = [
+            t for t in self.requests[identifier] if t &gt; window_start
+        ]
+
+        current = len(self.requests[identifier])
+
+        if current &gt;= self.max_requests:
+            retry_after = self.requests[identifier][0] + self.window - now
+            return {
+                &quot;allowed&quot;: False,
+                &quot;remaining&quot;: 0,
+                &quot;retry_after_seconds&quot;: max(0, retry_after),
+            }
+
+        self.requests[identifier].append(now)
+        return {
+            &quot;allowed&quot;: True,
+            &quot;remaining&quot;: self.max_requests - current - 1,
+            &quot;retry_after_seconds&quot;: 0,
+        }
+
+class CostRateLimiter:
+    &quot;&quot;&quot;Rate limit based on API cost, not just request count.&quot;&quot;&quot;
+
+    def __init__(self, daily_budget: float = 50.0):
+        self.daily_budget = daily_budget
+        self.spent_today: dict[str, float] = defaultdict(float)
+        self.reset_date = time.strftime(&quot;%Y-%m-%d&quot;)
+
+    def check_budget(self, user_id: str, estimated_cost: float) -&gt; dict:
+        &quot;&quot;&quot;Check if user is within their budget.&quot;&quot;&quot;
+        # Reset daily
+        today = time.strftime(&quot;%Y-%m-%d&quot;)
+        if today != self.reset_date:
+            self.spent_today.clear()
+            self.reset_date = today
+
+        current_spend = self.spent_today[user_id]
+        if current_spend + estimated_cost &gt; self.daily_budget:
+            return {
+                &quot;allowed&quot;: False,
+                &quot;reason&quot;: &quot;daily_budget_exceeded&quot;,
+                &quot;current_spend&quot;: current_spend,
+                &quot;budget&quot;: self.daily_budget,
+            }
+
+        self.spent_today[user_id] += estimated_cost
+        return {
+            &quot;allowed&quot;: True,
+            &quot;current_spend&quot;: self.spent_today[user_id],
+            &quot;budget&quot;: self.daily_budget,
+        }
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.11 Horizontal Scaling</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Scaling Architecture</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">HORIZONTAL SCALING:
+
+┌──────────┐
+│  Users   │
+└────┬─────┘
+     │
+     ▼
+┌──────────────┐
+│ Load Balancer│
+│  (Round Robin)│
+└──┬───┬───┬───┘
+   │   │   │
+   ▼   ▼   ▼
+┌───┐┌───┐┌───┐
+│ A1││ A2││ A3│  Agent Instances (stateless)
+└─┬─┘└─┬─┘└─┬─┘
+  │    │    │
+  └────┼────┘
+       │
+   ┌───▼───┐
+   │Shared │
+   │  Data │
+   │ Layer │
+   │┌─────┐│
+   ││Redis││  (Session cache)
+   │├─────┤│
+   ││ Post ││  (Conversation history)
+   ││gres  ││
+   │├─────┤│
+   ││Chroma││  (Vector store)
+   │└─────┘│
+   └───────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Stateless Agent Design</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Stateless agent design for horizontal scaling.&quot;&quot;&quot;
+
+class StatelessAgent:
+    &quot;&quot;&quot;Agent that stores no state locally - all state is external.&quot;&quot;&quot;
+
+    def __init__(self):
+        self.redis = redis.from_url(&quot;redis://redis:6379&quot;)
+        self.db = PostgreSQL(&quot;postgresql://db:5432/agentassist&quot;)
+        self.vector_store = Chroma(&quot;chroma:8000&quot;)
+
+    async def process(self, message: str, conversation_id: str) -&gt; dict:
+        &quot;&quot;&quot;Process a message using only external state.&quot;&quot;&quot;
+        # Load state from Redis/DB
+        history = await self._load_history(conversation_id)
+
+        # Process (no local state mutation)
+        response = await self._generate(message, history)
+
+        # Save state to Redis/DB
+        await self._save_history(conversation_id, message, response)
+
+        return response
+
+    async def _load_history(self, conversation_id: str) -&gt; list[dict]:
+        &quot;&quot;&quot;Load conversation history from Redis.&quot;&quot;&quot;
+        cached = self.redis.get(f&quot;conv:{conversation_id}&quot;)
+        if cached:
+            return json.loads(cached)
+        # Fall back to database
+        return await self.db.get_messages(conversation_id)
+
+    async def _save_history(self, conversation_id: str, user_msg: str,
+                           assistant_msg: str):
+        &quot;&quot;&quot;Save to both Redis (fast) and database (persistent).&quot;&quot;&quot;
+        # Save to database
+        await self.db.save_message(conversation_id, &quot;user&quot;, user_msg)
+        await self.db.save_message(conversation_id, &quot;assistant&quot;, assistant_msg)
+
+        # Update Redis cache
+        history = await self._load_history(conversation_id)
+        history.append({&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: user_msg})
+        history.append({&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: assistant_msg})
+        self.redis.setex(
+            f&quot;conv:{conversation_id}&quot;,
+            3600,  # 1 hour TTL
+            json.dumps(history),
+        )
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.12 Auto-Scaling</h2>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Auto-scaling configuration for agent systems.&quot;&quot;&quot;
+
+# Kubernetes HPA (Horizontal Pod Autoscaler)
+HPA_CONFIG = &quot;&quot;&quot;
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: agent-assist-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: agent-assist
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+    - type: Pods
+      pods:
+        metric:
+          name: agent_active_requests
+        target:
+          type: AverageValue
+          averageValue: &quot;20&quot;
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Pods
+          value: 2
+          periodSeconds: 60
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Percent
+          value: 10
+          periodSeconds: 60
+&quot;&quot;&quot;
+
+# GCP Cloud Run auto-scaling
+CLOUD_RUN_CONFIG = &quot;&quot;&quot;
+gcloud run deploy agent-assist \
+  --min-instances=1 \
+  --max-instances=50 \
+  --concurrency=80 \
+  --cpu=2 \
+  --memory=4Gi \
+  --autoscaling-window=60s
+&quot;&quot;&quot;
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.13 Adding Tracing to an Agent</h2>
+<p class="mb-4 text-justify">Here is the complete tracing implementation to add to any agent:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Complete tracing implementation for AI agents.&quot;&quot;&quot;
+
+import time
+import uuid
+import json
+from dataclasses import dataclass, field, asdict
+from typing import Any
+from contextlib import asynccontextmanager
+
+@dataclass
+class Span:
+    &quot;&quot;&quot;A single span in a trace.&quot;&quot;&quot;
+    name: str
+    start_time: float = field(default_factory=time.time)
+    end_time: float = 0.0
+    attributes: dict[str, Any] = field(default_factory=dict)
+    status: str = &quot;ok&quot;
+    children: list[&quot;Span&quot;] = field(default_factory=list)
+
+    def finish(self, status: str = &quot;ok&quot;):
+        self.end_time = time.time()
+        self.status = status
+
+    @property
+    def duration_ms(self) -&gt; float:
+        if self.end_time == 0:
+            return (time.time() - self.start_time) * 1000
+        return (self.end_time - self.start_time) * 1000
+
+    def to_dict(self) -&gt; dict:
+        return {
+            &quot;name&quot;: self.name,
+            &quot;duration_ms&quot;: round(self.duration_ms, 2),
+            &quot;status&quot;: self.status,
+            &quot;attributes&quot;: self.attributes,
+            &quot;children&quot;: [c.to_dict() for c in self.children],
+        }
+
+@dataclass
+class Trace:
+    &quot;&quot;&quot;A complete trace of an agent interaction.&quot;&quot;&quot;
+    trace_id: str = field(default_factory=lambda: str(uuid.uuid4())[:12])
+    start_time: float = field(default_factory=time.time)
+    spans: list[Span] = field(default_factory=list)
+    attributes: dict[str, Any] = field(default_factory=dict)
+
+    @asynccontextmanager
+    async def span(self, name: str, **attributes):
+        &quot;&quot;&quot;Context manager for creating spans.&quot;&quot;&quot;
+        s = Span(name=name, attributes=attributes)
+        self.spans.append(s)
+        try:
+            yield s
+        except Exception as e:
+            s.finish(status=&quot;error&quot;)
+            s.attributes[&quot;error&quot;] = str(e)
+            raise
+        else:
+            s.finish()
+
+    @property
+    def total_duration_ms(self) -&gt; float:
+        return (time.time() - self.start_time) * 1000
+
+    def to_dict(self) -&gt; dict:
+        return {
+            &quot;trace_id&quot;: self.trace_id,
+            &quot;total_duration_ms&quot;: round(self.total_duration_ms, 2),
+            &quot;attributes&quot;: self.attributes,
+            &quot;spans&quot;: [s.to_dict() for s in self.spans],
+        }
+
+    def to_json(self) -&gt; str:
+        return json.dumps(self.to_dict(), indent=2)
+
+    def log_summary(self):
+        &quot;&quot;&quot;Print a summary of the trace.&quot;&quot;&quot;
+        print(f&quot;\n{&#x27;=&#x27;*60}&quot;)
+        print(f&quot;TRACE {self.trace_id}&quot;)
+        print(f&quot;{&#x27;=&#x27;*60}&quot;)
+        for span in self.spans:
+            status_icon = &quot;OK&quot; if span.status == &quot;ok&quot; else &quot;ERR&quot;
+            print(f&quot;  [{status_icon}] {span.name}: {span.duration_ms:.0f}ms&quot;)
+            for key, value in span.attributes.items():
+                print(f&quot;       {key}: {value}&quot;)
+        print(f&quot;  TOTAL: {self.total_duration_ms:.0f}ms&quot;)
+        print(f&quot;{&#x27;=&#x27;*60}\n&quot;)
+
+
+# Usage in your agent
+async def traced_agent_process(message: str, user_id: str) -&gt; dict:
+    &quot;&quot;&quot;Process a message with full tracing.&quot;&quot;&quot;
+    trace = Trace(attributes={&quot;user_id&quot;: user_id, &quot;message_length&quot;: len(message)})
+
+    # RAG retrieval
+    async with trace.span(&quot;rag_retrieval&quot;) as s:
+        docs = await retriever.retrieve(message)
+        s.attributes[&quot;chunks&quot;] = len(docs)
+        s.attributes[&quot;top_score&quot;] = docs[0][&quot;score&quot;] if docs else 0
+
+    # LLM call
+    async with trace.span(&quot;llm_call&quot;, model=&quot;gpt-4o&quot;) as s:
+        response = await llm.generate(message, docs)
+        s.attributes[&quot;prompt_tokens&quot;] = response.usage.prompt_tokens
+        s.attributes[&quot;completion_tokens&quot;] = response.usage.completion_tokens
+        s.attributes[&quot;cost_usd&quot;] = calculate_cost(
+            &quot;gpt-4o&quot;,
+            response.usage.prompt_tokens,
+            response.usage.completion_tokens,
+        )
+
+    trace.log_summary()
+
+    return {
+        &quot;response&quot;: response.text,
+        &quot;trace&quot;: trace.to_dict(),
+    }
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.14 Caching Layer Implementation</h2>
+<p class="mb-4 text-justify">Here is a complete, production-ready caching layer:</p>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;Complete caching layer for RAG systems.&quot;&quot;&quot;
+
+import hashlib
+import json
+import time
+import numpy as np
+from sentence_transformers import SentenceTransformer
+
+class RAGCacheLayer:
+    &quot;&quot;&quot;Multi-level caching for RAG pipelines.&quot;&quot;&quot;
+
+    def __init__(self, redis_client=None, similarity_threshold: float = 0.92):
+        self.redis = redis_client
+        self.similarity_threshold = similarity_threshold
+        self.embed_model = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)
+
+        # In-memory cache as L1 (fastest)
+        self.l1_cache: dict[str, dict] = {}
+        self.l1_max_size = 1000
+
+        # Statistics
+        self.stats = {&quot;hits&quot;: 0, &quot;misses&quot;: 0, &quot;l1_hits&quot;: 0, &quot;l2_hits&quot;: 0}
+
+    async def get(self, query: str) -&gt; dict | None:
+        &quot;&quot;&quot;Try to find a cached response.&quot;&quot;&quot;
+        # L1: Exact match (in-memory)
+        exact_key = self._exact_key(query)
+        if exact_key in self.l1_cache:
+            entry = self.l1_cache[exact_key]
+            if not self._is_expired(entry):
+                self.stats[&quot;hits&quot;] += 1
+                self.stats[&quot;l1_hits&quot;] += 1
+                return {**entry[&quot;response&quot;], &quot;cache_level&quot;: &quot;L1_exact&quot;}
+
+        # L2: Semantic match (in-memory)
+        query_emb = self.embed_model.encode([query])[0]
+        for key, entry in self.l1_cache.items():
+            if not self._is_expired(entry):
+                sim = self._similarity(query_emb, entry[&quot;embedding&quot;])
+                if sim &gt;= self.similarity_threshold:
+                    self.stats[&quot;hits&quot;] += 1
+                    self.stats[&quot;l1_hits&quot;] += 1
+                    return {
+                        **entry[&quot;response&quot;],
+                        &quot;cache_level&quot;: &quot;L1_semantic&quot;,
+                        &quot;similarity&quot;: sim,
+                    }
+
+        # L3: Redis cache (if available)
+        if self.redis:
+            redis_result = self._redis_get(query)
+            if redis_result:
+                self.stats[&quot;hits&quot;] += 1
+                self.stats[&quot;l2_hits&quot;] += 1
+                return {**redis_result, &quot;cache_level&quot;: &quot;L2_redis&quot;}
+
+        self.stats[&quot;misses&quot;] += 1
+        return None
+
+    async def set(self, query: str, response: dict, ttl: int = 3600):
+        &quot;&quot;&quot;Cache a query-response pair.&quot;&quot;&quot;
+        entry = {
+            &quot;query&quot;: query,
+            &quot;response&quot;: response,
+            &quot;embedding&quot;: self.embed_model.encode([query])[0].tolist(),
+            &quot;timestamp&quot;: time.time(),
+            &quot;ttl&quot;: ttl,
+        }
+
+        # Store in L1
+        if len(self.l1_cache) &gt;= self.l1_max_size:
+            # Evict oldest
+            oldest_key = min(self.l1_cache, key=lambda k: self.l1_cache[k][&quot;timestamp&quot;])
+            del self.l1_cache[oldest_key]
+
+        self.l1_cache[self._exact_key(query)] = entry
+
+        # Store in L2 (Redis)
+        if self.redis:
+            self._redis_set(query, response, ttl)
+
+    def _exact_key(self, query: str) -&gt; str:
+        return hashlib.sha256(query.lower().strip().encode()).hexdigest()
+
+    def _similarity(self, a: np.ndarray, b: list[float]) -&gt; float:
+        b = np.array(b)
+        return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+
+    def _is_expired(self, entry: dict) -&gt; bool:
+        return time.time() - entry[&quot;timestamp&quot;] &gt; entry.get(&quot;ttl&quot;, 3600)
+
+    def _redis_get(self, query: str) -&gt; dict | None:
+        key = f&quot;rag:{self._exact_key(query)}&quot;
+        cached = self.redis.get(key)
+        return json.loads(cached) if cached else None
+
+    def _redis_set(self, query: str, response: dict, ttl: int):
+        key = f&quot;rag:{self._exact_key(query)}&quot;
+        self.redis.setex(key, ttl, json.dumps(response))
+
+    def get_stats(self) -&gt; dict:
+        total = self.stats[&quot;hits&quot;] + self.stats[&quot;misses&quot;]
+        return {
+            **self.stats,
+            &quot;hit_rate&quot;: f&quot;{(self.stats[&#x27;hits&#x27;]/total*100):.1f}%&quot; if total &gt; 0 else &quot;0%&quot;,
+            &quot;l1_entries&quot;: len(self.l1_cache),
+        }
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.15 Monitoring Dashboard Design</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Dashboard Layout</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────────────────────────────────────────┐
+│  AGENT MONITORING DASHBOARD                                  Last 24 Hours │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌─── TOP ROW: Key Numbers ─────────────────────────────────────────────┐  │
+│  │                                                                       │  │
+│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  │  │
+│  │  │ 12,847  │  │  98.2%  │  │  $42.30 │  │  2.1s   │  │  4.2M   │  │  │
+│  │  │Requests │  │  Uptime │  │  Cost   │  │Avg Lat  │  │ Tokens  │  │  │
+│  │  │  +12%   │  │  +0.1%  │  │  -8%    │  │  -15%   │  │  +5%    │  │  │
+│  │  └─────────┘  └─────────┘  └─────────┘  └─────────┘  └─────────┘  │  │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+│  ┌─── MIDDLE ROW: Time Series ─────────────────────────────────────────┐   │
+│  │                                                                       │   │
+│  │  Requests/min ────────────────  Latency (P50/P95/P99) ────────────  │   │
+│  │  ┌──────────────────────┐     ┌──────────────────────┐              │   │
+│  │  │  ▁▁▂▂▃▃▂▂▁▁▂▃▅▃▂▁  │     │  ──P50──P95──P99──  │              │   │
+│  │  │                      │     │  ────2s──4s──8s────  │              │   │
+│  │  │  120/min avg         │     │                      │              │   │
+│  │  └──────────────────────┘     └──────────────────────┘              │   │
+│  │                                                                       │   │
+│  │  Error Rate ─────────────────  Cost/Hour ─────────────────────────  │   │
+│  │  ┌──────────────────────┐     ┌──────────────────────┐              │   │
+│  │  │  ▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁  │     │  ▁▂▃▅▇█▇▅▃▂▁▁▂▃▅  │              │   │
+│  │  │  1.8% avg            │     │  $1.76/hr avg         │              │   │
+│  │  └──────────────────────┘     └──────────────────────┘              │   │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+│  ┌─── BOTTOM ROW: Breakdowns ──────────────────────────────────────────┐   │
+│  │                                                                       │   │
+│  │  Top Queries ────────────────  Tool Usage ────────────────────────  │   │
+│  │  1. &quot;track my order&quot; (342)    │  order_lookup:  ████████░░ 3421   │   │
+│  │  2. &quot;return policy&quot; (287)     │  product_search: █████░░░░░ 2156  │   │
+│  │  3. &quot;reset password&quot; (198)    │  create_ticket:  ██░░░░░░░░  892  │   │
+│  │  4. &quot;shipping time&quot; (156)     │                                    │   │
+│  │  5. &quot;cancel order&quot; (134)      │  Success Rate: 98.7%              │   │
+│  │                                                                       │   │
+│  │  Model Usage ────────────────  Cache Hit Rate ────────────────────  │   │
+│  │  gpt-4o:     65%              │  L1 (exact):    45%               │   │
+│  │  gpt-4o-mini: 30%             │  L2 (semantic): 25%               │   │
+│  │  claude:      5%              │  Miss:          30%               │   │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Grafana Dashboard Config (JSON)</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-json" node="[object Object]">{
+  &quot;dashboard&quot;: {
+    &quot;title&quot;: &quot;AgentAssist Monitoring&quot;,
+    &quot;panels&quot;: [
+      {
+        &quot;title&quot;: &quot;Requests per Minute&quot;,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;targets&quot;: [{
+          &quot;expr&quot;: &quot;rate(agent_requests_total[5m])&quot;,
+          &quot;legendFormat&quot;: &quot;{{status}}&quot;
+        }]
+      },
+      {
+        &quot;title&quot;: &quot;Response Latency P95&quot;,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;targets&quot;: [{
+          &quot;expr&quot;: &quot;histogram_quantile(0.95, rate(agent_request_duration_seconds_bucket[5m]))&quot;,
+          &quot;legendFormat&quot;: &quot;P95&quot;
+        }]
+      },
+      {
+        &quot;title&quot;: &quot;Token Usage&quot;,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;targets&quot;: [{
+          &quot;expr&quot;: &quot;rate(agent_tokens_total[5m])&quot;,
+          &quot;legendFormat&quot;: &quot;{{model}}/{{type}}&quot;
+        }]
+      },
+      {
+        &quot;title&quot;: &quot;Cost per Hour&quot;,
+        &quot;type&quot;: &quot;timeseries&quot;,
+        &quot;targets&quot;: [{
+          &quot;expr&quot;: &quot;rate(agent_cost_dollars_total[1h])&quot;,
+          &quot;legendFormat&quot;: &quot;{{model}}&quot;
+        }]
+      },
+      {
+        &quot;title&quot;: &quot;Error Rate&quot;,
+        &quot;type&quot;: &quot;gauge&quot;,
+        &quot;targets&quot;: [{
+          &quot;expr&quot;: &quot;rate(agent_requests_total{status=&#x27;error&#x27;}[5m]) / rate(agent_requests_total[5m])&quot;,
+          &quot;legendFormat&quot;: &quot;Error %&quot;
+        }]
+      }
+    ]
+  }
+}
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.16 Key Takeaways</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Observability is not optional</strong>. You cannot debug what you cannot see. Add logging, metrics, and tracing from day one.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Log everything that matters</strong>. User inputs, RAG retrieval scores, LLM calls, tool invocations, errors, and costs. Use structured logging (JSON), not plain text.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Distributed tracing reveals the full picture</strong>. When a request flows through RAG, LLM, tools, and back, you need to see the entire journey. Use OpenTelemetry or LangSmith.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Track costs relentlessly</strong>. LLM costs can spiral. Track per-request, per-user, per-model costs. Set budget alerts.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Cache aggressively</strong>. Semantic caching, response caching, and embedding caching can reduce costs by 50%+ and latency by 90%+.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Stream responses</strong>. Users perceive streaming as instant. Never make them wait for the full response.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Rate limit by cost, not just count</strong>. One expensive GPT-4o call costs more than 100 GPT-4o-mini calls. Limit by budget.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Scale statelessly</strong>. Store all state externally (Redis, PostgreSQL, vector store). Any instance can handle any request.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Auto-scale on the right metrics</strong>. CPU and memory are good. Active requests per instance is better for AI workloads.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Build dashboards for action</strong>. Every number on your dashboard should trigger a decision: scale up, investigate, or celebrate.</p>
+</li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">14.17 Try It Yourself</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 1: Add Tracing to Your Agent</h3>
+<p class="mb-4 text-justify">Take the tracing implementation from Section 14.13 and add it to your agent. Run 10 requests and analyze the trace output. Where is time being spent?</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 2: Cost Calculator</h3>
+<p class="mb-4 text-justify">Build a cost calculator that estimates the cost of your agent for different usage levels (100, 1000, 10000 requests/day). What is the monthly cost?</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 3: Semantic Cache Test</h3>
+<p class="mb-4 text-justify">Implement semantic caching (Section 14.9). Run 50 queries, of which 20 are near-duplicates. Measure the cache hit rate and cost savings.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 4: Rate Limiter</h3>
+<p class="mb-4 text-justify">Build a cost-based rate limiter that limits each user to $1/day. Test it with 10 requests of varying costs.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 5: Design a Dashboard</h3>
+<p class="mb-4 text-justify">Design a monitoring dashboard for your agent using the layout in Section 14.15. What metrics would you prioritize? What alerts would you set?</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Next Chapter</strong>: We explore the future of AI agents — authenticity, trust, the agent economy, and what it all means for your career.</p>
+</blockquote></article><div class="mt-16 pt-8 border-t-2 border-[var(--border-color)]"><div class="flex justify-between items-stretch gap-4"><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group" href="/chapter/security-and-safety"><span class="text-xs text-[var(--foreground)] opacity-50">← Previous</span><div class="flex items-center gap-2 mt-1"><span class="text-xl">🛡️</span><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Security, Safety &amp; Guardrails</span></div></a><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group text-right" href="/chapter/authenticity-and-future"><span class="text-xs text-[var(--foreground)] opacity-50">Next →</span><div class="flex items-center justify-end gap-2 mt-1"><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Authenticity &amp; The Future</span><span class="text-xl">🌍</span></div></a></div></div></main></div></div><!--$--><!--/$--><script src="/_next/static/chunks/3s_ssfmklbvuh.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[78892,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n3:I[11359,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n5:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"OutletBoundary\"]\n6:\"$Sreact.suspense\"\n9:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"ViewportBoundary\"]\nb:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"MetadataBoundary\"]\nd:I[65125,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/157per-6rfej7.css\",\"style\"]\n:HL[\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"chapter\",\"observability-and-scalability\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"chapter\",{\"children\":[[\"slug\",\"observability-and-scalability\",\"d\",null],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3j2brc7c8hat8.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/05b0208rfh8ys.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-full flex flex-col\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/16vgld9iclosn.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/2rb1230i-fez-.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@7\"}]}]]}],{},null,false,null]},null,false,\"$@8\"]},null,false,\"$@8\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L9\",null,{\"children\":\"$La\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Lc\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$d\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"WpHiBD4DjnzuprdEnivdA\"}\n"])</script><script>self.__next_f.push([1,"e:[]\n8:\"$We\"\n"])</script><script>self.__next_f.push([1,"f:I[89587,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\",\"/_next/static/chunks/16vgld9iclosn.js\",\"/_next/static/chunks/2rb1230i-fez-.js\"],\"default\"]\n10:Tf758,"])</script><script>self.__next_f.push([1,"# Chapter 14: Observability \u0026 Scalability\n\n## Monitoring, Scaling, and Optimizing Agent Systems\n\n---\n\n\u003e \"You cannot optimize what you cannot measure. You cannot trust what you cannot see.\"\n\n---\n\nBuilding an agent is step one. Running it in production is step two. **Knowing what it is doing and why** is step three — and it is the step most teams skip until something breaks at 3 AM.\n\nObservability is the ability to understand the internal state of your system by examining its external outputs. For AI agents, this means tracking every decision, every token, every dollar, and every failure in real time.\n\nScalability is the ability to handle increasing load without degrading performance. For agents, this means handling 10 users or 10,000 users with the same reliability.\n\nThis chapter covers both, with practical code you can add to your agents today.\n\n---\n\n## Table of Contents\n\n1. [Why Observability Is Critical](#141-why-observability-is-critical)\n2. [Logging Best Practices](#142-logging-best-practices)\n3. [Distributed Tracing](#143-distributed-tracing)\n4. [Metrics That Matter](#144-metrics-that-matter)\n5. [Cost Tracking](#145-cost-tracking)\n6. [LangSmith Integration](#146-langsmith-integration)\n7. [LangFuse: Open-Source Observability](#147-langfuse-open-source-observability)\n8. [Latency Optimization](#148-latency-optimization)\n9. [Caching Strategies](#149-caching-strategies)\n10. [Rate Limiting](#1410-rate-limiting)\n11. [Horizontal Scaling](#1411-horizontal-scaling)\n12. [Auto-Scaling](#1412-auto-scaling)\n13. [Adding Tracing to an Agent](#1413-adding-tracing-to-an-agent)\n14. [Caching Layer Implementation](#1414-caching-layer-implementation)\n15. [Monitoring Dashboard Design](#1415-monitoring-dashboard-design)\n16. [Key Takeaways](#1416-key-takeaways)\n17. [Try It Yourself](#1417-try-it-yourself)\n\n---\n\n## 14.1 Why Observability Is Critical\n\n### The Three Pillars of Observability\n\n```\n┌─────────────────────────────────────────────────────────────┐\n│                  OBSERVABILITY FOR AI AGENTS                  │\n├───────────────┬───────────────────┬─────────────────────────┤\n│    LOGGING    │     METRICS       │       TRACING           │\n│               │                   │                         │\n│  \"What        │  \"How much /      │  \"Where did the         │\n│   happened?\"  │   how fast?\"      │   request go?\"          │\n│               │                   │                         │\n│  Structured   │  Latency, tokens, │  Request flow through   │\n│  event data   │  errors, costs    │  agent components       │\n│               │                   │                         │\n│  Every LLM    │  Aggregated over  │  End-to-end journey     │\n│  call, tool   │  time windows     │  from input to output   │\n│  use, error   │                   │                         │\n└───────────────┴───────────────────┴─────────────────────────┘\n```\n\n### Why AI Agents Are Hard to Monitor\n\nAI agents are harder to monitor than traditional software:\n\n| Traditional Software | AI Agent |\n|---------------------|----------|\n| Deterministic outputs | Non-deterministic outputs |\n| Same input = same output | Same input = different outputs |\n| Clear error types | \"Wrong but plausible\" answers |\n| Fixed latency | Variable latency (LLM calls) |\n| Predictable costs | Unpredictable token usage |\n| Simple request/response | Multi-step reasoning chains |\n\n### What Can Go Wrong\n\n```\nWITHOUT OBSERVABILITY:\n┌─────────────────────────────────────────────────┐\n│  User: \"My order hasn't arrived\"                 │\n│  Agent: \"Your order is on the way!\"             │\n│                                                  │\n│  But actually:                                   │\n│  - RAG retrieved wrong document (score: 0.45)   │\n│  - Agent hallucinated the shipping status        │\n│  - Tool call to order API failed silently        │\n│  - Agent fabricated the answer                   │\n│  - User got wrong information                    │\n│  - Nobody knows until user complains             │\n└─────────────────────────────────────────────────┘\n\nWITH OBSERVABILITY:\n┌─────────────────────────────────────────────────┐\n│  [TRACE] req_abc123                              │\n│  ├─ [RETRIEVAL] 45ms, 5 chunks, max_score=0.45  │  ← Alert: low score\n│  ├─ [LLM_CALL] gpt-4o, 350 tokens, 1200ms      │\n│  ├─ [TOOL_CALL] order_api → FAILED (timeout)    │  ← Alert: tool failure\n│  ├─ [LLM_CALL] gpt-4o, 200 tokens, 800ms       │\n│  └─ [RESPONSE] 350 chars                        │\n│                                                  │\n│  Dashboard shows:                                │\n│  - Tool failure rate: 12% (was 2% yesterday)    │  ← Action needed\n│  - Avg retrieval score dropped from 0.75 to 0.55│  ← Knowledge gap\n│  - Hallucination risk: HIGH (low confidence)     │\n└─────────────────────────────────────────────────┘\n```\n\n---\n\n## 14.2 Logging Best Practices\n\n### What to Log\n\n```python\n# The logging checklist for AI agents:\n\nLOGGING_CHECKLIST = {\n    \"input\": [\n        \"User message\",\n        \"User ID / session ID\",\n        \"Timestamp\",\n        \"Request metadata (device, IP, etc.)\",\n    ],\n    \"processing\": [\n        \"RAG retrieval results (chunks, scores, latency)\",\n        \"LLM calls (model, tokens, latency, cost)\",\n        \"Tool calls (tool name, parameters, results, latency)\",\n        \"Decision points (which path the agent took)\",\n        \"System prompt used (hash, not full text)\",\n    ],\n    \"output\": [\n        \"Agent response\",\n        \"Sources cited\",\n        \"Total latency\",\n        \"Total tokens used\",\n        \"Estimated cost\",\n    ],\n    \"errors\": [\n        \"LLM errors (rate limits, timeouts, refusals)\",\n        \"Tool failures\",\n        \"Retrieval failures\",\n        \"Validation failures\",\n        \"Guardrail triggers\",\n    ],\n}\n```\n\n### Structured Logging Implementation\n\n```python\n\"\"\"Production-grade structured logging for AI agents.\"\"\"\n\nimport structlog\nimport time\nimport uuid\nfrom contextlib import contextmanager\nfrom dataclasses import dataclass, field\nfrom typing import Any\n\ndef setup_logging(log_level: str = \"INFO\"):\n    \"\"\"Configure structured logging.\"\"\"\n    structlog.configure(\n        processors=[\n            structlog.contextvars.merge_contextvars,\n            structlog.processors.add_log_level,\n            structlog.processors.TimeStamper(fmt=\"iso\"),\n            structlog.processors.StackInfoRenderer(),\n            structlog.processors.format_exc_info,\n            structlog.processors.JSONRenderer(),\n        ],\n        wrapper_class=structlog.make_filtering_bound_logger(\n            getattr(__import__(\"logging\"), log_level.upper())\n        ),\n        context_class=dict,\n        logger_factory=structlog.PrintLoggerFactory(),\n        cache_logger_on_first_use=True,\n    )\n\nlogger = structlog.get_logger()\n\n@dataclass\nclass AgentTrace:\n    \"\"\"Trace a single agent interaction.\"\"\"\n    request_id: str = field(default_factory=lambda: str(uuid.uuid4())[:12])\n    user_id: str = \"\"\n    start_time: float = field(default_factory=time.time)\n\n    # RAG\n    rag_chunks_retrieved: int = 0\n    rag_top_score: float = 0.0\n    rag_latency_ms: float = 0.0\n\n    # LLM\n    llm_model: str = \"\"\n    llm_prompt_tokens: int = 0\n    llm_completion_tokens: int = 0\n    llm_latency_ms: float = 0.0\n    llm_cost_usd: float = 0.0\n\n    # Tools\n    tool_calls: list[dict] = field(default_factory=list)\n\n    # Output\n    response_length: int = 0\n    sources_cited: int = 0\n    total_latency_ms: float = 0.0\n\n    # Errors\n    errors: list[dict] = field(default_factory=list)\n    guardrail_triggers: list[str] = field(default_factory=list)\n\n    def log_start(self):\n        logger.info(\n            \"agent_request_started\",\n            request_id=self.request_id,\n            user_id=self.user_id,\n        )\n\n    def log_rag(self, chunks: int, top_score: float, latency_ms: float):\n        self.rag_chunks_retrieved = chunks\n        self.rag_top_score = top_score\n        self.rag_latency_ms = latency_ms\n        logger.info(\n            \"rag_retrieval\",\n            request_id=self.request_id,\n            chunks=chunks,\n            top_score=f\"{top_score:.3f}\",\n            latency_ms=f\"{latency_ms:.0f}\",\n        )\n        if top_score \u003c 0.5:\n            logger.warning(\n                \"low_retrieval_score\",\n                request_id=self.request_id,\n                score=f\"{top_score:.3f}\",\n                message=\"Retrieval quality is below threshold\",\n            )\n\n    def log_llm(self, model: str, prompt_tokens: int, completion_tokens: int,\n                latency_ms: float, cost_usd: float):\n        self.llm_model = model\n        self.llm_prompt_tokens = prompt_tokens\n        self.llm_completion_tokens = completion_tokens\n        self.llm_latency_ms = latency_ms\n        self.llm_cost_usd = cost_usd\n        logger.info(\n            \"llm_call\",\n            request_id=self.request_id,\n            model=model,\n            prompt_tokens=prompt_tokens,\n            completion_tokens=completion_tokens,\n            latency_ms=f\"{latency_ms:.0f}\",\n            cost_usd=f\"{cost_usd:.6f}\",\n        )\n\n    def log_tool(self, tool_name: str, params: dict, result: str,\n                 latency_ms: float, success: bool):\n        self.tool_calls.append({\n            \"tool\": tool_name,\n            \"latency_ms\": latency_ms,\n            \"success\": success,\n        })\n        logger.info(\n            \"tool_call\",\n            request_id=self.request_id,\n            tool=tool_name,\n            params=str(params)[:200],\n            result_preview=result[:100] if result else \"\",\n            latency_ms=f\"{latency_ms:.0f}\",\n            success=success,\n        )\n        if not success:\n            logger.error(\n                \"tool_call_failed\",\n                request_id=self.request_id,\n                tool=tool_name,\n                params=str(params)[:200],\n            )\n\n    def log_error(self, error_type: str, message: str):\n        self.errors.append({\"type\": error_type, \"message\": message})\n        logger.error(\n            \"agent_error\",\n            request_id=self.request_id,\n            error_type=error_type,\n            message=message,\n        )\n\n    def log_completion(self, response_length: int, sources_cited: int):\n        total_ms = (time.time() - self.start_time) * 1000\n        self.total_latency_ms = total_ms\n        self.response_length = response_length\n        self.sources_cited = sources_cited\n\n        total_cost = self.llm_cost_usd\n        for tool in self.tool_calls:\n            total_cost += tool.get(\"cost_usd\", 0)\n\n        logger.info(\n            \"agent_request_completed\",\n            request_id=self.request_id,\n            total_latency_ms=f\"{total_ms:.0f}\",\n            llm_latency_ms=f\"{self.llm_latency_ms:.0f}\",\n            rag_latency_ms=f\"{self.rag_latency_ms:.0f}\",\n            total_tokens=self.llm_prompt_tokens + self.llm_completion_tokens,\n            total_cost_usd=f\"{total_cost:.6f}\",\n            tool_calls=len(self.tool_calls),\n            errors=len(self.errors),\n            response_length=response_length,\n            sources_cited=sources_cited,\n        )\n```\n\n### Using the Trace\n\n```python\nasync def process_message_with_trace(message: str, user_id: str) -\u003e dict:\n    \"\"\"Process a message with full observability.\"\"\"\n    trace = AgentTrace(user_id=user_id)\n    trace.log_start()\n\n    try:\n        # RAG retrieval\n        start = time.time()\n        docs = await retriever.retrieve(message)\n        rag_latency = (time.time() - start) * 1000\n        top_score = docs[0][\"score\"] if docs else 0\n        trace.log_rag(chunks=len(docs), top_score=top_score, latency_ms=rag_latency)\n\n        # LLM call\n        start = time.time()\n        response = await llm.generate(\n            query=message,\n            context=docs,\n            model=\"gpt-4o\",\n        )\n        llm_latency = (time.time() - start) * 1000\n\n        cost = calculate_cost(\n            model=\"gpt-4o\",\n            prompt_tokens=response.usage.prompt_tokens,\n            completion_tokens=response.usage.completion_tokens,\n        )\n        trace.log_llm(\n            model=\"gpt-4o\",\n            prompt_tokens=response.usage.prompt_tokens,\n            completion_tokens=response.usage.completion_tokens,\n            latency_ms=llm_latency,\n            cost_usd=cost,\n        )\n\n        # Completion\n        trace.log_completion(\n            response_length=len(response.text),\n            sources_cited=len(docs),\n        )\n\n        return {\"response\": response.text, \"trace_id\": trace.request_id}\n\n    except Exception as e:\n        trace.log_error(type(e).__name__, str(e))\n        raise\n```\n\n---\n\n## 14.3 Distributed Tracing\n\n### What Is Distributed Tracing?\n\nWhen an agent makes multiple API calls, retrieves documents, and generates a response, you need to see the entire journey as one coherent trace.\n\n```\nDISTRIBUTED TRACE: req_abc123\n\n│├─ HTTP Request (150ms)\n│ │\n│ ├─▶ Auth Middleware (5ms)\n│ │\n│ ├─▶ Rate Limiter Check (2ms)\n│ │\n│ ├─▶ Agent Core\n│ │   │\n│ │   ├─▶ RAG Retrieval\n│ │   │   ├─▶ Embed Query (45ms)\n│ │   │   ├─▶ Vector Search (20ms)\n│ │   │   └─▶ Reranking (35ms)\n│ │   │   Total: 100ms\n│ │   │\n│ │   ├─▶ LLM Call #1 (function calling)\n│ │   │   Model: gpt-4o\n│ │   │   Tokens: 1200 in / 150 out\n│ │   │   Latency: 1200ms\n│ │   │\n│ │   ├─▶ Tool Call: order_api\n│ │   │   URL: /api/orders/ORD-12345\n│ │   │   Status: 200 OK\n│ │   │   Latency: 200ms\n│ │   │\n│ │   ├─▶ LLM Call #2 (final answer)\n│ │   │   Model: gpt-4o\n│ │   │   Tokens: 1500 in / 200 out\n│ │   │   Latency: 900ms\n│ │   │\n│ │   Total: 2400ms\n│ │\n│ ├─▶ Response Serialization (1ms)\n│ │\n└─ Total: 2508ms\n```\n\n### Implementation with OpenTelemetry\n\n```python\n\"\"\"Distributed tracing with OpenTelemetry.\"\"\"\n\nfrom opentelemetry import trace\nfrom opentelemetry.sdk.trace import TracerProvider\nfrom opentelemetry.sdk.trace.export import BatchSpanProcessor\nfrom opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter\nfrom opentelemetry.sdk.resources import Resource\n\n# Setup\nresource = Resource.create({\"service.name\": \"agent-assist\"})\nprovider = TracerProvider(resource=resource)\nexporter = OTLPSpanExporter(endpoint=\"http://localhost:4317\")\nprovider.add_span_processor(BatchSpanProcessor(exporter))\ntrace.set_tracer_provider(provider)\n\ntracer = trace.get_tracer(\"agent-assist\")\n\n# Usage\nasync def process_message(message: str) -\u003e dict:\n    with tracer.start_as_current_span(\"process_message\") as span:\n        span.set_attribute(\"user.message_length\", len(message))\n\n        # RAG retrieval\n        with tracer.start_as_current_span(\"rag_retrieval\") as rag_span:\n            docs = await retriever.retrieve(message)\n            rag_span.set_attribute(\"rag.chunks_found\", len(docs))\n            if docs:\n                rag_span.set_attribute(\"rag.top_score\", docs[0][\"score\"])\n\n        # LLM call\n        with tracer.start_as_current_span(\"llm_call\") as llm_span:\n            llm_span.set_attribute(\"llm.model\", \"gpt-4o\")\n            response = await llm.generate(message, docs)\n            llm_span.set_attribute(\"llm.tokens\", response.usage.total_tokens)\n\n        span.set_attribute(\"response.length\", len(response.text))\n        return {\"response\": response.text}\n```\n\n---\n\n## 14.4 Metrics That Matter\n\n### The Agent Metrics Dashboard\n\n```\n┌─────────────────────────────────────────────────────────────────────┐\n│                    AGENT METRICS DASHBOARD                           │\n├─────────────────────────────────────────────────────────────────────┤\n│                                                                      │\n│  ┌─── REQUESTS ─────────────────────────────────────────────────┐   │\n│  │  Total Requests: 12,847 (24h)    │  Active: 23              │   │\n│  │  Success Rate: 98.2%             │  Queued: 0               │   │\n│  │  Errors: 231 (1.8%)              │  P99 Latency: 4.2s       │   │\n│  └──────────────────────────────────┴──────────────────────────┘   │\n│                                                                      │\n│  ┌─── LLM METRICS ─────────────────────────────────────────────┐   │\n│  │  Total Tokens: 4.2M (24h)        │  Avg Tokens/Request: 327 │   │\n│  │  Prompt Tokens: 3.1M             │  Completion: 1.1M        │   │\n│  │  Cost (24h): $42.30              │  Avg Cost/Request: $0.003│   │\n│  └──────────────────────────────────┴──────────────────────────┘   │\n│                                                                      │\n│  ┌─── RAG METRICS ─────────────────────────────────────────────┐   │\n│  │  Retrieval Hit Rate: 87%         │  Avg Score: 0.72         │   │\n│  │  Low Score Queries: 312 (2.4%)  │  Avg Chunks: 4.2         │   │\n│  └──────────────────────────────────┴──────────────────────────┘   │\n│                                                                      │\n│  ┌─── TOOL METRICS ────────────────────────────────────────────┐   │\n│  │  order_lookup: 3,421 calls (99.1% success)                 │   │\n│  │  product_search: 2,156 calls (97.8% success)               │   │\n│  │  create_ticket: 892 calls (100% success)                   │   │\n│  └─────────────────────────────────────────────────────────────┘   │\n│                                                                      │\n└─────────────────────────────────────────────────────────────────────┘\n```\n\n### Key Metrics to Track\n\n| Category | Metric | Alert Threshold | Why It Matters |\n|----------|--------|----------------|----------------|\n| **Latency** | P50 response time | \u003e 2s | User experience |\n| | P95 response time | \u003e 5s | Tail latency |\n| | P99 response time | \u003e 10s | Worst case |\n| **Throughput** | Requests per minute | \u003c 10 (if expecting 100+) | Capacity |\n| **Errors** | Error rate | \u003e 5% | Reliability |\n| | LLM error rate | \u003e 2% | Provider issues |\n| | Tool error rate | \u003e 5% | Integration health |\n| **Cost** | Cost per request | \u003e $0.05 | Budget control |\n| | Daily total cost | \u003e $100 | Budget alerts |\n| | Cost trend | Increasing 20%+ week-over-week | Regression |\n| **Quality** | Retrieval score | \u003c 0.5 avg | RAG quality |\n| | Hallucination rate | \u003e 5% | Answer quality |\n| | User satisfaction | \u003c 3/5 stars | Product quality |\n| **Tokens** | Tokens per request | \u003e 5000 | Efficiency |\n| | Context window usage | \u003e 80% | Headroom |\n\n### Prometheus Metrics Setup\n\n```python\nfrom prometheus_client import Counter, Histogram, Gauge, Summary\n\n# Request metrics\nREQUEST_COUNT = Counter(\n    \"agent_requests_total\",\n    \"Total agent requests\",\n    [\"status\", \"model\"],\n)\n\nREQUEST_LATENCY = Histogram(\n    \"agent_request_duration_seconds\",\n    \"Request latency\",\n    [\"endpoint\"],\n    buckets=[0.5, 1.0, 2.0, 3.0, 5.0, 10.0, 30.0],\n)\n\n# Token metrics\nTOKEN_USAGE = Counter(\n    \"agent_tokens_total\",\n    \"Total tokens used\",\n    [\"model\", \"type\"],  # type: prompt or completion\n)\n\nTOKEN_COST = Counter(\n    \"agent_cost_dollars_total\",\n    \"Total cost in USD\",\n    [\"model\"],\n)\n\n# RAG metrics\nRETRIEVAL_SCORE = Histogram(\n    \"agent_retrieval_score\",\n    \"RAG retrieval scores\",\n    buckets=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],\n)\n\nRETRIEVAL_LATENCY = Histogram(\n    \"agent_retrieval_latency_seconds\",\n    \"RAG retrieval latency\",\n    buckets=[0.05, 0.1, 0.25, 0.5, 1.0, 2.0],\n)\n\n# Tool metrics\nTOOL_CALL_COUNT = Counter(\n    \"agent_tool_calls_total\",\n    \"Total tool calls\",\n    [\"tool_name\", \"status\"],\n)\n\nTOOL_LATENCY = Histogram(\n    \"agent_tool_latency_seconds\",\n    \"Tool call latency\",\n    [\"tool_name\"],\n    buckets=[0.1, 0.25, 0.5, 1.0, 2.0, 5.0],\n)\n\n# Quality metrics\nQUALITY_SCORE = Gauge(\n    \"agent_quality_score\",\n    \"Quality score for responses\",\n    [\"metric\"],  # faithfulness, relevance, etc.\n)\n\nACTIVE_REQUESTS = Gauge(\n    \"agent_active_requests\",\n    \"Number of active requests being processed\",\n)\n\n# Usage in your agent\ndef track_request(func):\n    \"\"\"Decorator to track request metrics.\"\"\"\n    async def wrapper(*args, **kwargs):\n        ACTIVE_REQUESTS.inc()\n        start = time.time()\n        try:\n            result = await func(*args, **kwargs)\n            REQUEST_COUNT.labels(status=\"success\", model=\"gpt-4o\").inc()\n            return result\n        except Exception as e:\n            REQUEST_COUNT.labels(status=\"error\", model=\"gpt-4o\").inc()\n            raise\n        finally:\n            duration = time.time() - start\n            REQUEST_LATENCY.labels(endpoint=\"chat\").observe(duration)\n            ACTIVE_REQUESTS.dec()\n    return wrapper\n```\n\n---\n\n## 14.5 Cost Tracking\n\n### Token Pricing Reference\n\n| Model | Input (per 1M tokens) | Output (per 1M tokens) | Avg Cost/Request |\n|-------|----------------------|------------------------|-----------------|\n| GPT-4o | $2.50 | $10.00 | $0.005 - $0.02 |\n| GPT-4o-mini | $0.15 | $0.60 | $0.0002 - $0.001 |\n| Claude 3.5 Sonnet | $3.00 | $15.00 | $0.005 - $0.03 |\n| Claude 3.5 Haiku | $0.25 | $1.25 | $0.0003 - $0.002 |\n| text-embedding-3-small | $0.02 | - | $0.00001 |\n\n### Cost Tracker\n\n```python\n\"\"\"Cost tracking for AI agents.\"\"\"\n\nfrom dataclasses import dataclass\nfrom datetime import datetime, timedelta\nimport json\nfrom pathlib import Path\n\n@dataclass\nclass CostEntry:\n    timestamp: datetime\n    model: str\n    prompt_tokens: int\n    completion_tokens: int\n    cost_usd: float\n    request_id: str\n    user_id: str\n\nclass CostTracker:\n    \"\"\"Track and report AI agent costs.\"\"\"\n\n    # Pricing per 1M tokens\n    PRICING = {\n        \"gpt-4o\": {\"input\": 2.50, \"output\": 10.00},\n        \"gpt-4o-mini\": {\"input\": 0.15, \"output\": 0.60},\n        \"claude-3-5-sonnet\": {\"input\": 3.00, \"output\": 15.00},\n        \"claude-3-5-haiku\": {\"input\": 0.25, \"output\": 1.25},\n        \"text-embedding-3-small\": {\"input\": 0.02, \"output\": 0},\n        \"text-embedding-3-large\": {\"input\": 0.13, \"output\": 0},\n    }\n\n    def __init__(self, log_path: str = \"cost_log.jsonl\"):\n        self.log_path = Path(log_path)\n        self.entries: list[CostEntry] = []\n\n    def calculate_cost(self, model: str, prompt_tokens: int,\n                       completion_tokens: int) -\u003e float:\n        \"\"\"Calculate the cost of an LLM call.\"\"\"\n        pricing = self.PRICING.get(model)\n        if not pricing:\n            return 0.0\n\n        input_cost = (prompt_tokens / 1_000_000) * pricing[\"input\"]\n        output_cost = (completion_tokens / 1_000_000) * pricing[\"output\"]\n        return input_cost + output_cost\n\n    def log(self, model: str, prompt_tokens: int, completion_tokens: int,\n            request_id: str, user_id: str = \"\"):\n        \"\"\"Log a cost entry.\"\"\"\n        cost = self.calculate_cost(model, prompt_tokens, completion_tokens)\n\n        entry = CostEntry(\n            timestamp=datetime.now(),\n            model=model,\n            prompt_tokens=prompt_tokens,\n            completion_tokens=completion_tokens,\n            cost_usd=cost,\n            request_id=request_id,\n            user_id=user_id,\n        )\n        self.entries.append(entry)\n\n        # Append to log file\n        with open(self.log_path, \"a\") as f:\n            f.write(json.dumps({\n                \"timestamp\": entry.timestamp.isoformat(),\n                \"model\": model,\n                \"prompt_tokens\": prompt_tokens,\n                \"completion_tokens\": completion_tokens,\n                \"cost_usd\": cost,\n                \"request_id\": request_id,\n                \"user_id\": user_id,\n            }) + \"\\n\")\n\n        return cost\n\n    def report(self, period: timedelta = timedelta(hours=24)) -\u003e dict:\n        \"\"\"Generate a cost report for the given period.\"\"\"\n        cutoff = datetime.now() - period\n        recent = [e for e in self.entries if e.timestamp \u003e= cutoff]\n\n        if not recent:\n            return {\"total_cost\": 0, \"requests\": 0}\n\n        total_cost = sum(e.cost_usd for e in recent)\n        total_prompt = sum(e.prompt_tokens for e in recent)\n        total_completion = sum(e.completion_tokens for e in recent)\n\n        # Cost by model\n        by_model = {}\n        for entry in recent:\n            if entry.model not in by_model:\n                by_model[entry.model] = {\"cost\": 0, \"requests\": 0}\n            by_model[entry.model][\"cost\"] += entry.cost_usd\n            by_model[entry.model][\"requests\"] += 1\n\n        # Cost by user\n        by_user = {}\n        for entry in recent:\n            if entry.user_id not in by_user:\n                by_user[entry.user_id] = 0\n            by_user[entry.user_id] += entry.cost_usd\n\n        return {\n            \"period_hours\": period.total_seconds() / 3600,\n            \"total_cost_usd\": round(total_cost, 4),\n            \"total_requests\": len(recent),\n            \"avg_cost_per_request\": round(total_cost / len(recent), 6),\n            \"total_prompt_tokens\": total_prompt,\n            \"total_completion_tokens\": total_completion,\n            \"by_model\": by_model,\n            \"top_users_by_cost\": dict(\n                sorted(by_user.items(), key=lambda x: x[1], reverse=True)[:10]\n            ),\n        }\n\n    def check_budget(self, daily_budget: float = 100.0) -\u003e dict:\n        \"\"\"Check if we're within budget.\"\"\"\n        report = self.report(timedelta(hours=24))\n        cost = report[\"total_cost_usd\"]\n        return {\n            \"budget_usd\": daily_budget,\n            \"spent_usd\": cost,\n            \"remaining_usd\": round(daily_budget - cost, 4),\n            \"percent_used\": round((cost / daily_budget) * 100, 1),\n            \"on_track\": cost \u003c daily_budget,\n        }\n\n# Usage\ntracker = CostTracker()\n\n# During LLM calls\ncost = tracker.log(\n    model=\"gpt-4o\",\n    prompt_tokens=1200,\n    completion_tokens=200,\n    request_id=\"req_abc123\",\n    user_id=\"user_456\",\n)\nprint(f\"This call cost: ${cost:.6f}\")\n\n# Generate report\nprint(json.dumps(tracker.report(), indent=2))\nprint(json.dumps(tracker.check_budget(), indent=2))\n```\n\n---\n\n## 14.6 LangSmith Integration\n\nLangSmith is the leading observability platform for LLM applications.\n\n```python\n\"\"\"LangSmith integration for agent tracing.\"\"\"\n\nimport os\nos.environ[\"LANGCHAIN_TRACING_V2\"] = \"true\"\nos.environ[\"LANGCHAIN_API_KEY\"] = \"your-langsmith-api-key\"\nos.environ[\"LANGCHAIN_PROJECT\"] = \"agent-assist\"\n\nfrom langsmith import traceable\nfrom langchain_core.runnables import RunnableConfig\n\n@traceable(\n    name=\"agent_process_message\",\n    run_type=\"chain\",\n    tags=[\"production\", \"v1.0\"],\n)\nasync def process_message(message: str, user_id: str) -\u003e dict:\n    \"\"\"Process a message with LangSmith tracing.\"\"\"\n\n    # RAG retrieval (automatically traced)\n    docs = await traceable(\n        name=\"rag_retrieval\",\n        run_type=\"retriever\",\n    )(retrieve_docs)(message)\n\n    # LLM call (automatically traced)\n    response = await traceable(\n        name=\"llm_generation\",\n        run_type=\"llm\",\n        metadata={\"model\": \"gpt-4o\"},\n    )(generate_response)(message, docs)\n\n    return {\"response\": response, \"docs\": docs}\n\ndef retrieve_docs(query: str) -\u003e list[dict]:\n    \"\"\"Retrieve documents for RAG.\"\"\"\n    # Your retrieval logic\n    return []\n\ndef generate_response(query: str, docs: list[dict]) -\u003e str:\n    \"\"\"Generate a response.\"\"\"\n    # Your generation logic\n    return \"\"\n\n# Adding feedback\nfrom langsmith import Client\n\nclient = Client()\n\ndef record_feedback(run_id: str, score: int, comment: str = \"\"):\n    \"\"\"Record user feedback on a response.\"\"\"\n    client.create_feedback(\n        run_id=run_id,\n        key=\"user_rating\",\n        score=score,  # 1-5\n        comment=comment,\n    )\n```\n\n---\n\n## 14.7 LangFuse: Open-Source Observability\n\n```python\n\"\"\"LangFuse integration - open-source alternative to LangSmith.\"\"\"\n\nfrom langfuse import Langfuse\nfrom langfuse.decorators import observe\n\n# Initialize\nlangfuse = Langfuse(\n    public_key=\"your-public-key\",\n    secret_key=\"your-secret-key\",\n    host=\"https://cloud.langfuse.com\",  # or self-hosted\n)\n\n@observe(as_type=\"generation\")\ndef call_llm(messages: list[dict], model: str = \"gpt-4o\") -\u003e dict:\n    \"\"\"LLM call with LangFuse tracing.\"\"\"\n    import openai\n    client = openai.OpenAI()\n    response = client.chat.completions.create(\n        model=model,\n        messages=messages,\n    )\n    return response\n\n@observe()  # Automatically creates a trace\nasync def process_message(message: str) -\u003e dict:\n    \"\"\"Process message with full LangFuse tracing.\"\"\"\n    # RAG\n    docs = retrieve_docs(message)\n\n    # LLM\n    response = call_llm([\n        {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n        {\"role\": \"user\", \"content\": message},\n    ])\n\n    # Update trace with metadata\n    langfuse.trace(\n        user_id=\"user_123\",\n        metadata={\"docs_retrieved\": len(docs)},\n        tags=[\"production\"],\n    )\n\n    return {\"response\": response.choices[0].message.content}\n\n# Score responses\ndef score_response(trace_id: str, score: float, name: str = \"quality\"):\n    \"\"\"Score a trace for quality monitoring.\"\"\"\n    langfuse.score(\n        trace_id=trace_id,\n        name=name,\n        value=score,\n        comment=\"Automated quality score\",\n    )\n```\n\n---\n\n## 14.8 Latency Optimization\n\n### Where Time Is Spent\n\n```\nTYPICAL AGENT REQUEST TIMELINE (3.5 seconds total):\n\n0ms        50ms       150ms                 1200ms                2200ms      3500ms\n│──────────│──────────│─────────────────────│─────────────────────│───────────│\n│ Auth     │ Retrieve │ RAG + Rerank        │ LLM Call #1         │ LLM #2    │\n│ (50ms)   │ Embed    │ (100ms)             │ (1000ms)            │ (1300ms)  │\n│          │ (50ms)   │                     │                     │           │\n│          │          │                     │                     │           │\n│ OPTIMIZE │ OPTIMIZE │                     │ OPTIMIZE            │ OPTIMIZE  │\n│ Cache    │ Cache    │                     │ Stream, Cache       │ Fewer     │\n│          │          │                     │                     │ rounds    │\n```\n\n### Optimization Strategies\n\n```python\n\"\"\"Latency optimization strategies for AI agents.\"\"\"\n\nimport time\nfrom functools import lru_cache\n\n# Strategy 1: Embedding Cache\n# Cache query embeddings to avoid re-embedding repeated queries\nembedding_cache = {}\n\nasync def get_cached_embedding(text: str) -\u003e list[float]:\n    \"\"\"Get embedding with caching.\"\"\"\n    cache_key = hash(text)\n    if cache_key in embedding_cache:\n        return embedding_cache[cache_key]\n\n    embedding = await embed_text(text)\n    embedding_cache[cache_key] = embedding\n    return embedding\n\n# Strategy 2: Response Streaming\n# Start sending tokens to the user immediately\nasync def stream_response(messages: list[dict]):\n    \"\"\"Stream LLM response for perceived speed.\"\"\"\n    stream = await client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=messages,\n        stream=True,  # Enable streaming\n    )\n    async for chunk in stream:\n        if chunk.choices[0].delta.content:\n            yield chunk.choices[0].delta.content\n\n# Strategy 3: Async Tool Calls\n# Execute independent tool calls in parallel\nimport asyncio\n\nasync def execute_tools_parallel(tool_calls: list[dict]) -\u003e list[dict]:\n    \"\"\"Execute multiple tool calls concurrently.\"\"\"\n    tasks = []\n    for call in tool_calls:\n        tool = get_tool(call[\"name\"])\n        tasks.append(tool.execute(**call[\"args\"]))\n\n    results = await asyncio.gather(*tasks, return_exceptions=True)\n\n    return [\n        {\"tool\": call[\"name\"], \"result\": result}\n        for call, result in zip(tool_calls, results)\n    ]\n\n# Strategy 4: Predictive Prefetch\n# Start RAG retrieval before the user finishes typing\nclass PrefetchManager:\n    \"\"\"Prefetch likely RAG results.\"\"\"\n\n    def __init__(self):\n        self.cache = {}\n\n    async def prefetch(self, partial_query: str):\n        \"\"\"Prefetch results for common query prefixes.\"\"\"\n        # Map common prefixes to full queries\n        common_prefixes = {\n            \"how do i\": [\"how do i reset my password\", \"how do i track my order\"],\n            \"what is\": [\"what is your return policy\", \"what is your shipping time\"],\n            \"where\": [\"where is my order\", \"where are you located\"],\n        }\n\n        for prefix, queries in common_prefixes.items():\n            if partial_query.lower().startswith(prefix):\n                for query in queries:\n                    if query not in self.cache:\n                        self.cache[query] = await self._retrieve(query)\n\n    async def get_prefetched(self, query: str) -\u003e list[dict] | None:\n        return self.cache.get(query)\n```\n\n---\n\n## 14.9 Caching Strategies\n\n### Semantic Caching\n\n```python\n\"\"\"Semantic caching - cache based on meaning, not exact text.\"\"\"\n\nimport numpy as np\nfrom sentence_transformers import SentenceTransformer\n\nclass SemanticCache:\n    \"\"\"Cache responses based on query similarity.\"\"\"\n\n    def __init__(self, similarity_threshold: float = 0.92):\n        self.model = SentenceTransformer(\"all-MiniLM-L6-v2\")\n        self.cache: list[dict] = []\n        self.threshold = similarity_threshold\n\n    def _embed(self, text: str) -\u003e list[float]:\n        return self.model.encode([text])[0].tolist()\n\n    def _similarity(self, a: list[float], b: list[float]) -\u003e float:\n        a, b = np.array(a), np.array(b)\n        return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))\n\n    def get(self, query: str) -\u003e dict | None:\n        \"\"\"Find a cached response for a semantically similar query.\"\"\"\n        query_embedding = self._embed(query)\n\n        for entry in self.cache:\n            sim = self._similarity(query_embedding, entry[\"embedding\"])\n            if sim \u003e= self.threshold:\n                return {\n                    \"response\": entry[\"response\"],\n                    \"cached\": True,\n                    \"similarity\": sim,\n                    \"original_query\": entry[\"query\"],\n                }\n\n        return None\n\n    def set(self, query: str, response: str):\n        \"\"\"Cache a query-response pair.\"\"\"\n        self.cache.append({\n            \"query\": query,\n            \"response\": response,\n            \"embedding\": self._embed(query),\n            \"timestamp\": time.time(),\n        })\n\n    def clear_old(self, max_age_seconds: int = 3600):\n        \"\"\"Remove stale cache entries.\"\"\"\n        cutoff = time.time() - max_age_seconds\n        self.cache = [e for e in self.cache if e[\"timestamp\"] \u003e cutoff]\n\n# Usage\ncache = SemanticCache(similarity_threshold=0.90)\n\nasync def cached_agent(query: str) -\u003e dict:\n    \"\"\"Agent with semantic caching.\"\"\"\n    # Check cache\n    cached = cache.get(query)\n    if cached:\n        return {\n            \"response\": cached[\"response\"],\n            \"source\": \"cache\",\n            \"latency_ms\": 1,  # Near-instant\n        }\n\n    # Cache miss - generate response\n    response = await agent.generate(query)\n    cache.set(query, response)\n\n    return {\n        \"response\": response,\n        \"source\": \"llm\",\n        \"latency_ms\": 1200,\n    }\n```\n\n### Response Caching with Redis\n\n```python\nimport redis\nimport hashlib\nimport json\n\nclass ResponseCache:\n    \"\"\"Redis-based response cache with TTL.\"\"\"\n\n    def __init__(self, redis_url: str = \"redis://localhost:6379\"):\n        self.redis = redis.from_url(redis_url)\n        self.default_ttl = 3600  # 1 hour\n\n    def _key(self, query: str, model: str) -\u003e str:\n        content = f\"{model}:{query}\"\n        return f\"rag_cache:{hashlib.sha256(content.encode()).hexdigest()}\"\n\n    def get(self, query: str, model: str) -\u003e dict | None:\n        \"\"\"Get cached response.\"\"\"\n        key = self._key(query, model)\n        cached = self.redis.get(key)\n        if cached:\n            return json.loads(cached)\n        return None\n\n    def set(self, query: str, model: str, response: dict, ttl: int = None):\n        \"\"\"Cache a response.\"\"\"\n        key = self._key(query, model)\n        self.redis.setex(\n            key,\n            ttl or self.default_ttl,\n            json.dumps(response),\n        )\n\n    def invalidate(self, pattern: str = \"rag_cache:*\"):\n        \"\"\"Invalidate cache entries matching pattern.\"\"\"\n        keys = self.redis.keys(pattern)\n        if keys:\n            self.redis.delete(*keys)\n\n    def stats(self) -\u003e dict:\n        \"\"\"Get cache statistics.\"\"\"\n        keys = self.redis.keys(\"rag_cache:*\")\n        return {\n            \"total_entries\": len(keys),\n            \"memory_used\": self.redis.info(\"memory\")[\"used_memory_human\"],\n        }\n```\n\n---\n\n## 14.10 Rate Limiting\n\n```python\n\"\"\"Rate limiting for AI agents.\"\"\"\n\nimport time\nfrom collections import defaultdict\n\nclass RateLimiter:\n    \"\"\"Token bucket rate limiter.\"\"\"\n\n    def __init__(self, max_requests: int, window_seconds: int = 60):\n        self.max_requests = max_requests\n        self.window = window_seconds\n        self.requests: dict[str, list[float]] = defaultdict(list)\n\n    def allow(self, identifier: str) -\u003e dict:\n        \"\"\"Check if a request is allowed.\"\"\"\n        now = time.time()\n        window_start = now - self.window\n\n        # Clean old entries\n        self.requests[identifier] = [\n            t for t in self.requests[identifier] if t \u003e window_start\n        ]\n\n        current = len(self.requests[identifier])\n\n        if current \u003e= self.max_requests:\n            retry_after = self.requests[identifier][0] + self.window - now\n            return {\n                \"allowed\": False,\n                \"remaining\": 0,\n                \"retry_after_seconds\": max(0, retry_after),\n            }\n\n        self.requests[identifier].append(now)\n        return {\n            \"allowed\": True,\n            \"remaining\": self.max_requests - current - 1,\n            \"retry_after_seconds\": 0,\n        }\n\nclass CostRateLimiter:\n    \"\"\"Rate limit based on API cost, not just request count.\"\"\"\n\n    def __init__(self, daily_budget: float = 50.0):\n        self.daily_budget = daily_budget\n        self.spent_today: dict[str, float] = defaultdict(float)\n        self.reset_date = time.strftime(\"%Y-%m-%d\")\n\n    def check_budget(self, user_id: str, estimated_cost: float) -\u003e dict:\n        \"\"\"Check if user is within their budget.\"\"\"\n        # Reset daily\n        today = time.strftime(\"%Y-%m-%d\")\n        if today != self.reset_date:\n            self.spent_today.clear()\n            self.reset_date = today\n\n        current_spend = self.spent_today[user_id]\n        if current_spend + estimated_cost \u003e self.daily_budget:\n            return {\n                \"allowed\": False,\n                \"reason\": \"daily_budget_exceeded\",\n                \"current_spend\": current_spend,\n                \"budget\": self.daily_budget,\n            }\n\n        self.spent_today[user_id] += estimated_cost\n        return {\n            \"allowed\": True,\n            \"current_spend\": self.spent_today[user_id],\n            \"budget\": self.daily_budget,\n        }\n```\n\n---\n\n## 14.11 Horizontal Scaling\n\n### Scaling Architecture\n\n```\nHORIZONTAL SCALING:\n\n┌──────────┐\n│  Users   │\n└────┬─────┘\n     │\n     ▼\n┌──────────────┐\n│ Load Balancer│\n│  (Round Robin)│\n└──┬───┬───┬───┘\n   │   │   │\n   ▼   ▼   ▼\n┌───┐┌───┐┌───┐\n│ A1││ A2││ A3│  Agent Instances (stateless)\n└─┬─┘└─┬─┘└─┬─┘\n  │    │    │\n  └────┼────┘\n       │\n   ┌───▼───┐\n   │Shared │\n   │  Data │\n   │ Layer │\n   │┌─────┐│\n   ││Redis││  (Session cache)\n   │├─────┤│\n   ││ Post ││  (Conversation history)\n   ││gres  ││\n   │├─────┤│\n   ││Chroma││  (Vector store)\n   │└─────┘│\n   └───────┘\n```\n\n### Stateless Agent Design\n\n```python\n\"\"\"Stateless agent design for horizontal scaling.\"\"\"\n\nclass StatelessAgent:\n    \"\"\"Agent that stores no state locally - all state is external.\"\"\"\n\n    def __init__(self):\n        self.redis = redis.from_url(\"redis://redis:6379\")\n        self.db = PostgreSQL(\"postgresql://db:5432/agentassist\")\n        self.vector_store = Chroma(\"chroma:8000\")\n\n    async def process(self, message: str, conversation_id: str) -\u003e dict:\n        \"\"\"Process a message using only external state.\"\"\"\n        # Load state from Redis/DB\n        history = await self._load_history(conversation_id)\n\n        # Process (no local state mutation)\n        response = await self._generate(message, history)\n\n        # Save state to Redis/DB\n        await self._save_history(conversation_id, message, response)\n\n        return response\n\n    async def _load_history(self, conversation_id: str) -\u003e list[dict]:\n        \"\"\"Load conversation history from Redis.\"\"\"\n        cached = self.redis.get(f\"conv:{conversation_id}\")\n        if cached:\n            return json.loads(cached)\n        # Fall back to database\n        return await self.db.get_messages(conversation_id)\n\n    async def _save_history(self, conversation_id: str, user_msg: str,\n                           assistant_msg: str):\n        \"\"\"Save to both Redis (fast) and database (persistent).\"\"\"\n        # Save to database\n        await self.db.save_message(conversation_id, \"user\", user_msg)\n        await self.db.save_message(conversation_id, \"assistant\", assistant_msg)\n\n        # Update Redis cache\n        history = await self._load_history(conversation_id)\n        history.append({\"role\": \"user\", \"content\": user_msg})\n        history.append({\"role\": \"assistant\", \"content\": assistant_msg})\n        self.redis.setex(\n            f\"conv:{conversation_id}\",\n            3600,  # 1 hour TTL\n            json.dumps(history),\n        )\n```\n\n---\n\n## 14.12 Auto-Scaling\n\n```python\n\"\"\"Auto-scaling configuration for agent systems.\"\"\"\n\n# Kubernetes HPA (Horizontal Pod Autoscaler)\nHPA_CONFIG = \"\"\"\napiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: agent-assist-hpa\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: agent-assist\n  minReplicas: 2\n  maxReplicas: 10\n  metrics:\n    - type: Resource\n      resource:\n        name: cpu\n        target:\n          type: Utilization\n          averageUtilization: 70\n    - type: Resource\n      resource:\n        name: memory\n        target:\n          type: Utilization\n          averageUtilization: 80\n    - type: Pods\n      pods:\n        metric:\n          name: agent_active_requests\n        target:\n          type: AverageValue\n          averageValue: \"20\"\n  behavior:\n    scaleUp:\n      stabilizationWindowSeconds: 60\n      policies:\n        - type: Pods\n          value: 2\n          periodSeconds: 60\n    scaleDown:\n      stabilizationWindowSeconds: 300\n      policies:\n        - type: Percent\n          value: 10\n          periodSeconds: 60\n\"\"\"\n\n# GCP Cloud Run auto-scaling\nCLOUD_RUN_CONFIG = \"\"\"\ngcloud run deploy agent-assist \\\n  --min-instances=1 \\\n  --max-instances=50 \\\n  --concurrency=80 \\\n  --cpu=2 \\\n  --memory=4Gi \\\n  --autoscaling-window=60s\n\"\"\"\n```\n\n---\n\n## 14.13 Adding Tracing to an Agent\n\nHere is the complete tracing implementation to add to any agent:\n\n```python\n\"\"\"Complete tracing implementation for AI agents.\"\"\"\n\nimport time\nimport uuid\nimport json\nfrom dataclasses import dataclass, field, asdict\nfrom typing import Any\nfrom contextlib import asynccontextmanager\n\n@dataclass\nclass Span:\n    \"\"\"A single span in a trace.\"\"\"\n    name: str\n    start_time: float = field(default_factory=time.time)\n    end_time: float = 0.0\n    attributes: dict[str, Any] = field(default_factory=dict)\n    status: str = \"ok\"\n    children: list[\"Span\"] = field(default_factory=list)\n\n    def finish(self, status: str = \"ok\"):\n        self.end_time = time.time()\n        self.status = status\n\n    @property\n    def duration_ms(self) -\u003e float:\n        if self.end_time == 0:\n            return (time.time() - self.start_time) * 1000\n        return (self.end_time - self.start_time) * 1000\n\n    def to_dict(self) -\u003e dict:\n        return {\n            \"name\": self.name,\n            \"duration_ms\": round(self.duration_ms, 2),\n            \"status\": self.status,\n            \"attributes\": self.attributes,\n            \"children\": [c.to_dict() for c in self.children],\n        }\n\n@dataclass\nclass Trace:\n    \"\"\"A complete trace of an agent interaction.\"\"\"\n    trace_id: str = field(default_factory=lambda: str(uuid.uuid4())[:12])\n    start_time: float = field(default_factory=time.time)\n    spans: list[Span] = field(default_factory=list)\n    attributes: dict[str, Any] = field(default_factory=dict)\n\n    @asynccontextmanager\n    async def span(self, name: str, **attributes):\n        \"\"\"Context manager for creating spans.\"\"\"\n        s = Span(name=name, attributes=attributes)\n        self.spans.append(s)\n        try:\n            yield s\n        except Exception as e:\n            s.finish(status=\"error\")\n            s.attributes[\"error\"] = str(e)\n            raise\n        else:\n            s.finish()\n\n    @property\n    def total_duration_ms(self) -\u003e float:\n        return (time.time() - self.start_time) * 1000\n\n    def to_dict(self) -\u003e dict:\n        return {\n            \"trace_id\": self.trace_id,\n            \"total_duration_ms\": round(self.total_duration_ms, 2),\n            \"attributes\": self.attributes,\n            \"spans\": [s.to_dict() for s in self.spans],\n        }\n\n    def to_json(self) -\u003e str:\n        return json.dumps(self.to_dict(), indent=2)\n\n    def log_summary(self):\n        \"\"\"Print a summary of the trace.\"\"\"\n        print(f\"\\n{'='*60}\")\n        print(f\"TRACE {self.trace_id}\")\n        print(f\"{'='*60}\")\n        for span in self.spans:\n            status_icon = \"OK\" if span.status == \"ok\" else \"ERR\"\n            print(f\"  [{status_icon}] {span.name}: {span.duration_ms:.0f}ms\")\n            for key, value in span.attributes.items():\n                print(f\"       {key}: {value}\")\n        print(f\"  TOTAL: {self.total_duration_ms:.0f}ms\")\n        print(f\"{'='*60}\\n\")\n\n\n# Usage in your agent\nasync def traced_agent_process(message: str, user_id: str) -\u003e dict:\n    \"\"\"Process a message with full tracing.\"\"\"\n    trace = Trace(attributes={\"user_id\": user_id, \"message_length\": len(message)})\n\n    # RAG retrieval\n    async with trace.span(\"rag_retrieval\") as s:\n        docs = await retriever.retrieve(message)\n        s.attributes[\"chunks\"] = len(docs)\n        s.attributes[\"top_score\"] = docs[0][\"score\"] if docs else 0\n\n    # LLM call\n    async with trace.span(\"llm_call\", model=\"gpt-4o\") as s:\n        response = await llm.generate(message, docs)\n        s.attributes[\"prompt_tokens\"] = response.usage.prompt_tokens\n        s.attributes[\"completion_tokens\"] = response.usage.completion_tokens\n        s.attributes[\"cost_usd\"] = calculate_cost(\n            \"gpt-4o\",\n            response.usage.prompt_tokens,\n            response.usage.completion_tokens,\n        )\n\n    trace.log_summary()\n\n    return {\n        \"response\": response.text,\n        \"trace\": trace.to_dict(),\n    }\n```\n\n---\n\n## 14.14 Caching Layer Implementation\n\nHere is a complete, production-ready caching layer:\n\n```python\n\"\"\"Complete caching layer for RAG systems.\"\"\"\n\nimport hashlib\nimport json\nimport time\nimport numpy as np\nfrom sentence_transformers import SentenceTransformer\n\nclass RAGCacheLayer:\n    \"\"\"Multi-level caching for RAG pipelines.\"\"\"\n\n    def __init__(self, redis_client=None, similarity_threshold: float = 0.92):\n        self.redis = redis_client\n        self.similarity_threshold = similarity_threshold\n        self.embed_model = SentenceTransformer(\"all-MiniLM-L6-v2\")\n\n        # In-memory cache as L1 (fastest)\n        self.l1_cache: dict[str, dict] = {}\n        self.l1_max_size = 1000\n\n        # Statistics\n        self.stats = {\"hits\": 0, \"misses\": 0, \"l1_hits\": 0, \"l2_hits\": 0}\n\n    async def get(self, query: str) -\u003e dict | None:\n        \"\"\"Try to find a cached response.\"\"\"\n        # L1: Exact match (in-memory)\n        exact_key = self._exact_key(query)\n        if exact_key in self.l1_cache:\n            entry = self.l1_cache[exact_key]\n            if not self._is_expired(entry):\n                self.stats[\"hits\"] += 1\n                self.stats[\"l1_hits\"] += 1\n                return {**entry[\"response\"], \"cache_level\": \"L1_exact\"}\n\n        # L2: Semantic match (in-memory)\n        query_emb = self.embed_model.encode([query])[0]\n        for key, entry in self.l1_cache.items():\n            if not self._is_expired(entry):\n                sim = self._similarity(query_emb, entry[\"embedding\"])\n                if sim \u003e= self.similarity_threshold:\n                    self.stats[\"hits\"] += 1\n                    self.stats[\"l1_hits\"] += 1\n                    return {\n                        **entry[\"response\"],\n                        \"cache_level\": \"L1_semantic\",\n                        \"similarity\": sim,\n                    }\n\n        # L3: Redis cache (if available)\n        if self.redis:\n            redis_result = self._redis_get(query)\n            if redis_result:\n                self.stats[\"hits\"] += 1\n                self.stats[\"l2_hits\"] += 1\n                return {**redis_result, \"cache_level\": \"L2_redis\"}\n\n        self.stats[\"misses\"] += 1\n        return None\n\n    async def set(self, query: str, response: dict, ttl: int = 3600):\n        \"\"\"Cache a query-response pair.\"\"\"\n        entry = {\n            \"query\": query,\n            \"response\": response,\n            \"embedding\": self.embed_model.encode([query])[0].tolist(),\n            \"timestamp\": time.time(),\n            \"ttl\": ttl,\n        }\n\n        # Store in L1\n        if len(self.l1_cache) \u003e= self.l1_max_size:\n            # Evict oldest\n            oldest_key = min(self.l1_cache, key=lambda k: self.l1_cache[k][\"timestamp\"])\n            del self.l1_cache[oldest_key]\n\n        self.l1_cache[self._exact_key(query)] = entry\n\n        # Store in L2 (Redis)\n        if self.redis:\n            self._redis_set(query, response, ttl)\n\n    def _exact_key(self, query: str) -\u003e str:\n        return hashlib.sha256(query.lower().strip().encode()).hexdigest()\n\n    def _similarity(self, a: np.ndarray, b: list[float]) -\u003e float:\n        b = np.array(b)\n        return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))\n\n    def _is_expired(self, entry: dict) -\u003e bool:\n        return time.time() - entry[\"timestamp\"] \u003e entry.get(\"ttl\", 3600)\n\n    def _redis_get(self, query: str) -\u003e dict | None:\n        key = f\"rag:{self._exact_key(query)}\"\n        cached = self.redis.get(key)\n        return json.loads(cached) if cached else None\n\n    def _redis_set(self, query: str, response: dict, ttl: int):\n        key = f\"rag:{self._exact_key(query)}\"\n        self.redis.setex(key, ttl, json.dumps(response))\n\n    def get_stats(self) -\u003e dict:\n        total = self.stats[\"hits\"] + self.stats[\"misses\"]\n        return {\n            **self.stats,\n            \"hit_rate\": f\"{(self.stats['hits']/total*100):.1f}%\" if total \u003e 0 else \"0%\",\n            \"l1_entries\": len(self.l1_cache),\n        }\n```\n\n---\n\n## 14.15 Monitoring Dashboard Design\n\n### Dashboard Layout\n\n```\n┌─────────────────────────────────────────────────────────────────────────────┐\n│  AGENT MONITORING DASHBOARD                                  Last 24 Hours │\n├─────────────────────────────────────────────────────────────────────────────┤\n│                                                                              │\n│  ┌─── TOP ROW: Key Numbers ─────────────────────────────────────────────┐  │\n│  │                                                                       │  │\n│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  │  │\n│  │  │ 12,847  │  │  98.2%  │  │  $42.30 │  │  2.1s   │  │  4.2M   │  │  │\n│  │  │Requests │  │  Uptime │  │  Cost   │  │Avg Lat  │  │ Tokens  │  │  │\n│  │  │  +12%   │  │  +0.1%  │  │  -8%    │  │  -15%   │  │  +5%    │  │  │\n│  │  └─────────┘  └─────────┘  └─────────┘  └─────────┘  └─────────┘  │  │\n│  └──────────────────────────────────────────────────────────────────────┘  │\n│                                                                              │\n│  ┌─── MIDDLE ROW: Time Series ─────────────────────────────────────────┐   │\n│  │                                                                       │   │\n│  │  Requests/min ────────────────  Latency (P50/P95/P99) ────────────  │   │\n│  │  ┌──────────────────────┐     ┌──────────────────────┐              │   │\n│  │  │  ▁▁▂▂▃▃▂▂▁▁▂▃▅▃▂▁  │     │  ──P50──P95──P99──  │              │   │\n│  │  │                      │     │  ────2s──4s──8s────  │              │   │\n│  │  │  120/min avg         │     │                      │              │   │\n│  │  └──────────────────────┘     └──────────────────────┘              │   │\n│  │                                                                       │   │\n│  │  Error Rate ─────────────────  Cost/Hour ─────────────────────────  │   │\n│  │  ┌──────────────────────┐     ┌──────────────────────┐              │   │\n│  │  │  ▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁  │     │  ▁▂▃▅▇█▇▅▃▂▁▁▂▃▅  │              │   │\n│  │  │  1.8% avg            │     │  $1.76/hr avg         │              │   │\n│  │  └──────────────────────┘     └──────────────────────┘              │   │\n│  └──────────────────────────────────────────────────────────────────────┘  │\n│                                                                              │\n│  ┌─── BOTTOM ROW: Breakdowns ──────────────────────────────────────────┐   │\n│  │                                                                       │   │\n│  │  Top Queries ────────────────  Tool Usage ────────────────────────  │   │\n│  │  1. \"track my order\" (342)    │  order_lookup:  ████████░░ 3421   │   │\n│  │  2. \"return policy\" (287)     │  product_search: █████░░░░░ 2156  │   │\n│  │  3. \"reset password\" (198)    │  create_ticket:  ██░░░░░░░░  892  │   │\n│  │  4. \"shipping time\" (156)     │                                    │   │\n│  │  5. \"cancel order\" (134)      │  Success Rate: 98.7%              │   │\n│  │                                                                       │   │\n│  │  Model Usage ────────────────  Cache Hit Rate ────────────────────  │   │\n│  │  gpt-4o:     65%              │  L1 (exact):    45%               │   │\n│  │  gpt-4o-mini: 30%             │  L2 (semantic): 25%               │   │\n│  │  claude:      5%              │  Miss:          30%               │   │\n│  └──────────────────────────────────────────────────────────────────────┘  │\n└─────────────────────────────────────────────────────────────────────────────┘\n```\n\n### Grafana Dashboard Config (JSON)\n\n```json\n{\n  \"dashboard\": {\n    \"title\": \"AgentAssist Monitoring\",\n    \"panels\": [\n      {\n        \"title\": \"Requests per Minute\",\n        \"type\": \"timeseries\",\n        \"targets\": [{\n          \"expr\": \"rate(agent_requests_total[5m])\",\n          \"legendFormat\": \"{{status}}\"\n        }]\n      },\n      {\n        \"title\": \"Response Latency P95\",\n        \"type\": \"timeseries\",\n        \"targets\": [{\n          \"expr\": \"histogram_quantile(0.95, rate(agent_request_duration_seconds_bucket[5m]))\",\n          \"legendFormat\": \"P95\"\n        }]\n      },\n      {\n        \"title\": \"Token Usage\",\n        \"type\": \"timeseries\",\n        \"targets\": [{\n          \"expr\": \"rate(agent_tokens_total[5m])\",\n          \"legendFormat\": \"{{model}}/{{type}}\"\n        }]\n      },\n      {\n        \"title\": \"Cost per Hour\",\n        \"type\": \"timeseries\",\n        \"targets\": [{\n          \"expr\": \"rate(agent_cost_dollars_total[1h])\",\n          \"legendFormat\": \"{{model}}\"\n        }]\n      },\n      {\n        \"title\": \"Error Rate\",\n        \"type\": \"gauge\",\n        \"targets\": [{\n          \"expr\": \"rate(agent_requests_total{status='error'}[5m]) / rate(agent_requests_total[5m])\",\n          \"legendFormat\": \"Error %\"\n        }]\n      }\n    ]\n  }\n}\n```\n\n---\n\n## 14.16 Key Takeaways\n\n1. **Observability is not optional**. You cannot debug what you cannot see. Add logging, metrics, and tracing from day one.\n\n2. **Log everything that matters**. User inputs, RAG retrieval scores, LLM calls, tool invocations, errors, and costs. Use structured logging (JSON), not plain text.\n\n3. **Distributed tracing reveals the full picture**. When a request flows through RAG, LLM, tools, and back, you need to see the entire journey. Use OpenTelemetry or LangSmith.\n\n4. **Track costs relentlessly**. LLM costs can spiral. Track per-request, per-user, per-model costs. Set budget alerts.\n\n5. **Cache aggressively**. Semantic caching, response caching, and embedding caching can reduce costs by 50%+ and latency by 90%+.\n\n6. **Stream responses**. Users perceive streaming as instant. Never make them wait for the full response.\n\n7. **Rate limit by cost, not just count**. One expensive GPT-4o call costs more than 100 GPT-4o-mini calls. Limit by budget.\n\n8. **Scale statelessly**. Store all state externally (Redis, PostgreSQL, vector store). Any instance can handle any request.\n\n9. **Auto-scale on the right metrics**. CPU and memory are good. Active requests per instance is better for AI workloads.\n\n10. **Build dashboards for action**. Every number on your dashboard should trigger a decision: scale up, investigate, or celebrate.\n\n---\n\n## 14.17 Try It Yourself\n\n### Exercise 1: Add Tracing to Your Agent\nTake the tracing implementation from Section 14.13 and add it to your agent. Run 10 requests and analyze the trace output. Where is time being spent?\n\n### Exercise 2: Cost Calculator\nBuild a cost calculator that estimates the cost of your agent for different usage levels (100, 1000, 10000 requests/day). What is the monthly cost?\n\n### Exercise 3: Semantic Cache Test\nImplement semantic caching (Section 14.9). Run 50 queries, of which 20 are near-duplicates. Measure the cache hit rate and cost savings.\n\n### Exercise 4: Rate Limiter\nBuild a cost-based rate limiter that limits each user to $1/day. Test it with 10 requests of varying costs.\n\n### Exercise 5: Design a Dashboard\nDesign a monitoring dashboard for your agent using the layout in Section 14.15. What metrics would you prioritize? What alerts would you set?\n\n---\n\n\u003e **Next Chapter**: We explore the future of AI agents — authenticity, trust, the agent economy, and what it all means for your career.\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"div\",null,{\"children\":[\"$\",\"$Lf\",null,{\"content\":\"$10\",\"currentChapter\":{\"id\":\"agents-ch-14\",\"number\":14,\"title\":\"Observability \u0026 Scalability\",\"subtitle\":\"Monitoring, Scaling, and Optimizing Agent Systems\",\"description\":\"Implement logging, tracing, cost tracking, caching, and horizontal scaling for production agent systems.\",\"slug\":\"observability-and-scalability\",\"part\":\"Part IV: Production\",\"estimatedPages\":20,\"topics\":[\"Logging \u0026 tracing\",\"Cost tracking\",\"Latency optimization\",\"Caching strategies\",\"Rate limiting\",\"Horizontal scaling\"],\"icon\":\"📈\",\"bookId\":\"ai-agents\"}}]}]\n"])</script><script>self.__next_f.push([1,"a:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"7:null\nc:[[\"$\",\"title\",\"0\",{\"children\":\"AI Agents: The Complete Guide\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi\"}],[\"$\",\"meta\",\"2\",{\"name\":\"author\",\"content\":\"Manjunath Kalburgi\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi\"}]]\n"])</script></body></html>

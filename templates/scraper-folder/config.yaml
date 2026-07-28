@@ -1,0 +1,176 @@
+# AI Automation Job Scraper Configuration
+# Searches for high-paying remote AI automation jobs with few applicants
+
+test:
+  enabled: false
+  data_source: "./test_data.json"
+  skip_external_api: true
+  use_mock_data: true
+
+search:
+  # Keywords matching Manjunath's resume skills (trimmed for speed)
+  queries:
+    # Core frontend/fullstack
+    - "React developer remote"
+    - "Next.js developer"
+    - "Node.js developer"
+    - "Full stack developer React Node"
+    # AI automation & workflow
+    - "n8n automation developer"
+    - "Make.com automation"
+    - "AI automation specialist"
+    - "workflow automation engineer"
+    # AI/LLM integration
+    - "LLM integration developer"
+    - "prompt engineer"
+    - "Claude AI developer"
+    - "LangChain developer"
+    - "Senior Staff Engineer"
+    # Backend & Cloud
+    - "Python developer remote"
+    - "cloud engineer GCP Azure AWS"
+
+  location: "Bangalore, India"
+  remote_only: true
+  job_type: "full_time"  # full_time, part_time, contract, temporary
+
+# Filters
+filters:
+  # Salary range (USD) - ₹60 lakhs ≈ $72k USD minimum
+  salary_min: 80000
+  salary_max: 500000
+
+  # Maximum number of applicants (fewer = less competition)
+  max_applicants: 50
+
+  # Exclude these keywords from job descriptions
+  exclude_keywords:
+    - "requires US citizenship"
+    - "US citizenship required"
+    - "requires security clearance"
+    - "top secret"
+    - "10+ years experience"
+
+  # Must-have keywords (at least one) - broadened for India/Remote
+  required_keywords:
+    - "remote"
+    - "React"
+    - "Next.js"
+    - "TypeScript"
+    - "Node.js"
+    - "Python"
+    - "n8n"
+    - "automation"
+    - "AI"
+    - "workflow"
+    - "LLM"
+    - "Claude"
+    - "OpenAI"
+    - "GPT"
+    - "Make"
+    - "Zapier"
+    - "no-code"
+    - "low-code"
+    - "GraphQL"
+    - "cloud"
+    - "AWS"
+    - "Azure"
+    - "GCP"
+
+# Skills tracked from Manjunath's resume
+tracked_skills:
+  # Frontend
+  - "React"
+  - "React.js"
+  - "Next.js"
+  - "Redux"
+  - "Angular"
+  - "TypeScript"
+  - "JavaScript"
+  - "ES6"
+  - "HTML5"
+  - "CSS3"
+  - "Tailwind CSS"
+  # Backend
+  - "Node.js"
+  - "Express.js"
+  - "Python"
+  - "C#"
+  - ".NET"
+  - "GraphQL"
+  - "REST API"
+  # AI/LLM
+  - "OpenAI"
+  - "GPT"
+  - "GPT-4"
+  - "Claude"
+  - "Claude Code"
+  - "Gemini"
+  - "Google Gemini"
+  - "LangChain"
+  - "LangChain.js"
+  - "prompt engineering"
+  - "LLM integration"
+  # Automation
+  - "n8n"
+  - "Make"
+  - "Make.com"
+  - "Zapier"
+  - "workflow automation"
+  - "no-code"
+  - "low-code"
+  # Cloud & DevOps
+  - "GCP"
+  - "Google Cloud"
+  - "Azure"
+  - "Azure DevOps"
+  - "AWS"
+  - "GitHub Actions"
+  - "CI/CD"
+  # Databases
+  - "MongoDB"
+  - "MySQL"
+  # Testing
+  - "Jest"
+  - "Cypress"
+  - "Selenium"
+  # CMS/Platforms
+  - "AEM"
+  - "Adobe Experience Manager"
+  - "Salesforce"
+
+# Storage
+storage:
+  format: "jsonl"  # jsonl, csv, sqlite
+  data_dir: "./data"
+  keep_days: 90  # days to keep old data
+
+# Scheduling
+schedule:
+  enabled: true
+  cron: "0 * * * *"  # Every hour at the start of the hour (every 1hr)
+  timezone: "UTC"
+
+# Apify settings
+apify:
+  actor_id: "apify/linkedin-jobs-scraper"
+  timeout_secs: 60
+  memory_mbytes: 1024
+  max_items: 100
+
+# Export
+export:
+  top_n: 15  # number of top jobs to export
+  formats:
+    - "csv"
+    - "json"
+
+# Google Drive upload
+google_drive:
+  enabled: true
+  credentials_file: "./credentials.json"
+  token_file: "./token.json"
+  folder_id: "1-1iuCz6yGYg_DYUxJFozIGIaZtMpE6R2"
+  upload_formats:
+    - "csv"
+    - "json"

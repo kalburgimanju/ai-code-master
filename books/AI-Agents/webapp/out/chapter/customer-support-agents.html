@@ -1,0 +1,1833 @@
+<!DOCTYPE html><html lang="en" class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/chunks/157per-6rfej7.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/3s_ssfmklbvuh.js"/><script src="/_next/static/chunks/3h0oyn0exvw0m.js" async=""></script><script src="/_next/static/chunks/0gy5uo_6oz9q4.js" async=""></script><script src="/_next/static/chunks/2n-c2rhkbzx6r.js" async=""></script><script src="/_next/static/chunks/turbopack-10u0tugcn5e6r.js" async=""></script><script src="/_next/static/chunks/3j2brc7c8hat8.js" async=""></script><script src="/_next/static/chunks/05b0208rfh8ys.js" async=""></script><script src="/_next/static/chunks/16vgld9iclosn.js" async=""></script><script src="/_next/static/chunks/2rb1230i-fez-.js" async=""></script><meta name="next-size-adjust" content=""/><title>AI Agents: The Complete Guide</title><meta name="description" content="A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi"/><meta name="author" content="Manjunath Kalburgi"/><meta name="keywords" content="AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi"/><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body class="min-h-full flex flex-col"><div hidden=""><!--$--><!--/$--></div><div><div class="reading-progress" style="width:0%"></div><nav class="fixed top-0 left-0 right-0 bg-[var(--surface)]/95 backdrop-blur-md border-b border-[var(--border-color)] z-40 no-print"><div class="flex items-center justify-between px-4 py-2 max-w-full"><div class="flex items-center gap-3"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Toggle sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h14M3 10h14M3 15h14"></path></svg></button><a class="text-sm font-semibold text-primary hover:underline hidden sm:inline" href="/">AI Agents Book</a></div><div class="flex items-center gap-2 text-sm text-[var(--foreground)] opacity-60"><span class="hidden md:inline">Chapter <!-- -->4</span><span class="hidden md:inline">•</span><span class="hidden lg:inline">Customer Support Agents</span><span class="lg:hidden">💬</span></div><div class="flex items-center gap-2"><button class="p-2 rounded-lg hover:bg-[var(--surface-hover)] transition-colors" title="Back to top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12V4M4 7l4-4 4 4"></path></svg></button></div></div></nav><div class="flex pt-12 min-h-screen"><aside class="fixed left-0 top-12 bottom-0 w-72 bg-[var(--surface)] border-r border-[var(--border-color)] overflow-y-auto transition-transform duration-300 z-30 no-print translate-x-0"><div class="p-4"><div class="mb-6 pb-4 border-b border-[var(--border-color)]"><span class="text-xs font-medium text-primary uppercase tracking-wide">Chapter <!-- -->4</span><h2 class="text-lg font-bold text-[var(--foreground)] mt-1">Customer Support Agents</h2><p class="text-xs text-[var(--foreground)] opacity-60 mt-1">~<!-- -->18<!-- --> pages • <!-- -->Part II: Building Agents</p></div><div class="mb-6"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">On this page</h3><div class="space-y-1"><a href="#chapter-4-customer-support-agents" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Chapter 4: Customer Support Agents</a><a href="#building-intelligent-support-experiences" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Building Intelligent Support Experiences</a><a href="#table-of-contents" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Table of Contents</a><a href="#1-why-customer-support-is-the-perfect-first-agent" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">1. Why Customer Support Is the Perfect First Agent</a><a href="#the-business-case" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">The Business Case</a><a href="#why-it-works" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Why It Works</a><a href="#what-a-support-agent-looks-like" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What a Support Agent Looks Like</a><a href="#2-intent-classification" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">2. Intent Classification</a><a href="#what-is-intent-classification" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">What Is Intent Classification?</a><a href="#common-support-intents" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Common Support Intents</a><a href="#building-an-intent-classifier" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Building an Intent Classifier</a><a href="#define-intents-with-descriptions" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Define intents with descriptions</a><a href="#test-the-classifier" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Test the classifier</a><a href="#intent-classification-with-confidence-thresholds" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Intent Classification with Confidence Thresholds</a><a href="#3-escalation-workflows" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">3. Escalation Workflows</a><a href="#when-to-escalate" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">When to Escalate</a><a href="#escalation-rules" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Escalation Rules</a><a href="#4-knowledge-base-integration" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">4. Knowledge Base Integration</a><a href="#rag-for-customer-support" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">RAG for Customer Support</a><a href="#usage" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Usage ===</a><a href="#ingest-faq-data" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Ingest FAQ data</a><a href="#search-and-answer" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Search and answer</a><a href="#5-multi-turn-conversations" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">5. Multi-turn Conversations</a><a href="#managing-conversation-state" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Managing Conversation State</a><a href="#6-sentiment-detection" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">6. Sentiment Detection</a><a href="#understanding-customer-emotion" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Understanding Customer Emotion</a><a href="#test-sentiment-analysis" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Test sentiment analysis</a><a href="#sentiment-aware-response-generation" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Sentiment-Aware Response Generation</a><a href="#7-human-in-the-loop-patterns" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">7. Human-in-the-Loop Patterns</a><a href="#why-human-in-the-loop-is-essential" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Why Human-in-the-Loop Is Essential</a><a href="#implementation-pattern" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Implementation Pattern</a><a href="#8-building-a-support-agent" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">8. Building a Support Agent</a><a href="#complete-customer-support-agent" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Complete Customer Support Agent</a><a href="#run-the-agent" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">=== Run the Agent ===</a><a href="#simulate-a-conversation" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Simulate a conversation</a><a href="#message-1" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Message 1</a><a href="#message-2" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Message 2</a><a href="#message-3-frustrated-customer" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Message 3 - frustrated customer</a><a href="#print-analytics" class="block text-sm py-1 rounded transition-all pl-0 font-semibold text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Print analytics</a><a href="#9-architecture-diagram" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">9. Architecture Diagram</a><a href="#complete-support-agent-architecture" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Complete Support Agent Architecture</a><a href="#10-real-world-examples" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">10. Real-World Examples</a><a href="#how-companies-use-support-agents" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">How Companies Use Support Agents</a><a href="#best-practices-from-production-deployments" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Best Practices from Production Deployments</a><a href="#11-key-takeaways" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">11. Key Takeaways</a><a href="#12-try-it-yourself" class="block text-sm py-1 rounded transition-all pl-3 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">12. Try It Yourself</a><a href="#exercise-1-intent-classifier" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 1: Intent Classifier</a><a href="#exercise-2-support-agent-with-rag" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 2: Support Agent with RAG</a><a href="#exercise-3-sentiment-aware-agent" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 3: Sentiment-Aware Agent</a><a href="#exercise-4-escalation-system" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 4: Escalation System</a><a href="#exercise-5-analytics-dashboard" class="block text-sm py-1 rounded transition-all pl-6 opacity-70 text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]">Exercise 5: Analytics Dashboard</a></div></div><div class="border-t border-[var(--border-color)] pt-4"><h3 class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] opacity-50 mb-3">Chapters</h3><div class="space-y-1"><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/llms-and-genai-fundamentals"><span class="text-base">🧠</span><span class="truncate">LLMs &amp; GenAI Fundamentals</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/rag-and-knowledge-systems"><span class="text-base">🔍</span><span class="truncate">RAG &amp; Knowledge Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/introduction-to-ai-agents"><span class="text-base">🤖</span><span class="truncate">Introduction to AI Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all bg-primary/10 text-primary font-medium" href="/chapter/customer-support-agents"><span class="text-base">💬</span><span class="truncate">Customer Support Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/executive-and-analyst-agents"><span class="text-base">📊</span><span class="truncate">Executive &amp; Analyst Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/developer-and-coder-agents"><span class="text-base">👨‍💻</span><span class="truncate">Developer &amp; Coder Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/designer-and-creative-agents"><span class="text-base">🎨</span><span class="truncate">Designer &amp; Creative Agents</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/multi-agent-systems"><span class="text-base">🔗</span><span class="truncate">Multi-Agent Systems</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-tools-from-scratch"><span class="text-base">🔧</span><span class="truncate">Building Tools from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-your-own-llm-pipeline"><span class="text-base">⚙️</span><span class="truncate">Building Your Own LLM Pipeline</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/building-rag-from-scratch"><span class="text-base">🏗️</span><span class="truncate">Building RAG from Scratch</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/complete-project-deployment"><span class="text-base">🚀</span><span class="truncate">Complete Project: End to End</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/security-and-safety"><span class="text-base">🛡️</span><span class="truncate">Security, Safety &amp; Guardrails</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/observability-and-scalability"><span class="text-base">📈</span><span class="truncate">Observability &amp; Scalability</span></a><a class="flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-all text-[var(--foreground)] opacity-60 hover:opacity-100 hover:bg-[var(--surface-hover)]" href="/chapter/authenticity-and-future"><span class="text-base">🌍</span><span class="truncate">Authenticity &amp; The Future</span></a></div></div></div></aside><main class="flex-1 transition-all duration-300 ml-72 max-w-4xl px-6 md:px-12 py-12"><div class="mb-10 pb-8 border-b-2 border-primary/20"><span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">Part II: Building Agents</span><h1 class="text-4xl md:text-5xl font-extrabold mb-2 bg-gradient-to-r from-primary via-emerald-400 to-teal-400 -webkit-background-clip-text text-transparent bg-clip-text">Chapter <!-- -->4<!-- -->: <!-- -->Customer Support Agents</h1><p class="text-xl text-[var(--foreground)] opacity-70">Building Intelligent Support Experiences</p></div><article class="prose-book"><h1 class="text-4xl font-extrabold mt-12 mb-4">Chapter 4: Customer Support Agents</h1>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Building Intelligent Support Experiences</h2>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><em class="italic">&quot;The best customer support is the kind that solves problems before customers even realize they have them.&quot;</em></p>
+</blockquote>
+<p class="mb-4 text-justify">Customer support is the perfect first use case for AI agents. It&#x27;s high-volume, repetitive, and follows predictable patterns — yet requires understanding, empathy, and access to real information. In this chapter, we&#x27;ll build a complete customer support agent from the ground up.</p>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">Table of Contents</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><a href="#1-why-customer-support-is-the-perfect-first-agent" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Why Customer Support Is the Perfect First Agent</a></li>
+<li class="text-[var(--foreground)]"><a href="#2-intent-classification" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Intent Classification</a></li>
+<li class="text-[var(--foreground)]"><a href="#3-escalation-workflows" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Escalation Workflows</a></li>
+<li class="text-[var(--foreground)]"><a href="#4-knowledge-base-integration" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Knowledge Base Integration</a></li>
+<li class="text-[var(--foreground)]"><a href="#5-multi-turn-conversations" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Multi-turn Conversations</a></li>
+<li class="text-[var(--foreground)]"><a href="#6-sentiment-detection" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Sentiment Detection</a></li>
+<li class="text-[var(--foreground)]"><a href="#7-human-in-the-loop-patterns" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Human-in-the-Loop Patterns</a></li>
+<li class="text-[var(--foreground)]"><a href="#8-building-a-support-agent" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Building a Support Agent</a></li>
+<li class="text-[var(--foreground)]"><a href="#9-architecture-diagram" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Architecture Diagram</a></li>
+<li class="text-[var(--foreground)]"><a href="#10-real-world-examples" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Real-World Examples</a></li>
+<li class="text-[var(--foreground)]"><a href="#11-key-takeaways" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Key Takeaways</a></li>
+<li class="text-[var(--foreground)]"><a href="#12-try-it-yourself" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Try It Yourself</a></li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">1. Why Customer Support Is the Perfect First Agent</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">The Business Case</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌──────────────────────────────────────────────────────────┐
+│              CUSTOMER SUPPORT BY THE NUMBERS              │
+├──────────────────────────────────────────────────────────┤
+│                                                           │
+│  📊 80% of support queries are repetitive                 │
+│  💰 Average cost per human agent interaction: $7-$15     │
+│  🤖 Average cost per AI agent interaction: $0.01-$0.10   │
+│  ⏱️  Average human response time: 12-24 hours            │
+│  ⚡  Average AI agent response time: &lt; 5 seconds          │
+│  😊  Customer satisfaction with AI: 70-80% (for simple    │
+│     queries)                                              │
+│  📈  ROI of AI support: 3-5x within first year           │
+│                                                           │
+└──────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Why It Works</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Factor</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Why It&#x27;s Ideal for Agents</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">High volume</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Agents handle unlimited concurrent conversations</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Repetitive queries</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Same 20 questions account for 80% of tickets</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Structured data</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">FAQ, policies, and procedures are well-documented</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Measurable outcomes</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Resolution rate, CSAT, response time are trackable</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Clear escalation path</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Easy to define when humans should take over</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Existing knowledge base</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Most companies already have docs and FAQs</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What a Support Agent Looks Like</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">Simple Support Agent:
+
+Customer: &quot;I ordered item #12345 last week and haven&#x27;t 
+           received it yet&quot;
+
+Support Agent:
+  1. Classifies intent → &quot;order_status_inquiry&quot;
+  2. Retrieves order #12345 from database
+  3. Checks shipping status → &quot;In transit, arriving tomorrow&quot;
+  4. Generates friendly response with tracking info
+  5. Offers to send SMS notification
+
+  Response: &quot;Hi! I checked your order #12345 and it&#x27;s currently 
+  in transit with FedEx. You can expect delivery tomorrow 
+  (Thursday) by end of day. Here&#x27;s your tracking link: 
+  [track]. Would you like me to send you an SMS notification 
+  when it&#x27;s out for delivery?&quot;
+</code></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">2. Intent Classification</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">What Is Intent Classification?</h3>
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Intent classification</strong> determines what the customer wants. It&#x27;s the first step in routing and handling support requests.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Common Support Intents</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌──────────────────────────────────────────────────────┐
+│               SUPPORT INTENT CATEGORIES               │
+├──────────────────────────────────────────────────────┤
+│                                                       │
+│  ORDER MANAGEMENT                                     │
+│  ├── order_status       (Where is my order?)         │
+│  ├── order_cancel       (I want to cancel)           │
+│  ├── order_modify       (Change my order)            │
+│  └── order_return       (I want to return)           │
+│                                                       │
+│  ACCOUNT                                             │
+│  ├── account_login      (Can&#x27;t log in)               │
+│  ├── account_reset      (Reset password)             │
+│  ├── account_update     (Change info)                │
+│  └── account_delete     (Delete account)             │
+│                                                       │
+│  BILLING                                             │
+│  ├── billing_question   (How much was I charged?)    │
+│  ├── billing_refund     (I want a refund)            │
+│  ├── billing_dispute    (Wrong charge)               │
+│  └── billing_plan       (Change plan)                │
+│                                                       │
+│  TECHNICAL                                           │
+│  ├── tech_bug_report    (Something&#x27;s broken)         │
+│  ├── tech_how_to        (How do I do X?)             │
+│  ├── tech_feature       (Can you add X?)             │
+│  └── tech_compatibility (Does it work with X?)       │
+│                                                       │
+│  GENERAL                                             │
+│  ├── general_info       (Tell me about X)            │
+│  ├── general_feedback   (I have feedback)            │
+│  ├── general_complaint  (I&#x27;m unhappy)                │
+│  └── general_other      (Doesn&#x27;t fit categories)     │
+│                                                       │
+└──────────────────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Building an Intent Classifier</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Intent classification for customer support.
+&quot;&quot;&quot;
+
+import os
+from openai import OpenAI
+
+client = OpenAI(api_key=os.getenv(&quot;OPENAI_API_KEY&quot;))
+
+# Define intents with descriptions
+INTENTS = {
+    &quot;order_status&quot;: {
+        &quot;description&quot;: &quot;Customer wants to check order status/tracking&quot;,
+        &quot;examples&quot;: [
+            &quot;Where is my order?&quot;,
+            &quot;When will my package arrive?&quot;,
+            &quot;Track order #12345&quot;,
+            &quot;I haven&#x27;t received my order yet&quot;
+        ]
+    },
+    &quot;order_return&quot;: {
+        &quot;description&quot;: &quot;Customer wants to return a product&quot;,
+        &quot;examples&quot;: [
+            &quot;I want to return this item&quot;,
+            &quot;How do I return something?&quot;,
+            &quot;This product is defective&quot;,
+            &quot;I need a return label&quot;
+        ]
+    },
+    &quot;billing_refund&quot;: {
+        &quot;description&quot;: &quot;Customer wants a refund for a charge&quot;,
+        &quot;examples&quot;: [
+            &quot;I was charged twice&quot;,
+            &quot;I want my money back&quot;,
+            &quot;I didn&#x27;t authorize this charge&quot;,
+            &quot;Refund for order #5678&quot;
+        ]
+    },
+    &quot;account_login&quot;: {
+        &quot;description&quot;: &quot;Customer has trouble logging in&quot;,
+        &quot;examples&quot;: [
+            &quot;I can&#x27;t log in&quot;,
+            &quot;My password isn&#x27;t working&quot;,
+            &quot;Account locked&quot;,
+            &quot;I forgot my password&quot;
+        ]
+    },
+    &quot;tech_bug&quot;: {
+        &quot;description&quot;: &quot;Customer reports a technical bug or issue&quot;,
+        &quot;examples&quot;: [
+            &quot;The app keeps crashing&quot;,
+            &quot;I get an error when I click submit&quot;,
+            &quot;Page won&#x27;t load&quot;,
+            &quot;Feature isn&#x27;t working&quot;
+        ]
+    },
+    &quot;tech_howto&quot;: {
+        &quot;description&quot;: &quot;Customer needs help using a feature&quot;,
+        &quot;examples&quot;: [
+            &quot;How do I export my data?&quot;,
+            &quot;Can you show me how to set up X?&quot;,
+            &quot;Where is the settings page?&quot;,
+            &quot;I don&#x27;t know how to use this feature&quot;
+        ]
+    },
+    &quot;general_info&quot;: {
+        &quot;description&quot;: &quot;Customer asking for general information&quot;,
+        &quot;examples&quot;: [
+            &quot;What are your business hours?&quot;,
+            &quot;Do you ship internationally?&quot;,
+            &quot;What&#x27;s your address?&quot;,
+            &quot;Tell me about your company&quot;
+        ]
+    },
+    &quot;complaint&quot;: {
+        &quot;description&quot;: &quot;Customer is unhappy or complaining&quot;,
+        &quot;examples&quot;: [
+            &quot;This is unacceptable&quot;,
+            &quot;I&#x27;ve been waiting for weeks&quot;,
+            &quot;Your service is terrible&quot;,
+            &quot;I want to speak to a manager&quot;
+        ]
+    }
+}
+
+
+def classify_intent(message: str) -&gt; dict:
+    &quot;&quot;&quot;
+    Classify a customer message into an intent.
+    Returns intent and confidence score.
+    &quot;&quot;&quot;
+    
+    intent_descriptions = &quot;\n&quot;.join(
+        f&quot;- {name}: {info[&#x27;description&#x27;]}\n  Examples: &quot;
+        f&quot;{&#x27;, &#x27;.join(info[&#x27;examples&#x27;][:2])}&quot;
+        for name, info in INTENTS.items()
+    )
+    
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o-mini&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: f&quot;&quot;&quot;Classify customer 
+            support messages into intents.
+            
+            Available intents:
+            {intent_descriptions}
+            
+            Return ONLY a JSON object:
+            {{
+                &quot;intent&quot;: &quot;intent_name&quot;,
+                &quot;confidence&quot;: 0.0-1.0,
+                &quot;sub_intent&quot;: &quot;optional more specific category&quot;
+            }}
+            
+            Choose the best matching intent. If unclear, use 
+            &quot;general_info&quot; with low confidence.&quot;&quot;&quot;},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: f&quot;Classify this message:\n&quot;
+             f&quot;\&quot;{message}\&quot;&quot;}
+        ],
+        temperature=0.0,
+        response_format={&quot;type&quot;: &quot;json_object&quot;}
+    )
+    
+    import json
+    result = json.loads(response.choices[0].message.content)
+    return result
+
+
+# Test the classifier
+test_messages = [
+    &quot;My order #12345 hasn&#x27;t arrived yet and it&#x27;s been 2 weeks!&quot;,
+    &quot;How do I reset my password? I keep getting errors.&quot;,
+    &quot;I was charged $49.99 but I cancelled my subscription&quot;,
+    &quot;The app crashes every time I try to open settings&quot;,
+    &quot;Do you offer free shipping on orders over $50?&quot;,
+    &quot;This is the worst experience I&#x27;ve ever had!!!&quot;,
+]
+
+for msg in test_messages:
+    result = classify_intent(msg)
+    print(f&quot;Message: {msg[:60]}...&quot;)
+    print(f&quot;  Intent: {result[&#x27;intent&#x27;]}&quot;)
+    print(f&quot;  Confidence: {result[&#x27;confidence&#x27;]:.2f}&quot;)
+    print()
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Intent Classification with Confidence Thresholds</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Intent classification with routing logic.
+&quot;&quot;&quot;
+
+from dataclasses import dataclass
+from enum import Enum
+
+
+class Urgency(Enum):
+    LOW = &quot;low&quot;
+    MEDIUM = &quot;medium&quot;
+    HIGH = &quot;high&quot;
+    CRITICAL = &quot;critical&quot;
+
+
+@dataclass
+class ClassificationResult:
+    intent: str
+    confidence: float
+    urgency: Urgency
+    suggested_action: str
+
+
+def classify_with_urgency(message: str, 
+                          history: list[str] = None) -&gt; ClassificationResult:
+    &quot;&quot;&quot;Classify intent with urgency assessment.&quot;&quot;&quot;
+    
+    # First, classify intent
+    intent_result = classify_intent(message)
+    
+    # Then assess urgency
+    urgency_prompt = f&quot;&quot;&quot;Assess the urgency of this customer 
+    support message.
+    
+    Message: &quot;{message}&quot;
+    
+    Consider:
+    - Is the customer frustrated or angry?
+    - Is this blocking their work/business?
+    - Is there financial impact?
+    - Is there a security concern?
+    
+    Return ONLY a JSON object:
+    {{
+        &quot;urgency&quot;: &quot;low|medium|high|critical&quot;,
+        &quot;reason&quot;: &quot;brief explanation&quot;
+    }}&quot;&quot;&quot;
+    
+    if history:
+        urgency_prompt += f&quot;\n\nConversation history: {history[-3:]}&quot;
+    
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o-mini&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;Assess customer support &quot;
+             &quot;message urgency.&quot;},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: urgency_prompt}
+        ],
+        temperature=0.0,
+        response_format={&quot;type&quot;: &quot;json_object&quot;}
+    )
+    
+    import json
+    urgency_result = json.loads(
+        response.choices[0].message.content
+    )
+    
+    urgency = Urgency(urgency_result[&quot;urgency&quot;])
+    
+    # Determine suggested action based on intent + urgency
+    action = determine_action(
+        intent_result[&quot;intent&quot;], 
+        urgency,
+        intent_result[&quot;confidence&quot;]
+    )
+    
+    return ClassificationResult(
+        intent=intent_result[&quot;intent&quot;],
+        confidence=intent_result[&quot;confidence&quot;],
+        urgency=urgency,
+        suggested_action=action
+    )
+
+
+def determine_action(
+    intent: str, 
+    urgency: Urgency, 
+    confidence: float
+) -&gt; str:
+    &quot;&quot;&quot;Determine what action to take based on classification.&quot;&quot;&quot;
+    
+    # Low confidence → escalate to human
+    if confidence &lt; 0.6:
+        return &quot;escalate_to_human&quot;
+    
+    # Critical urgency → always escalate
+    if urgency == Urgency.CRITICAL:
+        return &quot;escalate_to_human&quot;
+    
+    # High urgency on sensitive topics → escalate
+    if urgency == Urgency.HIGH and intent in [
+        &quot;billing_refund&quot;, &quot;complaint&quot;, &quot;account_delete&quot;
+    ]:
+        return &quot;escalate_to_human&quot;
+    
+    # Map intents to actions
+    action_map = {
+        &quot;order_status&quot;: &quot;lookup_order_and_respond&quot;,
+        &quot;order_return&quot;: &quot;initiate_return_flow&quot;,
+        &quot;order_cancel&quot;: &quot;initiate_cancel_flow&quot;,
+        &quot;billing_refund&quot;: &quot;initiate_refund_flow&quot;,
+        &quot;account_login&quot;: &quot;send_password_reset&quot;,
+        &quot;tech_bug&quot;: &quot;collect_bug_details&quot;,
+        &quot;tech_howto&quot;: &quot;search_knowledge_base&quot;,
+        &quot;general_info&quot;: &quot;search_knowledge_base&quot;,
+        &quot;complaint&quot;: &quot;empathize_and_escalate&quot;,
+    }
+    
+    return action_map.get(intent, &quot;general_response&quot;)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">3. Escalation Workflows</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">When to Escalate</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌──────────────────────────────────────────────────────────┐
+│              ESCALATION DECISION TREE                     │
+├──────────────────────────────────────────────────────────┤
+│                                                           │
+│  Customer Message                                        │
+│       │                                                   │
+│       ▼                                                   │
+│  ┌─────────────────┐     YES    ┌──────────────────┐    │
+│  │ Is intent clear? │───────────▶│ Can AI handle it?│    │
+│  └────────┬────────┘            └────────┬─────────┘    │
+│           │ NO                           │ YES / NO      │
+│           ▼                              ▼               │
+│  ┌─────────────────┐            ┌──────────────────┐    │
+│  │  ESCALATE to    │            │  Handle with AI  │    │
+│  │  human agent    │            │  or ESCALATE     │    │
+│  │  (unclear       │            │                  │    │
+│  │   intent)       │            │  ESCALATION      │    │
+│  └─────────────────┘            │  TRIGGERS:       │    │
+│                                  │  • Angry customer│    │
+│                                  │  • Legal issues  │    │
+│                                  │  • Security      │    │
+│                                  │  • Complex billing│   │
+│                                  │  • VIP customer  │    │
+│                                  │  • Repeated fail │    │
+│                                  └──────────────────┘    │
+└──────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Escalation Rules</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Escalation workflow for customer support agents.
+&quot;&quot;&quot;
+
+from dataclasses import dataclass
+from enum import Enum
+
+
+class EscalationReason(Enum):
+    LOW_CONFIDENCE = &quot;low_confidence&quot;
+    ANGRY_CUSTOMER = &quot;angry_customer&quot;
+    COMPLEX_ISSUE = &quot;complex_issue&quot;
+    SECURITY_CONCERN = &quot;security_concern&quot;
+    LEGAL_ISSUE = &quot;legal_issue&quot;
+    VIP_CUSTOMER = &quot;vip_customer&quot;
+    REPEATED_FAILURE = &quot;repeated_failure&quot;
+    FINANCIAL_DISPUTE = &quot;financial_dispute&quot;
+    HUMAN_REQUEST = &quot;human_requested&quot;
+
+
+@dataclass
+class EscalationTicket:
+    reason: EscalationReason
+    priority: int  # 1-5, 5 being highest
+    customer_message: str
+    conversation_history: list[str]
+    intent_classification: dict
+    suggested_human_action: str
+
+
+def should_escalate(
+    message: str,
+    classification: dict,
+    conversation_history: list[str],
+    failed_attempts: int = 0,
+    customer_sentiment: str = &quot;neutral&quot;
+) -&gt; tuple[bool, EscalationReason | None, int]:
+    &quot;&quot;&quot;
+    Determine if the conversation should be escalated 
+    to a human agent.
+    
+    Returns:
+        (should_escalate, reason, priority)
+    &quot;&quot;&quot;
+    
+    # Rule 1: Angry/frustrated customers
+    if customer_sentiment in [&quot;angry&quot;, &quot;very_negative&quot;]:
+        return True, EscalationReason.ANGRY_CUSTOMER, 4
+    
+    # Rule 2: Low classification confidence
+    if classification.get(&quot;confidence&quot;, 0) &lt; 0.5:
+        return True, EscalationReason.LOW_CONFIDENCE, 2
+    
+    # Rule 3: Security concerns
+    security_keywords = [
+        &quot;hack&quot;, &quot;breach&quot;, &quot;unauthorized&quot;, &quot;stolen&quot;,
+        &quot;compromised&quot;, &quot;suspicious&quot;, &quot;security&quot;
+    ]
+    if any(kw in message.lower() for kw in security_keywords):
+        return True, EscalationReason.SECURITY_CONCERN, 5
+    
+    # Rule 4: Legal threats
+    legal_keywords = [
+        &quot;lawyer&quot;, &quot;attorney&quot;, &quot;sue&quot;, &quot;legal action&quot;,
+        &quot;lawsuit&quot;, &quot;legal department&quot;, &quot;attorney general&quot;
+    ]
+    if any(kw in message.lower() for kw in legal_keywords):
+        return True, EscalationReason.LEGAL_ISSUE, 5
+    
+    # Rule 5: Financial disputes
+    if classification.get(&quot;intent&quot;) == &quot;billing_refund&quot;:
+        # Check for large amounts
+        import re
+        amounts = re.findall(r&#x27;\$[\d,]+\.?\d*&#x27;, message)
+        for amount in amounts:
+            value = float(amount.replace(&#x27;$&#x27;, &#x27;&#x27;).replace(&#x27;,&#x27;, &#x27;&#x27;))
+            if value &gt; 500:
+                return True, EscalationReason.FINANCIAL_DISPUTE, 4
+    
+    # Rule 6: Customer explicitly asks for human
+    human_keywords = [
+        &quot;speak to a human&quot;, &quot;talk to a person&quot;, &quot;real agent&quot;,
+        &quot;human agent&quot;, &quot;manager&quot;, &quot;supervisor&quot;
+    ]
+    if any(kw in message.lower() for kw in human_keywords):
+        return True, EscalationReason.HUMAN_REQUEST, 3
+    
+    # Rule 7: Repeated failures
+    if failed_attempts &gt;= 3:
+        return True, EscalationReason.REPEATED_FAILURE, 3
+    
+    # No escalation needed
+    return False, None, 0
+
+
+def create_escalation_ticket(
+    message: str,
+    classification: dict,
+    history: list[str],
+    reason: EscalationReason,
+    priority: int
+) -&gt; EscalationTicket:
+    &quot;&quot;&quot;Create an escalation ticket for human agents.&quot;&quot;&quot;
+    
+    # Generate suggested action for human agent
+    suggestions = {
+        EscalationReason.ANGRY_CUSTOMER: 
+            &quot;Start with empathy. Acknowledge frustration. &quot;
+            &quot;Offer concrete resolution.&quot;,
+        EscalationReason.COMPLEX_ISSUE: 
+            &quot;Review full conversation. May need technical &quot;
+            &quot;expertise or special authorization.&quot;,
+        EscalationReason.SECURITY_CONCERN: 
+            &quot;URGENT: Follow security incident protocol. &quot;
+            &quot;Do not share account details in chat.&quot;,
+        EscalationReason.LEGAL_ISSUE: 
+            &quot;Do not make promises. Document everything. &quot;
+            &quot;Escalate to legal team.&quot;,
+        EscalationReason.FINANCIAL_DISPUTE: 
+            &quot;Review transaction history. May need manager &quot;
+            &quot;approval for large refunds.&quot;,
+        EscalationReason.HUMAN_REQUEST: 
+            &quot;Customer explicitly requested human agent. &quot;
+            &quot;Connect immediately.&quot;,
+        EscalationReason.LOW_CONFIDENCE: 
+            &quot;AI was unable to determine customer intent. &quot;
+            &quot;Clarify with customer.&quot;,
+        EscalationReason.REPEATED_FAILURE: 
+            &quot;AI failed to resolve after multiple attempts. &quot;
+            &quot;Review conversation and take over.&quot;,
+    }
+    
+    return EscalationTicket(
+        reason=reason,
+        priority=priority,
+        customer_message=message,
+        conversation_history=history,
+        intent_classification=classification,
+        suggested_human_action=suggestions.get(
+            reason, &quot;Review and assist customer&quot;
+        )
+    )
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">4. Knowledge Base Integration</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">RAG for Customer Support</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Customer support knowledge base with RAG.
+&quot;&quot;&quot;
+
+import chromadb
+from openai import OpenAI
+import json
+
+client = OpenAI()
+
+
+class SupportKnowledgeBase:
+    &quot;&quot;&quot;
+    Knowledge base for customer support using RAG.
+    &quot;&quot;&quot;
+    
+    def __init__(self, db_path: str = &quot;./support_kb&quot;):
+        self.chroma_client = chromadb.PersistentClient(path=db_path)
+        self.collection = self.chroma_client.get_or_create_collection(
+            name=&quot;support_docs&quot;,
+            metadata={&quot;hnsw:space&quot;: &quot;cosine&quot;}
+        )
+    
+    def ingest_faq(self, faqs: list[dict]):
+        &quot;&quot;&quot;Ingest FAQ documents.&quot;&quot;&quot;
+        documents = []
+        ids = []
+        metadatas = []
+        
+        for i, faq in enumerate(faqs):
+            # Combine question and answer for better retrieval
+            doc = f&quot;Q: {faq[&#x27;question&#x27;]}\nA: {faq[&#x27;answer&#x27;]}&quot;
+            documents.append(doc)
+            ids.append(f&quot;faq_{i}&quot;)
+            metadatas.append({
+                &quot;type&quot;: &quot;faq&quot;,
+                &quot;category&quot;: faq.get(&quot;category&quot;, &quot;general&quot;),
+                &quot;question&quot;: faq[&quot;question&quot;]
+            })
+        
+        self.collection.add(
+            documents=documents,
+            ids=ids,
+            metadatas=metadatas
+        )
+        print(f&quot;Ingested {len(faqs)} FAQ entries&quot;)
+    
+    def ingest_policies(self, policies: list[dict]):
+        &quot;&quot;&quot;Ingest policy documents.&quot;&quot;&quot;
+        documents = []
+        ids = []
+        metadatas = []
+        
+        for i, policy in enumerate(policies):
+            documents.append(policy[&quot;content&quot;])
+            ids.append(f&quot;policy_{i}&quot;)
+            metadatas.append({
+                &quot;type&quot;: &quot;policy&quot;,
+                &quot;policy_name&quot;: policy[&quot;name&quot;],
+                &quot;category&quot;: policy.get(&quot;category&quot;, &quot;general&quot;)
+            })
+        
+        self.collection.add(
+            documents=documents,
+            ids=ids,
+            metadatas=metadatas
+        )
+        print(f&quot;Ingested {len(policies)} policy documents&quot;)
+    
+    def search(
+        self, 
+        query: str, 
+        n_results: int = 3,
+        doc_type: str | None = None
+    ) -&gt; list[dict]:
+        &quot;&quot;&quot;Search the knowledge base.&quot;&quot;&quot;
+        query_params = {
+            &quot;query_texts&quot;: [query],
+            &quot;n_results&quot;: n_results,
+            &quot;include&quot;: [&quot;documents&quot;, &quot;metadatas&quot;, &quot;distances&quot;]
+        }
+        
+        if doc_type:
+            query_params[&quot;where&quot;] = {&quot;type&quot;: doc_type}
+        
+        results = self.collection.query(**query_params)
+        
+        docs = []
+        for i in range(len(results[&quot;ids&quot;][0])):
+            docs.append({
+                &quot;content&quot;: results[&quot;documents&quot;][0][i],
+                &quot;metadata&quot;: results[&quot;metadatas&quot;][0][i],
+                &quot;relevance&quot;: 1 - results[&quot;distances&quot;][0][i]
+            })
+        
+        return docs
+    
+    def get_answer(
+        self, 
+        question: str, 
+        customer_context: dict | None = None
+    ) -&gt; dict:
+        &quot;&quot;&quot;
+        Get an answer to a customer question using RAG.
+        &quot;&quot;&quot;
+        # Search for relevant documents
+        relevant_docs = self.search(question, n_results=3)
+        
+        # Build context
+        context_parts = []
+        for doc in relevant_docs:
+            context_parts.append(doc[&quot;content&quot;])
+        
+        context = &quot;\n\n---\n\n&quot;.join(context_parts)
+        
+        # Build system prompt
+        system_prompt = f&quot;&quot;&quot;You are a friendly customer support 
+        agent for TechCorp.
+        
+        Use ONLY the provided knowledge base to answer. 
+        If the knowledge base doesn&#x27;t contain the answer, 
+        say you&#x27;ll need to connect them with a specialist.
+        
+        Guidelines:
+        - Be warm and professional
+        - Use the customer&#x27;s name if available
+        - Be specific with numbers, dates, and policies
+        - If unsure, escalate rather than guess
+        
+        Knowledge Base:
+        {context}
+        &quot;&quot;&quot;
+        
+        if customer_context:
+            system_prompt += f&quot;\nCustomer Info: {json.dumps(customer_context)}&quot;
+        
+        # Generate response
+        response = client.chat.completions.create(
+            model=&quot;gpt-4o-mini&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: system_prompt},
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: question}
+            ],
+            temperature=0.3
+        )
+        
+        return {
+            &quot;answer&quot;: response.choices[0].message.content,
+            &quot;sources&quot;: [d[&quot;content&quot;][:100] for d in relevant_docs],
+            &quot;confidence&quot;: relevant_docs[0][&quot;relevance&quot;] 
+                if relevant_docs else 0
+        }
+
+
+# === Usage ===
+
+kb = SupportKnowledgeBase()
+
+# Ingest FAQ data
+faqs = [
+    {
+        &quot;question&quot;: &quot;How do I return an item?&quot;,
+        &quot;answer&quot;: &quot;To return an item, go to Orders &gt; Select order &quot;
+                  &quot;&gt; Return Item. You have 30 days from delivery. &quot;
+                  &quot;We provide free return shipping for defective &quot;
+                  &quot;items.&quot;,
+        &quot;category&quot;: &quot;returns&quot;
+    },
+    {
+        &quot;question&quot;: &quot;What are your shipping options?&quot;,
+        &quot;answer&quot;: &quot;We offer: Standard (5-7 days, free over $50), &quot;
+                  &quot;Express (2-3 days, $9.99), Next Day ($19.99). &quot;
+                  &quot;International shipping available to 50+ countries.&quot;,
+        &quot;category&quot;: &quot;shipping&quot;
+    },
+    {
+        &quot;question&quot;: &quot;How do I reset my password?&quot;,
+        &quot;answer&quot;: &quot;Click &#x27;Forgot Password&#x27; on the login page. &quot;
+                  &quot;Enter your email to receive a reset link. &quot;
+                  &quot;The link expires in 24 hours. Check spam &quot;
+                  &quot;folder if you don&#x27;t see it.&quot;,
+        &quot;category&quot;: &quot;account&quot;
+    },
+    {
+        &quot;question&quot;: &quot;How do I cancel my subscription?&quot;,
+        &quot;answer&quot;: &quot;Go to Account &gt; Subscription &gt; Cancel. &quot;
+                  &quot;Your access continues until the end of the &quot;
+                  &quot;current billing period. No refunds for &quot;
+                  &quot;partial months.&quot;,
+        &quot;category&quot;: &quot;billing&quot;
+    },
+]
+
+kb.ingest_faq(faqs)
+
+# Search and answer
+result = kb.get_answer(&quot;I need to return a broken item&quot;)
+print(f&quot;Answer: {result[&#x27;answer&#x27;]}&quot;)
+print(f&quot;Confidence: {result[&#x27;confidence&#x27;]:.2f}&quot;)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">5. Multi-turn Conversations</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Managing Conversation State</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Multi-turn conversation management for support agents.
+&quot;&quot;&quot;
+
+from dataclasses import dataclass, field
+from datetime import datetime
+from enum import Enum
+
+
+class ConversationState(Enum):
+    GREETING = &quot;greeting&quot;
+    INTENT_GATHERING = &quot;intent_gathering&quot;
+    INFORMATION_COLLECTING = &quot;information_collecting&quot;
+    RESOLVING = &quot;resolving&quot;
+    FOLLOW_UP = &quot;follow_up&quot;
+    ESCALATING = &quot;escalating&quot;
+    CLOSING = &quot;closing&quot;
+
+
+@dataclass
+class ConversationContext:
+    &quot;&quot;&quot;Maintains state across a multi-turn conversation.&quot;&quot;&quot;
+    
+    customer_id: str
+    customer_name: str = &quot;&quot;
+    state: ConversationState = ConversationState.GREETING
+    intent: str = &quot;&quot;
+    confidence: float = 0.0
+    entities: dict = field(default_factory=dict)
+    messages: list[dict] = field(default_factory=list)
+    resolution_attempts: int = 0
+    max_attempts_before_escalation: int = 3
+    created_at: datetime = field(default_factory=datetime.now)
+    tags: list[str] = field(default_factory=list)
+    
+    def add_message(self, role: str, content: str):
+        &quot;&quot;&quot;Add a message to the conversation.&quot;&quot;&quot;
+        self.messages.append({
+            &quot;role&quot;: role,
+            &quot;content&quot;: content,
+            &quot;timestamp&quot;: datetime.now().isoformat()
+        })
+    
+    def get_history_for_llm(self, max_messages: int = 10) -&gt; list[dict]:
+        &quot;&quot;&quot;Get formatted history for API call.&quot;&quot;&quot;
+        history = [{&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: self._build_prompt()}]
+        
+        recent = self.messages[-max_messages:]
+        for msg in recent:
+            history.append({
+                &quot;role&quot;: msg[&quot;role&quot;],
+                &quot;content&quot;: msg[&quot;content&quot;]
+            })
+        
+        return history
+    
+    def _build_prompt(self) -&gt; str:
+        &quot;&quot;&quot;Build the system prompt based on conversation state.&quot;&quot;&quot;
+        base = f&quot;&quot;&quot;You are a helpful customer support agent.
+        
+Customer: {self.customer_name or &#x27;Unknown&#x27;}
+Intent: {self.intent or &#x27;Not yet determined&#x27;}
+State: {self.state.value}
+Attempts to resolve: {self.resolution_attempts}
+
+&quot;&quot;&quot;
+        if self.state == ConversationState.GREETING:
+            base += &quot;Greet the customer warmly and ask how you &quot;
+            base += &quot;can help.&quot;
+        elif self.state == ConversationState.INTENT_GATHERING:
+            base += &quot;Ask clarifying questions to understand &quot;
+            base += &quot;the issue.&quot;
+        elif self.state == ConversationState.INFORMATION_COLLECTING:
+            base += &quot;Gather needed information (order number, &quot;
+            base += &quot;email, etc.).&quot;
+        elif self.state == ConversationState.RESOLVING:
+            base += &quot;Provide a solution. Be specific and helpful.&quot;
+        elif self.state == ConversationState.ESCALATING:
+            base += &quot;Let the customer know you&#x27;re connecting &quot;
+            base += &quot;them to a specialist.&quot;
+        
+        return base
+
+
+class MultiTurnSupportAgent:
+    &quot;&quot;&quot;
+    Support agent that manages multi-turn conversations.
+    &quot;&quot;&quot;
+    
+    def __init__(self):
+        self.conversations: dict[str, ConversationContext] = {}
+        self.kb = SupportKnowledgeBase()
+        self.client = OpenAI()
+    
+    def start_conversation(
+        self, customer_id: str, customer_name: str = &quot;&quot;
+    ) -&gt; str:
+        &quot;&quot;&quot;Start a new conversation.&quot;&quot;&quot;
+        ctx = ConversationContext(
+            customer_id=customer_id,
+            customer_name=customer_name
+        )
+        self.conversations[customer_id] = ctx
+        
+        greeting = (f&quot;Hi{f&#x27; {customer_name}&#x27; if customer_name else &#x27;&#x27;}!&quot;
+                   f&quot; Welcome to TechCorp support. How can I &quot;
+                   f&quot;help you today?&quot;)
+        
+        ctx.add_message(&quot;assistant&quot;, greeting)
+        return greeting
+    
+    def handle_message(
+        self, customer_id: str, message: str
+    ) -&gt; str:
+        &quot;&quot;&quot;Process a customer message in an ongoing conversation.&quot;&quot;&quot;
+        
+        if customer_id not in self.conversations:
+            return self.start_conversation(customer_id)
+        
+        ctx = self.conversations[customer_id]
+        ctx.add_message(&quot;user&quot;, message)
+        
+        # Update conversation state
+        self._update_state(ctx, message)
+        
+        # Generate response based on state
+        response = self._generate_response(ctx)
+        
+        ctx.add_message(&quot;assistant&quot;, response)
+        return response
+    
+    def _update_state(
+        self, ctx: ConversationContext, message: str
+    ):
+        &quot;&quot;&quot;Update conversation state based on new message.&quot;&quot;&quot;
+        
+        if ctx.state == ConversationState.GREETING:
+            # First real message → gather intent
+            ctx.state = ConversationState.INTENT_GATHERING
+            classification = classify_intent(message)
+            ctx.intent = classification[&quot;intent&quot;]
+            ctx.confidence = classification[&quot;confidence&quot;]
+            
+        elif ctx.state == ConversationState.INTENT_GATHERING:
+            # Check if we have enough info
+            if ctx.confidence &gt; 0.7:
+                ctx.state = ConversationState.RESOLVING
+            else:
+                ctx.state = ConversationState.INFORMATION_COLLECTING
+        
+        elif ctx.state == ConversationState.RESOLVING:
+            # Check if resolution was successful
+            if self._is_resolution_satisfied(message):
+                ctx.state = ConversationState.CLOSING
+            else:
+                ctx.resolution_attempts += 1
+                if ctx.resolution_attempts &gt;= ctx.max_attempts_before_escalation:
+                    ctx.state = ConversationState.ESCALATING
+    
+    def _generate_response(
+        self, ctx: ConversationContext
+    ) -&gt; str:
+        &quot;&quot;&quot;Generate appropriate response based on state.&quot;&quot;&quot;
+        
+        messages = ctx.get_history_for_llm()
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o-mini&quot;,
+            messages=messages,
+            temperature=0.3,
+            max_tokens=300
+        )
+        
+        return response.choices[0].message.content
+    
+    def _is_resolution_satisfied(self, message: str) -&gt; bool:
+        &quot;&quot;&quot;Check if the customer is satisfied with the resolution.&quot;&quot;&quot;
+        satisfaction_keywords = [
+            &quot;thank you&quot;, &quot;thanks&quot;, &quot;perfect&quot;, &quot;great&quot;,
+            &quot;that works&quot;, &quot;solved&quot;, &quot;awesome&quot;, &quot;excellent&quot;,
+            &quot;got it&quot;, &quot;appreciate&quot;
+        ]
+        return any(kw in message.lower() for kw in satisfaction_keywords)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">6. Sentiment Detection</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Understanding Customer Emotion</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Sentiment analysis for customer support.
+&quot;&quot;&quot;
+
+from dataclasses import dataclass
+from enum import Enum
+
+
+class Sentiment(Enum):
+    VERY_POSITIVE = &quot;very_positive&quot;  # Delighted, grateful
+    POSITIVE = &quot;positive&quot;             # Satisfied, content
+    NEUTRAL = &quot;neutral&quot;               # Informational
+    NEGATIVE = &quot;negative&quot;             # Frustrated, annoyed
+    VERY_NEGATIVE = &quot;very_negative&quot;   # Angry, hostile
+
+
+@dataclass
+class SentimentResult:
+    sentiment: Sentiment
+    score: float  # -1.0 to 1.0
+    emotions: list[str]
+    suggested_tone: str
+    escalation_risk: float  # 0.0 to 1.0
+
+
+def analyze_sentiment(
+    message: str,
+    conversation_history: list[str] | None = None
+) -&gt; SentimentResult:
+    &quot;&quot;&quot;
+    Analyze the sentiment and emotion of a customer message.
+    &quot;&quot;&quot;
+    
+    client = OpenAI()
+    
+    prompt = f&quot;&quot;&quot;Analyze the sentiment and emotions in this 
+customer support message.
+
+Message: &quot;{message}&quot;
+&quot;&quot;&quot;
+    
+    if conversation_history:
+        recent = conversation_history[-3:]
+        prompt += f&quot;\nRecent conversation: {recent}&quot;
+    
+    prompt += &quot;&quot;&quot;
+Return ONLY a JSON object:
+{
+    &quot;sentiment&quot;: &quot;very_positive|positive|neutral|negative|very_negative&quot;,
+    &quot;score&quot;: -1.0 to 1.0,
+    &quot;emotions&quot;: [&quot;primary emotion&quot;, &quot;secondary emotion&quot;],
+    &quot;escalation_risk&quot;: 0.0 to 1.0,
+    &quot;suggested_response_tone&quot;: &quot;description of appropriate tone&quot;
+}&quot;&quot;&quot;
+    
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o-mini&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;Analyze customer &quot;
+             &quot;support message sentiment.&quot;},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+        ],
+        temperature=0.0,
+        response_format={&quot;type&quot;: &quot;json_object&quot;}
+    )
+    
+    import json
+    result = json.loads(response.choices[0].message.content)
+    
+    return SentimentResult(
+        sentiment=Sentiment(result[&quot;sentiment&quot;]),
+        score=result[&quot;score&quot;],
+        emotions=result[&quot;emotions&quot;],
+        suggested_tone=result[&quot;suggested_response_tone&quot;],
+        escalation_risk=result[&quot;escalation_risk&quot;]
+    )
+
+
+# Test sentiment analysis
+test_messages = [
+    &quot;Thank you so much! You&#x27;ve been incredibly helpful!&quot;,
+    &quot;Where is my order?? I&#x27;ve been waiting for 2 weeks!&quot;,
+    &quot;I&#x27;d like to check my order status please.&quot;,
+    &quot;This is absolutely unacceptable. I&#x27;m filing a complaint!&quot;,
+    &quot;Can you help me with my account settings?&quot;,
+]
+
+for msg in test_messages:
+    result = analyze_sentiment(msg)
+    print(f&quot;Message: {msg[:50]}...&quot;)
+    print(f&quot;  Sentiment: {result.sentiment.value}&quot;)
+    print(f&quot;  Score: {result.score:.2f}&quot;)
+    print(f&quot;  Emotions: {result.emotions}&quot;)
+    print(f&quot;  Escalation Risk: {result.escalation_risk:.2f}&quot;)
+    print(f&quot;  Suggested Tone: {result.suggested_tone}&quot;)
+    print()
+</code></pre></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Sentiment-Aware Response Generation</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">def generate_sentiment_aware_response(
+    message: str,
+    context: ConversationContext
+) -&gt; str:
+    &quot;&quot;&quot;Generate a response that adapts to customer sentiment.&quot;&quot;&quot;
+    
+    sentiment = analyze_sentiment(message)
+    
+    tone_instructions = {
+        Sentiment.VERY_POSITIVE: (
+            &quot;Match their enthusiasm. Thank them. &quot;
+            &quot;Keep the positive energy.&quot;
+        ),
+        Sentiment.POSITIVE: (
+            &quot;Be friendly and warm. Maintain the positive tone.&quot;
+        ),
+        Sentiment.NEUTRAL: (
+            &quot;Be professional and helpful. Standard tone.&quot;
+        ),
+        Sentiment.NEGATIVE: (
+            &quot;Be empathetic and understanding. Acknowledge &quot;
+            &quot;their frustration. Focus on solutions.&quot;
+        ),
+        Sentiment.VERY_NEGATIVE: (
+            &quot;Be very empathetic. Apologize sincerely. &quot;
+            &quot;Offer concrete resolution steps. &quot;
+            &quot;Consider escalation.&quot;
+        ),
+    }
+    
+    prompt = f&quot;&quot;&quot;Customer message: &quot;{message}&quot;
+
+Customer sentiment: {sentiment.sentiment.value}
+Emotions detected: {sentiment.emotions}
+
+Tone instructions: {tone_instructions[sentiment.sentiment]}
+
+Generate an appropriate response. If the customer is very 
+negative, also mention that you can connect them with a 
+senior specialist if needed.&quot;&quot;&quot;
+
+    client = OpenAI()
+    response = client.chat.completions.create(
+        model=&quot;gpt-4o&quot;,
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: context._build_prompt()},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: prompt}
+        ],
+        temperature=0.3
+    )
+    
+    return response.choices[0].message.content
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">7. Human-in-the-Loop Patterns</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Why Human-in-the-Loop Is Essential</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌──────────────────────────────────────────────────────┐
+│           HUMAN-IN-THE-LOOP PRINCIPLES                │
+├──────────────────────────────────────────────────────┤
+│                                                       │
+│  1. AI Suggests, Human Decides                        │
+│     AI proposes actions → Human approves before        │
+│     execution for sensitive operations                 │
+│                                                       │
+│  2. AI Handles, Human Monitors                        │
+│     AI manages conversations → Human reviews           │
+│     and intervenes when needed                        │
+│                                                       │
+│  3. AI Triage, Human Solves                           │
+│     AI collects info and classifies → Human            │
+│     handles complex or sensitive cases                 │
+│                                                       │
+│  4. AI Drafts, Human Edits                            │
+│     AI writes responses → Human reviews               │
+│     before sending (high-stakes situations)           │
+│                                                       │
+└──────────────────────────────────────────────────────┘
+</code></pre>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Implementation Pattern</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Human-in-the-loop support agent.
+&quot;&quot;&quot;
+
+from dataclasses import dataclass
+from datetime import datetime
+
+
+@dataclass
+class HumanReviewRequest:
+    &quot;&quot;&quot;Request for human review of AI action.&quot;&quot;&quot;
+    request_id: str
+    conversation_id: str
+    ai_response: str
+    proposed_action: str | None
+    reason: str
+    priority: int
+    created_at: datetime
+    status: str = &quot;pending&quot;  # pending, approved, rejected
+    human_notes: str = &quot;&quot;
+
+
+class HumanInTheLoopAgent:
+    &quot;&quot;&quot;
+    Support agent with human oversight.
+    &quot;&quot;&quot;
+    
+    def __init__(self):
+        self.pending_reviews: dict[str, HumanReviewRequest] = {}
+        self.review_counter = 0
+    
+    def _needs_human_review(
+        self, 
+        action: str, 
+        context: dict
+    ) -&gt; bool:
+        &quot;&quot;&quot;Determine if an action needs human review.&quot;&quot;&quot;
+        
+        high_risk_actions = [
+            &quot;process_refund&quot;,
+            &quot;cancel_subscription&quot;,
+            &quot;delete_account&quot;,
+            &quot;modify_order&quot;,
+            &quot;escalate_to_legal&quot;,
+        ]
+        
+        # Always review high-risk actions
+        if action in high_risk_actions:
+            return True
+        
+        # Review if customer sentiment is very negative
+        if context.get(&quot;sentiment&quot;) == &quot;very_negative&quot;:
+            return True
+        
+        # Review if refund amount is high
+        if action == &quot;process_refund&quot;:
+            amount = context.get(&quot;refund_amount&quot;, 0)
+            if amount &gt; 200:
+                return True
+        
+        return False
+    
+    def process_action(
+        self,
+        conversation_id: str,
+        action: str,
+        parameters: dict,
+        ai_response: str
+    ) -&gt; dict:
+        &quot;&quot;&quot;
+        Process an action with optional human review.
+        &quot;&quot;&quot;
+        
+        if self._needs_human_review(action, parameters):
+            # Create review request
+            self.review_counter += 1
+            request = HumanReviewRequest(
+                request_id=f&quot;REV-{self.review_counter:04d}&quot;,
+                conversation_id=conversation_id,
+                ai_response=ai_response,
+                proposed_action=action,
+                reason=f&quot;Action &#x27;{action}&#x27; requires human review&quot;,
+                priority=self._calculate_priority(
+                    action, parameters
+                ),
+                created_at=datetime.now()
+            )
+            
+            self.pending_reviews[request.request_id] = request
+            
+            return {
+                &quot;status&quot;: &quot;pending_review&quot;,
+                &quot;request_id&quot;: request.request_id,
+                &quot;message&quot;: &quot;This requires approval from a specialist. &quot;
+                          &quot;They&#x27;ll review it shortly.&quot;,
+                &quot;estimated_wait&quot;: &quot;2-5 minutes&quot;
+            }
+        else:
+            # Auto-approve low-risk actions
+            return {
+                &quot;status&quot;: &quot;approved&quot;,
+                &quot;message&quot;: ai_response,
+                &quot;action_executed&quot;: action
+            }
+    
+    def _calculate_priority(
+        self, action: str, parameters: dict
+    ) -&gt; int:
+        &quot;&quot;&quot;Calculate review priority (1-5).&quot;&quot;&quot;
+        if action in [&quot;escalate_to_legal&quot;, &quot;security_issue&quot;]:
+            return 5
+        if action == &quot;process_refund&quot;:
+            amount = parameters.get(&quot;refund_amount&quot;, 0)
+            if amount &gt; 500:
+                return 5
+            elif amount &gt; 200:
+                return 4
+            return 3
+        if action in [&quot;cancel_subscription&quot;, &quot;delete_account&quot;]:
+            return 4
+        return 2
+    
+    def approve_request(
+        self, request_id: str, human_notes: str = &quot;&quot;
+    ) -&gt; dict:
+        &quot;&quot;&quot;Approve a pending review request.&quot;&quot;&quot;
+        if request_id not in self.pending_reviews:
+            return {&quot;error&quot;: &quot;Request not found&quot;}
+        
+        request = self.pending_reviews[request_id]
+        request.status = &quot;approved&quot;
+        request.human_notes = human_notes
+        
+        return {
+            &quot;status&quot;: &quot;approved&quot;,
+            &quot;request_id&quot;: request_id,
+            &quot;action&quot;: request.proposed_action,
+            &quot;notes&quot;: human_notes
+        }
+    
+    def reject_request(
+        self, request_id: str, reason: str
+    ) -&gt; dict:
+        &quot;&quot;&quot;Reject a pending review request.&quot;&quot;&quot;
+        if request_id not in self.pending_reviews:
+            return {&quot;error&quot;: &quot;Request not found&quot;}
+        
+        request = self.pending_reviews[request_id]
+        request.status = &quot;rejected&quot;
+        request.human_notes = reason
+        
+        return {
+            &quot;status&quot;: &quot;rejected&quot;,
+            &quot;request_id&quot;: request_id,
+            &quot;reason&quot;: reason
+        }
+    
+    def get_pending_reviews(
+        self, min_priority: int = 1
+    ) -&gt; list[dict]:
+        &quot;&quot;&quot;Get all pending review requests.&quot;&quot;&quot;
+        pending = [
+            {
+                &quot;request_id&quot;: r.request_id,
+                &quot;conversation_id&quot;: r.conversation_id,
+                &quot;action&quot;: r.proposed_action,
+                &quot;reason&quot;: r.reason,
+                &quot;priority&quot;: r.priority,
+                &quot;ai_response&quot;: r.ai_response,
+                &quot;created_at&quot;: r.created_at.isoformat()
+            }
+            for r in self.pending_reviews.values()
+            if r.status == &quot;pending&quot; and r.priority &gt;= min_priority
+        ]
+        
+        return sorted(pending, key=lambda x: x[&quot;priority&quot;], 
+                     reverse=True)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">8. Building a Support Agent</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Complete Customer Support Agent</h3>
+<pre><pre class="bg-[#111a16] text-[#e7e5e4] p-4 rounded-xl overflow-x-auto my-6 border border-[#2d3f35]"><code class="language-python" node="[object Object]">&quot;&quot;&quot;
+Complete customer support agent with all features.
+&quot;&quot;&quot;
+
+import os
+import json
+from datetime import datetime
+from openai import OpenAI
+
+
+class CustomerSupportAgent:
+    &quot;&quot;&quot;
+    Full-featured customer support agent with:
+    - Intent classification
+    - RAG-based knowledge retrieval
+    - Sentiment-aware responses
+    - Multi-turn conversation management
+    - Human escalation
+    &quot;&quot;&quot;
+    
+    def __init__(self):
+        self.client = OpenAI(api_key=os.getenv(&quot;OPENAI_API_KEY&quot;))
+        self.knowledge_base = SupportKnowledgeBase()
+        self.conversations = {}
+        self.escalation_queue = []
+    
+    def handle_message(
+        self, 
+        customer_id: str, 
+        message: str
+    ) -&gt; dict:
+        &quot;&quot;&quot;
+        Process a customer message and return response.
+        
+        Returns dict with:
+        - response: The agent&#x27;s response text
+        - intent: Detected intent
+        - sentiment: Customer sentiment
+        - action_taken: What action was performed
+        - escalated: Whether human escalation was triggered
+        &quot;&quot;&quot;
+        
+        # Get or create conversation context
+        if customer_id not in self.conversations:
+            self.conversations[customer_id] = {
+                &quot;messages&quot;: [],
+                &quot;created_at&quot;: datetime.now().isoformat(),
+                &quot;resolved&quot;: False
+            }
+        
+        conv = self.conversations[customer_id]
+        conv[&quot;messages&quot;].append({
+            &quot;role&quot;: &quot;user&quot;,
+            &quot;content&quot;: message,
+            &quot;timestamp&quot;: datetime.now().isoformat()
+        })
+        
+        # Step 1: Classify intent
+        classification = classify_intent(message)
+        intent = classification[&quot;intent&quot;]
+        confidence = classification[&quot;confidence&quot;]
+        
+        # Step 2: Analyze sentiment
+        sentiment_result = analyze_sentiment(message)
+        
+        # Step 3: Check for escalation
+        should_esc, esc_reason, priority = should_escalate(
+            message=message,
+            classification=classification,
+            conversation_history=[
+                m[&quot;content&quot;] for m in conv[&quot;messages&quot;][-5:]
+            ],
+            failed_attempts=conv.get(&quot;failed_attempts&quot;, 0),
+            customer_sentiment=sentiment_result.sentiment.value
+        )
+        
+        if should_esc:
+            return self._escalate(
+                customer_id, message, esc_reason, priority
+            )
+        
+        # Step 4: Search knowledge base
+        kb_results = self.knowledge_base.get_answer(
+            message, 
+            customer_context={&quot;customer_id&quot;: customer_id}
+        )
+        
+        # Step 5: Generate response
+        response = self._generate_response(
+            message=message,
+            intent=intent,
+            knowledge=kb_results[&quot;answer&quot;],
+            sentiment=sentiment_result,
+            conversation_history=conv[&quot;messages&quot;][-5:]
+        )
+        
+        # Step 6: Handle specific intents
+        action_taken = self._handle_intent(
+            intent, message, conv
+        )
+        
+        # Store response
+        conv[&quot;messages&quot;].append({
+            &quot;role&quot;: &quot;assistant&quot;,
+            &quot;content&quot;: response,
+            &quot;timestamp&quot;: datetime.now().isoformat(),
+            &quot;intent&quot;: intent,
+            &quot;sentiment&quot;: sentiment_result.sentiment.value
+        })
+        
+        return {
+            &quot;response&quot;: response,
+            &quot;intent&quot;: intent,
+            &quot;confidence&quot;: confidence,
+            &quot;sentiment&quot;: sentiment_result.sentiment.value,
+            &quot;action_taken&quot;: action_taken,
+            &quot;escalated&quot;: False,
+            &quot;knowledge_used&quot;: kb_results[&quot;sources&quot;]
+        }
+    
+    def _generate_response(
+        self,
+        message: str,
+        intent: str,
+        knowledge: str,
+        sentiment: SentimentResult,
+        conversation_history: list[dict]
+    ) -&gt; str:
+        &quot;&quot;&quot;Generate a contextual, sentiment-aware response.&quot;&quot;&quot;
+        
+        # Build conversation context
+        history_text = &quot;\n&quot;.join(
+            f&quot;{m[&#x27;role&#x27;]}: {m[&#x27;content&#x27;]}&quot; 
+            for m in conversation_history[-5:]
+        )
+        
+        # Tone adjustment based on sentiment
+        tone = &quot;professional and friendly&quot;
+        if sentiment.sentiment in [Sentiment.NEGATIVE, 
+                                    Sentiment.VERY_NEGATIVE]:
+            tone = &quot;extra empathetic, apologetic, and focused &quot; \
+                   &quot;on solutions&quot;
+        elif sentiment.sentiment == Sentiment.VERY_POSITIVE:
+            tone = &quot;warm and matching their enthusiasm&quot;
+        
+        system_prompt = f&quot;&quot;&quot;You are a customer support agent for 
+TechCorp.
+
+Customer intent: {intent}
+Customer sentiment: {sentiment.sentiment.value}
+Response tone: {tone}
+
+Relevant information from knowledge base:
+{knowledge}
+
+Recent conversation:
+{history_text}
+
+Generate a helpful, accurate response. Be specific and actionable.
+If you reference a policy, be precise about the details.&quot;&quot;&quot;
+        
+        response = self.client.chat.completions.create(
+            model=&quot;gpt-4o&quot;,
+            messages=[
+                {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: system_prompt},
+                {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: message}
+            ],
+            temperature=0.3,
+            max_tokens=500
+        )
+        
+        return response.choices[0].message.content
+    
+    def _handle_intent(
+        self, intent: str, message: str, conversation: dict
+    ) -&gt; str:
+        &quot;&quot;&quot;Handle specific intent actions.&quot;&quot;&quot;
+        
+        action_map = {
+            &quot;order_status&quot;: &quot;lookup_order&quot;,
+            &quot;order_return&quot;: &quot;initiate_return&quot;,
+            &quot;billing_refund&quot;: &quot;initiate_refund&quot;,
+            &quot;account_login&quot;: &quot;send_password_reset&quot;,
+            &quot;tech_bug&quot;: &quot;log_bug_report&quot;,
+            &quot;complaint&quot;: &quot;log_complaint&quot;,
+        }
+        
+        action = action_map.get(intent, &quot;general_response&quot;)
+        
+        # In production, these would call actual APIs
+        if action == &quot;lookup_order&quot;:
+            # Extract order ID and look up
+            return &quot;Order lookup initiated&quot;
+        elif action == &quot;initiate_return&quot;:
+            return &quot;Return process started&quot;
+        elif action == &quot;initiate_refund&quot;:
+            return &quot;Refund request logged for review&quot;
+        
+        return &quot;General response provided&quot;
+    
+    def _escalate(
+        self, 
+        customer_id: str,
+        message: str,
+        reason,
+        priority: int
+    ) -&gt; dict:
+        &quot;&quot;&quot;Escalate to human agent.&quot;&quot;&quot;
+        
+        escalation = {
+            &quot;customer_id&quot;: customer_id,
+            &quot;message&quot;: message,
+            &quot;reason&quot;: reason.value if reason else &quot;unknown&quot;,
+            &quot;priority&quot;: priority,
+            &quot;timestamp&quot;: datetime.now().isoformat()
+        }
+        
+        self.escalation_queue.append(escalation)
+        
+        return {
+            &quot;response&quot;: &quot;I understand this is important to you. &quot;
+                       &quot;I&#x27;m connecting you with a specialist who &quot;
+                       &quot;can help right away. They&#x27;ll have the full &quot;
+                       &quot;context of our conversation.&quot;,
+            &quot;intent&quot;: &quot;escalated&quot;,
+            &quot;sentiment&quot;: &quot;unknown&quot;,
+            &quot;action_taken&quot;: &quot;escalated_to_human&quot;,
+            &quot;escalated&quot;: True,
+            &quot;escalation_reason&quot;: reason.value if reason else &quot;unknown&quot;,
+            &quot;priority&quot;: priority
+        }
+    
+    def get_analytics(self) -&gt; dict:
+        &quot;&quot;&quot;Get conversation analytics.&quot;&quot;&quot;
+        
+        total = len(self.conversations)
+        resolved = sum(
+            1 for c in self.conversations.values() 
+            if c.get(&quot;resolved&quot;)
+        )
+        escalated = len(self.escalation_queue)
+        
+        sentiments = {}
+        intents = {}
+        
+        for conv in self.conversations.values():
+            for msg in conv[&quot;messages&quot;]:
+                if msg.get(&quot;sentiment&quot;):
+                    s = msg[&quot;sentiment&quot;]
+                    sentiments[s] = sentiments.get(s, 0) + 1
+                if msg.get(&quot;intent&quot;):
+                    i = msg[&quot;intent&quot;]
+                    intents[i] = intents.get(i, 0) + 1
+        
+        return {
+            &quot;total_conversations&quot;: total,
+            &quot;resolved&quot;: resolved,
+            &quot;escalated&quot;: escalated,
+            &quot;resolution_rate&quot;: f&quot;{resolved/total*100:.1f}%&quot; 
+                if total &gt; 0 else &quot;N/A&quot;,
+            &quot;sentiment_distribution&quot;: sentiments,
+            &quot;intent_distribution&quot;: intents
+        }
+
+
+# === Run the Agent ===
+
+agent = CustomerSupportAgent()
+
+# Simulate a conversation
+print(&quot;=&quot; * 60)
+print(&quot;CUSTOMER SUPPORT CONVERSATION&quot;)
+print(&quot;=&quot; * 60)
+
+# Message 1
+result = agent.handle_message(
+    customer_id=&quot;cust_001&quot;,
+    message=&quot;Hi, I ordered a laptop 5 days ago and it still &quot;
+            &quot;says processing. When will it ship?&quot;
+)
+print(f&quot;\nCustomer: I ordered a laptop 5 days ago...&quot;)
+print(f&quot;Agent: {result[&#x27;response&#x27;]}&quot;)
+print(f&quot;  [Intent: {result[&#x27;intent&#x27;]}]&quot;)
+print(f&quot;  [Sentiment: {result[&#x27;sentiment&#x27;]}]&quot;)
+
+# Message 2
+result = agent.handle_message(
+    customer_id=&quot;cust_001&quot;,
+    message=&quot;Order number is #ORD-2024-78542&quot;
+)
+print(f&quot;\nCustomer: Order number is #ORD-2024-78542&quot;)
+print(f&quot;Agent: {result[&#x27;response&#x27;]}&quot;)
+
+# Message 3 - frustrated customer
+result = agent.handle_message(
+    customer_id=&quot;cust_001&quot;,
+    message=&quot;This is really frustrating. I need this for work &quot;
+            &quot;on Monday and it still hasn&#x27;t shipped!&quot;
+)
+print(f&quot;\nCustomer: This is really frustrating...&quot;)
+print(f&quot;Agent: {result[&#x27;response&#x27;]}&quot;)
+print(f&quot;  [Sentiment: {result[&#x27;sentiment&#x27;]}]&quot;)
+
+# Print analytics
+print(&quot;\n&quot; + &quot;=&quot; * 60)
+print(&quot;ANALYTICS&quot;)
+print(&quot;=&quot; * 60)
+analytics = agent.get_analytics()
+for key, value in analytics.items():
+    print(f&quot;  {key}: {value}&quot;)
+</code></pre></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">9. Architecture Diagram</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Complete Support Agent Architecture</h3>
+<pre><code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono" node="[object Object]">┌─────────────────────────────────────────────────────────────────┐
+│                    CUSTOMER SUPPORT AGENT                        │
+│                                                                  │
+│  ┌────────────────────────────────────────────────────────────┐  │
+│  │                     INPUT LAYER                            │  │
+│  │                                                            │  │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  │  │
+│  │  │  Web     │  │  Mobile  │  │  Email   │  │  Chat    │  │  │
+│  │  │  Widget  │  │  App     │  │  Parser  │  │  API     │  │  │
+│  │  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘  │  │
+│  │       └──────────────┴──────────────┴──────────────┘        │  │
+│  └───────────────────────────┬────────────────────────────────┘  │
+│                              │                                   │
+│  ┌───────────────────────────▼────────────────────────────────┐  │
+│  │                  PROCESSING LAYER                          │  │
+│  │                                                            │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │  │
+│  │  │   Intent     │  │  Sentiment   │  │   Entity     │     │  │
+│  │  │  Classifier  │  │  Analyzer    │  │  Extractor   │     │  │
+│  │  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘     │  │
+│  │         └──────────────────┴──────────────────┘             │  │
+│  └───────────────────────────┬────────────────────────────────┘  │
+│                              │                                   │
+│  ┌───────────────────────────▼────────────────────────────────┐  │
+│  │                  DECISION LAYER                            │  │
+│  │                                                            │  │
+│  │  ┌──────────────────────────────────────────────────────┐  │  │
+│  │  │              Routing Engine                           │  │  │
+│  │  │                                                      │  │  │
+│  │  │  Can AI handle? ──YES──▶ AI Resolution Path          │  │  │
+│  │  │       │                                              │  │  │
+│  │  │       NO                                             │  │  │
+│  │  │       │                                              │  │  │
+│  │  │       ▼                                              │  │  │
+│  │  │  Human Escalation Path                               │  │  │
+│  │  └──────────────────────────────────────────────────────┘  │  │
+│  └───────────────────────────┬────────────────────────────────┘  │
+│                              │                                   │
+│  ┌───────────────────────────▼────────────────────────────────┐  │
+│  │                  RESOLUTION LAYER                          │  │
+│  │                                                            │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │  │
+│  │  │  RAG Engine  │  │  Action      │  │  Response    │     │  │
+│  │  │  (Knowledge  │  │  Executor    │  │  Generator   │     │  │
+│  │  │   Base)      │  │  (APIs)      │  │  (LLM)       │     │  │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘     │  │
+│  └───────────────────────────┬────────────────────────────────┘  │
+│                              │                                   │
+│  ┌───────────────────────────▼────────────────────────────────┐  │
+│  │                  OUTPUT LAYER                              │  │
+│  │                                                            │  │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  │  │
+│  │  │ Customer │  │  CRM     │  │  Ticket  │  │Analytics │  │  │
+│  │  │ Response │  │  Update  │  │  System  │  │Dashboard │  │  │
+│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘  │  │
+│  └────────────────────────────────────────────────────────────┘  │
+│                                                                  │
+│  ┌────────────────────────────────────────────────────────────┐  │
+│  │                  DATA LAYER                               │  │
+│  │                                                            │  │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  │  │
+│  │  │ Vector   │  │Customer  │  │  Order   │  │Conversation│ │  │
+│  │  │  DB      │  │  DB      │  │  DB      │  │  Store   │  │  │
+│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘  │  │
+│  └────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">10. Real-World Examples</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">How Companies Use Support Agents</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="overflow-x-auto my-6"><table class="w-full border-collapse"><thead><tr class="odd:bg-primary/5 even:bg-transparent"><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Company</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Use Case</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Approach</th><th class="bg-primary text-white px-4 py-3 text-left font-semibold border border-[var(--border-color)]">Results</th></tr></thead><tbody><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Intercom</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Fin AI Agent</td><td class="px-4 py-3 border border-[var(--border-color)]">RAG + FAQ resolution</td><td class="px-4 py-3 border border-[var(--border-color)]">50% ticket deflection</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Zendesk</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Answer Bot</td><td class="px-4 py-3 border border-[var(--border-color)]">Knowledge base integration</td><td class="px-4 py-3 border border-[var(--border-color)]">35% faster resolution</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Klarna</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">AI Assistant</td><td class="px-4 py-3 border border-[var(--border-color)]">Full support automation</td><td class="px-4 py-3 border border-[var(--border-color)]">2/3 of chats handled by AI</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">H&amp;M</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Customer service</td><td class="px-4 py-3 border border-[var(--border-color)]">Order status + returns</td><td class="px-4 py-3 border border-[var(--border-color)]">70% automated responses</td></tr><tr class="odd:bg-primary/5 even:bg-transparent"><td class="px-4 py-3 border border-[var(--border-color)]"><strong class="font-bold text-primary">Bank of America</strong></td><td class="px-4 py-3 border border-[var(--border-color)]">Erica</td><td class="px-4 py-3 border border-[var(--border-color)]">Financial assistant</td><td class="px-4 py-3 border border-[var(--border-color)]">1.5B+ interactions</td></tr></tbody></table></div>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Best Practices from Production Deployments</h3>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Start with the top 20 FAQs</strong>: These cover 80% of queries</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Always provide an escape hatch</strong>: Easy switch to human agent</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Monitor and iterate</strong>: Track resolution rates, CSAT, and escalations weekly</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Train on real conversations</strong>: Use actual support transcripts for fine-tuning</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Set expectations</strong>: Tell customers they&#x27;re talking to AI</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Personalize</strong>: Use customer name, order history, and context</li>
+<li class="text-[var(--foreground)]"><strong class="font-bold text-primary">Follow up</strong>: Send satisfaction surveys after resolution</li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">11. Key Takeaways</h2>
+<ol class="list-decimal pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Customer support is the ideal first agent</strong> — high volume, structured data, clear success metrics, and obvious ROI.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Intent classification</strong> is the foundation — accurately determining what customers want enables proper routing and handling.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Escalation workflows</strong> are critical — define clear rules for when AI should hand off to humans, especially for sensitive or complex issues.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">RAG-powered knowledge bases</strong> give agents access to accurate, up-to-date information without hallucinating.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Multi-turn conversations</strong> require careful state management — track intent, entities, resolution attempts, and context across messages.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Sentiment detection</strong> enables empathetic, appropriate responses — angry customers need different treatment than happy ones.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Human-in-the-loop</strong> is essential — AI should handle routine tasks but always defer to humans for sensitive operations.</p>
+</li>
+<li class="text-[var(--foreground)]">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Measure everything</strong> — track resolution rate, CSAT, escalation rate, and response time to continuously improve.</p>
+</li>
+</ol>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<h2 class="text-2xl font-bold mt-10 mb-3 border-b-2 border-primary pb-2">12. Try It Yourself</h2>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 1: Intent Classifier</h3>
+<p class="mb-4 text-justify">Build an intent classifier that handles at least 10 different intents. Test it with 50 hand-crafted messages (5 per intent) and measure accuracy.</p>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 2: Support Agent with RAG</h3>
+<p class="mb-4 text-justify">Create a support agent that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Has a knowledge base of 20+ FAQ entries</li>
+<li class="text-[var(--foreground)]">Uses RAG to find relevant answers</li>
+<li class="text-[var(--foreground)]">Classifies intent and routes appropriately</li>
+<li class="text-[var(--foreground)]">Maintains conversation context for 10+ turns</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 3: Sentiment-Aware Agent</h3>
+<p class="mb-4 text-justify">Add sentiment analysis to your support agent so that:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Angry customers get empathetic responses</li>
+<li class="text-[var(--foreground)]">Urgent issues are flagged for faster handling</li>
+<li class="text-[var(--foreground)]">The tone of responses adapts to customer emotion</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 4: Escalation System</h3>
+<p class="mb-4 text-justify">Build an escalation system with:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">A dashboard showing pending escalations</li>
+<li class="text-[var(--foreground)]">Priority scoring based on urgency and customer value</li>
+<li class="text-[var(--foreground)]">Auto-escalation after 3 failed resolution attempts</li>
+<li class="text-[var(--foreground)]">A/B testing different escalation thresholds</li>
+</ul>
+<h3 class="text-xl font-semibold mt-8 mb-2 text-primary">Exercise 5: Analytics Dashboard</h3>
+<p class="mb-4 text-justify">Create an analytics view that shows:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li class="text-[var(--foreground)]">Total conversations today</li>
+<li class="text-[var(--foreground)]">Resolution rate</li>
+<li class="text-[var(--foreground)]">Average response time</li>
+<li class="text-[var(--foreground)]">Sentiment distribution</li>
+<li class="text-[var(--foreground)]">Top 10 intents</li>
+<li class="text-[var(--foreground)]">Escalation rate and reasons</li>
+</ul>
+<hr class="my-10 border-0 border-t-2 border-[var(--border-color)]"/>
+<blockquote class="border-l-4 border-primary pl-4 my-6 bg-primary/5 p-4 rounded-r-lg italic text-[var(--foreground)] opacity-80">
+<p class="mb-4 text-justify"><strong class="font-bold text-primary">Next Chapter</strong>: In <a href="./chapter-05-executive-and-analyst-agents.md" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-primary-dark">Chapter 5: Executive &amp; Analyst Agents</a>, we&#x27;ll build AI agents that help business leaders make data-driven decisions through automated reports, analysis, and insights.</p>
+</blockquote></article><div class="mt-16 pt-8 border-t-2 border-[var(--border-color)]"><div class="flex justify-between items-stretch gap-4"><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group" href="/chapter/introduction-to-ai-agents"><span class="text-xs text-[var(--foreground)] opacity-50">← Previous</span><div class="flex items-center gap-2 mt-1"><span class="text-xl">🤖</span><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Introduction to AI Agents</span></div></a><a class="flex-1 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:border-primary hover:bg-primary/5 transition-all group text-right" href="/chapter/executive-and-analyst-agents"><span class="text-xs text-[var(--foreground)] opacity-50">Next →</span><div class="flex items-center justify-end gap-2 mt-1"><span class="font-semibold text-[var(--foreground)] group-hover:text-primary">Executive &amp; Analyst Agents</span><span class="text-xl">📊</span></div></a></div></div></main></div></div><!--$--><!--/$--><script src="/_next/static/chunks/3s_ssfmklbvuh.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[78892,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n3:I[11359,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\"]\n5:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"OutletBoundary\"]\n6:\"$Sreact.suspense\"\n9:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"ViewportBoundary\"]\nb:I[48804,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"MetadataBoundary\"]\nd:I[65125,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/157per-6rfej7.css\",\"style\"]\n:HL[\"/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"chapter\",\"customer-support-agents\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"chapter\",{\"children\":[[\"slug\",\"customer-support-agents\",\"d\",null],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/3j2brc7c8hat8.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/05b0208rfh8ys.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-full flex flex-col\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/16vgld9iclosn.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/2rb1230i-fez-.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@7\"}]}]]}],{},null,false,null]},null,false,\"$@8\"]},null,false,\"$@8\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L9\",null,{\"children\":\"$La\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$6\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Lc\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$d\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/157per-6rfej7.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"WpHiBD4DjnzuprdEnivdA\"}\n"])</script><script>self.__next_f.push([1,"e:[]\n8:\"$We\"\n"])</script><script>self.__next_f.push([1,"f:I[89587,[\"/_next/static/chunks/3j2brc7c8hat8.js\",\"/_next/static/chunks/05b0208rfh8ys.js\",\"/_next/static/chunks/16vgld9iclosn.js\",\"/_next/static/chunks/2rb1230i-fez-.js\"],\"default\"]\n10:T10713,"])</script><script>self.__next_f.push([1,"# Chapter 4: Customer Support Agents\n\n## Building Intelligent Support Experiences\n\n---\n\n\u003e *\"The best customer support is the kind that solves problems before customers even realize they have them.\"*\n\nCustomer support is the perfect first use case for AI agents. It's high-volume, repetitive, and follows predictable patterns — yet requires understanding, empathy, and access to real information. In this chapter, we'll build a complete customer support agent from the ground up.\n\n---\n\n## Table of Contents\n\n1. [Why Customer Support Is the Perfect First Agent](#1-why-customer-support-is-the-perfect-first-agent)\n2. [Intent Classification](#2-intent-classification)\n3. [Escalation Workflows](#3-escalation-workflows)\n4. [Knowledge Base Integration](#4-knowledge-base-integration)\n5. [Multi-turn Conversations](#5-multi-turn-conversations)\n6. [Sentiment Detection](#6-sentiment-detection)\n7. [Human-in-the-Loop Patterns](#7-human-in-the-loop-patterns)\n8. [Building a Support Agent](#8-building-a-support-agent)\n9. [Architecture Diagram](#9-architecture-diagram)\n10. [Real-World Examples](#10-real-world-examples)\n11. [Key Takeaways](#11-key-takeaways)\n12. [Try It Yourself](#12-try-it-yourself)\n\n---\n\n## 1. Why Customer Support Is the Perfect First Agent\n\n### The Business Case\n\n```\n┌──────────────────────────────────────────────────────────┐\n│              CUSTOMER SUPPORT BY THE NUMBERS              │\n├──────────────────────────────────────────────────────────┤\n│                                                           │\n│  📊 80% of support queries are repetitive                 │\n│  💰 Average cost per human agent interaction: $7-$15     │\n│  🤖 Average cost per AI agent interaction: $0.01-$0.10   │\n│  ⏱️  Average human response time: 12-24 hours            │\n│  ⚡  Average AI agent response time: \u003c 5 seconds          │\n│  😊  Customer satisfaction with AI: 70-80% (for simple    │\n│     queries)                                              │\n│  📈  ROI of AI support: 3-5x within first year           │\n│                                                           │\n└──────────────────────────────────────────────────────────┘\n```\n\n### Why It Works\n\n| Factor | Why It's Ideal for Agents |\n|--------|---------------------------|\n| **High volume** | Agents handle unlimited concurrent conversations |\n| **Repetitive queries** | Same 20 questions account for 80% of tickets |\n| **Structured data** | FAQ, policies, and procedures are well-documented |\n| **Measurable outcomes** | Resolution rate, CSAT, response time are trackable |\n| **Clear escalation path** | Easy to define when humans should take over |\n| **Existing knowledge base** | Most companies already have docs and FAQs |\n\n### What a Support Agent Looks Like\n\n```\nSimple Support Agent:\n\nCustomer: \"I ordered item #12345 last week and haven't \n           received it yet\"\n\nSupport Agent:\n  1. Classifies intent → \"order_status_inquiry\"\n  2. Retrieves order #12345 from database\n  3. Checks shipping status → \"In transit, arriving tomorrow\"\n  4. Generates friendly response with tracking info\n  5. Offers to send SMS notification\n\n  Response: \"Hi! I checked your order #12345 and it's currently \n  in transit with FedEx. You can expect delivery tomorrow \n  (Thursday) by end of day. Here's your tracking link: \n  [track]. Would you like me to send you an SMS notification \n  when it's out for delivery?\"\n```\n\n---\n\n## 2. Intent Classification\n\n### What Is Intent Classification?\n\n**Intent classification** determines what the customer wants. It's the first step in routing and handling support requests.\n\n### Common Support Intents\n\n```\n┌──────────────────────────────────────────────────────┐\n│               SUPPORT INTENT CATEGORIES               │\n├──────────────────────────────────────────────────────┤\n│                                                       │\n│  ORDER MANAGEMENT                                     │\n│  ├── order_status       (Where is my order?)         │\n│  ├── order_cancel       (I want to cancel)           │\n│  ├── order_modify       (Change my order)            │\n│  └── order_return       (I want to return)           │\n│                                                       │\n│  ACCOUNT                                             │\n│  ├── account_login      (Can't log in)               │\n│  ├── account_reset      (Reset password)             │\n│  ├── account_update     (Change info)                │\n│  └── account_delete     (Delete account)             │\n│                                                       │\n│  BILLING                                             │\n│  ├── billing_question   (How much was I charged?)    │\n│  ├── billing_refund     (I want a refund)            │\n│  ├── billing_dispute    (Wrong charge)               │\n│  └── billing_plan       (Change plan)                │\n│                                                       │\n│  TECHNICAL                                           │\n│  ├── tech_bug_report    (Something's broken)         │\n│  ├── tech_how_to        (How do I do X?)             │\n│  ├── tech_feature       (Can you add X?)             │\n│  └── tech_compatibility (Does it work with X?)       │\n│                                                       │\n│  GENERAL                                             │\n│  ├── general_info       (Tell me about X)            │\n│  ├── general_feedback   (I have feedback)            │\n│  ├── general_complaint  (I'm unhappy)                │\n│  └── general_other      (Doesn't fit categories)     │\n│                                                       │\n└──────────────────────────────────────────────────────┘\n```\n\n### Building an Intent Classifier\n\n```python\n\"\"\"\nIntent classification for customer support.\n\"\"\"\n\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n\n# Define intents with descriptions\nINTENTS = {\n    \"order_status\": {\n        \"description\": \"Customer wants to check order status/tracking\",\n        \"examples\": [\n            \"Where is my order?\",\n            \"When will my package arrive?\",\n            \"Track order #12345\",\n            \"I haven't received my order yet\"\n        ]\n    },\n    \"order_return\": {\n        \"description\": \"Customer wants to return a product\",\n        \"examples\": [\n            \"I want to return this item\",\n            \"How do I return something?\",\n            \"This product is defective\",\n            \"I need a return label\"\n        ]\n    },\n    \"billing_refund\": {\n        \"description\": \"Customer wants a refund for a charge\",\n        \"examples\": [\n            \"I was charged twice\",\n            \"I want my money back\",\n            \"I didn't authorize this charge\",\n            \"Refund for order #5678\"\n        ]\n    },\n    \"account_login\": {\n        \"description\": \"Customer has trouble logging in\",\n        \"examples\": [\n            \"I can't log in\",\n            \"My password isn't working\",\n            \"Account locked\",\n            \"I forgot my password\"\n        ]\n    },\n    \"tech_bug\": {\n        \"description\": \"Customer reports a technical bug or issue\",\n        \"examples\": [\n            \"The app keeps crashing\",\n            \"I get an error when I click submit\",\n            \"Page won't load\",\n            \"Feature isn't working\"\n        ]\n    },\n    \"tech_howto\": {\n        \"description\": \"Customer needs help using a feature\",\n        \"examples\": [\n            \"How do I export my data?\",\n            \"Can you show me how to set up X?\",\n            \"Where is the settings page?\",\n            \"I don't know how to use this feature\"\n        ]\n    },\n    \"general_info\": {\n        \"description\": \"Customer asking for general information\",\n        \"examples\": [\n            \"What are your business hours?\",\n            \"Do you ship internationally?\",\n            \"What's your address?\",\n            \"Tell me about your company\"\n        ]\n    },\n    \"complaint\": {\n        \"description\": \"Customer is unhappy or complaining\",\n        \"examples\": [\n            \"This is unacceptable\",\n            \"I've been waiting for weeks\",\n            \"Your service is terrible\",\n            \"I want to speak to a manager\"\n        ]\n    }\n}\n\n\ndef classify_intent(message: str) -\u003e dict:\n    \"\"\"\n    Classify a customer message into an intent.\n    Returns intent and confidence score.\n    \"\"\"\n    \n    intent_descriptions = \"\\n\".join(\n        f\"- {name}: {info['description']}\\n  Examples: \"\n        f\"{', '.join(info['examples'][:2])}\"\n        for name, info in INTENTS.items()\n    )\n    \n    response = client.chat.completions.create(\n        model=\"gpt-4o-mini\",\n        messages=[\n            {\"role\": \"system\", \"content\": f\"\"\"Classify customer \n            support messages into intents.\n            \n            Available intents:\n            {intent_descriptions}\n            \n            Return ONLY a JSON object:\n            {{\n                \"intent\": \"intent_name\",\n                \"confidence\": 0.0-1.0,\n                \"sub_intent\": \"optional more specific category\"\n            }}\n            \n            Choose the best matching intent. If unclear, use \n            \"general_info\" with low confidence.\"\"\"},\n            {\"role\": \"user\", \"content\": f\"Classify this message:\\n\"\n             f\"\\\"{message}\\\"\"}\n        ],\n        temperature=0.0,\n        response_format={\"type\": \"json_object\"}\n    )\n    \n    import json\n    result = json.loads(response.choices[0].message.content)\n    return result\n\n\n# Test the classifier\ntest_messages = [\n    \"My order #12345 hasn't arrived yet and it's been 2 weeks!\",\n    \"How do I reset my password? I keep getting errors.\",\n    \"I was charged $49.99 but I cancelled my subscription\",\n    \"The app crashes every time I try to open settings\",\n    \"Do you offer free shipping on orders over $50?\",\n    \"This is the worst experience I've ever had!!!\",\n]\n\nfor msg in test_messages:\n    result = classify_intent(msg)\n    print(f\"Message: {msg[:60]}...\")\n    print(f\"  Intent: {result['intent']}\")\n    print(f\"  Confidence: {result['confidence']:.2f}\")\n    print()\n```\n\n### Intent Classification with Confidence Thresholds\n\n```python\n\"\"\"\nIntent classification with routing logic.\n\"\"\"\n\nfrom dataclasses import dataclass\nfrom enum import Enum\n\n\nclass Urgency(Enum):\n    LOW = \"low\"\n    MEDIUM = \"medium\"\n    HIGH = \"high\"\n    CRITICAL = \"critical\"\n\n\n@dataclass\nclass ClassificationResult:\n    intent: str\n    confidence: float\n    urgency: Urgency\n    suggested_action: str\n\n\ndef classify_with_urgency(message: str, \n                          history: list[str] = None) -\u003e ClassificationResult:\n    \"\"\"Classify intent with urgency assessment.\"\"\"\n    \n    # First, classify intent\n    intent_result = classify_intent(message)\n    \n    # Then assess urgency\n    urgency_prompt = f\"\"\"Assess the urgency of this customer \n    support message.\n    \n    Message: \"{message}\"\n    \n    Consider:\n    - Is the customer frustrated or angry?\n    - Is this blocking their work/business?\n    - Is there financial impact?\n    - Is there a security concern?\n    \n    Return ONLY a JSON object:\n    {{\n        \"urgency\": \"low|medium|high|critical\",\n        \"reason\": \"brief explanation\"\n    }}\"\"\"\n    \n    if history:\n        urgency_prompt += f\"\\n\\nConversation history: {history[-3:]}\"\n    \n    response = client.chat.completions.create(\n        model=\"gpt-4o-mini\",\n        messages=[\n            {\"role\": \"system\", \"content\": \"Assess customer support \"\n             \"message urgency.\"},\n            {\"role\": \"user\", \"content\": urgency_prompt}\n        ],\n        temperature=0.0,\n        response_format={\"type\": \"json_object\"}\n    )\n    \n    import json\n    urgency_result = json.loads(\n        response.choices[0].message.content\n    )\n    \n    urgency = Urgency(urgency_result[\"urgency\"])\n    \n    # Determine suggested action based on intent + urgency\n    action = determine_action(\n        intent_result[\"intent\"], \n        urgency,\n        intent_result[\"confidence\"]\n    )\n    \n    return ClassificationResult(\n        intent=intent_result[\"intent\"],\n        confidence=intent_result[\"confidence\"],\n        urgency=urgency,\n        suggested_action=action\n    )\n\n\ndef determine_action(\n    intent: str, \n    urgency: Urgency, \n    confidence: float\n) -\u003e str:\n    \"\"\"Determine what action to take based on classification.\"\"\"\n    \n    # Low confidence → escalate to human\n    if confidence \u003c 0.6:\n        return \"escalate_to_human\"\n    \n    # Critical urgency → always escalate\n    if urgency == Urgency.CRITICAL:\n        return \"escalate_to_human\"\n    \n    # High urgency on sensitive topics → escalate\n    if urgency == Urgency.HIGH and intent in [\n        \"billing_refund\", \"complaint\", \"account_delete\"\n    ]:\n        return \"escalate_to_human\"\n    \n    # Map intents to actions\n    action_map = {\n        \"order_status\": \"lookup_order_and_respond\",\n        \"order_return\": \"initiate_return_flow\",\n        \"order_cancel\": \"initiate_cancel_flow\",\n        \"billing_refund\": \"initiate_refund_flow\",\n        \"account_login\": \"send_password_reset\",\n        \"tech_bug\": \"collect_bug_details\",\n        \"tech_howto\": \"search_knowledge_base\",\n        \"general_info\": \"search_knowledge_base\",\n        \"complaint\": \"empathize_and_escalate\",\n    }\n    \n    return action_map.get(intent, \"general_response\")\n```\n\n---\n\n## 3. Escalation Workflows\n\n### When to Escalate\n\n```\n┌──────────────────────────────────────────────────────────┐\n│              ESCALATION DECISION TREE                     │\n├──────────────────────────────────────────────────────────┤\n│                                                           │\n│  Customer Message                                        │\n│       │                                                   │\n│       ▼                                                   │\n│  ┌─────────────────┐     YES    ┌──────────────────┐    │\n│  │ Is intent clear? │───────────▶│ Can AI handle it?│    │\n│  └────────┬────────┘            └────────┬─────────┘    │\n│           │ NO                           │ YES / NO      │\n│           ▼                              ▼               │\n│  ┌─────────────────┐            ┌──────────────────┐    │\n│  │  ESCALATE to    │            │  Handle with AI  │    │\n│  │  human agent    │            │  or ESCALATE     │    │\n│  │  (unclear       │            │                  │    │\n│  │   intent)       │            │  ESCALATION      │    │\n│  └─────────────────┘            │  TRIGGERS:       │    │\n│                                  │  • Angry customer│    │\n│                                  │  • Legal issues  │    │\n│                                  │  • Security      │    │\n│                                  │  • Complex billing│   │\n│                                  │  • VIP customer  │    │\n│                                  │  • Repeated fail │    │\n│                                  └──────────────────┘    │\n└──────────────────────────────────────────────────────────┘\n```\n\n### Escalation Rules\n\n```python\n\"\"\"\nEscalation workflow for customer support agents.\n\"\"\"\n\nfrom dataclasses import dataclass\nfrom enum import Enum\n\n\nclass EscalationReason(Enum):\n    LOW_CONFIDENCE = \"low_confidence\"\n    ANGRY_CUSTOMER = \"angry_customer\"\n    COMPLEX_ISSUE = \"complex_issue\"\n    SECURITY_CONCERN = \"security_concern\"\n    LEGAL_ISSUE = \"legal_issue\"\n    VIP_CUSTOMER = \"vip_customer\"\n    REPEATED_FAILURE = \"repeated_failure\"\n    FINANCIAL_DISPUTE = \"financial_dispute\"\n    HUMAN_REQUEST = \"human_requested\"\n\n\n@dataclass\nclass EscalationTicket:\n    reason: EscalationReason\n    priority: int  # 1-5, 5 being highest\n    customer_message: str\n    conversation_history: list[str]\n    intent_classification: dict\n    suggested_human_action: str\n\n\ndef should_escalate(\n    message: str,\n    classification: dict,\n    conversation_history: list[str],\n    failed_attempts: int = 0,\n    customer_sentiment: str = \"neutral\"\n) -\u003e tuple[bool, EscalationReason | None, int]:\n    \"\"\"\n    Determine if the conversation should be escalated \n    to a human agent.\n    \n    Returns:\n        (should_escalate, reason, priority)\n    \"\"\"\n    \n    # Rule 1: Angry/frustrated customers\n    if customer_sentiment in [\"angry\", \"very_negative\"]:\n        return True, EscalationReason.ANGRY_CUSTOMER, 4\n    \n    # Rule 2: Low classification confidence\n    if classification.get(\"confidence\", 0) \u003c 0.5:\n        return True, EscalationReason.LOW_CONFIDENCE, 2\n    \n    # Rule 3: Security concerns\n    security_keywords = [\n        \"hack\", \"breach\", \"unauthorized\", \"stolen\",\n        \"compromised\", \"suspicious\", \"security\"\n    ]\n    if any(kw in message.lower() for kw in security_keywords):\n        return True, EscalationReason.SECURITY_CONCERN, 5\n    \n    # Rule 4: Legal threats\n    legal_keywords = [\n        \"lawyer\", \"attorney\", \"sue\", \"legal action\",\n        \"lawsuit\", \"legal department\", \"attorney general\"\n    ]\n    if any(kw in message.lower() for kw in legal_keywords):\n        return True, EscalationReason.LEGAL_ISSUE, 5\n    \n    # Rule 5: Financial disputes\n    if classification.get(\"intent\") == \"billing_refund\":\n        # Check for large amounts\n        import re\n        amounts = re.findall(r'\\$[\\d,]+\\.?\\d*', message)\n        for amount in amounts:\n            value = float(amount.replace('$', '').replace(',', ''))\n            if value \u003e 500:\n                return True, EscalationReason.FINANCIAL_DISPUTE, 4\n    \n    # Rule 6: Customer explicitly asks for human\n    human_keywords = [\n        \"speak to a human\", \"talk to a person\", \"real agent\",\n        \"human agent\", \"manager\", \"supervisor\"\n    ]\n    if any(kw in message.lower() for kw in human_keywords):\n        return True, EscalationReason.HUMAN_REQUEST, 3\n    \n    # Rule 7: Repeated failures\n    if failed_attempts \u003e= 3:\n        return True, EscalationReason.REPEATED_FAILURE, 3\n    \n    # No escalation needed\n    return False, None, 0\n\n\ndef create_escalation_ticket(\n    message: str,\n    classification: dict,\n    history: list[str],\n    reason: EscalationReason,\n    priority: int\n) -\u003e EscalationTicket:\n    \"\"\"Create an escalation ticket for human agents.\"\"\"\n    \n    # Generate suggested action for human agent\n    suggestions = {\n        EscalationReason.ANGRY_CUSTOMER: \n            \"Start with empathy. Acknowledge frustration. \"\n            \"Offer concrete resolution.\",\n        EscalationReason.COMPLEX_ISSUE: \n            \"Review full conversation. May need technical \"\n            \"expertise or special authorization.\",\n        EscalationReason.SECURITY_CONCERN: \n            \"URGENT: Follow security incident protocol. \"\n            \"Do not share account details in chat.\",\n        EscalationReason.LEGAL_ISSUE: \n            \"Do not make promises. Document everything. \"\n            \"Escalate to legal team.\",\n        EscalationReason.FINANCIAL_DISPUTE: \n            \"Review transaction history. May need manager \"\n            \"approval for large refunds.\",\n        EscalationReason.HUMAN_REQUEST: \n            \"Customer explicitly requested human agent. \"\n            \"Connect immediately.\",\n        EscalationReason.LOW_CONFIDENCE: \n            \"AI was unable to determine customer intent. \"\n            \"Clarify with customer.\",\n        EscalationReason.REPEATED_FAILURE: \n            \"AI failed to resolve after multiple attempts. \"\n            \"Review conversation and take over.\",\n    }\n    \n    return EscalationTicket(\n        reason=reason,\n        priority=priority,\n        customer_message=message,\n        conversation_history=history,\n        intent_classification=classification,\n        suggested_human_action=suggestions.get(\n            reason, \"Review and assist customer\"\n        )\n    )\n```\n\n---\n\n## 4. Knowledge Base Integration\n\n### RAG for Customer Support\n\n```python\n\"\"\"\nCustomer support knowledge base with RAG.\n\"\"\"\n\nimport chromadb\nfrom openai import OpenAI\nimport json\n\nclient = OpenAI()\n\n\nclass SupportKnowledgeBase:\n    \"\"\"\n    Knowledge base for customer support using RAG.\n    \"\"\"\n    \n    def __init__(self, db_path: str = \"./support_kb\"):\n        self.chroma_client = chromadb.PersistentClient(path=db_path)\n        self.collection = self.chroma_client.get_or_create_collection(\n            name=\"support_docs\",\n            metadata={\"hnsw:space\": \"cosine\"}\n        )\n    \n    def ingest_faq(self, faqs: list[dict]):\n        \"\"\"Ingest FAQ documents.\"\"\"\n        documents = []\n        ids = []\n        metadatas = []\n        \n        for i, faq in enumerate(faqs):\n            # Combine question and answer for better retrieval\n            doc = f\"Q: {faq['question']}\\nA: {faq['answer']}\"\n            documents.append(doc)\n            ids.append(f\"faq_{i}\")\n            metadatas.append({\n                \"type\": \"faq\",\n                \"category\": faq.get(\"category\", \"general\"),\n                \"question\": faq[\"question\"]\n            })\n        \n        self.collection.add(\n            documents=documents,\n            ids=ids,\n            metadatas=metadatas\n        )\n        print(f\"Ingested {len(faqs)} FAQ entries\")\n    \n    def ingest_policies(self, policies: list[dict]):\n        \"\"\"Ingest policy documents.\"\"\"\n        documents = []\n        ids = []\n        metadatas = []\n        \n        for i, policy in enumerate(policies):\n            documents.append(policy[\"content\"])\n            ids.append(f\"policy_{i}\")\n            metadatas.append({\n                \"type\": \"policy\",\n                \"policy_name\": policy[\"name\"],\n                \"category\": policy.get(\"category\", \"general\")\n            })\n        \n        self.collection.add(\n            documents=documents,\n            ids=ids,\n            metadatas=metadatas\n        )\n        print(f\"Ingested {len(policies)} policy documents\")\n    \n    def search(\n        self, \n        query: str, \n        n_results: int = 3,\n        doc_type: str | None = None\n    ) -\u003e list[dict]:\n        \"\"\"Search the knowledge base.\"\"\"\n        query_params = {\n            \"query_texts\": [query],\n            \"n_results\": n_results,\n            \"include\": [\"documents\", \"metadatas\", \"distances\"]\n        }\n        \n        if doc_type:\n            query_params[\"where\"] = {\"type\": doc_type}\n        \n        results = self.collection.query(**query_params)\n        \n        docs = []\n        for i in range(len(results[\"ids\"][0])):\n            docs.append({\n                \"content\": results[\"documents\"][0][i],\n                \"metadata\": results[\"metadatas\"][0][i],\n                \"relevance\": 1 - results[\"distances\"][0][i]\n            })\n        \n        return docs\n    \n    def get_answer(\n        self, \n        question: str, \n        customer_context: dict | None = None\n    ) -\u003e dict:\n        \"\"\"\n        Get an answer to a customer question using RAG.\n        \"\"\"\n        # Search for relevant documents\n        relevant_docs = self.search(question, n_results=3)\n        \n        # Build context\n        context_parts = []\n        for doc in relevant_docs:\n            context_parts.append(doc[\"content\"])\n        \n        context = \"\\n\\n---\\n\\n\".join(context_parts)\n        \n        # Build system prompt\n        system_prompt = f\"\"\"You are a friendly customer support \n        agent for TechCorp.\n        \n        Use ONLY the provided knowledge base to answer. \n        If the knowledge base doesn't contain the answer, \n        say you'll need to connect them with a specialist.\n        \n        Guidelines:\n        - Be warm and professional\n        - Use the customer's name if available\n        - Be specific with numbers, dates, and policies\n        - If unsure, escalate rather than guess\n        \n        Knowledge Base:\n        {context}\n        \"\"\"\n        \n        if customer_context:\n            system_prompt += f\"\\nCustomer Info: {json.dumps(customer_context)}\"\n        \n        # Generate response\n        response = client.chat.completions.create(\n            model=\"gpt-4o-mini\",\n            messages=[\n                {\"role\": \"system\", \"content\": system_prompt},\n                {\"role\": \"user\", \"content\": question}\n            ],\n            temperature=0.3\n        )\n        \n        return {\n            \"answer\": response.choices[0].message.content,\n            \"sources\": [d[\"content\"][:100] for d in relevant_docs],\n            \"confidence\": relevant_docs[0][\"relevance\"] \n                if relevant_docs else 0\n        }\n\n\n# === Usage ===\n\nkb = SupportKnowledgeBase()\n\n# Ingest FAQ data\nfaqs = [\n    {\n        \"question\": \"How do I return an item?\",\n        \"answer\": \"To return an item, go to Orders \u003e Select order \"\n                  \"\u003e Return Item. You have 30 days from delivery. \"\n                  \"We provide free return shipping for defective \"\n                  \"items.\",\n        \"category\": \"returns\"\n    },\n    {\n        \"question\": \"What are your shipping options?\",\n        \"answer\": \"We offer: Standard (5-7 days, free over $50), \"\n                  \"Express (2-3 days, $9.99), Next Day ($19.99). \"\n                  \"International shipping available to 50+ countries.\",\n        \"category\": \"shipping\"\n    },\n    {\n        \"question\": \"How do I reset my password?\",\n        \"answer\": \"Click 'Forgot Password' on the login page. \"\n                  \"Enter your email to receive a reset link. \"\n                  \"The link expires in 24 hours. Check spam \"\n                  \"folder if you don't see it.\",\n        \"category\": \"account\"\n    },\n    {\n        \"question\": \"How do I cancel my subscription?\",\n        \"answer\": \"Go to Account \u003e Subscription \u003e Cancel. \"\n                  \"Your access continues until the end of the \"\n                  \"current billing period. No refunds for \"\n                  \"partial months.\",\n        \"category\": \"billing\"\n    },\n]\n\nkb.ingest_faq(faqs)\n\n# Search and answer\nresult = kb.get_answer(\"I need to return a broken item\")\nprint(f\"Answer: {result['answer']}\")\nprint(f\"Confidence: {result['confidence']:.2f}\")\n```\n\n---\n\n## 5. Multi-turn Conversations\n\n### Managing Conversation State\n\n```python\n\"\"\"\nMulti-turn conversation management for support agents.\n\"\"\"\n\nfrom dataclasses import dataclass, field\nfrom datetime import datetime\nfrom enum import Enum\n\n\nclass ConversationState(Enum):\n    GREETING = \"greeting\"\n    INTENT_GATHERING = \"intent_gathering\"\n    INFORMATION_COLLECTING = \"information_collecting\"\n    RESOLVING = \"resolving\"\n    FOLLOW_UP = \"follow_up\"\n    ESCALATING = \"escalating\"\n    CLOSING = \"closing\"\n\n\n@dataclass\nclass ConversationContext:\n    \"\"\"Maintains state across a multi-turn conversation.\"\"\"\n    \n    customer_id: str\n    customer_name: str = \"\"\n    state: ConversationState = ConversationState.GREETING\n    intent: str = \"\"\n    confidence: float = 0.0\n    entities: dict = field(default_factory=dict)\n    messages: list[dict] = field(default_factory=list)\n    resolution_attempts: int = 0\n    max_attempts_before_escalation: int = 3\n    created_at: datetime = field(default_factory=datetime.now)\n    tags: list[str] = field(default_factory=list)\n    \n    def add_message(self, role: str, content: str):\n        \"\"\"Add a message to the conversation.\"\"\"\n        self.messages.append({\n            \"role\": role,\n            \"content\": content,\n            \"timestamp\": datetime.now().isoformat()\n        })\n    \n    def get_history_for_llm(self, max_messages: int = 10) -\u003e list[dict]:\n        \"\"\"Get formatted history for API call.\"\"\"\n        history = [{\"role\": \"system\", \"content\": self._build_prompt()}]\n        \n        recent = self.messages[-max_messages:]\n        for msg in recent:\n            history.append({\n                \"role\": msg[\"role\"],\n                \"content\": msg[\"content\"]\n            })\n        \n        return history\n    \n    def _build_prompt(self) -\u003e str:\n        \"\"\"Build the system prompt based on conversation state.\"\"\"\n        base = f\"\"\"You are a helpful customer support agent.\n        \nCustomer: {self.customer_name or 'Unknown'}\nIntent: {self.intent or 'Not yet determined'}\nState: {self.state.value}\nAttempts to resolve: {self.resolution_attempts}\n\n\"\"\"\n        if self.state == ConversationState.GREETING:\n            base += \"Greet the customer warmly and ask how you \"\n            base += \"can help.\"\n        elif self.state == ConversationState.INTENT_GATHERING:\n            base += \"Ask clarifying questions to understand \"\n            base += \"the issue.\"\n        elif self.state == ConversationState.INFORMATION_COLLECTING:\n            base += \"Gather needed information (order number, \"\n            base += \"email, etc.).\"\n        elif self.state == ConversationState.RESOLVING:\n            base += \"Provide a solution. Be specific and helpful.\"\n        elif self.state == ConversationState.ESCALATING:\n            base += \"Let the customer know you're connecting \"\n            base += \"them to a specialist.\"\n        \n        return base\n\n\nclass MultiTurnSupportAgent:\n    \"\"\"\n    Support agent that manages multi-turn conversations.\n    \"\"\"\n    \n    def __init__(self):\n        self.conversations: dict[str, ConversationContext] = {}\n        self.kb = SupportKnowledgeBase()\n        self.client = OpenAI()\n    \n    def start_conversation(\n        self, customer_id: str, customer_name: str = \"\"\n    ) -\u003e str:\n        \"\"\"Start a new conversation.\"\"\"\n        ctx = ConversationContext(\n            customer_id=customer_id,\n            customer_name=customer_name\n        )\n        self.conversations[customer_id] = ctx\n        \n        greeting = (f\"Hi{f' {customer_name}' if customer_name else ''}!\"\n                   f\" Welcome to TechCorp support. How can I \"\n                   f\"help you today?\")\n        \n        ctx.add_message(\"assistant\", greeting)\n        return greeting\n    \n    def handle_message(\n        self, customer_id: str, message: str\n    ) -\u003e str:\n        \"\"\"Process a customer message in an ongoing conversation.\"\"\"\n        \n        if customer_id not in self.conversations:\n            return self.start_conversation(customer_id)\n        \n        ctx = self.conversations[customer_id]\n        ctx.add_message(\"user\", message)\n        \n        # Update conversation state\n        self._update_state(ctx, message)\n        \n        # Generate response based on state\n        response = self._generate_response(ctx)\n        \n        ctx.add_message(\"assistant\", response)\n        return response\n    \n    def _update_state(\n        self, ctx: ConversationContext, message: str\n    ):\n        \"\"\"Update conversation state based on new message.\"\"\"\n        \n        if ctx.state == ConversationState.GREETING:\n            # First real message → gather intent\n            ctx.state = ConversationState.INTENT_GATHERING\n            classification = classify_intent(message)\n            ctx.intent = classification[\"intent\"]\n            ctx.confidence = classification[\"confidence\"]\n            \n        elif ctx.state == ConversationState.INTENT_GATHERING:\n            # Check if we have enough info\n            if ctx.confidence \u003e 0.7:\n                ctx.state = ConversationState.RESOLVING\n            else:\n                ctx.state = ConversationState.INFORMATION_COLLECTING\n        \n        elif ctx.state == ConversationState.RESOLVING:\n            # Check if resolution was successful\n            if self._is_resolution_satisfied(message):\n                ctx.state = ConversationState.CLOSING\n            else:\n                ctx.resolution_attempts += 1\n                if ctx.resolution_attempts \u003e= ctx.max_attempts_before_escalation:\n                    ctx.state = ConversationState.ESCALATING\n    \n    def _generate_response(\n        self, ctx: ConversationContext\n    ) -\u003e str:\n        \"\"\"Generate appropriate response based on state.\"\"\"\n        \n        messages = ctx.get_history_for_llm()\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o-mini\",\n            messages=messages,\n            temperature=0.3,\n            max_tokens=300\n        )\n        \n        return response.choices[0].message.content\n    \n    def _is_resolution_satisfied(self, message: str) -\u003e bool:\n        \"\"\"Check if the customer is satisfied with the resolution.\"\"\"\n        satisfaction_keywords = [\n            \"thank you\", \"thanks\", \"perfect\", \"great\",\n            \"that works\", \"solved\", \"awesome\", \"excellent\",\n            \"got it\", \"appreciate\"\n        ]\n        return any(kw in message.lower() for kw in satisfaction_keywords)\n```\n\n---\n\n## 6. Sentiment Detection\n\n### Understanding Customer Emotion\n\n```python\n\"\"\"\nSentiment analysis for customer support.\n\"\"\"\n\nfrom dataclasses import dataclass\nfrom enum import Enum\n\n\nclass Sentiment(Enum):\n    VERY_POSITIVE = \"very_positive\"  # Delighted, grateful\n    POSITIVE = \"positive\"             # Satisfied, content\n    NEUTRAL = \"neutral\"               # Informational\n    NEGATIVE = \"negative\"             # Frustrated, annoyed\n    VERY_NEGATIVE = \"very_negative\"   # Angry, hostile\n\n\n@dataclass\nclass SentimentResult:\n    sentiment: Sentiment\n    score: float  # -1.0 to 1.0\n    emotions: list[str]\n    suggested_tone: str\n    escalation_risk: float  # 0.0 to 1.0\n\n\ndef analyze_sentiment(\n    message: str,\n    conversation_history: list[str] | None = None\n) -\u003e SentimentResult:\n    \"\"\"\n    Analyze the sentiment and emotion of a customer message.\n    \"\"\"\n    \n    client = OpenAI()\n    \n    prompt = f\"\"\"Analyze the sentiment and emotions in this \ncustomer support message.\n\nMessage: \"{message}\"\n\"\"\"\n    \n    if conversation_history:\n        recent = conversation_history[-3:]\n        prompt += f\"\\nRecent conversation: {recent}\"\n    \n    prompt += \"\"\"\nReturn ONLY a JSON object:\n{\n    \"sentiment\": \"very_positive|positive|neutral|negative|very_negative\",\n    \"score\": -1.0 to 1.0,\n    \"emotions\": [\"primary emotion\", \"secondary emotion\"],\n    \"escalation_risk\": 0.0 to 1.0,\n    \"suggested_response_tone\": \"description of appropriate tone\"\n}\"\"\"\n    \n    response = client.chat.completions.create(\n        model=\"gpt-4o-mini\",\n        messages=[\n            {\"role\": \"system\", \"content\": \"Analyze customer \"\n             \"support message sentiment.\"},\n            {\"role\": \"user\", \"content\": prompt}\n        ],\n        temperature=0.0,\n        response_format={\"type\": \"json_object\"}\n    )\n    \n    import json\n    result = json.loads(response.choices[0].message.content)\n    \n    return SentimentResult(\n        sentiment=Sentiment(result[\"sentiment\"]),\n        score=result[\"score\"],\n        emotions=result[\"emotions\"],\n        suggested_tone=result[\"suggested_response_tone\"],\n        escalation_risk=result[\"escalation_risk\"]\n    )\n\n\n# Test sentiment analysis\ntest_messages = [\n    \"Thank you so much! You've been incredibly helpful!\",\n    \"Where is my order?? I've been waiting for 2 weeks!\",\n    \"I'd like to check my order status please.\",\n    \"This is absolutely unacceptable. I'm filing a complaint!\",\n    \"Can you help me with my account settings?\",\n]\n\nfor msg in test_messages:\n    result = analyze_sentiment(msg)\n    print(f\"Message: {msg[:50]}...\")\n    print(f\"  Sentiment: {result.sentiment.value}\")\n    print(f\"  Score: {result.score:.2f}\")\n    print(f\"  Emotions: {result.emotions}\")\n    print(f\"  Escalation Risk: {result.escalation_risk:.2f}\")\n    print(f\"  Suggested Tone: {result.suggested_tone}\")\n    print()\n```\n\n### Sentiment-Aware Response Generation\n\n```python\ndef generate_sentiment_aware_response(\n    message: str,\n    context: ConversationContext\n) -\u003e str:\n    \"\"\"Generate a response that adapts to customer sentiment.\"\"\"\n    \n    sentiment = analyze_sentiment(message)\n    \n    tone_instructions = {\n        Sentiment.VERY_POSITIVE: (\n            \"Match their enthusiasm. Thank them. \"\n            \"Keep the positive energy.\"\n        ),\n        Sentiment.POSITIVE: (\n            \"Be friendly and warm. Maintain the positive tone.\"\n        ),\n        Sentiment.NEUTRAL: (\n            \"Be professional and helpful. Standard tone.\"\n        ),\n        Sentiment.NEGATIVE: (\n            \"Be empathetic and understanding. Acknowledge \"\n            \"their frustration. Focus on solutions.\"\n        ),\n        Sentiment.VERY_NEGATIVE: (\n            \"Be very empathetic. Apologize sincerely. \"\n            \"Offer concrete resolution steps. \"\n            \"Consider escalation.\"\n        ),\n    }\n    \n    prompt = f\"\"\"Customer message: \"{message}\"\n\nCustomer sentiment: {sentiment.sentiment.value}\nEmotions detected: {sentiment.emotions}\n\nTone instructions: {tone_instructions[sentiment.sentiment]}\n\nGenerate an appropriate response. If the customer is very \nnegative, also mention that you can connect them with a \nsenior specialist if needed.\"\"\"\n\n    client = OpenAI()\n    response = client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=[\n            {\"role\": \"system\", \"content\": context._build_prompt()},\n            {\"role\": \"user\", \"content\": prompt}\n        ],\n        temperature=0.3\n    )\n    \n    return response.choices[0].message.content\n```\n\n---\n\n## 7. Human-in-the-Loop Patterns\n\n### Why Human-in-the-Loop Is Essential\n\n```\n┌──────────────────────────────────────────────────────┐\n│           HUMAN-IN-THE-LOOP PRINCIPLES                │\n├──────────────────────────────────────────────────────┤\n│                                                       │\n│  1. AI Suggests, Human Decides                        │\n│     AI proposes actions → Human approves before        │\n│     execution for sensitive operations                 │\n│                                                       │\n│  2. AI Handles, Human Monitors                        │\n│     AI manages conversations → Human reviews           │\n│     and intervenes when needed                        │\n│                                                       │\n│  3. AI Triage, Human Solves                           │\n│     AI collects info and classifies → Human            │\n│     handles complex or sensitive cases                 │\n│                                                       │\n│  4. AI Drafts, Human Edits                            │\n│     AI writes responses → Human reviews               │\n│     before sending (high-stakes situations)           │\n│                                                       │\n└──────────────────────────────────────────────────────┘\n```\n\n### Implementation Pattern\n\n```python\n\"\"\"\nHuman-in-the-loop support agent.\n\"\"\"\n\nfrom dataclasses import dataclass\nfrom datetime import datetime\n\n\n@dataclass\nclass HumanReviewRequest:\n    \"\"\"Request for human review of AI action.\"\"\"\n    request_id: str\n    conversation_id: str\n    ai_response: str\n    proposed_action: str | None\n    reason: str\n    priority: int\n    created_at: datetime\n    status: str = \"pending\"  # pending, approved, rejected\n    human_notes: str = \"\"\n\n\nclass HumanInTheLoopAgent:\n    \"\"\"\n    Support agent with human oversight.\n    \"\"\"\n    \n    def __init__(self):\n        self.pending_reviews: dict[str, HumanReviewRequest] = {}\n        self.review_counter = 0\n    \n    def _needs_human_review(\n        self, \n        action: str, \n        context: dict\n    ) -\u003e bool:\n        \"\"\"Determine if an action needs human review.\"\"\"\n        \n        high_risk_actions = [\n            \"process_refund\",\n            \"cancel_subscription\",\n            \"delete_account\",\n            \"modify_order\",\n            \"escalate_to_legal\",\n        ]\n        \n        # Always review high-risk actions\n        if action in high_risk_actions:\n            return True\n        \n        # Review if customer sentiment is very negative\n        if context.get(\"sentiment\") == \"very_negative\":\n            return True\n        \n        # Review if refund amount is high\n        if action == \"process_refund\":\n            amount = context.get(\"refund_amount\", 0)\n            if amount \u003e 200:\n                return True\n        \n        return False\n    \n    def process_action(\n        self,\n        conversation_id: str,\n        action: str,\n        parameters: dict,\n        ai_response: str\n    ) -\u003e dict:\n        \"\"\"\n        Process an action with optional human review.\n        \"\"\"\n        \n        if self._needs_human_review(action, parameters):\n            # Create review request\n            self.review_counter += 1\n            request = HumanReviewRequest(\n                request_id=f\"REV-{self.review_counter:04d}\",\n                conversation_id=conversation_id,\n                ai_response=ai_response,\n                proposed_action=action,\n                reason=f\"Action '{action}' requires human review\",\n                priority=self._calculate_priority(\n                    action, parameters\n                ),\n                created_at=datetime.now()\n            )\n            \n            self.pending_reviews[request.request_id] = request\n            \n            return {\n                \"status\": \"pending_review\",\n                \"request_id\": request.request_id,\n                \"message\": \"This requires approval from a specialist. \"\n                          \"They'll review it shortly.\",\n                \"estimated_wait\": \"2-5 minutes\"\n            }\n        else:\n            # Auto-approve low-risk actions\n            return {\n                \"status\": \"approved\",\n                \"message\": ai_response,\n                \"action_executed\": action\n            }\n    \n    def _calculate_priority(\n        self, action: str, parameters: dict\n    ) -\u003e int:\n        \"\"\"Calculate review priority (1-5).\"\"\"\n        if action in [\"escalate_to_legal\", \"security_issue\"]:\n            return 5\n        if action == \"process_refund\":\n            amount = parameters.get(\"refund_amount\", 0)\n            if amount \u003e 500:\n                return 5\n            elif amount \u003e 200:\n                return 4\n            return 3\n        if action in [\"cancel_subscription\", \"delete_account\"]:\n            return 4\n        return 2\n    \n    def approve_request(\n        self, request_id: str, human_notes: str = \"\"\n    ) -\u003e dict:\n        \"\"\"Approve a pending review request.\"\"\"\n        if request_id not in self.pending_reviews:\n            return {\"error\": \"Request not found\"}\n        \n        request = self.pending_reviews[request_id]\n        request.status = \"approved\"\n        request.human_notes = human_notes\n        \n        return {\n            \"status\": \"approved\",\n            \"request_id\": request_id,\n            \"action\": request.proposed_action,\n            \"notes\": human_notes\n        }\n    \n    def reject_request(\n        self, request_id: str, reason: str\n    ) -\u003e dict:\n        \"\"\"Reject a pending review request.\"\"\"\n        if request_id not in self.pending_reviews:\n            return {\"error\": \"Request not found\"}\n        \n        request = self.pending_reviews[request_id]\n        request.status = \"rejected\"\n        request.human_notes = reason\n        \n        return {\n            \"status\": \"rejected\",\n            \"request_id\": request_id,\n            \"reason\": reason\n        }\n    \n    def get_pending_reviews(\n        self, min_priority: int = 1\n    ) -\u003e list[dict]:\n        \"\"\"Get all pending review requests.\"\"\"\n        pending = [\n            {\n                \"request_id\": r.request_id,\n                \"conversation_id\": r.conversation_id,\n                \"action\": r.proposed_action,\n                \"reason\": r.reason,\n                \"priority\": r.priority,\n                \"ai_response\": r.ai_response,\n                \"created_at\": r.created_at.isoformat()\n            }\n            for r in self.pending_reviews.values()\n            if r.status == \"pending\" and r.priority \u003e= min_priority\n        ]\n        \n        return sorted(pending, key=lambda x: x[\"priority\"], \n                     reverse=True)\n```\n\n---\n\n## 8. Building a Support Agent\n\n### Complete Customer Support Agent\n\n```python\n\"\"\"\nComplete customer support agent with all features.\n\"\"\"\n\nimport os\nimport json\nfrom datetime import datetime\nfrom openai import OpenAI\n\n\nclass CustomerSupportAgent:\n    \"\"\"\n    Full-featured customer support agent with:\n    - Intent classification\n    - RAG-based knowledge retrieval\n    - Sentiment-aware responses\n    - Multi-turn conversation management\n    - Human escalation\n    \"\"\"\n    \n    def __init__(self):\n        self.client = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n        self.knowledge_base = SupportKnowledgeBase()\n        self.conversations = {}\n        self.escalation_queue = []\n    \n    def handle_message(\n        self, \n        customer_id: str, \n        message: str\n    ) -\u003e dict:\n        \"\"\"\n        Process a customer message and return response.\n        \n        Returns dict with:\n        - response: The agent's response text\n        - intent: Detected intent\n        - sentiment: Customer sentiment\n        - action_taken: What action was performed\n        - escalated: Whether human escalation was triggered\n        \"\"\"\n        \n        # Get or create conversation context\n        if customer_id not in self.conversations:\n            self.conversations[customer_id] = {\n                \"messages\": [],\n                \"created_at\": datetime.now().isoformat(),\n                \"resolved\": False\n            }\n        \n        conv = self.conversations[customer_id]\n        conv[\"messages\"].append({\n            \"role\": \"user\",\n            \"content\": message,\n            \"timestamp\": datetime.now().isoformat()\n        })\n        \n        # Step 1: Classify intent\n        classification = classify_intent(message)\n        intent = classification[\"intent\"]\n        confidence = classification[\"confidence\"]\n        \n        # Step 2: Analyze sentiment\n        sentiment_result = analyze_sentiment(message)\n        \n        # Step 3: Check for escalation\n        should_esc, esc_reason, priority = should_escalate(\n            message=message,\n            classification=classification,\n            conversation_history=[\n                m[\"content\"] for m in conv[\"messages\"][-5:]\n            ],\n            failed_attempts=conv.get(\"failed_attempts\", 0),\n            customer_sentiment=sentiment_result.sentiment.value\n        )\n        \n        if should_esc:\n            return self._escalate(\n                customer_id, message, esc_reason, priority\n            )\n        \n        # Step 4: Search knowledge base\n        kb_results = self.knowledge_base.get_answer(\n            message, \n            customer_context={\"customer_id\": customer_id}\n        )\n        \n        # Step 5: Generate response\n        response = self._generate_response(\n            message=message,\n            intent=intent,\n            knowledge=kb_results[\"answer\"],\n            sentiment=sentiment_result,\n            conversation_history=conv[\"messages\"][-5:]\n        )\n        \n        # Step 6: Handle specific intents\n        action_taken = self._handle_intent(\n            intent, message, conv\n        )\n        \n        # Store response\n        conv[\"messages\"].append({\n            \"role\": \"assistant\",\n            \"content\": response,\n            \"timestamp\": datetime.now().isoformat(),\n            \"intent\": intent,\n            \"sentiment\": sentiment_result.sentiment.value\n        })\n        \n        return {\n            \"response\": response,\n            \"intent\": intent,\n            \"confidence\": confidence,\n            \"sentiment\": sentiment_result.sentiment.value,\n            \"action_taken\": action_taken,\n            \"escalated\": False,\n            \"knowledge_used\": kb_results[\"sources\"]\n        }\n    \n    def _generate_response(\n        self,\n        message: str,\n        intent: str,\n        knowledge: str,\n        sentiment: SentimentResult,\n        conversation_history: list[dict]\n    ) -\u003e str:\n        \"\"\"Generate a contextual, sentiment-aware response.\"\"\"\n        \n        # Build conversation context\n        history_text = \"\\n\".join(\n            f\"{m['role']}: {m['content']}\" \n            for m in conversation_history[-5:]\n        )\n        \n        # Tone adjustment based on sentiment\n        tone = \"professional and friendly\"\n        if sentiment.sentiment in [Sentiment.NEGATIVE, \n                                    Sentiment.VERY_NEGATIVE]:\n            tone = \"extra empathetic, apologetic, and focused \" \\\n                   \"on solutions\"\n        elif sentiment.sentiment == Sentiment.VERY_POSITIVE:\n            tone = \"warm and matching their enthusiasm\"\n        \n        system_prompt = f\"\"\"You are a customer support agent for \nTechCorp.\n\nCustomer intent: {intent}\nCustomer sentiment: {sentiment.sentiment.value}\nResponse tone: {tone}\n\nRelevant information from knowledge base:\n{knowledge}\n\nRecent conversation:\n{history_text}\n\nGenerate a helpful, accurate response. Be specific and actionable.\nIf you reference a policy, be precise about the details.\"\"\"\n        \n        response = self.client.chat.completions.create(\n            model=\"gpt-4o\",\n            messages=[\n                {\"role\": \"system\", \"content\": system_prompt},\n                {\"role\": \"user\", \"content\": message}\n            ],\n            temperature=0.3,\n            max_tokens=500\n        )\n        \n        return response.choices[0].message.content\n    \n    def _handle_intent(\n        self, intent: str, message: str, conversation: dict\n    ) -\u003e str:\n        \"\"\"Handle specific intent actions.\"\"\"\n        \n        action_map = {\n            \"order_status\": \"lookup_order\",\n            \"order_return\": \"initiate_return\",\n            \"billing_refund\": \"initiate_refund\",\n            \"account_login\": \"send_password_reset\",\n            \"tech_bug\": \"log_bug_report\",\n            \"complaint\": \"log_complaint\",\n        }\n        \n        action = action_map.get(intent, \"general_response\")\n        \n        # In production, these would call actual APIs\n        if action == \"lookup_order\":\n            # Extract order ID and look up\n            return \"Order lookup initiated\"\n        elif action == \"initiate_return\":\n            return \"Return process started\"\n        elif action == \"initiate_refund\":\n            return \"Refund request logged for review\"\n        \n        return \"General response provided\"\n    \n    def _escalate(\n        self, \n        customer_id: str,\n        message: str,\n        reason,\n        priority: int\n    ) -\u003e dict:\n        \"\"\"Escalate to human agent.\"\"\"\n        \n        escalation = {\n            \"customer_id\": customer_id,\n            \"message\": message,\n            \"reason\": reason.value if reason else \"unknown\",\n            \"priority\": priority,\n            \"timestamp\": datetime.now().isoformat()\n        }\n        \n        self.escalation_queue.append(escalation)\n        \n        return {\n            \"response\": \"I understand this is important to you. \"\n                       \"I'm connecting you with a specialist who \"\n                       \"can help right away. They'll have the full \"\n                       \"context of our conversation.\",\n            \"intent\": \"escalated\",\n            \"sentiment\": \"unknown\",\n            \"action_taken\": \"escalated_to_human\",\n            \"escalated\": True,\n            \"escalation_reason\": reason.value if reason else \"unknown\",\n            \"priority\": priority\n        }\n    \n    def get_analytics(self) -\u003e dict:\n        \"\"\"Get conversation analytics.\"\"\"\n        \n        total = len(self.conversations)\n        resolved = sum(\n            1 for c in self.conversations.values() \n            if c.get(\"resolved\")\n        )\n        escalated = len(self.escalation_queue)\n        \n        sentiments = {}\n        intents = {}\n        \n        for conv in self.conversations.values():\n            for msg in conv[\"messages\"]:\n                if msg.get(\"sentiment\"):\n                    s = msg[\"sentiment\"]\n                    sentiments[s] = sentiments.get(s, 0) + 1\n                if msg.get(\"intent\"):\n                    i = msg[\"intent\"]\n                    intents[i] = intents.get(i, 0) + 1\n        \n        return {\n            \"total_conversations\": total,\n            \"resolved\": resolved,\n            \"escalated\": escalated,\n            \"resolution_rate\": f\"{resolved/total*100:.1f}%\" \n                if total \u003e 0 else \"N/A\",\n            \"sentiment_distribution\": sentiments,\n            \"intent_distribution\": intents\n        }\n\n\n# === Run the Agent ===\n\nagent = CustomerSupportAgent()\n\n# Simulate a conversation\nprint(\"=\" * 60)\nprint(\"CUSTOMER SUPPORT CONVERSATION\")\nprint(\"=\" * 60)\n\n# Message 1\nresult = agent.handle_message(\n    customer_id=\"cust_001\",\n    message=\"Hi, I ordered a laptop 5 days ago and it still \"\n            \"says processing. When will it ship?\"\n)\nprint(f\"\\nCustomer: I ordered a laptop 5 days ago...\")\nprint(f\"Agent: {result['response']}\")\nprint(f\"  [Intent: {result['intent']}]\")\nprint(f\"  [Sentiment: {result['sentiment']}]\")\n\n# Message 2\nresult = agent.handle_message(\n    customer_id=\"cust_001\",\n    message=\"Order number is #ORD-2024-78542\"\n)\nprint(f\"\\nCustomer: Order number is #ORD-2024-78542\")\nprint(f\"Agent: {result['response']}\")\n\n# Message 3 - frustrated customer\nresult = agent.handle_message(\n    customer_id=\"cust_001\",\n    message=\"This is really frustrating. I need this for work \"\n            \"on Monday and it still hasn't shipped!\"\n)\nprint(f\"\\nCustomer: This is really frustrating...\")\nprint(f\"Agent: {result['response']}\")\nprint(f\"  [Sentiment: {result['sentiment']}]\")\n\n# Print analytics\nprint(\"\\n\" + \"=\" * 60)\nprint(\"ANALYTICS\")\nprint(\"=\" * 60)\nanalytics = agent.get_analytics()\nfor key, value in analytics.items():\n    print(f\"  {key}: {value}\")\n```\n\n---\n\n## 9. Architecture Diagram\n\n### Complete Support Agent Architecture\n\n```\n┌─────────────────────────────────────────────────────────────────┐\n│                    CUSTOMER SUPPORT AGENT                        │\n│                                                                  │\n│  ┌────────────────────────────────────────────────────────────┐  │\n│  │                     INPUT LAYER                            │  │\n│  │                                                            │  │\n│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  │  │\n│  │  │  Web     │  │  Mobile  │  │  Email   │  │  Chat    │  │  │\n│  │  │  Widget  │  │  App     │  │  Parser  │  │  API     │  │  │\n│  │  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘  │  │\n│  │       └──────────────┴──────────────┴──────────────┘        │  │\n│  └───────────────────────────┬────────────────────────────────┘  │\n│                              │                                   │\n│  ┌───────────────────────────▼────────────────────────────────┐  │\n│  │                  PROCESSING LAYER                          │  │\n│  │                                                            │  │\n│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │  │\n│  │  │   Intent     │  │  Sentiment   │  │   Entity     │     │  │\n│  │  │  Classifier  │  │  Analyzer    │  │  Extractor   │     │  │\n│  │  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘     │  │\n│  │         └──────────────────┴──────────────────┘             │  │\n│  └───────────────────────────┬────────────────────────────────┘  │\n│                              │                                   │\n│  ┌───────────────────────────▼────────────────────────────────┐  │\n│  │                  DECISION LAYER                            │  │\n│  │                                                            │  │\n│  │  ┌──────────────────────────────────────────────────────┐  │  │\n│  │  │              Routing Engine                           │  │  │\n│  │  │                                                      │  │  │\n│  │  │  Can AI handle? ──YES──▶ AI Resolution Path          │  │  │\n│  │  │       │                                              │  │  │\n│  │  │       NO                                             │  │  │\n│  │  │       │                                              │  │  │\n│  │  │       ▼                                              │  │  │\n│  │  │  Human Escalation Path                               │  │  │\n│  │  └──────────────────────────────────────────────────────┘  │  │\n│  └───────────────────────────┬────────────────────────────────┘  │\n│                              │                                   │\n│  ┌───────────────────────────▼────────────────────────────────┐  │\n│  │                  RESOLUTION LAYER                          │  │\n│  │                                                            │  │\n│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │  │\n│  │  │  RAG Engine  │  │  Action      │  │  Response    │     │  │\n│  │  │  (Knowledge  │  │  Executor    │  │  Generator   │     │  │\n│  │  │   Base)      │  │  (APIs)      │  │  (LLM)       │     │  │\n│  │  └──────────────┘  └──────────────┘  └──────────────┘     │  │\n│  └───────────────────────────┬────────────────────────────────┘  │\n│                              │                                   │\n│  ┌───────────────────────────▼────────────────────────────────┐  │\n│  │                  OUTPUT LAYER                              │  │\n│  │                                                            │  │\n│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  │  │\n│  │  │ Customer │  │  CRM     │  │  Ticket  │  │Analytics │  │  │\n│  │  │ Response │  │  Update  │  │  System  │  │Dashboard │  │  │\n│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘  │  │\n│  └────────────────────────────────────────────────────────────┘  │\n│                                                                  │\n│  ┌────────────────────────────────────────────────────────────┐  │\n│  │                  DATA LAYER                               │  │\n│  │                                                            │  │\n│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  │  │\n│  │  │ Vector   │  │Customer  │  │  Order   │  │Conversation│ │  │\n│  │  │  DB      │  │  DB      │  │  DB      │  │  Store   │  │  │\n│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘  │  │\n│  └────────────────────────────────────────────────────────────┘  │\n└─────────────────────────────────────────────────────────────────┘\n```\n\n---\n\n## 10. Real-World Examples\n\n### How Companies Use Support Agents\n\n| Company | Use Case | Approach | Results |\n|---------|----------|----------|---------|\n| **Intercom** | Fin AI Agent | RAG + FAQ resolution | 50% ticket deflection |\n| **Zendesk** | Answer Bot | Knowledge base integration | 35% faster resolution |\n| **Klarna** | AI Assistant | Full support automation | 2/3 of chats handled by AI |\n| **H\u0026M** | Customer service | Order status + returns | 70% automated responses |\n| **Bank of America** | Erica | Financial assistant | 1.5B+ interactions |\n\n### Best Practices from Production Deployments\n\n1. **Start with the top 20 FAQs**: These cover 80% of queries\n2. **Always provide an escape hatch**: Easy switch to human agent\n3. **Monitor and iterate**: Track resolution rates, CSAT, and escalations weekly\n4. **Train on real conversations**: Use actual support transcripts for fine-tuning\n5. **Set expectations**: Tell customers they're talking to AI\n6. **Personalize**: Use customer name, order history, and context\n7. **Follow up**: Send satisfaction surveys after resolution\n\n---\n\n## 11. Key Takeaways\n\n1. **Customer support is the ideal first agent** — high volume, structured data, clear success metrics, and obvious ROI.\n\n2. **Intent classification** is the foundation — accurately determining what customers want enables proper routing and handling.\n\n3. **Escalation workflows** are critical — define clear rules for when AI should hand off to humans, especially for sensitive or complex issues.\n\n4. **RAG-powered knowledge bases** give agents access to accurate, up-to-date information without hallucinating.\n\n5. **Multi-turn conversations** require careful state management — track intent, entities, resolution attempts, and context across messages.\n\n6. **Sentiment detection** enables empathetic, appropriate responses — angry customers need different treatment than happy ones.\n\n7. **Human-in-the-loop** is essential — AI should handle routine tasks but always defer to humans for sensitive operations.\n\n8. **Measure everything** — track resolution rate, CSAT, escalation rate, and response time to continuously improve.\n\n---\n\n## 12. Try It Yourself\n\n### Exercise 1: Intent Classifier\nBuild an intent classifier that handles at least 10 different intents. Test it with 50 hand-crafted messages (5 per intent) and measure accuracy.\n\n### Exercise 2: Support Agent with RAG\nCreate a support agent that:\n- Has a knowledge base of 20+ FAQ entries\n- Uses RAG to find relevant answers\n- Classifies intent and routes appropriately\n- Maintains conversation context for 10+ turns\n\n### Exercise 3: Sentiment-Aware Agent\nAdd sentiment analysis to your support agent so that:\n- Angry customers get empathetic responses\n- Urgent issues are flagged for faster handling\n- The tone of responses adapts to customer emotion\n\n### Exercise 4: Escalation System\nBuild an escalation system with:\n- A dashboard showing pending escalations\n- Priority scoring based on urgency and customer value\n- Auto-escalation after 3 failed resolution attempts\n- A/B testing different escalation thresholds\n\n### Exercise 5: Analytics Dashboard\nCreate an analytics view that shows:\n- Total conversations today\n- Resolution rate\n- Average response time\n- Sentiment distribution\n- Top 10 intents\n- Escalation rate and reasons\n\n---\n\n\u003e **Next Chapter**: In [Chapter 5: Executive \u0026 Analyst Agents](./chapter-05-executive-and-analyst-agents.md), we'll build AI agents that help business leaders make data-driven decisions through automated reports, analysis, and insights.\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"div\",null,{\"children\":[\"$\",\"$Lf\",null,{\"content\":\"$10\",\"currentChapter\":{\"id\":\"agents-ch-04\",\"number\":4,\"title\":\"Customer Support Agents\",\"subtitle\":\"Building Intelligent Support Experiences\",\"description\":\"Build agents that handle customer queries, escalate wisely, detect sentiment, and keep humans in the loop.\",\"slug\":\"customer-support-agents\",\"part\":\"Part II: Building Agents\",\"estimatedPages\":18,\"topics\":[\"Intent classification\",\"Escalation workflows\",\"Knowledge base integration\",\"Multi-turn conversations\",\"Sentiment detection\",\"Human-in-the-loop\"],\"icon\":\"💬\",\"bookId\":\"ai-agents\"}}]}]\n"])</script><script>self.__next_f.push([1,"a:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"7:null\nc:[[\"$\",\"title\",\"0\",{\"children\":\"AI Agents: The Complete Guide\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"A comprehensive guide to building, deploying, and scaling intelligent AI agents — covering LLMs, RAG, tools, security, and production best practices by Manjunath Kalburgi\"}],[\"$\",\"meta\",\"2\",{\"name\":\"author\",\"content\":\"Manjunath Kalburgi\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"AI Agents,LLMs,RAG,Generative AI,vLLM,Agentic Workflows,Machine Learning,Manjunath Kalburgi\"}]]\n"])</script></body></html>
