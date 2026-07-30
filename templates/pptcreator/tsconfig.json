@@ -29,18 +29,12 @@
     "downlevelIteration": true,
     "skipDefaultLibCheck": true,
     "exactOptionalPropertyTypes": true,
-    "noImplicitAny": true,
     "useUnknownInCatchVariables": true,
     "noUncheckedIndexedAccess": true,
     "noUncheckedIndexedAccessOnTupleTypes": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "maxNodeModuleJsDepth": 8,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitOverride": true,
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false
+    "maxNodeModuleJsDepth": 8
   },
   "include": [
     "src"

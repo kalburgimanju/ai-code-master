@@ -204,7 +204,7 @@ export default function App() {
                   e.preventDefault();
                   generatePresentationFromPrompt(promptText);
                 }
-              }
+              }}
             />
             <button
               onClick={() => {
